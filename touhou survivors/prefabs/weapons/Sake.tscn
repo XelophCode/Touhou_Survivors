@@ -1,0 +1,184 @@
+[gd_scene load_steps=21 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/sake.gd" id="1_jjt8d"]
+[ext_resource type="Texture2D" uid="uid://beiqsp8k70j2n" path="res://sprites/items/item_spawnables/sake_item_small.png" id="2_hngom"]
+[ext_resource type="Texture2D" uid="uid://dgl3poqp1itug" path="res://sprites/items/item_spawnables/sake_bottle_break.png" id="3_n6kny"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tku0n"]
+atlas = ExtResource("3_n6kny")
+region = Rect2(0, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qei6"]
+atlas = ExtResource("3_n6kny")
+region = Rect2(11, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jht2u"]
+atlas = ExtResource("3_n6kny")
+region = Rect2(22, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvi72"]
+atlas = ExtResource("3_n6kny")
+region = Rect2(33, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m25jc"]
+atlas = ExtResource("3_n6kny")
+region = Rect2(44, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxh52"]
+atlas = ExtResource("3_n6kny")
+region = Rect2(55, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf4dv"]
+atlas = ExtResource("3_n6kny")
+region = Rect2(0, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tsi5"]
+atlas = ExtResource("3_n6kny")
+region = Rect2(11, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3d8a"]
+atlas = ExtResource("3_n6kny")
+region = Rect2(22, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arr5k"]
+atlas = ExtResource("3_n6kny")
+region = Rect2(33, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j27h7"]
+atlas = ExtResource("3_n6kny")
+region = Rect2(44, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flb6e"]
+atlas = ExtResource("3_n6kny")
+region = Rect2(55, 11, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vq8xp"]
+animations = [{
+"frames": [SubResource("AtlasTexture_tku0n"), SubResource("AtlasTexture_7qei6"), SubResource("AtlasTexture_jht2u"), SubResource("AtlasTexture_bvi72"), SubResource("AtlasTexture_m25jc"), SubResource("AtlasTexture_kxh52")],
+"loop": true,
+"name": &"bottle_break",
+"speed": 12.0
+}, {
+"frames": [SubResource("AtlasTexture_pf4dv"), SubResource("AtlasTexture_3tsi5"), SubResource("AtlasTexture_m3d8a"), SubResource("AtlasTexture_arr5k"), SubResource("AtlasTexture_j27h7"), SubResource("AtlasTexture_flb6e")],
+"loop": true,
+"name": &"puddle",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpcen"]
+size = Vector2(8, 8)
+
+[sub_resource type="Animation" id="Animation_77tm3"]
+resource_name = "throw"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(40, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"break_bottle"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_im22q"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"delete"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y76u4"]
+_data = {
+"fade_out": SubResource("Animation_im22q"),
+"throw": SubResource("Animation_77tm3")
+}
+
+[node name="Sake" type="Node2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+script = ExtResource("1_jjt8d")
+
+[node name="main_body" type="Node2D" parent="."]
+position = Vector2(40, 0)
+
+[node name="sprite" type="Node2D" parent="main_body"]
+modulate = Color(1, 1, 1, 0.5)
+
+[node name="shadow" type="Panel" parent="main_body/sprite"]
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 3.0
+offset_bottom = 4.0
+
+[node name="sprite" type="Sprite2D" parent="main_body/sprite"]
+texture = ExtResource("2_hngom")
+
+[node name="animations" type="AnimatedSprite2D" parent="main_body/sprite"]
+visible = false
+frames = SubResource("SpriteFrames_vq8xp")
+animation = &"bottle_break"
+
+[node name="hitbox" type="Area2D" parent="main_body"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/hitbox"]
+shape = SubResource("RectangleShape2D_vpcen")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y76u4")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+
+[node name="HitboxToggle" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="animation_finished" from="main_body/sprite/animations" to="." method="_on_animations_animation_finished"]
+[connection signal="body_entered" from="main_body/hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="HitboxToggle" to="." method="_on_hitbox_toggle_timeout"]

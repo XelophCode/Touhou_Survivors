@@ -1,0 +1,79 @@
+[gd_scene load_steps=14 format=3 uid="uid://dhei5xebnxlqf"]
+
+[ext_resource type="Script" path="res://scripts/misc/power.gd" id="1_6k3ai"]
+[ext_resource type="Texture2D" uid="uid://qtwnt4ssx04l" path="res://sprites/power.png" id="1_yfpc1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx3b3"]
+atlas = ExtResource("1_yfpc1")
+region = Rect2(0, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6ycm"]
+atlas = ExtResource("1_yfpc1")
+region = Rect2(11, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlc1n"]
+atlas = ExtResource("1_yfpc1")
+region = Rect2(22, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8y4c"]
+atlas = ExtResource("1_yfpc1")
+region = Rect2(33, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bth1g"]
+atlas = ExtResource("1_yfpc1")
+region = Rect2(44, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8ora"]
+atlas = ExtResource("1_yfpc1")
+region = Rect2(55, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1orr"]
+atlas = ExtResource("1_yfpc1")
+region = Rect2(66, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1ssa"]
+atlas = ExtResource("1_yfpc1")
+region = Rect2(77, 0, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_osn0a"]
+animations = [{
+"frames": [SubResource("AtlasTexture_tx3b3"), SubResource("AtlasTexture_a6ycm"), SubResource("AtlasTexture_mlc1n"), SubResource("AtlasTexture_r8y4c"), SubResource("AtlasTexture_bth1g"), SubResource("AtlasTexture_y8ora"), SubResource("AtlasTexture_f1orr"), SubResource("AtlasTexture_v1ssa")],
+"loop": true,
+"name": &"spin",
+"speed": 14.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cctvr"]
+size = Vector2(10, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txfup"]
+bg_color = Color(0, 0, 0, 0.305882)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Power" type="Node2D"]
+script = ExtResource("1_6k3ai")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+frames = SubResource("SpriteFrames_osn0a")
+animation = &"spin"
+playing = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_cctvr")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -3.0
+offset_top = 1.0
+offset_right = 3.0
+offset_bottom = 6.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_txfup")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

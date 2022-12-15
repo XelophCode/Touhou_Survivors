@@ -1,0 +1,205 @@
+[gd_scene load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/Roukanken.gd" id="1_mlgwc"]
+[ext_resource type="Texture2D" uid="uid://dupuueoirslts" path="res://sprites/items/item_spawnables/roukanken_slash.png" id="2_l0ygx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6wl7"]
+atlas = ExtResource("2_l0ygx")
+region = Rect2(0, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm7n1"]
+atlas = ExtResource("2_l0ygx")
+region = Rect2(13, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1hpf"]
+atlas = ExtResource("2_l0ygx")
+region = Rect2(26, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oytq5"]
+atlas = ExtResource("2_l0ygx")
+region = Rect2(39, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb255"]
+atlas = ExtResource("2_l0ygx")
+region = Rect2(52, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af0q0"]
+atlas = ExtResource("2_l0ygx")
+region = Rect2(65, 0, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qg5tx"]
+animations = [{
+"frames": [SubResource("AtlasTexture_f6wl7"), SubResource("AtlasTexture_mm7n1"), SubResource("AtlasTexture_g1hpf"), SubResource("AtlasTexture_oytq5"), SubResource("AtlasTexture_kb255"), SubResource("AtlasTexture_af0q0")],
+"loop": true,
+"name": &"slash",
+"speed": 18.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wn4q3"]
+size = Vector2(1.1227, 8.72022)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6du1"]
+size = Vector2(9.26946, 0.982888)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc0rk"]
+size = Vector2(10, 1)
+
+[sub_resource type="Animation" id="Animation_q52qy"]
+resource_name = "slash1"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/Hitbox_1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(4, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("main_body/Hitbox_1:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_40vi2"]
+resource_name = "slash2"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/Hitbox_2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-2, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("main_body/Hitbox_2:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_5f4vt"]
+resource_name = "slash3"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/Hitbox_3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-2, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("main_body/Hitbox_3:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5yh44"]
+_data = {
+"slash1": SubResource("Animation_q52qy"),
+"slash2": SubResource("Animation_40vi2"),
+"slash3": SubResource("Animation_5f4vt")
+}
+
+[node name="Roukanken" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_mlgwc")
+
+[node name="main_body" type="Node2D" parent="."]
+
+[node name="animations" type="Node2D" parent="main_body"]
+
+[node name="slash1" type="AnimatedSprite2D" parent="main_body/animations"]
+visible = false
+texture_filter = 1
+frames = SubResource("SpriteFrames_qg5tx")
+animation = &"slash"
+
+[node name="slash2" type="AnimatedSprite2D" parent="main_body/animations"]
+visible = false
+texture_filter = 1
+rotation = -2.25846
+frames = SubResource("SpriteFrames_qg5tx")
+animation = &"slash"
+
+[node name="slash3" type="AnimatedSprite2D" parent="main_body/animations"]
+visible = false
+texture_filter = 1
+rotation = -1.1781
+scale = Vector2(-1, 1)
+frames = SubResource("SpriteFrames_qg5tx")
+animation = &"slash"
+
+[node name="Hitbox_1" type="Area2D" parent="main_body"]
+position = Vector2(1, 1)
+rotation = 0.617847
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Hitbox_1"]
+position = Vector2(1.0689, -1.33545)
+shape = SubResource("RectangleShape2D_wn4q3")
+
+[node name="Hitbox_2" type="Area2D" parent="main_body"]
+rotation = -0.588176
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Hitbox_2"]
+position = Vector2(-0.63473, -1.50855)
+shape = SubResource("RectangleShape2D_m6du1")
+
+[node name="Hitbox_3" type="Area2D" parent="main_body"]
+rotation = 0.673697
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Hitbox_3"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_pc0rk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5yh44")
+}
+
+[connection signal="animation_finished" from="main_body/animations/slash1" to="." method="_on_slash_1_animation_finished"]
+[connection signal="animation_finished" from="main_body/animations/slash2" to="." method="_on_slash_2_animation_finished"]
+[connection signal="animation_finished" from="main_body/animations/slash3" to="." method="_on_slash_3_animation_finished"]
+[connection signal="body_entered" from="main_body/Hitbox_1" to="." method="_on_hitbox_1_body_entered"]
+[connection signal="body_entered" from="main_body/Hitbox_2" to="." method="_on_hitbox_2_body_entered"]
+[connection signal="body_entered" from="main_body/Hitbox_3" to="." method="_on_hitbox_3_body_entered"]

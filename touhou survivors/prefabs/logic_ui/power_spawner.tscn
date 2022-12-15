@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/PowerSpawner.gd" id="1_eh6mb"]
+
+[node name="PowerSpawner" type="Node2D"]
+script = ExtResource("1_eh6mb")

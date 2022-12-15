@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_1iw6h"]
+[ext_resource type="Texture2D" uid="uid://bdxbg5d0dutgi" path="res://sprites/items/item_icons/gohei_icon.png" id="1_2x7l7"]
+[ext_resource type="PackedScene" path="res://prefabs/inventory/gohei_inventory.tscn" id="1_r44fl"]
+[ext_resource type="PackedScene" path="res://prefabs/weapons/Gohei.tscn" id="4_kdsux"]
+
+[resource]
+script = ExtResource("1_1iw6h")
+item_name = 2
+description = ""
+inventory_size = 4
+inventory = ExtResource("1_r44fl")
+spawnable = ExtResource("4_kdsux")
+icon = ExtResource("1_2x7l7")
+active = true
+cooldown = 10
+stack_limit = 3

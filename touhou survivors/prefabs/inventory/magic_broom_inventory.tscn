@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_gmwkj"]
+[ext_resource type="PackedScene" path="res://prefabs/item_grid_layouts/1x3.tscn" id="4_ch2g1"]
+[ext_resource type="Texture2D" uid="uid://0pi0oeygxqgf" path="res://sprites/items/inventory_item_BGs/1x3_item_large_bg.png" id="5_6s2qm"]
+[ext_resource type="Texture2D" uid="uid://bm125ylmjm8t7" path="res://sprites/items/inventory/magic_broom_item_large.png" id="6_n74pm"]
+[ext_resource type="PackedScene" path="res://prefabs/logic_ui/occult_orb.tscn" id="7_cmf44"]
+
+[node name="MagicBroom" type="Node2D"]
+z_index = 6
+texture_filter = 1
+script = ExtResource("1_gmwkj")
+
+[node name="1x3" parent="." instance=ExtResource("4_ch2g1")]
+
+[node name="ItemLargeBg" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("5_6s2qm")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("6_n74pm")
+
+[node name="occult_orb" parent="." instance=ExtResource("7_cmf44")]
+position = Vector2(-6.5, -28.5)

@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://04yuy6nwpd5q"]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/Tooltip.gd" id="1_bevia"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_in0dt"]
+bg_color = Color(0, 0, 0, 0.360784)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+
+[node name="Tooltip" type="Node2D"]
+z_index = 100
+script = ExtResource("1_bevia")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 6.0
+offset_bottom = 13.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxFlat_in0dt")
+text = "testing"

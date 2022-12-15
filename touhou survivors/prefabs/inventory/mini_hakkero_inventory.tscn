@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_gmp3u"]
+[ext_resource type="PackedScene" path="res://prefabs/item_grid_layouts/2x2_var_1.tscn" id="4_3d5qa"]
+[ext_resource type="Texture2D" uid="uid://qv7xuvpa3v10" path="res://sprites/items/inventory_item_BGs/2x2_item_large_bg.png" id="5_wdb48"]
+[ext_resource type="Texture2D" uid="uid://ddrco5dt6ym60" path="res://sprites/items/inventory/Mini_Hakkero_inventory_large.png" id="6_x0u71"]
+[ext_resource type="PackedScene" path="res://prefabs/logic_ui/occult_orb.tscn" id="7_i1x2k"]
+
+[node name="MiniHakkero" type="Node2D"]
+z_index = 6
+texture_filter = 1
+script = ExtResource("1_gmp3u")
+
+[node name="2x2_var_1" parent="." instance=ExtResource("4_3d5qa")]
+offset_setting = 3
+
+[node name="ItemLargeBg" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("5_wdb48")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("6_x0u71")
+
+[node name="occult_orb" parent="." instance=ExtResource("7_i1x2k")]
+position = Vector2(-17.5, -17.5)

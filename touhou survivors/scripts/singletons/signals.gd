@@ -1,0 +1,14 @@
+extends Node
+class_name signals
+
+signal damage_popup
+signal spawn_power_item
+signal despawn_offscreen_enemies
+signal update_power
+signal add_weapon
+signal remove_weapon
+signal modify_weapon
+signal show_tooltip
+signal hide_tooltip
+signal leveling_up
+signal modify_player_speed

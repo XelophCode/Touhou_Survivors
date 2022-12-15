@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://bp7ylul8obnik"]
+
+[ext_resource type="PackedScene" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
+[ext_resource type="PackedScene" uid="uid://5s0m512bh4ki" path="res://prefabs/logic_ui/main_camera.tscn" id="2_pw5jn"]
+[ext_resource type="PackedScene" uid="uid://cah8y53sm3blk" path="res://prefabs/player/player.tscn" id="3_dutub"]
+[ext_resource type="PackedScene" path="res://prefabs/logic_ui/enemy_despawner.tscn" id="4_121vl"]
+[ext_resource type="PackedScene" path="res://prefabs/logic_ui/enemy_spawner.tscn" id="5_cql0f"]
+[ext_resource type="PackedScene" path="res://prefabs/logic_ui/power_spawner.tscn" id="6_qbw7i"]
+[ext_resource type="PackedScene" uid="uid://dhei5xebnxlqf" path="res://prefabs/misc/power.tscn" id="7_416v3"]
+
+[node name="Main" type="Node2D"]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_804ch")]
+
+[node name="MainCamera" parent="." instance=ExtResource("2_pw5jn")]
+
+[node name="player" parent="." instance=ExtResource("3_dutub")]
+
+[node name="EnemyDespawner" parent="." instance=ExtResource("4_121vl")]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("5_cql0f")]
+
+[node name="weapons" type="Node2D" parent="."]
+
+[node name="PowerSpawner" parent="." instance=ExtResource("6_qbw7i")]
+
+[node name="Power" parent="." instance=ExtResource("7_416v3")]
+position = Vector2(-13, -8)

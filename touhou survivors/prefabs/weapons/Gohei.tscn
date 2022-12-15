@@ -1,0 +1,128 @@
+[gd_scene load_steps=20 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/Gohei.gd" id="1_lfbhu"]
+[ext_resource type="Texture2D" uid="uid://ck73ajt6hikxv" path="res://sprites/items/item_spawnables/gohei_swing.png" id="2_h6mcq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx1sh"]
+atlas = ExtResource("2_h6mcq")
+region = Rect2(0, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yncbe"]
+atlas = ExtResource("2_h6mcq")
+region = Rect2(13, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pvga"]
+atlas = ExtResource("2_h6mcq")
+region = Rect2(26, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jddso"]
+atlas = ExtResource("2_h6mcq")
+region = Rect2(39, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkn6x"]
+atlas = ExtResource("2_h6mcq")
+region = Rect2(52, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38swg"]
+atlas = ExtResource("2_h6mcq")
+region = Rect2(65, 0, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ir4a6"]
+animations = [{
+"frames": [SubResource("AtlasTexture_nx1sh"), SubResource("AtlasTexture_yncbe"), SubResource("AtlasTexture_8pvga"), SubResource("AtlasTexture_jddso"), SubResource("AtlasTexture_rkn6x"), SubResource("AtlasTexture_38swg")],
+"loop": true,
+"name": &"swing",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10a2r"]
+atlas = ExtResource("2_h6mcq")
+region = Rect2(0, 13, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31je6"]
+atlas = ExtResource("2_h6mcq")
+region = Rect2(13, 13, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ndlv"]
+atlas = ExtResource("2_h6mcq")
+region = Rect2(26, 13, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40hfw"]
+atlas = ExtResource("2_h6mcq")
+region = Rect2(39, 13, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1qdv"]
+atlas = ExtResource("2_h6mcq")
+region = Rect2(52, 13, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hj3f"]
+atlas = ExtResource("2_h6mcq")
+region = Rect2(65, 13, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s02aa"]
+animations = [{
+"frames": [SubResource("AtlasTexture_10a2r"), SubResource("AtlasTexture_31je6"), SubResource("AtlasTexture_5ndlv"), SubResource("AtlasTexture_40hfw"), SubResource("AtlasTexture_f1qdv"), SubResource("AtlasTexture_8hj3f")],
+"loop": true,
+"name": &"slash",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gvnn"]
+size = Vector2(18, 18)
+
+[sub_resource type="Animation" id="Animation_r1xso"]
+resource_name = "slash_move"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/slash:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(20, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y7mje"]
+_data = {
+"slash_move": SubResource("Animation_r1xso")
+}
+
+[node name="Gohei" type="Node2D"]
+script = ExtResource("1_lfbhu")
+
+[node name="main_body" type="Node2D" parent="."]
+position = Vector2(5, 0)
+
+[node name="swing" type="Node2D" parent="main_body"]
+
+[node name="swing_sprite" type="AnimatedSprite2D" parent="main_body/swing"]
+texture_filter = 1
+frames = SubResource("SpriteFrames_ir4a6")
+animation = &"swing"
+
+[node name="slash" type="Node2D" parent="main_body"]
+position = Vector2(20, 0)
+
+[node name="slash_sprite" type="AnimatedSprite2D" parent="main_body/slash"]
+texture_filter = 1
+frames = SubResource("SpriteFrames_s02aa")
+animation = &"slash"
+
+[node name="Hitbox" type="Area2D" parent="main_body/slash"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/slash/Hitbox"]
+shape = SubResource("RectangleShape2D_7gvnn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y7mje")
+}
+
+[connection signal="animation_finished" from="main_body/swing/swing_sprite" to="." method="_on_swing_sprite_animation_finished"]
+[connection signal="body_entered" from="main_body/slash/Hitbox" to="." method="_on_hitbox_body_entered"]

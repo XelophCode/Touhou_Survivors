@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_b4jnp"]
+[ext_resource type="Texture2D" uid="uid://rii6y378rjdq" path="res://sprites/items/inventory/yinyang_inventory_large.png" id="2_nsb7v"]
+[ext_resource type="Texture2D" uid="uid://qv7xuvpa3v10" path="res://sprites/items/inventory_item_BGs/2x2_item_large_bg.png" id="2_t72a4"]
+[ext_resource type="PackedScene" path="res://prefabs/item_grid_layouts/2x2_var_1.tscn" id="2_udqig"]
+[ext_resource type="PackedScene" path="res://prefabs/logic_ui/occult_orb.tscn" id="3_jel78"]
+
+[node name="YinYang" type="Node2D"]
+z_index = 6
+texture_filter = 1
+script = ExtResource("1_b4jnp")
+
+[node name="2x2_var_1" parent="." instance=ExtResource("2_udqig")]
+offset_setting = 3
+
+[node name="ItemLargeBg" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("2_t72a4")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_nsb7v")
+
+[node name="occult_orb" parent="." instance=ExtResource("3_jel78")]
+position = Vector2(-17.5, -17.5)

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" uid="uid://docqktleb7kem" path="res://sprites/grassbg.png" id="1_q31tv"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(448, 256)
+
+[node name="Grassbg" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_q31tv")
+centered = false

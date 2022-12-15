@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6kte76yaqwjq"]
+
+[ext_resource type="Script" path="res://scripts/inventory/item_interactions.gd" id="1_08b15"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7a82k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ny4f7"]
+size = Vector2(11, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_relvh"]
+size = Vector2(12, 12)
+
+[node name="1x1" type="Node2D"]
+script = ExtResource("1_08b15")
+offset_setting = 0
+
+[node name="click_and_inventory" type="Area2D" parent="."]
+z_index = 8
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="click_and_inventory"]
+shape = SubResource("RectangleShape2D_7a82k")
+
+[node name="main_placement" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 32
+
+[node name="MainPlacement" type="CollisionShape2D" parent="main_placement"]
+shape = SubResource("RectangleShape2D_ny4f7")
+debug_color = Color(1, 0, 0.0823529, 0.419608)
+
+[node name="additional_placement" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 32
+
+[node name="occupied_and_stack" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 96
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="occupied_and_stack"]
+z_index = 1
+shape = SubResource("RectangleShape2D_relvh")
+debug_color = Color(0.658824, 0.0392157, 0.803922, 0.419608)
+
+[connection signal="area_entered" from="click_and_inventory" to="." method="_on_click_and_inventory_area_entered"]
+[connection signal="area_exited" from="click_and_inventory" to="." method="_on_click_and_inventory_area_exited"]
+[connection signal="input_event" from="click_and_inventory" to="." method="_on_click_and_inventory_input_event"]
+[connection signal="mouse_entered" from="click_and_inventory" to="." method="_on_click_and_inventory_mouse_entered"]
+[connection signal="mouse_exited" from="click_and_inventory" to="." method="_on_click_and_inventory_mouse_exited"]
+[connection signal="area_entered" from="main_placement" to="." method="_on_main_placement_area_entered"]
+[connection signal="area_exited" from="main_placement" to="." method="_on_main_placement_area_exited"]
+[connection signal="area_entered" from="additional_placement" to="." method="_on_additional_placement_area_entered"]
+[connection signal="area_exited" from="additional_placement" to="." method="_on_additional_placement_area_exited"]
+[connection signal="area_entered" from="occupied_and_stack" to="." method="_on_occupied_and_stack_area_entered"]
+[connection signal="area_exited" from="occupied_and_stack" to="." method="_on_occupied_and_stack_area_exited"]

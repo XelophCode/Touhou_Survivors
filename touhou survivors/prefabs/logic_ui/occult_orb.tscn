@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" uid="uid://236ik35olnlb" path="res://sprites/items/inventory/occult_orb_background.png" id="1_6xj7i"]
+[ext_resource type="Texture2D" uid="uid://c1n7p3jwxbfns" path="res://sprites/items/inventory/occult_orb_fill.png" id="2_03f37"]
+
+[sub_resource type="Curve" id="Curve_ah0ik"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_hpkg0"]
+colors = PackedColorArray(0.731116, 0.677807, 0.901727, 1, 1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_44h6o"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="occult_orb" type="Node2D"]
+texture_filter = 1
+
+[node name="OccultOrbBackground" type="Sprite2D" parent="."]
+texture = ExtResource("1_6xj7i")
+
+[node name="occult_orb_progress" type="TextureProgressBar" parent="."]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 3.0
+offset_bottom = 3.0
+max_value = 10.0
+step = 0.001
+fill_mode = 4
+texture_progress = ExtResource("2_03f37")
+texture_progress_offset = Vector2(0.5, 0.5)
+
+[node name="shimmer" type="CPUParticles2D" parent="."]
+amount = 5
+emission_shape = 1
+emission_sphere_radius = 4.0
+gravity = Vector2(0, 0)
+scale_amount_curve = SubResource("Curve_ah0ik")
+color_initial_ramp = SubResource("Gradient_hpkg0")
+hue_variation_curve = SubResource("Curve_44h6o")

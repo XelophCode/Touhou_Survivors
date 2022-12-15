@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/ShopCloseButton.gd" id="1_8k6db"]
+[ext_resource type="Texture2D" uid="uid://d1pcfgxsrjg63" path="res://sprites/ui/torii_gate.png" id="2_stsbc"]
+
+[node name="ShopCloseButton" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_8k6db")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -17.0
+offset_top = -3.0
+offset_right = 17.0
+offset_bottom = 19.0
+theme_override_font_sizes/font_size = 9
+text = "DONE"
+
+[node name="ToriiGate" type="Sprite2D" parent="."]
+texture = ExtResource("2_stsbc")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

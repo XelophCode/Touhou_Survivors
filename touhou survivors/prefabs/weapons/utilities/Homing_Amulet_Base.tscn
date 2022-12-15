@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfb1b2wcxuuyl"]
+
+[ext_resource type="Script" path="res://scripts/inventory/Homing_Amulet_Base.gd" id="1_4a45r"]
+[ext_resource type="Texture2D" uid="uid://klanx4m6fylu" path="res://sprites/items/item_spawnables/homing_amulet_throwable.png" id="2_ykj8p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqalj"]
+size = Vector2(4, 2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_no5ih"]
+radius = 43.0116
+
+[node name="Homing_Amulet" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_4a45r")
+
+[node name="main_body" type="Node2D" parent="."]
+
+[node name="amulet_0" type="Node2D" parent="main_body"]
+
+[node name="Sprite2D" type="Sprite2D" parent="main_body/amulet_0"]
+texture = ExtResource("2_ykj8p")
+
+[node name="Damage" type="Area2D" parent="main_body/amulet_0"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/amulet_0/Damage"]
+shape = SubResource("RectangleShape2D_fqalj")
+
+[node name="Tracker" type="Area2D" parent="main_body/amulet_0"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/amulet_0/Tracker"]
+shape = SubResource("CircleShape2D_no5ih")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="body_entered" from="main_body/amulet_0/Damage" to="." method="_on_damage_body_entered"]
+[connection signal="body_entered" from="main_body/amulet_0/Tracker" to="." method="_on_tracker_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

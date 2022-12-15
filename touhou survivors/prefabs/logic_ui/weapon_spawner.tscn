@@ -1,0 +1,198 @@
+[gd_scene load_steps=4 format=3 uid="uid://iqvjyq5tkfb0"]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/WeaponSpawner.gd" id="1_rh8ns"]
+[ext_resource type="Texture2D" uid="uid://dtyik547ftyt2" path="res://sprites/ui/cooldown_fill.png" id="3_u7uxs"]
+[ext_resource type="Script" path="res://scripts/logic_ui/cooldown_bar.gd" id="4_fb46s"]
+
+[node name="WeaponSpawner" type="Node2D"]
+script = ExtResource("1_rh8ns")
+
+[node name="icon_positions" type="Node2D" parent="."]
+
+[node name="0" type="Marker2D" parent="icon_positions"]
+
+[node name="1" type="Marker2D" parent="icon_positions"]
+position = Vector2(0, 14)
+
+[node name="2" type="Marker2D" parent="icon_positions"]
+position = Vector2(14, 0)
+
+[node name="3" type="Marker2D" parent="icon_positions"]
+position = Vector2(14, 14)
+
+[node name="4" type="Marker2D" parent="icon_positions"]
+position = Vector2(28, 0)
+
+[node name="5" type="Marker2D" parent="icon_positions"]
+position = Vector2(28, 14)
+
+[node name="6" type="Marker2D" parent="icon_positions"]
+position = Vector2(42, 0)
+
+[node name="7" type="Marker2D" parent="icon_positions"]
+position = Vector2(42, 14)
+
+[node name="8" type="Marker2D" parent="icon_positions"]
+position = Vector2(56, 0)
+
+[node name="9" type="Marker2D" parent="icon_positions"]
+position = Vector2(56, 14)
+
+[node name="10" type="Marker2D" parent="icon_positions"]
+position = Vector2(70, 0)
+
+[node name="11" type="Marker2D" parent="icon_positions"]
+position = Vector2(70, 14)
+
+[node name="12" type="Marker2D" parent="icon_positions"]
+position = Vector2(84, 0)
+
+[node name="13" type="Marker2D" parent="icon_positions"]
+position = Vector2(84, 14)
+
+[node name="14" type="Marker2D" parent="icon_positions"]
+position = Vector2(98, 0)
+
+[node name="15" type="Marker2D" parent="icon_positions"]
+position = Vector2(98, 14)
+
+[node name="16" type="Marker2D" parent="icon_positions"]
+position = Vector2(112, 0)
+
+[node name="17" type="Marker2D" parent="icon_positions"]
+position = Vector2(112, 14)
+
+[node name="18" type="Marker2D" parent="icon_positions"]
+position = Vector2(126, 0)
+
+[node name="19" type="Marker2D" parent="icon_positions"]
+position = Vector2(126, 14)
+
+[node name="20" type="Marker2D" parent="icon_positions"]
+position = Vector2(140, 0)
+
+[node name="21" type="Marker2D" parent="icon_positions"]
+position = Vector2(140, 14)
+
+[node name="22" type="Marker2D" parent="icon_positions"]
+position = Vector2(154, 0)
+
+[node name="23" type="Marker2D" parent="icon_positions"]
+position = Vector2(154, 14)
+
+[node name="24" type="Marker2D" parent="icon_positions"]
+position = Vector2(168, 0)
+
+[node name="25" type="Marker2D" parent="icon_positions"]
+position = Vector2(168, 14)
+
+[node name="26" type="Marker2D" parent="icon_positions"]
+position = Vector2(182, 0)
+
+[node name="27" type="Marker2D" parent="icon_positions"]
+position = Vector2(182, 14)
+
+[node name="28" type="Marker2D" parent="icon_positions"]
+position = Vector2(196, 0)
+
+[node name="29" type="Marker2D" parent="icon_positions"]
+position = Vector2(196, 14)
+
+[node name="30" type="Marker2D" parent="icon_positions"]
+position = Vector2(210, 0)
+
+[node name="31" type="Marker2D" parent="icon_positions"]
+position = Vector2(210, 14)
+
+[node name="32" type="Marker2D" parent="icon_positions"]
+position = Vector2(224, 0)
+
+[node name="33" type="Marker2D" parent="icon_positions"]
+position = Vector2(224, 14)
+
+[node name="34" type="Marker2D" parent="icon_positions"]
+position = Vector2(238, 0)
+
+[node name="35" type="Marker2D" parent="icon_positions"]
+position = Vector2(238, 14)
+
+[node name="36" type="Marker2D" parent="icon_positions"]
+position = Vector2(252, 0)
+
+[node name="37" type="Marker2D" parent="icon_positions"]
+position = Vector2(252, 14)
+
+[node name="38" type="Marker2D" parent="icon_positions"]
+position = Vector2(266, 0)
+
+[node name="39" type="Marker2D" parent="icon_positions"]
+position = Vector2(266, 14)
+
+[node name="40" type="Marker2D" parent="icon_positions"]
+position = Vector2(280, 0)
+
+[node name="41" type="Marker2D" parent="icon_positions"]
+position = Vector2(280, 14)
+
+[node name="42" type="Marker2D" parent="icon_positions"]
+position = Vector2(294, 0)
+
+[node name="43" type="Marker2D" parent="icon_positions"]
+position = Vector2(294, 14)
+
+[node name="44" type="Marker2D" parent="icon_positions"]
+position = Vector2(308, 0)
+
+[node name="45" type="Marker2D" parent="icon_positions"]
+position = Vector2(308, 14)
+
+[node name="46" type="Marker2D" parent="icon_positions"]
+position = Vector2(322, 0)
+
+[node name="47" type="Marker2D" parent="icon_positions"]
+position = Vector2(322, 14)
+
+[node name="48" type="Marker2D" parent="icon_positions"]
+position = Vector2(336, 0)
+
+[node name="49" type="Marker2D" parent="icon_positions"]
+position = Vector2(336, 14)
+
+[node name="50" type="Marker2D" parent="icon_positions"]
+position = Vector2(350, 0)
+
+[node name="51" type="Marker2D" parent="icon_positions"]
+position = Vector2(350, 14)
+
+[node name="52" type="Marker2D" parent="icon_positions"]
+position = Vector2(364, 0)
+
+[node name="53" type="Marker2D" parent="icon_positions"]
+position = Vector2(364, 14)
+
+[node name="icon_instances" type="Node2D" parent="."]
+
+[node name="timer_instances" type="Node2D" parent="."]
+
+[node name="icon_base" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+
+[node name="cooldown_bar" type="TextureProgressBar" parent="icon_base"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.001
+fill_mode = 5
+texture_progress = ExtResource("3_u7uxs")
+texture_progress_offset = Vector2(0.5, 0.5)
+script = ExtResource("4_fb46s")

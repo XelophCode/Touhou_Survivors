@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://5s0m512bh4ki"]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/camera_main.gd" id="1_365xw"]
+[ext_resource type="PackedScene" uid="uid://iqvjyq5tkfb0" path="res://prefabs/logic_ui/weapon_spawner.tscn" id="2_8kxfo"]
+[ext_resource type="Texture2D" uid="uid://cfbld0no123ax" path="res://sprites/ui/powerbar_border.png" id="2_vlpjd"]
+[ext_resource type="Texture2D" uid="uid://dhrkybmrbmhk3" path="res://sprites/ui/reimu_portrait.png" id="3_6bsv8"]
+[ext_resource type="PackedScene" uid="uid://04yuy6nwpd5q" path="res://prefabs/logic_ui/tooltip.tscn" id="5_fucjo"]
+[ext_resource type="PackedScene" path="res://prefabs/logic_ui/Inventory.tscn" id="5_yatjy"]
+[ext_resource type="PackedScene" uid="uid://6dwuqj2vu1k8" path="res://prefabs/logic_ui/shop.tscn" id="6_bsv6g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsojg"]
+bg_color = Color(0.180392, 0.133333, 0.184314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mx0fe"]
+bg_color = Color(0.137255, 0.564706, 0.388235, 1)
+
+[node name="MainCamera" type="Camera2D"]
+z_index = 5
+current = true
+script = ExtResource("1_365xw")
+
+[node name="Powerbar" type="ProgressBar" parent="."]
+offset_left = -211.0
+offset_top = -119.0
+offset_right = 212.0
+offset_bottom = -105.0
+theme_override_styles/background = SubResource("StyleBoxFlat_nsojg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mx0fe")
+show_percentage = false
+
+[node name="PowerbarBorder" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -112)
+texture = ExtResource("2_vlpjd")
+
+[node name="ReimuPortrait" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-200, -88)
+texture = ExtResource("3_6bsv8")
+
+[node name="Tooltip" parent="." instance=ExtResource("5_fucjo")]
+visible = false
+
+[node name="PlayerInventory" type="Node2D" parent="."]
+
+[node name="Inventory" parent="." instance=ExtResource("5_yatjy")]
+visible = false
+position = Vector2(113, 11)
+
+[node name="Shop" parent="." instance=ExtResource("6_bsv6g")]
+visible = false
+position = Vector2(-100, 0)
+
+[node name="WeaponSpawner" parent="." instance=ExtResource("2_8kxfo")]
+position = Vector2(-178, -95)

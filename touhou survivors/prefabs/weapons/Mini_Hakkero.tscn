@@ -1,0 +1,171 @@
+[gd_scene load_steps=25 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/mini_hakkero.gd" id="1_gckol"]
+[ext_resource type="Texture2D" uid="uid://dn1fu4kbbbix3" path="res://sprites/items/item_spawnables/master_spark_animation.png" id="2_euof5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjney"]
+atlas = ExtResource("2_euof5")
+region = Rect2(0, 0, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0mvh"]
+atlas = ExtResource("2_euof5")
+region = Rect2(98, 0, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc6qu"]
+atlas = ExtResource("2_euof5")
+region = Rect2(0, 20, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63rgx"]
+atlas = ExtResource("2_euof5")
+region = Rect2(98, 20, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i78q"]
+atlas = ExtResource("2_euof5")
+region = Rect2(0, 40, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r05d3"]
+atlas = ExtResource("2_euof5")
+region = Rect2(98, 40, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1g6l"]
+atlas = ExtResource("2_euof5")
+region = Rect2(0, 60, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obopk"]
+atlas = ExtResource("2_euof5")
+region = Rect2(98, 60, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_055l0"]
+atlas = ExtResource("2_euof5")
+region = Rect2(0, 80, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgs28"]
+atlas = ExtResource("2_euof5")
+region = Rect2(98, 80, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aatn6"]
+atlas = ExtResource("2_euof5")
+region = Rect2(0, 100, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulk72"]
+atlas = ExtResource("2_euof5")
+region = Rect2(98, 100, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4117l"]
+atlas = ExtResource("2_euof5")
+region = Rect2(0, 120, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3fad"]
+atlas = ExtResource("2_euof5")
+region = Rect2(98, 120, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bqn1"]
+atlas = ExtResource("2_euof5")
+region = Rect2(0, 140, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gj2de"]
+atlas = ExtResource("2_euof5")
+region = Rect2(98, 140, 98, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6k6x"]
+atlas = ExtResource("2_euof5")
+region = Rect2(0, 160, 98, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ngdic"]
+animations = [{
+"frames": [null, SubResource("AtlasTexture_hjney"), SubResource("AtlasTexture_w0mvh"), SubResource("AtlasTexture_pc6qu"), SubResource("AtlasTexture_63rgx"), SubResource("AtlasTexture_6i78q"), SubResource("AtlasTexture_r05d3"), SubResource("AtlasTexture_q1g6l"), SubResource("AtlasTexture_obopk"), SubResource("AtlasTexture_055l0"), SubResource("AtlasTexture_pgs28"), SubResource("AtlasTexture_aatn6"), SubResource("AtlasTexture_ulk72"), SubResource("AtlasTexture_4117l"), SubResource("AtlasTexture_b3fad"), SubResource("AtlasTexture_4bqn1"), SubResource("AtlasTexture_gj2de"), SubResource("AtlasTexture_j6k6x")],
+"loop": false,
+"name": &"default",
+"speed": 18.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c04xi"]
+size = Vector2(95, 11.02)
+
+[sub_resource type="Animation" id="Animation_j7d2h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/Area2D/CollisionShape2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_it413"]
+resource_name = "fire"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/Area2D/CollisionShape2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, 1), Vector2(0, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("main_body/Area2D/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(51.5, 0), Vector2(51.5, 0), Vector2(5, 0), Vector2(51.5, 0), Vector2(51.5, 0), Vector2(51.5, 0), Vector2(51.5, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("main_body/Area2D:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ojs31"]
+_data = {
+"RESET": SubResource("Animation_j7d2h"),
+"fire": SubResource("Animation_it413")
+}
+
+[node name="mini_hakkero" type="Node2D"]
+script = ExtResource("1_gckol")
+
+[node name="main_body" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body"]
+texture_filter = 1
+position = Vector2(53, 0.5)
+frames = SubResource("SpriteFrames_ngdic")
+
+[node name="Area2D" type="Area2D" parent="main_body"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
+position = Vector2(51.5, 0)
+scale = Vector2(1e-05, 1)
+shape = SubResource("RectangleShape2D_c04xi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ojs31")
+}
+
+[connection signal="animation_finished" from="main_body/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="main_body/Area2D" to="." method="_on_area_2d_body_entered"]
