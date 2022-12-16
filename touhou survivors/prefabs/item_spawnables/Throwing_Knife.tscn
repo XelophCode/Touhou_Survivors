@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://ciwdhth0fya4r"]
 
 [ext_resource type="Script" path="res://scripts/inventory/ThrowingKnife.gd" id="1_ttjqg"]
 [ext_resource type="Texture2D" uid="uid://cmjhi7j4bxeux" path="res://sprites/items/item_spawnables/knife_throw.png" id="2_dtfto"]

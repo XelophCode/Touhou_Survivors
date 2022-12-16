@@ -1,0 +1,107 @@
+[gd_scene load_steps=17 format=3 uid="uid://fiu6grsxjtix"]
+
+[ext_resource type="Script" path="res://scripts/inventory/haniwa.gd" id="1_v3b81"]
+[ext_resource type="Texture2D" uid="uid://c42fmwxyk5xdw" path="res://sprites/items/item_spawnables/haniwa_spin_animation.png" id="2_pmxix"]
+
+[sub_resource type="Curve" id="Curve_ja3vv"]
+max_value = 3.0
+_data = [Vector2(0, 0.818182), 0.0, 2.18182, 0, 1, Vector2(1, 3), 2.18182, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77n1r"]
+bg_color = Color(0, 0, 0, 0.376471)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj6qm"]
+atlas = ExtResource("2_pmxix")
+region = Rect2(0, 0, 5, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv5f2"]
+atlas = ExtResource("2_pmxix")
+region = Rect2(5, 0, 5, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0r85"]
+atlas = ExtResource("2_pmxix")
+region = Rect2(10, 0, 5, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0guqb"]
+atlas = ExtResource("2_pmxix")
+region = Rect2(15, 0, 5, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7usr"]
+atlas = ExtResource("2_pmxix")
+region = Rect2(0, 7, 5, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g5du"]
+atlas = ExtResource("2_pmxix")
+region = Rect2(5, 7, 5, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwqnk"]
+atlas = ExtResource("2_pmxix")
+region = Rect2(10, 7, 5, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8mkh"]
+atlas = ExtResource("2_pmxix")
+region = Rect2(15, 7, 5, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj866"]
+atlas = ExtResource("2_pmxix")
+region = Rect2(0, 14, 5, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34y66"]
+atlas = ExtResource("2_pmxix")
+region = Rect2(5, 14, 5, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_noqa5"]
+animations = [{
+"frames": [SubResource("AtlasTexture_pj6qm"), SubResource("AtlasTexture_xv5f2"), SubResource("AtlasTexture_g0r85"), SubResource("AtlasTexture_0guqb"), SubResource("AtlasTexture_g7usr"), SubResource("AtlasTexture_2g5du"), SubResource("AtlasTexture_fwqnk"), SubResource("AtlasTexture_s8mkh"), SubResource("AtlasTexture_vj866"), SubResource("AtlasTexture_34y66")],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2720"]
+size = Vector2(4, 6)
+
+[node name="haniwa" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_v3b81")
+
+[node name="main_body" type="Node2D" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="main_body"]
+position = Vector2(0, 2)
+lifetime = 0.25
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector2(0, 0)
+scale_amount_curve = SubResource("Curve_ja3vv")
+color = Color(0.603922, 0.603922, 0.603922, 1)
+
+[node name="Panel" type="Panel" parent="main_body"]
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = 4.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_77n1r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body"]
+frames = SubResource("SpriteFrames_noqa5")
+playing = true
+
+[node name="Area2D" type="Area2D" parent="main_body"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
+shape = SubResource("RectangleShape2D_u2720")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="main_body/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

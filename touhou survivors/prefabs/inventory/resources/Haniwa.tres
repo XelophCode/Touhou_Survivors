@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cty0wq708adyh"]
+
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_gjrs4"]
+[ext_resource type="Texture2D" uid="uid://b6s8c3wtty4ow" path="res://sprites/items/item_icons/haniwa_icon.png" id="1_xssi0"]
+[ext_resource type="PackedScene" uid="uid://ddp641ggaldxh" path="res://prefabs/inventory/haniwa_inventory.tscn" id="2_c01km"]
+[ext_resource type="PackedScene" uid="uid://fiu6grsxjtix" path="res://prefabs/item_spawnables/Haniwa.tscn" id="4_062sx"]
+
+[resource]
+script = ExtResource("1_gjrs4")
+item_name = 10
+description = ""
+inventory_size = 1
+inventory = ExtResource("2_c01km")
+spawnable = ExtResource("4_062sx")
+icon = ExtResource("1_xssi0")
+active = true
+cooldown = 10
+stack_limit = 1
