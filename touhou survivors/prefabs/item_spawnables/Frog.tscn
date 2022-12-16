@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2rh7gdovca1d"]
+
+[ext_resource type="Script" path="res://scripts/inventory/Frog.gd" id="1_ea20r"]
+[ext_resource type="PackedScene" uid="uid://0efvck0twqm4" path="res://prefabs/item_spawnables/utilities/Frog_Main.tscn" id="2_6me4g"]
+
+[node name="Frog" type="Node2D"]
+script = ExtResource("1_ea20r")
+frog = ExtResource("2_6me4g")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

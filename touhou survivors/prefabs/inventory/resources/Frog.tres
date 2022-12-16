@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://ok0xiqa1ok3u"]
+
+[ext_resource type="Texture2D" uid="uid://dirm3gb7138r4" path="res://sprites/items/item_icons/frog_icon.png" id="1_hr6jf"]
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_mc4mp"]
+[ext_resource type="PackedScene" uid="uid://coqvef1m70lp6" path="res://prefabs/inventory/frog_inventory.tscn" id="2_6wu0n"]
+[ext_resource type="PackedScene" uid="uid://d2rh7gdovca1d" path="res://prefabs/item_spawnables/Frog.tscn" id="4_5ffwv"]
+
+[resource]
+script = ExtResource("1_mc4mp")
+item_name = 9
+description = ""
+inventory_size = 0
+inventory = ExtResource("2_6wu0n")
+spawnable = ExtResource("4_5ffwv")
+icon = ExtResource("1_hr6jf")
+active = true
+cooldown = 6
+stack_limit = 3

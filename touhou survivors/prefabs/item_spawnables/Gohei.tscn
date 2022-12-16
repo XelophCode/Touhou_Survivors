@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3]
+[gd_scene load_steps=20 format=3 uid="uid://d1tv2vh1cb06e"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Gohei.gd" id="1_lfbhu"]
 [ext_resource type="Texture2D" uid="uid://ck73ajt6hikxv" path="res://sprites/items/item_spawnables/gohei_swing.png" id="2_h6mcq"]

@@ -1,19 +1,18 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://gr6uyqcx44sj"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://dpovdenvg31u8"]
 
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_3a5pu"]
 [ext_resource type="Texture2D" uid="uid://b6vjojvffb5kp" path="res://sprites/items/item_icons/homing_amulet_icon.png" id="1_adspk"]
-[ext_resource type="PackedScene" path="res://prefabs/inventory/homing_amulet_inventory.tscn" id="2_uxrnd"]
-[ext_resource type="PackedScene" uid="uid://fn3354dhc55g" path="res://prefabs/weapons/Homing_Amulet.tscn" id="4_2cbnd"]
+[ext_resource type="PackedScene" uid="uid://cr46qcvplk30l" path="res://prefabs/inventory/homing_amulet_inventory.tscn" id="2_uxrnd"]
+[ext_resource type="PackedScene" uid="uid://bes7my1nq6yoa" path="res://prefabs/item_spawnables/Homing_Amulet.tscn" id="4_3o1gi"]
 
 [resource]
 script = ExtResource("1_3a5pu")
 item_name = 8
-description = "Throw homing amulets
-in all directions!"
+description = ""
 inventory_size = 0
 inventory = ExtResource("2_uxrnd")
-spawnable = ExtResource("4_2cbnd")
+spawnable = ExtResource("4_3o1gi")
 icon = ExtResource("1_adspk")
 active = true
-cooldown = 4
+cooldown = 10
 stack_limit = 8

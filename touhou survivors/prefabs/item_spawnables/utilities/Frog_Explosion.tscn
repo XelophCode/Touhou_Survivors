@@ -1,0 +1,69 @@
+[gd_scene load_steps=14 format=3 uid="uid://fpwwgtr3cnuv"]
+
+[ext_resource type="Script" path="res://scripts/inventory/Frog_Explosion.gd" id="1_aq3tx"]
+[ext_resource type="Texture2D" uid="uid://cuq740va4w6qj" path="res://sprites/items/item_spawnables/frog_explosion_animation.png" id="2_vqodp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jey3g"]
+atlas = ExtResource("2_vqodp")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlciq"]
+atlas = ExtResource("2_vqodp")
+region = Rect2(14, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xgej"]
+atlas = ExtResource("2_vqodp")
+region = Rect2(28, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch32x"]
+atlas = ExtResource("2_vqodp")
+region = Rect2(0, 14, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b4wu"]
+atlas = ExtResource("2_vqodp")
+region = Rect2(14, 14, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slnp1"]
+atlas = ExtResource("2_vqodp")
+region = Rect2(28, 14, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjsew"]
+atlas = ExtResource("2_vqodp")
+region = Rect2(0, 28, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omdi5"]
+atlas = ExtResource("2_vqodp")
+region = Rect2(14, 28, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_add5c"]
+atlas = ExtResource("2_vqodp")
+region = Rect2(28, 28, 14, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gjpot"]
+animations = [{
+"frames": [SubResource("AtlasTexture_jey3g"), SubResource("AtlasTexture_mlciq"), SubResource("AtlasTexture_5xgej"), SubResource("AtlasTexture_ch32x"), SubResource("AtlasTexture_2b4wu"), SubResource("AtlasTexture_slnp1"), SubResource("AtlasTexture_jjsew"), SubResource("AtlasTexture_omdi5"), SubResource("AtlasTexture_add5c")],
+"loop": true,
+"name": &"explosion",
+"speed": 18.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkn2q"]
+size = Vector2(14, 14)
+
+[node name="Frog_Explosion" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_aq3tx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+frames = SubResource("SpriteFrames_gjpot")
+animation = &"explosion"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_jkn2q")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

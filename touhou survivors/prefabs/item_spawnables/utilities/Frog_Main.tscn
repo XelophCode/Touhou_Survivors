@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://0efvck0twqm4"]
+
+[ext_resource type="Script" path="res://scripts/inventory/Frog_Main.gd" id="1_cb44w"]
+[ext_resource type="Texture2D" uid="uid://bl3a4gfk42d4s" path="res://sprites/items/item_spawnables/frog_leap_animation.png" id="2_t5m2g"]
+[ext_resource type="PackedScene" uid="uid://fpwwgtr3cnuv" path="res://prefabs/item_spawnables/utilities/Frog_Explosion.tscn" id="2_vvv6e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snmu7"]
+atlas = ExtResource("2_t5m2g")
+region = Rect2(0, 0, 7, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_et8ky"]
+atlas = ExtResource("2_t5m2g")
+region = Rect2(7, 0, 7, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0myyo"]
+atlas = ExtResource("2_t5m2g")
+region = Rect2(0, 5, 7, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e42o"]
+atlas = ExtResource("2_t5m2g")
+region = Rect2(7, 5, 7, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r80ub"]
+atlas = ExtResource("2_t5m2g")
+region = Rect2(0, 10, 7, 5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2eni"]
+animations = [{
+"frames": [SubResource("AtlasTexture_snmu7"), SubResource("AtlasTexture_et8ky"), SubResource("AtlasTexture_0myyo"), SubResource("AtlasTexture_7e42o"), SubResource("AtlasTexture_r80ub")],
+"loop": true,
+"name": &"leap",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tu1iw"]
+size = Vector2(4, 4)
+
+[node name="Frog" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_cb44w")
+explosion = ExtResource("2_vvv6e")
+
+[node name="main_body" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body"]
+frames = SubResource("SpriteFrames_b2eni")
+animation = &"leap"
+
+[node name="Area2D" type="Area2D" parent="main_body"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
+shape = SubResource("RectangleShape2D_tu1iw")
+
+[node name="Leap" type="Timer" parent="."]
+autostart = true
+
+[node name="Delete" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="animation_finished" from="main_body/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="main_body/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Leap" to="." method="_on_leap_timeout"]
+[connection signal="timeout" from="Delete" to="." method="_on_delete_timeout"]
