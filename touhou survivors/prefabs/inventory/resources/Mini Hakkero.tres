@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_2hi8w"]
 [ext_resource type="Texture2D" uid="uid://b2lreg6pjgai8" path="res://sprites/items/item_icons/mini_hakkero_icon.png" id="1_53mqq"]
 [ext_resource type="PackedScene" path="res://prefabs/inventory/mini_hakkero_inventory.tscn" id="1_yuss0"]
-[ext_resource type="PackedScene" path="res://prefabs/weapons/Mini_Hakkero.tscn" id="4_2lhf3"]
+[ext_resource type="PackedScene" path="res://prefabs/item_spawnables/Mini_Hakkero.tscn" id="4_2lhf3"]
 
 [resource]
 script = ExtResource("1_2hi8w")

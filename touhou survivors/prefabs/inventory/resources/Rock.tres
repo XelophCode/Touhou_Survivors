@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" path="res://prefabs/inventory/rock_inventory.tscn" id="1_4qmt0"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_c2fih"]
 [ext_resource type="Texture2D" uid="uid://dm0sbymtr51a0" path="res://sprites/items/item_icons/rock_icon.png" id="1_lg3ad"]
-[ext_resource type="PackedScene" path="res://prefabs/weapons/Rock.tscn" id="4_dq2xh"]
+[ext_resource type="PackedScene" path="res://prefabs/item_spawnables/Rock.tscn" id="4_dq2xh"]
 
 [resource]
 script = ExtResource("1_c2fih")

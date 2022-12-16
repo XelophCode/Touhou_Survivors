@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_cvwd6"]
 [ext_resource type="Texture2D" uid="uid://3bby3uso1xyt" path="res://sprites/items/item_icons/throwing_knife_icon.png" id="1_vl6m0"]
 [ext_resource type="PackedScene" path="res://prefabs/inventory/throwing_knife_inventory.tscn" id="1_x7d8e"]
-[ext_resource type="PackedScene" path="res://prefabs/weapons/Throwing_Knife.tscn" id="4_5ebtv"]
+[ext_resource type="PackedScene" path="res://prefabs/item_spawnables/Throwing_Knife.tscn" id="4_5ebtv"]
 
 [resource]
 script = ExtResource("1_cvwd6")

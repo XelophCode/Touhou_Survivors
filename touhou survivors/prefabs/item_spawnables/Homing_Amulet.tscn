@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bes7my1nq6yoa"]
+
+[ext_resource type="Script" path="res://scripts/inventory/Homing_Amulet.gd" id="1_yr7et"]
+[ext_resource type="PackedScene" uid="uid://bfb1b2wcxuuyl" path="res://prefabs/item_spawnables/utilities/Homing_Amulet_Base.tscn" id="2_3v2hf"]
+
+[node name="Homing_Amulet" type="Node2D"]
+script = ExtResource("1_yr7et")
+amulet = ExtResource("2_3v2hf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

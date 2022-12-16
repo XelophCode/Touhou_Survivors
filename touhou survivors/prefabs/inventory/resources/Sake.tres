@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" path="res://prefabs/inventory/sake_inventory.tscn" id="1_d3sek"]
 [ext_resource type="Texture2D" uid="uid://c73g2ljuotrkh" path="res://sprites/items/item_icons/sake_icon.png" id="1_fygxb"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_mvvnp"]
-[ext_resource type="PackedScene" path="res://prefabs/weapons/Sake.tscn" id="4_en4je"]
+[ext_resource type="PackedScene" path="res://prefabs/item_spawnables/Sake.tscn" id="4_en4je"]
 
 [resource]
 script = ExtResource("1_mvvnp")

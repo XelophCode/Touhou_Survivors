@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" path="res://prefabs/inventory/roukanken_inventory.tscn" id="1_700we"]
 [ext_resource type="Texture2D" uid="uid://bsojmatemejlh" path="res://sprites/items/item_icons/roukanken_icon.png" id="1_7845n"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_hl2ni"]
-[ext_resource type="PackedScene" path="res://prefabs/weapons/Roukanken.tscn" id="4_58eia"]
+[ext_resource type="PackedScene" path="res://prefabs/item_spawnables/Roukanken.tscn" id="4_58eia"]
 
 [resource]
 script = ExtResource("1_hl2ni")
