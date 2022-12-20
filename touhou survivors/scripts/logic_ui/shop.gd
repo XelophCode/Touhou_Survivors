@@ -16,7 +16,7 @@ func open_shop():
 	var items1x3:Array = []
 	var items2x2:Array = []
 	var items2x3:Array = []
-	print(str(inventory_items.all_resources))
+	
 	for item in inventory_items.all_resources:
 		if !Globals.passive_items.has(item.name[item.item_name]):
 			match item.inventory_size:

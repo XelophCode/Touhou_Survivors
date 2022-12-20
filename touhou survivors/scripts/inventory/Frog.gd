@@ -7,7 +7,7 @@ var max_spawns : int
 func _ready():
 	max_spawns = stack_count
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	global_position = Globals.player_position
 
 func _on_timer_timeout():

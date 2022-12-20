@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cja4r4b1usdgu"]
 
 [ext_resource type="Texture2D" uid="uid://byo3yvdkmvwvm" path="res://sprites/items/item_icons/magic_broom_icon.png" id="1_bifjr"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_f064l"]

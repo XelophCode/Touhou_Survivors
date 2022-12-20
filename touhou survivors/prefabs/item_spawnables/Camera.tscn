@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://2g8mm51qwkj5"]
+
+[ext_resource type="Texture2D" uid="uid://buljuqkfn1xgp" path="res://sprites/items/item_spawnables/camera_frame.png" id="1_r4qbn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtu24"]
+size = Vector2(168, 100)
+
+[node name="Camera" type="Node2D"]
+texture_filter = 1
+
+[node name="main_body" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="main_body"]
+texture = ExtResource("1_r4qbn")
+
+[node name="Area2D" type="Area2D" parent="main_body"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
+shape = SubResource("RectangleShape2D_wtu24")
