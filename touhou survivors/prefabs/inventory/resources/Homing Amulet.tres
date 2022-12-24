@@ -14,5 +14,5 @@ inventory = ExtResource("2_uxrnd")
 spawnable = ExtResource("4_3o1gi")
 icon = ExtResource("1_adspk")
 active = true
-cooldown = 10
+cooldown = 7
 stack_limit = 8

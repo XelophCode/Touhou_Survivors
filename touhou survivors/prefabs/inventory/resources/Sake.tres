@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cs84ylbtu68ud"]
 
 [ext_resource type="PackedScene" path="res://prefabs/inventory/sake_inventory.tscn" id="1_d3sek"]
 [ext_resource type="Texture2D" uid="uid://c73g2ljuotrkh" path="res://sprites/items/item_icons/sake_icon.png" id="1_fygxb"]
@@ -14,5 +14,5 @@ inventory = ExtResource("1_d3sek")
 spawnable = ExtResource("4_en4je")
 icon = ExtResource("1_fygxb")
 active = true
-cooldown = 10
+cooldown = 7
 stack_limit = 3

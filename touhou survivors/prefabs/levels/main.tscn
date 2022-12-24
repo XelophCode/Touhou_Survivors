@@ -25,4 +25,4 @@
 [node name="PowerSpawner" parent="." instance=ExtResource("6_qbw7i")]
 
 [node name="Power" parent="." instance=ExtResource("7_416v3")]
-position = Vector2(-13, -8)
+position = Vector2(-35, -5)

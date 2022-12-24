@@ -33,5 +33,6 @@ func despawn():
 		queue_free()
 
 func _on_knockback_timer_timeout():
+	$knockback_timer.stop()
 	$AnimatedSprite2D.material.set_shader_parameter("flash_modifier",0)
 	knockback = false

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_b4jnp"]
 [ext_resource type="Texture2D" uid="uid://qv7xuvpa3v10" path="res://sprites/items/inventory_item_BGs/2x2_item_large_bg.png" id="2_t72a4"]
-[ext_resource type="PackedScene" path="res://prefabs/item_grid_layouts/2x2_var_1.tscn" id="2_udqig"]
+[ext_resource type="PackedScene" uid="uid://1xvuuqohh8pd" path="res://prefabs/item_grid_layouts/2x2_var_1.tscn" id="2_udqig"]
 [ext_resource type="PackedScene" path="res://prefabs/logic_ui/occult_orb.tscn" id="3_jel78"]
 [ext_resource type="Texture2D" uid="uid://c362ahxy4f0wy" path="res://sprites/items/inventory/camera_inventory_large.png" id="4_abylm"]
 

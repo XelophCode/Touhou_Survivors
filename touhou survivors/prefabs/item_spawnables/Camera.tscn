@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://2g8mm51qwkj5"]
+[gd_scene load_steps=8 format=3 uid="uid://2g8mm51qwkj5"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Camera_item.gd" id="1_0u0vl"]
 [ext_resource type="Texture2D" uid="uid://buljuqkfn1xgp" path="res://sprites/items/item_spawnables/camera_frame.png" id="1_r4qbn"]
@@ -6,16 +6,88 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtu24"]
 size = Vector2(168, 100)
 
+[sub_resource type="Animation" id="Animation_vmaiw"]
+resource_name = "fade_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6cagc"]
+_data = {
+"fade_in": SubResource("Animation_vmaiw")
+}
+
+[sub_resource type="Animation" id="Animation_ncws0"]
+resource_name = "shrink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"delete"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b8ckx"]
+_data = {
+"shrink": SubResource("Animation_ncws0")
+}
+
 [node name="Camera" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_0u0vl")
 
 [node name="main_body" type="Node2D" parent="."]
+position = Vector2(92, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="main_body"]
+modulate = Color(1, 1, 1, 0)
 texture = ExtResource("1_r4qbn")
 
 [node name="Area2D" type="Area2D" parent="main_body"]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
 shape = SubResource("RectangleShape2D_wtu24")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6cagc")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b8ckx")
+}
+
+[connection signal="body_entered" from="main_body/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="main_body/Area2D" to="." method="_on_area_2d_body_exited"]

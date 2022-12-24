@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://q6uhplcwo5xe"]
 
 [ext_resource type="PackedScene" path="res://prefabs/inventory/roukanken_inventory.tscn" id="1_700we"]
 [ext_resource type="Texture2D" uid="uid://bsojmatemejlh" path="res://sprites/items/item_icons/roukanken_icon.png" id="1_7845n"]
@@ -14,5 +14,5 @@ inventory = ExtResource("1_700we")
 spawnable = ExtResource("4_58eia")
 icon = ExtResource("1_7845n")
 active = true
-cooldown = 10
+cooldown = 6
 stack_limit = 3

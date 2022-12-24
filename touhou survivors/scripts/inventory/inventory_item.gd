@@ -189,9 +189,9 @@ func occupied_and_stack_entered(area):
 	if area.collision_layer == 32:
 		area.get_child(0).visible = true
 
+func hide_tooltip():
+	Signals.emit_signal("hide_tooltip")
+
 func show_tooltip():
 	if !left_mouse_button_held:
 		Signals.emit_signal("show_tooltip",item_name,stack_count,stack_count_max,item_description)
-
-func hide_tooltip():
-	Signals.emit_signal("hide_tooltip")
