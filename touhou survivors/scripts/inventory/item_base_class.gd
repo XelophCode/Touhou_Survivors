@@ -7,6 +7,7 @@ var stack_count:int = 1
 
 func do_damage(body):
 	body.hp -= damage
+	body.knockback = true
 	var inst = damage_popup.instantiate()
 	inst.value = damage
 	inst.pos = body.global_position

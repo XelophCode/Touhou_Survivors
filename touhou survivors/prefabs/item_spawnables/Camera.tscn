@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://2g8mm51qwkj5"]
+[gd_scene load_steps=4 format=3 uid="uid://2g8mm51qwkj5"]
 
+[ext_resource type="Script" path="res://scripts/inventory/Camera_item.gd" id="1_0u0vl"]
 [ext_resource type="Texture2D" uid="uid://buljuqkfn1xgp" path="res://sprites/items/item_spawnables/camera_frame.png" id="1_r4qbn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtu24"]
@@ -7,6 +8,7 @@ size = Vector2(168, 100)
 
 [node name="Camera" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_0u0vl")
 
 [node name="main_body" type="Node2D" parent="."]
 
