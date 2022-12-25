@@ -3,57 +3,57 @@
 [ext_resource type="Script" path="res://scripts/misc/power.gd" id="1_6k3ai"]
 [ext_resource type="Texture2D" uid="uid://qtwnt4ssx04l" path="res://sprites/power.png" id="1_yfpc1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yi4nm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul7l6"]
 atlas = ExtResource("1_yfpc1")
 region = Rect2(0, 0, 11, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3evna"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5q5c"]
 atlas = ExtResource("1_yfpc1")
 region = Rect2(11, 0, 11, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wl8iu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1y8y"]
 atlas = ExtResource("1_yfpc1")
 region = Rect2(22, 0, 11, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7cism"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_iytld"]
 atlas = ExtResource("1_yfpc1")
 region = Rect2(33, 0, 11, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cwqjn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5tne"]
 atlas = ExtResource("1_yfpc1")
 region = Rect2(44, 0, 11, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bp2o4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r58yc"]
 atlas = ExtResource("1_yfpc1")
 region = Rect2(55, 0, 11, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_015cm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qc8h7"]
 atlas = ExtResource("1_yfpc1")
 region = Rect2(66, 0, 11, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5tj72"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l4s7"]
 atlas = ExtResource("1_yfpc1")
 region = Rect2(77, 0, 11, 11)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1x8ab"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_6kahl"]
 animations = [{
-"frames": [SubResource("AtlasTexture_yi4nm"), SubResource("AtlasTexture_3evna"), SubResource("AtlasTexture_wl8iu"), SubResource("AtlasTexture_7cism"), SubResource("AtlasTexture_cwqjn"), SubResource("AtlasTexture_bp2o4"), SubResource("AtlasTexture_015cm"), SubResource("AtlasTexture_5tj72")],
+"frames": [SubResource("AtlasTexture_ul7l6"), SubResource("AtlasTexture_j5q5c"), SubResource("AtlasTexture_w1y8y"), SubResource("AtlasTexture_iytld"), SubResource("AtlasTexture_r5tne"), SubResource("AtlasTexture_r58yc"), SubResource("AtlasTexture_qc8h7"), SubResource("AtlasTexture_2l4s7")],
 "loop": true,
 "name": &"spin",
 "speed": 14.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnug6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bg1xw"]
 size = Vector2(4, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7wjx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8mle"]
 bg_color = Color(0, 0, 0, 0.305882)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jj8k1"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_1pvb8"]
 radius = 22.0227
 
 [node name="Power" type="Node2D"]
@@ -62,7 +62,7 @@ script = ExtResource("1_6k3ai")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 texture_filter = 1
-frames = SubResource("SpriteFrames_1x8ab")
+frames = SubResource("SpriteFrames_6kahl")
 animation = &"spin"
 playing = true
 
@@ -70,20 +70,20 @@ playing = true
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_qnug6")
+shape = SubResource("RectangleShape2D_bg1xw")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = -3.0
 offset_top = 1.0
 offset_right = 3.0
 offset_bottom = 6.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_n7wjx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_u8mle")
 
 [node name="MoveTowardsPlayer" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MoveTowardsPlayer"]
-shape = SubResource("CircleShape2D_jj8k1")
+shape = SubResource("CircleShape2D_1pvb8")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="MoveTowardsPlayer" to="." method="_on_move_towards_player_body_entered"]
