@@ -12,3 +12,4 @@ signal show_tooltip
 signal hide_tooltip
 signal leveling_up
 signal modify_player_speed
+signal modify_player_scale

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0dcentfamnls"]
+
+[ext_resource type="Script" path="res://scripts/inventory/Miracle_Mallet.gd" id="1_3w5u8"]
+
+[node name="Miracle_Mallet" type="Node2D"]
+script = ExtResource("1_3w5u8")

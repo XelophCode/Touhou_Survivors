@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://dvieotsxx08ff"]
+
+[ext_resource type="Texture2D" uid="uid://d1n7nsadgbs5u" path="res://sprites/items/item_icons/miracle_mallet_icon.png" id="1_52isa"]
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_cnd7a"]
+[ext_resource type="PackedScene" uid="uid://dxifl5dvhn4wq" path="res://prefabs/inventory/miracle_mallet_inventory.tscn" id="2_4g0ub"]
+[ext_resource type="PackedScene" uid="uid://b0dcentfamnls" path="res://prefabs/item_spawnables/Miracle_Mallet.tscn" id="4_ea7ab"]
+
+[resource]
+script = ExtResource("1_cnd7a")
+item_name = 12
+description = ""
+inventory_size = 3
+inventory = ExtResource("2_4g0ub")
+spawnable = ExtResource("4_ea7ab")
+icon = ExtResource("1_52isa")
+active = false
+cooldown = 1
+stack_limit = 1

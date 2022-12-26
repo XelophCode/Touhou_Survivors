@@ -3,15 +3,9 @@
 [ext_resource type="Script" path="res://scripts/misc/Player.gd" id="1_37at3"]
 [ext_resource type="Texture2D" uid="uid://bsv6waqhjtkfp" path="res://sprites/actors/reimu.png" id="2_kv5a8"]
 [ext_resource type="Script" path="res://scripts/logic_ui/starting_item_array_resource.gd" id="2_u0jv3"]
-[ext_resource type="Resource" uid="uid://bbjuwcaqt351x" path="res://prefabs/inventory/resources/Gohei.tres" id="3_scai0"]
 [ext_resource type="Script" path="res://scripts/logic_ui/starting_item_resource.gd" id="4_a6lq0"]
+[ext_resource type="Resource" uid="uid://cbidup4rcsngx" path="res://prefabs/inventory/resources/Persuasion Needles.tres" id="5_b0y8l"]
 [ext_resource type="Resource" uid="uid://cja4r4b1usdgu" path="res://prefabs/inventory/resources/Magic Broom.tres" id="5_vk6ri"]
-
-[sub_resource type="Resource" id="Resource_p0s80"]
-script = ExtResource("4_a6lq0")
-item = ExtResource("3_scai0")
-cooldown = 4
-stack = 1
 
 [sub_resource type="Resource" id="Resource_pe23o"]
 script = ExtResource("4_a6lq0")
@@ -19,9 +13,15 @@ item = ExtResource("5_vk6ri")
 cooldown = 1
 stack = 1
 
+[sub_resource type="Resource" id="Resource_jfcq6"]
+script = ExtResource("4_a6lq0")
+item = ExtResource("5_b0y8l")
+cooldown = 3
+stack = 3
+
 [sub_resource type="Resource" id="Resource_6ifik"]
 script = ExtResource("2_u0jv3")
-starting_item = [SubResource("Resource_p0s80"), SubResource("Resource_pe23o")]
+starting_item = [SubResource("Resource_pe23o"), SubResource("Resource_jfcq6")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lia0m"]
 bg_color = Color(0, 0, 0, 0.329412)

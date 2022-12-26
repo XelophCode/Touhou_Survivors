@@ -9,12 +9,13 @@ var idle_animation:String = "idle_down"
 @export var starting_items: StartingItemArrayResource
 var power:int
 var current_items:Array
-var hp:float = 1000.0
+var hp:float = 100.0
 var damage_taken:float
 
 func _ready():
 	$Healthbar.max_value = hp
 	Signals.connect("modify_player_speed",modify_speed)
+	Signals.connect("modify_player_scale",modify_scale)
 	await get_tree().create_timer(0.1).timeout
 	var counter:int = 0
 	if starting_items != null:
@@ -69,3 +70,8 @@ func _on_hitbox_body_exited(body):
 
 func modify_speed(speed_mod:float):
 	move_speed *= speed_mod
+
+func modify_scale():
+	scale.x = 2; scale.y = 2
+	$Healthbar.max_value *= 2
+	hp *= 2

@@ -14,6 +14,7 @@ corner_radius_bottom_left = 5
 size = Vector2(6, 12)
 
 [node name="lamp" type="Node2D"]
+z_index = 5
 texture_filter = 1
 script = ExtResource("1_rrdsc")
 

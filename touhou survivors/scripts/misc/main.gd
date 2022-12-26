@@ -1,9 +1,8 @@
 extends Node2D
 
-var structure = preload("res://prefabs/levels/structures/level_1/structure_1.tscn")
 var structure_locations:Array
-var rand_pos_neg:Array = [-400,400]
-
+var rand_pos_neg:Array = [-300,300]
+@export var structures : FolderListResource
 
 func _ready():
 	var x_spawn:Array = []
@@ -23,13 +22,12 @@ func _ready():
 	x_spawn.shuffle()
 	y_spawn.shuffle()
 	
-	
 	for spawn in 38:
 		var xsp = x_spawn.pop_front()
 		var ysp = y_spawn.pop_front()
 		var spawn_location = Vector2(xsp,ysp) * rand_pos_neg.pick_random()
 		structure_locations.append(spawn_location)
-		var struct_inst = structure.instantiate()
+		var struct_inst = structures.all_resources.pick_random().instantiate()
 		struct_inst.global_position = spawn_location
 		$structure_parent.add_child(struct_inst)
 	
