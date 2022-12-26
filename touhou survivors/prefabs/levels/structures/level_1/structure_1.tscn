@@ -1,0 +1,164 @@
+[gd_scene load_steps=13 format=3 uid="uid://c4dq2p2g0imv5"]
+
+[ext_resource type="Texture2D" uid="uid://cn3tchucolusj" path="res://sprites/paths_1.png" id="1_b0gss"]
+[ext_resource type="Script" path="res://scripts/misc/structure_1.gd" id="1_vdocl"]
+[ext_resource type="Texture2D" uid="uid://dm1geqnlpws75" path="res://sprites/grass_patch_1.png" id="2_p7c8m"]
+[ext_resource type="Texture2D" uid="uid://bgmq8lsv3l2s3" path="res://sprites/grass_patch_2.png" id="3_x662j"]
+[ext_resource type="Texture2D" uid="uid://dh8cbb4obwpal" path="res://sprites/grass_patch_3.png" id="4_2dl8s"]
+[ext_resource type="Texture2D" uid="uid://bnrjv4140ogy6" path="res://sprites/grass_patch_4.png" id="5_6p8w0"]
+[ext_resource type="Texture2D" uid="uid://ca5ne3ijc6mfk" path="res://sprites/grass_patch_5.png" id="6_gvjte"]
+[ext_resource type="Texture2D" uid="uid://b8nygv5ilhalq" path="res://sprites/grass_patch_6.png" id="7_kg3ng"]
+[ext_resource type="Texture2D" uid="uid://cj8p4v36d7hmu" path="res://sprites/grass_patch_9.png" id="8_pnv46"]
+[ext_resource type="Texture2D" uid="uid://g6p4yjfcv32x" path="res://sprites/grass_patch_8.png" id="9_neg0t"]
+[ext_resource type="Texture2D" uid="uid://bovamlt6cx8c7" path="res://sprites/grass_patch_7.png" id="10_wt8rh"]
+[ext_resource type="PackedScene" uid="uid://dkyo1uc8p85eh" path="res://prefabs/misc/lamp.tscn" id="12_xc2kp"]
+
+[node name="structure_1" type="Node2D"]
+z_index = -6
+script = ExtResource("1_vdocl")
+
+[node name="Paths1" type="Sprite2D" parent="."]
+texture = ExtResource("1_b0gss")
+
+[node name="elements" type="Node2D" parent="."]
+z_index = -5
+
+[node name="GrassPatch1" type="Sprite2D" parent="elements"]
+position = Vector2(-51, 42)
+texture = ExtResource("2_p7c8m")
+
+[node name="GrassPatch12" type="Sprite2D" parent="elements"]
+position = Vector2(-226, 86)
+texture = ExtResource("2_p7c8m")
+
+[node name="GrassPatch13" type="Sprite2D" parent="elements"]
+position = Vector2(146, 150)
+texture = ExtResource("2_p7c8m")
+
+[node name="GrassPatch14" type="Sprite2D" parent="elements"]
+position = Vector2(23, 156)
+texture = ExtResource("2_p7c8m")
+
+[node name="GrassPatch4" type="Sprite2D" parent="elements"]
+position = Vector2(-155, -55)
+texture = ExtResource("2_p7c8m")
+
+[node name="GrassPatch11" type="Sprite2D" parent="elements"]
+position = Vector2(129, -138)
+texture = ExtResource("2_p7c8m")
+
+[node name="GrassPatch15" type="Sprite2D" parent="elements"]
+position = Vector2(-42, 177)
+texture = ExtResource("2_p7c8m")
+
+[node name="GrassPatch2" type="Sprite2D" parent="elements"]
+position = Vector2(74, 62)
+texture = ExtResource("3_x662j")
+
+[node name="GrassPatch10" type="Sprite2D" parent="elements"]
+position = Vector2(-145, 110)
+texture = ExtResource("3_x662j")
+
+[node name="GrassPatch5" type="Sprite2D" parent="elements"]
+position = Vector2(101, -78)
+texture = ExtResource("3_x662j")
+
+[node name="GrassPatch3" type="Sprite2D" parent="elements"]
+position = Vector2(52, -207)
+texture = ExtResource("4_2dl8s")
+
+[node name="GrassPatch9" type="Sprite2D" parent="elements"]
+position = Vector2(-255, -15)
+texture = ExtResource("4_2dl8s")
+
+[node name="GrassPatch6" type="Sprite2D" parent="elements"]
+position = Vector2(63, -122)
+texture = ExtResource("4_2dl8s")
+
+[node name="GrassPatch8" type="Sprite2D" parent="elements"]
+position = Vector2(-266, -128)
+texture = ExtResource("4_2dl8s")
+
+[node name="GrassPatch7" type="Sprite2D" parent="elements"]
+position = Vector2(129, 9)
+texture = ExtResource("4_2dl8s")
+
+[node name="GrassPatch16" type="Sprite2D" parent="elements"]
+position = Vector2(-131, 177)
+texture = ExtResource("4_2dl8s")
+
+[node name="GrassPatch18" type="Sprite2D" parent="elements"]
+position = Vector2(-130, 52)
+texture = ExtResource("5_6p8w0")
+
+[node name="GrassPatch19" type="Sprite2D" parent="elements"]
+position = Vector2(-48, -76)
+texture = ExtResource("6_gvjte")
+
+[node name="GrassPatch20" type="Sprite2D" parent="elements"]
+position = Vector2(27, 61)
+texture = ExtResource("6_gvjte")
+
+[node name="GrassPatch21" type="Sprite2D" parent="elements"]
+position = Vector2(-203, -74)
+texture = ExtResource("7_kg3ng")
+
+[node name="GrassPatch22" type="Sprite2D" parent="elements"]
+position = Vector2(-28, -35)
+texture = ExtResource("7_kg3ng")
+
+[node name="GrassPatch23" type="Sprite2D" parent="elements"]
+position = Vector2(51, -59)
+texture = ExtResource("8_pnv46")
+
+[node name="GrassPatch24" type="Sprite2D" parent="elements"]
+position = Vector2(155, -38)
+texture = ExtResource("9_neg0t")
+
+[node name="GrassPatch25" type="Sprite2D" parent="elements"]
+position = Vector2(-213, 44)
+texture = ExtResource("8_pnv46")
+
+[node name="GrassPatch26" type="Sprite2D" parent="elements"]
+position = Vector2(29, -169)
+texture = ExtResource("5_6p8w0")
+
+[node name="GrassPatch27" type="Sprite2D" parent="elements"]
+position = Vector2(-183, 158)
+texture = ExtResource("10_wt8rh")
+
+[node name="GrassPatch28" type="Sprite2D" parent="elements"]
+position = Vector2(-85, 193)
+texture = ExtResource("9_neg0t")
+
+[node name="GrassPatch29" type="Sprite2D" parent="elements"]
+position = Vector2(227, 175)
+texture = ExtResource("8_pnv46")
+
+[node name="GrassPatch30" type="Sprite2D" parent="elements"]
+position = Vector2(-179, -239)
+texture = ExtResource("8_pnv46")
+
+[node name="GrassPatch17" type="Sprite2D" parent="elements"]
+position = Vector2(-112, -210)
+texture = ExtResource("4_2dl8s")
+
+[node name="lamp" parent="elements" instance=ExtResource("12_xc2kp")]
+z_index = 5
+position = Vector2(-71, -101)
+
+[node name="lamp2" parent="elements" instance=ExtResource("12_xc2kp")]
+z_index = 5
+position = Vector2(-159, -168)
+
+[node name="lamp3" parent="elements" instance=ExtResource("12_xc2kp")]
+z_index = 5
+position = Vector2(59, 151)
+
+[node name="lamp4" parent="elements" instance=ExtResource("12_xc2kp")]
+z_index = 5
+position = Vector2(60, -10)
+
+[node name="lamp5" parent="elements" instance=ExtResource("12_xc2kp")]
+z_index = 5
+position = Vector2(-124, -8)

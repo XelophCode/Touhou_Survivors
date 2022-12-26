@@ -21,7 +21,7 @@ script = ExtResource("1_v5vc8")
 texture = ExtResource("2_huw07")
 
 [node name="Damage" type="Area2D" parent="main_body/amulet_0"]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/amulet_0/Damage"]

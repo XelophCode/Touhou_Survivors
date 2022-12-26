@@ -93,7 +93,7 @@ frames = SubResource("SpriteFrames_noqa5")
 playing = true
 
 [node name="Area2D" type="Area2D" parent="main_body"]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]

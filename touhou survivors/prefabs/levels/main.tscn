@@ -1,14 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://bp7ylul8obnik"]
+[gd_scene load_steps=10 format=3 uid="uid://bp7ylul8obnik"]
 
-[ext_resource type="PackedScene" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
+[ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_78i06"]
+[ext_resource type="PackedScene" uid="uid://cqbgq2mte0s68" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
 [ext_resource type="PackedScene" uid="uid://5s0m512bh4ki" path="res://prefabs/logic_ui/main_camera.tscn" id="2_pw5jn"]
 [ext_resource type="PackedScene" uid="uid://cah8y53sm3blk" path="res://prefabs/player/player.tscn" id="3_dutub"]
 [ext_resource type="PackedScene" path="res://prefabs/logic_ui/enemy_despawner.tscn" id="4_121vl"]
 [ext_resource type="PackedScene" path="res://prefabs/logic_ui/enemy_spawner.tscn" id="5_cql0f"]
 [ext_resource type="PackedScene" path="res://prefabs/logic_ui/power_spawner.tscn" id="6_qbw7i"]
 [ext_resource type="PackedScene" uid="uid://dhei5xebnxlqf" path="res://prefabs/misc/power.tscn" id="7_416v3"]
+[ext_resource type="PackedScene" uid="uid://c4dq2p2g0imv5" path="res://prefabs/levels/structures/level_1/structure_1.tscn" id="9_0yld4"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_78i06")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_804ch")]
 
@@ -26,3 +29,7 @@
 
 [node name="Power" parent="." instance=ExtResource("7_416v3")]
 position = Vector2(-35, -5)
+
+[node name="structure_parent" type="Node2D" parent="."]
+
+[node name="structure_1" parent="structure_parent" instance=ExtResource("9_0yld4")]

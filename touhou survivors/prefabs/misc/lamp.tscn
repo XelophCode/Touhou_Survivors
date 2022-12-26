@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkyo1uc8p85eh"]
+
+[ext_resource type="Script" path="res://scripts/misc/lamp.gd" id="1_rrdsc"]
+[ext_resource type="Texture2D" uid="uid://b0d1rvdfh4221" path="res://sprites/lamp.png" id="2_j2ucu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sub2h"]
+bg_color = Color(0, 0, 0, 0.298039)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ca32r"]
+size = Vector2(6, 12)
+
+[node name="lamp" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_rrdsc")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -3.0
+offset_top = 4.0
+offset_right = 3.0
+offset_bottom = 7.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sub2h")
+
+[node name="Lamp" type="Sprite2D" parent="."]
+texture = ExtResource("2_j2ucu")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ca32r")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

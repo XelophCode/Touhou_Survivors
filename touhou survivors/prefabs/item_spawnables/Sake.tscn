@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3]
+[gd_scene load_steps=21 format=3 uid="uid://bpoqg2vvfocy5"]
 
 [ext_resource type="Script" path="res://scripts/inventory/sake.gd" id="1_jjt8d"]
 [ext_resource type="Texture2D" uid="uid://beiqsp8k70j2n" path="res://sprites/items/item_spawnables/sake_item_small.png" id="2_hngom"]
@@ -68,6 +68,35 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpcen"]
 size = Vector2(8, 8)
 
+[sub_resource type="Animation" id="Animation_im22q"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"delete"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_77tm3"]
 resource_name = "throw"
 length = 0.3
@@ -95,35 +124,6 @@ tracks/1/keys = {
 "values": [{
 "args": [],
 "method": &"break_bottle"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_im22q"]
-resource_name = "fade_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("main_body/sprite:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"delete"
 }]
 }
 
@@ -159,7 +159,7 @@ frames = SubResource("SpriteFrames_vq8xp")
 animation = &"bottle_break"
 
 [node name="hitbox" type="Area2D" parent="main_body"]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/hitbox"]

@@ -9,7 +9,7 @@ var idle_animation:String = "idle_down"
 @export var starting_items: StartingItemArrayResource
 var power:int
 var current_items:Array
-var hp:float = 1000
+var hp:float = 1000.0
 var damage_taken:float
 
 func _ready():

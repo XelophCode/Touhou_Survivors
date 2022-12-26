@@ -1,80 +1,80 @@
-[gd_scene load_steps=20 format=3 uid="uid://d0r5oaunygjsy"]
+[gd_scene load_steps=20 format=3 uid="uid://bpwvq2pu20dhx"]
 
 [ext_resource type="Script" path="res://scripts/enemies/fairy_1.gd" id="1_anfye"]
 [ext_resource type="Texture2D" uid="uid://b6yyaq8ipwusg" path="res://sprites/actors/fairy_1.png" id="1_uacby"]
-[ext_resource type="Shader" path="res://prefabs/enemies/damage_flash.gdshader" id="2_7xe2n"]
+[ext_resource type="Shader" path="res://scripts/shaders/damage_flash.gdshader" id="2_yxfw2"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpx1r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lgyy"]
 resource_local_to_scene = true
-shader = ExtResource("2_7xe2n")
+shader = ExtResource("2_yxfw2")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qq6en"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq5rx"]
 atlas = ExtResource("1_uacby")
 region = Rect2(0, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_shnd3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o7i7"]
 atlas = ExtResource("1_uacby")
 region = Rect2(13, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gpg65"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ubh2"]
 atlas = ExtResource("1_uacby")
 region = Rect2(26, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tiygs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h475"]
 atlas = ExtResource("1_uacby")
 region = Rect2(39, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s2cwp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tq0pn"]
 atlas = ExtResource("1_uacby")
 region = Rect2(52, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ln68n"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_deati"]
 atlas = ExtResource("1_uacby")
 region = Rect2(65, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g67e3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yclkg"]
 atlas = ExtResource("1_uacby")
 region = Rect2(0, 13, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r4tff"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yowo3"]
 atlas = ExtResource("1_uacby")
 region = Rect2(13, 13, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xkkrv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4qum"]
 atlas = ExtResource("1_uacby")
 region = Rect2(26, 13, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6qh4x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8bou"]
 atlas = ExtResource("1_uacby")
 region = Rect2(39, 13, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tfgfg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl64d"]
 atlas = ExtResource("1_uacby")
 region = Rect2(52, 13, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uytr7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpnv6"]
 atlas = ExtResource("1_uacby")
 region = Rect2(65, 13, 13, 13)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ujasm"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2bori"]
 animations = [{
-"frames": [SubResource("AtlasTexture_qq6en"), SubResource("AtlasTexture_shnd3"), SubResource("AtlasTexture_gpg65"), SubResource("AtlasTexture_tiygs"), SubResource("AtlasTexture_s2cwp"), SubResource("AtlasTexture_ln68n")],
+"frames": [SubResource("AtlasTexture_jq5rx"), SubResource("AtlasTexture_2o7i7"), SubResource("AtlasTexture_1ubh2"), SubResource("AtlasTexture_4h475"), SubResource("AtlasTexture_tq0pn"), SubResource("AtlasTexture_deati")],
 "loop": true,
 "name": &"death",
 "speed": 15.0
 }, {
-"frames": [SubResource("AtlasTexture_g67e3"), SubResource("AtlasTexture_r4tff"), SubResource("AtlasTexture_xkkrv"), SubResource("AtlasTexture_6qh4x"), SubResource("AtlasTexture_tfgfg"), SubResource("AtlasTexture_uytr7")],
+"frames": [SubResource("AtlasTexture_yclkg"), SubResource("AtlasTexture_yowo3"), SubResource("AtlasTexture_g4qum"), SubResource("AtlasTexture_r8bou"), SubResource("AtlasTexture_kl64d"), SubResource("AtlasTexture_jpnv6")],
 "loop": true,
 "name": &"neutral",
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4ogiy"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_i2gym"]
 radius = 6.08276
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2n18"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hr1q"]
 bg_color = Color(0, 0, 0, 0.305882)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -93,19 +93,19 @@ script = ExtResource("1_anfye")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 3
 texture_filter = 1
-material = SubResource("ShaderMaterial_hpx1r")
-frames = SubResource("SpriteFrames_ujasm")
+material = SubResource("ShaderMaterial_4lgyy")
+frames = SubResource("SpriteFrames_2bori")
 animation = &"neutral"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_4ogiy")
+shape = SubResource("CircleShape2D_i2gym")
 
 [node name="Shadow" type="Panel" parent="."]
 offset_left = -4.0
 offset_right = 4.0
 offset_bottom = 8.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_d2n18")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8hr1q")
 
 [node name="knockback_timer" type="Timer" parent="."]
 wait_time = 0.25
