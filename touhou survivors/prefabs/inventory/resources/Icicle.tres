@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://crwn6pksk2ad3"]
+
+[ext_resource type="Texture2D" uid="uid://35rk86psgo35" path="res://sprites/items/item_icons/icicle_icon.png" id="1_0ikmh"]
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_4j2bg"]
+[ext_resource type="PackedScene" uid="uid://bfy43xefxju21" path="res://prefabs/inventory/icicle_inventory.tscn" id="2_iigot"]
+[ext_resource type="PackedScene" uid="uid://cpd1iq7cy0x1m" path="res://prefabs/item_spawnables/Icicle.tscn" id="4_t4uoh"]
+
+[resource]
+script = ExtResource("1_4j2bg")
+item_name = 14
+description = ""
+inventory_size = 1
+inventory = ExtResource("2_iigot")
+spawnable = ExtResource("4_t4uoh")
+icon = ExtResource("1_0ikmh")
+active = true
+cooldown = 5
+stack_limit = 8
