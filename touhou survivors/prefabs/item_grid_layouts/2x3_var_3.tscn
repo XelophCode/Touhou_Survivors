@@ -14,7 +14,7 @@ z_index = 8
 collision_mask = 256
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="click_and_inventory"]
-polygon = PackedVector2Array(-21, -32, 21, -32, 21, 32, -21, 32, -21, 12, 0, 12, 0, -12, -21, -12)
+polygon = PackedVector2Array(-21, -32, 21, -32, 21, 32, -21, 32, -21, 12, 1, 12, 1, -12, -21, -12)
 
 [node name="main_placement" type="Area2D" parent="."]
 collision_layer = 16

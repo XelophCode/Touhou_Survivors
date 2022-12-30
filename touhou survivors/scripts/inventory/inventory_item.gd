@@ -17,6 +17,7 @@ var icon : Texture
 var active:bool
 var offset_setting:int
 var left_mouse_button_held:bool = false
+var right_mouse_button_held:bool = false
 var player_last_position:Vector2
 var player_last_current_position_difference:Vector2
 var new_position:Vector2
@@ -88,6 +89,22 @@ func _ready():
 	
 
 func _physics_process(_delta):
+	if left_mouse_button_held:
+		if Input.is_action_just_released("left_mouse_button"):
+			not_holding_item()
+		if right_mouse_button_held:
+			if Input.is_action_just_released("right_mouse_button"):
+				var overstacked:bool = true
+				if stacked_object != []:
+					if !(stacked_object[0].stack_count + stack_count > stack_count_max):
+						overstacked = false
+				if hovering_occupied_space > 1 or (hovering_occupied_space > 0 and overstacked):
+					stacked_object = [previous_stack_target]
+					stack = 1
+					hovering_occupied_space = 1
+				not_holding_item()
+				right_mouse_button_held = false
+	
 	if stack_count == stack_count_max:
 		occult_orb_shimmer.emitting = true
 	else:
@@ -113,12 +130,13 @@ func click_detection(event):
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("left_mouse_button"):
 			holding_item()
-		if event.is_action_released("left_mouse_button") and left_mouse_button_held:
-			not_holding_item()
+#		if event.is_action_released("left_mouse_button") and left_mouse_button_held:
+#			not_holding_item()
 		if event.is_action_pressed("right_mouse_button") and !left_mouse_button_held and stack_count > 1:
 			stack_count -= 1
 			var new_stack_instance = self.duplicate()
 			new_stack_instance.holding_item()
+			new_stack_instance.right_mouse_button_held = true
 			new_stack_instance.stack_count = 1
 			new_stack_instance.previous_stack_target = instance_from_id(get_instance_id())
 			new_stack_instance.scene = scene
@@ -129,16 +147,16 @@ func click_detection(event):
 			new_stack_instance.icon = icon
 			new_stack_instance.item_cooldown = item_cooldown
 			get_parent().add_child(new_stack_instance)
-		if event.is_action_released("right_mouse_button") and left_mouse_button_held:
-			var overstacked:bool = true
-			if stacked_object != []:
-				if !(stacked_object[0].stack_count + stack_count > stack_count_max):
-					overstacked = false
-			if hovering_occupied_space > 1 or (hovering_occupied_space > 0 and overstacked):
-				stacked_object = [previous_stack_target]
-				stack = 1
-				hovering_occupied_space = 1
-			not_holding_item()
+#		if event.is_action_released("right_mouse_button") and left_mouse_button_held:
+#			var overstacked:bool = true
+#			if stacked_object != []:
+#				if !(stacked_object[0].stack_count + stack_count > stack_count_max):
+#					overstacked = false
+#			if hovering_occupied_space > 1 or (hovering_occupied_space > 0 and overstacked):
+#				stacked_object = [previous_stack_target]
+#				stack = 1
+#				hovering_occupied_space = 1
+#			not_holding_item()
 
 func holding_item():
 	Signals.emit_signal("hide_tooltip")
