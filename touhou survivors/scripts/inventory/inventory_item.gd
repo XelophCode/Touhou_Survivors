@@ -130,8 +130,6 @@ func click_detection(event):
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("left_mouse_button"):
 			holding_item()
-#		if event.is_action_released("left_mouse_button") and left_mouse_button_held:
-#			not_holding_item()
 		if event.is_action_pressed("right_mouse_button") and !left_mouse_button_held and stack_count > 1:
 			stack_count -= 1
 			var new_stack_instance = self.duplicate()
@@ -147,16 +145,6 @@ func click_detection(event):
 			new_stack_instance.icon = icon
 			new_stack_instance.item_cooldown = item_cooldown
 			get_parent().add_child(new_stack_instance)
-#		if event.is_action_released("right_mouse_button") and left_mouse_button_held:
-#			var overstacked:bool = true
-#			if stacked_object != []:
-#				if !(stacked_object[0].stack_count + stack_count > stack_count_max):
-#					overstacked = false
-#			if hovering_occupied_space > 1 or (hovering_occupied_space > 0 and overstacked):
-#				stacked_object = [previous_stack_target]
-#				stack = 1
-#				hovering_occupied_space = 1
-#			not_holding_item()
 
 func holding_item():
 	Signals.emit_signal("hide_tooltip")

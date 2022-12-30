@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://dc0r0vo2i1r0k"]
 
 [ext_resource type="PackedScene" path="res://prefabs/inventory/rock_inventory.tscn" id="1_4qmt0"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_c2fih"]
@@ -7,6 +7,7 @@
 
 [resource]
 script = ExtResource("1_c2fih")
+enabled = true
 item_name = 5
 description = ""
 inventory_size = 0

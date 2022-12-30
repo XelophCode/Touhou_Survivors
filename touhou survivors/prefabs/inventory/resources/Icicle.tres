@@ -7,6 +7,7 @@
 
 [resource]
 script = ExtResource("1_4j2bg")
+enabled = true
 item_name = 14
 description = ""
 inventory_size = 1

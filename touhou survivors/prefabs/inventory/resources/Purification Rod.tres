@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cppcy6wnm0y5u"]
+
+[ext_resource type="Texture2D" uid="uid://m2nbl6b4pdom" path="res://sprites/items/item_icons/purification_rod_icon.png" id="1_4df1o"]
+[ext_resource type="PackedScene" path="res://prefabs/inventory/purification_rod_inventory.tscn" id="2_pn8e6"]
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="3_01o4n"]
+[ext_resource type="PackedScene" uid="uid://b31mt4qpb60kt" path="res://prefabs/item_spawnables/Purification_Rod.tscn" id="4_itta0"]
+
+[resource]
+script = ExtResource("3_01o4n")
+enabled = true
+item_name = 16
+description = ""
+inventory_size = 1
+inventory = ExtResource("2_pn8e6")
+spawnable = ExtResource("4_itta0")
+icon = ExtResource("1_4df1o")
+active = true
+cooldown = 8
+stack_limit = 4

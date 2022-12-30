@@ -7,6 +7,7 @@
 
 [resource]
 script = ExtResource("1_pkc7r")
+enabled = true
 item_name = 0
 description = ""
 inventory_size = 3

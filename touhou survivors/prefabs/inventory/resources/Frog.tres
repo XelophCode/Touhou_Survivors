@@ -7,6 +7,7 @@
 
 [resource]
 script = ExtResource("1_mc4mp")
+enabled = true
 item_name = 9
 description = ""
 inventory_size = 0

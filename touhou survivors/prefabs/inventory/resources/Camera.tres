@@ -7,6 +7,7 @@
 
 [resource]
 script = ExtResource("1_wutpu")
+enabled = true
 item_name = 11
 description = ""
 inventory_size = 3
