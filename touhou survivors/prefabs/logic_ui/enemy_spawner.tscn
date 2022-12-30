@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://dibej236818nn"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/EnemySpawner.gd" id="1_p8hny"]
 

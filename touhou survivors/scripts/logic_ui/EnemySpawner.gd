@@ -16,7 +16,7 @@ var spawn_zones:Array
 
 
 func _on_timer_timeout():
-	if enemy_parent.get_child_count() < spawn_limit:
+	if enemy_parent.get_child_count() < spawn_limit and !Globals.leveling_up:
 		var player_pos_x = Globals.player_position.x
 		var player_pos_y = Globals.player_position.y
 		var viewport_range_x_min:float = player_pos_x - viewport_halved.x

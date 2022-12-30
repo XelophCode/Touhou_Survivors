@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://5s0m512bh4ki" path="res://prefabs/logic_ui/main_camera.tscn" id="2_pw5jn"]
 [ext_resource type="PackedScene" uid="uid://cah8y53sm3blk" path="res://prefabs/player/player.tscn" id="3_dutub"]
 [ext_resource type="PackedScene" path="res://prefabs/logic_ui/enemy_despawner.tscn" id="4_121vl"]
-[ext_resource type="PackedScene" path="res://prefabs/logic_ui/enemy_spawner.tscn" id="5_cql0f"]
+[ext_resource type="PackedScene" uid="uid://dibej236818nn" path="res://prefabs/logic_ui/enemy_spawner.tscn" id="5_cql0f"]
 [ext_resource type="PackedScene" path="res://prefabs/logic_ui/power_spawner.tscn" id="6_qbw7i"]
 [ext_resource type="PackedScene" uid="uid://dhei5xebnxlqf" path="res://prefabs/misc/power.tscn" id="7_416v3"]
 [ext_resource type="PackedScene" uid="uid://c4dq2p2g0imv5" path="res://prefabs/levels/structures/level_1/structure_1.tscn" id="9_0yld4"]

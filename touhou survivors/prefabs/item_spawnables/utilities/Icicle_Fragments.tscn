@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scripts/inventory/Icicle_Fragments.gd" id="1_o3duu"]
 [ext_resource type="Texture2D" uid="uid://3q0hxue1eyq8" path="res://sprites/items/item_spawnables/icicle_small.png" id="2_ti0xv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0oy3"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jm1u"]
 size = Vector2(4, 0)
 
-[sub_resource type="Animation" id="Animation_76nl7"]
+[sub_resource type="Animation" id="Animation_ewf2h"]
 resource_name = "move"
 length = 0.3
 step = 0.025
@@ -49,9 +49,9 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehwpd"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p4dtg"]
 _data = {
-"move": SubResource("Animation_76nl7")
+"move": SubResource("Animation_ewf2h")
 }
 
 [node name="Icicle_Fragments" type="Node2D"]
@@ -68,11 +68,11 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
-shape = SubResource("RectangleShape2D_g0oy3")
+shape = SubResource("RectangleShape2D_3jm1u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ehwpd")
+"": SubResource("AnimationLibrary_p4dtg")
 }
 
 [connection signal="body_entered" from="main_body/Area2D" to="." method="_on_area_2d_body_entered"]

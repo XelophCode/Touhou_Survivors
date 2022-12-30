@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bsv6waqhjtkfp" path="res://sprites/actors/reimu.png" id="2_kv5a8"]
 [ext_resource type="Script" path="res://scripts/logic_ui/starting_item_array_resource.gd" id="2_u0jv3"]
 [ext_resource type="Script" path="res://scripts/logic_ui/starting_item_resource.gd" id="4_a6lq0"]
-[ext_resource type="Resource" uid="uid://crwn6pksk2ad3" path="res://prefabs/inventory/resources/Icicle.tres" id="5_ugxqh"]
+[ext_resource type="Resource" uid="uid://bfa4o3cwfih17" path="res://prefabs/inventory/resources/Youkai Umbrella.tres" id="5_osta0"]
 [ext_resource type="Resource" uid="uid://cja4r4b1usdgu" path="res://prefabs/inventory/resources/Magic Broom.tres" id="5_vk6ri"]
 
 [sub_resource type="Resource" id="Resource_pe23o"]
@@ -15,9 +15,9 @@ stack = 1
 
 [sub_resource type="Resource" id="Resource_8xfm4"]
 script = ExtResource("4_a6lq0")
-item = ExtResource("5_ugxqh")
-cooldown = 5
-stack = 6
+item = ExtResource("5_osta0")
+cooldown = 6
+stack = 3
 
 [sub_resource type="Resource" id="Resource_6ifik"]
 script = ExtResource("2_u0jv3")

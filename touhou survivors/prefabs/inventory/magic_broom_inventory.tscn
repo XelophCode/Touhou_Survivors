@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://l4tuyvi7bigo"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_gmwkj"]
 [ext_resource type="PackedScene" path="res://prefabs/item_grid_layouts/1x3.tscn" id="4_ch2g1"]

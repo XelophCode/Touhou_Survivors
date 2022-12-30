@@ -71,7 +71,7 @@ func _on_hitbox_body_exited(body):
 func modify_speed(speed_mod:float):
 	move_speed *= speed_mod
 
-func modify_scale():
-	scale.x = 2; scale.y = 2
-	$Healthbar.max_value *= 2
-	hp *= 2
+func modify_scale(scale_mod:float, health_mod:float):
+	scale.x = scale_mod; scale.y = scale_mod
+	$Healthbar.max_value *= health_mod
+	hp *= scale_mod

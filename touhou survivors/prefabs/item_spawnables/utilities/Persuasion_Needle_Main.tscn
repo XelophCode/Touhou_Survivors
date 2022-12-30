@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scripts/inventory/Persuasion_Needle_Main.gd" id="1_0if4a"]
 [ext_resource type="Texture2D" uid="uid://brr18qiux7c2e" path="res://sprites/items/item_spawnables/needles.png" id="2_1d1t2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_48ay6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1d8h"]
 size = Vector2(4, 4)
 
-[sub_resource type="Animation" id="Animation_rdni5"]
+[sub_resource type="Animation" id="Animation_g2f4w"]
 resource_name = "throw"
 length = 0.3
 step = 0.025
@@ -49,9 +49,9 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_p6ajt"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_emdvt"]
 _data = {
-"throw": SubResource("Animation_rdni5")
+"throw": SubResource("Animation_g2f4w")
 }
 
 [node name="Persuasion_Needle_Main" type="Node2D"]
@@ -70,11 +70,11 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
-shape = SubResource("RectangleShape2D_48ay6")
+shape = SubResource("RectangleShape2D_x1d8h")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_p6ajt")
+"": SubResource("AnimationLibrary_emdvt")
 }
 
 [connection signal="body_entered" from="main_body/Area2D" to="." method="_on_area_2d_body_entered"]
