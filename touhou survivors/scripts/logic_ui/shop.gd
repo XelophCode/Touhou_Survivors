@@ -93,6 +93,8 @@ func open_shop():
 
 func leveling_up(value:bool):
 	if value:
+		$AnimationPlayer.play("stretch")
+		$CPUParticles2D2.emitting = true
 		visible = true
 		$ShopGridBG.playing = true
 		$ShopGridBG.frame = 0

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://dda7bmb44nql1"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_gmp3u"]
-[ext_resource type="PackedScene" path="res://prefabs/item_grid_layouts/2x2_var_1.tscn" id="4_3d5qa"]
+[ext_resource type="PackedScene" uid="uid://1xvuuqohh8pd" path="res://prefabs/item_grid_layouts/2x2_var_1.tscn" id="4_3d5qa"]
 [ext_resource type="Texture2D" uid="uid://qv7xuvpa3v10" path="res://sprites/items/inventory_item_BGs/2x2_item_large_bg.png" id="5_wdb48"]
+[ext_resource type="AnimationLibrary" uid="uid://c3f6dw06ejniu" path="res://resources/animations/libraries/Inventory_Items.res" id="6_bbwwn"]
 [ext_resource type="Texture2D" uid="uid://ddrco5dt6ym60" path="res://sprites/items/inventory/Mini_Hakkero_inventory_large.png" id="6_x0u71"]
 [ext_resource type="PackedScene" path="res://prefabs/logic_ui/occult_orb.tscn" id="7_i1x2k"]
 
@@ -16,12 +17,21 @@ offset_setting = 3
 
 [node name="ItemLargeBg" type="Sprite2D" parent="."]
 visible = false
+modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 texture = ExtResource("5_wdb48")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
+scale = Vector2(1, 1e-05)
 texture = ExtResource("6_x0u71")
 
 [node name="occult_orb" parent="." instance=ExtResource("7_i1x2k")]
 position = Vector2(-17.5, -17.5)
+scale = Vector2(1, 1e-05)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"Inventory_Items": ExtResource("6_bbwwn")
+}

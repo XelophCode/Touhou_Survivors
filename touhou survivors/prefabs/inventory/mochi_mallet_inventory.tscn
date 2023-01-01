@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhjau0yq12v0y"]
+[gd_scene load_steps=7 format=3 uid="uid://dhjau0yq12v0y"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_lxcp8"]
 [ext_resource type="PackedScene" uid="uid://crki54dgojrae" path="res://prefabs/item_grid_layouts/2x3_var_4.tscn" id="2_yittp"]
 [ext_resource type="Texture2D" uid="uid://csx3mhowlt8ti" path="res://sprites/items/inventory_item_BGs/2x3var3_item_large_bg.png" id="3_0yp86"]
 [ext_resource type="PackedScene" path="res://prefabs/logic_ui/occult_orb.tscn" id="3_entxo"]
 [ext_resource type="Texture2D" uid="uid://b2s716ahp815g" path="res://sprites/items/inventory/mochi_mallet_item_large.png" id="4_fw24g"]
+[ext_resource type="AnimationLibrary" uid="uid://c3f6dw06ejniu" path="res://resources/animations/libraries/Inventory_Items.res" id="6_dhr4e"]
 
 [node name="MochiMallet" type="Node2D"]
 z_index = 6
@@ -15,12 +16,21 @@ script = ExtResource("1_lxcp8")
 
 [node name="ItemLargeBg" type="Sprite2D" parent="."]
 visible = false
+modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 texture = ExtResource("3_0yp86")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
+scale = Vector2(1, 1e-05)
 texture = ExtResource("4_fw24g")
 
 [node name="occult_orb" parent="." instance=ExtResource("3_entxo")]
 position = Vector2(-17.5, -28.5)
+scale = Vector2(1, 1e-05)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"Inventory_Items": ExtResource("6_dhr4e")
+}

@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var parent = get_parent()
 @export_enum("1x1","1x2","1x3","2x2","2x3") var offset_setting
+var show_highlight:bool = false
 
 func _ready():
 	parent.offset_setting = offset_setting

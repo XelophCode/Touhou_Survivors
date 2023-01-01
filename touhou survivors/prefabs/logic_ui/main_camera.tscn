@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://5s0m512bh4ki"]
+[gd_scene load_steps=11 format=3 uid="uid://5s0m512bh4ki"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/camera_main.gd" id="1_365xw"]
+[ext_resource type="Texture2D" uid="uid://bjuq7vtc66ft3" path="res://sprites/vignette.png" id="2_7r0pb"]
 [ext_resource type="PackedScene" uid="uid://iqvjyq5tkfb0" path="res://prefabs/logic_ui/weapon_spawner.tscn" id="2_8kxfo"]
 [ext_resource type="Texture2D" uid="uid://cfbld0no123ax" path="res://sprites/ui/powerbar_border.png" id="2_vlpjd"]
 [ext_resource type="Texture2D" uid="uid://dhrkybmrbmhk3" path="res://sprites/ui/reimu_portrait.png" id="3_6bsv8"]
 [ext_resource type="PackedScene" uid="uid://04yuy6nwpd5q" path="res://prefabs/logic_ui/tooltip.tscn" id="5_fucjo"]
-[ext_resource type="PackedScene" path="res://prefabs/logic_ui/Inventory.tscn" id="5_yatjy"]
+[ext_resource type="PackedScene" uid="uid://cbjpy4ciqe0t1" path="res://prefabs/logic_ui/Inventory.tscn" id="5_yatjy"]
 [ext_resource type="PackedScene" uid="uid://6dwuqj2vu1k8" path="res://prefabs/logic_ui/shop.tscn" id="6_bsv6g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsojg"]
@@ -53,3 +54,6 @@ position = Vector2(-100, 0)
 
 [node name="WeaponSpawner" parent="." instance=ExtResource("2_8kxfo")]
 position = Vector2(-178, -95)
+
+[node name="Vignette" type="Sprite2D" parent="."]
+texture = ExtResource("2_7r0pb")

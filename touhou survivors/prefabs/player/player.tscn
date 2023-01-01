@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://cah8y53sm3blk"]
+[gd_scene load_steps=77 format=3 uid="uid://cah8y53sm3blk"]
 
 [ext_resource type="Script" path="res://scripts/misc/Player.gd" id="1_37at3"]
 [ext_resource type="Texture2D" uid="uid://bsv6waqhjtkfp" path="res://sprites/actors/reimu.png" id="2_kv5a8"]
@@ -338,6 +338,11 @@ colors = PackedColorArray(1, 0.0196078, 0.0196078, 1, 1, 0, 0.0156863, 1, 1, 1, 
 radius = 3.0
 height = 8.0
 
+[sub_resource type="Curve" id="Curve_jdk0i"]
+max_value = 2.0
+_data = [Vector2(0, 0), 0.0, 2.33877, 0, 1, Vector2(0.544186, 1.27273), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.79221, 0.0, 1, 0]
+point_count = 3
+
 [node name="player" type="CharacterBody2D"]
 z_index = 7
 texture_filter = 1
@@ -388,6 +393,18 @@ color_ramp = SubResource("Gradient_pqeed")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_3vg3m")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 20
+emission_shape = 3
+emission_rect_extents = Vector2(200, 100)
+gravity = Vector2(0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 4.0
+angular_velocity_min = 1.0
+angular_velocity_max = 12.52
+scale_amount_curve = SubResource("Curve_jdk0i")
+color = Color(0.521569, 0.870588, 0.133333, 1)
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]

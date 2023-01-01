@@ -14,6 +14,7 @@ var icon : Texture
 @onready var occult_orb_progress = $occult_orb/occult_orb_progress
 @onready var occult_orb_shimmer = $occult_orb/shimmer
 
+var show_highlight:bool = false
 var active:bool
 var offset_setting:int
 var left_mouse_button_held:bool = false
@@ -66,6 +67,11 @@ func find_rotational_offset():
 
 func leveling_up(value:bool):
 	if value:
+		$ItemSprite.scale.y = 0
+		$occult_orb.scale.y = 0
+		show_highlight = false
+		$ItemLargeBg.visible = false
+		pop_in_animation()
 		if saved_item:
 			await get_tree().create_timer(0.1).timeout
 			visible = true
@@ -77,7 +83,17 @@ func leveling_up(value:bool):
 		else:
 			saved_item = true
 
+func anim_show_highlight():
+	show_highlight = true
+
+func pop_in_animation():
+	await get_tree().create_timer(randf_range(0.3,1.2)).timeout
+	$ItemSprite.visible = true
+	$AnimationPlayer.play("Inventory_Items/sprite_stretch")
+
 func _ready():
+	show_highlight = false
+	pop_in_animation()
 	Signals.connect("leveling_up",leveling_up)
 	find_rotational_offset()
 	spawn_offset = get_child(0).get_node("main_placement").position * -1
@@ -124,7 +140,8 @@ func _physics_process(_delta):
 	else:
 		global_position = new_position
 		rotation = new_rotation
-		$ItemLargeBg.visible = true
+		if show_highlight:
+			$ItemLargeBg.visible = true
 
 func click_detection(event):
 	if event is InputEventMouseButton:
@@ -183,7 +200,7 @@ func occupied_and_stack_exited(area):
 		if area.get_parent().get_parent().current_item == current_item:
 			stacked_object.erase(area.get_parent().get_parent())
 			stack -= 1
-	if area.collision_layer == 32:
+	if area.collision_layer == 32 and show_highlight:
 		area.get_child(0).visible = false
 
 func occupied_and_stack_entered(area):
@@ -192,7 +209,7 @@ func occupied_and_stack_entered(area):
 		if area.get_parent().get_parent().current_item == current_item:
 			stacked_object.append(area.get_parent().get_parent())
 			stack += 1
-	if area.collision_layer == 32:
+	if area.collision_layer == 32 and show_highlight:
 		area.get_child(0).visible = true
 
 func hide_tooltip():
