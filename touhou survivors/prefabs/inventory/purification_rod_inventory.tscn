@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" path="res://prefabs/logic_ui/occult_orb.tscn" id="3_imvxg"]
 [ext_resource type="Texture2D" uid="uid://bmldf5xjwkmt7" path="res://sprites/items/inventory/Purification_Rod_item_large.png" id="4_fp73r"]
 
-[node name="ThrowingKnife" type="Node2D"]
+[node name="PurificationRod" type="Node2D"]
 z_index = 6
 texture_filter = 1
 script = ExtResource("1_kpods")

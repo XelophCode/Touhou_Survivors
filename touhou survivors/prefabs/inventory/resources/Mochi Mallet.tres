@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cfscduoamv134"]
+
+[ext_resource type="Texture2D" uid="uid://cjv3rvr006q8h" path="res://sprites/items/item_icons/mochi_mallet_icon.png" id="1_ak21u"]
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_ohlde"]
+[ext_resource type="PackedScene" uid="uid://dhjau0yq12v0y" path="res://prefabs/inventory/mochi_mallet_inventory.tscn" id="2_p47pa"]
+[ext_resource type="PackedScene" uid="uid://ckid1l333r16a" path="res://prefabs/item_spawnables/Mochi_Mallet.tscn" id="4_rng7k"]
+
+[resource]
+script = ExtResource("1_ohlde")
+enabled = true
+item_name = 17
+description = ""
+inventory_size = 4
+inventory = ExtResource("2_p47pa")
+spawnable = ExtResource("4_rng7k")
+icon = ExtResource("1_ak21u")
+active = true
+cooldown = 5
+stack_limit = 3

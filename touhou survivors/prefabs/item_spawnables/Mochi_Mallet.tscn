@@ -1,0 +1,121 @@
+[gd_scene load_steps=19 format=3 uid="uid://ckid1l333r16a"]
+
+[ext_resource type="Script" path="res://scripts/inventory/Mochi_Mallet.gd" id="1_a46w8"]
+[ext_resource type="Texture2D" uid="uid://cwq6bxqcvdqwt" path="res://sprites/items/item_spawnables/hammer_swing_animation.png" id="2_do4ye"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu0d7"]
+atlas = ExtResource("2_do4ye")
+region = Rect2(0, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opend"]
+atlas = ExtResource("2_do4ye")
+region = Rect2(16, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if4p1"]
+atlas = ExtResource("2_do4ye")
+region = Rect2(32, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_220ko"]
+atlas = ExtResource("2_do4ye")
+region = Rect2(48, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qp22e"]
+atlas = ExtResource("2_do4ye")
+region = Rect2(0, 15, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hom4y"]
+atlas = ExtResource("2_do4ye")
+region = Rect2(16, 15, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64acd"]
+atlas = ExtResource("2_do4ye")
+region = Rect2(32, 15, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0utt0"]
+atlas = ExtResource("2_do4ye")
+region = Rect2(48, 15, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dccw8"]
+atlas = ExtResource("2_do4ye")
+region = Rect2(0, 30, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m47c6"]
+atlas = ExtResource("2_do4ye")
+region = Rect2(16, 30, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rp2yd"]
+atlas = ExtResource("2_do4ye")
+region = Rect2(32, 30, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_567xq"]
+atlas = ExtResource("2_do4ye")
+region = Rect2(48, 30, 16, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qixmf"]
+animations = [{
+"frames": [SubResource("AtlasTexture_iu0d7"), SubResource("AtlasTexture_opend"), SubResource("AtlasTexture_if4p1"), SubResource("AtlasTexture_220ko"), SubResource("AtlasTexture_qp22e"), SubResource("AtlasTexture_hom4y"), SubResource("AtlasTexture_64acd"), SubResource("AtlasTexture_0utt0"), SubResource("AtlasTexture_dccw8"), SubResource("AtlasTexture_m47c6"), SubResource("AtlasTexture_rp2yd"), SubResource("AtlasTexture_567xq")],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qynue"]
+radius = 2.0
+
+[sub_resource type="Animation" id="Animation_yjvql"]
+resource_name = "hitbox_move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/Area2D/CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(4, 2), Vector2(3, -3), Vector2(-2, -4), Vector2(-5, 0), Vector2(-4, 4), Vector2(0, 5), Vector2(3, 4), Vector2(4, 3)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rbhi2"]
+_data = {
+"hitbox_move": SubResource("Animation_yjvql")
+}
+
+[node name="Mochi_Mallet" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_a46w8")
+
+[node name="main_body" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body"]
+frames = SubResource("SpriteFrames_qixmf")
+
+[node name="Area2D" type="Area2D" parent="main_body"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
+position = Vector2(4, 2)
+shape = SubResource("CircleShape2D_qynue")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rbhi2")
+}
+
+[connection signal="body_entered" from="main_body/Area2D" to="." method="_on_area_2d_body_entered"]
