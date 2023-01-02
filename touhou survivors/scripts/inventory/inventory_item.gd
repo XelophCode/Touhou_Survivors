@@ -14,6 +14,7 @@ var icon : Texture
 @onready var occult_orb_progress = $occult_orb/occult_orb_progress
 @onready var occult_orb_shimmer = $occult_orb/shimmer
 
+var do_stretch_anim:bool = true
 var show_highlight:bool = false
 var active:bool
 var offset_setting:int
@@ -90,10 +91,16 @@ func pop_in_animation():
 	await get_tree().create_timer(randf_range(0.3,1.2)).timeout
 	$ItemSprite.visible = true
 	$AnimationPlayer.play("Inventory_Items/sprite_stretch")
+	$ItemSprite.material.set_shader_parameter("flash_modifier",1.0)
+	await get_tree().create_timer(0.01).timeout
+	$ItemLargeBg.visible = true
 
 func _ready():
-	show_highlight = false
-	pop_in_animation()
+	if do_stretch_anim:
+		show_highlight = false
+		pop_in_animation()
+	else:
+		show_highlight = true
 	Signals.connect("leveling_up",leveling_up)
 	find_rotational_offset()
 	spawn_offset = get_child(0).get_node("main_placement").position * -1
@@ -105,6 +112,8 @@ func _ready():
 	
 
 func _physics_process(_delta):
+	if $ItemSprite.material.get_shader_parameter("flash_modifier") > 0:
+		$ItemSprite.material.set_shader_parameter("flash_modifier",lerp($ItemSprite.material.get_shader_parameter("flash_modifier"),0.0,0.1))
 	if left_mouse_button_held:
 		if Input.is_action_just_released("left_mouse_button"):
 			not_holding_item()
@@ -150,6 +159,7 @@ func click_detection(event):
 		if event.is_action_pressed("right_mouse_button") and !left_mouse_button_held and stack_count > 1:
 			stack_count -= 1
 			var new_stack_instance = self.duplicate()
+			new_stack_instance.do_stretch_anim = false
 			new_stack_instance.holding_item()
 			new_stack_instance.right_mouse_button_held = true
 			new_stack_instance.stack_count = 1

@@ -108,7 +108,7 @@ func leveling_up(value:bool):
 
 func _on_shop_grid_animation_finished():
 	$ShopGridBG.playing = false
-	$ShopGridBG.frame = 9
+	$ShopGridBG.frame = 15
 
 func pass_metadata_to_item(inst, item):
 	inst.current_item = item.item_name

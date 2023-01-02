@@ -139,10 +139,8 @@ scale = Vector2(2, 2)
 script = ExtResource("1_jjt8d")
 
 [node name="main_body" type="Node2D" parent="."]
-position = Vector2(40, 0)
 
 [node name="sprite" type="Node2D" parent="main_body"]
-modulate = Color(1, 1, 1, 0.5)
 
 [node name="shadow" type="Panel" parent="main_body/sprite"]
 offset_left = -2.0

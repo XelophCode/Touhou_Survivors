@@ -83,11 +83,9 @@ texture_filter = 1
 script = ExtResource("1_ttjqg")
 
 [node name="main_body" type="Node2D" parent="."]
-modulate = Color(1, 1, 1, 0)
 
 [node name="KnifeThrow" type="Sprite2D" parent="main_body"]
 visible = false
-position = Vector2(60, 0)
 texture = ExtResource("2_dtfto")
 
 [node name="K1" type="Area2D" parent="main_body/KnifeThrow"]
@@ -99,7 +97,6 @@ shape = SubResource("RectangleShape2D_1eywb")
 
 [node name="KnifeThrow2" type="Sprite2D" parent="main_body"]
 visible = false
-position = Vector2(60, -50)
 rotation = -0.785398
 texture = ExtResource("2_dtfto")
 
@@ -112,7 +109,6 @@ shape = SubResource("RectangleShape2D_1eywb")
 
 [node name="KnifeThrow3" type="Sprite2D" parent="main_body"]
 visible = false
-position = Vector2(60, 50)
 rotation = 0.785398
 texture = ExtResource("2_dtfto")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://6dwuqj2vu1k8"]
+[gd_scene load_steps=27 format=3 uid="uid://6dwuqj2vu1k8"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/shop.gd" id="1_gaew4"]
 [ext_resource type="Script" path="res://scripts/logic_ui/FolderListResource.gd" id="2_8a3vr"]
@@ -10,52 +10,72 @@ script = ExtResource("2_8a3vr")
 FolderPath = "res://prefabs/inventory/resources"
 ResourceCategory = null
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e4q4g"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2w3l"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(0, 0, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_43h62"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv5oh"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(214, 0, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nlbg7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhqrx"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(428, 0, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w1ehf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wxwg"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(0, 127, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lmd1q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtn7a"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(214, 127, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ar25r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2bbi"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(428, 127, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kitjc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kplii"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(0, 254, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_17sod"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mf6fh"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(214, 254, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jb7mt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nh1i"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(428, 254, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pt1f5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f780k"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(0, 381, 214, 127)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dlyo"]
+atlas = ExtResource("3_p64e2")
+region = Rect2(214, 381, 214, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6fth"]
+atlas = ExtResource("3_p64e2")
+region = Rect2(428, 381, 214, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk5pg"]
+atlas = ExtResource("3_p64e2")
+region = Rect2(0, 508, 214, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vbf0"]
+atlas = ExtResource("3_p64e2")
+region = Rect2(214, 508, 214, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4tf7"]
+atlas = ExtResource("3_p64e2")
+region = Rect2(428, 508, 214, 127)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_pahye"]
 animations = [{
-"frames": [SubResource("AtlasTexture_e4q4g"), SubResource("AtlasTexture_43h62"), SubResource("AtlasTexture_nlbg7"), SubResource("AtlasTexture_w1ehf"), SubResource("AtlasTexture_lmd1q"), SubResource("AtlasTexture_ar25r"), SubResource("AtlasTexture_kitjc"), SubResource("AtlasTexture_17sod"), SubResource("AtlasTexture_jb7mt"), SubResource("AtlasTexture_pt1f5")],
+"frames": [SubResource("AtlasTexture_n2w3l"), SubResource("AtlasTexture_lv5oh"), SubResource("AtlasTexture_vhqrx"), SubResource("AtlasTexture_5wxwg"), SubResource("AtlasTexture_qtn7a"), SubResource("AtlasTexture_a2bbi"), SubResource("AtlasTexture_kplii"), SubResource("AtlasTexture_mf6fh"), SubResource("AtlasTexture_0nh1i"), SubResource("AtlasTexture_f780k"), SubResource("AtlasTexture_3dlyo"), SubResource("AtlasTexture_a6fth"), SubResource("AtlasTexture_rk5pg"), SubResource("AtlasTexture_4vbf0"), SubResource("AtlasTexture_p4tf7")],
 "loop": true,
 "name": &"open",
-"speed": 20.0
+"speed": 30.0
 }]
 
 [sub_resource type="Curve" id="Curve_qlupv"]
@@ -104,7 +124,6 @@ position = Vector2(0, 0.5)
 scale = Vector2(1, 1e-05)
 frames = SubResource("SpriteFrames_pahye")
 animation = &"open"
-frame = 9
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = 3

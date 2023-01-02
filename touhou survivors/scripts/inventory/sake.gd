@@ -23,7 +23,7 @@ func _on_hitbox_body_entered(body):
 	do_damage(body)
 
 func break_bottle():
-	$main_body.rotation -= rotation
+	$main_body/sprite/animations.rotation -= rotation
 	shadow.visible = false
 	sprite.visible = false
 	animated_sprite.visible = true
