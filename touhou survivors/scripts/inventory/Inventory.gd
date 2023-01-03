@@ -16,6 +16,7 @@ func _on_inventory_animation_animation_finished():
 	$InventoryAnimation.frame = 5
 
 func open_inventory():
+	$AnimationPlayer.play("slide")
 	visible = true
 	$InventoryAnimation.frame = 0
 	$InventoryAnimation.play("default")

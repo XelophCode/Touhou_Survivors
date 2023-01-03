@@ -1,6 +1,7 @@
 extends Node2D
 
 enum {_1x1,_1x2,_1x3,_2x2,_2x3}
+var eyes_scrolling : float
 
 @export var inventory_items : FolderListResource
 
@@ -119,3 +120,8 @@ func pass_metadata_to_item(inst, item):
 	inst.active = item.active
 	inst.item_cooldown = item.cooldown
 	inst.stack_count_max = item.stack_limit
+
+func _physics_process(delta):
+	eyes_scrolling -= delta * 8
+	$ShopGridBG/mask/eyes.region_rect = Rect2(eyes_scrolling,eyes_scrolling,400,400)
+	$ShopGridBG/mask/eyes.rotation += delta / 30

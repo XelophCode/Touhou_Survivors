@@ -9,6 +9,7 @@ var power:float
 
 func _ready():
 	Signals.connect("update_power",update_power)
+	Signals.connect("leveling_up",leveling_up)
 
 func _physics_process(_delta):
 	global_position = Globals.player_position
@@ -31,3 +32,10 @@ func open_inventory():
 
 func update_power(value:float):
 	power += value
+
+func leveling_up(value):
+	if value:
+		$ScreenDim.visible = true
+		$AnimationPlayer.play("screen_dim")
+	else:
+		$ScreenDim.visible = false

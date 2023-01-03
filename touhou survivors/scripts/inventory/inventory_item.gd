@@ -111,9 +111,9 @@ func _ready():
 	occult_orb_progress.max_value = stack_count_max
 	
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if $ItemSprite.material.get_shader_parameter("flash_modifier") > 0:
-		$ItemSprite.material.set_shader_parameter("flash_modifier",lerp($ItemSprite.material.get_shader_parameter("flash_modifier"),0.0,0.1))
+		$ItemSprite.material.set_shader_parameter("flash_modifier",lerp($ItemSprite.material.get_shader_parameter("flash_modifier"),0.0,delta*3))
 	if left_mouse_button_held:
 		if Input.is_action_just_released("left_mouse_button"):
 			not_holding_item()

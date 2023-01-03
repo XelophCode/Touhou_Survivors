@@ -1,9 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://6dwuqj2vu1k8"]
+[gd_scene load_steps=36 format=3 uid="uid://6dwuqj2vu1k8"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/shop.gd" id="1_gaew4"]
 [ext_resource type="Script" path="res://scripts/logic_ui/FolderListResource.gd" id="2_8a3vr"]
 [ext_resource type="Texture2D" uid="uid://efsbea8ixkb8" path="res://sprites/ui/shop_animation.png" id="3_p64e2"]
+[ext_resource type="Texture2D" uid="uid://bhrnsmv5gb61c" path="res://sprites/ui/shop_mask.png" id="4_64pnb"]
 [ext_resource type="Texture2D" uid="uid://c50tinougrkay" path="res://sprites/ui/selection_square.png" id="4_h3d3g"]
+[ext_resource type="Texture2D" uid="uid://bxjuifwcfnfbl" path="res://sprites/ui/shop_eyes.png" id="5_qddiw"]
+[ext_resource type="Texture2D" uid="uid://dasuxvnacecp8" path="res://sprites/ui/shop_border_effect.png" id="6_gw0uf"]
+[ext_resource type="Texture2D" uid="uid://8virvi61pfyx" path="res://sprites/ui/shop_vignette.png" id="6_hblrx"]
 
 [sub_resource type="Resource" id="Resource_77bdn"]
 script = ExtResource("2_8a3vr")
@@ -78,6 +82,30 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwbij"]
+atlas = ExtResource("6_gw0uf")
+region = Rect2(0, 0, 214, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j814t"]
+atlas = ExtResource("6_gw0uf")
+region = Rect2(214, 0, 214, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0alni"]
+atlas = ExtResource("6_gw0uf")
+region = Rect2(0, 127, 214, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfclr"]
+atlas = ExtResource("6_gw0uf")
+region = Rect2(214, 127, 214, 127)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_55sc3"]
+animations = [{
+"frames": [SubResource("AtlasTexture_hwbij"), SubResource("AtlasTexture_j814t"), SubResource("AtlasTexture_0alni"), SubResource("AtlasTexture_bfclr")],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [sub_resource type="Curve" id="Curve_qlupv"]
 max_value = 2.0
 _data = [Vector2(0, 1.72727), 0.0, -1.72727, 0, 1, Vector2(1, 0), -1.72727, 0.0, 1, 0]
@@ -102,6 +130,42 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 0), Vector2(1, 1.2), Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShopGridBG/mask:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShopGridBG/GapEdge:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShopGridBG/ShopVignette:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u2rc5"]
 _data = {
@@ -124,6 +188,28 @@ position = Vector2(0, 0.5)
 scale = Vector2(1, 1e-05)
 frames = SubResource("SpriteFrames_pahye")
 animation = &"open"
+
+[node name="mask" type="Sprite2D" parent="ShopGridBG"]
+modulate = Color(1, 1, 1, 0)
+clip_children = 2
+texture = ExtResource("4_64pnb")
+
+[node name="eyes" type="Sprite2D" parent="ShopGridBG/mask"]
+texture_repeat = 2
+position = Vector2(0, 0.5)
+texture = ExtResource("5_qddiw")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 400)
+
+[node name="ShopVignette" type="Sprite2D" parent="ShopGridBG"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -0.5)
+texture = ExtResource("6_hblrx")
+
+[node name="GapEdge" type="AnimatedSprite2D" parent="ShopGridBG"]
+modulate = Color(1, 1, 1, 0)
+frames = SubResource("SpriteFrames_55sc3")
+playing = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = 3

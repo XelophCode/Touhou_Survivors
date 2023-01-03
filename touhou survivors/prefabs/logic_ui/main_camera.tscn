@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://5s0m512bh4ki"]
+[gd_scene load_steps=14 format=3 uid="uid://5s0m512bh4ki"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/camera_main.gd" id="1_365xw"]
 [ext_resource type="Texture2D" uid="uid://bjuq7vtc66ft3" path="res://sprites/vignette.png" id="2_7r0pb"]
 [ext_resource type="PackedScene" uid="uid://iqvjyq5tkfb0" path="res://prefabs/logic_ui/weapon_spawner.tscn" id="2_8kxfo"]
+[ext_resource type="Texture2D" uid="uid://ciojqae21qxjp" path="res://sprites/ui/screen_dim.png" id="2_bpj4s"]
 [ext_resource type="Texture2D" uid="uid://cfbld0no123ax" path="res://sprites/ui/powerbar_border.png" id="2_vlpjd"]
 [ext_resource type="Texture2D" uid="uid://dhrkybmrbmhk3" path="res://sprites/ui/reimu_portrait.png" id="3_6bsv8"]
 [ext_resource type="PackedScene" uid="uid://04yuy6nwpd5q" path="res://prefabs/logic_ui/tooltip.tscn" id="5_fucjo"]
@@ -15,10 +16,37 @@ bg_color = Color(0.180392, 0.133333, 0.184314, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mx0fe"]
 bg_color = Color(0.137255, 0.564706, 0.388235, 1)
 
+[sub_resource type="Animation" id="Animation_vwkfc"]
+resource_name = "screen_dim"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScreenDim:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2dbxq"]
+_data = {
+"screen_dim": SubResource("Animation_vwkfc")
+}
+
 [node name="MainCamera" type="Camera2D"]
 z_index = 5
 current = true
 script = ExtResource("1_365xw")
+
+[node name="ScreenDim" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = -1
+texture = ExtResource("2_bpj4s")
 
 [node name="Powerbar" type="ProgressBar" parent="."]
 offset_left = -211.0
@@ -46,7 +74,7 @@ visible = false
 
 [node name="Inventory" parent="." instance=ExtResource("5_yatjy")]
 visible = false
-position = Vector2(113, 11)
+position = Vector2(88, 2)
 
 [node name="Shop" parent="." instance=ExtResource("6_bsv6g")]
 visible = false
@@ -57,3 +85,8 @@ position = Vector2(-178, -95)
 
 [node name="Vignette" type="Sprite2D" parent="."]
 texture = ExtResource("2_7r0pb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2dbxq")
+}

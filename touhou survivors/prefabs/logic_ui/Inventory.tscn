@@ -1,8 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbjpy4ciqe0t1"]
+[gd_scene load_steps=18 format=3 uid="uid://cbjpy4ciqe0t1"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Inventory.gd" id="1_3pi44"]
 [ext_resource type="Texture2D" uid="uid://fkaoxefm56vx" path="res://sprites/ui/inventory_offering_box_animation.png.png" id="2_l5prs"]
 [ext_resource type="Texture2D" uid="uid://c50tinougrkay" path="res://sprites/ui/selection_square.png" id="2_lj7po"]
+[ext_resource type="Texture2D" uid="uid://cqm8ntmgk6b77" path="res://sprites/ui/reimu_inventory_grid.png" id="3_5tnkq"]
+[ext_resource type="Texture2D" uid="uid://bl8wgqvvmh5c6" path="res://sprites/ui/inventory_grid.png" id="3_wy5mo"]
+[ext_resource type="Texture2D" uid="uid://cfvrk7qd5ak34" path="res://sprites/ui/Reimu_fullbody.png" id="4_y7bd6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n4e6o"]
 atlas = ExtResource("2_l5prs")
@@ -42,14 +45,63 @@ size = Vector2(70.4, 70.4001)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5qcl"]
 size = Vector2(156, 156)
 
+[sub_resource type="Animation" id="Animation_hq7xm"]
+resource_name = "slide"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ReimuInventoryGrid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(300, 0), Vector2(32.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ReimuFullbody:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(106, 200), Vector2(106, 18)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kl7ws"]
+_data = {
+"slide": SubResource("Animation_hq7xm")
+}
+
 [node name="Inventory" type="Node2D"]
 z_index = 5
+texture_filter = 1
 script = ExtResource("1_3pi44")
 
 [node name="InventoryAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(24, 0)
 frames = SubResource("SpriteFrames_akelx")
+
+[node name="ReimuInventoryGrid" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(300, 0)
+texture = ExtResource("3_5tnkq")
+
+[node name="ReimuFullbody" type="Sprite2D" parent="."]
+position = Vector2(106, 200)
+texture = ExtResource("4_y7bd6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("3_wy5mo")
 
 [node name="InventoryGrid" type="Node2D" parent="."]
 texture_filter = 1
@@ -892,5 +944,10 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="in_inventory"]
 shape = SubResource("RectangleShape2D_v5qcl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kl7ws")
+}
 
 [connection signal="animation_finished" from="InventoryAnimation" to="." method="_on_inventory_animation_animation_finished"]
