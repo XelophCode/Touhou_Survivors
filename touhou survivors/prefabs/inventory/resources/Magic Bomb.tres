@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://d3gous8n5qc28"]
+
+[ext_resource type="Texture2D" uid="uid://cvnlaigdqggxe" path="res://sprites/items/item_icons/magic_bomb_icon.png" id="1_protq"]
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_pueeg"]
+[ext_resource type="PackedScene" uid="uid://bcjqs0r7rdaa0" path="res://prefabs/inventory/magic_bomb_inventory.tscn" id="2_1uqxi"]
+[ext_resource type="PackedScene" uid="uid://ce0e3tlygycje" path="res://prefabs/item_spawnables/Magic_Bomb.tscn" id="4_qfghh"]
+
+[resource]
+script = ExtResource("1_pueeg")
+enabled = true
+item_name = 18
+description = ""
+inventory_size = 3
+inventory = ExtResource("2_1uqxi")
+spawnable = ExtResource("4_qfghh")
+icon = ExtResource("1_protq")
+active = true
+cooldown = 5
+stack_limit = 3
