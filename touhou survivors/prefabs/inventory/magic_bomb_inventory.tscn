@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" path="res://prefabs/logic_ui/occult_orb.tscn" id="6_f5khg"]
 [ext_resource type="AnimationLibrary" uid="uid://c3f6dw06ejniu" path="res://resources/animations/libraries/Inventory_Items.res" id="7_b81mg"]
 
-[node name="YinYang" type="Node2D"]
+[node name="MagicBomb" type="Node2D"]
 z_index = 6
 texture_filter = 1
 script = ExtResource("1_4du7y")

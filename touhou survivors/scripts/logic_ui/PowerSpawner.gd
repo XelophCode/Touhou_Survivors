@@ -9,4 +9,4 @@ func spawn_power_item(spawn_location):
 	if randi_range(1,1) == 1:
 		var inst = power.instantiate()
 		inst.position = spawn_location
-		get_parent().add_child(inst)
+		add_child(inst)
