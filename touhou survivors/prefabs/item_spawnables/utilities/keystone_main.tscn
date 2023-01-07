@@ -1,0 +1,264 @@
+[gd_scene load_steps=30 format=3 uid="uid://pdgdp0iqnjtm"]
+
+[ext_resource type="Script" path="res://scripts/keystone_main.gd" id="1_vopml"]
+[ext_resource type="Texture2D" uid="uid://cvcretaggojnu" path="res://sprites/items/item_spawnables/keystone.png" id="2_nkf1n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46lm6"]
+bg_color = Color(0, 0, 0, 0.168627)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvgfu"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(0, 30, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp4pm"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(30, 30, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_janm1"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(60, 30, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0b60"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(90, 30, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbp5q"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(120, 30, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frl41"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(150, 30, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_armx5"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(180, 30, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvk1s"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(0, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k67tu"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(30, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgm4k"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(60, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0qah"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(90, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvnp7"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(120, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_feju8"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(150, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsxl4"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(180, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fg2d"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(0, 60, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vaii"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(30, 60, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kebeb"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(60, 60, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvqtb"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(90, 60, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2tyq"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(120, 60, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elikq"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(150, 60, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6eno"]
+atlas = ExtResource("2_nkf1n")
+region = Rect2(180, 60, 30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_trcwy"]
+animations = [{
+"frames": [SubResource("AtlasTexture_lvgfu"), SubResource("AtlasTexture_tp4pm"), SubResource("AtlasTexture_janm1"), SubResource("AtlasTexture_e0b60"), SubResource("AtlasTexture_dbp5q"), SubResource("AtlasTexture_frl41"), SubResource("AtlasTexture_armx5")],
+"loop": true,
+"name": &"collision",
+"speed": 28.0
+}, {
+"frames": [SubResource("AtlasTexture_xvk1s"), SubResource("AtlasTexture_k67tu"), SubResource("AtlasTexture_rgm4k"), SubResource("AtlasTexture_v0qah"), SubResource("AtlasTexture_bvnp7"), SubResource("AtlasTexture_feju8"), SubResource("AtlasTexture_gsxl4")],
+"loop": true,
+"name": &"falling",
+"speed": 14.0
+}, {
+"frames": [SubResource("AtlasTexture_0fg2d"), SubResource("AtlasTexture_5vaii"), SubResource("AtlasTexture_kebeb"), SubResource("AtlasTexture_uvqtb"), SubResource("AtlasTexture_e2tyq"), SubResource("AtlasTexture_elikq"), SubResource("AtlasTexture_t6eno")],
+"loop": true,
+"name": &"finished",
+"speed": 14.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ulbnr"]
+radius = 12.0
+
+[sub_resource type="Animation" id="Animation_futxj"]
+resource_name = "falling"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/Keystone:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("main_body/Node2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("main_body/Node2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("main_body/Keystone:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -30), Vector2(0, 5)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"collision"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_penqb"]
+resource_name = "fade_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p2ni8"]
+_data = {
+"fade_out": SubResource("Animation_penqb"),
+"falling": SubResource("Animation_futxj")
+}
+
+[node name="keystone_main" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_vopml")
+
+[node name="main_body" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="main_body"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 10)
+
+[node name="Panel" type="Panel" parent="main_body/Node2D"]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_46lm6")
+
+[node name="Keystone" type="AnimatedSprite2D" parent="main_body"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -30)
+frames = SubResource("SpriteFrames_trcwy")
+animation = &"falling"
+playing = true
+
+[node name="Area2D" type="Area2D" parent="main_body"]
+collision_layer = 8
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_ulbnr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p2ni8")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="animation_finished" from="main_body/Keystone" to="." method="_on_keystone_animation_finished"]
+[connection signal="body_entered" from="main_body/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1ocs2lvo5hx1"]
+
+[ext_resource type="Script" path="res://scripts/inventory/Keystone.gd" id="1_1gd7c"]
+
+[node name="Keystone" type="Node2D"]
+script = ExtResource("1_1gd7c")

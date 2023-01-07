@@ -24,7 +24,7 @@ func _ready():
 				Globals.passive_items.append(item.item.name[item.item.item_name])
 			Signals.emit_signal("add_weapon",item.item.spawnable,counter,item.cooldown,item.item.active,item.item.icon,item.stack,true)
 			counter += 1
-	
+
 
 func _physics_process(delta):
 	$Healthbar.value = hp
