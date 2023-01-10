@@ -20,8 +20,8 @@ func _ready():
 	var counter:int = 0
 	if starting_items != null:
 		for item in starting_items.starting_item:
-			if !item.item.active:
-				Globals.passive_items.append(item.item.name[item.item.item_name])
+			if item.item.one_time_spawn:
+				Globals.one_time_spawns.append(item.item.name[item.item.item_name])
 			Signals.emit_signal("add_weapon",item.item.spawnable,counter,item.cooldown,item.item.active,item.item.icon,item.stack,true)
 			counter += 1
 

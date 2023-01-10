@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3]
+[gd_scene load_steps=17 format=3 uid="uid://yahupkw74qtm"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Roukanken.gd" id="1_mlgwc"]
 [ext_resource type="Texture2D" uid="uid://dupuueoirslts" path="res://sprites/items/item_spawnables/roukanken_slash.png" id="2_l0ygx"]
@@ -165,7 +165,6 @@ frames = SubResource("SpriteFrames_qg5tx")
 animation = &"slash"
 
 [node name="Hitbox_1" type="Area2D" parent="main_body"]
-position = Vector2(1, 1)
 rotation = 0.617847
 collision_layer = 8
 collision_mask = 2

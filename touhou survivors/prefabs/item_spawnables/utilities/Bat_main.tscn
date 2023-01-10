@@ -3,51 +3,51 @@
 [ext_resource type="Script" path="res://scripts/inventory/Bat_main.gd" id="1_a5xpf"]
 [ext_resource type="Texture2D" uid="uid://vxw1recn02jp" path="res://sprites/items/item_spawnables/bat_fly.png" id="1_lfe4c"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xkc6f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxo8i"]
 atlas = ExtResource("1_lfe4c")
 region = Rect2(0, 0, 5, 3)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fwd1w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqkgf"]
 atlas = ExtResource("1_lfe4c")
 region = Rect2(5, 0, 5, 3)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_scf3n"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_txxfy"]
 atlas = ExtResource("1_lfe4c")
 region = Rect2(10, 0, 5, 3)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cguic"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw7y4"]
 atlas = ExtResource("1_lfe4c")
 region = Rect2(0, 3, 5, 3)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_musec"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrd6f"]
 atlas = ExtResource("1_lfe4c")
 region = Rect2(5, 3, 5, 3)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ryb0q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p1al"]
 atlas = ExtResource("1_lfe4c")
 region = Rect2(10, 3, 5, 3)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fbc4a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnkmq"]
 atlas = ExtResource("1_lfe4c")
 region = Rect2(0, 6, 5, 3)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cmh6u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsrmv"]
 atlas = ExtResource("1_lfe4c")
 region = Rect2(5, 6, 5, 3)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l25wo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tmyh"]
 atlas = ExtResource("1_lfe4c")
 region = Rect2(10, 6, 5, 3)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qjuuj"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_3brp3"]
 animations = [{
-"frames": [SubResource("AtlasTexture_xkc6f"), SubResource("AtlasTexture_fwd1w"), SubResource("AtlasTexture_scf3n"), SubResource("AtlasTexture_cguic"), SubResource("AtlasTexture_musec"), SubResource("AtlasTexture_ryb0q"), SubResource("AtlasTexture_fbc4a"), SubResource("AtlasTexture_cmh6u"), SubResource("AtlasTexture_l25wo")],
+"frames": [SubResource("AtlasTexture_gxo8i"), SubResource("AtlasTexture_vqkgf"), SubResource("AtlasTexture_txxfy"), SubResource("AtlasTexture_hw7y4"), SubResource("AtlasTexture_yrd6f"), SubResource("AtlasTexture_0p1al"), SubResource("AtlasTexture_xnkmq"), SubResource("AtlasTexture_jsrmv"), SubResource("AtlasTexture_1tmyh")],
 "loop": true,
 "name": &"default",
 "speed": 27.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_n07c7"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_igdr2"]
 radius = 3.0
 
 [node name="Bat_main" type="Node2D"]
@@ -57,7 +57,7 @@ script = ExtResource("1_a5xpf")
 [node name="main_body" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body"]
-frames = SubResource("SpriteFrames_qjuuj")
+frames = SubResource("SpriteFrames_3brp3")
 playing = true
 
 [node name="Area2D" type="Area2D" parent="main_body"]
@@ -65,6 +65,6 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
-shape = SubResource("CircleShape2D_n07c7")
+shape = SubResource("CircleShape2D_igdr2")
 
 [connection signal="body_entered" from="main_body/Area2D" to="." method="_on_area_2d_body_entered"]

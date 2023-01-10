@@ -11,7 +11,6 @@ func _ready():
 
 func _physics_process(delta):
 	$main_body/MagicBomb.material.set_shader_parameter("flash_modifier",lerp($main_body/MagicBomb.material.get_shader_parameter("flash_modifier"),flash_amt,delta*3))
-	
 
 func flash_amt_one():
 	flash_amt = 1.0
@@ -29,6 +28,7 @@ func bomb_explosion():
 	$main_body/Explosion.play("default")
 	$main_body/Area2D.monitoring = true
 	$main_body/Panel.visible = false
+	$AnimationPlayer.play("bomb_explosion")
 
 func _on_area_2d_body_entered(body):
 	do_damage(body)

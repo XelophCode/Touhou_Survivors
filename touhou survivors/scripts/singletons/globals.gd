@@ -7,7 +7,7 @@ var player_facing:Vector2 = Vector2(0,1)
 var locked_selection_tiles:Array
 var leveling_up:bool = false
 var power:float
-var passive_items:Array
+var one_time_spawns:Array
 
 func cardinal_direction_to_rotation(direction:Vector2):
 	match direction:

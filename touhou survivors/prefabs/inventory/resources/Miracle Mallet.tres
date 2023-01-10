@@ -17,3 +17,4 @@ icon = ExtResource("1_52isa")
 active = false
 cooldown = 1
 stack_limit = 1
+one_time_spawn = true

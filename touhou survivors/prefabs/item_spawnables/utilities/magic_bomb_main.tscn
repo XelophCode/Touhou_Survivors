@@ -1,116 +1,125 @@
-[gd_scene load_steps=20 format=3 uid="uid://bnuslehd33gns"]
+[gd_scene load_steps=23 format=3 uid="uid://bnuslehd33gns"]
 
 [ext_resource type="Script" path="res://scripts/inventory/magic_bomb_main.gd" id="1_p2thr"]
-[ext_resource type="Shader" path="res://scripts/shaders/magic_bomb_flash.gdshader" id="2_kfd0q"]
+[ext_resource type="Shader" path="res://scripts/shaders/magic_bomb_flash.gdshader" id="2_jt4yf"]
 [ext_resource type="Texture2D" uid="uid://dqs1c3kuxyyr6" path="res://sprites/items/item_spawnables/magic_bomb.png" id="3_yyp0r"]
 [ext_resource type="Texture2D" uid="uid://bn1xflwdfgr05" path="res://sprites/items/item_spawnables/bomb_explosion.png" id="4_fsqqx"]
+[ext_resource type="Shader" path="res://scripts/shaders/explosion.gdshader" id="4_vqvmg"]
+[ext_resource type="Texture2D" uid="uid://xbifc8dmi5qv" path="res://icon.svg" id="5_niqh7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6wxs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jkrii"]
+resource_local_to_scene = true
+shader = ExtResource("4_vqvmg")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/force = 0.079
+shader_parameter/size = 0.0
+shader_parameter/thickness = 0.05
+shader_parameter/offset = 0.005
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gir34"]
 bg_color = Color(0, 0, 0, 0.282353)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1y0rr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7p60"]
 resource_local_to_scene = true
-shader = ExtResource("2_kfd0q")
+shader = ExtResource("2_jt4yf")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rdpkr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_10mk4"]
 atlas = ExtResource("4_fsqqx")
 region = Rect2(0, 0, 20, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1irr8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_whasn"]
 atlas = ExtResource("4_fsqqx")
 region = Rect2(20, 0, 20, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_83qus"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpnmg"]
 atlas = ExtResource("4_fsqqx")
 region = Rect2(40, 0, 20, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_metd6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvjvk"]
 atlas = ExtResource("4_fsqqx")
 region = Rect2(60, 0, 20, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ethi4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xrvs"]
 atlas = ExtResource("4_fsqqx")
 region = Rect2(0, 20, 20, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqh4f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntwuc"]
 atlas = ExtResource("4_fsqqx")
 region = Rect2(20, 20, 20, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7awws"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_67y70"]
 atlas = ExtResource("4_fsqqx")
 region = Rect2(40, 20, 20, 20)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_kp7q5"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_h2nae"]
 animations = [{
-"frames": [SubResource("AtlasTexture_rdpkr"), SubResource("AtlasTexture_1irr8"), SubResource("AtlasTexture_83qus"), SubResource("AtlasTexture_metd6"), SubResource("AtlasTexture_ethi4"), SubResource("AtlasTexture_wqh4f"), SubResource("AtlasTexture_7awws")],
+"frames": [SubResource("AtlasTexture_10mk4"), SubResource("AtlasTexture_whasn"), SubResource("AtlasTexture_bpnmg"), SubResource("AtlasTexture_qvjvk"), SubResource("AtlasTexture_0xrvs"), SubResource("AtlasTexture_ntwuc"), SubResource("AtlasTexture_67y70")],
 "loop": true,
 "name": &"default",
 "speed": 14.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2ttl2"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fxpi2"]
 radius = 7.07107
 
-[sub_resource type="Animation" id="Animation_p0e7j"]
-resource_name = "bomb_throw"
+[sub_resource type="Animation" id="Animation_i5hvm"]
+resource_name = "bomb_explosion"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("main_body:position")
+tracks/0/path = NodePath("main_body/Sprite2D:material:shader_parameter/size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(50, 0), Vector2(75, 0), Vector2(90, 0), Vector2(100, 0), Vector2(105, 0)]
+"values": [0.0, 0.8]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("main_body:scale")
+tracks/1/path = NodePath("main_body/Sprite2D:material:shader_parameter/force")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(2, 2), Vector2(1, 1), Vector2(1.8, 1.8), Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+"values": [0.079, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("main_body/Panel:modulate")
+tracks/2/path = NodePath("main_body/Sprite2D:material:shader_parameter/thickness")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.282353), Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 1), Color(1, 1, 1, 0.745098), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [0.05, 0.0]
 }
-tracks/3/type = "method"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".")
+tracks/3/path = NodePath("main_body/Sprite2D:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"bomb_grow_anim"
-}]
+"update": 1,
+"values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_jhmhr"]
+[sub_resource type="Animation" id="Animation_fo88f"]
 resource_name = "bomb_grow"
 step = 0.05
 tracks/0/type = "value"
@@ -184,14 +193,64 @@ tracks/3/keys = {
 "values": [Vector2(1, 1), Vector2(3.5, 3.5)]
 }
 
-[sub_resource type="Animation" id="Animation_j1pdy"]
-resource_name = "bomb_explosion"
+[sub_resource type="Animation" id="Animation_ydls6"]
+resource_name = "bomb_throw"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(50, 0), Vector2(75, 0), Vector2(90, 0), Vector2(100, 0), Vector2(105, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("main_body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(1, 1), Vector2(1.8, 1.8), Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("main_body/Panel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.282353), Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 1), Color(1, 1, 1, 0.745098), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"bomb_grow_anim"
+}]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hv7i6"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_evqxo"]
 _data = {
-"bomb_explosion": SubResource("Animation_j1pdy"),
-"bomb_grow": SubResource("Animation_jhmhr"),
-"bomb_throw": SubResource("Animation_p0e7j")
+"bomb_explosion": SubResource("Animation_i5hvm"),
+"bomb_grow": SubResource("Animation_fo88f"),
+"bomb_throw": SubResource("Animation_ydls6")
 }
 
 [node name="magic_bomb_main" type="Node2D"]
@@ -200,32 +259,38 @@ script = ExtResource("1_p2thr")
 
 [node name="main_body" type="Node2D" parent="."]
 
+[node name="Sprite2D" type="Sprite2D" parent="main_body"]
+visible = false
+material = SubResource("ShaderMaterial_jkrii")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_niqh7")
+
 [node name="Panel" type="Panel" parent="main_body"]
 offset_left = -5.0
 offset_top = -1.0
 offset_right = 5.0
 offset_bottom = 7.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_f6wxs")
+theme_override_styles/panel = SubResource("StyleBoxFlat_gir34")
 
 [node name="MagicBomb" type="Sprite2D" parent="main_body"]
-material = SubResource("ShaderMaterial_1y0rr")
+material = SubResource("ShaderMaterial_y7p60")
 texture = ExtResource("3_yyp0r")
 
 [node name="Explosion" type="AnimatedSprite2D" parent="main_body"]
 visible = false
 scale = Vector2(2, 2)
-frames = SubResource("SpriteFrames_kp7q5")
+frames = SubResource("SpriteFrames_h2nae")
 
 [node name="Area2D" type="Area2D" parent="main_body"]
 collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
-shape = SubResource("CircleShape2D_2ttl2")
+shape = SubResource("CircleShape2D_fxpi2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_hv7i6")
+"": SubResource("AnimationLibrary_evqxo")
 }
 
 [connection signal="animation_finished" from="main_body/Explosion" to="." method="_on_explosion_animation_finished"]

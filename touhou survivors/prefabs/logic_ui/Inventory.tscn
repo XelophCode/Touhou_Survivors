@@ -7,45 +7,45 @@
 [ext_resource type="Texture2D" uid="uid://bl8wgqvvmh5c6" path="res://sprites/ui/inventory_grid.png" id="3_wy5mo"]
 [ext_resource type="Texture2D" uid="uid://cfvrk7qd5ak34" path="res://sprites/ui/Reimu_fullbody.png" id="4_y7bd6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hqbww"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_of3ji"]
 atlas = ExtResource("2_l5prs")
 region = Rect2(0, 0, 211, 206)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2p24b"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w8qx"]
 atlas = ExtResource("2_l5prs")
 region = Rect2(211, 0, 211, 206)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1lpad"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_opxu6"]
 atlas = ExtResource("2_l5prs")
 region = Rect2(422, 0, 211, 206)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ky6e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_esobc"]
 atlas = ExtResource("2_l5prs")
 region = Rect2(0, 206, 211, 206)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjir7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_71r05"]
 atlas = ExtResource("2_l5prs")
 region = Rect2(211, 206, 211, 206)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p6evf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7bpb"]
 atlas = ExtResource("2_l5prs")
 region = Rect2(422, 206, 211, 206)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_iyqtw"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_hpv5c"]
 animations = [{
-"frames": [SubResource("AtlasTexture_hqbww"), SubResource("AtlasTexture_2p24b"), SubResource("AtlasTexture_1lpad"), SubResource("AtlasTexture_8ky6e"), SubResource("AtlasTexture_fjir7"), SubResource("AtlasTexture_p6evf")],
+"frames": [SubResource("AtlasTexture_of3ji"), SubResource("AtlasTexture_1w8qx"), SubResource("AtlasTexture_opxu6"), SubResource("AtlasTexture_esobc"), SubResource("AtlasTexture_71r05"), SubResource("AtlasTexture_m7bpb")],
 "loop": true,
 "name": &"default",
 "speed": 6.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqy4b"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysccy"]
 size = Vector2(70.4, 70.4001)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bqim"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktpq1"]
 size = Vector2(156, 156)
 
-[sub_resource type="Animation" id="Animation_nndrn"]
+[sub_resource type="Animation" id="Animation_lho0o"]
 resource_name = "slide"
 length = 0.3
 tracks/0/type = "value"
@@ -73,9 +73,9 @@ tracks/1/keys = {
 "values": [Vector2(106, 200), Vector2(106, 18)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fe5qa"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l68u1"]
 _data = {
-"slide": SubResource("Animation_nndrn")
+"slide": SubResource("Animation_lho0o")
 }
 
 [node name="Inventory" type="Node2D"]
@@ -87,7 +87,7 @@ script = ExtResource("1_3pi44")
 visible = false
 texture_filter = 1
 position = Vector2(24, 0)
-frames = SubResource("SpriteFrames_iyqtw")
+frames = SubResource("SpriteFrames_hpv5c")
 
 [node name="ReimuInventoryGrid" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -121,7 +121,7 @@ scale = Vector2(6.4, 6.4)
 texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/1/Area2D"]
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="2" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-44, -66)
@@ -137,7 +137,7 @@ scale = Vector2(6.4, 6.4)
 texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/2/Area2D"]
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="3" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-22, -66)
@@ -154,7 +154,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/3/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="4" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-1.56164e-05, -66)
@@ -171,7 +171,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/4/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="5" type="Node2D" parent="InventoryGrid"]
 position = Vector2(22, -66)
@@ -188,7 +188,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/5/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="6" type="Node2D" parent="InventoryGrid"]
 position = Vector2(44, -66)
@@ -205,7 +205,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/6/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="7" type="Node2D" parent="InventoryGrid"]
 position = Vector2(66, -66)
@@ -222,7 +222,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/7/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="8" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-66, -44)
@@ -239,7 +239,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/8/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="9" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-44, -44)
@@ -256,7 +256,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/9/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="10" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-22, -44)
@@ -273,7 +273,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/10/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="11" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-1.52588e-05, -44)
@@ -290,7 +290,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/11/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="12" type="Node2D" parent="InventoryGrid"]
 position = Vector2(22, -44)
@@ -307,7 +307,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/12/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="13" type="Node2D" parent="InventoryGrid"]
 position = Vector2(44, -44)
@@ -324,7 +324,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/13/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="14" type="Node2D" parent="InventoryGrid"]
 position = Vector2(66, -44)
@@ -341,7 +341,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/14/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="15" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-66, -22)
@@ -358,7 +358,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/15/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="16" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-44, -22)
@@ -375,7 +375,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/16/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="17" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-22, -22)
@@ -392,7 +392,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/17/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="18" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-1.52588e-05, -22)
@@ -409,7 +409,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/18/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="19" type="Node2D" parent="InventoryGrid"]
 position = Vector2(22, -22)
@@ -426,7 +426,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/19/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="20" type="Node2D" parent="InventoryGrid"]
 position = Vector2(44, -22)
@@ -443,7 +443,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/20/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="21" type="Node2D" parent="InventoryGrid"]
 position = Vector2(66, -22)
@@ -460,7 +460,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/21/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="22" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-66, -9.65595e-06)
@@ -477,7 +477,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/22/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="23" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-44, -2.49147e-05)
@@ -494,7 +494,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/23/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="24" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-22, -2.49147e-05)
@@ -511,7 +511,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/24/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="25" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-1.52588e-05, -9.65595e-06)
@@ -528,7 +528,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/25/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="26" type="Node2D" parent="InventoryGrid"]
 position = Vector2(22, -9.65595e-06)
@@ -545,7 +545,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/26/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="27" type="Node2D" parent="InventoryGrid"]
 position = Vector2(44, -9.65595e-06)
@@ -562,7 +562,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/27/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="28" type="Node2D" parent="InventoryGrid"]
 position = Vector2(66, -9.65595e-06)
@@ -579,7 +579,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/28/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="29" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-66, 22)
@@ -596,7 +596,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/29/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="30" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-44, 22)
@@ -613,7 +613,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/30/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="31" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-22, 22)
@@ -630,7 +630,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/31/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="32" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-1.52588e-05, 22)
@@ -647,7 +647,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/32/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="33" type="Node2D" parent="InventoryGrid"]
 position = Vector2(22, 22)
@@ -664,7 +664,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/33/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="34" type="Node2D" parent="InventoryGrid"]
 position = Vector2(44, 22)
@@ -681,7 +681,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/34/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="35" type="Node2D" parent="InventoryGrid"]
 position = Vector2(66, 22)
@@ -698,7 +698,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/35/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="36" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-66, 44)
@@ -715,7 +715,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/36/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="37" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-44, 44)
@@ -732,7 +732,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/37/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="38" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-22, 44)
@@ -749,7 +749,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/38/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="39" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-1.52588e-05, 44)
@@ -766,7 +766,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/39/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="40" type="Node2D" parent="InventoryGrid"]
 position = Vector2(22, 44)
@@ -783,7 +783,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/40/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="41" type="Node2D" parent="InventoryGrid"]
 position = Vector2(44, 44)
@@ -800,7 +800,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/41/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="42" type="Node2D" parent="InventoryGrid"]
 position = Vector2(66, 44)
@@ -817,7 +817,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/42/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="43" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-66, 66)
@@ -834,7 +834,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/43/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="44" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-44, 66)
@@ -851,7 +851,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/44/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="45" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-22, 66)
@@ -868,7 +868,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/45/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="46" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-1.52588e-05, 66)
@@ -885,7 +885,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/46/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="47" type="Node2D" parent="InventoryGrid"]
 position = Vector2(22, 66)
@@ -902,7 +902,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/47/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="48" type="Node2D" parent="InventoryGrid"]
 position = Vector2(44, 66)
@@ -919,7 +919,7 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/48/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="49" type="Node2D" parent="InventoryGrid"]
 position = Vector2(66, 66)
@@ -936,18 +936,18 @@ texture = ExtResource("2_lj7po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGrid/49/Area2D"]
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_dqy4b")
+shape = SubResource("RectangleShape2D_ysccy")
 
 [node name="in_inventory" type="Area2D" parent="."]
 collision_layer = 256
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="in_inventory"]
-shape = SubResource("RectangleShape2D_1bqim")
+shape = SubResource("RectangleShape2D_ktpq1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_fe5qa")
+"": SubResource("AnimationLibrary_l68u1")
 }
 
 [connection signal="animation_finished" from="InventoryAnimation" to="." method="_on_inventory_animation_animation_finished"]

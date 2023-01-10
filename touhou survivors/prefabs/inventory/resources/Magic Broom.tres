@@ -17,3 +17,4 @@ icon = ExtResource("1_bifjr")
 active = false
 cooldown = 5
 stack_limit = 1
+one_time_spawn = true

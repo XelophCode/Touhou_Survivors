@@ -1,7 +1,20 @@
-[gd_scene load_steps=72 format=3 uid="uid://cah8y53sm3blk"]
+[gd_scene load_steps=77 format=3 uid="uid://cah8y53sm3blk"]
 
 [ext_resource type="Script" path="res://scripts/misc/Player.gd" id="1_37at3"]
 [ext_resource type="Texture2D" uid="uid://bsv6waqhjtkfp" path="res://sprites/actors/reimu.png" id="2_kv5a8"]
+[ext_resource type="Script" path="res://scripts/logic_ui/starting_item_array_resource.gd" id="2_v4ptu"]
+[ext_resource type="Resource" uid="uid://d3gous8n5qc28" path="res://prefabs/inventory/resources/Magic Bomb.tres" id="3_0u7ub"]
+[ext_resource type="Script" path="res://scripts/logic_ui/starting_item_resource.gd" id="4_ncomf"]
+
+[sub_resource type="Resource" id="Resource_o42u3"]
+script = ExtResource("4_ncomf")
+item = ExtResource("3_0u7ub")
+cooldown = 4
+stack = 3
+
+[sub_resource type="Resource" id="Resource_p0mlu"]
+script = ExtResource("2_v4ptu")
+starting_item = [SubResource("Resource_o42u3")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lia0m"]
 bg_color = Color(0, 0, 0, 0.329412)
@@ -335,6 +348,7 @@ z_index = 7
 texture_filter = 1
 collision_mask = 0
 script = ExtResource("1_37at3")
+starting_items = SubResource("Resource_p0mlu")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = -4.0

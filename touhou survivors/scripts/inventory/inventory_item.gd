@@ -40,6 +40,7 @@ var saved_item:bool = false
 var previous_stack_target
 var passive_limit:bool = false
 var current_area_hovered
+var one_time_spawn:bool
 
 func find_rotational_offset():
 	var rot:int = round(rad_to_deg(rotation))
@@ -189,12 +190,12 @@ func not_holding_item():
 		if in_inventory:
 			
 			Signals.emit_signal("add_weapon",scene,get_instance_id(),item_cooldown,active,icon,stack_count)
-			if !active:
-				Globals.passive_items.append(item_name)
+			if one_time_spawn:
+				Globals.one_time_spawns.append(item_name)
 		else:
 			Signals.emit_signal("remove_weapon",get_instance_id(),active)
-			if !active:
-				Globals.passive_items.erase(item_name)
+			if one_time_spawn:
+				Globals.one_time_spawns.erase(item_name)
 	if stack == 1 and hovering_occupied_space == 1 and (stacked_object[0].stack_count + stack_count <= stack_count_max):
 		Signals.emit_signal("remove_weapon",get_instance_id(),active)
 		stacked_object[0].stack_count += stack_count
