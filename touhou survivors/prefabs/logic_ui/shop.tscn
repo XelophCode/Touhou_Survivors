@@ -11,104 +11,104 @@
 [ext_resource type="Shader" path="res://scripts/shaders/explosion.gdshader" id="8_vbx82"]
 [ext_resource type="Texture2D" uid="uid://xbifc8dmi5qv" path="res://icon.svg" id="9_vmfms"]
 
-[sub_resource type="Resource" id="Resource_8htd2"]
+[sub_resource type="Resource" id="Resource_vf0mf"]
 script = ExtResource("2_8a3vr")
 FolderPath = "res://prefabs/inventory/resources"
 ResourceCategory = null
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7mbn6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kycsc"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(0, 0, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_os44o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_31jk3"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(214, 0, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_endc1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwwpd"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(428, 0, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cqh6d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kkhi"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(0, 127, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u0gu8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh7pl"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(214, 127, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4m25u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3x54"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(428, 127, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mbiwg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x84rs"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(0, 254, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3sfwk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4w66"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(214, 254, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aha2s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hxru"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(428, 254, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mb86a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_me3ys"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(0, 381, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vdfnj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_34a3e"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(214, 381, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wjwme"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekutt"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(428, 381, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pgyan"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox7ms"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(0, 508, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_affux"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3qtg"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(214, 508, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oasvv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlpih"]
 atlas = ExtResource("3_p64e2")
 region = Rect2(428, 508, 214, 127)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_mbu81"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_gdbtu"]
 animations = [{
-"frames": [SubResource("AtlasTexture_7mbn6"), SubResource("AtlasTexture_os44o"), SubResource("AtlasTexture_endc1"), SubResource("AtlasTexture_cqh6d"), SubResource("AtlasTexture_u0gu8"), SubResource("AtlasTexture_4m25u"), SubResource("AtlasTexture_mbiwg"), SubResource("AtlasTexture_3sfwk"), SubResource("AtlasTexture_aha2s"), SubResource("AtlasTexture_mb86a"), SubResource("AtlasTexture_vdfnj"), SubResource("AtlasTexture_wjwme"), SubResource("AtlasTexture_pgyan"), SubResource("AtlasTexture_affux"), SubResource("AtlasTexture_oasvv")],
+"frames": [SubResource("AtlasTexture_kycsc"), SubResource("AtlasTexture_31jk3"), SubResource("AtlasTexture_qwwpd"), SubResource("AtlasTexture_4kkhi"), SubResource("AtlasTexture_eh7pl"), SubResource("AtlasTexture_s3x54"), SubResource("AtlasTexture_x84rs"), SubResource("AtlasTexture_f4w66"), SubResource("AtlasTexture_1hxru"), SubResource("AtlasTexture_me3ys"), SubResource("AtlasTexture_34a3e"), SubResource("AtlasTexture_ekutt"), SubResource("AtlasTexture_ox7ms"), SubResource("AtlasTexture_s3qtg"), SubResource("AtlasTexture_nlpih")],
 "loop": true,
 "name": &"open",
 "speed": 30.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rly50"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_px68i"]
 atlas = ExtResource("6_gw0uf")
 region = Rect2(0, 0, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_frpl0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_upq2k"]
 atlas = ExtResource("6_gw0uf")
 region = Rect2(214, 0, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ulb4q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmxi5"]
 atlas = ExtResource("6_gw0uf")
 region = Rect2(0, 127, 214, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_endel"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdv5q"]
 atlas = ExtResource("6_gw0uf")
 region = Rect2(214, 127, 214, 127)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qjdd7"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_cgh6s"]
 animations = [{
-"frames": [SubResource("AtlasTexture_rly50"), SubResource("AtlasTexture_frpl0"), SubResource("AtlasTexture_ulb4q"), SubResource("AtlasTexture_endel")],
+"frames": [SubResource("AtlasTexture_px68i"), SubResource("AtlasTexture_upq2k"), SubResource("AtlasTexture_vmxi5"), SubResource("AtlasTexture_gdv5q")],
 "loop": true,
 "name": &"default",
 "speed": 12.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yjlwt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kq6pr"]
 resource_local_to_scene = true
 shader = ExtResource("8_vbx82")
 shader_parameter/center = Vector2(0.5, 0.5)
@@ -117,15 +117,15 @@ shader_parameter/size = 0.512
 shader_parameter/thickness = 0.001
 shader_parameter/offset = null
 
-[sub_resource type="Curve" id="Curve_0lwfs"]
+[sub_resource type="Curve" id="Curve_h2mgm"]
 max_value = 2.0
 _data = [Vector2(0, 1.72727), 0.0, -1.72727, 0, 1, Vector2(1, 0), -1.72727, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5qox"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbcv2"]
 size = Vector2(70.4, 70.4)
 
-[sub_resource type="Animation" id="Animation_sv5pr"]
+[sub_resource type="Animation" id="Animation_532fn"]
 resource_name = "stretch"
 length = 0.5
 step = 0.05
@@ -190,12 +190,12 @@ tracks/4/keys = {
 "values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2nojk"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gjffe"]
 _data = {
-"stretch": SubResource("Animation_sv5pr")
+"stretch": SubResource("Animation_532fn")
 }
 
-[sub_resource type="Curve" id="Curve_whygg"]
+[sub_resource type="Curve" id="Curve_s5400"]
 max_value = 2.0
 _data = [Vector2(0, 0.854545), 0.0, 1.05521, 0, 1, Vector2(0.75814, 1.65455), 0.0, 0.0, 0, 0, Vector2(1, 0.0545454), -6.61538, 0.0, 1, 0]
 point_count = 3
@@ -203,13 +203,13 @@ point_count = 3
 [node name="Shop" type="Node2D"]
 z_index = 3
 script = ExtResource("1_gaew4")
-inventory_items = SubResource("Resource_8htd2")
+inventory_items = SubResource("Resource_vf0mf")
 
 [node name="ShopGridBG" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, 0.5)
 scale = Vector2(1, 1e-05)
-frames = SubResource("SpriteFrames_mbu81")
+frames = SubResource("SpriteFrames_gdbtu")
 animation = &"open"
 
 [node name="mask" type="Sprite2D" parent="ShopGridBG"]
@@ -231,12 +231,12 @@ texture = ExtResource("6_hblrx")
 
 [node name="GapEdge" type="AnimatedSprite2D" parent="ShopGridBG"]
 modulate = Color(1, 1, 1, 0)
-frames = SubResource("SpriteFrames_qjdd7")
+frames = SubResource("SpriteFrames_cgh6s")
 playing = true
 
 [node name="EdgeWarp" type="Sprite2D" parent="ShopGridBG"]
 visible = false
-material = SubResource("ShaderMaterial_yjlwt")
+material = SubResource("ShaderMaterial_kq6pr")
 scale = Vector2(1.28906, 0.900879)
 texture = ExtResource("9_vmfms")
 
@@ -250,7 +250,7 @@ initial_velocity_min = 73.77
 initial_velocity_max = 73.77
 angular_velocity_max = 60.0
 orbit_velocity_max = 0.5
-scale_amount_curve = SubResource("Curve_0lwfs")
+scale_amount_curve = SubResource("Curve_h2mgm")
 color = Color(1, 0.282353, 1, 1)
 
 [node name="ShopGrid" type="Node2D" parent="."]
@@ -275,7 +275,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/0/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="1" type="Node2D" parent="ShopGrid"]
 position = Vector2(-1.58548e-05, -44)
@@ -295,7 +295,7 @@ texture = ExtResource("4_h3d3g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/1/Area2D"]
 z_index = 1
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="2" type="Node2D" parent="ShopGrid"]
 position = Vector2(22, -44)
@@ -316,7 +316,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/2/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="3" type="Node2D" parent="ShopGrid"]
 position = Vector2(-44, -22)
@@ -337,7 +337,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/3/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="4" type="Node2D" parent="ShopGrid"]
 position = Vector2(-22, -22)
@@ -358,7 +358,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/4/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="5" type="Node2D" parent="ShopGrid"]
 position = Vector2(-1.90735e-05, -22)
@@ -379,7 +379,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/5/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="6" type="Node2D" parent="ShopGrid"]
 position = Vector2(22, -22)
@@ -400,7 +400,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/6/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="7" type="Node2D" parent="ShopGrid"]
 position = Vector2(44, -22)
@@ -421,7 +421,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/7/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="8" type="Node2D" parent="ShopGrid"]
 position = Vector2(-66, -7.98702e-06)
@@ -442,7 +442,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/8/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="9" type="Node2D" parent="ShopGrid"]
 position = Vector2(-44, -6.07967e-06)
@@ -463,7 +463,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/9/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="10" type="Node2D" parent="ShopGrid"]
 position = Vector2(-22, -6.07967e-06)
@@ -484,7 +484,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/10/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="11" type="Node2D" parent="ShopGrid"]
 position = Vector2(-1.52588e-05, -6.07967e-06)
@@ -505,7 +505,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/11/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="12" type="Node2D" parent="ShopGrid"]
 position = Vector2(22, -6.07967e-06)
@@ -526,7 +526,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/12/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="13" type="Node2D" parent="ShopGrid"]
 position = Vector2(44, -6.07967e-06)
@@ -547,7 +547,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/13/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="14" type="Node2D" parent="ShopGrid"]
 position = Vector2(66, -6.07967e-06)
@@ -568,7 +568,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/14/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="15" type="Node2D" parent="ShopGrid"]
 position = Vector2(-44, 22)
@@ -589,7 +589,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/15/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="16" type="Node2D" parent="ShopGrid"]
 position = Vector2(-22, 22)
@@ -610,7 +610,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/16/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="17" type="Node2D" parent="ShopGrid"]
 position = Vector2(-1.90735e-05, 22)
@@ -631,7 +631,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/17/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="18" type="Node2D" parent="ShopGrid"]
 position = Vector2(22, 22)
@@ -652,7 +652,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/18/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="19" type="Node2D" parent="ShopGrid"]
 position = Vector2(44, 22)
@@ -673,7 +673,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/19/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="20" type="Node2D" parent="ShopGrid"]
 position = Vector2(-22, 44)
@@ -694,7 +694,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/20/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="21" type="Node2D" parent="ShopGrid"]
 position = Vector2(-1.90735e-05, 44)
@@ -715,7 +715,7 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/21/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="22" type="Node2D" parent="ShopGrid"]
 position = Vector2(22, 44)
@@ -736,11 +736,11 @@ texture = ExtResource("4_h3d3g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopGrid/22/Area2D"]
 z_index = 1
 position = Vector2(-7.62939e-06, 3.8147e-06)
-shape = SubResource("RectangleShape2D_q5qox")
+shape = SubResource("RectangleShape2D_hbcv2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_2nojk")
+"": SubResource("AnimationLibrary_gjffe")
 }
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
@@ -755,7 +755,7 @@ direction = Vector2(0, -1)
 gravity = Vector2(0, 0)
 initial_velocity_min = 0.19
 initial_velocity_max = 111.3
-scale_amount_curve = SubResource("Curve_whygg")
+scale_amount_curve = SubResource("Curve_s5400")
 color = Color(1, 0.396078, 0.996078, 1)
 
 [connection signal="animation_finished" from="ShopGridBG" to="." method="_on_shop_grid_animation_finished"]

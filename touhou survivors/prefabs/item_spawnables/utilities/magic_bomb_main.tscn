@@ -7,7 +7,7 @@
 [ext_resource type="Shader" path="res://scripts/shaders/explosion.gdshader" id="4_vqvmg"]
 [ext_resource type="Texture2D" uid="uid://xbifc8dmi5qv" path="res://icon.svg" id="5_niqh7"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jkrii"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hwq4x"]
 resource_local_to_scene = true
 shader = ExtResource("4_vqvmg")
 shader_parameter/center = Vector2(0.5, 0.5)
@@ -16,59 +16,59 @@ shader_parameter/size = 0.0
 shader_parameter/thickness = 0.05
 shader_parameter/offset = 0.005
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gir34"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7mkj"]
 bg_color = Color(0, 0, 0, 0.282353)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7p60"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpx18"]
 resource_local_to_scene = true
 shader = ExtResource("2_jt4yf")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_10mk4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvm34"]
 atlas = ExtResource("4_fsqqx")
 region = Rect2(0, 0, 20, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_whasn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4aeg"]
 atlas = ExtResource("4_fsqqx")
 region = Rect2(20, 0, 20, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bpnmg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdyfr"]
 atlas = ExtResource("4_fsqqx")
 region = Rect2(40, 0, 20, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qvjvk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8eu8"]
 atlas = ExtResource("4_fsqqx")
 region = Rect2(60, 0, 20, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0xrvs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4avjv"]
 atlas = ExtResource("4_fsqqx")
 region = Rect2(0, 20, 20, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ntwuc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_alyve"]
 atlas = ExtResource("4_fsqqx")
 region = Rect2(20, 20, 20, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_67y70"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mms1t"]
 atlas = ExtResource("4_fsqqx")
 region = Rect2(40, 20, 20, 20)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_h2nae"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_418jo"]
 animations = [{
-"frames": [SubResource("AtlasTexture_10mk4"), SubResource("AtlasTexture_whasn"), SubResource("AtlasTexture_bpnmg"), SubResource("AtlasTexture_qvjvk"), SubResource("AtlasTexture_0xrvs"), SubResource("AtlasTexture_ntwuc"), SubResource("AtlasTexture_67y70")],
+"frames": [SubResource("AtlasTexture_mvm34"), SubResource("AtlasTexture_a4aeg"), SubResource("AtlasTexture_cdyfr"), SubResource("AtlasTexture_r8eu8"), SubResource("AtlasTexture_4avjv"), SubResource("AtlasTexture_alyve"), SubResource("AtlasTexture_mms1t")],
 "loop": true,
 "name": &"default",
 "speed": 14.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fxpi2"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_tn61u"]
 radius = 7.07107
 
-[sub_resource type="Animation" id="Animation_i5hvm"]
+[sub_resource type="Animation" id="Animation_x4wkf"]
 resource_name = "bomb_explosion"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -119,7 +119,7 @@ tracks/3/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_fo88f"]
+[sub_resource type="Animation" id="Animation_t3yqt"]
 resource_name = "bomb_grow"
 step = 0.05
 tracks/0/type = "value"
@@ -193,7 +193,7 @@ tracks/3/keys = {
 "values": [Vector2(1, 1), Vector2(3.5, 3.5)]
 }
 
-[sub_resource type="Animation" id="Animation_ydls6"]
+[sub_resource type="Animation" id="Animation_7jmfx"]
 resource_name = "bomb_throw"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -246,11 +246,11 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_evqxo"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hgl2i"]
 _data = {
-"bomb_explosion": SubResource("Animation_i5hvm"),
-"bomb_grow": SubResource("Animation_fo88f"),
-"bomb_throw": SubResource("Animation_ydls6")
+"bomb_explosion": SubResource("Animation_x4wkf"),
+"bomb_grow": SubResource("Animation_t3yqt"),
+"bomb_throw": SubResource("Animation_7jmfx")
 }
 
 [node name="magic_bomb_main" type="Node2D"]
@@ -261,7 +261,7 @@ script = ExtResource("1_p2thr")
 
 [node name="Sprite2D" type="Sprite2D" parent="main_body"]
 visible = false
-material = SubResource("ShaderMaterial_jkrii")
+material = SubResource("ShaderMaterial_hwq4x")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_niqh7")
 
@@ -270,27 +270,27 @@ offset_left = -5.0
 offset_top = -1.0
 offset_right = 5.0
 offset_bottom = 7.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_gir34")
+theme_override_styles/panel = SubResource("StyleBoxFlat_l7mkj")
 
 [node name="MagicBomb" type="Sprite2D" parent="main_body"]
-material = SubResource("ShaderMaterial_y7p60")
+material = SubResource("ShaderMaterial_hpx18")
 texture = ExtResource("3_yyp0r")
 
 [node name="Explosion" type="AnimatedSprite2D" parent="main_body"]
 visible = false
 scale = Vector2(2, 2)
-frames = SubResource("SpriteFrames_h2nae")
+frames = SubResource("SpriteFrames_418jo")
 
 [node name="Area2D" type="Area2D" parent="main_body"]
 collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
-shape = SubResource("CircleShape2D_fxpi2")
+shape = SubResource("CircleShape2D_tn61u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_evqxo")
+"": SubResource("AnimationLibrary_hgl2i")
 }
 
 [connection signal="animation_finished" from="main_body/Explosion" to="." method="_on_explosion_animation_finished"]

@@ -1,20 +1,22 @@
-[gd_scene load_steps=77 format=3 uid="uid://cah8y53sm3blk"]
+[gd_scene load_steps=94 format=3 uid="uid://cah8y53sm3blk"]
 
 [ext_resource type="Script" path="res://scripts/misc/Player.gd" id="1_37at3"]
 [ext_resource type="Texture2D" uid="uid://bsv6waqhjtkfp" path="res://sprites/actors/reimu.png" id="2_kv5a8"]
 [ext_resource type="Script" path="res://scripts/logic_ui/starting_item_array_resource.gd" id="2_v4ptu"]
-[ext_resource type="Resource" uid="uid://d3gous8n5qc28" path="res://prefabs/inventory/resources/Magic Bomb.tres" id="3_0u7ub"]
+[ext_resource type="Resource" uid="uid://by6ign4sjd165" path="res://prefabs/inventory/resources/Gap Umbrella.tres" id="3_r3yew"]
 [ext_resource type="Script" path="res://scripts/logic_ui/starting_item_resource.gd" id="4_ncomf"]
+[ext_resource type="Texture2D" uid="uid://bqsgbej3ai1oo" path="res://sprites/actors/player_mask.png" id="6_d0cf2"]
+[ext_resource type="Texture2D" uid="uid://c00dvtb2rkss0" path="res://sprites/actors/reimu_teleport.png" id="7_eg6c3"]
 
-[sub_resource type="Resource" id="Resource_o42u3"]
+[sub_resource type="Resource" id="Resource_18dbi"]
 script = ExtResource("4_ncomf")
-item = ExtResource("3_0u7ub")
-cooldown = 4
-stack = 3
+item = ExtResource("3_r3yew")
+cooldown = 10
+stack = 1
 
-[sub_resource type="Resource" id="Resource_p0mlu"]
+[sub_resource type="Resource" id="Resource_mqpte"]
 script = ExtResource("2_v4ptu")
-starting_item = [SubResource("Resource_o42u3")]
+starting_item = [SubResource("Resource_18dbi")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lia0m"]
 bg_color = Color(0, 0, 0, 0.329412)
@@ -316,6 +318,58 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n2ex"]
+atlas = ExtResource("7_eg6c3")
+region = Rect2(0, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_an4qc"]
+atlas = ExtResource("7_eg6c3")
+region = Rect2(11, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4b3q"]
+atlas = ExtResource("7_eg6c3")
+region = Rect2(22, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ammlu"]
+atlas = ExtResource("7_eg6c3")
+region = Rect2(33, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uj4y0"]
+atlas = ExtResource("7_eg6c3")
+region = Rect2(0, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isd28"]
+atlas = ExtResource("7_eg6c3")
+region = Rect2(11, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vwom"]
+atlas = ExtResource("7_eg6c3")
+region = Rect2(22, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78ca8"]
+atlas = ExtResource("7_eg6c3")
+region = Rect2(33, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05sw7"]
+atlas = ExtResource("7_eg6c3")
+region = Rect2(0, 22, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32pqb"]
+atlas = ExtResource("7_eg6c3")
+region = Rect2(11, 22, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bghnp"]
+atlas = ExtResource("7_eg6c3")
+region = Rect2(22, 22, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_73rjy"]
+animations = [{
+"frames": [SubResource("AtlasTexture_0n2ex"), SubResource("AtlasTexture_an4qc"), SubResource("AtlasTexture_a4b3q"), SubResource("AtlasTexture_ammlu"), SubResource("AtlasTexture_uj4y0"), SubResource("AtlasTexture_isd28"), SubResource("AtlasTexture_1vwom"), SubResource("AtlasTexture_78ca8"), SubResource("AtlasTexture_05sw7"), SubResource("AtlasTexture_32pqb"), SubResource("AtlasTexture_bghnp")],
+"loop": true,
+"name": &"default",
+"speed": 22.0
+}]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2un4"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
@@ -343,12 +397,306 @@ max_value = 2.0
 _data = [Vector2(0, 0), 0.0, 2.33877, 0, 1, Vector2(0.544186, 1.27273), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.79221, 0.0, 1, 0]
 point_count = 3
 
+[sub_resource type="Animation" id="Animation_n73m6"]
+resource_name = "gap_teleport_in"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WalkAnimations:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Teleport_Mask/TeleportAnimation:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Teleport_Mask:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -6), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Teleport_Mask/TeleportAnimation:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.25, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 11)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Teleport_Mask:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Healthbar:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("hitbox:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("hitbox:monitorable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Teleport_Mask/TeleportAnimation:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 1), Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Item_Pickup:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_aopch"]
+resource_name = "gap_teleport_out"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WalkAnimations:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Teleport_Mask/TeleportAnimation:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Teleport_Mask:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.25, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -6), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Teleport_Mask/TeleportAnimation:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 11), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Teleport_Mask:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Healthbar:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("hitbox:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("hitbox:monitorable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"gap_close"
+}]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Teleport_Mask/TeleportAnimation:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 1), Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Item_Pickup:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k157t"]
+_data = {
+"gap_teleport_in": SubResource("Animation_n73m6"),
+"gap_teleport_out": SubResource("Animation_aopch")
+}
+
 [node name="player" type="CharacterBody2D"]
 z_index = 7
 texture_filter = 1
 collision_mask = 0
 script = ExtResource("1_37at3")
-starting_items = SubResource("Resource_p0mlu")
+starting_items = SubResource("Resource_mqpte")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = -4.0
@@ -360,6 +708,15 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_lia0m")
 [node name="WalkAnimations" type="AnimatedSprite2D" parent="."]
 frames = SubResource("SpriteFrames_is7f2")
 animation = &"idle_down"
+
+[node name="Teleport_Mask" type="Sprite2D" parent="."]
+visible = false
+clip_children = 1
+texture = ExtResource("6_d0cf2")
+
+[node name="TeleportAnimation" type="AnimatedSprite2D" parent="Teleport_Mask"]
+frames = SubResource("SpriteFrames_73rjy")
+frame = 1
 
 [node name="Healthbar" type="ProgressBar" parent="."]
 offset_left = -4.0
@@ -391,7 +748,7 @@ scale_amount_curve = SubResource("Curve_picaq")
 color = Color(1, 0, 0, 1)
 color_ramp = SubResource("Gradient_pqeed")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Item_Pickup" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_3vg3m")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -405,6 +762,11 @@ angular_velocity_min = 1.0
 angular_velocity_max = 12.52
 scale_amount_curve = SubResource("Curve_jdk0i")
 color = Color(0.521569, 0.870588, 0.133333, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k157t")
+}
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]

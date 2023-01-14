@@ -13,3 +13,8 @@ signal hide_tooltip
 signal leveling_up
 signal modify_player_speed
 signal modify_player_scale
+signal gap_teleport
+signal gap_camera_tween
+signal gap_finish
+signal gap_close
+signal player_damaged

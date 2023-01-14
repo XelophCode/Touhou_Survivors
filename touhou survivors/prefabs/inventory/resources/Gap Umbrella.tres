@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://by6ign4sjd165"]
+
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_h2u7j"]
+[ext_resource type="Texture2D" uid="uid://c47eq77gs4cn0" path="res://sprites/items/item_icons/gap_umbrella_icon.png" id="1_nsrp4"]
+[ext_resource type="PackedScene" uid="uid://baydl32gd5lu6" path="res://prefabs/inventory/gap_umbrella_inventory.tscn" id="2_hyy6m"]
+[ext_resource type="PackedScene" uid="uid://ddxp8f0fm0jvw" path="res://prefabs/item_spawnables/Gap_Umbrella.tscn" id="4_67mwv"]
+
+[resource]
+script = ExtResource("1_h2u7j")
+enabled = true
+item_name = 22
+description = ""
+inventory_size = 4
+inventory = ExtResource("2_hyy6m")
+spawnable = ExtResource("4_67mwv")
+icon = ExtResource("1_nsrp4")
+active = true
+cooldown = 15
+stack_limit = 1
+one_time_spawn = true

@@ -6,10 +6,10 @@ func _ready():
 	$main_body/AnimatedSprite2D.play("default")
 	rotation = deg_to_rad(randi_range(0,359))
 	match stack_count:
-		1: scale_mod(0.8)
-		2: scale_mod(1.2)
-		3: scale_mod(1.6)
-		4: scale_mod(2.4)
+		1: scale_mod(1.4)
+		2: scale_mod(1.6)
+		3: scale_mod(2.4)
+		4: scale_mod(3.2)
 
 func scale_mod(amt):
 	scale.x = amt
