@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg1opqcml8vac"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/misc/health_pickup.gd" id="1_j4kkf"]
-[ext_resource type="Texture2D" uid="uid://ckvi1vbyfu3tk" path="res://sprites/health_pickup.png" id="2_jtyb7"]
+[ext_resource type="Texture2D" uid="uid://ckvi1vbyfu3tk" path="res://sprites/items/pickups/health_pickup.png" id="2_jtyb7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s615c"]
 bg_color = Color(0, 0, 0, 0.282353)

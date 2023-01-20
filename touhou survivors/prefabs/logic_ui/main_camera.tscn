@@ -1,7 +1,6 @@
-[gd_scene load_steps=31 format=3 uid="uid://5s0m512bh4ki"]
+[gd_scene load_steps=33 format=3 uid="uid://cfflhyetxhgwh"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/camera_main.gd" id="1_365xw"]
-[ext_resource type="Texture2D" uid="uid://bjuq7vtc66ft3" path="res://sprites/vignette.png" id="2_7r0pb"]
 [ext_resource type="PackedScene" uid="uid://iqvjyq5tkfb0" path="res://prefabs/logic_ui/weapon_spawner.tscn" id="2_8kxfo"]
 [ext_resource type="Texture2D" uid="uid://ciojqae21qxjp" path="res://sprites/ui/screen_dim.png" id="2_bpj4s"]
 [ext_resource type="Texture2D" uid="uid://cfbld0no123ax" path="res://sprites/ui/powerbar_border.png" id="2_vlpjd"]
@@ -9,12 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://5xfk8cnv31f3" path="res://sprites/ui/reimu_portrait_anims.png" id="5_nutmi"]
 [ext_resource type="PackedScene" uid="uid://cbjpy4ciqe0t1" path="res://prefabs/logic_ui/Inventory.tscn" id="5_yatjy"]
 [ext_resource type="PackedScene" uid="uid://6dwuqj2vu1k8" path="res://prefabs/logic_ui/shop.tscn" id="6_bsv6g"]
+[ext_resource type="Texture2D" uid="uid://ptcu0hj15c6b" path="res://sprites/ui/resume.png" id="8_lv6fl"]
+[ext_resource type="Texture2D" uid="uid://bjuq7vtc66ft3" path="res://sprites/ui/vignette.png" id="8_yx7o0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsojg"]
 bg_color = Color(0.180392, 0.133333, 0.184314, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mx0fe"]
 bg_color = Color(0.137255, 0.564706, 0.388235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iij6q"]
+bg_color = Color(0, 0, 0, 0.545098)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t2ro8"]
 atlas = ExtResource("5_nutmi")
@@ -82,22 +86,70 @@ region = Rect2(78, 54, 26, 27)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wande"]
 animations = [{
-"frames": [SubResource("AtlasTexture_t2ro8"), SubResource("AtlasTexture_kfgmr"), SubResource("AtlasTexture_xao2j"), SubResource("AtlasTexture_8j6u0")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2ro8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfgmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xao2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j6u0")
+}],
 "loop": true,
 "name": &"blink",
 "speed": 8.0
 }, {
-"frames": [SubResource("AtlasTexture_g72f2"), SubResource("AtlasTexture_vvy0q"), SubResource("AtlasTexture_we6th"), SubResource("AtlasTexture_47a5x")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g72f2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvy0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we6th")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47a5x")
+}],
 "loop": true,
 "name": &"damage",
 "speed": 8.0
 }, {
-"frames": [SubResource("AtlasTexture_2m8wq"), SubResource("AtlasTexture_o3i1v"), SubResource("AtlasTexture_chnm5"), SubResource("AtlasTexture_p4fvy")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m8wq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3i1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chnm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4fvy")
+}],
 "loop": true,
 "name": &"head_bob",
 "speed": 8.0
 }, {
-"frames": [SubResource("AtlasTexture_ogmbu"), SubResource("AtlasTexture_wvybp"), SubResource("AtlasTexture_ka2mi"), SubResource("AtlasTexture_5euyu")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogmbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvybp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ka2mi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5euyu")
+}],
 "loop": true,
 "name": &"smile",
 "speed": 8.0
@@ -160,14 +212,28 @@ visible = false
 position = Vector2(88, 2)
 
 [node name="Shop" parent="." instance=ExtResource("6_bsv6g")]
-visible = false
 position = Vector2(-100, 0)
 
 [node name="WeaponSpawner" parent="." instance=ExtResource("2_8kxfo")]
 position = Vector2(-178, -95)
 
+[node name="shop_close_button" type="Node2D" parent="."]
+visible = false
+
+[node name="Button" type="Button" parent="shop_close_button"]
+offset_left = -214.0
+offset_top = 44.0
+offset_right = -190.75
+offset_bottom = 121.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_iij6q")
+
+[node name="resume" type="Sprite2D" parent="shop_close_button"]
+position = Vector2(-202, 82)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_lv6fl")
+
 [node name="Vignette" type="Sprite2D" parent="."]
-texture = ExtResource("2_7r0pb")
+texture = ExtResource("8_yx7o0")
 
 [node name="ReimuPortrait" type="AnimatedSprite2D" parent="."]
 z_index = 10
@@ -184,5 +250,6 @@ libraries = {
 wait_time = 5.0
 autostart = true
 
+[connection signal="button_down" from="shop_close_button/Button" to="." method="_on_button_button_down"]
 [connection signal="animation_finished" from="ReimuPortrait" to="." method="_on_reimu_portrait_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

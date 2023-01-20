@@ -25,7 +25,22 @@ region = Rect2(0, 10, 9, 5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_354uu"]
 animations = [{
-"frames": [SubResource("AtlasTexture_8v6nl"), SubResource("AtlasTexture_5pxdf"), SubResource("AtlasTexture_dkn0i"), SubResource("AtlasTexture_2yila"), SubResource("AtlasTexture_stynn")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v6nl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pxdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkn0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yila")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stynn")
+}],
 "loop": true,
 "name": &"default",
 "speed": 10.0
@@ -38,7 +53,22 @@ point_count = 3
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0nuxy"]
 animations = [{
-"frames": [SubResource("AtlasTexture_8v6nl"), SubResource("AtlasTexture_5pxdf"), SubResource("AtlasTexture_dkn0i"), SubResource("AtlasTexture_2yila"), SubResource("AtlasTexture_stynn")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v6nl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pxdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkn0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yila")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stynn")
+}],
 "loop": true,
 "name": &"default",
 "speed": 10.0
@@ -46,6 +76,72 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_buo0d"]
 size = Vector2(8, 4)
+
+[sub_resource type="Animation" id="Animation_5epn5"]
+resource_name = "close_both_gaps"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/Gap2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 3, 2, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("main_body/Gap2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("main_body/Gap1:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 3, 2, 1, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("main_body/Gap1:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_4d1yn"]
 resource_name = "close_gap1"
@@ -109,72 +205,6 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.25),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_5epn5"]
-resource_name = "close_both_gaps"
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("main_body/Gap2:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [4, 3, 2, 1, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("main_body/Gap2:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("main_body/Gap1:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [4, 3, 2, 1, 0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("main_body/Gap1:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "values": [{

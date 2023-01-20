@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkyo1uc8p85eh"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/misc/lamp.gd" id="1_rrdsc"]
-[ext_resource type="Texture2D" uid="uid://b0d1rvdfh4221" path="res://sprites/lamp.png" id="2_j2ucu"]
+[ext_resource type="Texture2D" uid="uid://b0d1rvdfh4221" path="res://sprites/environment/lamp.png" id="2_j2ucu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sub2h"]
 bg_color = Color(0, 0, 0, 0.298039)

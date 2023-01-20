@@ -1,6 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://pdgdp0iqnjtm"]
+[gd_scene load_steps=30 format=3]
 
-[ext_resource type="Script" path="res://scripts/keystone_main.gd" id="1_vopml"]
+[ext_resource type="Script" path="res://scripts/inventory/keystone_main.gd" id="1_vopml"]
 [ext_resource type="Texture2D" uid="uid://cvcretaggojnu" path="res://sprites/items/item_spawnables/keystone.png" id="2_nkf1n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hbam"]

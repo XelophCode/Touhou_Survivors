@@ -7,6 +7,8 @@ class_name FolderListResource
 		FolderPath = value
 		load_all_resources()
 
+
+
 @export
 var ResourceCategory : String
 
@@ -27,8 +29,8 @@ func load_all_resources() -> void:
 		folder.list_dir_end()
 	else:
 		print("An error occurred when trying to access the folder.")
-		
-		
+	
+
 func find_index_of(resource : Resource) -> int:
 	return all_resources.find(resource)
 

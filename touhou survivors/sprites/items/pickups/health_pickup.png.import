@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cco1shtjfu25o"
-path="res://.godot/imported/faith.png-dc3136b5ff1af99c938e11bb1e06acf3.ctex"
+uid="uid://ckvi1vbyfu3tk"
+path="res://.godot/imported/health_pickup.png-8684d52343b86c07960684d129955734.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/faith.png"
-dest_files=["res://.godot/imported/faith.png-dc3136b5ff1af99c938e11bb1e06acf3.ctex"]
+source_file="res://sprites/items/pickups/health_pickup.png"
+dest_files=["res://.godot/imported/health_pickup.png-8684d52343b86c07960684d129955734.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0d1rvdfh4221"
-path="res://.godot/imported/lamp.png-e9618a1b36c31f2d31abeef7c1bef4ba.ctex"
+uid="uid://bnrjv4140ogy6"
+path="res://.godot/imported/grass_patch_4.png-86b205057c70aad448dee0c89087c15f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/lamp.png"
-dest_files=["res://.godot/imported/lamp.png-e9618a1b36c31f2d31abeef7c1bef4ba.ctex"]
+source_file="res://sprites/environment/grass_patch_4.png"
+dest_files=["res://.godot/imported/grass_patch_4.png-86b205057c70aad448dee0c89087c15f.ctex"]
 
 [params]
 

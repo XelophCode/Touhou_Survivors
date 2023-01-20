@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://docqktleb7kem"
-path="res://.godot/imported/grassbg.png-10849f58df5926105915a89421e0d55d.ctex"
+uid="uid://cw2i0ovty5o74"
+path="res://.godot/imported/close_shop2.png-a5f1fbc47306ad7dd1440d799b5c536b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/grassbg.png"
-dest_files=["res://.godot/imported/grassbg.png-10849f58df5926105915a89421e0d55d.ctex"]
+source_file="res://sprites/ui/close_shop2.png"
+dest_files=["res://.godot/imported/close_shop2.png-a5f1fbc47306ad7dd1440d799b5c536b.ctex"]
 
 [params]
 

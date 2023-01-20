@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgmq8lsv3l2s3"
-path="res://.godot/imported/grass_patch_2.png-dff7e40ba1310e0a2aac2f0f9a09286d.ctex"
+uid="uid://qtwnt4ssx04l"
+path="res://.godot/imported/power.png-c77b55705a05087a195d1941b93cd599.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/grass_patch_2.png"
-dest_files=["res://.godot/imported/grass_patch_2.png-dff7e40ba1310e0a2aac2f0f9a09286d.ctex"]
+source_file="res://sprites/items/pickups/power.png"
+dest_files=["res://.godot/imported/power.png-c77b55705a05087a195d1941b93cd599.ctex"]
 
 [params]
 

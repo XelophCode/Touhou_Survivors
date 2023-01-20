@@ -88,12 +88,11 @@ func open_shop():
 	
 	for items in items_to_spawn:
 		items.position += Globals.player_position + Vector2(-100,0)
-		
 		get_parent().get_node("PlayerInventory").add_child(items)
-	
 
 func leveling_up(value:bool):
 	if value:
+		$CPUParticles2D.emitting = true
 		$AnimationPlayer.play("stretch")
 		$CPUParticles2D2.emitting = true
 		visible = true
@@ -103,9 +102,9 @@ func leveling_up(value:bool):
 			child.get_child(0).monitorable = true
 	else:
 		visible = false
+		$CPUParticles2D.emitting = false
 		for child in $ShopGrid.get_children():
 			child.get_child(0).monitorable = false
-
 
 func _on_shop_grid_animation_finished():
 	$ShopGridBG.playing = false
@@ -120,7 +119,7 @@ func pass_metadata_to_item(inst, item):
 	inst.active = item.active
 	inst.item_cooldown = item.cooldown
 	inst.stack_count_max = item.stack_limit
-	
+	inst.one_time_spawn = item.one_time_spawn
 
 func _physics_process(delta):
 	eyes_scrolling -= delta * 8

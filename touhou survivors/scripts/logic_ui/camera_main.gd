@@ -32,9 +32,9 @@ func _physics_process(delta):
 func open_inventory():
 	$Inventory.open_inventory()
 	$Shop.open_shop()
-	var new_close_button = shop_close_button.instantiate()
-	new_close_button.global_position += Vector2(-100,102)
-	add_child(new_close_button)
+#	var new_close_button = shop_close_button.instantiate()
+#	new_close_button.global_position += Vector2(-100,102)
+#	add_child(new_close_button)
 	max_power *= 1.5
 	max_power = ceil(max_power)
 	power = 0
@@ -46,6 +46,7 @@ func update_power(value:float):
 
 func leveling_up(value):
 	if value:
+		$shop_close_button.visible = true
 		$Timer.stop()
 		$ReimuPortrait.play("smile")
 		$ScreenDim.visible = true
@@ -81,3 +82,9 @@ func _on_timer_timeout():
 
 func damage_animation():
 	$ReimuPortrait.play("damage")
+
+
+func _on_button_button_down():
+	Globals.leveling_up = false
+	Signals.emit_signal("leveling_up",false)
+	$shop_close_button.visible = false

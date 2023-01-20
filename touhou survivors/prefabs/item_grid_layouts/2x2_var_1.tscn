@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://1xvuuqohh8pd"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/inventory/item_interactions.gd" id="1_aqouu"]
 

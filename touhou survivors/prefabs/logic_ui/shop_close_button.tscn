@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bob4rbx65prwq"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/ShopCloseButton.gd" id="1_8k6db"]
 [ext_resource type="Texture2D" uid="uid://d1pcfgxsrjg63" path="res://sprites/ui/torii_gate.png" id="2_stsbc"]
