@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1ocs2lvo5hx1"]
+[gd_scene load_steps=3 format=3 uid="uid://d1ocs2lvo5hx1"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Keystone.gd" id="1_1gd7c"]
+[ext_resource type="PackedScene" path="res://prefabs/item_spawnables/utilities/keystone_main.tscn" id="2_64okk"]
 
 [node name="Keystone" type="Node2D"]
 script = ExtResource("1_1gd7c")
+keystone = ExtResource("2_64okk")

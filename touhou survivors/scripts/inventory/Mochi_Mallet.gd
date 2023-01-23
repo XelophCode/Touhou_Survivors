@@ -6,10 +6,10 @@ func _ready():
 	damage = 10
 	$main_body/AnimatedSprite2D.play("default")
 	$AnimationPlayer.play("hitbox_move")
-	match stack_count:
-		1: scale_mod(3.0)
-		2: scale_mod(4.5)
-		3: scale_mod(6.0)
+	if occult_orb:
+		scale_mod(6.0)
+	else:
+		scale_mod(3.0)
 
 func _physics_process(_delta):
 	global_position = Globals.player_position

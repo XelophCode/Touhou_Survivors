@@ -8,13 +8,17 @@ var idle_animation:String = "idle_down"
 @export var move_speed:float = 1000
 @export var starting_items: StartingItemArrayResource
 var power:int
+var faith:float
 var current_items:Array
 var hp:float = 100.0
 var damage_taken:float
 var teleport_pos:Vector2
-
+var faith_max = Globals.occult_orb_max * 5
+var tweening_focus:bool = false
+var focusing:bool = false
 
 func _ready():
+	$magic_circle_spins.play("spin")
 	$Healthbar.max_value = hp
 	Signals.connect("modify_player_speed",modify_speed)
 	Signals.connect("modify_player_scale",modify_scale)
@@ -26,7 +30,7 @@ func _ready():
 		for item in starting_items.starting_item:
 			if item.item.one_time_spawn:
 				Globals.one_time_spawns.append(item.item.name[item.item.item_name])
-			Signals.emit_signal("add_weapon",item.item.spawnable,counter,item.cooldown,item.item.active,item.item.icon,item.stack,true)
+			Signals.emit_signal("add_weapon",item.item.spawnable,counter,item.cooldown,item.item.active,item.item.icon,item.occult_orb,true)
 			counter += 1
 
 func _physics_process(delta):
@@ -34,7 +38,17 @@ func _physics_process(delta):
 	
 	move = Vector2.ZERO
 	
+	var magic_circle_scale : float = (Globals.faith / faith_max) * 2 + 1
+	magic_circle_scale = clamp(magic_circle_scale,1.0,3.0)
+	$MagicCircle.scale = Vector2(magic_circle_scale,magic_circle_scale)
+	
 	if !Globals.leveling_up:
+		if Input.is_action_pressed("focus") and !tweening_focus and !focusing:
+			magic_circle_tween_on(delta)
+		
+		if !Input.is_action_pressed("focus") and !tweening_focus:
+			magic_circle_tween_off(delta)
+		
 		move.x = Input.get_action_raw_strength("move_right") - Input.get_action_raw_strength("move_left")
 		move.y = Input.get_action_raw_strength("move_down") - Input.get_action_raw_strength("move_up")
 		if damage_taken != 0:
@@ -96,3 +110,31 @@ func gap_finish():
 
 func gap_close():
 	Signals.emit_signal("gap_close")
+
+func _on_item_pull_area_entered(area):
+	area.get_parent().move_towards_player = true
+
+func _on_item_pull_area_exited(area):
+	area.get_parent().move_towards_player = false
+
+func magic_circle_tween_on(delta):
+	focusing = true
+	tweening_focus = true
+	$MagicCircle/Sprites.visible = true
+	var tween = create_tween()
+	var current_scale:Vector2 = $MagicCircle/Sprites.scale
+	$MagicCircle/Sprites.scale = Vector2.ZERO
+	tween.tween_property($MagicCircle/Sprites,"scale",current_scale,delta*20)
+	await tween.finished
+	tweening_focus = false
+
+func magic_circle_tween_off(delta):
+	focusing = false
+	tweening_focus = true
+	var tween = create_tween()
+	var current_scale = $MagicCircle/Sprites.scale
+	tween.tween_property($MagicCircle/Sprites,"scale",Vector2.ZERO,delta*20)
+	await tween.finished
+	$MagicCircle/Sprites.visible = false
+	$MagicCircle/Sprites.scale = current_scale
+	tweening_focus = false

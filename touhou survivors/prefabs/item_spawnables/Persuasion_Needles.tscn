@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://jxnh11mdu5ay"]
+[gd_scene load_steps=3 format=3 uid="uid://jxnh11mdu5ay"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Persuasion_Needles.gd" id="1_jht56"]
+[ext_resource type="PackedScene" uid="uid://djn4ec7jc42uw" path="res://prefabs/item_spawnables/utilities/Persuasion_Needle_Main.tscn" id="2_ap2c6"]
 
 [node name="Persuasion_Needles" type="Node2D"]
 script = ExtResource("1_jht56")
+needles = ExtResource("2_ap2c6")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3

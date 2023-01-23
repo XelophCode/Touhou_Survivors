@@ -19,13 +19,11 @@ func _ready():
 	move.x = initial_magnitude
 	global_position = Globals.player_position
 	
+	if occult_orb:
+		scale.x = 2; scale.y = 2
+	else:
+		scale.x = 1; scale.y = 1
 	
-	match stack_count:
-		1: scale.x = 1; scale.y = 1
-		2: scale.x = 1.2; scale.y = 1.2
-		3: scale.x = 1.6; scale.y = 1.6
-		4: scale.x = 2; scale.y = 2
-		_: print("ERROR: YINYANG OUT OF STACK RANGE, COUNT: " + str(stack_count))
 
 func _physics_process(delta):
 	if !pause:

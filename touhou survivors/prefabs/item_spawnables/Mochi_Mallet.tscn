@@ -53,7 +53,43 @@ region = Rect2(48, 30, 16, 15)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qixmf"]
 animations = [{
-"frames": [SubResource("AtlasTexture_iu0d7"), SubResource("AtlasTexture_opend"), SubResource("AtlasTexture_if4p1"), SubResource("AtlasTexture_220ko"), SubResource("AtlasTexture_qp22e"), SubResource("AtlasTexture_hom4y"), SubResource("AtlasTexture_64acd"), SubResource("AtlasTexture_0utt0"), SubResource("AtlasTexture_dccw8"), SubResource("AtlasTexture_m47c6"), SubResource("AtlasTexture_rp2yd"), SubResource("AtlasTexture_567xq")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu0d7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opend")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if4p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_220ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qp22e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hom4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64acd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0utt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dccw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m47c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rp2yd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_567xq")
+}],
 "loop": true,
 "name": &"default",
 "speed": 12.0

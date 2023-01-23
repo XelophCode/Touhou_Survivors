@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dhjau0yq12v0y"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_lxcp8"]
-[ext_resource type="PackedScene" uid="uid://crki54dgojrae" path="res://prefabs/item_grid_layouts/2x3_var_4.tscn" id="2_yittp"]
+[ext_resource type="PackedScene" path="res://prefabs/item_grid_layouts/2x3_var_4.tscn" id="2_dbdcv"]
 [ext_resource type="Texture2D" uid="uid://csx3mhowlt8ti" path="res://sprites/items/inventory_item_BGs/2x3var3_item_large_bg.png" id="3_0yp86"]
-[ext_resource type="PackedScene" path="res://prefabs/logic_ui/occult_orb.tscn" id="3_entxo"]
+[ext_resource type="PackedScene" uid="uid://63murqtbvxlb" path="res://prefabs/logic_ui/occult_orb.tscn" id="3_entxo"]
 [ext_resource type="Texture2D" uid="uid://b2s716ahp815g" path="res://sprites/items/inventory/mochi_mallet_item_large.png" id="4_fw24g"]
 [ext_resource type="Material" uid="uid://dun40mejvqphh" path="res://scripts/shaders/materials/inventory_item_shader_material.tres" id="4_uf5eh"]
 [ext_resource type="AnimationLibrary" uid="uid://c3f6dw06ejniu" path="res://resources/animations/libraries/Inventory_Items.res" id="6_dhr4e"]
@@ -13,7 +13,7 @@ z_index = 6
 texture_filter = 1
 script = ExtResource("1_lxcp8")
 
-[node name="2x3_var_3" parent="." instance=ExtResource("2_yittp")]
+[node name="2x3_var_4" parent="." instance=ExtResource("2_dbdcv")]
 
 [node name="ItemLargeBg" type="Sprite2D" parent="."]
 visible = false

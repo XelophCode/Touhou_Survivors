@@ -1,0 +1,104 @@
+[gd_scene load_steps=14 format=3 uid="uid://bse7pl53vd6xa"]
+
+[ext_resource type="Script" path="res://scripts/misc/pickups.gd" id="1_52jm7"]
+[ext_resource type="Texture2D" uid="uid://cco1shtjfu25o" path="res://sprites/items/pickups/faith.png" id="2_ca0gi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yexvr"]
+atlas = ExtResource("2_ca0gi")
+region = Rect2(0, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_via6a"]
+atlas = ExtResource("2_ca0gi")
+region = Rect2(11, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ablav"]
+atlas = ExtResource("2_ca0gi")
+region = Rect2(22, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5mwk"]
+atlas = ExtResource("2_ca0gi")
+region = Rect2(33, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lo0dr"]
+atlas = ExtResource("2_ca0gi")
+region = Rect2(44, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huskj"]
+atlas = ExtResource("2_ca0gi")
+region = Rect2(55, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3e2d"]
+atlas = ExtResource("2_ca0gi")
+region = Rect2(66, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1lo4"]
+atlas = ExtResource("2_ca0gi")
+region = Rect2(77, 0, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kqaj5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yexvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_via6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ablav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5mwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lo0dr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huskj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3e2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1lo4")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 16.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1pse"]
+size = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqq27"]
+bg_color = Color(0, 0, 0, 0.305882)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Faith" type="Node2D"]
+script = ExtResource("1_52jm7")
+Type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+frames = SubResource("SpriteFrames_kqaj5")
+animation = &"spin"
+playing = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_s1pse")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -3.0
+offset_top = 1.0
+offset_right = 3.0
+offset_bottom = 6.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yqq27")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

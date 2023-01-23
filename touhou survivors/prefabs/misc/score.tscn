@@ -1,0 +1,104 @@
+[gd_scene load_steps=14 format=3 uid="uid://bs3gkqh2srcmg"]
+
+[ext_resource type="Script" path="res://scripts/misc/pickups.gd" id="1_pfhar"]
+[ext_resource type="Texture2D" uid="uid://f5tmn2d88u26" path="res://sprites/items/pickups/score.png" id="2_sibb1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwjkk"]
+atlas = ExtResource("2_sibb1")
+region = Rect2(0, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m51hd"]
+atlas = ExtResource("2_sibb1")
+region = Rect2(11, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gplq8"]
+atlas = ExtResource("2_sibb1")
+region = Rect2(22, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2ppk"]
+atlas = ExtResource("2_sibb1")
+region = Rect2(33, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gox8i"]
+atlas = ExtResource("2_sibb1")
+region = Rect2(44, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3yxt"]
+atlas = ExtResource("2_sibb1")
+region = Rect2(55, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oinr7"]
+atlas = ExtResource("2_sibb1")
+region = Rect2(66, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oimq"]
+atlas = ExtResource("2_sibb1")
+region = Rect2(77, 0, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kqaj5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwjkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m51hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gplq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2ppk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gox8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3yxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oinr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8oimq")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 16.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1pse"]
+size = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqq27"]
+bg_color = Color(0, 0, 0, 0.305882)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Score" type="Node2D"]
+script = ExtResource("1_pfhar")
+Type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+frames = SubResource("SpriteFrames_kqaj5")
+animation = &"spin"
+playing = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_s1pse")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -3.0
+offset_top = 1.0
+offset_right = 3.0
+offset_bottom = 6.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yqq27")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

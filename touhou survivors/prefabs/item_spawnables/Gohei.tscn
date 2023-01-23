@@ -29,7 +29,25 @@ region = Rect2(65, 0, 13, 13)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ir4a6"]
 animations = [{
-"frames": [SubResource("AtlasTexture_nx1sh"), SubResource("AtlasTexture_yncbe"), SubResource("AtlasTexture_8pvga"), SubResource("AtlasTexture_jddso"), SubResource("AtlasTexture_rkn6x"), SubResource("AtlasTexture_38swg")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nx1sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yncbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pvga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jddso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkn6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38swg")
+}],
 "loop": true,
 "name": &"swing",
 "speed": 12.0
@@ -61,7 +79,25 @@ region = Rect2(65, 13, 13, 13)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s02aa"]
 animations = [{
-"frames": [SubResource("AtlasTexture_10a2r"), SubResource("AtlasTexture_31je6"), SubResource("AtlasTexture_5ndlv"), SubResource("AtlasTexture_40hfw"), SubResource("AtlasTexture_f1qdv"), SubResource("AtlasTexture_8hj3f")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10a2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31je6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ndlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40hfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1qdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hj3f")
+}],
 "loop": true,
 "name": &"slash",
 "speed": 12.0

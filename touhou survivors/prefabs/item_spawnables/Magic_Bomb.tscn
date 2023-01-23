@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ce0e3tlygycje"]
+[gd_scene load_steps=3 format=3 uid="uid://ce0e3tlygycje"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Magic_Bomb.gd" id="1_m1esv"]
+[ext_resource type="PackedScene" uid="uid://bnuslehd33gns" path="res://prefabs/item_spawnables/utilities/magic_bomb_main.tscn" id="2_a24uc"]
 
 [node name="Magic_Bomb" type="Node2D"]
 script = ExtResource("1_m1esv")
+bomb = ExtResource("2_a24uc")

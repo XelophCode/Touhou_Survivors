@@ -7,11 +7,10 @@ func _ready():
 	$main_body/swing/swing_sprite.play("swing")
 	$main_body/slash/slash_sprite.play("slash")
 	$AnimationPlayer.play("slash_move")
-	match stack_count:
-		1: damage = 1
-		2: damage = 2
-		3: damage = 3
-		_:pass
+	if occult_orb:
+		damage = 6
+	else:
+		damage = 2
 
 func _physics_process(_delta):
 	global_position = Globals.player_position

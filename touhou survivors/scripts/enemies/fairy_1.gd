@@ -5,6 +5,7 @@ var hp:int = 5
 var damage:float = 1
 var knockback:bool = false
 var previous_velocity:Vector2
+@export_enum("Red","Green","Blue") var type
 
 func _ready():
 	Signals.connect("despawn_offscreen_enemies", despawn)
@@ -25,7 +26,7 @@ func _physics_process(delta):
 	if hp < 1:
 		$AnimatedSprite2D.play("death")
 		if $AnimatedSprite2D.frame == 5:
-			Signals.emit_signal("spawn_power_item",global_position)
+			Signals.emit_signal("spawn_pickup",global_position,type)
 			queue_free()
 
 func despawn():

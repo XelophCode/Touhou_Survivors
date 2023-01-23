@@ -5,6 +5,7 @@ uniform float force;
 uniform float size;
 uniform float thickness;
 uniform float offset;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
 
 void fragment(){
 	float mask = (1.0 - smoothstep(size-0.1,size, length(UV - center))) * smoothstep(size-thickness-0.1,size-thickness, length(UV - center));

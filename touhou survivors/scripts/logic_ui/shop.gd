@@ -118,7 +118,6 @@ func pass_metadata_to_item(inst, item):
 	inst.icon = item.icon
 	inst.active = item.active
 	inst.item_cooldown = item.cooldown
-	inst.stack_count_max = item.stack_limit
 	inst.one_time_spawn = item.one_time_spawn
 
 func _physics_process(delta):

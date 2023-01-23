@@ -54,12 +54,48 @@ region = Rect2(55, 11, 11, 11)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vq8xp"]
 animations = [{
-"frames": [SubResource("AtlasTexture_tku0n"), SubResource("AtlasTexture_7qei6"), SubResource("AtlasTexture_jht2u"), SubResource("AtlasTexture_bvi72"), SubResource("AtlasTexture_m25jc"), SubResource("AtlasTexture_kxh52")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tku0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qei6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jht2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvi72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m25jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxh52")
+}],
 "loop": true,
 "name": &"bottle_break",
 "speed": 12.0
 }, {
-"frames": [SubResource("AtlasTexture_pf4dv"), SubResource("AtlasTexture_3tsi5"), SubResource("AtlasTexture_m3d8a"), SubResource("AtlasTexture_arr5k"), SubResource("AtlasTexture_j27h7"), SubResource("AtlasTexture_flb6e")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf4dv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tsi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3d8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arr5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j27h7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flb6e")
+}],
 "loop": true,
 "name": &"puddle",
 "speed": 12.0

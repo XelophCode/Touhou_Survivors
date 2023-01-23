@@ -2,9 +2,10 @@ extends Node
 class_name signals
 
 signal damage_popup
-signal spawn_power_item
+signal spawn_pickup
 signal despawn_offscreen_enemies
 signal update_power
+signal update_faith
 signal add_weapon
 signal remove_weapon
 signal modify_weapon
@@ -18,3 +19,4 @@ signal gap_camera_tween
 signal gap_finish
 signal gap_close
 signal player_damaged
+signal increase_inventory

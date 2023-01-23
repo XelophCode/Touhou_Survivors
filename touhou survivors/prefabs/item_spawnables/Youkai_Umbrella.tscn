@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyavjkbxuso8c"]
+[gd_scene load_steps=3 format=3 uid="uid://cyavjkbxuso8c"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Youkai_Umbrella.gd" id="1_5g7en"]
+[ext_resource type="PackedScene" uid="uid://bve658dmetorp" path="res://prefabs/item_spawnables/utilities/Umbrella_Main.tscn" id="2_oj5pr"]
 
 [node name="Youkai_Umbrella" type="Node2D"]
 script = ExtResource("1_5g7en")
+umbrella = ExtResource("2_oj5pr")

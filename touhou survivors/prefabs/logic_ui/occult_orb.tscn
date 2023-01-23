@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://63murqtbvxlb"]
 
 [ext_resource type="Texture2D" uid="uid://236ik35olnlb" path="res://sprites/items/inventory/occult_orb_background.png" id="1_6xj7i"]
 [ext_resource type="Texture2D" uid="uid://c1n7p3jwxbfns" path="res://sprites/items/inventory/occult_orb_fill.png" id="2_03f37"]
@@ -33,6 +33,7 @@ texture_progress = ExtResource("2_03f37")
 texture_progress_offset = Vector2(0.5, 0.5)
 
 [node name="shimmer" type="CPUParticles2D" parent="."]
+emitting = false
 amount = 5
 emission_shape = 1
 emission_sphere_radius = 4.0

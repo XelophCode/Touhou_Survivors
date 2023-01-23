@@ -11,9 +11,14 @@ var enemy_spawn_edge_offset = 20
 var viewport_halved:Vector2 = Vector2(213,120)
 var spawn_zones:Array
 @export var spawn_limit:int = 100
-@onready var enemy := preload("res://prefabs/enemies/fairy_1.tscn")
+@export var fairy_red : PackedScene
+@export var fairy_green : PackedScene
+@export var fairy_blue : PackedScene
 @onready var enemy_parent := $EnemyParent
+var enemies : Array
 
+func _ready():
+	enemies = [fairy_red,fairy_green,fairy_blue]
 
 func _on_timer_timeout():
 	if enemy_parent.get_child_count() < spawn_limit and !Globals.leveling_up:
@@ -40,6 +45,6 @@ func _on_timer_timeout():
 		spawn_zones = [enemy_spawn_zone_east,enemy_spawn_zone_north,enemy_spawn_zone_west,enemy_spawn_zone_south]
 		var spawn_position = spawn_zones.pick_random()
 		
-		var inst = enemy.instantiate()
+		var inst = enemies.pick_random().instantiate()
 		inst.global_position = spawn_position
 		enemy_parent.add_child(inst)

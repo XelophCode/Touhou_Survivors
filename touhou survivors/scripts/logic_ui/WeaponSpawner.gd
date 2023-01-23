@@ -19,14 +19,14 @@ func _process(_delta):
 			icon.position = $icon_positions.get_child(counter).position
 			counter += 1
 
-func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bool,icon:Texture,stack_count:float,autostart:bool = false):
+func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bool,icon:Texture,occult_orb:bool,autostart:bool = false):
 	if !inventory_item_ids.has(inventory_item_id):
 		if active:
 			inventory_item_ids.append(inventory_item_id)
 			var timer_new = Timer.new()
 			timer_new.wait_time = cooldown
 			timer_new.autostart = autostart
-			timer_new.connect("timeout",spawn_weapon.bind(scene,stack_count))
+			timer_new.connect("timeout",spawn_weapon.bind(scene,occult_orb))
 			timer_instances[inventory_item_id] = timer_new.get_instance_id()
 			get_node("timer_instances").add_child(timer_new)
 			var icon_inst = $icon_base.duplicate()
@@ -47,9 +47,9 @@ func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bo
 			passive_item_ids[inventory_item_id] = scene_inst.get_instance_id()
 			get_parent().get_parent().get_node("weapons").add_child(scene_inst)
 
-func spawn_weapon(item,stack_count):
+func spawn_weapon(item,occult_orb):
 	var new_weapon_inst = item.instantiate()
-	new_weapon_inst.stack_count = stack_count
+	new_weapon_inst.occult_orb = occult_orb
 	get_parent().get_parent().get_node("weapons").add_child(new_weapon_inst)
 
 func remove_weapon(inventory_item_id:int,active):
@@ -69,14 +69,14 @@ func remove_weapon(inventory_item_id:int,active):
 			timer_instances.erase(inventory_item_id)
 			icon_instances.erase(inventory_item_id)
 
-func modify_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bool,stack_count:float):
-	if timer_instances != {} and active:
+
+func modify_weapon(scene:PackedScene,inventory_item_id:int):
+	if timer_instances != {}:
 		if timer_instances.has(inventory_item_id):
 			var inst_id:int = timer_instances[inventory_item_id]
 			var inst := instance_from_id(inst_id)
-			inst.wait_time = cooldown + 0.0001
 			inst.disconnect("timeout",spawn_weapon)
-			inst.connect("timeout",spawn_weapon.bind(scene,stack_count))
+			inst.connect("timeout",spawn_weapon.bind(scene,true))
 
 func leveling_up(value:bool):
 	if value:

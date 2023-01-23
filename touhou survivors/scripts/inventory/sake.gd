@@ -13,11 +13,10 @@ func _ready():
 	global_position = Globals.player_position
 	$AnimationPlayer.play("throw")
 	$AnimationPlayer.seek(0)
-	match stack_count:
-		1: size_mod = 1.2; damage = 1
-		2: size_mod = 1.5; damage = 1
-		3: size_mod = 2.0; damage = 2
-		_: print("ERROR: SAKE OUT OF STACK RANGE, COUNT: " + str(stack_count))
+	if occult_orb:
+		size_mod = 2.5; damage = 4
+	else:
+		size_mod = 1.2; damage = 1
 
 func _on_hitbox_body_entered(body):
 	do_damage(body)

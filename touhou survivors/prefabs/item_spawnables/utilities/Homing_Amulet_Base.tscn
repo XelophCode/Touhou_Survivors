@@ -28,7 +28,7 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_fqalj")
 
 [node name="Tracker" type="Area2D" parent="main_body/amulet_0"]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/amulet_0/Tracker"]

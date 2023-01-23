@@ -1,0 +1,12 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvyow6vg7hdt6"]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/PowerSpawner.gd" id="1_eh6mb"]
+[ext_resource type="PackedScene" uid="uid://lf1s280eux7x" path="res://prefabs/misc/power.tscn" id="2_ycpv4"]
+[ext_resource type="PackedScene" uid="uid://bse7pl53vd6xa" path="res://prefabs/misc/faith.tscn" id="3_qrj05"]
+[ext_resource type="PackedScene" uid="uid://bs3gkqh2srcmg" path="res://prefabs/misc/score.tscn" id="4_ersp3"]
+
+[node name="PickupSpawner" type="Node2D"]
+script = ExtResource("1_eh6mb")
+power = ExtResource("2_ycpv4")
+faith = ExtResource("3_qrj05")
+score = ExtResource("4_ersp3")

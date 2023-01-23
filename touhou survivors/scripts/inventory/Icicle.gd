@@ -1,6 +1,9 @@
 extends item_base_class
 
-var fragments = preload("res://prefabs/item_spawnables/utilities/Icicle_Fragments.tscn")
+@export var fragments : PackedScene
+var fragment_count:int
+var fragments_with_orb:int = 12
+var fragments_without_orb:int = 3
 
 func _ready():
 	damage = 2
@@ -10,7 +13,11 @@ func _ready():
 
 func _on_area_2d_body_entered(body):
 	do_damage(body)
-	for i in stack_count:
+	if occult_orb:
+		fragment_count = fragments_with_orb
+	else:
+		fragment_count = fragments_without_orb
+	for i in fragment_count:
 		var frag_inst = fragments.instantiate()
 		frag_inst.global_position = $main_body.global_position
 		get_parent().call_deferred("add_child",frag_inst)

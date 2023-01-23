@@ -188,7 +188,6 @@ func not_holding_item():
 		new_position = slot_position_hovering
 		new_rotation = rotation
 		if in_inventory:
-			
 			Signals.emit_signal("add_weapon",scene,get_instance_id(),item_cooldown,active,icon,stack_count)
 			if one_time_spawn:
 				Globals.one_time_spawns.append(item_name)

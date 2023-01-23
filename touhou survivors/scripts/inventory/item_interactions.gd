@@ -3,6 +3,7 @@ extends Node2D
 @onready var parent = get_parent()
 @export_enum("1x1","1x2","1x3","2x2","2x3") var offset_setting
 var show_highlight:bool = false
+var main_area
 
 func _ready():
 	parent.offset_setting = offset_setting
@@ -24,14 +25,16 @@ func _on_click_and_inventory_area_exited(_area):
 
 func _on_main_placement_area_entered(area):
 	parent.current_area_hovered = area
-	parent.slot_position_hovering = area.global_position + parent.rotational_offset
+	main_area = area
 	parent.slots_currently_hovering += 1
+	calculate_slot_position_hovering()
 
 func _on_main_placement_area_exited(_area):
 	parent.slots_currently_hovering -= 1
 
 func _on_additional_placement_area_entered(_area):
 	parent.slots_currently_hovering += 1
+	calculate_slot_position_hovering()
 
 func _on_additional_placement_area_exited(_area):
 	parent.slots_currently_hovering -= 1
@@ -41,3 +44,9 @@ func _on_occupied_and_stack_area_entered(area):
 
 func _on_occupied_and_stack_area_exited(area):
 	parent.occupied_and_stack_exited(area)
+
+func calculate_slot_position_hovering():
+	if main_area != null:
+		parent.slot_position_hovering = main_area.global_position + parent.rotational_offset
+	else:
+		parent.slot_position_hovering = Vector2.ZERO

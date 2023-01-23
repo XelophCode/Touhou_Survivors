@@ -6,11 +6,9 @@ func _ready():
 	rotation = deg_to_rad(Globals.cardinal_direction_to_rotation(Globals.player_facing))
 	$AnimationPlayer.play("throw")
 	$main_body/KnifeThrow.visible = true
-	match stack_count:
-		1: pass
-		2: $main_body/KnifeThrow2.visible = true
-		3: $main_body/KnifeThrow2.visible = true; $main_body/KnifeThrow3.visible = true
-		_: print("ERROR: THROWINGKNIFE OUT OF STACK RANGE, COUNT: " + str(stack_count))
+	if occult_orb:
+		$main_body/KnifeThrow2.visible = true; $main_body/KnifeThrow3.visible = true
+	
 
 func delete():
 	queue_free()

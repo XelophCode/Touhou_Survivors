@@ -5,11 +5,10 @@ func _ready():
 	damage = 2
 	$main_body/AnimatedSprite2D.play("default")
 	rotation = deg_to_rad(randi_range(0,359))
-	match stack_count:
-		1: scale_mod(1.4)
-		2: scale_mod(1.6)
-		3: scale_mod(2.4)
-		4: scale_mod(3.2)
+	if occult_orb:
+		scale_mod(3.2)
+	else:
+		scale_mod(1.4)
 
 func scale_mod(amt):
 	scale.x = amt

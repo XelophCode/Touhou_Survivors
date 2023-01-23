@@ -8,7 +8,6 @@ class_name FolderListResource
 		load_all_resources()
 
 
-
 @export
 var ResourceCategory : String
 

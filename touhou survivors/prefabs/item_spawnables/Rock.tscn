@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://b3m5qcj4t7opq"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Rock.gd" id="1_qxsvy"]
 [ext_resource type="Texture2D" uid="uid://btq7c7jptxea0" path="res://sprites/items/item_spawnables/rock_throw.png" id="2_pw0ft"]

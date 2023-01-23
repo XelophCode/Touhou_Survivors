@@ -13,11 +13,7 @@ func _ready():
 	slash_1.visible = true
 	slash_1.play("slash")
 	animation_player.play("slash1")
-	match stack_count:
-		1: size_mod = 1.0
-		2: size_mod = 1.5
-		3: size_mod = 2.0
-		_: print("ERROR: ROUKANKEN OUT OF STACK RANGE, COUNT: " + str(stack_count))
+	size_mod = 2.0
 	$main_body.scale.x = size_mod
 	$main_body.scale.y = size_mod
 
@@ -30,7 +26,7 @@ func _physics_process(_delta):
 
 func _on_slash_1_animation_finished():
 	slash_1.visible = false
-	if stack_count >= 2:
+	if occult_orb:
 		damage = 2
 		slash_2.visible = true
 		slash_2.play("slash")
@@ -40,13 +36,10 @@ func _on_slash_1_animation_finished():
 
 func _on_slash_2_animation_finished():
 	slash_2.visible = false
-	if stack_count == 3:
-		damage = 3
-		slash_3.visible = true
-		slash_3.play("slash")
-		animation_player.play("slash3")
-	else:
-		queue_free()
+	damage = 3
+	slash_3.visible = true
+	slash_3.play("slash")
+	animation_player.play("slash3")
 
 func _on_slash_3_animation_finished():
 	queue_free()

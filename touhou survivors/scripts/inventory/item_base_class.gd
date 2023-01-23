@@ -3,7 +3,7 @@ class_name item_base_class
 
 @onready var damage_popup = preload("res://prefabs/logic_ui/damage_popup.tscn")
 var damage:int = 0
-var stack_count:int = 1
+var occult_orb:bool = false
 
 func do_damage(body):
 	body.hp -= damage

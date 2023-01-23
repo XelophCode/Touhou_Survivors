@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://cps4isq1c140k"]
 
 [ext_resource type="Script" path="res://scripts/inventory/item_interactions.gd" id="1_aqouu"]
 
@@ -13,6 +13,7 @@ size = Vector2(33, 33)
 
 [node name="2x2_var_1" type="Node2D"]
 script = ExtResource("1_aqouu")
+offset_setting = 3
 
 [node name="click_and_inventory" type="Area2D" parent="."]
 z_index = 8

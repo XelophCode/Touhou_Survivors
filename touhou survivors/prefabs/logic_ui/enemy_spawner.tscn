@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dibej236818nn"]
+[gd_scene load_steps=5 format=3 uid="uid://dibej236818nn"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/EnemySpawner.gd" id="1_p8hny"]
+[ext_resource type="PackedScene" uid="uid://bpwvq2pu20dhx" path="res://prefabs/enemies/fairy_red.tscn" id="2_32qyv"]
+[ext_resource type="PackedScene" uid="uid://dc37og7nhpj65" path="res://prefabs/enemies/fairy_green.tscn" id="3_aysl0"]
+[ext_resource type="PackedScene" uid="uid://cqoi8meiuxl6o" path="res://prefabs/enemies/fairy_blue.tscn" id="4_owhm1"]
 
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_p8hny")
+fairy_red = ExtResource("2_32qyv")
+fairy_green = ExtResource("3_aysl0")
+fairy_blue = ExtResource("4_owhm1")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

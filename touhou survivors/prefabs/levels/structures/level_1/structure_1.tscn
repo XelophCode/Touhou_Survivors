@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=13 format=3 uid="uid://dbqucfdpge4u1"]
 
 [ext_resource type="Texture2D" uid="uid://cn3tchucolusj" path="res://sprites/environment/paths_1.png" id="1_b0gss"]
 [ext_resource type="Script" path="res://scripts/misc/structure_1.gd" id="1_vdocl"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cj8p4v36d7hmu" path="res://sprites/environment/grass_patch_9.png" id="8_pnv46"]
 [ext_resource type="Texture2D" uid="uid://g6p4yjfcv32x" path="res://sprites/environment/grass_patch_8.png" id="9_neg0t"]
 [ext_resource type="Texture2D" uid="uid://bovamlt6cx8c7" path="res://sprites/environment/grass_patch_7.png" id="10_wt8rh"]
-[ext_resource type="PackedScene" uid="uid://dkyo1uc8p85eh" path="res://prefabs/misc/lamp.tscn" id="12_xc2kp"]
+[ext_resource type="PackedScene" path="res://prefabs/misc/lamp.tscn" id="12_xc2kp"]
 
 [node name="structure_1" type="Node2D"]
 z_index = -6

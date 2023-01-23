@@ -22,23 +22,19 @@ func _process(_delta):
 	
 	if update_tag:
 		if hide_descriptions:
-			$Label.text = item_name + " (" + stack_amt + "/" + stack_limit + ")"
+			$Label.text = item_name
 		else:
-			$Label.text = item_name + " (" + stack_amt + "/" + stack_limit + ")" + "\n" + item_desc
+			$Label.text = item_name + "\n" + item_desc
 		update_tag = false
 		
 	global_position.x = get_global_mouse_position().x + 4
 	global_position.y = get_global_mouse_position().y
 
-func show_tooltip(weapon_name,stack_count,stack_max,item_description):
+func show_tooltip(weapon_name,item_description):
 	visible = true
 	item_name = weapon_name
-	stack_amt = str(stack_count)
-	stack_limit = str(stack_max)
 	item_desc = item_description
 	update_tag = true
-	
-	
 
 func hide_tooltip():
 	visible = false

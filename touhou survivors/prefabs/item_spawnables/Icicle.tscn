@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpd1iq7cy0x1m"]
+[gd_scene load_steps=7 format=3 uid="uid://cpd1iq7cy0x1m"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Icicle.gd" id="1_4yd3i"]
+[ext_resource type="PackedScene" uid="uid://c8wa6idewhxt" path="res://prefabs/item_spawnables/utilities/Icicle_Fragments.tscn" id="2_1y6wy"]
 [ext_resource type="Texture2D" uid="uid://jcp6meiscngw" path="res://sprites/items/item_spawnables/icicle_large.png" id="2_l1j46"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oeiua"]
@@ -57,6 +58,7 @@ _data = {
 [node name="Icicle" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_4yd3i")
+fragments = ExtResource("2_1y6wy")
 
 [node name="main_body" type="Node2D" parent="."]
 

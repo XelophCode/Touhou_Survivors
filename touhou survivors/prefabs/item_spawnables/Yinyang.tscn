@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=10 format=3 uid="uid://jlks3ujg0sr1"]
 
 [ext_resource type="Script" path="res://scripts/inventory/yinyang.gd" id="1_vfjeb"]
 [ext_resource type="Texture2D" uid="uid://biurxy4k2u8or" path="res://sprites/items/item_spawnables/yinyang.png" id="2_osbpk"]

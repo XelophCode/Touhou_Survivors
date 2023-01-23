@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddgvj2cl0cjti"]
+[gd_scene load_steps=3 format=3 uid="uid://ddgvj2cl0cjti"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Bat.gd" id="1_tanlx"]
+[ext_resource type="PackedScene" uid="uid://dscqoegdppdby" path="res://prefabs/item_spawnables/utilities/Bat_main.tscn" id="2_27qbd"]
 
 [node name="Bat" type="Node2D"]
 script = ExtResource("1_tanlx")
+bat = ExtResource("2_27qbd")

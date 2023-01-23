@@ -8,10 +8,11 @@ func _ready():
 	$AnimationPlayer2.play("shrink")
 	global_position = Globals.player_position
 	rotation = deg_to_rad(Globals.cardinal_direction_to_rotation(Globals.player_facing))
-	match stack_count:
-		1: scale.x = 0.5;scale.y = 0.5
-		2: scale.x = 0.7;scale.y = 0.7
-		3: scale.x = 1.0;scale.y = 1.0
+	if occult_orb:
+		scale.x = 1.0;scale.y = 1.0
+	else:
+		scale.x = 0.5;scale.y = 0.5
+	
 
 func _physics_process(delta):
 	global_position = Globals.player_position

@@ -4,10 +4,14 @@ enum {RIGHT = 1, LEFT = -1, DOWN = 1, UP = -1, CENTER = 0}
 
 var player_position:Vector2
 var player_facing:Vector2 = Vector2(0,1)
-var locked_selection_tiles:Array
 var leveling_up:bool = false
 var power:float
 var one_time_spawns:Array
+var occult_orb_max : float = 10
+var faith : float:
+	set(value):
+		faith = clamp(value,0,occult_orb_max * 5)
+		Signals.emit_signal("update_faith")
 
 func cardinal_direction_to_rotation(direction:Vector2):
 	match direction:

@@ -28,19 +28,16 @@ var slot_count:int
 var slots_currently_hovering:int
 var new_rotation:float
 var hovering_occupied_space:int
-var stack:int
-var stack_count:int = 1
 var old_stack_count:float = 1
-var stacked_object:Array
 var in_inventory:bool = false
 var rotational_offset:Vector2
 var item_cooldown:float = 1
 var spawn_offset:Vector2
 var saved_item:bool = false
-var previous_stack_target
 var passive_limit:bool = false
 var current_area_hovered
 var one_time_spawn:bool
+var occult_orb:bool = false
 
 func find_rotational_offset():
 	var rot:int = round(rad_to_deg(rotation))
@@ -109,7 +106,7 @@ func _ready():
 	new_position = position
 	slot_position_hovering = position
 	slot_count = get_child(0).get_node("additional_placement").get_child_count() + get_child(0).get_node("main_placement").get_child_count()
-	occult_orb_progress.max_value = stack_count_max
+	occult_orb_progress.max_value = 1
 	
 
 func _physics_process(delta):
@@ -118,27 +115,6 @@ func _physics_process(delta):
 	if left_mouse_button_held:
 		if Input.is_action_just_released("left_mouse_button"):
 			not_holding_item()
-		if right_mouse_button_held:
-			if Input.is_action_just_released("right_mouse_button"):
-				var overstacked:bool = true
-				if stacked_object != []:
-					if !(stacked_object[0].stack_count + stack_count > stack_count_max):
-						overstacked = false
-				if hovering_occupied_space > 1 or (hovering_occupied_space > 0 and overstacked):
-					stacked_object = [previous_stack_target]
-					stack = 1
-					hovering_occupied_space = 1
-				not_holding_item()
-				right_mouse_button_held = false
-	
-	if stack_count == stack_count_max:
-		occult_orb_shimmer.emitting = true
-	else:
-		occult_orb_shimmer.emitting = false
-	occult_orb_progress.value = stack_count
-	if stack_count != old_stack_count and in_inventory:
-		Signals.emit_signal("modify_weapon",scene,get_instance_id(),item_cooldown,active,stack_count)
-	old_stack_count = stack_count
 	if left_mouse_button_held:
 		$ItemLargeBg.visible = false
 		global_position = get_global_mouse_position()
@@ -157,22 +133,13 @@ func click_detection(event):
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("left_mouse_button"):
 			holding_item()
-		if event.is_action_pressed("right_mouse_button") and !left_mouse_button_held and stack_count > 1:
-			stack_count -= 1
-			var new_stack_instance = self.duplicate()
-			new_stack_instance.do_stretch_anim = false
-			new_stack_instance.holding_item()
-			new_stack_instance.right_mouse_button_held = true
-			new_stack_instance.stack_count = 1
-			new_stack_instance.previous_stack_target = instance_from_id(get_instance_id())
-			new_stack_instance.scene = scene
-			new_stack_instance.item_name = item_name
-			new_stack_instance.stack_count_max = stack_count_max
-			new_stack_instance.current_item = current_item
-			new_stack_instance.active = active
-			new_stack_instance.icon = icon
-			new_stack_instance.item_cooldown = item_cooldown
-			get_parent().add_child(new_stack_instance)
+		if event.is_action_pressed("right_mouse_button"):
+			if occult_orb_progress.value < occult_orb_progress.max_value and Globals.faith >= Globals.occult_orb_max:
+				occult_orb_progress.value = occult_orb_progress.max_value
+				Globals.faith -= Globals.occult_orb_max
+				occult_orb = true
+				if in_inventory:
+					Signals.emit_signal("modify_weapon",scene,get_instance_id())
 
 func holding_item():
 	Signals.emit_signal("hide_tooltip")
@@ -181,45 +148,30 @@ func holding_item():
 	z_index += 50
 
 func not_holding_item():
-	Signals.emit_signal("show_tooltip",item_name,stack_count,stack_count_max,item_description)
+	Signals.emit_signal("show_tooltip",item_name,item_description)
 	left_mouse_button_held = false
 	z_index -= 50
 	if slots_currently_hovering == slot_count and hovering_occupied_space == 0:
 		new_position = slot_position_hovering
 		new_rotation = rotation
 		if in_inventory:
-			
-			Signals.emit_signal("add_weapon",scene,get_instance_id(),item_cooldown,active,icon,stack_count)
+			Signals.emit_signal("add_weapon",scene,get_instance_id(),item_cooldown,active,icon,occult_orb)
 			if one_time_spawn:
 				Globals.one_time_spawns.append(item_name)
 		else:
 			Signals.emit_signal("remove_weapon",get_instance_id(),active)
 			if one_time_spawn:
 				Globals.one_time_spawns.erase(item_name)
-	if stack == 1 and hovering_occupied_space == 1 and (stacked_object[0].stack_count + stack_count <= stack_count_max):
-		Signals.emit_signal("remove_weapon",get_instance_id(),active)
-		stacked_object[0].stack_count += stack_count
-		queue_free()
-		stacked_object[0].show_stacked_tooltip()
-
-func show_stacked_tooltip():
-	Signals.emit_signal("show_tooltip",item_name,stack_count,stack_count_max,item_description)
 
 func occupied_and_stack_exited(area):
 	if area.collision_layer == 64:
 		hovering_occupied_space -= 1
-		if area.get_parent().get_parent().current_item == current_item:
-			stacked_object.erase(area.get_parent().get_parent())
-			stack -= 1
 	if area.collision_layer == 32 and show_highlight:
 		area.get_child(0).visible = false
 
 func occupied_and_stack_entered(area):
 	if area.collision_layer == 64:
 		hovering_occupied_space += 1
-		if area.get_parent().get_parent().current_item == current_item:
-			stacked_object.append(area.get_parent().get_parent())
-			stack += 1
 	if area.collision_layer == 32 and show_highlight:
 		area.get_child(0).visible = true
 
@@ -228,4 +180,4 @@ func hide_tooltip():
 
 func show_tooltip():
 	if !left_mouse_button_held:
-		Signals.emit_signal("show_tooltip",item_name,stack_count,stack_count_max,item_description)
+		Signals.emit_signal("show_tooltip",item_name,item_description)

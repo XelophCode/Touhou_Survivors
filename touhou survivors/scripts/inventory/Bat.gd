@@ -1,8 +1,17 @@
 extends item_base_class
 
-var bat = preload("res://prefabs/item_spawnables/utilities/Bat_main.tscn")
+@export var bat : PackedScene
+
+@export var bat_count_with_orb:int = 20
+@export var bat_count_without_orb:int = 5
 
 func _ready():
-	for i in stack_count:
-		get_parent().call_deferred("add_child",bat.instantiate())
+	
+	if occult_orb:
+		for i in bat_count_with_orb:
+			get_parent().call_deferred("add_child",bat.instantiate())
+	else:
+		for i in bat_count_without_orb:
+			get_parent().call_deferred("add_child",bat.instantiate())
+	
 	queue_free()
