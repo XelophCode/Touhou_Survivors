@@ -1,6 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://04yuy6nwpd5q"]
+[gd_scene load_steps=5 format=3 uid="uid://04yuy6nwpd5q"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/Tooltip.gd" id="1_bevia"]
+[ext_resource type="FontFile" uid="uid://4g0oq0v08h0h" path="res://resources/fonts/prstart.ttf" id="2_hqdrp"]
+
+[sub_resource type="Theme" id="Theme_bp0nc"]
+default_font = ExtResource("2_hqdrp")
+default_font_size = 7
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_in0dt"]
 bg_color = Color(0, 0, 0, 0.360784)
@@ -9,13 +14,9 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-expand_margin_left = 3.0
-expand_margin_right = 3.0
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+anti_aliasing = false
 
 [node name="Tooltip" type="Node2D"]
 z_index = 100
@@ -25,9 +26,9 @@ script = ExtResource("1_bevia")
 [node name="Label" type="Label" parent="."]
 offset_right = 26.0
 offset_bottom = 13.0
+theme = SubResource("Theme_bp0nc")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-theme_override_constants/line_spacing = 0
-theme_override_font_sizes/font_size = 7
+theme_override_constants/outline_size = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_in0dt")
 text = "testing"
+vertical_alignment = 1

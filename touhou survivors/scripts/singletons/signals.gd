@@ -20,3 +20,5 @@ signal gap_finish
 signal gap_close
 signal player_damaged
 signal increase_inventory
+signal player_not_moving_in_pause
+signal increase_threat

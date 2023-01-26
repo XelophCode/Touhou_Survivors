@@ -8,14 +8,15 @@ var main_area
 func _ready():
 	parent.offset_setting = offset_setting
 
-func _on_click_and_inventory_input_event(_viewport, event, _shape_idx):
-	parent.click_detection(event)
-
-func _on_click_and_inventory_mouse_entered():
-	parent.show_tooltip()
-
 func _on_click_and_inventory_mouse_exited():
 	parent.hide_tooltip()
+
+func _on_click_and_inventory_mouse_entered():
+	if !Input.is_action_pressed("left_mouse_button"):
+		parent.show_tooltip()
+
+func _on_click_and_inventory_input_event(_viewport, event, _shape_idx):
+	parent.click_detection(event)
 
 func _on_click_and_inventory_area_entered(_area):
 	parent.in_inventory = true

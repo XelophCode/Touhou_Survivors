@@ -1,106 +1,54 @@
-[gd_scene load_steps=20 format=3 uid="uid://dc37og7nhpj65"]
+[gd_scene load_steps=16 format=3 uid="uid://dc37og7nhpj65"]
 
 [ext_resource type="Script" path="res://scripts/enemies/fairy_1.gd" id="1_0tb2f"]
-[ext_resource type="Shader" path="res://scripts/shaders/damage_flash.gdshader" id="2_6go0y"]
+[ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_cc4cd"]
 [ext_resource type="Texture2D" uid="uid://txl4lm8uclks" path="res://sprites/actors/fairy_3.png" id="3_eytfq"]
+[ext_resource type="Animation" uid="uid://138u6gj2rs5p" path="res://resources/animations/dissolve.res" id="5_3ly38"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o0k3e"]
-resource_local_to_scene = true
-shader = ExtResource("2_6go0y")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifier = 0.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rdg3m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_shahj"]
 atlas = ExtResource("3_eytfq")
 region = Rect2(0, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_khcm3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_or13v"]
 atlas = ExtResource("3_eytfq")
 region = Rect2(13, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2uygs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ide42"]
 atlas = ExtResource("3_eytfq")
 region = Rect2(26, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qhe0f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_juhml"]
 atlas = ExtResource("3_eytfq")
 region = Rect2(39, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kgv4c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmr5w"]
 atlas = ExtResource("3_eytfq")
 region = Rect2(52, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gousr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8iet"]
 atlas = ExtResource("3_eytfq")
 region = Rect2(65, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q5bw1"]
-atlas = ExtResource("3_eytfq")
-region = Rect2(0, 13, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gtfsj"]
-atlas = ExtResource("3_eytfq")
-region = Rect2(13, 13, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1uyak"]
-atlas = ExtResource("3_eytfq")
-region = Rect2(26, 13, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4dy2p"]
-atlas = ExtResource("3_eytfq")
-region = Rect2(39, 13, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cksy8"]
-atlas = ExtResource("3_eytfq")
-region = Rect2(52, 13, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3lul7"]
-atlas = ExtResource("3_eytfq")
-region = Rect2(65, 13, 13, 13)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cotxy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rdg3m")
+"texture": SubResource("AtlasTexture_shahj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_khcm3")
+"texture": SubResource("AtlasTexture_or13v")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2uygs")
+"texture": SubResource("AtlasTexture_ide42")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qhe0f")
+"texture": SubResource("AtlasTexture_juhml")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kgv4c")
+"texture": SubResource("AtlasTexture_qmr5w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gousr")
-}],
-"loop": true,
-"name": &"death",
-"speed": 18.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q5bw1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gtfsj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1uyak")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4dy2p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cksy8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3lul7")
+"texture": SubResource("AtlasTexture_s8iet")
 }],
 "loop": true,
 "name": &"neutral",
@@ -117,7 +65,30 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="FairyGreen" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_pq7gx"]
+resource_name = "damage_flash"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.9, 0.9, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tobe2"]
+_data = {
+"damage_flash": SubResource("Animation_pq7gx"),
+"dissolve": ExtResource("5_3ly38")
+}
+
+[node name="FairyGreen" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shadow")]
 collision_layer = 2
 collision_mask = 2
 slide_on_ceiling = false
@@ -126,11 +97,13 @@ floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_0tb2f")
 type = 1
+sprite = NodePath("AnimatedSprite2D")
+shadow = NodePath("Shadow")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 3
 texture_filter = 1
-material = SubResource("ShaderMaterial_o0k3e")
+material = ExtResource("2_cc4cd")
 frames = SubResource("SpriteFrames_cotxy")
 animation = &"neutral"
 playing = true
@@ -146,5 +119,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_oiglr")
 
 [node name="knockback_timer" type="Timer" parent="."]
 wait_time = 0.25
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tobe2")
+}
 
 [connection signal="timeout" from="knockback_timer" to="." method="_on_knockback_timer_timeout"]

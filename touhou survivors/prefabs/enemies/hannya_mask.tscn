@@ -1,0 +1,118 @@
+[gd_scene load_steps=12 format=3 uid="uid://whosnkufq707"]
+
+[ext_resource type="Script" path="res://scripts/enemies/fairy_1.gd" id="1_hx72y"]
+[ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_vehaw"]
+[ext_resource type="Texture2D" uid="uid://bag53gslnyqro" path="res://sprites/actors/Hannya_Mask.png" id="3_o875q"]
+
+[sub_resource type="Curve" id="Curve_4d701"]
+max_value = 10.0
+_data = [Vector2(0, 8.54545), 0.0, -8.13636, 0, 1, Vector2(1, 0.409091), -8.13636, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5xry"]
+atlas = ExtResource("3_o875q")
+region = Rect2(0, 0, 33, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6busw"]
+atlas = ExtResource("3_o875q")
+region = Rect2(33, 0, 33, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cotxy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5xry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6busw")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 2.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5cr84"]
+height = 26.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiglr"]
+bg_color = Color(0, 0, 0, 0.305882)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Animation" id="Animation_6ss3k"]
+resource_name = "tilt"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, -0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bkrv2"]
+_data = {
+"tilt": SubResource("Animation_6ss3k")
+}
+
+[node name="HannyaMask" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "particles", "animation", "shadow")]
+collision_layer = 2
+collision_mask = 2
+slide_on_ceiling = false
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_block_on_wall = false
+script = ExtResource("1_hx72y")
+type = 2
+sprite = NodePath("AnimatedSprite2D")
+particles = NodePath("CPUParticles2D")
+animation = NodePath("AnimationPlayer")
+shadow = NodePath("Shadow")
+base_speed = 800.0
+hp = 40
+damage = 4.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 80
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, -60)
+scale_amount_curve = SubResource("Curve_4d701")
+color = Color(0.462745, 0, 0.462745, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 3
+texture_filter = 1
+material = ExtResource("2_vehaw")
+rotation = -0.0367184
+frames = SubResource("SpriteFrames_cotxy")
+animation = &"neutral"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5cr84")
+
+[node name="Shadow" type="Panel" parent="."]
+offset_left = -9.0
+offset_top = 5.0
+offset_right = 10.0
+offset_bottom = 22.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oiglr")
+
+[node name="knockback_timer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bkrv2")
+}
+
+[connection signal="timeout" from="knockback_timer" to="." method="_on_knockback_timer_timeout"]

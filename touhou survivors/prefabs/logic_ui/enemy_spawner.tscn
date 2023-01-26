@@ -1,17 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://dibej236818nn"]
+[gd_scene load_steps=15 format=3 uid="uid://dibej236818nn"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/EnemySpawner.gd" id="1_p8hny"]
 [ext_resource type="PackedScene" uid="uid://bpwvq2pu20dhx" path="res://prefabs/enemies/fairy_red.tscn" id="2_32qyv"]
 [ext_resource type="PackedScene" uid="uid://dc37og7nhpj65" path="res://prefabs/enemies/fairy_green.tscn" id="3_aysl0"]
 [ext_resource type="PackedScene" uid="uid://cqoi8meiuxl6o" path="res://prefabs/enemies/fairy_blue.tscn" id="4_owhm1"]
+[ext_resource type="PackedScene" uid="uid://cce4anya1tkf7" path="res://prefabs/enemies/divine_spirit.tscn" id="5_i8hs4"]
+[ext_resource type="PackedScene" uid="uid://cgqsivjils8k" path="res://prefabs/enemies/vengeful_spirit.tscn" id="6_nrqy2"]
+[ext_resource type="PackedScene" uid="uid://whosnkufq707" path="res://prefabs/enemies/hannya_mask.tscn" id="7_d8ydq"]
+[ext_resource type="PackedScene" uid="uid://clbw8bgxr7fi" path="res://prefabs/enemies/hell_raven.tscn" id="8_oubxs"]
+[ext_resource type="PackedScene" uid="uid://umgmm3ibemnl" path="res://prefabs/enemies/makai_fairy.tscn" id="9_eg2rp"]
+[ext_resource type="PackedScene" uid="uid://bt0pkxv16moxj" path="res://prefabs/enemies/obake.tscn" id="10_1scuf"]
+[ext_resource type="PackedScene" uid="uid://c3ftp21abscbb" path="res://prefabs/enemies/lily_white.tscn" id="11_p0ro2"]
+[ext_resource type="PackedScene" uid="uid://brdn6515bnwr1" path="res://prefabs/enemies/evil_eye.tscn" id="12_vs375"]
+[ext_resource type="PackedScene" uid="uid://dq52t1p141ytn" path="res://prefabs/enemies/oni.tscn" id="13_iy2td"]
+[ext_resource type="PackedScene" uid="uid://dpnnthujd6nt6" path="res://prefabs/enemies/daiyousei.tscn" id="14_v1t1n"]
 
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_p8hny")
 fairy_red = ExtResource("2_32qyv")
 fairy_green = ExtResource("3_aysl0")
 fairy_blue = ExtResource("4_owhm1")
+divine_spirit = ExtResource("5_i8hs4")
+vengeful_spirit = ExtResource("6_nrqy2")
+hannya_mask = ExtResource("7_d8ydq")
+hell_raven = ExtResource("8_oubxs")
+makai_fairy = ExtResource("9_eg2rp")
+obake = ExtResource("10_1scuf")
+lily_white = ExtResource("11_p0ro2")
+evil_eye = ExtResource("12_vs375")
+oni = ExtResource("13_iy2td")
+daiyousei = ExtResource("14_v1t1n")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 1.05
 autostart = true
 
 [node name="EnemyParent" type="Node2D" parent="."]

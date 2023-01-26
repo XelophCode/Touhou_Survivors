@@ -10,6 +10,8 @@ var camera_is_tweening:bool = false
 var camera_gap_pos:Vector2
 var current_orb_target : int
 var level:int = 1
+var play_time_second:float
+var play_time_minute:int
 
 func _ready():
 	Signals.connect("update_power",update_power)
@@ -21,6 +23,22 @@ func _ready():
 	for child in $OccultOrbParent.get_children():
 		child.get_child(1).max_value = Globals.occult_orb_max
 	
+
+func _process(delta):
+	if !Globals.leveling_up:
+		play_time_second += delta
+		var play_time_floored = floor(play_time_second)
+		if play_time_floored > 59:
+			play_time_second = 0.0
+			play_time_minute += 1
+		
+		var play_time_stringed:String
+		if play_time_floored < 10:
+			play_time_stringed = str(play_time_minute) + ":0" + str(play_time_floored)
+		else :
+			play_time_stringed = str(play_time_minute) + ":" + str(play_time_floored)
+		$Time.text = str(play_time_stringed)
+		
 
 func _physics_process(delta):
 	if !camera_is_tweening:
@@ -44,6 +62,7 @@ func open_inventory():
 		15: $Inventory.current_tier = $Inventory.tier_four; $Inventory.get_node("ReimuInventoryGrid/BlockedSpaces").texture = $Inventory.blocked_spaces_tier_4
 		20: $Inventory.current_tier = $Inventory.tier_five; $Inventory.get_node("ReimuInventoryGrid/BlockedSpaces").visible = false
 		_:pass
+	$Level.text = "LVL " + str(level)
 	$Inventory.open_inventory()
 	$Shop.open_shop()
 	max_power *= 1.5
@@ -58,14 +77,18 @@ func update_power(value:float):
 func leveling_up(value):
 	if value:
 		$shop_close_button.visible = true
-		$Timer.stop()
+		$PortraitAnims.stop()
 		$ReimuPortrait.play("smile")
 		$ScreenDim.visible = true
 		$AnimationPlayer.play("screen_dim")
+		$Threat.paused = true
+		print(str($Threat.time_left))
 	else:
-		$Timer.start()
+		$PortraitAnims.start()
 		$ReimuPortrait.play("head_bob")
 		$ScreenDim.visible = false
+		print(str($Threat.time_left))
+		$Threat.paused = false
 
 func gap_camera_tween(destination:Vector2):
 	camera_is_tweening = true
@@ -87,9 +110,6 @@ func _on_reimu_portrait_animation_finished():
 	if $ReimuPortrait.animation == "blink":
 		$ReimuPortrait.frame = 0
 
-func _on_timer_timeout():
-	var random_anim:Array = ["head_bob","blink"]
-	$ReimuPortrait.play(random_anim.pick_random())
 
 func damage_animation():
 	$ReimuPortrait.play("damage")
@@ -116,3 +136,10 @@ func update_occult_orbs():
 		$OccultOrbParent.get_child(old_orb_target).get_child(1).value = 0
 	
 	$OccultOrbParent.get_child(current_orb_target).get_child(1).value = Globals.faith - Globals.occult_orb_max * current_orb_target
+
+func _on_portrait_anims_timeout():
+	var random_anim:Array = ["head_bob","blink"]
+	$ReimuPortrait.play(random_anim.pick_random())
+
+func _on_threat_timeout():
+	Signals.emit_signal("increase_threat")

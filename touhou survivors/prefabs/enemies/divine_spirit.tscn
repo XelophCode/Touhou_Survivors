@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://cce4anya1tkf7"]
+
+[ext_resource type="Script" path="res://scripts/enemies/fairy_1.gd" id="1_208ll"]
+[ext_resource type="Texture2D" uid="uid://3h0tt3c1ie18" path="res://sprites/actors/divine_spirit.png" id="2_budkh"]
+[ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_rs1np"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pifu0"]
+radius = 6.08276
+
+[sub_resource type="Curve" id="Curve_sy5dp"]
+max_value = 4.0
+_data = [Vector2(0, 4), 0.0, -0.249761, 0, 1, Vector2(0.582375, 3.85455), -0.86807, -2.54221, 0, 0, Vector2(1, 0), -9.22969, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_48ps4"]
+offsets = PackedFloat32Array(0.0210084, 0.554622, 1)
+colors = PackedColorArray(0.871883, 1, 0.997086, 0.47451, 1, 1, 1, 0.301961, 1, 1, 1, 0.109804)
+
+[node name="DivineSpirit" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "particles")]
+texture_filter = 1
+material = ExtResource("2_rs1np")
+collision_layer = 2
+collision_mask = 2
+slide_on_ceiling = false
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_block_on_wall = false
+script = ExtResource("1_208ll")
+type = 2
+sprite = NodePath("Sprite2D")
+particles = NodePath("CPUParticles2D")
+base_speed = 400.0
+hp = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pifu0")
+
+[node name="knockback_timer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_rs1np")
+texture = ExtResource("2_budkh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 100
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector2(0, -1)
+spread = 1.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 8.0
+scale_amount_curve = SubResource("Curve_sy5dp")
+color_ramp = SubResource("Gradient_48ps4")
+
+[connection signal="timeout" from="knockback_timer" to="." method="_on_knockback_timer_timeout"]

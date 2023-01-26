@@ -13,7 +13,6 @@ var current_tier:Array
 func _ready():
 	Signals.connect("leveling_up",leveling_up)
 	current_tier = tier_one
-	print(str(current_tier))
 	for area in $InventoryGrid.get_children():
 		var space = area.get_child(0)
 		space.monitorable = false
@@ -31,7 +30,6 @@ func open_inventory():
 	$AnimationPlayer.play("slide")
 	visible = true
 	for i in current_tier:
-		print(str(i))
 		var space = $InventoryGrid.get_child(i-1).get_child(0)
 		space.monitorable = true
 		space.monitoring = true

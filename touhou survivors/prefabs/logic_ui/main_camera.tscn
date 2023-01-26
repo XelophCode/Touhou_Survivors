@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cfflhyetxhgwh"]
+[gd_scene load_steps=35 format=3 uid="uid://cfflhyetxhgwh"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/camera_main.gd" id="1_365xw"]
 [ext_resource type="PackedScene" uid="uid://iqvjyq5tkfb0" path="res://prefabs/logic_ui/weapon_spawner.tscn" id="2_8kxfo"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ptcu0hj15c6b" path="res://sprites/ui/resume.png" id="8_lv6fl"]
 [ext_resource type="Texture2D" uid="uid://bjuq7vtc66ft3" path="res://sprites/ui/vignette.png" id="8_yx7o0"]
 [ext_resource type="Texture2D" uid="uid://5xfk8cnv31f3" path="res://sprites/ui/reimu_portrait_anims.png" id="10_ras5u"]
+[ext_resource type="FontFile" uid="uid://4g0oq0v08h0h" path="res://resources/fonts/prstart.ttf" id="11_6mxui"]
 [ext_resource type="PackedScene" uid="uid://63murqtbvxlb" path="res://prefabs/logic_ui/occult_orb.tscn" id="11_rmstm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsojg"]
@@ -243,6 +244,28 @@ position = Vector2(-200, -88)
 frames = SubResource("SpriteFrames_wande")
 animation = &"blink"
 
+[node name="Level" type="Label" parent="."]
+offset_left = -212.0
+offset_top = -73.0
+offset_right = -187.0
+offset_bottom = -64.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_6mxui")
+theme_override_font_sizes/font_size = 4
+text = "LVL 1"
+
+[node name="Time" type="Label" parent="."]
+offset_left = -212.0
+offset_top = -66.0
+offset_right = -187.0
+offset_bottom = -57.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_6mxui")
+theme_override_font_sizes/font_size = 4
+text = "0:00"
+
 [node name="OccultOrbParent" type="Node2D" parent="."]
 
 [node name="occult_orb" parent="OccultOrbParent" instance=ExtResource("11_rmstm")]
@@ -265,10 +288,15 @@ libraries = {
 "": SubResource("AnimationLibrary_2dbxq")
 }
 
-[node name="Timer" type="Timer" parent="."]
+[node name="PortraitAnims" type="Timer" parent="."]
 wait_time = 5.0
+autostart = true
+
+[node name="Threat" type="Timer" parent="."]
+wait_time = 60.0
 autostart = true
 
 [connection signal="button_down" from="shop_close_button/Button" to="." method="_on_button_button_down"]
 [connection signal="animation_finished" from="ReimuPortrait" to="." method="_on_reimu_portrait_animation_finished"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="PortraitAnims" to="." method="_on_portrait_anims_timeout"]
+[connection signal="timeout" from="Threat" to="." method="_on_threat_timeout"]

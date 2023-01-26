@@ -1,0 +1,109 @@
+[gd_scene load_steps=14 format=3 uid="uid://brdn6515bnwr1"]
+
+[ext_resource type="Script" path="res://scripts/enemies/fairy_1.gd" id="1_jxy2m"]
+[ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_joxlg"]
+[ext_resource type="Texture2D" uid="uid://cdh1ttvro2esn" path="res://sprites/actors/Evil_Eye.png" id="3_kk5vq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq4bs"]
+atlas = ExtResource("3_kk5vq")
+region = Rect2(0, 0, 19, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebx8y"]
+atlas = ExtResource("3_kk5vq")
+region = Rect2(19, 0, 19, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oohb"]
+atlas = ExtResource("3_kk5vq")
+region = Rect2(0, 13, 19, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bywl"]
+atlas = ExtResource("3_kk5vq")
+region = Rect2(19, 13, 19, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0qx5"]
+atlas = ExtResource("3_kk5vq")
+region = Rect2(0, 26, 19, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4hqj"]
+atlas = ExtResource("3_kk5vq")
+region = Rect2(19, 26, 19, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sukfv"]
+atlas = ExtResource("3_kk5vq")
+region = Rect2(0, 39, 19, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cotxy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jq4bs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebx8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0oohb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bywl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0qx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4hqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sukfv")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pifu0"]
+radius = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiglr"]
+bg_color = Color(0, 0, 0, 0.305882)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="EvilEye" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shadow")]
+collision_layer = 2
+collision_mask = 2
+slide_on_ceiling = false
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_block_on_wall = false
+script = ExtResource("1_jxy2m")
+type = 2
+sprite = NodePath("AnimatedSprite2D")
+shadow = NodePath("Shadow")
+base_speed = 500.0
+hp = 10
+damage = 3.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 3
+texture_filter = 1
+material = ExtResource("2_joxlg")
+frames = SubResource("SpriteFrames_cotxy")
+animation = &"neutral"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pifu0")
+
+[node name="Shadow" type="Panel" parent="."]
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 8.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oiglr")
+
+[node name="knockback_timer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="timeout" from="knockback_timer" to="." method="_on_knockback_timer_timeout"]

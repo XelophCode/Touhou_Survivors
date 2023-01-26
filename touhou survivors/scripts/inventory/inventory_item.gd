@@ -7,7 +7,6 @@ var item_description:String = ""
 var initial_cooldown:int = 10
 var stack_count_max:int = 5
 
-
 var scene : PackedScene
 var icon : Texture
 
@@ -72,7 +71,7 @@ func leveling_up(value:bool):
 		$ItemLargeBg.visible = false
 		pop_in_animation()
 		if saved_item:
-			await get_tree().create_timer(0.1).timeout
+			await Signals.player_not_moving_in_pause
 			visible = true
 			new_position = current_area_hovered.global_position + rotational_offset
 	else:
@@ -148,7 +147,7 @@ func holding_item():
 	z_index += 50
 
 func not_holding_item():
-	Signals.emit_signal("show_tooltip",item_name,item_description)
+	Signals.emit_signal("show_tooltip")
 	left_mouse_button_held = false
 	z_index -= 50
 	if slots_currently_hovering == slot_count and hovering_occupied_space == 0:
@@ -176,8 +175,11 @@ func occupied_and_stack_entered(area):
 		area.get_child(0).visible = true
 
 func hide_tooltip():
-	Signals.emit_signal("hide_tooltip")
+	Globals.tooltip_info.erase([item_name,item_description])
+	if Globals.tooltip_info == []:
+		Signals.emit_signal("hide_tooltip")
 
 func show_tooltip():
+	Globals.tooltip_info.push_front([item_name,item_description])
 	if !left_mouse_button_held:
-		Signals.emit_signal("show_tooltip",item_name,item_description)
+		Signals.emit_signal("show_tooltip")

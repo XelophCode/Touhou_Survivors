@@ -1,106 +1,53 @@
-[gd_scene load_steps=20 format=3 uid="uid://bpwvq2pu20dhx"]
+[gd_scene load_steps=13 format=3 uid="uid://bpwvq2pu20dhx"]
 
 [ext_resource type="Script" path="res://scripts/enemies/fairy_1.gd" id="1_jv5o1"]
-[ext_resource type="Shader" path="res://scripts/shaders/damage_flash.gdshader" id="2_dcdow"]
+[ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="3_tnfnn"]
 [ext_resource type="Texture2D" uid="uid://xp6e3x6f2i5n" path="res://sprites/actors/fairy_2.png" id="3_yj1lr"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o0k3e"]
-resource_local_to_scene = true
-shader = ExtResource("2_dcdow")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifier = 0.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ye6rk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0odp"]
 atlas = ExtResource("3_yj1lr")
 region = Rect2(0, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cxdel"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfb87"]
 atlas = ExtResource("3_yj1lr")
 region = Rect2(13, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ku56k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qw5li"]
 atlas = ExtResource("3_yj1lr")
 region = Rect2(26, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dwy3f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_apjtq"]
 atlas = ExtResource("3_yj1lr")
 region = Rect2(39, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ub0pp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhjj0"]
 atlas = ExtResource("3_yj1lr")
 region = Rect2(52, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q1b3l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_amwp5"]
 atlas = ExtResource("3_yj1lr")
 region = Rect2(65, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qd2c3"]
-atlas = ExtResource("3_yj1lr")
-region = Rect2(0, 13, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lwp6d"]
-atlas = ExtResource("3_yj1lr")
-region = Rect2(13, 13, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ryae"]
-atlas = ExtResource("3_yj1lr")
-region = Rect2(26, 13, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_60fqj"]
-atlas = ExtResource("3_yj1lr")
-region = Rect2(39, 13, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f8htp"]
-atlas = ExtResource("3_yj1lr")
-region = Rect2(52, 13, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eugqe"]
-atlas = ExtResource("3_yj1lr")
-region = Rect2(65, 13, 13, 13)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cotxy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ye6rk")
+"texture": SubResource("AtlasTexture_n0odp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cxdel")
+"texture": SubResource("AtlasTexture_sfb87")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ku56k")
+"texture": SubResource("AtlasTexture_qw5li")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dwy3f")
+"texture": SubResource("AtlasTexture_apjtq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ub0pp")
+"texture": SubResource("AtlasTexture_bhjj0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q1b3l")
-}],
-"loop": true,
-"name": &"death",
-"speed": 18.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qd2c3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lwp6d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3ryae")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_60fqj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f8htp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eugqe")
+"texture": SubResource("AtlasTexture_amwp5")
 }],
 "loop": true,
 "name": &"neutral",
@@ -117,7 +64,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="FairyRed" type="CharacterBody2D"]
+[node name="FairyRed" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shadow")]
 collision_layer = 2
 collision_mask = 2
 slide_on_ceiling = false
@@ -126,11 +73,13 @@ floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_jv5o1")
 type = 0
+sprite = NodePath("AnimatedSprite2D")
+shadow = NodePath("Shadow")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 3
 texture_filter = 1
-material = SubResource("ShaderMaterial_o0k3e")
+material = ExtResource("3_tnfnn")
 frames = SubResource("SpriteFrames_cotxy")
 animation = &"neutral"
 playing = true

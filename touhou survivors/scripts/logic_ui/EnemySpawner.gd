@@ -10,18 +10,62 @@ var viewport_boundary_offset = 10
 var enemy_spawn_edge_offset = 20
 var viewport_halved:Vector2 = Vector2(213,120)
 var spawn_zones:Array
+
 @export var spawn_limit:int = 100
 @export var fairy_red : PackedScene
 @export var fairy_green : PackedScene
 @export var fairy_blue : PackedScene
+@export var divine_spirit : PackedScene
+@export var vengeful_spirit : PackedScene
+@export var hannya_mask : PackedScene
+@export var hell_raven : PackedScene
+@export var makai_fairy : PackedScene
+@export var obake : PackedScene
+@export var lily_white : PackedScene
+@export var evil_eye : PackedScene
+@export var oni : PackedScene
+@export var daiyousei : PackedScene
+
 @onready var enemy_parent := $EnemyParent
-var enemies : Array
+
+var enemies_high_chance : Array
+var enemies_low_chance : Array
+var speed_mod:float = 1.0
+var damage_mod:float = 1.0
+var health_mod:float = 1.0
+var threat_level:float = 0.0
 
 func _ready():
-	enemies = [fairy_red,fairy_green,fairy_blue]
+	Signals.connect("increase_threat",catch_increase_threat)
+	enemies_high_chance = [fairy_red,fairy_green]
+	enemies_low_chance = [fairy_blue]
 
 func _on_timer_timeout():
-	if enemy_parent.get_child_count() < spawn_limit and !Globals.leveling_up:
+	spawn_enemy()
+
+func catch_increase_threat():
+	speed_mod += 0.2
+	damage_mod += 0.2
+	health_mod += 0.1
+	threat_level += 1.0
+	match threat_level:
+		1.0: enemies_low_chance.append(divine_spirit)
+		2.0: enemies_low_chance.append(hell_raven)
+		3.0: enemies_low_chance.append(obake)
+		4.0: enemies_low_chance.append(vengeful_spirit)
+		5.0: spawn_enemy(true,hannya_mask)
+		6.0: enemies_low_chance.append(evil_eye)
+		7.0: enemies_low_chance.append(makai_fairy)
+		8.0: enemies_low_chance.append(oni)
+		9.0: enemies_low_chance.append(hannya_mask)
+		10.0: spawn_enemy(true,lily_white)
+		11.0: enemies_low_chance.append(lily_white)
+		15.0: spawn_enemy(true,daiyousei)
+		16.0: enemies_low_chance.append(daiyousei)
+		
+
+func spawn_enemy(special_spawn:bool = false, special_enemy = null):
+	if (enemy_parent.get_child_count() < spawn_limit or special_spawn) and !Globals.leveling_up:
 		var player_pos_x = Globals.player_position.x
 		var player_pos_y = Globals.player_position.y
 		var viewport_range_x_min:float = player_pos_x - viewport_halved.x
@@ -45,6 +89,21 @@ func _on_timer_timeout():
 		spawn_zones = [enemy_spawn_zone_east,enemy_spawn_zone_north,enemy_spawn_zone_west,enemy_spawn_zone_south]
 		var spawn_position = spawn_zones.pick_random()
 		
-		var inst = enemies.pick_random().instantiate()
+		var inst
+		if randf_range(0,1) < 0.8:
+			inst = enemies_high_chance.pick_random().instantiate()
+		else:
+			inst = enemies_low_chance.pick_random().instantiate()
+		
+		if special_spawn:
+			if special_enemy is Array:
+				inst = special_enemy.pick_random().instantiate()
+			else:
+				inst = special_enemy.instantiate()
+		else:
+			inst.damage *= damage_mod
+			inst.speed_mod = speed_mod
+			inst.hp *= health_mod
+		
 		inst.global_position = spawn_position
 		enemy_parent.add_child(inst)

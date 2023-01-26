@@ -16,6 +16,7 @@ var teleport_pos:Vector2
 var faith_max = Globals.occult_orb_max * 5
 var tweening_focus:bool = false
 var focusing:bool = false
+var check_for_move:bool = false
 
 func _ready():
 	$magic_circle_spins.play("spin")
@@ -24,6 +25,7 @@ func _ready():
 	Signals.connect("modify_player_scale",modify_scale)
 	Signals.connect("gap_teleport",gap_teleport)
 	Signals.connect("gap_finish",gap_finish)
+	Signals.connect("leveling_up",catch_leveling_up)
 	await get_tree().create_timer(0.1).timeout
 	var counter:int = 0
 	if starting_items != null:
@@ -57,6 +59,10 @@ func _physics_process(delta):
 			$damage_effect.emitting = false
 	else:
 		$damage_effect.emitting = false
+		if check_for_move:
+			if move == Vector2.ZERO:
+				Signals.emit_signal("player_not_moving_in_pause")
+				check_for_move = false
 	
 	if move != Vector2(0,0):
 		Globals.player_facing = move
@@ -78,6 +84,8 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	hp -= damage_taken
+#	if hp < 1:
+#		get_tree().reload_current_scene()
 
 func _on_hitbox_body_entered(body):
 	damage_taken += body.damage
@@ -138,3 +146,9 @@ func magic_circle_tween_off(delta):
 	$MagicCircle/Sprites.visible = false
 	$MagicCircle/Sprites.scale = current_scale
 	tweening_focus = false
+
+func catch_leveling_up(value):
+	if value:
+		check_for_move = true
+		$Healthbar.max_value *= 1.1
+		hp *= 1.1

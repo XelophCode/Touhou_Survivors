@@ -12,6 +12,8 @@ var faith : float:
 	set(value):
 		faith = clamp(value,0,occult_orb_max * 5)
 		Signals.emit_signal("update_faith")
+var tooltip_info:Array = []
+
 
 func cardinal_direction_to_rotation(direction:Vector2):
 	match direction:

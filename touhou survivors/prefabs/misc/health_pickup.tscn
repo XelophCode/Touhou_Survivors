@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://scripts/misc/health_pickup.gd" id="1_j4kkf"]
 [ext_resource type="Texture2D" uid="uid://ckvi1vbyfu3tk" path="res://sprites/items/pickups/health_pickup.png" id="2_jtyb7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3nsj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ek6jc"]
 bg_color = Color(0, 0, 0, 0.282353)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dncd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftvr5"]
 size = Vector2(8, 8)
 
 [node name="health_pickup" type="Node2D"]
@@ -23,7 +23,7 @@ offset_left = -5.0
 offset_top = -3.0
 offset_right = 5.0
 offset_bottom = 5.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_u3nsj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ek6jc")
 
 [node name="HealthPickup" type="Sprite2D" parent="."]
 texture = ExtResource("2_jtyb7")
@@ -32,6 +32,6 @@ texture = ExtResource("2_jtyb7")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_3dncd")
+shape = SubResource("RectangleShape2D_ftvr5")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

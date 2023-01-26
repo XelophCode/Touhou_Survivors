@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bn7lfio7jg320"]
+[gd_scene load_steps=12 format=3 uid="uid://bn7lfio7jg320"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_78i06"]
 [ext_resource type="PackedScene" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bvyow6vg7hdt6" path="res://prefabs/logic_ui/pickup_spawner.tscn" id="6_qbw7i"]
 [ext_resource type="PackedScene" uid="uid://lf1s280eux7x" path="res://prefabs/misc/power.tscn" id="7_416v3"]
 [ext_resource type="PackedScene" uid="uid://dbqucfdpge4u1" path="res://prefabs/levels/structures/level_1/structure_1.tscn" id="9_0yld4"]
-[ext_resource type="PackedScene" uid="uid://bse7pl53vd6xa" path="res://prefabs/misc/faith.tscn" id="11_5q280"]
 
 [sub_resource type="Resource" id="Resource_un3jb"]
 script = ExtResource("2_l5ojg")
@@ -41,36 +40,3 @@ position = Vector2(-35, -5)
 [node name="structure_parent" type="Node2D" parent="."]
 
 [node name="structure_1" parent="structure_parent" instance=ExtResource("9_0yld4")]
-
-[node name="Faith" parent="." instance=ExtResource("11_5q280")]
-position = Vector2(44, 10)
-
-[node name="Faith2" parent="." instance=ExtResource("11_5q280")]
-position = Vector2(25, 35)
-
-[node name="Faith3" parent="." instance=ExtResource("11_5q280")]
-position = Vector2(0, 41)
-
-[node name="Faith4" parent="." instance=ExtResource("11_5q280")]
-position = Vector2(42, 26)
-
-[node name="Faith5" parent="." instance=ExtResource("11_5q280")]
-position = Vector2(16, 46)
-
-[node name="Faith6" parent="." instance=ExtResource("11_5q280")]
-position = Vector2(39, 38)
-
-[node name="Faith7" parent="." instance=ExtResource("11_5q280")]
-position = Vector2(53, 19)
-
-[node name="Faith8" parent="." instance=ExtResource("11_5q280")]
-position = Vector2(28, 45)
-
-[node name="Faith9" parent="." instance=ExtResource("11_5q280")]
-position = Vector2(54, 32)
-
-[node name="Faith10" parent="." instance=ExtResource("11_5q280")]
-position = Vector2(28, 24)
-
-[node name="Faith11" parent="." instance=ExtResource("11_5q280")]
-position = Vector2(13, 31)

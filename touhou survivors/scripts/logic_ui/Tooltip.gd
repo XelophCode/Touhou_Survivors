@@ -20,21 +20,21 @@ func _process(_delta):
 			hide_descriptions = true
 			update_tag = true
 	
-	if update_tag:
+	if update_tag and Globals.tooltip_info != []:
 		if hide_descriptions:
-			$Label.text = item_name
+			$Label.text = Globals.tooltip_info[0][0]
 		else:
-			$Label.text = item_name + "\n" + item_desc
+			$Label.text = Globals.tooltip_info[0][0] + "\n" + Globals.tooltip_info[0][1]
 		update_tag = false
 		
 	global_position.x = get_global_mouse_position().x + 4
 	global_position.y = get_global_mouse_position().y
 
-func show_tooltip(weapon_name,item_description):
-	visible = true
-	item_name = weapon_name
-	item_desc = item_description
-	update_tag = true
-
 func hide_tooltip():
 	visible = false
+
+func show_tooltip():
+	visible = true
+	update_tag = true
+
+

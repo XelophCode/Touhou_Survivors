@@ -9,8 +9,7 @@ func _ready():
 	Signals.connect("leveling_up",leveling_up)
 
 func open_shop():
-	await get_tree().create_timer(0.1).timeout
-	$ShopGridBG.play("open")
+	await Signals.player_not_moving_in_pause
 	
 	var items1x1:Array = []
 	var items1x2:Array = []

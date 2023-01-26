@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://5evdjcxtvvb8"]
+
+[ext_resource type="Shader" path="res://scripts/shaders/dissolve.gdshader" id="1_3g4v2"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2qjpc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1omlk"]
+noise = SubResource("FastNoiseLite_2qjpc")
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_3g4v2")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/flash_modifier = 0.0
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_1omlk")

@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=3 uid="uid://clbw8bgxr7fi"]
+
+[ext_resource type="Script" path="res://scripts/enemies/fairy_1.gd" id="1_23577"]
+[ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_ol2jl"]
+[ext_resource type="Texture2D" uid="uid://cgjnwamhktu4r" path="res://sprites/actors/Hell_Raven.png" id="3_cws7h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eayx2"]
+atlas = ExtResource("3_cws7h")
+region = Rect2(0, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_638f1"]
+atlas = ExtResource("3_cws7h")
+region = Rect2(18, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5skc"]
+atlas = ExtResource("3_cws7h")
+region = Rect2(36, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n5hu"]
+atlas = ExtResource("3_cws7h")
+region = Rect2(0, 14, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4k1y"]
+atlas = ExtResource("3_cws7h")
+region = Rect2(18, 14, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3jlj"]
+atlas = ExtResource("3_cws7h")
+region = Rect2(36, 14, 18, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cotxy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eayx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_638f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5skc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n5hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4k1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3jlj")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pifu0"]
+radius = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiglr"]
+bg_color = Color(0, 0, 0, 0.305882)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="HellRaven" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shadow")]
+collision_layer = 2
+collision_mask = 2
+slide_on_ceiling = false
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_block_on_wall = false
+script = ExtResource("1_23577")
+type = 2
+sprite = NodePath("AnimatedSprite2D")
+face_player = true
+shadow = NodePath("Shadow")
+base_speed = 900.0
+hp = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 3
+texture_filter = 1
+material = ExtResource("2_ol2jl")
+frames = SubResource("SpriteFrames_cotxy")
+animation = &"neutral"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pifu0")
+
+[node name="Shadow" type="Panel" parent="."]
+offset_left = -4.0
+offset_top = 1.0
+offset_right = 4.0
+offset_bottom = 8.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oiglr")
+
+[node name="knockback_timer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="timeout" from="knockback_timer" to="." method="_on_knockback_timer_timeout"]
