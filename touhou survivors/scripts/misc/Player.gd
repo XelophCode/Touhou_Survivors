@@ -9,14 +9,15 @@ var idle_animation:String = "idle_down"
 @export var starting_items: StartingItemArrayResource
 var power:int
 var faith:float
+var faith_max:float
 var current_items:Array
 var hp:float = 100.0
 var damage_taken:float
 var teleport_pos:Vector2
-var faith_max = Globals.occult_orb_max * 5
 var tweening_focus:bool = false
 var focusing:bool = false
 var check_for_move:bool = false
+var leveling_up:bool = false
 
 func _ready():
 	$magic_circle_spins.play("spin")
@@ -36,15 +37,17 @@ func _ready():
 			counter += 1
 
 func _physics_process(delta):
+	
+	Globals.photo_dest = $PhotoPos.global_position
 	$Healthbar.value = hp
 	
 	move = Vector2.ZERO
 	
-	var magic_circle_scale : float = (Globals.faith / faith_max) * 2 + 1
+	var magic_circle_scale : float = (faith / faith_max) * 2 + 1
 	magic_circle_scale = clamp(magic_circle_scale,1.0,3.0)
 	$MagicCircle.scale = Vector2(magic_circle_scale,magic_circle_scale)
 	
-	if !Globals.leveling_up:
+	if !leveling_up:
 		if Input.is_action_pressed("focus") and !tweening_focus and !focusing:
 			magic_circle_tween_on(delta)
 		
@@ -79,11 +82,14 @@ func _physics_process(delta):
 		Vector2.ZERO: walk_animations.play(idle_animation)
 	
 	Globals.player_position = global_position
-	velocity = move.normalized() * delta * move_speed
+	
+	velocity = move.normalized() * (delta) * move_speed
 	
 	move_and_slide()
 	
 	hp -= damage_taken
+	
+	
 #	if hp < 1:
 #		get_tree().reload_current_scene()
 
@@ -149,6 +155,16 @@ func magic_circle_tween_off(delta):
 
 func catch_leveling_up(value):
 	if value:
+		leveling_up = true
 		check_for_move = true
 		$Healthbar.max_value *= 1.1
 		hp *= 1.1
+	else:
+		leveling_up = false
+
+func _on_spawn_afterimage_timeout():
+	Signals.emit_signal("update_afterimage",$WalkAnimations.animation,$WalkAnimations.frame,$WalkAnimations.flip_h)
+
+
+func _on_sun_ray_anim_timer_timeout():
+	$SunRaysAnims.play("sun_ray")

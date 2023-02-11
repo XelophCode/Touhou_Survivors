@@ -4,7 +4,7 @@ var structure_locations:Array
 var rand_pos_neg:Array = [-300,300]
 @export var structures : FolderListResource
 
-func _ready():
+func _ready(): 
 	var x_spawn:Array = []
 	var y_spawn:Array = []
 	var count:float = 1

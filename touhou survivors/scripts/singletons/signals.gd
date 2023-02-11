@@ -22,3 +22,8 @@ signal player_damaged
 signal increase_inventory
 signal player_not_moving_in_pause
 signal increase_threat
+signal update_afterimage
+signal general_values
+signal current_power
+signal next_lvl_update
+signal weapon_add_child

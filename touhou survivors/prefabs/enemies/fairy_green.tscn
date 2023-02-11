@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://dc37og7nhpj65"]
+[gd_scene load_steps=16 format=3 uid="uid://dg2x72v8eacu4"]
 
-[ext_resource type="Script" path="res://scripts/enemies/fairy_1.gd" id="1_0tb2f"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_0tb2f"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_cc4cd"]
 [ext_resource type="Texture2D" uid="uid://txl4lm8uclks" path="res://sprites/actors/fairy_3.png" id="3_eytfq"]
 [ext_resource type="Animation" uid="uid://138u6gj2rs5p" path="res://resources/animations/dissolve.res" id="5_3ly38"]
@@ -96,6 +96,7 @@ floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_0tb2f")
+tier = 0
 type = 1
 sprite = NodePath("AnimatedSprite2D")
 shadow = NodePath("Shadow")

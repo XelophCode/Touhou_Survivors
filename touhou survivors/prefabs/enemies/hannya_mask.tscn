@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://whosnkufq707"]
+[gd_scene load_steps=12 format=3 uid="uid://cw8okaiykxwve"]
 
-[ext_resource type="Script" path="res://scripts/enemies/fairy_1.gd" id="1_hx72y"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_hx72y"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_vehaw"]
 [ext_resource type="Texture2D" uid="uid://bag53gslnyqro" path="res://sprites/actors/Hannya_Mask.png" id="3_o875q"]
 
@@ -71,7 +71,8 @@ floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_hx72y")
-type = 2
+tier = 1
+type = 0
 sprite = NodePath("AnimatedSprite2D")
 particles = NodePath("CPUParticles2D")
 animation = NodePath("AnimationPlayer")

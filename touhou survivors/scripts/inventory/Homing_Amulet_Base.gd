@@ -12,7 +12,7 @@ func _ready():
 	$main_body/amulet_0.rotation = atan2(starting_move.y,starting_move.x)
 	move_speed += randf_range(0,20)
 
-func _physics_process(delta):
+func _process(delta):
 	move = (starting_move * move_speed) * delta
 	if enemies_to_track != []:
 		if instance_from_id(enemies_to_track[0]) != null:

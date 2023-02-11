@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://brdn6515bnwr1"]
+[gd_scene load_steps=14 format=3 uid="uid://tywq0rhjxwfj"]
 
-[ext_resource type="Script" path="res://scripts/enemies/fairy_1.gd" id="1_jxy2m"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_jxy2m"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_joxlg"]
 [ext_resource type="Texture2D" uid="uid://cdh1ttvro2esn" path="res://sprites/actors/Evil_Eye.png" id="3_kk5vq"]
 
@@ -79,7 +79,8 @@ floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_jxy2m")
-type = 2
+tier = 1
+type = 1
 sprite = NodePath("AnimatedSprite2D")
 shadow = NodePath("Shadow")
 base_speed = 500.0

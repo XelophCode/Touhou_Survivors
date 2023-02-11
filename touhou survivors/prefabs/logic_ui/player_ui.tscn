@@ -1,0 +1,250 @@
+[gd_scene load_steps=28 format=3 uid="uid://cxtno75a58bkv"]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/player_ui.gd" id="1_i5u1q"]
+[ext_resource type="Texture2D" uid="uid://5xfk8cnv31f3" path="res://sprites/ui/reimu_portrait_anims.png" id="2_f7o4i"]
+[ext_resource type="Texture2D" uid="uid://cm37e7hd20ljg" path="res://sprites/ui/reimu_border.png" id="3_7d08e"]
+[ext_resource type="FontFile" uid="uid://4g0oq0v08h0h" path="res://resources/fonts/prstart.ttf" id="3_nqdip"]
+[ext_resource type="Texture2D" uid="uid://cfbld0no123ax" path="res://sprites/ui/powerbar_border.png" id="5_7g6dd"]
+[ext_resource type="PackedScene" uid="uid://iqvjyq5tkfb0" path="res://prefabs/logic_ui/weapon_spawner.tscn" id="6_1x5oq"]
+[ext_resource type="PackedScene" uid="uid://63murqtbvxlb" path="res://prefabs/logic_ui/occult_orb.tscn" id="7_uohci"]
+[ext_resource type="Texture2D" uid="uid://bjuq7vtc66ft3" path="res://sprites/ui/vignette.png" id="8_2iy3q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn5md"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0c2de"]
+bg_color = Color(0.176471, 0.729412, 0.25098, 1)
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ggr3"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(0, 69, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x813a"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(24, 69, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep8e4"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(48, 69, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7jl2"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(72, 69, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fx87j"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(0, 23, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bykqa"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(24, 23, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmi3o"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(48, 23, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_styfp"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(72, 23, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chvxb"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(0, 0, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_224ja"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(24, 0, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_warxf"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(48, 0, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqdfb"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(72, 0, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8bp3"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(0, 46, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw4oq"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(24, 46, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibhv3"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(48, 46, 24, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15l16"]
+atlas = ExtResource("2_f7o4i")
+region = Rect2(72, 46, 24, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bw18u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ggr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x813a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep8e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7jl2")
+}],
+"loop": true,
+"name": &"blink",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fx87j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bykqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmi3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_styfp")
+}],
+"loop": true,
+"name": &"damage",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chvxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_224ja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_warxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqdfb")
+}],
+"loop": true,
+"name": &"head_bob",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8bp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw4oq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibhv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15l16")
+}],
+"loop": true,
+"name": &"smile",
+"speed": 4.0
+}]
+
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("character_portrait", "time_label", "lvl_label", "powerbar")]
+script = ExtResource("1_i5u1q")
+character_portrait = NodePath("UI/CharacterPortrait")
+time_label = NodePath("UI/Time")
+lvl_label = NodePath("UI/Level")
+powerbar = NodePath("UI/Powerbar")
+
+[node name="UI" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="Powerbar" type="ProgressBar" parent="UI"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 424.0
+offset_bottom = 14.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jn5md")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0c2de")
+max_value = 2.0
+step = 0.001
+value = 1.0
+show_percentage = false
+
+[node name="PowerbarBorder" type="Sprite2D" parent="UI"]
+position = Vector2(213, 8)
+texture = ExtResource("5_7g6dd")
+
+[node name="OccultOrbParent" type="Node2D" parent="UI"]
+
+[node name="occult_orb" parent="UI/OccultOrbParent" instance=ExtResource("7_uohci")]
+position = Vector2(419, 233)
+
+[node name="occult_orb2" parent="UI/OccultOrbParent" instance=ExtResource("7_uohci")]
+position = Vector2(409, 233)
+
+[node name="occult_orb3" parent="UI/OccultOrbParent" instance=ExtResource("7_uohci")]
+position = Vector2(399, 233)
+
+[node name="occult_orb4" parent="UI/OccultOrbParent" instance=ExtResource("7_uohci")]
+position = Vector2(389, 233)
+
+[node name="occult_orb5" parent="UI/OccultOrbParent" instance=ExtResource("7_uohci")]
+position = Vector2(379, 233)
+
+[node name="Vignette" type="Sprite2D" parent="UI"]
+position = Vector2(213, 120)
+texture = ExtResource("8_2iy3q")
+
+[node name="Time" type="Label" parent="UI"]
+offset_left = 2.0
+offset_top = 54.0
+offset_right = 18.0
+offset_bottom = 62.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_nqdip")
+theme_override_font_sizes/font_size = 4
+text = "0.00"
+
+[node name="Level" type="Label" parent="UI"]
+offset_left = 2.0
+offset_top = 47.0
+offset_right = 23.0
+offset_bottom = 55.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_nqdip")
+theme_override_font_sizes/font_size = 4
+text = "Lvl 1"
+
+[node name="WeaponSpawner" parent="UI" instance=ExtResource("6_1x5oq")]
+position = Vector2(35, 24)
+
+[node name="CharacterPortrait" type="AnimatedSprite2D" parent="UI"]
+position = Vector2(12, 31)
+frames = SubResource("SpriteFrames_bw18u")
+animation = &"blink"
+
+[node name="PortraitBorder" type="Sprite2D" parent="UI"]
+position = Vector2(13, 31)
+texture = ExtResource("3_7d08e")
+
+[node name="FPS" type="Label" parent="UI"]
+offset_left = 1.0
+offset_top = 234.0
+offset_right = 13.0
+offset_bottom = 241.0
+theme_override_fonts/font = ExtResource("3_nqdip")
+theme_override_font_sizes/font_size = 4
+text = "test"
+
+[node name="PortraitAnims" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="animation_finished" from="UI/CharacterPortrait" to="." method="_on_character_portrait_animation_finished"]
+[connection signal="timeout" from="PortraitAnims" to="." method="_on_portrait_anims_timeout"]

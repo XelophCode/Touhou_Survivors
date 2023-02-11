@@ -1,7 +1,11 @@
 extends item_base_class
 
 func _ready():
-	damage = 1
+	if occult_orb:
+		damage = 2
+	else:
+		damage = 1
+	
 	global_position = Globals.player_position
 	rotation = deg_to_rad(Globals.cardinal_direction_to_rotation(Globals.player_facing))
 	$AnimationPlayer.play("throw")

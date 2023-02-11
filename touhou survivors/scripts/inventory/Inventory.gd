@@ -31,5 +31,5 @@ func open_inventory():
 	visible = true
 	for i in current_tier:
 		var space = $InventoryGrid.get_child(i-1).get_child(0)
-		space.monitorable = true
-		space.monitoring = true
+		space.set_deferred("monitorable",true)
+		space.set_deferred("monitoring",true)

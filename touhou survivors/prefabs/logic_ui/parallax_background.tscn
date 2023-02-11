@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://cqvtr2xssn8wh"]
 
 [ext_resource type="Texture2D" uid="uid://docqktleb7kem" path="res://sprites/environment/grassbg.png" id="1_q31tv"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+texture_filter = 2
 motion_mirroring = Vector2(448, 256)
 
 [node name="Grassbg" type="Sprite2D" parent="ParallaxLayer"]

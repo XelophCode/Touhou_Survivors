@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://dq52t1p141ytn"]
+[gd_scene load_steps=13 format=3 uid="uid://d84nd0y73ig0"]
 
-[ext_resource type="Script" path="res://scripts/enemies/fairy_1.gd" id="1_fe6y4"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_fe6y4"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_et8fe"]
 [ext_resource type="Texture2D" uid="uid://dsjvfrtxwnubx" path="res://sprites/actors/oni.png" id="3_4n61s"]
 
@@ -73,7 +73,8 @@ floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_fe6y4")
-type = 2
+tier = 1
+type = 0
 sprite = NodePath("AnimatedSprite2D")
 face_player = true
 shadow = NodePath("Shadow")

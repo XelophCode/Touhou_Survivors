@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://dpnnthujd6nt6"]
+[gd_scene load_steps=15 format=3 uid="uid://c5nb6c4vdc2go"]
 
-[ext_resource type="Script" path="res://scripts/enemies/fairy_1.gd" id="1_ngyr7"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_svmvi"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_5a5g3"]
 [ext_resource type="Texture2D" uid="uid://lxjnknc6yic" path="res://sprites/actors/Daiyousei.png" id="3_x0q7l"]
 
@@ -85,8 +85,9 @@ slide_on_ceiling = false
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
-script = ExtResource("1_ngyr7")
-type = 2
+script = ExtResource("1_svmvi")
+tier = 1
+type = 0
 sprite = NodePath("AnimatedSprite2D")
 face_player = true
 shadow = NodePath("Shadow")

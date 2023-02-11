@@ -10,7 +10,7 @@ func _ready():
 	
 	movetween()
 
-func _physics_process(_delta):
+func _process(_delta):
 	queue_redraw()
 
 func movetween():

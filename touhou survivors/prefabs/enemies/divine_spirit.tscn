@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cce4anya1tkf7"]
+[gd_scene load_steps=7 format=3 uid="uid://p45wocscra4m"]
 
-[ext_resource type="Script" path="res://scripts/enemies/fairy_1.gd" id="1_208ll"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_208ll"]
 [ext_resource type="Texture2D" uid="uid://3h0tt3c1ie18" path="res://sprites/actors/divine_spirit.png" id="2_budkh"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_rs1np"]
 
@@ -26,7 +26,8 @@ floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_208ll")
-type = 2
+tier = 1
+type = 0
 sprite = NodePath("Sprite2D")
 particles = NodePath("CPUParticles2D")
 base_speed = 400.0

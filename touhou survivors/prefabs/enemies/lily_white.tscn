@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3ftp21abscbb"]
+[gd_scene load_steps=15 format=3 uid="uid://de7be4uyjd811"]
 
-[ext_resource type="Script" path="res://scripts/enemies/fairy_1.gd" id="1_i3kvw"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_i3kvw"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_d28hf"]
 [ext_resource type="Texture2D" uid="uid://dqqcif3ajaj2q" path="res://sprites/actors/lily_white.png" id="3_5lpb4"]
 
@@ -87,7 +87,8 @@ floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_i3kvw")
-type = 2
+tier = 1
+type = 0
 sprite = NodePath("AnimatedSprite2D")
 face_player = true
 shadow = NodePath("Shadow")

@@ -12,7 +12,7 @@ func _ready():
 	else:
 		damage = 2
 
-func _physics_process(_delta):
+func _process(_delta):
 	global_position = Globals.player_position
 
 func _on_hitbox_body_entered(body):

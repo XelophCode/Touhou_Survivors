@@ -34,9 +34,11 @@ var speed_mod:float = 1.0
 var damage_mod:float = 1.0
 var health_mod:float = 1.0
 var threat_level:float = 0.0
+var leveling_up:bool = false
 
 func _ready():
 	Signals.connect("increase_threat",catch_increase_threat)
+	Signals.connect("leveling_up",catch_leveling_up)
 	enemies_high_chance = [fairy_red,fairy_green]
 	enemies_low_chance = [fairy_blue]
 
@@ -65,7 +67,7 @@ func catch_increase_threat():
 		
 
 func spawn_enemy(special_spawn:bool = false, special_enemy = null):
-	if (enemy_parent.get_child_count() < spawn_limit or special_spawn) and !Globals.leveling_up:
+	if (enemy_parent.get_child_count() < spawn_limit or special_spawn) and !leveling_up:
 		var player_pos_x = Globals.player_position.x
 		var player_pos_y = Globals.player_position.y
 		var viewport_range_x_min:float = player_pos_x - viewport_halved.x
@@ -107,3 +109,6 @@ func spawn_enemy(special_spawn:bool = false, special_enemy = null):
 		
 		inst.global_position = spawn_position
 		enemy_parent.add_child(inst)
+
+func catch_leveling_up(value):
+	leveling_up = value

@@ -1,23 +1,29 @@
-[gd_scene load_steps=86 format=3 uid="uid://cah8y53sm3blk"]
+[gd_scene load_steps=114 format=3 uid="uid://cah8y53sm3blk"]
 
 [ext_resource type="Script" path="res://scripts/misc/Player.gd" id="1_37at3"]
-[ext_resource type="Script" path="res://scripts/logic_ui/starting_item_array_resource.gd" id="2_huiwo"]
 [ext_resource type="Texture2D" uid="uid://bsv6waqhjtkfp" path="res://sprites/actors/reimu.png" id="2_kv5a8"]
-[ext_resource type="Resource" uid="uid://cbidup4rcsngx" path="res://prefabs/inventory/resources/Persuasion Needles.tres" id="3_xvtp5"]
-[ext_resource type="Script" path="res://scripts/logic_ui/starting_item_resource.gd" id="4_65436"]
+[ext_resource type="Script" path="res://scripts/logic_ui/starting_item_array_resource.gd" id="2_ult0a"]
+[ext_resource type="Resource" uid="uid://dpovdenvg31u8" path="res://prefabs/inventory/resources/Homing Amulet.tres" id="3_vwokg"]
+[ext_resource type="Script" path="res://scripts/logic_ui/starting_item_resource.gd" id="4_v1uxf"]
 [ext_resource type="Texture2D" uid="uid://bf1kq504es3wr" path="res://sprites/misc/magic_circle_1.png" id="5_bvy6o"]
+[ext_resource type="Texture2D" uid="uid://dbie4j5btns2w" path="res://sprites/ui/sun_rays.png" id="6_4k0vm"]
 [ext_resource type="Texture2D" uid="uid://bqsgbej3ai1oo" path="res://sprites/actors/player_mask.png" id="6_d0cf2"]
 [ext_resource type="Texture2D" uid="uid://bex5m364h1ons" path="res://sprites/misc/magic_circle_2.png" id="6_dwehi"]
+[ext_resource type="Texture2D" uid="uid://rkhprq2a3yag" path="res://sprites/ui/Sakura.png" id="7_iakcq"]
+[ext_resource type="Texture2D" uid="uid://d1lf6hf02n3s3" path="res://sprites/ui/sun_spot.png" id="7_xwjmk"]
+[ext_resource type="Texture2D" uid="uid://c0aov8m1r3we2" path="res://sprites/ui/cloud_shadow.png" id="8_3nw1b"]
+[ext_resource type="Texture2D" uid="uid://dww5avsvqu437" path="res://sprites/ui/black_cloud.png" id="13_1x8ei"]
+[ext_resource type="Texture2D" uid="uid://cutr1tv2w1e6r" path="res://sprites/ui/smoke_08.png" id="13_scd75"]
 
-[sub_resource type="Resource" id="Resource_8s3vs"]
-script = ExtResource("4_65436")
-item = ExtResource("3_xvtp5")
+[sub_resource type="Resource" id="Resource_p0i25"]
+script = ExtResource("4_v1uxf")
+item = ExtResource("3_vwokg")
 cooldown = 4
-occult_orb = false
+occult_orb = true
 
-[sub_resource type="Resource" id="Resource_qkhnr"]
-script = ExtResource("2_huiwo")
-starting_item = [SubResource("Resource_8s3vs")]
+[sub_resource type="Resource" id="Resource_xcxxc"]
+script = ExtResource("2_ult0a")
+starting_item = [SubResource("Resource_p0i25")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lia0m"]
 bg_color = Color(0, 0, 0, 0.329412)
@@ -529,6 +535,10 @@ max_value = 2.0
 _data = [Vector2(0, 0), 0.0, 2.33877, 0, 1, Vector2(0.544186, 1.27273), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.79221, 0.0, 1, 0]
 point_count = 3
 
+[sub_resource type="Gradient" id="Gradient_03k50"]
+offsets = PackedFloat32Array(0, 0.504202, 1)
+colors = PackedColorArray(0, 0.729412, 0, 0, 0.0686275, 0.764706, 0, 1, 0.137255, 0.8, 0, 0)
+
 [sub_resource type="Animation" id="Animation_n73m6"]
 resource_name = "gap_teleport_in"
 length = 0.35
@@ -857,13 +867,143 @@ _data = {
 "spin": SubResource("Animation_y65ni")
 }
 
+[sub_resource type="Animation" id="Animation_vd76x"]
+resource_name = "sun_ray"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sun_rays_parent:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.196078), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oe787"]
+_data = {
+"sun_ray": SubResource("Animation_vd76x")
+}
+
+[sub_resource type="Gradient" id="Gradient_dw6fl"]
+offsets = PackedFloat32Array(0, 0.968468, 1)
+colors = PackedColorArray(0.961492, 0.777208, 0.963102, 1, 0.958871, 0.764141, 0.961278, 0.8, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ht2i5"]
+gradient = SubResource("Gradient_dw6fl")
+
+[sub_resource type="Curve" id="Curve_npey7"]
+max_value = 3.0
+_data = [Vector2(0, 0.463636), 0.0, 0.0, 0, 0, Vector2(0.493878, 2.89091), 0.0, 0.0, 0, 0, Vector2(1, 0.436363), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8kq3q"]
+curve = SubResource("Curve_npey7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xb3vs"]
+emission_shape = 3
+emission_box_extents = Vector3(240, 120, 1)
+particle_flag_disable_z = true
+spread = 10.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+angular_velocity_min = 15.0
+angular_velocity_max = 32.24
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+tangential_accel_min = 1.0
+tangential_accel_max = 5.0
+angle_min = 10.0
+angle_max = 90.0
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_8kq3q")
+color_ramp = SubResource("GradientTexture1D_ht2i5")
+turbulence_noise_strength = 9.36
+
+[sub_resource type="Gradient" id="Gradient_hs73c"]
+offsets = PackedFloat32Array(0, 0.481982, 0.977477)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 0.482353, 0.376471, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w86s7"]
+gradient = SubResource("Gradient_hs73c")
+
+[sub_resource type="Curve" id="Curve_3kosf"]
+_data = [Vector2(0, 0.845455), 0.0, 0.0, 0, 0, Vector2(0.473469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.854545), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7tmgm"]
+curve = SubResource("Curve_3kosf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x0ngv"]
+emission_shape = 3
+emission_box_extents = Vector3(240, 120, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_7tmgm")
+color_ramp = SubResource("GradientTexture1D_w86s7")
+
+[sub_resource type="Gradient" id="Gradient_fuab4"]
+offsets = PackedFloat32Array(0, 0.522523, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dxpgx"]
+gradient = SubResource("Gradient_fuab4")
+
+[sub_resource type="Curve" id="Curve_rcm36"]
+_data = [Vector2(0, 0.881818), 0.0, 0.0, 0, 0, Vector2(0.489796, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.881818), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tulee"]
+curve = SubResource("Curve_rcm36")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6hr6n"]
+emission_shape = 3
+emission_box_extents = Vector3(240, 120, 1)
+particle_flag_disable_z = true
+spread = 10.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 12.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 10.0
+scale_min = 2.0
+scale_max = 2.5
+scale_curve = SubResource("CurveTexture_tulee")
+color = Color(1, 1, 1, 0.196078)
+color_ramp = SubResource("GradientTexture1D_dxpgx")
+
+[sub_resource type="Curve" id="Curve_hq1bc"]
+_data = [Vector2(0, 0.545455), 0.0, 0.949091, 0, 1, Vector2(0.478927, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.590909), -0.785094, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_mrskv"]
+offsets = PackedFloat32Array(0, 0.487395, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.0705882, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_5nvee"]
+_data = [Vector2(0, 0.8), 0.0, 0.386667, 0, 1, Vector2(0.517241, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.790909), -0.433117, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_do14g"]
+offsets = PackedFloat32Array(0, 0.508403, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.129412, 1, 1, 1, 0)
+
 [node name="player" type="CharacterBody2D"]
 z_index = 7
 texture_filter = 1
 collision_mask = 0
 floor_constant_speed = true
 script = ExtResource("1_37at3")
-starting_items = SubResource("Resource_qkhnr")
+starting_items = SubResource("Resource_xcxxc")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = -4.0
@@ -885,11 +1025,9 @@ shape = SubResource("CircleShape2D_emnmw")
 visible = false
 
 [node name="MagicCircle1" type="Sprite2D" parent="MagicCircle/Sprites"]
-rotation = 0.398474
 texture = ExtResource("5_bvy6o")
 
 [node name="MagicCircle2" type="Sprite2D" parent="MagicCircle/Sprites"]
-rotation = -0.398474
 texture = ExtResource("6_dwehi")
 
 [node name="WalkAnimations" type="AnimatedSprite2D" parent="."]
@@ -951,6 +1089,19 @@ angular_velocity_min = 1.0
 angular_velocity_max = 12.52
 scale_amount_curve = SubResource("Curve_jdk0i")
 color = Color(0.521569, 0.870588, 0.133333, 1)
+color_ramp = SubResource("Gradient_03k50")
+
+[node name="sun_rays_parent" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 100
+
+[node name="SunRays" type="Sprite2D" parent="sun_rays_parent"]
+position = Vector2(161, 48)
+texture = ExtResource("6_4k0vm")
+
+[node name="SunRays2" type="Sprite2D" parent="sun_rays_parent"]
+position = Vector2(153, 48)
+texture = ExtResource("6_4k0vm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -962,7 +1113,73 @@ libraries = {
 "": SubResource("AnimationLibrary_nqq70")
 }
 
+[node name="SunRaysAnims" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oe787")
+}
+
+[node name="spawn_afterimage" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
+
+[node name="sun_ray_anim_timer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="Sakura" type="GPUParticles2D" parent="."]
+position = Vector2(-24, 0)
+process_material = SubResource("ParticleProcessMaterial_xb3vs")
+texture = ExtResource("7_iakcq")
+lifetime = 10.0
+
+[node name="Sun_spots" type="GPUParticles2D" parent="."]
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_x0ngv")
+texture = ExtResource("7_xwjmk")
+lifetime = 10.0
+
+[node name="Could_shadows" type="GPUParticles2D" parent="."]
+visible = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_6hr6n")
+texture = ExtResource("8_3nw1b")
+lifetime = 20.0
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+amount = 60
+lifetime = 30.0
+texture = ExtResource("13_1x8ei")
+emission_shape = 3
+emission_rect_extents = Vector2(250, 150)
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+angle_max = 359.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_hq1bc")
+color_ramp = SubResource("Gradient_mrskv")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+amount = 10
+lifetime = 20.0
+texture = ExtResource("13_scd75")
+emission_shape = 3
+emission_rect_extents = Vector2(250, 150)
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+angle_max = 198.3
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_5nvee")
+color_ramp = SubResource("Gradient_do14g")
+
+[node name="PhotoPos" type="Marker2D" parent="."]
+position = Vector2(175, -58)
+
 [connection signal="area_entered" from="MagicCircle/ItemPull" to="." method="_on_item_pull_area_entered"]
 [connection signal="area_exited" from="MagicCircle/ItemPull" to="." method="_on_item_pull_area_exited"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="spawn_afterimage" to="." method="_on_spawn_afterimage_timeout"]
+[connection signal="timeout" from="sun_ray_anim_timer" to="." method="_on_sun_ray_anim_timer_timeout"]

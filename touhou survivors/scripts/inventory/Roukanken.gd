@@ -18,11 +18,9 @@ func _ready():
 	$main_body.scale.y = size_mod
 
 func _process(_delta):
+	global_position = Globals.player_position
 	if slash_3.frame == 5:
 		visible = false
-
-func _physics_process(_delta):
-	global_position = Globals.player_position
 
 func _on_slash_1_animation_finished():
 	slash_1.visible = false

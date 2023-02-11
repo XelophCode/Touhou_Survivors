@@ -1,7 +1,38 @@
-[gd_scene load_steps=8 format=3 uid="uid://2g8mm51qwkj5"]
+[gd_scene load_steps=14 format=3 uid="uid://2g8mm51qwkj5"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Camera_item.gd" id="1_0u0vl"]
 [ext_resource type="Texture2D" uid="uid://buljuqkfn1xgp" path="res://sprites/items/item_spawnables/camera_frame.png" id="1_r4qbn"]
+[ext_resource type="PackedScene" uid="uid://ctmua6bvf2pt2" path="res://prefabs/item_spawnables/utilities/photo.tscn" id="2_fhoaf"]
+[ext_resource type="Texture2D" uid="uid://bnxvb2w8r7pt3" path="res://sprites/items/item_spawnables/camera_flash.png" id="3_0rwi6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qotrq"]
+atlas = ExtResource("3_0rwi6")
+region = Rect2(0, 0, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwvge"]
+atlas = ExtResource("3_0rwi6")
+region = Rect2(5, 0, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jugq6"]
+atlas = ExtResource("3_0rwi6")
+region = Rect2(10, 0, 5, 5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jhq7u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qotrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwvge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jugq6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtu24"]
 size = Vector2(168, 100)
@@ -48,9 +79,12 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"camera_flash"
+}, {
 "args": [],
 "method": &"delete"
 }]
@@ -63,7 +97,16 @@ _data = {
 
 [node name="Camera" type="Node2D"]
 texture_filter = 1
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_0u0vl")
+photo = ExtResource("2_fhoaf")
+
+[node name="Flash" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 10
+position = Vector2(12, 0)
+scale = Vector2(2, 2)
+frames = SubResource("SpriteFrames_jhq7u")
 
 [node name="main_body" type="Node2D" parent="."]
 position = Vector2(92, 0)
@@ -89,5 +132,9 @@ libraries = {
 "": SubResource("AnimationLibrary_b8ckx")
 }
 
+[node name="pos" type="Marker2D" parent="."]
+position = Vector2(92, 0)
+
+[connection signal="animation_finished" from="Flash" to="." method="_on_flash_animation_finished"]
 [connection signal="body_entered" from="main_body/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="main_body/Area2D" to="." method="_on_area_2d_body_exited"]

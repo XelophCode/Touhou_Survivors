@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dh4xq6jjerxeh"]
+
+[ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="1_ht2n3"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_ht2n3")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_scale = 1.2
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0

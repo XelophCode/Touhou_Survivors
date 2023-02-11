@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bt0pkxv16moxj"]
+[gd_scene load_steps=13 format=3 uid="uid://ck0wophtbfk1"]
 
-[ext_resource type="Script" path="res://scripts/enemies/fairy_1.gd" id="1_rpv4w"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_rpv4w"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_2kqm6"]
 [ext_resource type="Texture2D" uid="uid://d06mw78lq2t7f" path="res://sprites/actors/Obake.png" id="3_jtuk5"]
 
@@ -73,7 +73,8 @@ floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_rpv4w")
-type = 2
+tier = 1
+type = 1
 sprite = NodePath("AnimatedSprite2D")
 face_player = true
 shadow = NodePath("Shadow")

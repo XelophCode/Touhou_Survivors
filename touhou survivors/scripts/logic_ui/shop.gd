@@ -98,12 +98,12 @@ func leveling_up(value:bool):
 		$ShopGridBG.playing = true
 		$ShopGridBG.frame = 0
 		for child in $ShopGrid.get_children():
-			child.get_child(0).monitorable = true
+			child.get_child(0).set_deferred("monitorable",true)
 	else:
 		visible = false
 		$CPUParticles2D.emitting = false
 		for child in $ShopGrid.get_children():
-			child.get_child(0).monitorable = false
+			child.get_child(0).set_deferred("monitorable",false)
 
 func _on_shop_grid_animation_finished():
 	$ShopGridBG.playing = false
@@ -119,7 +119,7 @@ func pass_metadata_to_item(inst, item):
 	inst.item_cooldown = item.cooldown
 	inst.one_time_spawn = item.one_time_spawn
 
-func _physics_process(delta):
+func _process(delta):
 	eyes_scrolling -= delta * 8
 	$ShopGridBG/mask/eyes.region_rect = Rect2(eyes_scrolling,eyes_scrolling,400,400)
 	$ShopGridBG/mask/eyes.rotation += delta / 30

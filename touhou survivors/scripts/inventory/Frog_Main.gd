@@ -9,7 +9,7 @@ func _ready():
 	rotation = deg_to_rad(randi_range(0,359))
 	damage = 1
 
-func _physics_process(delta):
+func _process(delta):
 	velocity = move * delta
 	$main_body.translate(velocity)
 

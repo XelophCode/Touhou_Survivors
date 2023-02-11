@@ -45,12 +45,12 @@ func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bo
 			$icon_instances.add_child(icon_inst)
 			var scene_inst = scene.instantiate()
 			passive_item_ids[inventory_item_id] = scene_inst.get_instance_id()
-			get_parent().get_parent().get_node("weapons").add_child(scene_inst)
+			Signals.emit_signal("weapon_add_child",scene_inst)
 
 func spawn_weapon(item,occult_orb):
 	var new_weapon_inst = item.instantiate()
 	new_weapon_inst.occult_orb = occult_orb
-	get_parent().get_parent().get_node("weapons").add_child(new_weapon_inst)
+	Signals.emit_signal("weapon_add_child",new_weapon_inst)
 
 func remove_weapon(inventory_item_id:int,active):
 	if inventory_item_ids != []:

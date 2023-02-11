@@ -30,7 +30,7 @@ func break_bottle():
 	bottle_broken = true
 	animated_sprite.set_frame(0)
 
-func _physics_process(delta):
+func _process(delta):
 	if bottle_broken:
 		$main_body.scale.x = lerp($main_body.scale.x,size_mod,1 * delta)
 		$main_body.scale.y = lerp($main_body.scale.y,size_mod,1 * delta)

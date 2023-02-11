@@ -11,7 +11,7 @@ func _ready():
 	else:
 		scale_mod(3.0)
 
-func _physics_process(_delta):
+func _process(_delta):
 	global_position = Globals.player_position
 
 func scale_mod(amt):

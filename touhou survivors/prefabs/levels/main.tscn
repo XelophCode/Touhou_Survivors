@@ -1,28 +1,80 @@
-[gd_scene load_steps=12 format=3 uid="uid://bn7lfio7jg320"]
+[gd_scene load_steps=22 format=3 uid="uid://bn7lfio7jg320"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_78i06"]
-[ext_resource type="PackedScene" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
+[ext_resource type="PackedScene" uid="uid://cqvtr2xssn8wh" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
 [ext_resource type="Script" path="res://scripts/logic_ui/FolderListResource.gd" id="2_l5ojg"]
-[ext_resource type="PackedScene" uid="uid://cfflhyetxhgwh" path="res://prefabs/logic_ui/main_camera.tscn" id="2_pw5jn"]
 [ext_resource type="PackedScene" uid="uid://cah8y53sm3blk" path="res://prefabs/player/player.tscn" id="3_dutub"]
+[ext_resource type="PackedScene" uid="uid://ckfbrsnhk0xny" path="res://prefabs/logic_ui/scoreboard.tscn" id="3_lb8xk"]
 [ext_resource type="PackedScene" path="res://prefabs/logic_ui/enemy_despawner.tscn" id="4_121vl"]
+[ext_resource type="Shader" path="res://scripts/shaders/player_afterimage.gdshader" id="5_1lqtb"]
 [ext_resource type="PackedScene" uid="uid://dibej236818nn" path="res://prefabs/logic_ui/enemy_spawner.tscn" id="5_cql0f"]
+[ext_resource type="Script" path="res://scripts/misc/player_afterimage.gd" id="6_5f4bf"]
 [ext_resource type="PackedScene" uid="uid://bvyow6vg7hdt6" path="res://prefabs/logic_ui/pickup_spawner.tscn" id="6_qbw7i"]
 [ext_resource type="PackedScene" uid="uid://lf1s280eux7x" path="res://prefabs/misc/power.tscn" id="7_416v3"]
+[ext_resource type="PackedScene" uid="uid://fj0acbfbqp0h" path="res://prefabs/player/player_after_image.tscn" id="7_e0sq4"]
 [ext_resource type="PackedScene" uid="uid://dbqucfdpge4u1" path="res://prefabs/levels/structures/level_1/structure_1.tscn" id="9_0yld4"]
+[ext_resource type="Script" path="res://scripts/logic_ui/weapons.gd" id="12_sxuwu"]
+[ext_resource type="PackedScene" uid="uid://cxtno75a58bkv" path="res://prefabs/logic_ui/player_ui.tscn" id="13_fav8l"]
+[ext_resource type="PackedScene" uid="uid://cfflhyetxhgwh" path="res://prefabs/logic_ui/main_camera.tscn" id="14_qqvd4"]
 
 [sub_resource type="Resource" id="Resource_un3jb"]
 script = ExtResource("2_l5ojg")
 FolderPath = "res://prefabs/levels/structures/level_1"
 ResourceCategory = null
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qx4cd"]
+shader = ExtResource("5_1lqtb")
+shader_parameter/alpha = 1.0
+
+[sub_resource type="Gradient" id="Gradient_eyer5"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.990991)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iaj81"]
+gradient = SubResource("Gradient_eyer5")
+
+[sub_resource type="Environment" id="Environment_pf1gy"]
+background_mode = 3
+tonemap_white = 2.03
+ssao_radius = 7.8
+ssao_intensity = 7.97
+ssil_radius = 4.68
+ssil_intensity = 8.16
+glow_enabled = true
+glow_intensity = 1.21
+glow_strength = 1.19
+glow_blend_mode = 0
+fog_light_energy = 4.77
+fog_sun_scatter = 0.43
+fog_density = 0.3671
+fog_sky_affect = 0.993
+fog_height = 394.97
+fog_height_density = 8.4571
+adjustment_enabled = true
+adjustment_brightness = 0.95
+adjustment_contrast = 1.1
+adjustment_saturation = 1.1
+adjustment_color_correction = SubResource("GradientTexture1D_iaj81")
+
 [node name="Main" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_78i06")
 structures = SubResource("Resource_un3jb")
 
+[node name="Scoreboard" parent="." instance=ExtResource("3_lb8xk")]
+
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_804ch")]
 
-[node name="MainCamera" parent="." instance=ExtResource("2_pw5jn")]
+[node name="structure_parent" type="Node2D" parent="."]
+texture_filter = 2
+position = Vector2(0.5, 0.5)
+
+[node name="structure_1" parent="structure_parent" instance=ExtResource("9_0yld4")]
+
+[node name="player_afterimage" type="Node2D" parent="."]
+material = SubResource("ShaderMaterial_qx4cd")
+script = ExtResource("6_5f4bf")
+player_afterimage = ExtResource("7_e0sq4")
 
 [node name="player" parent="." instance=ExtResource("3_dutub")]
 
@@ -31,12 +83,22 @@ structures = SubResource("Resource_un3jb")
 [node name="EnemySpawner" parent="." instance=ExtResource("5_cql0f")]
 
 [node name="weapons" type="Node2D" parent="."]
+script = ExtResource("12_sxuwu")
 
 [node name="PickupSpawner" parent="." instance=ExtResource("6_qbw7i")]
+
+[node name="MainCamera" parent="." instance=ExtResource("14_qqvd4")]
 
 [node name="Power" parent="." instance=ExtResource("7_416v3")]
 position = Vector2(-35, -5)
 
-[node name="structure_parent" type="Node2D" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pf1gy")
 
-[node name="structure_1" parent="structure_parent" instance=ExtResource("9_0yld4")]
+[node name="PlayerUI" parent="." instance=ExtResource("13_fav8l")]
+
+[node name="Power2" parent="." instance=ExtResource("7_416v3")]
+position = Vector2(-30, -34)
+
+[node name="Power3" parent="." instance=ExtResource("7_416v3")]
+position = Vector2(-42, 27)

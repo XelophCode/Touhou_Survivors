@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckfbrsnhk0xny"]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/Scoreboard.gd" id="1_7e6v2"]
+
+[node name="Scoreboard" type="Node"]
+script = ExtResource("1_7e6v2")
+
+[node name="Threat" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
+[connection signal="timeout" from="Threat" to="." method="_on_threat_timeout"]

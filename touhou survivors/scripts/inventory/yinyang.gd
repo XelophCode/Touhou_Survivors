@@ -25,7 +25,7 @@ func _ready():
 		scale.x = 1; scale.y = 1
 	
 
-func _physics_process(delta):
+func _process(delta):
 	if !pause:
 		move = move.rotated(deg_to_rad(rotational_force_degrees)) * magnitude_increase_factor * delta * 60
 		main_body.translate(move)

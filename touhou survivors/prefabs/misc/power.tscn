@@ -1,7 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://lf1s280eux7x"]
+[gd_scene load_steps=16 format=3 uid="uid://lf1s280eux7x"]
 
 [ext_resource type="Script" path="res://scripts/misc/pickups.gd" id="1_0hd7e"]
+[ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="2_hk2gn"]
 [ext_resource type="Texture2D" uid="uid://qtwnt4ssx04l" path="res://sprites/items/pickups/power.png" id="2_tk7jp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o1bd0"]
+resource_local_to_scene = true
+shader = ExtResource("2_hk2gn")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_scale = 1.2
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ibyft"]
 atlas = ExtResource("2_tk7jp")
@@ -77,13 +88,15 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="Power" type="Node2D"]
+[node name="Power" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_0hd7e")
 Type = 0
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 texture_filter = 1
+material = SubResource("ShaderMaterial_o1bd0")
 frames = SubResource("SpriteFrames_su5mm")
 animation = &"spin"
 playing = true

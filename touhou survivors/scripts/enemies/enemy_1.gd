@@ -1,6 +1,9 @@
 extends enemy_base_class
 
+var leveling_up:bool = false
+
 func _ready():
+	Signals.connect("leveling_up",catch_leveling_up)
 	Signals.connect("despawn_offscreen_enemies", despawn)
 	if animation != null:
 		animation.play(animation.get_animation_list()[0])
@@ -21,12 +24,12 @@ func _physics_process(delta):
 		if $knockback_timer.is_stopped():
 			$knockback_timer.start()
 	
-	if Globals.leveling_up:
+	if leveling_up:
 		velocity = Vector2.ZERO
 	move_and_slide()
 	if hp < 1:
 		if alive:
-			Signals.emit_signal("spawn_pickup",global_position,type)
+			Signals.emit_signal("spawn_pickup",global_position,type,tier)
 			if shadow != null:
 				shadow.visible = false
 			$knockback_timer.start(100)
@@ -51,3 +54,6 @@ func _on_knockback_timer_timeout():
 	$knockback_timer.stop()
 	sprite.material.set_shader_parameter("flash_modifier",0)
 	knockback = false
+
+func catch_leveling_up(value):
+	leveling_up = value

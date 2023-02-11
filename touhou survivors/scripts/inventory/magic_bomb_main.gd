@@ -9,7 +9,7 @@ func _ready():
 	rotation = deg_to_rad(randi_range(0,359))
 	$main_body/MagicBomb.rotation = -rotation
 
-func _physics_process(delta):
+func _process(delta):
 	$main_body/MagicBomb.material.set_shader_parameter("flash_modifier",lerp($main_body/MagicBomb.material.get_shader_parameter("flash_modifier"),flash_amt,delta*3))
 
 func flash_amt_one():

@@ -12,7 +12,7 @@ func _ready():
 	else:
 		max_spawns = frogs_without_orb
 
-func _physics_process(_delta):
+func _process(_delta):
 	global_position = Globals.player_position
 
 func _on_timer_timeout():
