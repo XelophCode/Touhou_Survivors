@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bn7lfio7jg320"]
+[gd_scene load_steps=23 format=3 uid="uid://bn7lfio7jg320"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_78i06"]
 [ext_resource type="PackedScene" uid="uid://cqvtr2xssn8wh" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scripts/logic_ui/weapons.gd" id="12_sxuwu"]
 [ext_resource type="PackedScene" uid="uid://cxtno75a58bkv" path="res://prefabs/logic_ui/player_ui.tscn" id="13_fav8l"]
 [ext_resource type="PackedScene" uid="uid://cfflhyetxhgwh" path="res://prefabs/logic_ui/main_camera.tscn" id="14_qqvd4"]
+[ext_resource type="PackedScene" uid="uid://bse7pl53vd6xa" path="res://prefabs/misc/faith.tscn" id="17_a1x4j"]
 
 [sub_resource type="Resource" id="Resource_un3jb"]
 script = ExtResource("2_l5ojg")
@@ -41,9 +42,7 @@ ssao_intensity = 7.97
 ssil_radius = 4.68
 ssil_intensity = 8.16
 glow_enabled = true
-glow_intensity = 1.21
-glow_strength = 1.19
-glow_blend_mode = 0
+glow_bloom = 0.01
 fog_light_energy = 4.77
 fog_sun_scatter = 0.43
 fog_density = 0.3671
@@ -102,3 +101,18 @@ position = Vector2(-30, -34)
 
 [node name="Power3" parent="." instance=ExtResource("7_416v3")]
 position = Vector2(-42, 27)
+
+[node name="Faith" parent="." instance=ExtResource("17_a1x4j")]
+position = Vector2(18, -39)
+
+[node name="Faith2" parent="." instance=ExtResource("17_a1x4j")]
+position = Vector2(33, -27)
+
+[node name="Faith3" parent="." instance=ExtResource("17_a1x4j")]
+position = Vector2(4, -52)
+
+[node name="Faith4" parent="." instance=ExtResource("17_a1x4j")]
+position = Vector2(5, -34)
+
+[node name="Faith5" parent="." instance=ExtResource("17_a1x4j")]
+position = Vector2(18, -23)

@@ -9,7 +9,7 @@ var idle_animation:String = "idle_down"
 @export var starting_items: StartingItemArrayResource
 var power:int
 var faith:float
-var faith_max:float
+var faith_max:float = 50.0
 var current_items:Array
 var hp:float = 100.0
 var damage_taken:float
@@ -27,6 +27,7 @@ func _ready():
 	Signals.connect("gap_teleport",gap_teleport)
 	Signals.connect("gap_finish",gap_finish)
 	Signals.connect("leveling_up",catch_leveling_up)
+	Signals.connect("current_faith",catch_current_faith)
 	await get_tree().create_timer(0.1).timeout
 	var counter:int = 0
 	if starting_items != null:
@@ -37,10 +38,8 @@ func _ready():
 			counter += 1
 
 func _physics_process(delta):
-	
 	Globals.photo_dest = $PhotoPos.global_position
 	$Healthbar.value = hp
-	
 	move = Vector2.ZERO
 	
 	var magic_circle_scale : float = (faith / faith_max) * 2 + 1
@@ -165,6 +164,8 @@ func catch_leveling_up(value):
 func _on_spawn_afterimage_timeout():
 	Signals.emit_signal("update_afterimage",$WalkAnimations.animation,$WalkAnimations.frame,$WalkAnimations.flip_h)
 
-
 func _on_sun_ray_anim_timer_timeout():
 	$SunRaysAnims.play("sun_ray")
+
+func catch_current_faith(value):
+	faith = value

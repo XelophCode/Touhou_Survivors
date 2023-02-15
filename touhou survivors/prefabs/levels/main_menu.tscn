@@ -1,0 +1,111 @@
+[gd_scene load_steps=15 format=3 uid="uid://duy7c65fo6x65"]
+
+[ext_resource type="Texture2D" uid="uid://dejh36tx4twrq" path="res://sprites/ui/touhou survivors main menu.png" id="1_l2cqr"]
+[ext_resource type="Script" path="res://scripts/logic_ui/main_menu.gd" id="1_na2pg"]
+[ext_resource type="Texture2D" uid="uid://dfmg5qc0j0sli" path="res://sprites/ui/Touhou_ Gensokyo Survivors-logos_black.png" id="3_g1g73"]
+[ext_resource type="Texture2D" uid="uid://tuuhnhtf4qjy" path="res://sprites/ui/Touhou_ Gensokyo Survivors-logos_white.png" id="4_nl7na"]
+[ext_resource type="Texture2D" uid="uid://rkhprq2a3yag" path="res://sprites/ui/Sakura.png" id="4_yyghq"]
+[ext_resource type="Texture2D" uid="uid://cfuxboqjoju05" path="res://sprites/ui/fullscreen_white.png" id="6_byxag"]
+[ext_resource type="AudioStream" uid="uid://djstd20y54vmx" path="res://audio/brokenmoon.mp3" id="6_xeht5"]
+[ext_resource type="AudioStream" uid="uid://doce3jf0s4bkr" path="res://audio/Wind.ogg" id="7_f7de5"]
+[ext_resource type="AudioStream" uid="uid://gaf82k767rpt" path="res://audio/AmbientNatureOutside.wav" id="8_aiubf"]
+
+[sub_resource type="Curve" id="Curve_22rfy"]
+_data = [Vector2(0, 0.172727), 0.0, 0.0, 0, 0, Vector2(0.501916, 0.454545), 0.0, 0.0, 0, 0, Vector2(1, 0.136364), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_ol6mv"]
+offsets = PackedFloat32Array(0, 0.819328, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Environment" id="Environment_45f7v"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.34
+glow_bloom = 0.1
+
+[sub_resource type="Animation" id="Animation_g6tmj"]
+resource_name = "fade_in"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullscreenWhite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nugk0"]
+_data = {
+"fade_in": SubResource("Animation_g6tmj")
+}
+
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("main_menu_bg")]
+texture_filter = 1
+script = ExtResource("1_na2pg")
+main_menu_bg = NodePath("pngs")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(438, 180)
+amount = 50
+lifetime = 25.0
+texture = ExtResource("4_yyghq")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 100)
+direction = Vector2(-2, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 14.49
+initial_velocity_max = 36.23
+scale_amount_curve = SubResource("Curve_22rfy")
+color_ramp = SubResource("Gradient_ol6mv")
+
+[node name="pngs" type="Node2D" parent="."]
+
+[node name="TouhouSurvivorsMainMenu" type="Sprite2D" parent="pngs"]
+position = Vector2(213, -120)
+texture = ExtResource("1_l2cqr")
+
+[node name="TouhouGensokyoSurvivors-logosWhite" type="Sprite2D" parent="pngs"]
+z_index = 2
+position = Vector2(215, -334)
+scale = Vector2(0.395, 0.395)
+texture = ExtResource("4_nl7na")
+
+[node name="TouhouGensokyoSurvivors-logosBlack" type="Sprite2D" parent="pngs"]
+z_index = 2
+position = Vector2(215, -336)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_g1g73")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="FullscreenWhite" type="Sprite2D" parent="."]
+position = Vector2(213, 120)
+texture = ExtResource("6_byxag")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_45f7v")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xeht5")
+volume_db = -40.48
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_f7de5")
+autoplay = true
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_aiubf")
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nugk0")
+}

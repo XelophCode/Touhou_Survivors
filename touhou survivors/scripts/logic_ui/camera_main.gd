@@ -11,13 +11,11 @@ var play_time_second:float
 var play_time_minute:int
 var power_lerp:float
 var leveling_up:bool = false
+var check_for_still:bool = false
 
 func _ready():
 	Signals.connect("leveling_up",catch_leveling_up)
 	Signals.connect("gap_camera_tween",gap_camera_tween)
-	
-#	for child in $OccultOrbParent.get_children():
-#		child.get_child(1).max_value = Globals.occult_orb_max
 
 func _process(delta):
 	if camera_is_tweening:
@@ -25,10 +23,13 @@ func _process(delta):
 		if global_position.distance_to(camera_gap_pos) < 0.5:
 			gap_finish()
 	else:
-#		global_position.x = snappedf(global_position.x,0.1)
-#		global_position.y = snappedf(global_position.y,0.1)
 		global_position.x = lerp(global_position.x,Globals.player_position.x,delta*4)
 		global_position.y = lerp(global_position.y,Globals.player_position.y,delta*4)
+	
+	if leveling_up:
+		if global_position.distance_to(Globals.player_position) < 0.01 and check_for_still:
+			Signals.emit_signal("camera_is_still")
+			check_for_still = false
 
 func open_inventory():
 	level += 1
@@ -43,11 +44,12 @@ func open_inventory():
 
 func catch_leveling_up(value):
 	leveling_up = value
-	if value:
+	if leveling_up:
 		open_inventory()
 		$shop_close_button.visible = true
 		$ScreenDim.visible = true
 		$AnimationPlayer.play("screen_dim")
+		check_for_still = true
 	else:
 		$ScreenDim.visible = false
 

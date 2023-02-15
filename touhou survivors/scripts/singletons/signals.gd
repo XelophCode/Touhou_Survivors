@@ -25,5 +25,9 @@ signal increase_threat
 signal update_afterimage
 signal general_values
 signal current_power
+signal current_faith
 signal next_lvl_update
 signal weapon_add_child
+signal update_orb_count
+signal reduce_orb_count
+signal camera_is_still

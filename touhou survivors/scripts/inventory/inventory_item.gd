@@ -37,6 +37,8 @@ var passive_limit:bool = false
 var current_area_hovered
 var one_time_spawn:bool
 var occult_orb:bool = false
+var orb_count:int
+var update_saved_item_position:bool = false
 
 func find_rotational_offset():
 	var rot:int = round(rad_to_deg(rotation))
@@ -71,9 +73,8 @@ func leveling_up(value:bool):
 		$ItemLargeBg.visible = false
 		pop_in_animation()
 		if saved_item:
-			await Signals.player_not_moving_in_pause
 			visible = true
-			new_position = current_area_hovered.global_position + rotational_offset
+			update_saved_item_position = true
 	else:
 		visible = false
 		if !in_inventory:
@@ -92,6 +93,12 @@ func pop_in_animation():
 	await get_tree().create_timer(0.01).timeout
 	$ItemLargeBg.visible = true
 
+func catch_update_orb_count(value):
+	orb_count = value
+
+func catch_camera_is_still():
+	update_saved_item_position = false
+
 func _ready():
 	if do_stretch_anim:
 		show_highlight = false
@@ -99,6 +106,8 @@ func _ready():
 	else:
 		show_highlight = true
 	Signals.connect("leveling_up",leveling_up)
+	Signals.connect("update_orb_count",catch_update_orb_count)
+	Signals.connect("camera_is_still",catch_camera_is_still)
 	find_rotational_offset()
 	spawn_offset = get_child(0).get_node("main_placement").position * -1
 	global_position += spawn_offset + rotational_offset
@@ -108,7 +117,10 @@ func _ready():
 	occult_orb_progress.max_value = 1
 	
 
-func _physics_process(delta):
+func _process(delta):
+	if update_saved_item_position:
+		new_position = current_area_hovered.global_position + rotational_offset
+	
 	if $ItemSprite.material.get_shader_parameter("flash_modifier") > 0:
 		$ItemSprite.material.set_shader_parameter("flash_modifier",lerp($ItemSprite.material.get_shader_parameter("flash_modifier"),0.0,delta*3))
 	if left_mouse_button_held:
@@ -133,9 +145,9 @@ func click_detection(event):
 		if event.is_action_pressed("left_mouse_button"):
 			holding_item()
 		if event.is_action_pressed("right_mouse_button"):
-			if occult_orb_progress.value < occult_orb_progress.max_value and Globals.faith >= Globals.occult_orb_max:
+			if occult_orb_progress.value < occult_orb_progress.max_value and orb_count > 0:
+				Signals.emit_signal("reduce_orb_count")
 				occult_orb_progress.value = occult_orb_progress.max_value
-				Globals.faith -= Globals.occult_orb_max
 				occult_orb = true
 				if in_inventory:
 					Signals.emit_signal("modify_weapon",scene,get_instance_id())

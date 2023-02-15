@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/misc/Player.gd" id="1_37at3"]
 [ext_resource type="Texture2D" uid="uid://bsv6waqhjtkfp" path="res://sprites/actors/reimu.png" id="2_kv5a8"]
 [ext_resource type="Script" path="res://scripts/logic_ui/starting_item_array_resource.gd" id="2_ult0a"]
-[ext_resource type="Resource" uid="uid://dpovdenvg31u8" path="res://prefabs/inventory/resources/Homing Amulet.tres" id="3_vwokg"]
+[ext_resource type="Resource" uid="uid://cqv7rgl04f0xk" path="res://prefabs/inventory/resources/Bat.tres" id="3_8el08"]
 [ext_resource type="Script" path="res://scripts/logic_ui/starting_item_resource.gd" id="4_v1uxf"]
 [ext_resource type="Texture2D" uid="uid://bf1kq504es3wr" path="res://sprites/misc/magic_circle_1.png" id="5_bvy6o"]
 [ext_resource type="Texture2D" uid="uid://dbie4j5btns2w" path="res://sprites/ui/sun_rays.png" id="6_4k0vm"]
@@ -17,9 +17,9 @@
 
 [sub_resource type="Resource" id="Resource_p0i25"]
 script = ExtResource("4_v1uxf")
-item = ExtResource("3_vwokg")
+item = ExtResource("3_8el08")
 cooldown = 4
-occult_orb = true
+occult_orb = false
 
 [sub_resource type="Resource" id="Resource_xcxxc"]
 script = ExtResource("2_ult0a")

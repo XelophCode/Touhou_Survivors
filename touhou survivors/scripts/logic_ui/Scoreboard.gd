@@ -1,5 +1,10 @@
 extends Node
 
+var faith:float:
+	set(value):
+		faith = value
+		Signals.emit_signal("current_faith",faith)
+
 var power:float:
 	set(value):
 		power = value
@@ -12,11 +17,14 @@ var next_lvl:float = 2.0:
 		Signals.emit_signal("next_lvl_update",next_lvl)
 
 @export var next_lvl_increase_rate:float = 1.5
-@export var occult_orb_max:float = 10.0
 
 func _ready():
 	Signals.connect("update_power",catch_update_power)
+	Signals.connect("update_faith",catch_update_faith)
 	
+
+func catch_update_faith(update):
+	faith += update
 
 func catch_update_power(update):
 	power += update

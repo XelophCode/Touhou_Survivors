@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dspc8bkwwcrd6"
+path="res://.godot/imported/The Moon As Seen From the Shrine.ogg-eab140c9fcad81e6452cc461c25aa27e.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/The Moon As Seen From the Shrine.ogg"
+dest_files=["res://.godot/imported/The Moon As Seen From the Shrine.ogg-eab140c9fcad81e6452cc461c25aa27e.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

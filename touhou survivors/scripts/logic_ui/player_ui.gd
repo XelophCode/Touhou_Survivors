@@ -9,19 +9,45 @@ var playtime_second:float
 var playtime_minute:float
 var power:float
 var power_update:float
+var faith:float
+var faith_update:float
 var current_orb_target:float
 var leveling_up:bool = false
+var occult_orb_max:float = 10.0
+
+var current_orb:int:
+	set(value):
+		current_orb = value
+		Signals.emit_signal("update_orb_count",current_orb)
 
 func _ready():
 	Signals.connect("current_power",catch_current_power)
 	Signals.connect("next_lvl_update",catch_next_lvl_update)
 	Signals.connect("leveling_up",catch_leveling_up)
+	Signals.connect("current_faith",catch_current_faith)
+	Signals.connect("reduce_orb_count",catch_reduce_orb_count)
+	
+	for orb in $UI/OccultOrbParent.get_children():
+		orb.get_child(1).max_value = occult_orb_max
 
 func _process(delta):
 	$UI/FPS.text = "FPS: " + str(Engine.get_frames_per_second())
-	power = lerp(power,power_update,delta*4)
 	
+	power = lerp(power,power_update,delta*4)
 	powerbar.value = power
+	
+	faith = lerp(faith,faith_update,delta*4)
+	if faith > occult_orb_max:
+		current_orb = 1
+		if faith > occult_orb_max * 2:
+			current_orb = 2
+			if faith > occult_orb_max * 3:
+				current_orb = 3
+				if faith > occult_orb_max * 4:
+					current_orb = 4
+	else:
+		current_orb = 0
+	$UI/OccultOrbParent.get_child(current_orb).get_child(1).value = faith - occult_orb_max * current_orb
 	
 	if !leveling_up:
 		playtime_second += delta
@@ -52,6 +78,9 @@ func _on_character_portrait_animation_finished():
 	if character_portrait.animation == "blink":
 		character_portrait.frame = 0
 
+func catch_current_faith(value):
+	faith_update = value
+
 func catch_current_power(value):
 	power_update = value
 
@@ -78,3 +107,12 @@ func update_occult_orbs():
 
 func catch_leveling_up(value):
 	leveling_up = value
+	if leveling_up:
+		character_portrait.play("smile")
+		$PortraitAnims.stop()
+	else:
+		character_portrait.play("head_bob")
+		$PortraitAnims.start()
+
+func catch_reduce_orb_count():
+	Signals.emit_signal("update_faith",-occult_orb_max)

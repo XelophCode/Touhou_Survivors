@@ -7,16 +7,18 @@ var move:Vector2
 enum {POWER,FAITH,SCORE}
 var rainbow_outline:bool = false
 @export var sprite : Node
+var leveling_up:bool = false
 
 func _ready():
+	Signals.connect("leveling_up",catch_leveling_up)
 	if rainbow_outline:
 		sprite.material.line_scale = 0.4
 		sprite.material.rainbow = true
 	else:
 		sprite.material.line_scale = 0.0
 
-func _physics_process(delta):
-	if move_towards_player and !Globals.leveling_up:
+func _process(delta):
+	if move_towards_player and !leveling_up:
 		move = lerp(move,global_position.direction_to(Globals.player_position)*2,delta*2)
 	else:
 		move = Vector2.ZERO
@@ -28,3 +30,6 @@ func _on_area_2d_body_entered(_body):
 		FAITH: Signals.emit_signal("update_faith", value)
 		SCORE: pass
 	queue_free()
+
+func catch_leveling_up(value):
+	leveling_up = value
