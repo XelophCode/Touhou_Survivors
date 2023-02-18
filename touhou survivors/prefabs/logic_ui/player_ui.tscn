@@ -1,13 +1,19 @@
-[gd_scene load_steps=28 format=3 uid="uid://cxtno75a58bkv"]
+[gd_scene load_steps=34 format=3 uid="uid://cxtno75a58bkv"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/player_ui.gd" id="1_i5u1q"]
-[ext_resource type="Texture2D" uid="uid://5xfk8cnv31f3" path="res://sprites/ui/reimu_portrait_anims.png" id="2_f7o4i"]
+[ext_resource type="SpriteFrames" uid="uid://bfm8psvacuqtm" path="res://sprites/ui/character_portraits/reimu_portrait.tres" id="2_lwihl"]
 [ext_resource type="Texture2D" uid="uid://cm37e7hd20ljg" path="res://sprites/ui/reimu_border.png" id="3_7d08e"]
+[ext_resource type="SpriteFrames" uid="uid://dbde7pnww2vr8" path="res://sprites/ui/character_portraits/marisa_portrait.tres" id="3_8rrdf"]
 [ext_resource type="FontFile" uid="uid://4g0oq0v08h0h" path="res://resources/fonts/prstart.ttf" id="3_nqdip"]
 [ext_resource type="Texture2D" uid="uid://cfbld0no123ax" path="res://sprites/ui/powerbar_border.png" id="5_7g6dd"]
 [ext_resource type="PackedScene" uid="uid://iqvjyq5tkfb0" path="res://prefabs/logic_ui/weapon_spawner.tscn" id="6_1x5oq"]
 [ext_resource type="PackedScene" uid="uid://63murqtbvxlb" path="res://prefabs/logic_ui/occult_orb.tscn" id="7_uohci"]
 [ext_resource type="Texture2D" uid="uid://bjuq7vtc66ft3" path="res://sprites/ui/vignette.png" id="8_2iy3q"]
+[ext_resource type="Shader" path="res://scripts/shaders/dissolve.gdshader" id="10_6vywg"]
+[ext_resource type="Texture2D" uid="uid://0ydohqq6lp21" path="res://sprites/ui/fullscreen_black.png" id="11_88u87"]
+[ext_resource type="Texture2D" uid="uid://chpsc7idhrpwy" path="res://sprites/ui/GAMEOVER.png" id="12_gdljk"]
+[ext_resource type="Script" path="res://scripts/logic_ui/PauseMenu.gd" id="12_m1qpx"]
+[ext_resource type="AudioStream" uid="uid://b70f4b73su13x" path="res://audio/select2.ogg" id="13_fas5w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn5md"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
@@ -17,147 +23,124 @@ bg_color = Color(0.176471, 0.729412, 0.25098, 1)
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ggr3"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(0, 69, 24, 23)
+[sub_resource type="Curve" id="Curve_jnjyb"]
+_data = [Vector2(0, 1), 0.0, -0.317695, 0, 1, Vector2(0.543689, 0.827273), -0.702273, -0.702273, 0, 0, Vector2(1, 0.209091), -1.35474, 0.0, 1, 0]
+point_count = 3
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x813a"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(24, 69, 24, 23)
+[sub_resource type="Curve" id="Curve_5b2b6"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ep8e4"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(48, 69, 24, 23)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8tfak"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p7jl2"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(72, 69, 24, 23)
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_on3v0"]
+noise = SubResource("FastNoiseLite_8tfak")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fx87j"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(0, 23, 24, 23)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y8vt8"]
+resource_local_to_scene = true
+shader = ExtResource("10_6vywg")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/flash_modifier = null
+shader_parameter/opacity = 1.0
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_on3v0")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bykqa"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(24, 23, 24, 23)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wkysr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dmi3o"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(48, 23, 24, 23)
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sbjtb"]
+noise = SubResource("FastNoiseLite_wkysr")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_styfp"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(72, 23, 24, 23)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ncw0"]
+resource_local_to_scene = true
+shader = ExtResource("10_6vywg")
+shader_parameter/dissolve_value = 0.0
+shader_parameter/flash_modifier = null
+shader_parameter/opacity = 1.0
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_sbjtb")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_chvxb"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(0, 0, 24, 23)
+[sub_resource type="Animation" id="Animation_mxmu2"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullscreenBlack:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_224ja"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(24, 0, 24, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_warxf"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(48, 0, 24, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uqdfb"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(72, 0, 24, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c8bp3"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(0, 46, 24, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dw4oq"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(24, 46, 24, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ibhv3"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(48, 46, 24, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_15l16"]
-atlas = ExtResource("2_f7o4i")
-region = Rect2(72, 46, 24, 23)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bw18u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ggr3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x813a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ep8e4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p7jl2")
-}],
-"loop": true,
-"name": &"blink",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fx87j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bykqa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dmi3o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_styfp")
-}],
-"loop": true,
-"name": &"damage",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_chvxb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_224ja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_warxf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uqdfb")
-}],
-"loop": true,
-"name": &"head_bob",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c8bp3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dw4oq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ibhv3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_15l16")
-}],
-"loop": true,
-"name": &"smile",
-"speed": 4.0
+[sub_resource type="Animation" id="Animation_ubr6i"]
+resource_name = "gameover"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gameover:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"goto_main_menu"
 }]
+}
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("character_portrait", "time_label", "lvl_label", "powerbar")]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6scmd"]
+_data = {
+"fade_out": SubResource("Animation_mxmu2"),
+"gameover": SubResource("Animation_ubr6i")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0qhdl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r23ak"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_73gst"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x35ta"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6h1ky"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_18p55"]
+
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("character_portrait", "time_label", "lvl_label", "powerbar", "confetti")]
 script = ExtResource("1_i5u1q")
 character_portrait = NodePath("UI/CharacterPortrait")
 time_label = NodePath("UI/Time")
 lvl_label = NodePath("UI/Level")
 powerbar = NodePath("UI/Powerbar")
+confetti = NodePath("Confetti")
+reimu_portrait = ExtResource("2_lwihl")
+marisa_portrait = ExtResource("3_8rrdf")
 
 [node name="UI" type="Node2D" parent="."]
 texture_filter = 1
@@ -226,8 +209,6 @@ position = Vector2(35, 24)
 
 [node name="CharacterPortrait" type="AnimatedSprite2D" parent="UI"]
 position = Vector2(12, 31)
-frames = SubResource("SpriteFrames_bw18u")
-animation = &"blink"
 
 [node name="PortraitBorder" type="Sprite2D" parent="UI"]
 position = Vector2(13, 31)
@@ -246,5 +227,131 @@ text = "test"
 wait_time = 5.0
 autostart = true
 
+[node name="Confetti" type="CPUParticles2D" parent="."]
+position = Vector2(214, -22)
+emitting = false
+amount = 60
+lifetime = 4.0
+emission_shape = 3
+emission_rect_extents = Vector2(240, 1)
+direction = Vector2(0, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 100.0
+angle_max = 60.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_jnjyb")
+color = Color(0, 0.360784, 1, 1)
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_5b2b6")
+
+[node name="FullscreenBlack" type="Sprite2D" parent="."]
+z_index = 20
+material = SubResource("ShaderMaterial_y8vt8")
+texture = ExtResource("11_88u87")
+centered = false
+
+[node name="Gameover" type="Sprite2D" parent="."]
+z_index = 21
+material = SubResource("ShaderMaterial_6ncw0")
+texture = ExtResource("12_gdljk")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6scmd")
+}
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 2
+visible = false
+z_index = 20
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_m1qpx")
+
+[node name="Resume" type="Button" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 46.0
+offset_right = 262.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_nqdip")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0qhdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r23ak")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_73gst")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_x35ta")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6h1ky")
+text = "RESUME"
+
+[node name="Options" type="Button" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 75.0
+offset_right = 278.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_nqdip")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0qhdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r23ak")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_73gst")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_x35ta")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6h1ky")
+text = "OPTIONS"
+
+[node name="MainMenu" type="Button" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 105.0
+offset_right = 310.0
+offset_bottom = 125.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_nqdip")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0qhdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r23ak")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_73gst")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_x35ta")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6h1ky")
+text = "MAIN MENU
+"
+
+[node name="CheckBox" type="CheckBox" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 133.0
+offset_right = 185.0
+offset_bottom = 157.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_18p55")
+
+[node name="Label" type="Label" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 140.0
+offset_right = 267.0
+offset_bottom = 151.0
+theme_override_fonts/font = ExtResource("3_nqdip")
+theme_override_font_sizes/font_size = 8
+text = "MUTE MUSIC"
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="select" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("13_fas5w")
+
 [connection signal="animation_finished" from="UI/CharacterPortrait" to="." method="_on_character_portrait_animation_finished"]
 [connection signal="timeout" from="PortraitAnims" to="." method="_on_portrait_anims_timeout"]
+[connection signal="button_down" from="PauseMenu/Resume" to="." method="_on_resume_button_down"]
+[connection signal="button_down" from="PauseMenu/MainMenu" to="." method="_on_main_menu_button_down"]
+[connection signal="button_up" from="PauseMenu/MainMenu" to="." method="_on_main_menu_button_up"]
+[connection signal="toggled" from="PauseMenu/CheckBox" to="." method="_on_check_box_toggled"]

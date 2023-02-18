@@ -90,7 +90,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_567xq")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 12.0
 }]
@@ -139,7 +139,7 @@ script = ExtResource("1_a46w8")
 [node name="main_body" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body"]
-frames = SubResource("SpriteFrames_qixmf")
+sprite_frames = SubResource("SpriteFrames_qixmf")
 
 [node name="Area2D" type="Area2D" parent="main_body"]
 collision_layer = 8

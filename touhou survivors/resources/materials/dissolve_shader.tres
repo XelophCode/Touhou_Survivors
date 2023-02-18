@@ -12,4 +12,5 @@ resource_local_to_scene = true
 shader = ExtResource("1_3g4v2")
 shader_parameter/dissolve_value = 1.0
 shader_parameter/flash_modifier = 0.0
+shader_parameter/opacity = 1.0
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_1omlk")

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://dr74b4m7ur8lp"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://dr74b4m7ur8lp"]
 
 [ext_resource type="Texture2D" uid="uid://fffwb0of7363" path="res://sprites/items/item_icons/camera_icon.png" id="1_jaqa5"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_wutpu"]
@@ -9,11 +9,13 @@
 script = ExtResource("1_wutpu")
 enabled = true
 item_name = 11
-description = ""
+description = "Take a picture of multiple enemies!
+POWERUP:
+Deal more damage!"
 inventory_size = 3
 inventory = ExtResource("2_wpd21")
 spawnable = ExtResource("4_pg7tf")
 icon = ExtResource("1_jaqa5")
 active = true
 cooldown = 8
-stack_limit = 3
+one_time_spawn = false

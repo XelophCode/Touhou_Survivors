@@ -2,6 +2,8 @@ extends item_base_class
 
 
 func _ready():
+	if occult_orb:
+		$main_body/Gap2.position.x += 40
 	Signals.connect("gap_camera_tween",close_gap1)
 	Signals.connect("gap_close",close_gap2)
 	global_position = Globals.player_position

@@ -81,9 +81,9 @@ shadow = NodePath("Shadow")
 z_index = 3
 texture_filter = 1
 material = ExtResource("2_c2ade")
-frames = SubResource("SpriteFrames_cotxy")
+sprite_frames = SubResource("SpriteFrames_cotxy")
 animation = &"neutral"
-playing = true
+autoplay = "neutral"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pifu0")

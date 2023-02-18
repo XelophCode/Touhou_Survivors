@@ -9,7 +9,9 @@ func _ready():
 	Signals.connect("leveling_up",leveling_up)
 
 func open_shop():
-	await Signals.player_not_moving_in_pause
+	
+	global_position.x = Globals.player_position.x - 100
+	global_position.y = Globals.player_position.y
 	
 	var items1x1:Array = []
 	var items1x2:Array = []
@@ -87,7 +89,7 @@ func open_shop():
 	
 	for items in items_to_spawn:
 		items.position += Globals.player_position + Vector2(-100,0)
-		get_parent().get_node("PlayerInventory").add_child(items)
+		get_parent().get_node("PlayerInventory").call_deferred("add_child",items)
 
 func leveling_up(value:bool):
 	if value:
@@ -95,19 +97,16 @@ func leveling_up(value:bool):
 		$AnimationPlayer.play("stretch")
 		$CPUParticles2D2.emitting = true
 		visible = true
-		$ShopGridBG.playing = true
-		$ShopGridBG.frame = 0
+		$ShopGridBG.play("open")
 		for child in $ShopGrid.get_children():
 			child.get_child(0).set_deferred("monitorable",true)
+		open_shop()
 	else:
 		visible = false
 		$CPUParticles2D.emitting = false
 		for child in $ShopGrid.get_children():
 			child.get_child(0).set_deferred("monitorable",false)
 
-func _on_shop_grid_animation_finished():
-	$ShopGridBG.playing = false
-	$ShopGridBG.frame = 15
 
 func pass_metadata_to_item(inst, item):
 	inst.current_item = item.item_name

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://ok0xiqa1ok3u"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://ok0xiqa1ok3u"]
 
 [ext_resource type="Texture2D" uid="uid://dirm3gb7138r4" path="res://sprites/items/item_icons/frog_icon.png" id="1_hr6jf"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_mc4mp"]
@@ -9,11 +9,13 @@
 script = ExtResource("1_mc4mp")
 enabled = true
 item_name = 9
-description = ""
+description = "Frog that explodes on contact!
+POWERUP:
+Unleash a swarm of frogs!"
 inventory_size = 0
 inventory = ExtResource("2_6wu0n")
 spawnable = ExtResource("4_5ffwv")
 icon = ExtResource("1_hr6jf")
 active = true
 cooldown = 5
-stack_limit = 3
+one_time_spawn = false

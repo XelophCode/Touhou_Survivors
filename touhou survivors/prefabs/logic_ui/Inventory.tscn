@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://c50tinougrkay" path="res://sprites/ui/selection_square.png" id="2_lj7po"]
 [ext_resource type="Texture2D" uid="uid://dlp4uu8f2tx87" path="res://sprites/ui/inventory_tier_3.png" id="3_0c3ml"]
 [ext_resource type="Texture2D" uid="uid://cqm8ntmgk6b77" path="res://sprites/ui/reimu_inventory_grid.png" id="3_5tnkq"]
-[ext_resource type="Texture2D" uid="uid://bl8wgqvvmh5c6" path="res://sprites/ui/inventory_grid.png" id="3_wy5mo"]
 [ext_resource type="Texture2D" uid="uid://7lamkxrkeine" path="res://sprites/ui/inventory_tier_4.png" id="4_i2iuv"]
 [ext_resource type="Texture2D" uid="uid://cfvrk7qd5ak34" path="res://sprites/ui/Reimu_fullbody.png" id="4_y7bd6"]
 [ext_resource type="Texture2D" uid="uid://cwpjrj4r7487o" path="res://sprites/ui/inventory_tier_1.png" id="6_8lf0a"]
+[ext_resource type="Texture2D" uid="uid://b8dc57h6lkxnf" path="res://sprites/ui/marisa_fullbody.png" id="6_p1b1m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05nss"]
 size = Vector2(70.4, 70.4001)
@@ -22,26 +22,26 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ReimuInventoryGrid:position")
+tracks/0/path = NodePath("CharacterArt:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(300, 0), Vector2(32.5, 0)]
+"values": [Vector2(106, 200), Vector2(106, 18)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ReimuFullbody:position")
+tracks/1/path = NodePath("InventoryGridArt:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(106, 200), Vector2(106, 18)]
+"values": [Vector2(300, 0), Vector2(32.5, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lnu7x"]
@@ -49,35 +49,35 @@ _data = {
 "slide": SubResource("Animation_6uqkk")
 }
 
-[node name="Inventory" type="Node2D"]
-z_index = 5
+[node name="Inventory" type="Node2D" node_paths=PackedStringArray("blocked_spaces", "character_art", "grid_art")]
+visible = false
+z_index = 16
 texture_filter = 1
 script = ExtResource("1_3pi44")
 blocked_spaces_tier_2 = ExtResource("2_458l6")
 blocked_spaces_tier_3 = ExtResource("3_0c3ml")
 blocked_spaces_tier_4 = ExtResource("4_i2iuv")
+blocked_spaces = NodePath("InventoryGrid/BlockedSpaces")
+character_art = NodePath("CharacterArt")
+grid_art = NodePath("InventoryGridArt")
+reimu_char_art = ExtResource("4_y7bd6")
+marisa_char_art = ExtResource("6_p1b1m")
 
-[node name="ReimuInventoryGrid" type="Sprite2D" parent="."]
+[node name="InventoryGridArt" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(300, 0)
 texture = ExtResource("3_5tnkq")
 
-[node name="BlockedSpaces" type="Sprite2D" parent="ReimuInventoryGrid"]
+[node name="BlockedSpaces" type="Sprite2D" parent="InventoryGridArt"]
 position = Vector2(-32, 0)
 texture = ExtResource("6_8lf0a")
 
-[node name="ReimuFullbody" type="Sprite2D" parent="."]
+[node name="CharacterArt" type="Sprite2D" parent="."]
 position = Vector2(106, 200)
 texture = ExtResource("4_y7bd6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 1
-texture = ExtResource("3_wy5mo")
-
 [node name="InventoryGrid" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(0.5, 0)
 
 [node name="1" type="Node2D" parent="InventoryGrid"]
 position = Vector2(-66, -66)
@@ -911,7 +911,6 @@ position = Vector2(-7.62939e-06, 3.8147e-06)
 shape = SubResource("RectangleShape2D_05nss")
 
 [node name="in_inventory" type="Area2D" parent="."]
-visible = false
 collision_layer = 256
 collision_mask = 16
 

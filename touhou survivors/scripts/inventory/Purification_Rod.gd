@@ -15,7 +15,6 @@ func scale_mod(amt):
 	scale.y = amt
 
 func _on_animated_sprite_2d_animation_finished():
-	$main_body/AnimatedSprite2D.playing = false
 	$main_body/AnimatedSprite2D.frame = 13
 	$AnimationPlayer.play("spin")
 	$AnimationPlayer2.play("move")

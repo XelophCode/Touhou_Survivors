@@ -1,19 +1,21 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://5387tjhsur8g"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://5387tjhsur8g"]
 
 [ext_resource type="Texture2D" uid="uid://p1dbo03hu8ia" path="res://sprites/items/item_icons/yinyang_icon.png" id="1_es7k4"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_pkc7r"]
-[ext_resource type="PackedScene" path="res://prefabs/inventory/yinyang_inventory.tscn" id="1_qaxv5"]
-[ext_resource type="PackedScene" path="res://prefabs/item_spawnables/Yinyang.tscn" id="4_mhyqb"]
+[ext_resource type="PackedScene" uid="uid://bfaa63nt62s5g" path="res://prefabs/inventory/yinyang_inventory.tscn" id="1_qaxv5"]
+[ext_resource type="PackedScene" uid="uid://jlks3ujg0sr1" path="res://prefabs/item_spawnables/Yinyang.tscn" id="4_mhyqb"]
 
 [resource]
 script = ExtResource("1_pkc7r")
 enabled = true
 item_name = 0
-description = ""
+description = "Yinyang orb that spirals outwards dealing damage!
+POWERUP:
+Larger Yinyang orb!"
 inventory_size = 3
 inventory = ExtResource("1_qaxv5")
 spawnable = ExtResource("4_mhyqb")
 icon = ExtResource("1_es7k4")
 active = true
 cooldown = 8
-stack_limit = 4
+one_time_spawn = false

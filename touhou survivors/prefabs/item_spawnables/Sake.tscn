@@ -73,7 +73,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kxh52")
 }],
-"loop": true,
+"loop": false,
 "name": &"bottle_break",
 "speed": 12.0
 }, {
@@ -96,7 +96,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_flb6e")
 }],
-"loop": true,
+"loop": false,
 "name": &"puddle",
 "speed": 12.0
 }]
@@ -189,8 +189,8 @@ texture = ExtResource("2_hngom")
 
 [node name="animations" type="AnimatedSprite2D" parent="main_body/sprite"]
 visible = false
-frames = SubResource("SpriteFrames_vq8xp")
-animation = &"bottle_break"
+sprite_frames = SubResource("SpriteFrames_vq8xp")
+animation = &"puddle"
 
 [node name="hitbox" type="Area2D" parent="main_body"]
 collision_layer = 8

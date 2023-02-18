@@ -39,6 +39,7 @@ var one_time_spawn:bool
 var occult_orb:bool = false
 var orb_count:int
 var update_saved_item_position:bool = false
+var area_awaiting_camera_still
 
 func find_rotational_offset():
 	var rot:int = round(rad_to_deg(rotation))
@@ -75,6 +76,7 @@ func leveling_up(value:bool):
 		if saved_item:
 			visible = true
 			update_saved_item_position = true
+			area_awaiting_camera_still = current_area_hovered
 	else:
 		visible = false
 		if !in_inventory:
@@ -119,7 +121,7 @@ func _ready():
 
 func _process(delta):
 	if update_saved_item_position:
-		new_position = current_area_hovered.global_position + rotational_offset
+		new_position = area_awaiting_camera_still.global_position + rotational_offset
 	
 	if $ItemSprite.material.get_shader_parameter("flash_modifier") > 0:
 		$ItemSprite.material.set_shader_parameter("flash_modifier",lerp($ItemSprite.material.get_shader_parameter("flash_modifier"),0.0,delta*3))

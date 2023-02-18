@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cfscduoamv134"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://cfscduoamv134"]
 
 [ext_resource type="Texture2D" uid="uid://cjv3rvr006q8h" path="res://sprites/items/item_icons/mochi_mallet_icon.png" id="1_ak21u"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_ohlde"]
@@ -9,11 +9,13 @@
 script = ExtResource("1_ohlde")
 enabled = true
 item_name = 17
-description = ""
+description = "Swing a mallet in a circle around you!
+POWERUP:
+Swing a bigger mallet!"
 inventory_size = 4
 inventory = ExtResource("2_p47pa")
 spawnable = ExtResource("4_rng7k")
 icon = ExtResource("1_ak21u")
 active = true
 cooldown = 5
-stack_limit = 3
+one_time_spawn = false

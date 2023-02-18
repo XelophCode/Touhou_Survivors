@@ -55,7 +55,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u8m3j")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 12.0
 }]
@@ -130,7 +130,7 @@ offset_bottom = 2.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_aqpha")
 
 [node name="Shanghai" type="AnimatedSprite2D" parent="main_body"]
-frames = SubResource("SpriteFrames_8i8wb")
+sprite_frames = SubResource("SpriteFrames_8i8wb")
 
 [node name="Area2D" type="Area2D" parent="main_body"]
 position = Vector2(-5, 0)

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://dsdehne8ofhtf"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://dsdehne8ofhtf"]
 
 [ext_resource type="Texture2D" uid="uid://thvpmw5egb4" path="res://sprites/items/item_icons/keystone_icon.png" id="1_6ruab"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_jja7e"]
@@ -9,11 +9,13 @@
 script = ExtResource("1_jja7e")
 enabled = true
 item_name = 21
-description = ""
+description = "Keystone that falls on enemies!
+POWERUP:
+More keystones!"
 inventory_size = 2
 inventory = ExtResource("2_cw6bf")
 spawnable = ExtResource("4_qoyle")
 icon = ExtResource("1_6ruab")
 active = true
 cooldown = 7
-stack_limit = 5
+one_time_spawn = false

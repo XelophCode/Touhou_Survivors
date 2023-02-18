@@ -1,0 +1,317 @@
+[gd_scene load_steps=41 format=3 uid="uid://do63og25gtn6j"]
+
+[ext_resource type="Texture2D" uid="uid://qrttyf07rc81" path="res://sprites/ui/character_select.png" id="1_1h6fy"]
+[ext_resource type="Script" path="res://scripts/logic_ui/character_select.gd" id="1_hwynl"]
+[ext_resource type="Texture2D" uid="uid://bsv6waqhjtkfp" path="res://sprites/actors/reimu.png" id="3_lllma"]
+[ext_resource type="Texture2D" uid="uid://cmipbsbn7fy1" path="res://sprites/actors/marisa.png" id="4_k41ao"]
+[ext_resource type="Shader" path="res://scripts/shaders/dissolve.gdshader" id="5_d7pbv"]
+[ext_resource type="Texture2D" uid="uid://d0wh6yjoa56pg" path="res://sprites/ui/fullscreen_pink.png" id="6_a87dc"]
+[ext_resource type="AudioStream" uid="uid://b70f4b73su13x" path="res://audio/select2.ogg" id="8_0tpla"]
+[ext_resource type="Texture2D" uid="uid://0ydohqq6lp21" path="res://sprites/ui/fullscreen_black.png" id="8_bpbp1"]
+[ext_resource type="Texture2D" uid="uid://do4lmusiq4cvh" path="res://sprites/items/inventory/gohei_item_large.png" id="8_co7c0"]
+[ext_resource type="Texture2D" uid="uid://ba4enldw0j873" path="res://sprites/items/inventory/homing_amulet_item_large.png" id="9_m1lwd"]
+[ext_resource type="FontFile" uid="uid://4g0oq0v08h0h" path="res://resources/fonts/prstart.ttf" id="10_tgr8l"]
+[ext_resource type="Texture2D" uid="uid://dp46mw25dtbw" path="res://sprites/items/inventory/magic_bomb_inventory_large.png" id="11_ninr7"]
+[ext_resource type="Texture2D" uid="uid://ddrco5dt6ym60" path="res://sprites/items/inventory/Mini_Hakkero_inventory_large.png" id="12_rmmfu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4nj4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tpxd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.960784, 0.301961, 0.760784, 1)
+corner_detail = 20
+shadow_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ebxxn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xt0ml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w14x2"]
+atlas = ExtResource("3_lllma")
+region = Rect2(0, 88, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8eon"]
+atlas = ExtResource("3_lllma")
+region = Rect2(11, 88, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni8vn"]
+atlas = ExtResource("3_lllma")
+region = Rect2(22, 88, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n56j"]
+atlas = ExtResource("3_lllma")
+region = Rect2(33, 88, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rijm"]
+atlas = ExtResource("3_lllma")
+region = Rect2(44, 88, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwxtb"]
+atlas = ExtResource("3_lllma")
+region = Rect2(55, 88, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hm8jp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w14x2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8eon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni8vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n56j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rijm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwxtb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wqau"]
+atlas = ExtResource("4_k41ao")
+region = Rect2(0, 88, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8o8t"]
+atlas = ExtResource("4_k41ao")
+region = Rect2(11, 88, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_277p1"]
+atlas = ExtResource("4_k41ao")
+region = Rect2(22, 88, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8xtp"]
+atlas = ExtResource("4_k41ao")
+region = Rect2(33, 88, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kemim"]
+atlas = ExtResource("4_k41ao")
+region = Rect2(44, 88, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyw57"]
+atlas = ExtResource("4_k41ao")
+region = Rect2(55, 88, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_unbd8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wqau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8o8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_277p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8xtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kemim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyw57")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gxoal"]
+noise_type = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i6n6y"]
+noise = SubResource("FastNoiseLite_gxoal")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4mwes"]
+resource_local_to_scene = true
+shader = ExtResource("5_d7pbv")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/flash_modifier = 0.0
+shader_parameter/opacity = 1.0
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_i6n6y")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cvwmx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j7q78"]
+noise = SubResource("FastNoiseLite_cvwmx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqgm0"]
+resource_local_to_scene = true
+shader = ExtResource("5_d7pbv")
+shader_parameter/dissolve_value = 0.0
+shader_parameter/flash_modifier = null
+shader_parameter/opacity = 1.0
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_j7q78")
+
+[sub_resource type="Animation" id="Animation_enwh1"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullscreenBlack:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"go_to_main_game_scene"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bs5a7"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullscreenPink:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fg3a8"]
+_data = {
+"fade_in": SubResource("Animation_enwh1"),
+"fade_out": SubResource("Animation_bs5a7")
+}
+
+[node name="character_select" type="Node2D" node_paths=PackedStringArray("fullscreen_pink")]
+texture_filter = 1
+script = ExtResource("1_hwynl")
+fullscreen_pink = NodePath("FullscreenPink")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CharacterSelect" type="Sprite2D" parent="."]
+texture = ExtResource("1_1h6fy")
+centered = false
+
+[node name="Reimu" type="Button" parent="."]
+offset_left = 15.0
+offset_top = 39.0
+offset_right = 37.0
+offset_bottom = 61.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+
+[node name="Marisa" type="Button" parent="."]
+offset_left = 43.0
+offset_top = 39.0
+offset_right = 65.0
+offset_bottom = 61.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+
+[node name="ReimuSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(26, 50)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_hm8jp")
+
+[node name="MarisaSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(54, 50)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_unbd8")
+
+[node name="FullscreenPink" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_4mwes")
+texture = ExtResource("6_a87dc")
+centered = false
+
+[node name="FullscreenBlack" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_gqgm0")
+texture = ExtResource("8_bpbp1")
+centered = false
+
+[node name="Loadout" type="Node2D" parent="."]
+visible = false
+
+[node name="GoheiItemLarge" type="Sprite2D" parent="Loadout"]
+position = Vector2(183, 115)
+texture = ExtResource("8_co7c0")
+
+[node name="HomingAmuletItemLarge" type="Sprite2D" parent="Loadout"]
+position = Vector2(235, 116)
+scale = Vector2(2, 2)
+texture = ExtResource("9_m1lwd")
+
+[node name="Label" type="Label" parent="Loadout"]
+offset_left = 129.0
+offset_top = 59.0
+offset_right = 385.0
+offset_bottom = 85.0
+theme_override_fonts/font = ExtResource("10_tgr8l")
+text = "STARTING LOADOUT"
+
+[node name="Loadout2" type="Node2D" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="Loadout2"]
+offset_left = 129.0
+offset_top = 59.0
+offset_right = 385.0
+offset_bottom = 85.0
+theme_override_fonts/font = ExtResource("10_tgr8l")
+text = "STARTING LOADOUT"
+
+[node name="MagicBombInventoryLarge" type="Sprite2D" parent="Loadout2"]
+position = Vector2(183, 120)
+texture = ExtResource("11_ninr7")
+
+[node name="MiniHakkeroInventoryLarge" type="Sprite2D" parent="Loadout2"]
+position = Vector2(239, 121)
+texture = ExtResource("12_rmmfu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fg3a8")
+}
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="select" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_0tpla")
+
+[connection signal="button_down" from="Reimu" to="." method="_on_reimu_button_down"]
+[connection signal="mouse_entered" from="Reimu" to="." method="_on_reimu_mouse_entered"]
+[connection signal="mouse_exited" from="Reimu" to="." method="_on_reimu_mouse_exited"]
+[connection signal="button_down" from="Marisa" to="." method="_on_marisa_button_down"]
+[connection signal="mouse_entered" from="Marisa" to="." method="_on_marisa_mouse_entered"]
+[connection signal="mouse_exited" from="Marisa" to="." method="_on_marisa_mouse_exited"]

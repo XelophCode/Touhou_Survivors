@@ -2,7 +2,7 @@ extends Resource
 class_name FolderListResource
 
 @export_dir
-@onready var FolderPath : String:
+var FolderPath : String:
 	set(value):
 		FolderPath = value
 		load_all_resources()

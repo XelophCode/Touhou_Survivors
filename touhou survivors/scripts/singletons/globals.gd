@@ -7,6 +7,9 @@ var player_facing:Vector2 = Vector2(0,1)
 var one_time_spawns:Array
 var tooltip_info:Array = []
 var photo_dest:Vector2
+enum {Reimu,Marisa}
+var current_character:int = 0
+var audio_reset:float
 
 #USED IN CAMERA ITEM FOR GETTING RECT2 SCALE
 func wind_mult():
@@ -53,3 +56,11 @@ func cardinal_direction_to_rotation(direction:Vector2):
 		Vector2.DOWN: return -270
 		Vector2(DOWN,RIGHT): return -315
 		Vector2.ZERO: return 0
+
+func any_input():
+	var key_pressed:bool = false
+	var all_keys:Array = ["focus","move_left","move_right","move_up","move_down","left_mouse_button","right_mouse_button","rotate_item","select","focus","escape"]
+	for key in all_keys:
+		if Input.is_action_just_pressed(key):
+			key_pressed = true
+	return key_pressed

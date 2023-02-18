@@ -221,9 +221,8 @@ scale_amount_curve = SubResource("Curve_bv7fm")
 color_ramp = SubResource("Gradient_6w7yy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body"]
-frames = SubResource("SpriteFrames_3brp3")
-animation = &"blood_large"
-playing = true
+sprite_frames = SubResource("SpriteFrames_3brp3")
+animation = &"normal"
 
 [node name="Area2D" type="Area2D" parent="main_body"]
 collision_layer = 8

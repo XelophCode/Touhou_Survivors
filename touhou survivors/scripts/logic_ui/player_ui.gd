@@ -1,19 +1,33 @@
 extends CanvasLayer
 
+@export var main_menu : PackedScene
 @export var character_portrait : Node
 @export var time_label : Node
 @export var lvl_label : Node
 @export var powerbar : Node
+@export var confetti : Node
+@export var reimu_portrait : SpriteFrames
+@export var marisa_portrait : SpriteFrames
 
+var music_muted:bool = false
 var playtime_second:float
 var playtime_minute:float
 var power:float
 var power_update:float
 var faith:float
 var faith_update:float
-var current_orb_target:float
+var current_orb_target:int
 var leveling_up:bool = false
 var occult_orb_max:float = 10.0
+var current_lvl:int = 1
+var escape_can_unpause:bool = false
+var is_paused:bool = false:
+	set(value):
+		is_paused = value
+		$PauseMenu.visible = is_paused
+		get_tree().paused = is_paused
+		await get_tree().create_timer(0.1).timeout
+		escape_can_unpause = is_paused
 
 var current_orb:int:
 	set(value):
@@ -21,16 +35,25 @@ var current_orb:int:
 		Signals.emit_signal("update_orb_count",current_orb)
 
 func _ready():
+	$AnimationPlayer.play("fade_out")
+	match Globals.current_character:
+		Globals.Reimu: character_portrait.sprite_frames = reimu_portrait
+		Globals.Marisa: character_portrait.sprite_frames = marisa_portrait
+	
 	Signals.connect("current_power",catch_current_power)
 	Signals.connect("next_lvl_update",catch_next_lvl_update)
 	Signals.connect("leveling_up",catch_leveling_up)
 	Signals.connect("current_faith",catch_current_faith)
 	Signals.connect("reduce_orb_count",catch_reduce_orb_count)
+	Signals.connect("game_over",catch_game_over)
 	
 	for orb in $UI/OccultOrbParent.get_children():
 		orb.get_child(1).max_value = occult_orb_max
 
 func _process(delta):
+	if Input.is_action_just_pressed("escape"):
+		is_paused = !is_paused
+	
 	$UI/FPS.text = "FPS: " + str(Engine.get_frames_per_second())
 	
 	power = lerp(power,power_update,delta*4)
@@ -68,7 +91,6 @@ func _on_portrait_anims_timeout():
 	character_portrait.play(random_anim.pick_random())
 
 func _on_character_portrait_animation_finished():
-	character_portrait.stop()
 	if character_portrait.animation == "head_bob":
 		character_portrait.frame = 0
 	if character_portrait.animation == "smile":
@@ -108,11 +130,34 @@ func update_occult_orbs():
 func catch_leveling_up(value):
 	leveling_up = value
 	if leveling_up:
+		confetti.emitting = true
 		character_portrait.play("smile")
 		$PortraitAnims.stop()
+		current_lvl += 1
+		lvl_label.text = "Lvl " + str(current_lvl)
 	else:
+		confetti.emitting = false
 		character_portrait.play("head_bob")
 		$PortraitAnims.start()
 
 func catch_reduce_orb_count():
 	Signals.emit_signal("update_faith",-occult_orb_max)
+
+func _on_resume_button_down():
+	is_paused = false
+	$Audio/select.play()
+
+func _on_main_menu_button_up():
+	is_paused = false
+	goto_main_menu()
+
+
+func _on_check_box_toggled(button_pressed):
+	music_muted = !music_muted
+	AudioServer.set_bus_mute(1,music_muted)
+
+func catch_game_over():
+	$AnimationPlayer.play("gameover")
+
+func goto_main_menu():
+	get_tree().change_scene_to_file("res://prefabs/levels/main_menu.tscn")

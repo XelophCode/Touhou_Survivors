@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfflhyetxhgwh"]
+[gd_scene load_steps=8 format=3 uid="uid://cfflhyetxhgwh"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/camera_main.gd" id="1_365xw"]
 [ext_resource type="Texture2D" uid="uid://ciojqae21qxjp" path="res://sprites/ui/screen_dim.png" id="2_bpj4s"]
 [ext_resource type="PackedScene" uid="uid://04yuy6nwpd5q" path="res://prefabs/logic_ui/tooltip.tscn" id="5_fucjo"]
-[ext_resource type="PackedScene" uid="uid://cbjpy4ciqe0t1" path="res://prefabs/logic_ui/Inventory.tscn" id="5_yatjy"]
-[ext_resource type="PackedScene" uid="uid://6dwuqj2vu1k8" path="res://prefabs/logic_ui/shop.tscn" id="6_bsv6g"]
 [ext_resource type="Texture2D" uid="uid://ptcu0hj15c6b" path="res://sprites/ui/resume.png" id="8_lv6fl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iij6q"]
@@ -34,8 +32,6 @@ _data = {
 [node name="MainCamera" type="Camera2D"]
 z_index = 15
 texture_filter = 1
-current = true
-position_smoothing_enabled = true
 position_smoothing_speed = 60.0
 script = ExtResource("1_365xw")
 
@@ -47,16 +43,6 @@ texture = ExtResource("2_bpj4s")
 
 [node name="Tooltip" parent="." instance=ExtResource("5_fucjo")]
 visible = false
-
-[node name="PlayerInventory" type="Node2D" parent="."]
-
-[node name="Inventory" parent="." instance=ExtResource("5_yatjy")]
-visible = false
-position = Vector2(88, 2)
-
-[node name="Shop" parent="." instance=ExtResource("6_bsv6g")]
-visible = false
-position = Vector2(-100, 0)
 
 [node name="shop_close_button" type="Node2D" parent="."]
 visible = false

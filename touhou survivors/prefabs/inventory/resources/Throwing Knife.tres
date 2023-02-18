@@ -1,19 +1,21 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://0xh3d0ue3g2x"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://0xh3d0ue3g2x"]
 
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_cvwd6"]
 [ext_resource type="Texture2D" uid="uid://3bby3uso1xyt" path="res://sprites/items/item_icons/throwing_knife_icon.png" id="1_vl6m0"]
-[ext_resource type="PackedScene" path="res://prefabs/inventory/throwing_knife_inventory.tscn" id="1_x7d8e"]
+[ext_resource type="PackedScene" uid="uid://eknkcrtmpmty" path="res://prefabs/inventory/throwing_knife_inventory.tscn" id="1_x7d8e"]
 [ext_resource type="PackedScene" uid="uid://ciwdhth0fya4r" path="res://prefabs/item_spawnables/Throwing_Knife.tscn" id="4_5ebtv"]
 
 [resource]
 script = ExtResource("1_cvwd6")
 enabled = true
 item_name = 4
-description = ""
+description = "Throw a knife that pierces through enemies!
+POWERUP:
+Throw three knives in a fan pattern!"
 inventory_size = 1
 inventory = ExtResource("1_x7d8e")
 spawnable = ExtResource("4_5ebtv")
 icon = ExtResource("1_vl6m0")
 active = true
 cooldown = 3
-stack_limit = 3
+one_time_spawn = false

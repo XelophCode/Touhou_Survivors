@@ -4,9 +4,14 @@ enum {RIGHT = 1, LEFT = -1, DOWN = 1, UP = -1, CENTER = 0}
 
 var move:Vector2
 var idle_animation:String = "idle_down"
-@onready var walk_animations := $WalkAnimations
+@export var walk_animations : Node
 @export var move_speed:float = 1000
 @export var starting_items: StartingItemArrayResource
+@export var reimu_anims : SpriteFrames
+@export var reimu_loadout : StartingItemArrayResource
+@export var marisa_anims : SpriteFrames
+@export var marisa_loadout : StartingItemArrayResource
+
 var power:int
 var faith:float
 var faith_max:float = 50.0
@@ -18,8 +23,25 @@ var tweening_focus:bool = false
 var focusing:bool = false
 var check_for_move:bool = false
 var leveling_up:bool = false
+var initial_move_speed:float
+var afterimage_scale:float
+var inverted_health_mod:float
+var inverted_scale_mod:float
+var starting_loadout_override:bool = false
+var alive:bool = true
 
 func _ready():
+	var custom_loadout:StartingItemArrayResource
+	if starting_items != null:
+		custom_loadout = starting_items
+		starting_loadout_override = true
+	match Globals.current_character:
+		Globals.Reimu: walk_animations.sprite_frames = reimu_anims; starting_items = reimu_loadout
+		Globals.Marisa: walk_animations.sprite_frames = marisa_anims; starting_items = marisa_loadout
+	if starting_loadout_override:
+		starting_items = custom_loadout
+	
+	initial_move_speed = move_speed
 	$magic_circle_spins.play("spin")
 	$Healthbar.max_value = hp
 	Signals.connect("modify_player_speed",modify_speed)
@@ -84,13 +106,18 @@ func _physics_process(delta):
 	
 	velocity = move.normalized() * (delta) * move_speed
 	
+	if hp < 1:
+		velocity = Vector2.ZERO
+		if alive:
+			walk_animations.visible = false
+			Signals.emit_signal("game_over")
+			alive = false
+	
 	move_and_slide()
 	
 	hp -= damage_taken
 	
-	
-#	if hp < 1:
-#		get_tree().reload_current_scene()
+
 
 func _on_hitbox_body_entered(body):
 	damage_taken += body.damage
@@ -99,13 +126,34 @@ func _on_hitbox_body_entered(body):
 func _on_hitbox_body_exited(body):
 	damage_taken -= body.damage
 
-func modify_speed(speed_mod:float):
-	move_speed *= speed_mod
+func modify_speed(interaction:String,speed_mod:float = 1.0):
+	match interaction:
+		"initialize": move_speed *= speed_mod
+		"modify": move_speed = initial_move_speed * speed_mod
+		"remove": move_speed = initial_move_speed
 
-func modify_scale(scale_mod:float, health_mod:float):
-	scale.x = scale_mod; scale.y = scale_mod
-	$Healthbar.max_value *= health_mod
-	hp *= scale_mod
+func modify_scale(interaction:String, scale_mod:float, health_mod:float, inv_health_mod:float):
+	match interaction:
+		"initialize":
+			scale.x = scale_mod; scale.y = scale_mod
+			$Healthbar.max_value *= health_mod
+			afterimage_scale = scale_mod
+			hp *= health_mod
+			inverted_health_mod = inv_health_mod
+		"modify":
+			scale.x = scale_mod; scale.y = scale_mod
+			$Healthbar.max_value *= inverted_health_mod
+			$Healthbar.max_value *= health_mod
+			afterimage_scale = scale_mod
+			hp *= inverted_health_mod
+			hp *= health_mod
+			inverted_health_mod = inv_health_mod
+		"remove":
+			scale.x = 1.0; scale.y = 1.0
+			$Healthbar.max_value *= inverted_health_mod
+			afterimage_scale = 1.0
+			hp *= inverted_health_mod
+#	print(str(hp) + " - " + str($Healthbar.max_value))
 
 func gap_teleport(center_player:Vector2,teleport_destination:Vector2):
 	$AnimationPlayer.play("gap_teleport_in")
@@ -162,7 +210,7 @@ func catch_leveling_up(value):
 		leveling_up = false
 
 func _on_spawn_afterimage_timeout():
-	Signals.emit_signal("update_afterimage",$WalkAnimations.animation,$WalkAnimations.frame,$WalkAnimations.flip_h)
+	Signals.emit_signal("update_afterimage",$WalkAnimations.animation,$WalkAnimations.frame,$WalkAnimations.flip_h,afterimage_scale)
 
 func _on_sun_ray_anim_timer_timeout():
 	$SunRaysAnims.play("sun_ray")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bn7lfio7jg320"]
+[gd_scene load_steps=29 format=3 uid="uid://bn7lfio7jg320"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_78i06"]
 [ext_resource type="PackedScene" uid="uid://cqvtr2xssn8wh" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
@@ -10,18 +10,24 @@
 [ext_resource type="PackedScene" uid="uid://dibej236818nn" path="res://prefabs/logic_ui/enemy_spawner.tscn" id="5_cql0f"]
 [ext_resource type="Script" path="res://scripts/misc/player_afterimage.gd" id="6_5f4bf"]
 [ext_resource type="PackedScene" uid="uid://bvyow6vg7hdt6" path="res://prefabs/logic_ui/pickup_spawner.tscn" id="6_qbw7i"]
-[ext_resource type="PackedScene" uid="uid://lf1s280eux7x" path="res://prefabs/misc/power.tscn" id="7_416v3"]
 [ext_resource type="PackedScene" uid="uid://fj0acbfbqp0h" path="res://prefabs/player/player_after_image.tscn" id="7_e0sq4"]
 [ext_resource type="PackedScene" uid="uid://dbqucfdpge4u1" path="res://prefabs/levels/structures/level_1/structure_1.tscn" id="9_0yld4"]
 [ext_resource type="Script" path="res://scripts/logic_ui/weapons.gd" id="12_sxuwu"]
-[ext_resource type="PackedScene" uid="uid://cxtno75a58bkv" path="res://prefabs/logic_ui/player_ui.tscn" id="13_fav8l"]
+[ext_resource type="PackedScene" uid="uid://6dwuqj2vu1k8" path="res://prefabs/logic_ui/shop.tscn" id="14_a2sa1"]
 [ext_resource type="PackedScene" uid="uid://cfflhyetxhgwh" path="res://prefabs/logic_ui/main_camera.tscn" id="14_qqvd4"]
-[ext_resource type="PackedScene" uid="uid://bse7pl53vd6xa" path="res://prefabs/misc/faith.tscn" id="17_a1x4j"]
+[ext_resource type="PackedScene" uid="uid://cbjpy4ciqe0t1" path="res://prefabs/logic_ui/Inventory.tscn" id="16_cstuh"]
+[ext_resource type="PackedScene" uid="uid://cxtno75a58bkv" path="res://prefabs/logic_ui/player_ui.tscn" id="17_o28hk"]
+[ext_resource type="Script" path="res://scripts/logic_ui/Global_Audio.gd" id="21_7vj3l"]
+[ext_resource type="AudioStream" uid="uid://elixy6otfi44" path="res://audio/enemy_death.wav" id="22_kmevy"]
+[ext_resource type="AudioStream" uid="uid://dbkyr4u0q3kvm" path="res://audio/hit.wav" id="23_h7jnw"]
+[ext_resource type="AudioStream" uid="uid://ceauriy8n5qcg" path="res://audio/retribution.ogg" id="23_r0jtr"]
+[ext_resource type="AudioStream" uid="uid://dphx0dcmgohr2" path="res://audio/level_up.ogg" id="24_s40de"]
+[ext_resource type="AudioStream" uid="uid://d1wctbotwnn1x" path="res://audio/applause.wav" id="25_cwolo"]
 
 [sub_resource type="Resource" id="Resource_un3jb"]
 script = ExtResource("2_l5ojg")
 FolderPath = "res://prefabs/levels/structures/level_1"
-ResourceCategory = null
+ResourceCategory = ""
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qx4cd"]
 shader = ExtResource("5_1lqtb")
@@ -88,31 +94,45 @@ script = ExtResource("12_sxuwu")
 
 [node name="MainCamera" parent="." instance=ExtResource("14_qqvd4")]
 
-[node name="Power" parent="." instance=ExtResource("7_416v3")]
-position = Vector2(-35, -5)
+[node name="PlayerInventory" type="Node2D" parent="."]
+z_index = 15
+
+[node name="Shop" parent="." instance=ExtResource("14_a2sa1")]
+
+[node name="Inventory" parent="." instance=ExtResource("16_cstuh")]
+
+[node name="PlayerUI" parent="." instance=ExtResource("17_o28hk")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pf1gy")
 
-[node name="PlayerUI" parent="." instance=ExtResource("13_fav8l")]
+[node name="Global_Audio" type="Node" parent="." node_paths=PackedStringArray("enemy_death", "hit", "level_up", "applause")]
+script = ExtResource("21_7vj3l")
+enemy_death = NodePath("Enemy_Death")
+hit = NodePath("Hit")
+level_up = NodePath("Level_Up")
+applause = NodePath("Applause")
 
-[node name="Power2" parent="." instance=ExtResource("7_416v3")]
-position = Vector2(-30, -34)
+[node name="Enemy_Death" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("22_kmevy")
+volume_db = -30.0
 
-[node name="Power3" parent="." instance=ExtResource("7_416v3")]
-position = Vector2(-42, 27)
+[node name="Hit" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("23_h7jnw")
+volume_db = -30.0
 
-[node name="Faith" parent="." instance=ExtResource("17_a1x4j")]
-position = Vector2(18, -39)
+[node name="Level_Up" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("24_s40de")
+volume_db = -10.0
 
-[node name="Faith2" parent="." instance=ExtResource("17_a1x4j")]
-position = Vector2(33, -27)
+[node name="Applause" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("25_cwolo")
+volume_db = -20.0
 
-[node name="Faith3" parent="." instance=ExtResource("17_a1x4j")]
-position = Vector2(4, -52)
+[node name="Audio" type="Node" parent="."]
 
-[node name="Faith4" parent="." instance=ExtResource("17_a1x4j")]
-position = Vector2(5, -34)
-
-[node name="Faith5" parent="." instance=ExtResource("17_a1x4j")]
-position = Vector2(18, -23)
+[node name="Music" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("23_r0jtr")
+volume_db = -60.0
+autoplay = true
+bus = &"Music"

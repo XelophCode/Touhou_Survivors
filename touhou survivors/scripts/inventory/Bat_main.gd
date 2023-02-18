@@ -7,7 +7,7 @@ var blood_trail:bool = false
 
 func _ready():
 	$main_body/CPUParticles2D.emitting = blood_trail
-	$main_body/AnimatedSprite2D.animation = bat_type
+	$main_body/AnimatedSprite2D.play(bat_type)
 	$main_body.global_position = Globals.player_position
 	$main_body/Area2D.scale = Vector2(collision_scale,collision_scale)
 	tweenmove()

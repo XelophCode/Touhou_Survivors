@@ -14,7 +14,7 @@
 [sub_resource type="Resource" id="Resource_a0ogr"]
 script = ExtResource("2_8a3vr")
 FolderPath = "res://prefabs/inventory/resources"
-ResourceCategory = null
+ResourceCategory = ""
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5q2q"]
 atlas = ExtResource("3_qcc5h")
@@ -124,7 +124,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5ikk1")
 }],
-"loop": true,
+"loop": false,
 "name": &"open",
 "speed": 30.0
 }]
@@ -270,7 +270,8 @@ _data = [Vector2(0, 0.854545), 0.0, 1.05521, 0, 1, Vector2(0.75814, 1.65455), 0.
 point_count = 3
 
 [node name="Shop" type="Node2D"]
-z_index = 3
+visible = false
+z_index = 16
 script = ExtResource("1_gaew4")
 inventory_items = SubResource("Resource_a0ogr")
 
@@ -278,7 +279,7 @@ inventory_items = SubResource("Resource_a0ogr")
 texture_filter = 1
 position = Vector2(0, 0.5)
 scale = Vector2(1, 1e-05)
-frames = SubResource("SpriteFrames_06buc")
+sprite_frames = SubResource("SpriteFrames_06buc")
 animation = &"open"
 
 [node name="mask" type="Sprite2D" parent="ShopGridBG"]
@@ -300,8 +301,8 @@ texture = ExtResource("6_hblrx")
 
 [node name="GapEdge" type="AnimatedSprite2D" parent="ShopGridBG"]
 modulate = Color(1, 1, 1, 0)
-frames = SubResource("SpriteFrames_j5qgh")
-playing = true
+sprite_frames = SubResource("SpriteFrames_j5qgh")
+autoplay = "default"
 
 [node name="EdgeWarp" type="Sprite2D" parent="ShopGridBG"]
 visible = false
@@ -828,5 +829,3 @@ initial_velocity_min = 0.19
 initial_velocity_max = 111.3
 scale_amount_curve = SubResource("Curve_r311b")
 color = Color(1, 0.396078, 0.996078, 1)
-
-[connection signal="animation_finished" from="ShopGridBG" to="." method="_on_shop_grid_animation_finished"]

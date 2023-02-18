@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://0pi0oeygxqgf" path="res://sprites/items/inventory_item_BGs/1x3_item_large_bg.png" id="5_6s2qm"]
 [ext_resource type="AnimationLibrary" uid="uid://c3f6dw06ejniu" path="res://resources/animations/libraries/Inventory_Items.res" id="6_4aw2r"]
 [ext_resource type="Texture2D" uid="uid://bm125ylmjm8t7" path="res://sprites/items/inventory/magic_broom_item_large.png" id="6_n74pm"]
-[ext_resource type="PackedScene" path="res://prefabs/logic_ui/occult_orb.tscn" id="7_cmf44"]
+[ext_resource type="PackedScene" uid="uid://63murqtbvxlb" path="res://prefabs/logic_ui/occult_orb.tscn" id="7_cmf44"]
 
 [node name="MagicBroom" type="Node2D"]
 z_index = 6

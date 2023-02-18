@@ -31,3 +31,7 @@ signal weapon_add_child
 signal update_orb_count
 signal reduce_orb_count
 signal camera_is_still
+signal revert_player_speed
+signal enemy_death_sfx
+signal hit_sfx
+signal game_over

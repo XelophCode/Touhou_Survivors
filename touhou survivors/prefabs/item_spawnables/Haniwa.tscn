@@ -119,8 +119,8 @@ offset_bottom = 4.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_77n1r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body"]
-frames = SubResource("SpriteFrames_noqa5")
-playing = true
+sprite_frames = SubResource("SpriteFrames_noqa5")
+autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="main_body"]
 collision_layer = 8

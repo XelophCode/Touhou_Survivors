@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://crwn6pksk2ad3"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://crwn6pksk2ad3"]
 
 [ext_resource type="Texture2D" uid="uid://35rk86psgo35" path="res://sprites/items/item_icons/icicle_icon.png" id="1_0ikmh"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_4j2bg"]
@@ -9,11 +9,13 @@
 script = ExtResource("1_4j2bg")
 enabled = true
 item_name = 14
-description = ""
+description = "Throw an icicle that breaks into shards!
+POWERUP:
+More damage and more shards!"
 inventory_size = 1
 inventory = ExtResource("2_iigot")
 spawnable = ExtResource("4_t4uoh")
 icon = ExtResource("1_0ikmh")
 active = true
 cooldown = 5
-stack_limit = 8
+one_time_spawn = false

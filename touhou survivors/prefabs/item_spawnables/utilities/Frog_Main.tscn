@@ -26,8 +26,23 @@ region = Rect2(0, 10, 7, 5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b2eni"]
 animations = [{
-"frames": [SubResource("AtlasTexture_snmu7"), SubResource("AtlasTexture_et8ky"), SubResource("AtlasTexture_0myyo"), SubResource("AtlasTexture_7e42o"), SubResource("AtlasTexture_r80ub")],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snmu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_et8ky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0myyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e42o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r80ub")
+}],
+"loop": false,
 "name": &"leap",
 "speed": 10.0
 }]
@@ -43,7 +58,7 @@ explosion = ExtResource("2_vvv6e")
 [node name="main_body" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body"]
-frames = SubResource("SpriteFrames_b2eni")
+sprite_frames = SubResource("SpriteFrames_b2eni")
 animation = &"leap"
 
 [node name="Area2D" type="Area2D" parent="main_body"]

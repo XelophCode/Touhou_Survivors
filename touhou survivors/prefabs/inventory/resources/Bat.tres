@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cqv7rgl04f0xk"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://cqv7rgl04f0xk"]
 
 [ext_resource type="Texture2D" uid="uid://b78nq7skdbn7a" path="res://sprites/items/item_icons/bat_icon.png" id="1_0gt4m"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_2bvbg"]
@@ -9,11 +9,13 @@
 script = ExtResource("1_2bvbg")
 enabled = true
 item_name = 20
-description = ""
+description = "Unleash a swarm of bats!
+POWERUP:
+Blood Bats with more damage!"
 inventory_size = 0
 inventory = ExtResource("2_ld1ub")
 spawnable = ExtResource("4_c1ryd")
 icon = ExtResource("1_0gt4m")
 active = true
 cooldown = 7
-stack_limit = 10
+one_time_spawn = false

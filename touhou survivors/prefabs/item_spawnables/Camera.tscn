@@ -106,7 +106,7 @@ visible = false
 z_index = 10
 position = Vector2(12, 0)
 scale = Vector2(2, 2)
-frames = SubResource("SpriteFrames_jhq7u")
+sprite_frames = SubResource("SpriteFrames_jhq7u")
 
 [node name="main_body" type="Node2D" parent="."]
 position = Vector2(92, 0)

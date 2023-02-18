@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://l2w3nj3uadu0"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://l2w3nj3uadu0"]
 
 [ext_resource type="Texture2D" uid="uid://blvq1ncoutg80" path="res://sprites/items/item_icons/Shanghai_Doll_icon.png" id="1_h4x1s"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_vkwul"]
@@ -9,11 +9,13 @@
 script = ExtResource("1_vkwul")
 enabled = true
 item_name = 19
-description = ""
+description = "Summon a doll that attacks with a razer blade!
+POWERUP:
+Summon an army of Shanghai's"
 inventory_size = 0
 inventory = ExtResource("2_uopwg")
 spawnable = ExtResource("4_18yxk")
 icon = ExtResource("1_h4x1s")
 active = true
 cooldown = 10
-stack_limit = 6
+one_time_spawn = false

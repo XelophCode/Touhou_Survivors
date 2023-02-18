@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3]
+[gd_scene load_steps=30 format=3 uid="uid://bningmq674ib"]
 
 [ext_resource type="Script" path="res://scripts/inventory/keystone_main.gd" id="1_vopml"]
 [ext_resource type="Texture2D" uid="uid://cvcretaggojnu" path="res://sprites/items/item_spawnables/keystone.png" id="2_nkf1n"]
@@ -96,17 +96,80 @@ region = Rect2(180, 60, 30, 30)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_36osc"]
 animations = [{
-"frames": [SubResource("AtlasTexture_27t6x"), SubResource("AtlasTexture_ho2fv"), SubResource("AtlasTexture_q5qgp"), SubResource("AtlasTexture_b61dq"), SubResource("AtlasTexture_6254a"), SubResource("AtlasTexture_t48oo"), SubResource("AtlasTexture_x4ye5")],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27t6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ho2fv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5qgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b61dq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6254a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t48oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4ye5")
+}],
+"loop": false,
 "name": &"collision",
 "speed": 28.0
 }, {
-"frames": [SubResource("AtlasTexture_dbd5r"), SubResource("AtlasTexture_x0rx3"), SubResource("AtlasTexture_rqpk1"), SubResource("AtlasTexture_cjgf6"), SubResource("AtlasTexture_7pmlf"), SubResource("AtlasTexture_lee50"), SubResource("AtlasTexture_7g3ct")],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbd5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0rx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqpk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjgf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pmlf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lee50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g3ct")
+}],
+"loop": false,
 "name": &"falling",
 "speed": 14.0
 }, {
-"frames": [SubResource("AtlasTexture_rxlnf"), SubResource("AtlasTexture_5iea6"), SubResource("AtlasTexture_p73pk"), SubResource("AtlasTexture_6dgy3"), SubResource("AtlasTexture_f4ucy"), SubResource("AtlasTexture_7w3hd"), SubResource("AtlasTexture_i0yrw")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxlnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5iea6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p73pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dgy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4ucy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7w3hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0yrw")
+}],
 "loop": true,
 "name": &"finished",
 "speed": 14.0
@@ -238,9 +301,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1hbam")
 [node name="Keystone" type="AnimatedSprite2D" parent="main_body"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -30)
-frames = SubResource("SpriteFrames_36osc")
-animation = &"falling"
-playing = true
+sprite_frames = SubResource("SpriteFrames_36osc")
+animation = &"finished"
 
 [node name="Area2D" type="Area2D" parent="main_body"]
 collision_layer = 8

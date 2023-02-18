@@ -30,7 +30,6 @@ func _on_leap_timeout():
 
 func _on_animated_sprite_2d_animation_finished():
 	move = Vector2.ZERO
-	$main_body/AnimatedSprite2D.stop()
 	$main_body/AnimatedSprite2D.frame = 0
 
 func _on_delete_timeout():

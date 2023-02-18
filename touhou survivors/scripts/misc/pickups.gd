@@ -12,10 +12,10 @@ var leveling_up:bool = false
 func _ready():
 	Signals.connect("leveling_up",catch_leveling_up)
 	if rainbow_outline:
-		sprite.material.line_scale = 0.4
-		sprite.material.rainbow = true
+		sprite.material.set_shader_parameter("line_scale",0.0)
+		sprite.material.set_shader_parameter("rainbow",true)
 	else:
-		sprite.material.line_scale = 0.0
+		sprite.material.set_shader_parameter("line_scale",0.0)
 
 func _process(delta):
 	if move_towards_player and !leveling_up:
@@ -31,5 +31,5 @@ func _on_area_2d_body_entered(_body):
 		SCORE: pass
 	queue_free()
 
-func catch_leveling_up(value):
-	leveling_up = value
+func catch_leveling_up(lvlup):
+	leveling_up = lvlup

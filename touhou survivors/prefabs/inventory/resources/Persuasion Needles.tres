@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cbidup4rcsngx"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://cbidup4rcsngx"]
 
 [ext_resource type="Texture2D" uid="uid://bf07fvhfd7nmc" path="res://sprites/items/item_icons/persuasion_needle_icon.png" id="1_7vgm6"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_joj67"]
@@ -9,11 +9,13 @@
 script = ExtResource("1_joj67")
 enabled = true
 item_name = 13
-description = ""
+description = "Throw needles in rapid succession!
+POWERUP:
+Throw more needles!"
 inventory_size = 0
 inventory = ExtResource("2_83cwd")
 spawnable = ExtResource("4_v16l3")
 icon = ExtResource("1_7vgm6")
 active = true
 cooldown = 3
-stack_limit = 3
+one_time_spawn = false

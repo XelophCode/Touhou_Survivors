@@ -486,6 +486,6 @@ animations = [{
 texture_filter = 1
 material = SubResource("ShaderMaterial_slx32")
 scale = Vector2(1.1, 1.1)
-frames = SubResource("SpriteFrames_is7f2")
+sprite_frames = SubResource("SpriteFrames_is7f2")
 animation = &"idle_down"
 script = ExtResource("2_25og3")

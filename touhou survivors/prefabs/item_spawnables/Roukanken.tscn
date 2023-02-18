@@ -48,7 +48,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_af0q0")
 }],
-"loop": true,
+"loop": false,
 "name": &"slash",
 "speed": 18.0
 }]
@@ -164,14 +164,14 @@ script = ExtResource("1_mlgwc")
 [node name="slash1" type="AnimatedSprite2D" parent="main_body/animations"]
 visible = false
 texture_filter = 1
-frames = SubResource("SpriteFrames_qg5tx")
+sprite_frames = SubResource("SpriteFrames_qg5tx")
 animation = &"slash"
 
 [node name="slash2" type="AnimatedSprite2D" parent="main_body/animations"]
 visible = false
 texture_filter = 1
 rotation = -2.25846
-frames = SubResource("SpriteFrames_qg5tx")
+sprite_frames = SubResource("SpriteFrames_qg5tx")
 animation = &"slash"
 
 [node name="slash3" type="AnimatedSprite2D" parent="main_body/animations"]
@@ -179,7 +179,7 @@ visible = false
 texture_filter = 1
 rotation = -1.1781
 scale = Vector2(-1, 1)
-frames = SubResource("SpriteFrames_qg5tx")
+sprite_frames = SubResource("SpriteFrames_qg5tx")
 animation = &"slash"
 
 [node name="Hitbox_1" type="Area2D" parent="main_body"]

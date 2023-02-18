@@ -11,7 +11,7 @@ func _ready():
 
 func _process(delta):
 	global_position = lerp(global_position,Globals.photo_dest,delta*4)
-	photo_texture.material.texture_value = text_val
+	photo_texture.material.set_shader_parameter("texture_value",text_val)
 
 
 func _on_timer_timeout():

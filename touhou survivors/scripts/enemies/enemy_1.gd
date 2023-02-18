@@ -1,6 +1,7 @@
 extends enemy_base_class
 
 var leveling_up:bool = false
+var max_knockback:float
 
 func _ready():
 	Signals.connect("leveling_up",catch_leveling_up)
@@ -19,8 +20,8 @@ func _physics_process(delta):
 			sprite.scale.x = -1
 	
 	if knockback:
-		velocity *= -6
-		sprite.material.flash_modifier = 0.9
+		velocity = -direction_to_player * (delta*2000)
+		sprite.material.set_shader_parameter("flash_modifier",0.9)
 		if $knockback_timer.is_stopped():
 			$knockback_timer.start()
 	
@@ -29,6 +30,7 @@ func _physics_process(delta):
 	move_and_slide()
 	if hp < 1:
 		if alive:
+			Signals.emit_signal("enemy_death_sfx")
 			Signals.emit_signal("spawn_pickup",global_position,type,tier)
 			if shadow != null:
 				shadow.visible = false
@@ -39,7 +41,7 @@ func _physics_process(delta):
 			if sprite is AnimatedSprite2D:
 				sprite.stop()
 			alive = false
-		sprite.material.dissolve_value = dissolve
+		sprite.material.set_shader_parameter("dissolve_value",dissolve)
 		var tween = create_tween()
 		tween.tween_property(self,"dissolve",0.0,delta*60)
 		await tween.finished

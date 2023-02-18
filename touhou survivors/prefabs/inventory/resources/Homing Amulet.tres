@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://dpovdenvg31u8"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://dpovdenvg31u8"]
 
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_3a5pu"]
 [ext_resource type="Texture2D" uid="uid://b6vjojvffb5kp" path="res://sprites/items/item_icons/homing_amulet_icon.png" id="1_adspk"]
@@ -9,11 +9,13 @@
 script = ExtResource("1_3a5pu")
 enabled = true
 item_name = 8
-description = ""
+description = "Automatically moves towards enemies!
+POWERUP:
+Throw a flurry of amulets!"
 inventory_size = 0
 inventory = ExtResource("2_uxrnd")
 spawnable = ExtResource("4_3o1gi")
 icon = ExtResource("1_adspk")
 active = true
 cooldown = 7
-stack_limit = 8
+one_time_spawn = false

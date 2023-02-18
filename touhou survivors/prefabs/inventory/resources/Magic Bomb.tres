@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://d3gous8n5qc28"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://d3gous8n5qc28"]
 
 [ext_resource type="Texture2D" uid="uid://cvnlaigdqggxe" path="res://sprites/items/item_icons/magic_bomb_icon.png" id="1_protq"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_pueeg"]
@@ -9,11 +9,13 @@
 script = ExtResource("1_pueeg")
 enabled = true
 item_name = 18
-description = ""
+description = "Throw a bomb that explodes after a short time!
+POWERUP:
+Throw multiple bombs!"
 inventory_size = 3
 inventory = ExtResource("2_1uqxi")
 spawnable = ExtResource("4_qfghh")
 icon = ExtResource("1_protq")
 active = true
 cooldown = 5
-stack_limit = 3
+one_time_spawn = false

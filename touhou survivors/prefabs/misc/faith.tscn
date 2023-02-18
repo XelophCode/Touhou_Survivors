@@ -97,9 +97,9 @@ sprite = NodePath("AnimatedSprite2D")
 z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_w8quo")
-frames = SubResource("SpriteFrames_kqaj5")
+sprite_frames = SubResource("SpriteFrames_kqaj5")
 animation = &"spin"
-playing = true
+autoplay = "spin"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4

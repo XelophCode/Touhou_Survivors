@@ -41,8 +41,35 @@ region = Rect2(28, 28, 14, 14)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gjpot"]
 animations = [{
-"frames": [SubResource("AtlasTexture_jey3g"), SubResource("AtlasTexture_mlciq"), SubResource("AtlasTexture_5xgej"), SubResource("AtlasTexture_ch32x"), SubResource("AtlasTexture_2b4wu"), SubResource("AtlasTexture_slnp1"), SubResource("AtlasTexture_jjsew"), SubResource("AtlasTexture_omdi5"), SubResource("AtlasTexture_add5c")],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jey3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlciq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xgej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch32x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2b4wu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slnp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjsew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omdi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_add5c")
+}],
+"loop": false,
 "name": &"explosion",
 "speed": 18.0
 }]
@@ -55,7 +82,7 @@ texture_filter = 1
 script = ExtResource("1_aq3tx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-frames = SubResource("SpriteFrames_gjpot")
+sprite_frames = SubResource("SpriteFrames_gjpot")
 animation = &"explosion"
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -59,8 +59,29 @@ region = Rect2(40, 20, 20, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_418jo"]
 animations = [{
-"frames": [SubResource("AtlasTexture_mvm34"), SubResource("AtlasTexture_a4aeg"), SubResource("AtlasTexture_cdyfr"), SubResource("AtlasTexture_r8eu8"), SubResource("AtlasTexture_4avjv"), SubResource("AtlasTexture_alyve"), SubResource("AtlasTexture_mms1t")],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvm34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4aeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdyfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8eu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4avjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alyve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mms1t")
+}],
+"loop": false,
 "name": &"default",
 "speed": 14.0
 }]
@@ -279,7 +300,7 @@ texture = ExtResource("3_yyp0r")
 [node name="Explosion" type="AnimatedSprite2D" parent="main_body"]
 visible = false
 scale = Vector2(2, 2)
-frames = SubResource("SpriteFrames_418jo")
+sprite_frames = SubResource("SpriteFrames_418jo")
 
 [node name="Area2D" type="Area2D" parent="main_body"]
 collision_layer = 8

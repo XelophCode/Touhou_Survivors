@@ -45,6 +45,7 @@ func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bo
 			$icon_instances.add_child(icon_inst)
 			var scene_inst = scene.instantiate()
 			passive_item_ids[inventory_item_id] = scene_inst.get_instance_id()
+			scene_inst.occult_orb = occult_orb
 			Signals.emit_signal("weapon_add_child",scene_inst)
 
 func spawn_weapon(item,occult_orb):
@@ -69,7 +70,6 @@ func remove_weapon(inventory_item_id:int,active):
 			timer_instances.erase(inventory_item_id)
 			icon_instances.erase(inventory_item_id)
 
-
 func modify_weapon(scene:PackedScene,inventory_item_id:int):
 	if timer_instances != {}:
 		if timer_instances.has(inventory_item_id):
@@ -77,6 +77,8 @@ func modify_weapon(scene:PackedScene,inventory_item_id:int):
 			var inst := instance_from_id(inst_id)
 			inst.disconnect("timeout",spawn_weapon)
 			inst.connect("timeout",spawn_weapon.bind(scene,true))
+	if passive_item_ids.has(inventory_item_id):
+		instance_from_id(passive_item_ids[inventory_item_id]).update()
 
 func leveling_up(value:bool):
 	if value:

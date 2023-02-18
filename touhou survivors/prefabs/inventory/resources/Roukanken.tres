@@ -1,19 +1,21 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://q6uhplcwo5xe"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://q6uhplcwo5xe"]
 
-[ext_resource type="PackedScene" path="res://prefabs/inventory/roukanken_inventory.tscn" id="1_700we"]
+[ext_resource type="PackedScene" uid="uid://b5vc2a50f273k" path="res://prefabs/inventory/roukanken_inventory.tscn" id="1_700we"]
 [ext_resource type="Texture2D" uid="uid://bsojmatemejlh" path="res://sprites/items/item_icons/roukanken_icon.png" id="1_7845n"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_hl2ni"]
-[ext_resource type="PackedScene" path="res://prefabs/item_spawnables/Roukanken.tscn" id="4_58eia"]
+[ext_resource type="PackedScene" uid="uid://yahupkw74qtm" path="res://prefabs/item_spawnables/Roukanken.tscn" id="4_58eia"]
 
 [resource]
 script = ExtResource("1_hl2ni")
 enabled = true
 item_name = 3
-description = ""
+description = "Slice nearby enemies!
+POWERUP:
+Slice three times!"
 inventory_size = 2
 inventory = ExtResource("1_700we")
 spawnable = ExtResource("4_58eia")
 icon = ExtResource("1_7845n")
 active = true
 cooldown = 6
-stack_limit = 3
+one_time_spawn = false

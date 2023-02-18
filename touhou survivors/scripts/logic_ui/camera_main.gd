@@ -31,21 +31,9 @@ func _process(delta):
 			Signals.emit_signal("camera_is_still")
 			check_for_still = false
 
-func open_inventory():
-	level += 1
-	match level:
-		5: $Inventory.current_tier = $Inventory.tier_two; $Inventory.get_node("ReimuInventoryGrid/BlockedSpaces").texture = $Inventory.blocked_spaces_tier_2
-		10: $Inventory.current_tier = $Inventory.tier_three; $Inventory.get_node("ReimuInventoryGrid/BlockedSpaces").texture = $Inventory.blocked_spaces_tier_3
-		15: $Inventory.current_tier = $Inventory.tier_four; $Inventory.get_node("ReimuInventoryGrid/BlockedSpaces").texture = $Inventory.blocked_spaces_tier_4
-		20: $Inventory.current_tier = $Inventory.tier_five; $Inventory.get_node("ReimuInventoryGrid/BlockedSpaces").visible = false
-		_:pass
-	$Inventory.open_inventory()
-	$Shop.open_shop()
-
 func catch_leveling_up(value):
 	leveling_up = value
 	if leveling_up:
-		open_inventory()
 		$shop_close_button.visible = true
 		$ScreenDim.visible = true
 		$AnimationPlayer.play("screen_dim")

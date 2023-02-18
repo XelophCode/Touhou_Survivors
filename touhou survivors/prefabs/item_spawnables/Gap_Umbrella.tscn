@@ -41,7 +41,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_stynn")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 10.0
 }]
@@ -69,7 +69,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_stynn")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 10.0
 }]
@@ -228,7 +228,7 @@ script = ExtResource("1_utc3l")
 
 [node name="Gap1" type="AnimatedSprite2D" parent="main_body"]
 position = Vector2(30, 0)
-frames = SubResource("SpriteFrames_354uu")
+sprite_frames = SubResource("SpriteFrames_354uu")
 
 [node name="Particles" type="CPUParticles2D" parent="main_body/Gap1"]
 position = Vector2(0, 1)
@@ -245,8 +245,8 @@ scale_amount_curve = SubResource("Curve_nehy2")
 color = Color(1, 0.0117647, 1, 1)
 
 [node name="Gap2" type="AnimatedSprite2D" parent="main_body"]
-position = Vector2(120, 0)
-frames = SubResource("SpriteFrames_0nuxy")
+position = Vector2(100, 0)
+sprite_frames = SubResource("SpriteFrames_0nuxy")
 
 [node name="Particles" type="CPUParticles2D" parent="main_body/Gap2"]
 position = Vector2(0, 1)

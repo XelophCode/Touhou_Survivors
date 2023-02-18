@@ -202,7 +202,8 @@ script = ExtResource("1_gckol")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body"]
 texture_filter = 1
 position = Vector2(53, 0.5)
-frames = SubResource("SpriteFrames_ngdic")
+sprite_frames = SubResource("SpriteFrames_ngdic")
+autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="main_body"]
 collision_layer = 8

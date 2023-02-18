@@ -48,7 +48,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_38swg")
 }],
-"loop": true,
+"loop": false,
 "name": &"swing",
 "speed": 12.0
 }]
@@ -104,7 +104,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7gvnn"]
-size = Vector2(18, 18)
+size = Vector2(3, 12)
 
 [sub_resource type="Animation" id="Animation_r1xso"]
 resource_name = "slash_move"
@@ -137,15 +137,14 @@ position = Vector2(5, 0)
 
 [node name="swing_sprite" type="AnimatedSprite2D" parent="main_body/swing"]
 texture_filter = 1
-frames = SubResource("SpriteFrames_ir4a6")
+sprite_frames = SubResource("SpriteFrames_ir4a6")
 animation = &"swing"
 
 [node name="slash" type="Node2D" parent="main_body"]
-position = Vector2(20, 0)
 
 [node name="slash_sprite" type="AnimatedSprite2D" parent="main_body/slash"]
 texture_filter = 1
-frames = SubResource("SpriteFrames_s02aa")
+sprite_frames = SubResource("SpriteFrames_s02aa")
 animation = &"slash"
 
 [node name="Hitbox" type="Area2D" parent="main_body/slash"]
@@ -153,6 +152,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/slash/Hitbox"]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_7gvnn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
