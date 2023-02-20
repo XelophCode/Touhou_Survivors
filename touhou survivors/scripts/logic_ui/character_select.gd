@@ -10,27 +10,29 @@ func _ready():
 
 func _on_reimu_mouse_entered():
 	$ReimuSprite.play("default")
-	$Loadout.visible = true
+	$Loadouts/Loadout.visible = true
 
 func _on_reimu_mouse_exited():
 	$ReimuSprite.stop()
-	$Loadout.visible = false
+	$Loadouts/Loadout.visible = false
 
 func _on_marisa_mouse_entered():
 	$MarisaSprite.play("default")
-	$Loadout2.visible = true
+	$Loadouts/Loadout2.visible = true
 
 func _on_marisa_mouse_exited():
 	$MarisaSprite.stop()
-	$Loadout2.visible = false
+	$Loadouts/Loadout2.visible = false
 
 func _on_reimu_button_down():
 	Globals.current_character = Globals.Reimu
+	$Loadouts.visible = false
 	$Audio/select.play()
 	$AnimationPlayer.play("fade_in")
 
 func _on_marisa_button_down():
 	Globals.current_character = Globals.Marisa
+	$Loadouts.visible = false
 	$Audio/select.play()
 	$AnimationPlayer.play("fade_in")
 

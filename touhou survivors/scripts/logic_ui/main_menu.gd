@@ -42,7 +42,6 @@ func _on_start_button_down():
 	$SakuraFade.play("Sakura")
 #	$BlackFade.play("fade_in")
 	Globals.audio_reset = AudioServer.get_bus_volume_db(0)
-	print(str(reset_audio_DB))
 	var tween = create_tween()
 	tween.tween_method(fade_audio,AudioServer.get_bus_volume_db(0),-60,1.9)
 	

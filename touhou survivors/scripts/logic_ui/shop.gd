@@ -3,15 +3,15 @@ extends Node2D
 enum {_1x1,_1x2,_1x3,_2x2,_2x3}
 var eyes_scrolling : float
 
-@export var inventory_items : FolderListResource
+@export var inv_items : all_items
 
 func _ready():
 	Signals.connect("leveling_up",leveling_up)
 
 func open_shop():
 	
-	global_position.x = Globals.player_position.x - 100
-	global_position.y = Globals.player_position.y
+#	global_position.x = Globals.player_position.x - 100
+#	global_position.y = Globals.player_position.y
 	
 	var items1x1:Array = []
 	var items1x2:Array = []
@@ -19,7 +19,7 @@ func open_shop():
 	var items2x2:Array = []
 	var items2x3:Array = []
 	
-	for item in inventory_items.all_resources:
+	for item in inv_items.items:
 		if !Globals.one_time_spawns.has(item.name[item.item_name]) and item.enabled:
 			match item.inventory_size:
 				_1x1: items1x1.append(item)
@@ -87,9 +87,11 @@ func open_shop():
 	for i in randi_range(0,4):
 		items_to_spawn.pop_front()
 	
-	for items in items_to_spawn:
-		items.position += Globals.player_position + Vector2(-100,0)
-		get_parent().get_node("PlayerInventory").call_deferred("add_child",items)
+	Signals.emit_signal("spawn_inventory_items",items_to_spawn)
+	
+#	for items in items_to_spawn:
+#		items.position += Globals.player_position + Vector2(-100,0)
+#		get_parent().get_node("PlayerInventory").call_deferred("add_child",items)
 
 func leveling_up(value:bool):
 	if value:

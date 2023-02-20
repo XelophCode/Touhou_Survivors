@@ -1,6 +1,7 @@
 extends Resource
 class_name FolderListResource
 
+
 @export_dir
 var FolderPath : String:
 	set(value):

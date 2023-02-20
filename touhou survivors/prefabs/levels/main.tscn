@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bn7lfio7jg320"]
+[gd_scene load_steps=25 format=3 uid="uid://bn7lfio7jg320"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_78i06"]
 [ext_resource type="PackedScene" uid="uid://cqvtr2xssn8wh" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
@@ -13,9 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://fj0acbfbqp0h" path="res://prefabs/player/player_after_image.tscn" id="7_e0sq4"]
 [ext_resource type="PackedScene" uid="uid://dbqucfdpge4u1" path="res://prefabs/levels/structures/level_1/structure_1.tscn" id="9_0yld4"]
 [ext_resource type="Script" path="res://scripts/logic_ui/weapons.gd" id="12_sxuwu"]
-[ext_resource type="PackedScene" uid="uid://6dwuqj2vu1k8" path="res://prefabs/logic_ui/shop.tscn" id="14_a2sa1"]
 [ext_resource type="PackedScene" uid="uid://cfflhyetxhgwh" path="res://prefabs/logic_ui/main_camera.tscn" id="14_qqvd4"]
-[ext_resource type="PackedScene" uid="uid://cbjpy4ciqe0t1" path="res://prefabs/logic_ui/Inventory.tscn" id="16_cstuh"]
 [ext_resource type="PackedScene" uid="uid://cxtno75a58bkv" path="res://prefabs/logic_ui/player_ui.tscn" id="17_o28hk"]
 [ext_resource type="Script" path="res://scripts/logic_ui/Global_Audio.gd" id="21_7vj3l"]
 [ext_resource type="AudioStream" uid="uid://elixy6otfi44" path="res://audio/enemy_death.wav" id="22_kmevy"]
@@ -23,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://ceauriy8n5qcg" path="res://audio/retribution.ogg" id="23_r0jtr"]
 [ext_resource type="AudioStream" uid="uid://dphx0dcmgohr2" path="res://audio/level_up.ogg" id="24_s40de"]
 [ext_resource type="AudioStream" uid="uid://d1wctbotwnn1x" path="res://audio/applause.wav" id="25_cwolo"]
+[ext_resource type="PackedScene" uid="uid://lf1s280eux7x" path="res://prefabs/misc/power.tscn" id="25_xadln"]
 
 [sub_resource type="Resource" id="Resource_un3jb"]
 script = ExtResource("2_l5ojg")
@@ -32,34 +31,6 @@ ResourceCategory = ""
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qx4cd"]
 shader = ExtResource("5_1lqtb")
 shader_parameter/alpha = 1.0
-
-[sub_resource type="Gradient" id="Gradient_eyer5"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.990991)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_iaj81"]
-gradient = SubResource("Gradient_eyer5")
-
-[sub_resource type="Environment" id="Environment_pf1gy"]
-background_mode = 3
-tonemap_white = 2.03
-ssao_radius = 7.8
-ssao_intensity = 7.97
-ssil_radius = 4.68
-ssil_intensity = 8.16
-glow_enabled = true
-glow_bloom = 0.01
-fog_light_energy = 4.77
-fog_sun_scatter = 0.43
-fog_density = 0.3671
-fog_sky_affect = 0.993
-fog_height = 394.97
-fog_height_density = 8.4571
-adjustment_enabled = true
-adjustment_brightness = 0.95
-adjustment_contrast = 1.1
-adjustment_saturation = 1.1
-adjustment_color_correction = SubResource("GradientTexture1D_iaj81")
 
 [node name="Main" type="Node2D"]
 texture_filter = 1
@@ -94,17 +65,7 @@ script = ExtResource("12_sxuwu")
 
 [node name="MainCamera" parent="." instance=ExtResource("14_qqvd4")]
 
-[node name="PlayerInventory" type="Node2D" parent="."]
-z_index = 15
-
-[node name="Shop" parent="." instance=ExtResource("14_a2sa1")]
-
-[node name="Inventory" parent="." instance=ExtResource("16_cstuh")]
-
 [node name="PlayerUI" parent="." instance=ExtResource("17_o28hk")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_pf1gy")
 
 [node name="Global_Audio" type="Node" parent="." node_paths=PackedStringArray("enemy_death", "hit", "level_up", "applause")]
 script = ExtResource("21_7vj3l")
@@ -136,3 +97,39 @@ stream = ExtResource("23_r0jtr")
 volume_db = -60.0
 autoplay = true
 bus = &"Music"
+
+[node name="Power" parent="." instance=ExtResource("25_xadln")]
+position = Vector2(-30, -3)
+
+[node name="Power2" parent="." instance=ExtResource("25_xadln")]
+position = Vector2(-28, 14)
+
+[node name="Power3" parent="." instance=ExtResource("25_xadln")]
+position = Vector2(-40, 4)
+
+[node name="Power4" parent="." instance=ExtResource("25_xadln")]
+position = Vector2(-40, 26)
+
+[node name="Power5" parent="." instance=ExtResource("25_xadln")]
+position = Vector2(-58, 15)
+
+[node name="Power6" parent="." instance=ExtResource("25_xadln")]
+position = Vector2(-50, -14)
+
+[node name="Power7" parent="." instance=ExtResource("25_xadln")]
+position = Vector2(-26, -24)
+
+[node name="Power8" parent="." instance=ExtResource("25_xadln")]
+position = Vector2(-24, 36)
+
+[node name="Power9" parent="." instance=ExtResource("25_xadln")]
+position = Vector2(-49, 49)
+
+[node name="Power10" parent="." instance=ExtResource("25_xadln")]
+position = Vector2(-70, -5)
+
+[node name="Power11" parent="." instance=ExtResource("25_xadln")]
+position = Vector2(-54, -37)
+
+[node name="Power12" parent="." instance=ExtResource("25_xadln")]
+position = Vector2(-62, 35)

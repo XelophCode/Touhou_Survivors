@@ -35,3 +35,5 @@ signal revert_player_speed
 signal enemy_death_sfx
 signal hit_sfx
 signal game_over
+signal spawn_inventory_items
+signal show_icon_highlight

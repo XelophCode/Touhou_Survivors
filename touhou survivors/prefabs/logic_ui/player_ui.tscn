@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cxtno75a58bkv"]
+[gd_scene load_steps=39 format=3 uid="uid://cxtno75a58bkv"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/player_ui.gd" id="1_i5u1q"]
 [ext_resource type="SpriteFrames" uid="uid://bfm8psvacuqtm" path="res://sprites/ui/character_portraits/reimu_portrait.tres" id="2_lwihl"]
@@ -10,10 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://63murqtbvxlb" path="res://prefabs/logic_ui/occult_orb.tscn" id="7_uohci"]
 [ext_resource type="Texture2D" uid="uid://bjuq7vtc66ft3" path="res://sprites/ui/vignette.png" id="8_2iy3q"]
 [ext_resource type="Shader" path="res://scripts/shaders/dissolve.gdshader" id="10_6vywg"]
+[ext_resource type="PackedScene" uid="uid://6dwuqj2vu1k8" path="res://prefabs/logic_ui/shop.tscn" id="10_by00x"]
+[ext_resource type="PackedScene" uid="uid://ckctptt6chvp8" path="res://prefabs/logic_ui/player_inventory.tscn" id="10_oguq7"]
+[ext_resource type="PackedScene" uid="uid://cbjpy4ciqe0t1" path="res://prefabs/logic_ui/Inventory.tscn" id="11_5oeks"]
 [ext_resource type="Texture2D" uid="uid://0ydohqq6lp21" path="res://sprites/ui/fullscreen_black.png" id="11_88u87"]
 [ext_resource type="Texture2D" uid="uid://chpsc7idhrpwy" path="res://sprites/ui/GAMEOVER.png" id="12_gdljk"]
 [ext_resource type="Script" path="res://scripts/logic_ui/PauseMenu.gd" id="12_m1qpx"]
 [ext_resource type="AudioStream" uid="uid://b70f4b73su13x" path="res://audio/select2.ogg" id="13_fas5w"]
+[ext_resource type="PackedScene" uid="uid://04yuy6nwpd5q" path="res://prefabs/logic_ui/tooltip.tscn" id="13_x4fa0"]
+[ext_resource type="Environment" uid="uid://5eytrk3240f8" path="res://resources/main_environment.tres" id="17_8pmbs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn5md"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
@@ -183,15 +188,16 @@ position = Vector2(213, 120)
 texture = ExtResource("8_2iy3q")
 
 [node name="Time" type="Label" parent="UI"]
-offset_left = 2.0
-offset_top = 54.0
-offset_right = 18.0
-offset_bottom = 62.0
+offset_left = 346.0
+offset_top = 21.0
+offset_right = 423.0
+offset_bottom = 36.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_nqdip")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 11
 text = "0.00"
+horizontal_alignment = 2
 
 [node name="Level" type="Label" parent="UI"]
 offset_left = 2.0
@@ -227,6 +233,14 @@ text = "test"
 wait_time = 5.0
 autostart = true
 
+[node name="Shop" parent="." instance=ExtResource("10_by00x")]
+position = Vector2(115, 125)
+
+[node name="Inventory" parent="." instance=ExtResource("11_5oeks")]
+position = Vector2(300, 125)
+
+[node name="PlayerInventory" parent="." instance=ExtResource("10_oguq7")]
+
 [node name="Confetti" type="CPUParticles2D" parent="."]
 position = Vector2(214, -22)
 emitting = false
@@ -244,6 +258,8 @@ scale_amount_curve = SubResource("Curve_jnjyb")
 color = Color(0, 0.360784, 1, 1)
 hue_variation_max = 1.0
 hue_variation_curve = SubResource("Curve_5b2b6")
+
+[node name="Tooltip" parent="." instance=ExtResource("13_x4fa0")]
 
 [node name="FullscreenBlack" type="Sprite2D" parent="."]
 z_index = 20
@@ -348,6 +364,9 @@ text = "MUTE MUSIC"
 
 [node name="select" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("13_fas5w")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("17_8pmbs")
 
 [connection signal="animation_finished" from="UI/CharacterPortrait" to="." method="_on_character_portrait_animation_finished"]
 [connection signal="timeout" from="PortraitAnims" to="." method="_on_portrait_anims_timeout"]

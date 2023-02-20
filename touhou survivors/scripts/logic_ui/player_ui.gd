@@ -152,7 +152,7 @@ func _on_main_menu_button_up():
 	goto_main_menu()
 
 
-func _on_check_box_toggled(button_pressed):
+func _on_check_box_toggled(_button_pressed):
 	music_muted = !music_muted
 	AudioServer.set_bus_mute(1,music_muted)
 

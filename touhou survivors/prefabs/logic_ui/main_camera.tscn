@@ -1,12 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfflhyetxhgwh"]
+[gd_scene load_steps=9 format=3 uid="uid://cfflhyetxhgwh"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/camera_main.gd" id="1_365xw"]
 [ext_resource type="Texture2D" uid="uid://ciojqae21qxjp" path="res://sprites/ui/screen_dim.png" id="2_bpj4s"]
-[ext_resource type="PackedScene" uid="uid://04yuy6nwpd5q" path="res://prefabs/logic_ui/tooltip.tscn" id="5_fucjo"]
+[ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="3_wrm4s"]
 [ext_resource type="Texture2D" uid="uid://ptcu0hj15c6b" path="res://sprites/ui/resume.png" id="8_lv6fl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iij6q"]
 bg_color = Color(0, 0, 0, 0.545098)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5gck4"]
+shader = ExtResource("3_wrm4s")
+shader_parameter/rainbow = true
+shader_parameter/line_color = null
+shader_parameter/line_scale = 0.408
+shader_parameter/frequency = 0.257
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
 
 [sub_resource type="Animation" id="Animation_vwkfc"]
 resource_name = "screen_dim"
@@ -41,9 +50,6 @@ modulate = Color(1, 1, 1, 0)
 z_index = -1
 texture = ExtResource("2_bpj4s")
 
-[node name="Tooltip" parent="." instance=ExtResource("5_fucjo")]
-visible = false
-
 [node name="shop_close_button" type="Node2D" parent="."]
 visible = false
 
@@ -55,6 +61,7 @@ offset_bottom = 121.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_iij6q")
 
 [node name="resume" type="Sprite2D" parent="shop_close_button"]
+material = SubResource("ShaderMaterial_5gck4")
 position = Vector2(-202, 82)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_lv6fl")

@@ -19,6 +19,7 @@ expand_margin_right = 2.0
 anti_aliasing = false
 
 [node name="Tooltip" type="Node2D"]
+visible = false
 z_index = 100
 position = Vector2(4, 0)
 script = ExtResource("1_bevia")

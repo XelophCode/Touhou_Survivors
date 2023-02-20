@@ -260,19 +260,21 @@ material = SubResource("ShaderMaterial_gqgm0")
 texture = ExtResource("8_bpbp1")
 centered = false
 
-[node name="Loadout" type="Node2D" parent="."]
+[node name="Loadouts" type="Node2D" parent="."]
+
+[node name="Loadout" type="Node2D" parent="Loadouts"]
 visible = false
 
-[node name="GoheiItemLarge" type="Sprite2D" parent="Loadout"]
+[node name="GoheiItemLarge" type="Sprite2D" parent="Loadouts/Loadout"]
 position = Vector2(183, 115)
 texture = ExtResource("8_co7c0")
 
-[node name="HomingAmuletItemLarge" type="Sprite2D" parent="Loadout"]
+[node name="HomingAmuletItemLarge" type="Sprite2D" parent="Loadouts/Loadout"]
 position = Vector2(235, 116)
 scale = Vector2(2, 2)
 texture = ExtResource("9_m1lwd")
 
-[node name="Label" type="Label" parent="Loadout"]
+[node name="Label" type="Label" parent="Loadouts/Loadout"]
 offset_left = 129.0
 offset_top = 59.0
 offset_right = 385.0
@@ -280,10 +282,10 @@ offset_bottom = 85.0
 theme_override_fonts/font = ExtResource("10_tgr8l")
 text = "STARTING LOADOUT"
 
-[node name="Loadout2" type="Node2D" parent="."]
+[node name="Loadout2" type="Node2D" parent="Loadouts"]
 visible = false
 
-[node name="Label" type="Label" parent="Loadout2"]
+[node name="Label" type="Label" parent="Loadouts/Loadout2"]
 offset_left = 129.0
 offset_top = 59.0
 offset_right = 385.0
@@ -291,11 +293,11 @@ offset_bottom = 85.0
 theme_override_fonts/font = ExtResource("10_tgr8l")
 text = "STARTING LOADOUT"
 
-[node name="MagicBombInventoryLarge" type="Sprite2D" parent="Loadout2"]
+[node name="MagicBombInventoryLarge" type="Sprite2D" parent="Loadouts/Loadout2"]
 position = Vector2(183, 120)
 texture = ExtResource("11_ninr7")
 
-[node name="MiniHakkeroInventoryLarge" type="Sprite2D" parent="Loadout2"]
+[node name="MiniHakkeroInventoryLarge" type="Sprite2D" parent="Loadouts/Loadout2"]
 position = Vector2(239, 121)
 texture = ExtResource("12_rmmfu")
 

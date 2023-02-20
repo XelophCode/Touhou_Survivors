@@ -40,6 +40,7 @@ var occult_orb:bool = false
 var orb_count:int
 var update_saved_item_position:bool = false
 var area_awaiting_camera_still
+var highlight_area_delay:Array
 
 func find_rotational_offset():
 	var rot:int = round(rad_to_deg(rotation))
@@ -67,6 +68,7 @@ func find_rotational_offset():
 			270: rotational_offset = Vector2(22,-11)
 
 func leveling_up(value:bool):
+	highlight_area_delay = []
 	if value:
 		$ItemSprite.scale.y = 0
 		$occult_orb.scale.y = 0
@@ -75,8 +77,7 @@ func leveling_up(value:bool):
 		pop_in_animation()
 		if saved_item:
 			visible = true
-			update_saved_item_position = true
-			area_awaiting_camera_still = current_area_hovered
+			new_position = current_area_hovered.global_position + rotational_offset
 	else:
 		visible = false
 		if !in_inventory:
@@ -94,6 +95,8 @@ func pop_in_animation():
 	$ItemSprite.material.set_shader_parameter("flash_modifier",1.0)
 	await get_tree().create_timer(0.01).timeout
 	$ItemLargeBg.visible = true
+	for i in highlight_area_delay:
+		i.get_child(0).visible = true
 
 func catch_update_orb_count(value):
 	orb_count = value
@@ -120,8 +123,6 @@ func _ready():
 	
 
 func _process(delta):
-	if update_saved_item_position:
-		new_position = area_awaiting_camera_still.global_position + rotational_offset
 	
 	if $ItemSprite.material.get_shader_parameter("flash_modifier") > 0:
 		$ItemSprite.material.set_shader_parameter("flash_modifier",lerp($ItemSprite.material.get_shader_parameter("flash_modifier"),0.0,delta*3))
@@ -187,13 +188,19 @@ func occupied_and_stack_entered(area):
 		hovering_occupied_space += 1
 	if area.collision_layer == 32 and show_highlight:
 		area.get_child(0).visible = true
+	if !show_highlight:
+		highlight_area_delay.append(area)
 
 func hide_tooltip():
+	if in_inventory:
+		Signals.emit_signal("show_icon_highlight",get_instance_id(),false)
 	Globals.tooltip_info.erase([item_name,item_description])
 	if Globals.tooltip_info == []:
 		Signals.emit_signal("hide_tooltip")
 
 func show_tooltip():
+	if in_inventory:
+		Signals.emit_signal("show_icon_highlight",get_instance_id(),true)
 	Globals.tooltip_info.push_front([item_name,item_description])
 	if !left_mouse_button_held:
 		Signals.emit_signal("show_tooltip")

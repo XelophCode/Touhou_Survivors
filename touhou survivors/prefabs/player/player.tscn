@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cah8y53sm3blk"]
+[gd_scene load_steps=53 format=3 uid="uid://cah8y53sm3blk"]
 
 [ext_resource type="Script" path="res://scripts/misc/Player.gd" id="1_37at3"]
 [ext_resource type="SpriteFrames" uid="uid://1ntee1x116bu" path="res://sprites/actors/player_anims/reimu_anims.tres" id="2_7dit5"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://rkhprq2a3yag" path="res://sprites/ui/Sakura.png" id="7_iakcq"]
 [ext_resource type="Texture2D" uid="uid://d1lf6hf02n3s3" path="res://sprites/ui/sun_spot.png" id="7_xwjmk"]
 [ext_resource type="Texture2D" uid="uid://c0aov8m1r3we2" path="res://sprites/ui/cloud_shadow.png" id="8_3nw1b"]
+[ext_resource type="Texture2D" uid="uid://cmipbsbn7fy1" path="res://sprites/actors/marisa.png" id="10_aj2c0"]
 [ext_resource type="Texture2D" uid="uid://dww5avsvqu437" path="res://sprites/ui/black_cloud.png" id="13_1x8ei"]
 [ext_resource type="Texture2D" uid="uid://cutr1tv2w1e6r" path="res://sprites/ui/smoke_08.png" id="13_scd75"]
 
@@ -526,6 +527,8 @@ reimu_anims = ExtResource("2_7dit5")
 reimu_loadout = ExtResource("3_x7nw1")
 marisa_anims = ExtResource("3_a8dmt")
 marisa_loadout = ExtResource("5_nelpm")
+reimu_spritesheet = ExtResource("2_kv5a8")
+marisa_spritesheet = ExtResource("10_aj2c0")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = -4.0
@@ -698,9 +701,14 @@ color_ramp = SubResource("Gradient_do14g")
 [node name="PhotoPos" type="Marker2D" parent="."]
 position = Vector2(175, -58)
 
+[node name="DiagonalInput" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
 [connection signal="area_entered" from="MagicCircle/ItemPull" to="." method="_on_item_pull_area_entered"]
 [connection signal="area_exited" from="MagicCircle/ItemPull" to="." method="_on_item_pull_area_exited"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="spawn_afterimage" to="." method="_on_spawn_afterimage_timeout"]
 [connection signal="timeout" from="sun_ray_anim_timer" to="." method="_on_sun_ray_anim_timer_timeout"]
+[connection signal="timeout" from="DiagonalInput" to="." method="_on_diagonal_input_timeout"]

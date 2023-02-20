@@ -12,6 +12,9 @@ var idle_animation:String = "idle_down"
 @export var marisa_anims : SpriteFrames
 @export var marisa_loadout : StartingItemArrayResource
 
+@export var reimu_spritesheet : Texture2D
+@export var marisa_spritesheet : Texture2D
+
 var power:int
 var faith:float
 var faith_max:float = 50.0
@@ -24,20 +27,26 @@ var focusing:bool = false
 var check_for_move:bool = false
 var leveling_up:bool = false
 var initial_move_speed:float
-var afterimage_scale:float
+var afterimage_scale:float = 1.0
 var inverted_health_mod:float
 var inverted_scale_mod:float
 var starting_loadout_override:bool = false
 var alive:bool = true
+var last_diagonal:Vector2
+var last_diagonal_anim:String
+var last_diagonal_h_flip:bool
+var moving_diagonaly:bool = false
+var currently_moving_diagonaly:bool = false
 
 func _ready():
+	Globals.one_time_spawns = []
 	var custom_loadout:StartingItemArrayResource
 	if starting_items != null:
 		custom_loadout = starting_items
 		starting_loadout_override = true
 	match Globals.current_character:
-		Globals.Reimu: walk_animations.sprite_frames = reimu_anims; starting_items = reimu_loadout
-		Globals.Marisa: walk_animations.sprite_frames = marisa_anims; starting_items = marisa_loadout
+		Globals.Reimu: walk_animations.sprite_frames = reimu_anims; starting_items = reimu_loadout; $Teleport_Mask/TeleportAnimation.texture = reimu_spritesheet
+		Globals.Marisa: walk_animations.sprite_frames = marisa_anims; starting_items = marisa_loadout; $Teleport_Mask/TeleportAnimation.texture = marisa_spritesheet
 	if starting_loadout_override:
 		starting_items = custom_loadout
 	
@@ -59,7 +68,10 @@ func _ready():
 			Signals.emit_signal("add_weapon",item.item.spawnable,counter,item.cooldown,item.item.active,item.item.icon,item.occult_orb,true)
 			counter += 1
 
+
 func _physics_process(delta):
+	if hp < $Healthbar.max_value:
+		hp += 0.0001
 	Globals.photo_dest = $PhotoPos.global_position
 	$Healthbar.value = hp
 	move = Vector2.ZERO
@@ -69,6 +81,7 @@ func _physics_process(delta):
 	$MagicCircle.scale = Vector2(magic_circle_scale,magic_circle_scale)
 	
 	if !leveling_up:
+		hp -= damage_taken
 		if Input.is_action_pressed("focus") and !tweening_focus and !focusing:
 			magic_circle_tween_on(delta)
 		
@@ -88,8 +101,24 @@ func _physics_process(delta):
 				Signals.emit_signal("player_not_moving_in_pause")
 				check_for_move = false
 	
+	currently_moving_diagonaly = moving_diagonaly
+	if move.x != 0 and move.y != 0:
+		moving_diagonaly = true
+	else:
+		moving_diagonaly = false
+	
+	if currently_moving_diagonaly and !moving_diagonaly:
+		$DiagonalInput.start()
+	
 	if move != Vector2(0,0):
 		Globals.player_facing = move
+		
+		match move:
+			Vector2(RIGHT,UP): last_diagonal = move; last_diagonal_anim = "idle_diagonal_up"; last_diagonal_h_flip = true;
+			Vector2(LEFT,UP): last_diagonal = move; last_diagonal_anim = "idle_diagonal_up"; last_diagonal_h_flip = false;
+			Vector2(LEFT,DOWN): last_diagonal = move; last_diagonal_anim = "idle_diagonal_down"; last_diagonal_h_flip = false;
+			Vector2(DOWN,RIGHT): last_diagonal = move; last_diagonal_anim = "idle_diagonal_down"; last_diagonal_h_flip = true;
+			_: pass
 	
 	match move:
 		Vector2.RIGHT: walk_animations.play("walk_side"); walk_animations.flip_h = true; idle_animation = "idle_side"
@@ -114,9 +143,6 @@ func _physics_process(delta):
 			alive = false
 	
 	move_and_slide()
-	
-	hp -= damage_taken
-	
 
 
 func _on_hitbox_body_entered(body):
@@ -153,7 +179,6 @@ func modify_scale(interaction:String, scale_mod:float, health_mod:float, inv_hea
 			$Healthbar.max_value *= inverted_health_mod
 			afterimage_scale = 1.0
 			hp *= inverted_health_mod
-#	print(str(hp) + " - " + str($Healthbar.max_value))
 
 func gap_teleport(center_player:Vector2,teleport_destination:Vector2):
 	$AnimationPlayer.play("gap_teleport_in")
@@ -210,10 +235,16 @@ func catch_leveling_up(value):
 		leveling_up = false
 
 func _on_spawn_afterimage_timeout():
-	Signals.emit_signal("update_afterimage",$WalkAnimations.animation,$WalkAnimations.frame,$WalkAnimations.flip_h,afterimage_scale)
+	Signals.emit_signal("update_afterimage",walk_animations.sprite_frames,walk_animations.animation,walk_animations.frame,walk_animations.flip_h,afterimage_scale)
 
 func _on_sun_ray_anim_timer_timeout():
 	$SunRaysAnims.play("sun_ray")
 
 func catch_current_faith(value):
 	faith = value
+
+func _on_diagonal_input_timeout():
+	if move == Vector2.ZERO:
+		idle_animation = last_diagonal_anim
+		walk_animations.flip_h = last_diagonal_h_flip
+		Globals.player_facing = last_diagonal

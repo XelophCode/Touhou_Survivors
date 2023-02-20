@@ -1,6 +1,6 @@
 extends Node2D
 
-var level:int = 1
+var level:int = 19
 var tier_one:Array = [1,2,3,8,9,10,15,16,17]
 var tier_two:Array = [1,2,3,8,9,10,15,16,17,4,11,18,25,24,23,22]
 var tier_three:Array = [1,2,3,8,9,10,15,16,17,4,11,18,25,24,23,22,5,12,19,26,33,32,31,30,29]
@@ -38,8 +38,8 @@ func leveling_up(value:bool):
 			space.monitoring = false
 
 func open_inventory():
-	global_position.x = Globals.player_position.x + 100
-	global_position.y = Globals.player_position.y
+#	global_position.x = Globals.player_position.x + 100
+#	global_position.y = Globals.player_position.y
 	level += 1
 	match level:
 		5: current_tier = tier_two; blocked_spaces.texture = blocked_spaces_tier_2

@@ -1,0 +1,30 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://5eytrk3240f8"]
+
+[sub_resource type="Gradient" id="Gradient_eyer5"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.990991)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iaj81"]
+gradient = SubResource("Gradient_eyer5")
+
+[resource]
+background_mode = 3
+background_canvas_max_layer = 1
+tonemap_white = 2.03
+ssao_radius = 7.8
+ssao_intensity = 7.97
+ssil_radius = 4.68
+ssil_intensity = 8.16
+glow_enabled = true
+glow_bloom = 0.01
+fog_light_energy = 4.77
+fog_sun_scatter = 0.43
+fog_density = 0.3671
+fog_sky_affect = 0.993
+fog_height = 394.97
+fog_height_density = 8.4571
+adjustment_enabled = true
+adjustment_brightness = 0.9
+adjustment_contrast = 1.1
+adjustment_saturation = 1.1
+adjustment_color_correction = SubResource("GradientTexture1D_iaj81")

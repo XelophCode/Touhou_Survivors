@@ -1,6 +1,6 @@
 extends Node2D
 
-var hide_descriptions : bool = true
+var hide_descriptions : bool = false
 var item_name : String = ""
 var stack_amt : String = ""
 var stack_limit : String = ""
@@ -10,6 +10,7 @@ var update_tag : bool = false
 func _ready():
 	Signals.connect("show_tooltip",show_tooltip)
 	Signals.connect("hide_tooltip",hide_tooltip)
+	Signals.connect("leveling_up",catch_leveling_up)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("hide_descriptions"):
@@ -37,4 +38,6 @@ func show_tooltip():
 	visible = true
 	update_tag = true
 
-
+func catch_leveling_up(value):
+	if !value:
+		visible = false
