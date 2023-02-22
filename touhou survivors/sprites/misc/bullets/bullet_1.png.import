@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmipbsbn7fy1"
-path="res://.godot/imported/marisa.png-40f554c7fd0106f9a5b7c8d0e5399ac3.ctex"
+uid="uid://c82g4jkkydnr1"
+path="res://.godot/imported/bullet_1.png-02e8faa4c2abfa1e8901c014cdecce8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/actors/marisa.png"
-dest_files=["res://.godot/imported/marisa.png-40f554c7fd0106f9a5b7c8d0e5399ac3.ctex"]
+source_file="res://sprites/misc/bullets/bullet_1.png"
+dest_files=["res://.godot/imported/bullet_1.png-02e8faa4c2abfa1e8901c014cdecce8b.ctex"]
 
 [params]
 

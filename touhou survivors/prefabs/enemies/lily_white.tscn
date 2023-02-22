@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_i3kvw"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_d28hf"]
 [ext_resource type="Texture2D" uid="uid://dqqcif3ajaj2q" path="res://sprites/actors/lily_white.png" id="3_5lpb4"]
+[ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_jcqnw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8n1a"]
 atlas = ExtResource("3_5lpb4")
@@ -72,13 +73,6 @@ animations = [{
 radius = 6.0
 height = 18.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiglr"]
-bg_color = Color(0, 0, 0, 0.305882)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [node name="LilyWhite" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shadow")]
 collision_layer = 2
 collision_mask = 2
@@ -108,14 +102,12 @@ autoplay = "neutral"
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_iocf3")
 
-[node name="Shadow" type="Panel" parent="."]
-offset_left = -7.0
-offset_top = 3.0
-offset_right = 7.0
-offset_bottom = 13.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_oiglr")
-
 [node name="knockback_timer" type="Timer" parent="."]
 wait_time = 0.25
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-2.38419e-07, 9)
+scale = Vector2(0.3, 0.25)
+texture = ExtResource("4_jcqnw")
 
 [connection signal="timeout" from="knockback_timer" to="." method="_on_knockback_timer_timeout"]

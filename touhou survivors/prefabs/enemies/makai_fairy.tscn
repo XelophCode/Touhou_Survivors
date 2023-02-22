@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_kst31"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_qbhms"]
 [ext_resource type="Texture2D" uid="uid://cmpjehpqgsch8" path="res://sprites/actors/Makai_Fairy.png" id="3_ne6oa"]
+[ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_1litn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gx47g"]
 atlas = ExtResource("3_ne6oa")
@@ -57,13 +58,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_pifu0"]
 radius = 6.08276
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiglr"]
-bg_color = Color(0, 0, 0, 0.305882)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="Curve" id="Curve_rbldd"]
 max_value = 3.0
 _data = [Vector2(0, 0.6), 0.0, 2.11133, 0, 1, Vector2(0.452107, 1.55455), 0.0, 0.0, 0, 0, Vector2(1, 0.3), -2.28976, 0.0, 1, 0]
@@ -96,12 +90,6 @@ autoplay = "neutral"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pifu0")
 
-[node name="Shadow" type="Panel" parent="."]
-offset_left = -4.0
-offset_right = 4.0
-offset_bottom = 8.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_oiglr")
-
 [node name="knockback_timer" type="Timer" parent="."]
 wait_time = 0.25
 
@@ -119,5 +107,10 @@ linear_accel_max = 21.74
 radial_accel_max = 17.39
 scale_amount_curve = SubResource("Curve_rbldd")
 color = Color(0.607843, 0, 0.607843, 0.752941)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-2.68221e-07, 5)
+scale = Vector2(0.3, 0.25)
+texture = ExtResource("4_1litn")
 
 [connection signal="timeout" from="knockback_timer" to="." method="_on_knockback_timer_timeout"]

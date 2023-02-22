@@ -5,7 +5,7 @@ enum {RIGHT = 1, LEFT = -1, DOWN = 1, UP = -1, CENTER = 0}
 var move:Vector2
 var idle_animation:String = "idle_down"
 @export var walk_animations : Node
-@export var move_speed:float = 1000
+@export var move_speed:float = 2000
 @export var starting_items: StartingItemArrayResource
 @export var reimu_anims : SpriteFrames
 @export var reimu_loadout : StartingItemArrayResource
@@ -19,7 +19,7 @@ var power:int
 var faith:float
 var faith_max:float = 50.0
 var current_items:Array
-var hp:float = 100.0
+var hp:float = 1000000.0
 var damage_taken:float
 var teleport_pos:Vector2
 var tweening_focus:bool = false
@@ -71,7 +71,7 @@ func _ready():
 
 func _physics_process(delta):
 	if hp < $Healthbar.max_value:
-		hp += 0.0001
+		hp += 0.01
 	Globals.photo_dest = $PhotoPos.global_position
 	$Healthbar.value = hp
 	move = Vector2.ZERO
@@ -110,32 +110,36 @@ func _physics_process(delta):
 	if currently_moving_diagonaly and !moving_diagonaly:
 		$DiagonalInput.start()
 	
-	if move != Vector2(0,0):
-		Globals.player_facing = move
+	if !Input.is_action_pressed("focus"):
+		if move != Vector2(0,0):
+			Globals.player_facing = move
+			
+			match move:
+				Vector2(RIGHT,UP): last_diagonal = move; last_diagonal_anim = "idle_diagonal_up"; last_diagonal_h_flip = true;
+				Vector2(LEFT,UP): last_diagonal = move; last_diagonal_anim = "idle_diagonal_up"; last_diagonal_h_flip = false;
+				Vector2(LEFT,DOWN): last_diagonal = move; last_diagonal_anim = "idle_diagonal_down"; last_diagonal_h_flip = false;
+				Vector2(DOWN,RIGHT): last_diagonal = move; last_diagonal_anim = "idle_diagonal_down"; last_diagonal_h_flip = true;
+				_: pass
 		
 		match move:
-			Vector2(RIGHT,UP): last_diagonal = move; last_diagonal_anim = "idle_diagonal_up"; last_diagonal_h_flip = true;
-			Vector2(LEFT,UP): last_diagonal = move; last_diagonal_anim = "idle_diagonal_up"; last_diagonal_h_flip = false;
-			Vector2(LEFT,DOWN): last_diagonal = move; last_diagonal_anim = "idle_diagonal_down"; last_diagonal_h_flip = false;
-			Vector2(DOWN,RIGHT): last_diagonal = move; last_diagonal_anim = "idle_diagonal_down"; last_diagonal_h_flip = true;
+			Vector2.RIGHT: walk_animations.play("walk_side"); walk_animations.flip_h = true; idle_animation = "idle_side"
+			Vector2(RIGHT,UP): walk_animations.play("walk_diagonal_up"); walk_animations.flip_h = true; idle_animation = "idle_diagonal_up"
+			Vector2.UP: walk_animations.play("walk_up"); walk_animations.flip_h = false; idle_animation = "idle_up"
+			Vector2(LEFT,UP): walk_animations.play("walk_diagonal_up"); walk_animations.flip_h = false; idle_animation = "idle_diagonal_up"
+			Vector2.LEFT: walk_animations.play("walk_side"); walk_animations.flip_h = false; idle_animation = "idle_side"
+			Vector2(LEFT,DOWN): walk_animations.play("walk_diagonal_down"); walk_animations.flip_h = false; idle_animation = "idle_diagonal_down"
+			Vector2.DOWN: walk_animations.play("walk_down"); walk_animations.flip_h = false; idle_animation = "idle_down"
+			Vector2(DOWN,RIGHT): walk_animations.play("walk_diagonal_down"); walk_animations.flip_h = true; idle_animation = "idle_diagonal_down"
 			_: pass
 	
-	match move:
-		Vector2.RIGHT: walk_animations.play("walk_side"); walk_animations.flip_h = true; idle_animation = "idle_side"
-		Vector2(RIGHT,UP): walk_animations.play("walk_diagonal_up"); walk_animations.flip_h = true; idle_animation = "idle_diagonal_up"
-		Vector2.UP: walk_animations.play("walk_up"); walk_animations.flip_h = false; idle_animation = "idle_up"
-		Vector2(LEFT,UP): walk_animations.play("walk_diagonal_up"); walk_animations.flip_h = false; idle_animation = "idle_diagonal_up"
-		Vector2.LEFT: walk_animations.play("walk_side"); walk_animations.flip_h = false; idle_animation = "idle_side"
-		Vector2(LEFT,DOWN): walk_animations.play("walk_diagonal_down"); walk_animations.flip_h = false; idle_animation = "idle_diagonal_down"
-		Vector2.DOWN: walk_animations.play("walk_down"); walk_animations.flip_h = false; idle_animation = "idle_down"
-		Vector2(DOWN,RIGHT): walk_animations.play("walk_diagonal_down"); walk_animations.flip_h = true; idle_animation = "idle_diagonal_down"
-		Vector2.ZERO: walk_animations.play(idle_animation)
+	if move == Vector2.ZERO:
+		walk_animations.play(idle_animation)
 	
 	Globals.player_position = global_position
 	
 	velocity = move.normalized() * (delta) * move_speed
 	
-	if hp < 1:
+	if hp < 1 and !leveling_up:
 		velocity = Vector2.ZERO
 		if alive:
 			walk_animations.visible = false
@@ -146,11 +150,13 @@ func _physics_process(delta):
 
 
 func _on_hitbox_body_entered(body):
-	damage_taken += body.damage
-	Signals.emit_signal("player_damaged")
+	take_damage(body,1.0)
 
 func _on_hitbox_body_exited(body):
-	damage_taken -= body.damage
+	take_damage(body,-1.0)
+
+func take_damage(entity,addsub:float):
+	damage_taken += entity.damage * addsub
 
 func modify_speed(interaction:String,speed_mod:float = 1.0):
 	match interaction:
@@ -248,3 +254,10 @@ func _on_diagonal_input_timeout():
 		idle_animation = last_diagonal_anim
 		walk_animations.flip_h = last_diagonal_h_flip
 		Globals.player_facing = last_diagonal
+
+
+func _on_hitbox_area_entered(area):
+	take_damage(area.get_parent().get_parent(),1.0)
+
+func _on_hitbox_area_exited(area):
+	take_damage(area.get_parent().get_parent(),-1.0)

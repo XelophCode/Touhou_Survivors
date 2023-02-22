@@ -38,7 +38,6 @@ var current_area_hovered
 var one_time_spawn:bool
 var occult_orb:bool = false
 var orb_count:int
-var update_saved_item_position:bool = false
 var area_awaiting_camera_still
 var highlight_area_delay:Array
 
@@ -101,8 +100,6 @@ func pop_in_animation():
 func catch_update_orb_count(value):
 	orb_count = value
 
-func catch_camera_is_still():
-	update_saved_item_position = false
 
 func _ready():
 	if do_stretch_anim:
@@ -112,7 +109,6 @@ func _ready():
 		show_highlight = true
 	Signals.connect("leveling_up",leveling_up)
 	Signals.connect("update_orb_count",catch_update_orb_count)
-	Signals.connect("camera_is_still",catch_camera_is_still)
 	find_rotational_offset()
 	spawn_offset = get_child(0).get_node("main_placement").position * -1
 	global_position += spawn_offset + rotational_offset

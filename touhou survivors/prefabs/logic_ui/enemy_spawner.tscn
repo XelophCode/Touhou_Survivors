@@ -32,7 +32,7 @@ oni = ExtResource("13_iy2td")
 daiyousei = ExtResource("14_v1t1n")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.05
+wait_time = 0.3
 autostart = true
 
 [node name="EnemyParent" type="Node2D" parent="."]

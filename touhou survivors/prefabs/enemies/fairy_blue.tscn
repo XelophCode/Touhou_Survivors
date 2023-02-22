@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_5bq1p"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_c2ade"]
 [ext_resource type="Texture2D" uid="uid://b6yyaq8ipwusg" path="res://sprites/actors/fairy_1.png" id="3_eivlb"]
+[ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_aubqc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nilry"]
 atlas = ExtResource("3_eivlb")
@@ -57,13 +58,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_pifu0"]
 radius = 6.08276
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiglr"]
-bg_color = Color(0, 0, 0, 0.305882)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [node name="FairyBlue" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shadow")]
 collision_layer = 2
 collision_mask = 2
@@ -88,13 +82,12 @@ autoplay = "neutral"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pifu0")
 
-[node name="Shadow" type="Panel" parent="."]
-offset_left = -4.0
-offset_right = 4.0
-offset_bottom = 8.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_oiglr")
-
 [node name="knockback_timer" type="Timer" parent="."]
 wait_time = 0.25
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-2.68221e-07, 5)
+scale = Vector2(0.3, 0.25)
+texture = ExtResource("4_aubqc")
 
 [connection signal="timeout" from="knockback_timer" to="." method="_on_knockback_timer_timeout"]

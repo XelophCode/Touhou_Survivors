@@ -560,6 +560,5 @@ stream = ExtResource("13_lk6tq")
 [node name="blip" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("14_4yskp")
 
-[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="button_down" from="Buttons/Start" to="." method="_on_start_button_down"]
 [connection signal="button_down" from="Buttons/Quit" to="." method="_on_quit_button_down"]

@@ -13,16 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://rkhprq2a3yag" path="res://sprites/ui/Sakura.png" id="7_iakcq"]
 [ext_resource type="Texture2D" uid="uid://d1lf6hf02n3s3" path="res://sprites/ui/sun_spot.png" id="7_xwjmk"]
 [ext_resource type="Texture2D" uid="uid://c0aov8m1r3we2" path="res://sprites/ui/cloud_shadow.png" id="8_3nw1b"]
+[ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="8_sbskd"]
 [ext_resource type="Texture2D" uid="uid://cmipbsbn7fy1" path="res://sprites/actors/marisa.png" id="10_aj2c0"]
 [ext_resource type="Texture2D" uid="uid://dww5avsvqu437" path="res://sprites/ui/black_cloud.png" id="13_1x8ei"]
 [ext_resource type="Texture2D" uid="uid://cutr1tv2w1e6r" path="res://sprites/ui/smoke_08.png" id="13_scd75"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lia0m"]
-bg_color = Color(0, 0, 0, 0.329412)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_emnmw"]
 radius = 14.0357
@@ -113,31 +107,31 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Panel:visible")
+tracks/4/path = NodePath("Teleport_Mask:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Teleport_Mask:visible")
+tracks/5/path = NodePath("Healthbar:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Healthbar:visible")
+tracks/6/path = NodePath("hitbox:monitoring")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -149,7 +143,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("hitbox:monitoring")
+tracks/7/path = NodePath("hitbox:monitorable")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -161,34 +155,22 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("hitbox:monitorable")
+tracks/8/path = NodePath("Teleport_Mask/TeleportAnimation:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Teleport_Mask/TeleportAnimation:scale")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(0, 0.15, 0.35),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.9, 1), Vector2(1, 1)]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Item_Pickup:disabled")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Item_Pickup:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -250,43 +232,43 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Panel:visible")
+tracks/4/path = NodePath("Teleport_Mask:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Teleport_Mask:visible")
+tracks/5/path = NodePath("Healthbar:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Healthbar:visible")
+tracks/6/path = NodePath("hitbox:monitoring")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.35),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true]
+"values": [true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("hitbox:monitoring")
+tracks/7/path = NodePath("hitbox:monitorable")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -295,25 +277,13 @@ tracks/7/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/8/type = "value"
+tracks/8/type = "method"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("hitbox:monitorable")
+tracks/8/path = NodePath(".")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.35),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath(".")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(0.35),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -321,25 +291,25 @@ tracks/9/keys = {
 "method": &"gap_close"
 }]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Teleport_Mask/TeleportAnimation:scale")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Teleport_Mask/TeleportAnimation:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.35),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.9, 1), Vector2(1, 1)]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Item_Pickup:disabled")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Item_Pickup:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0.35),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -530,12 +500,10 @@ marisa_loadout = ExtResource("5_nelpm")
 reimu_spritesheet = ExtResource("2_kv5a8")
 marisa_spritesheet = ExtResource("10_aj2c0")
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = -4.0
-offset_top = 1.0
-offset_right = 4.0
-offset_bottom = 7.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_lia0m")
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-2.68221e-07, 4)
+scale = Vector2(0.3, 0.2)
+texture = ExtResource("8_sbskd")
 
 [node name="MagicCircle" type="Node2D" parent="."]
 
@@ -556,7 +524,8 @@ texture = ExtResource("5_bvy6o")
 texture = ExtResource("6_dwehi")
 
 [node name="WalkAnimations" type="AnimatedSprite2D" parent="."]
-animation = &""
+sprite_frames = ExtResource("2_7dit5")
+animation = &"idle_diagonal_down"
 
 [node name="Teleport_Mask" type="Sprite2D" parent="."]
 visible = false
@@ -576,12 +545,11 @@ offset_right = 4.0
 offset_bottom = 7.0
 theme_override_styles/background = SubResource("StyleBoxFlat_u2un4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ybqp8")
-step = 1.0
 value = 100.0
 show_percentage = false
 
 [node name="hitbox" type="Area2D" parent="."]
-collision_mask = 2
+collision_mask = 514
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("RectangleShape2D_l525y")
@@ -707,6 +675,8 @@ one_shot = true
 
 [connection signal="area_entered" from="MagicCircle/ItemPull" to="." method="_on_item_pull_area_entered"]
 [connection signal="area_exited" from="MagicCircle/ItemPull" to="." method="_on_item_pull_area_exited"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="hitbox" to="." method="_on_hitbox_area_exited"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="spawn_afterimage" to="." method="_on_spawn_afterimage_timeout"]

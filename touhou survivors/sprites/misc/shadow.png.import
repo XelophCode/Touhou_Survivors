@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmipbsbn7fy1"
-path="res://.godot/imported/marisa.png-40f554c7fd0106f9a5b7c8d0e5399ac3.ctex"
+uid="uid://cdolxtnfa8hal"
+path="res://.godot/imported/shadow.png-d51392aeacfeeffe0dda07f32ff9552a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/actors/marisa.png"
-dest_files=["res://.godot/imported/marisa.png-40f554c7fd0106f9a5b7c8d0e5399ac3.ctex"]
+source_file="res://sprites/misc/shadow.png"
+dest_files=["res://.godot/imported/shadow.png-d51392aeacfeeffe0dda07f32ff9552a.ctex"]
 
 [params]
 

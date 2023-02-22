@@ -1,14 +1,8 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://cyk0ubbqtfaml"]
 
 [ext_resource type="Script" path="res://scripts/misc/lamp.gd" id="1_rrdsc"]
 [ext_resource type="Texture2D" uid="uid://b0d1rvdfh4221" path="res://sprites/environment/lamp.png" id="2_j2ucu"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sub2h"]
-bg_color = Color(0, 0, 0, 0.298039)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="2_nm376"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ca32r"]
 size = Vector2(6, 12)
@@ -18,12 +12,10 @@ z_index = 5
 texture_filter = 1
 script = ExtResource("1_rrdsc")
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = -3.0
-offset_top = 4.0
-offset_right = 3.0
-offset_bottom = 7.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_sub2h")
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1.78814e-07, 6)
+scale = Vector2(0.2, 0.1)
+texture = ExtResource("2_nm376")
 
 [node name="Lamp" type="Sprite2D" parent="."]
 texture = ExtResource("2_j2ucu")

@@ -234,12 +234,14 @@ wait_time = 5.0
 autostart = true
 
 [node name="Shop" parent="." instance=ExtResource("10_by00x")]
+z_index = 17
 position = Vector2(115, 125)
 
 [node name="Inventory" parent="." instance=ExtResource("11_5oeks")]
 position = Vector2(300, 125)
 
 [node name="PlayerInventory" parent="." instance=ExtResource("10_oguq7")]
+z_index = 20
 
 [node name="Confetti" type="CPUParticles2D" parent="."]
 position = Vector2(214, -22)
@@ -281,7 +283,7 @@ libraries = {
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 2
 visible = false
-z_index = 20
+z_index = 35
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -371,6 +373,5 @@ environment = ExtResource("17_8pmbs")
 [connection signal="animation_finished" from="UI/CharacterPortrait" to="." method="_on_character_portrait_animation_finished"]
 [connection signal="timeout" from="PortraitAnims" to="." method="_on_portrait_anims_timeout"]
 [connection signal="button_down" from="PauseMenu/Resume" to="." method="_on_resume_button_down"]
-[connection signal="button_down" from="PauseMenu/MainMenu" to="." method="_on_main_menu_button_down"]
 [connection signal="button_up" from="PauseMenu/MainMenu" to="." method="_on_main_menu_button_up"]
 [connection signal="toggled" from="PauseMenu/CheckBox" to="." method="_on_check_box_toggled"]

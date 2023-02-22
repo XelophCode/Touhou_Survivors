@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bn7lfio7jg320"]
+[gd_scene load_steps=26 format=3 uid="uid://bn7lfio7jg320"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_78i06"]
 [ext_resource type="PackedScene" uid="uid://cqvtr2xssn8wh" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bvyow6vg7hdt6" path="res://prefabs/logic_ui/pickup_spawner.tscn" id="6_qbw7i"]
 [ext_resource type="PackedScene" uid="uid://fj0acbfbqp0h" path="res://prefabs/player/player_after_image.tscn" id="7_e0sq4"]
 [ext_resource type="PackedScene" uid="uid://dbqucfdpge4u1" path="res://prefabs/levels/structures/level_1/structure_1.tscn" id="9_0yld4"]
+[ext_resource type="Script" path="res://scripts/enemies/bullet_parent.gd" id="12_on4jv"]
 [ext_resource type="Script" path="res://scripts/logic_ui/weapons.gd" id="12_sxuwu"]
 [ext_resource type="PackedScene" uid="uid://cfflhyetxhgwh" path="res://prefabs/logic_ui/main_camera.tscn" id="14_qqvd4"]
 [ext_resource type="PackedScene" uid="uid://cxtno75a58bkv" path="res://prefabs/logic_ui/player_ui.tscn" id="17_o28hk"]
@@ -58,6 +59,9 @@ player_afterimage = ExtResource("7_e0sq4")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_cql0f")]
 
+[node name="Bullets" type="Node2D" parent="."]
+script = ExtResource("12_on4jv")
+
 [node name="weapons" type="Node2D" parent="."]
 script = ExtResource("12_sxuwu")
 
@@ -99,37 +103,19 @@ autoplay = true
 bus = &"Music"
 
 [node name="Power" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-30, -3)
+position = Vector2(-27, -3)
 
 [node name="Power2" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-28, 14)
+position = Vector2(-31, 15)
 
 [node name="Power3" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-40, 4)
+position = Vector2(-46, -13)
 
 [node name="Power4" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-40, 26)
+position = Vector2(-57, 7)
 
 [node name="Power5" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-58, 15)
+position = Vector2(-55, 36)
 
 [node name="Power6" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-50, -14)
-
-[node name="Power7" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-26, -24)
-
-[node name="Power8" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-24, 36)
-
-[node name="Power9" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-49, 49)
-
-[node name="Power10" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-70, -5)
-
-[node name="Power11" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-54, -37)
-
-[node name="Power12" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-62, 35)
+position = Vector2(-29, 37)

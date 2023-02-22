@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cn3tchucolusj" path="res://sprites/environment/paths_1.png" id="1_b0gss"]
 [ext_resource type="Script" path="res://scripts/misc/structure_1.gd" id="1_vdocl"]
 [ext_resource type="Texture2D" uid="uid://bk6tamqqk7ntp" path="res://sprites/environment/grass_patch_anims.png" id="4_vji4t"]
-[ext_resource type="PackedScene" path="res://prefabs/misc/lamp.tscn" id="12_xc2kp"]
+[ext_resource type="PackedScene" uid="uid://cyk0ubbqtfaml" path="res://prefabs/misc/lamp.tscn" id="12_xc2kp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md0rs"]
 atlas = ExtResource("4_vji4t")

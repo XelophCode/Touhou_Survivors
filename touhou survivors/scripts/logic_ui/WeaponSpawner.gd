@@ -91,9 +91,9 @@ func leveling_up(value:bool):
 				timer.start()
 			timer.paused = false
 
-func catch_show_icon_highlight(inventory_item_id:int, show:bool):
+func catch_show_icon_highlight(inventory_item_id:int, show_highlight:bool):
 	if icon_instances.has(inventory_item_id):
-		if show:
+		if show_highlight:
 			instance_from_id(icon_instances[inventory_item_id]).get_child(1).visible = true
 		else:
 			instance_from_id(icon_instances[inventory_item_id]).get_child(1).visible = false

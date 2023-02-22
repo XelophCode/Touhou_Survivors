@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/misc/pickups.gd" id="1_0hd7e"]
 [ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="2_hk2gn"]
 [ext_resource type="Texture2D" uid="uid://qtwnt4ssx04l" path="res://sprites/items/pickups/power.png" id="2_tk7jp"]
+[ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_cuysw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o1bd0"]
 resource_local_to_scene = true
@@ -81,13 +82,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbwum"]
 size = Vector2(4, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iw52h"]
-bg_color = Color(0, 0, 0, 0.305882)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [node name="Power" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_0hd7e")
 Type = 0
@@ -107,11 +101,9 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_hbwum")
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = -3.0
-offset_top = 1.0
-offset_right = 3.0
-offset_bottom = 6.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_iw52h")
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1.19209e-07, 3.5)
+scale = Vector2(0.2, 0.175)
+texture = ExtResource("4_cuysw")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

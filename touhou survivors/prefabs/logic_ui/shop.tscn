@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://6dwuqj2vu1k8"]
+[gd_scene load_steps=57 format=3 uid="uid://6dwuqj2vu1k8"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/shop.gd" id="1_gaew4"]
 [ext_resource type="Resource" uid="uid://c2bi36gqx52ns" path="res://resources/all_inv_items.tres" id="2_ahjw3"]
@@ -11,6 +11,8 @@
 [ext_resource type="Shader" path="res://scripts/shaders/explosion.gdshader" id="8_vbx82"]
 [ext_resource type="Texture2D" uid="uid://xbifc8dmi5qv" path="res://icon.svg" id="9_vmfms"]
 [ext_resource type="Texture2D" uid="uid://c6gqjha4fs8e2" path="res://sprites/ui/shop_grid_2.png" id="11_ofdtv"]
+[ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="12_ghm23"]
+[ext_resource type="Texture2D" uid="uid://bx02v6cc6dfdv" path="res://sprites/ui/shop_close_sign.png" id="13_n2lm3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5q2q"]
 atlas = ExtResource("3_qcc5h")
@@ -266,6 +268,20 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show_close_sign"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_su1qa"]
 _data = {
@@ -277,8 +293,97 @@ max_value = 2.0
 _data = [Vector2(0, 0.854545), 0.0, 1.05521, 0, 1, Vector2(0.75814, 1.65455), 0.0, 0.0, 0, 0, Vector2(1, 0.0545454), -6.61538, 0.0, 1, 0]
 point_count = 3
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ho1os"]
+shader = ExtResource("12_ghm23")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_scale = 0.5
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oy314"]
+atlas = ExtResource("13_n2lm3")
+region = Rect2(0, 0, 85, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hutr"]
+atlas = ExtResource("13_n2lm3")
+region = Rect2(85, 0, 85, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvghs"]
+atlas = ExtResource("13_n2lm3")
+region = Rect2(170, 0, 85, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rng5"]
+atlas = ExtResource("13_n2lm3")
+region = Rect2(0, 62, 85, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0g1a"]
+atlas = ExtResource("13_n2lm3")
+region = Rect2(85, 62, 85, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll3vf"]
+atlas = ExtResource("13_n2lm3")
+region = Rect2(170, 62, 85, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mcwi"]
+atlas = ExtResource("13_n2lm3")
+region = Rect2(0, 124, 85, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltyuq"]
+atlas = ExtResource("13_n2lm3")
+region = Rect2(85, 124, 85, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fstd4"]
+atlas = ExtResource("13_n2lm3")
+region = Rect2(170, 124, 85, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_22g1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oy314")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hutr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvghs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rng5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0g1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll3vf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mcwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltyuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fstd4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vwgy2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kfvc5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yv221"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32618"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tuowy"]
+
 [node name="Shop" type="Node2D"]
-visible = false
 z_index = 16
 script = ExtResource("1_gaew4")
 inv_items = ExtResource("2_ahjw3")
@@ -843,3 +948,23 @@ initial_velocity_min = 0.19
 initial_velocity_max = 111.3
 scale_amount_curve = SubResource("Curve_r311b")
 color = Color(1, 0.396078, 0.996078, 1)
+
+[node name="CloseGapSign" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_ho1os")
+position = Vector2(1, 69)
+sprite_frames = SubResource("SpriteFrames_22g1q")
+
+[node name="CloseGap" type="Button" parent="."]
+offset_left = -33.0
+offset_top = 66.0
+offset_right = 36.0
+offset_bottom = 98.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vwgy2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kfvc5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_yv221")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_32618")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tuowy")
+
+[connection signal="button_down" from="CloseGap" to="." method="_on_close_gap_button_down"]

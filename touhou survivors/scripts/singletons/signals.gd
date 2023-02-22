@@ -18,7 +18,6 @@ signal gap_teleport
 signal gap_camera_tween
 signal gap_finish
 signal gap_close
-signal player_damaged
 signal increase_inventory
 signal player_not_moving_in_pause
 signal increase_threat
@@ -37,3 +36,4 @@ signal hit_sfx
 signal game_over
 signal spawn_inventory_items
 signal show_icon_highlight
+signal spawn_bullet

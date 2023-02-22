@@ -109,3 +109,4 @@ escape={
 2d_physics/layer_7="item_placement_occupied"
 2d_physics/layer_8="item_placement_stack"
 2d_physics/layer_9="in_inventory"
+2d_physics/layer_10="bullets"

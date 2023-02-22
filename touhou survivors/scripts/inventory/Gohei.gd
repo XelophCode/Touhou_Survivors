@@ -20,7 +20,8 @@ func _on_hitbox_body_entered(body):
 
 func _on_swing_sprite_animation_finished():
 	if anim_counter == 0:
-		$main_body.scale.y = -1
+		$main_body.position.x *= -1
+		$main_body.scale.x = -1
 		$main_body/swing/swing_sprite.play("swing")
 		$main_body/slash/slash_sprite.play("slash")
 		$AnimationPlayer.play("slash_move")

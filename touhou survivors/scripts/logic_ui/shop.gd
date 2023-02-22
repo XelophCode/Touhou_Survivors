@@ -104,6 +104,7 @@ func leveling_up(value:bool):
 			child.get_child(0).set_deferred("monitorable",true)
 		open_shop()
 	else:
+		$CloseGapSign.visible = false
 		visible = false
 		$CPUParticles2D.emitting = false
 		for child in $ShopGrid.get_children():
@@ -124,3 +125,10 @@ func _process(delta):
 	eyes_scrolling -= delta * 8
 	$ShopGridBG/mask/eyes.region_rect = Rect2(eyes_scrolling,eyes_scrolling,400,400)
 	$ShopGridBG/mask/eyes.rotation += delta / 30
+
+func show_close_sign():
+	$CloseGapSign.visible = true
+	$CloseGapSign.play("default")
+
+func _on_close_gap_button_down():
+	Signals.emit_signal("leveling_up",false)

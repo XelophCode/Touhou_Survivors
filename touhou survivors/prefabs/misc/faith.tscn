@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/misc/pickups.gd" id="1_52jm7"]
 [ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="2_h0in7"]
 [ext_resource type="Texture2D" uid="uid://cco1shtjfu25o" path="res://sprites/items/pickups/faith.png" id="3_764hj"]
+[ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_l8unp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w8quo"]
 resource_local_to_scene = true
@@ -81,13 +82,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1pse"]
 size = Vector2(4, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqq27"]
-bg_color = Color(0, 0, 0, 0.305882)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [node name="Faith" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_52jm7")
 Type = 1
@@ -107,11 +101,9 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_s1pse")
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = -3.0
-offset_top = 1.0
-offset_right = 3.0
-offset_bottom = 6.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_yqq27")
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1.19209e-07, 4.5)
+scale = Vector2(0.2, 0.175)
+texture = ExtResource("4_l8unp")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

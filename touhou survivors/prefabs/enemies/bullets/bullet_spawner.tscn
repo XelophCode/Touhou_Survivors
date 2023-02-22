@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhnxpfiirfwyx"]
+
+[ext_resource type="Script" path="res://scripts/enemies/bullet_spawner.gd" id="1_bux6f"]
+[ext_resource type="PackedScene" uid="uid://jjsunl81if2b" path="res://prefabs/enemies/bullets/bullet.tscn" id="2_ciakk"]
+
+[node name="bullet_spawner" type="Node2D"]
+script = ExtResource("1_bux6f")
+bullet = ExtResource("2_ciakk")
+
+[node name="Initialize" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Loop" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="Initialize" to="." method="_on_initialize_timeout"]
+[connection signal="timeout" from="Loop" to="." method="_on_loop_timeout"]

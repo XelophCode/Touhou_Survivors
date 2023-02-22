@@ -21,7 +21,7 @@ var next_lvl:float = 2.0:
 func _ready():
 	Signals.connect("update_power",catch_update_power)
 	Signals.connect("update_faith",catch_update_faith)
-	
+	Signals.connect("leveling_up",catch_leveling_up)
 
 func catch_update_faith(update):
 	faith += update
@@ -37,3 +37,9 @@ func check_for_lvl_up():
 
 func _on_threat_timeout():
 	Signals.emit_signal("increase_threat")
+
+func catch_leveling_up(value):
+	if value:
+		$Threat.paused = true
+	else:
+		$Threat.paused = false

@@ -128,10 +128,11 @@ _data = {
 }
 
 [node name="Gohei" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_lfbhu")
 
 [node name="main_body" type="Node2D" parent="."]
-position = Vector2(5, 0)
+position = Vector2(2, 0)
 
 [node name="swing" type="Node2D" parent="main_body"]
 
