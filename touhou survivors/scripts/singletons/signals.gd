@@ -37,3 +37,12 @@ signal game_over
 signal spawn_inventory_items
 signal show_icon_highlight
 signal spawn_bullet
+signal current_hp
+signal increase_max_hp
+signal update_crystal
+signal current_crystal
+signal show_right_click_tip
+signal current_crystal_count
+signal decrease_crystal_count
+signal not_enough_crystals
+signal show_blocked_spaces

@@ -1,109 +1,168 @@
-[gd_scene load_steps=16 format=3 uid="uid://bs3gkqh2srcmg"]
+[gd_scene load_steps=21 format=3 uid="uid://bs3gkqh2srcmg"]
 
 [ext_resource type="Script" path="res://scripts/misc/pickups.gd" id="1_pfhar"]
 [ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="2_7yg5n"]
-[ext_resource type="Texture2D" uid="uid://f5tmn2d88u26" path="res://sprites/items/pickups/score.png" id="2_sibb1"]
+[ext_resource type="Texture2D" uid="uid://c7csohy4y7c05" path="res://sprites/items/pickups/crystal.png" id="3_suhen"]
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_iiwew"]
+[ext_resource type="Texture2D" uid="uid://cx5jxi4amejva" path="res://sprites/items/pickups/crystal_glow.png" id="5_ct5a2"]
+
+[sub_resource type="Curve" id="Curve_h0ou0"]
+_data = [Vector2(0, 1), 0.0, -0.319134, 0, 1, Vector2(0.541237, 0.827273), -0.671861, -0.671861, 0, 0, Vector2(1, 0.318182), -1.1097, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_6v7tv"]
+colors = PackedColorArray(0, 0.929412, 0.917647, 1, 1, 1, 1, 0.396078)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ytpf"]
 resource_local_to_scene = true
 shader = ExtResource("2_7yg5n")
-shader_parameter/rainbow = false
+shader_parameter/rainbow = true
 shader_parameter/line_color = null
 shader_parameter/line_scale = 0.0
 shader_parameter/frequency = 0.5
 shader_parameter/light_offset = 0.5
 shader_parameter/alpha = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wwjkk"]
-atlas = ExtResource("2_sibb1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8duv"]
+atlas = ExtResource("3_suhen")
 region = Rect2(0, 0, 11, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m51hd"]
-atlas = ExtResource("2_sibb1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm4ul"]
+atlas = ExtResource("3_suhen")
 region = Rect2(11, 0, 11, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gplq8"]
-atlas = ExtResource("2_sibb1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogk4p"]
+atlas = ExtResource("3_suhen")
 region = Rect2(22, 0, 11, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d2ppk"]
-atlas = ExtResource("2_sibb1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pe04h"]
+atlas = ExtResource("3_suhen")
 region = Rect2(33, 0, 11, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gox8i"]
-atlas = ExtResource("2_sibb1")
-region = Rect2(44, 0, 11, 11)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkvk5"]
+atlas = ExtResource("3_suhen")
+region = Rect2(0, 11, 11, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v3yxt"]
-atlas = ExtResource("2_sibb1")
-region = Rect2(55, 0, 11, 11)
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0j37"]
+atlas = ExtResource("3_suhen")
+region = Rect2(11, 11, 11, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oinr7"]
-atlas = ExtResource("2_sibb1")
-region = Rect2(66, 0, 11, 11)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy4dn"]
+atlas = ExtResource("3_suhen")
+region = Rect2(22, 11, 11, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8oimq"]
-atlas = ExtResource("2_sibb1")
-region = Rect2(77, 0, 11, 11)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlccy"]
+atlas = ExtResource("3_suhen")
+region = Rect2(33, 11, 11, 11)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_kqaj5"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_n5ewl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wwjkk")
+"texture": SubResource("AtlasTexture_i8duv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m51hd")
+"texture": SubResource("AtlasTexture_hm4ul")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gplq8")
+"texture": SubResource("AtlasTexture_ogk4p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d2ppk")
+"texture": SubResource("AtlasTexture_pe04h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gox8i")
+"texture": SubResource("AtlasTexture_pkvk5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v3yxt")
+"texture": SubResource("AtlasTexture_b0j37")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oinr7")
+"texture": SubResource("AtlasTexture_fy4dn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8oimq")
+"texture": SubResource("AtlasTexture_xlccy")
 }],
 "loop": true,
-"name": &"spin",
+"name": &"default",
 "speed": 16.0
 }]
+
+[sub_resource type="Animation" id="Animation_lsweh"]
+resource_name = "bob"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 0.5, 2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uvvm5"]
+_data = {
+"bob": SubResource("Animation_lsweh")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1pse"]
 size = Vector2(4, 4)
 
 [node name="Score" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_pfhar")
-Type = 1
-sprite = NodePath("AnimatedSprite2D")
+Type = 2
+sprite = NodePath("main_body/AnimatedSprite2D")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 8.0
+scale_amount_curve = SubResource("Curve_h0ou0")
+color_ramp = SubResource("Gradient_6v7tv")
+
+[node name="main_body" type="Node2D" parent="."]
+position = Vector2(0, -0.0623958)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body"]
 z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_4ytpf")
-sprite_frames = SubResource("SpriteFrames_kqaj5")
-animation = &"spin"
-autoplay = "spin"
+sprite_frames = SubResource("SpriteFrames_n5ewl")
+autoplay = "default"
+frame_progress = 0.602828
 
-[node name="Shadow" type="Sprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="main_body"]
+visible = false
 position = Vector2(-1.19209e-07, 3.5)
 scale = Vector2(0.2, 0.175)
 texture = ExtResource("4_iiwew")
 
+[node name="CrystalGlow" type="Sprite2D" parent="main_body"]
+modulate = Color(1, 1, 1, 0.231373)
+z_index = 1
+texture = ExtResource("5_ct5a2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "bob"
+libraries = {
+"": SubResource("AnimationLibrary_uvvm5")
+}
+
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -0.358945)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_s1pse")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,12 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://fj0acbfbqp0h"]
 
-[ext_resource type="Shader" path="res://scripts/shaders/player_afterimage.gdshader" id="1_wlbm4"]
+[ext_resource type="Shader" path="res://scripts/shaders/rainbow.gdshader" id="1_msdfp"]
 [ext_resource type="Script" path="res://scripts/misc/player_after_image_sprite.gd" id="2_25og3"]
 [ext_resource type="SpriteFrames" uid="uid://1ntee1x116bu" path="res://sprites/actors/player_anims/reimu_anims.tres" id="2_xepwb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_slx32"]
 resource_local_to_scene = true
-shader = ExtResource("1_wlbm4")
+shader = ExtResource("1_msdfp")
+shader_parameter/strength = 0.5
+shader_parameter/speed = 0.5
+shader_parameter/angle = 0.0
 shader_parameter/alpha = 1.0
 
 [node name="PlayerAfterImage" type="AnimatedSprite2D"]

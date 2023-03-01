@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c560b3cg73nn2"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_2b5uv"]
-[ext_resource type="PackedScene" path="res://prefabs/item_grid_layouts/1x1.tscn" id="2_31akp"]
+[ext_resource type="PackedScene" uid="uid://bwaw5f7habkcj" path="res://prefabs/item_grid_layouts/1x1.tscn" id="2_31akp"]
 [ext_resource type="Texture2D" uid="uid://bcp21l3ejmjkf" path="res://sprites/items/inventory_item_BGs/1x1_item_large_bg.png" id="2_bl14n"]
 [ext_resource type="Texture2D" uid="uid://dcubkue6vsjj2" path="res://sprites/items/inventory/rock_item_large.png" id="2_fxhma"]
 [ext_resource type="PackedScene" uid="uid://63murqtbvxlb" path="res://prefabs/logic_ui/occult_orb.tscn" id="3_depv6"]
@@ -29,6 +29,7 @@ scale = Vector2(1, 1e-05)
 texture = ExtResource("2_fxhma")
 
 [node name="occult_orb" parent="." instance=ExtResource("3_depv6")]
+visible = false
 position = Vector2(-6.5, -6.5)
 scale = Vector2(1, 1e-05)
 

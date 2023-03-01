@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("1_c2fih")
-enabled = true
+enabled = false
 item_name = 5
 description = "I guess anything can be a weapon in Gensokyo...
 POWERUP:

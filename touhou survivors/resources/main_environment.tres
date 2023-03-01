@@ -17,6 +17,7 @@ ssil_radius = 4.68
 ssil_intensity = 8.16
 glow_enabled = true
 glow_bloom = 0.01
+glow_blend_mode = 1
 fog_light_energy = 4.77
 fog_sun_scatter = 0.43
 fog_density = 0.3671

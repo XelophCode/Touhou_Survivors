@@ -1,156 +1,188 @@
 [gd_scene load_steps=17 format=3 uid="uid://yahupkw74qtm"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Roukanken.gd" id="1_mlgwc"]
-[ext_resource type="Texture2D" uid="uid://dupuueoirslts" path="res://sprites/items/item_spawnables/roukanken_slash.png" id="2_l0ygx"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f6wl7"]
-atlas = ExtResource("2_l0ygx")
-region = Rect2(0, 0, 13, 13)
+[sub_resource type="Gradient" id="Gradient_xrbm7"]
+offsets = PackedFloat32Array(0, 0.530612, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mm7n1"]
-atlas = ExtResource("2_l0ygx")
-region = Rect2(13, 0, 13, 13)
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x73ot"]
+gradient = SubResource("Gradient_xrbm7")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g1hpf"]
-atlas = ExtResource("2_l0ygx")
-region = Rect2(26, 0, 13, 13)
+[sub_resource type="Curve" id="Curve_jwqld"]
+max_value = 3.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.477528, 1.2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oytq5"]
-atlas = ExtResource("2_l0ygx")
-region = Rect2(39, 0, 13, 13)
+[sub_resource type="CurveTexture" id="CurveTexture_klkfu"]
+curve = SubResource("Curve_jwqld")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kb255"]
-atlas = ExtResource("2_l0ygx")
-region = Rect2(52, 0, 13, 13)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oqcsh"]
+emission_shape = 1
+emission_sphere_radius = 10.0
+particle_flag_disable_z = true
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+orbit_velocity_min = 1.0
+orbit_velocity_max = 1.0
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_klkfu")
+color_ramp = SubResource("GradientTexture1D_x73ot")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_af0q0"]
-atlas = ExtResource("2_l0ygx")
-region = Rect2(65, 0, 13, 13)
+[sub_resource type="Gradient" id="Gradient_xrrac"]
+offsets = PackedFloat32Array(0, 0.496599, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qg5tx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f6wl7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mm7n1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g1hpf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oytq5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kb255")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_af0q0")
-}],
-"loop": false,
-"name": &"slash",
-"speed": 18.0
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nk6s7"]
+gradient = SubResource("Gradient_xrrac")
+
+[sub_resource type="Curve" id="Curve_c4yg4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.483146, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_g4h7s"]
+curve = SubResource("Curve_c4yg4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_js4hd"]
+emission_shape = 1
+emission_sphere_radius = 4.0
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 5.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 60.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_g4h7s")
+color_ramp = SubResource("GradientTexture1D_nk6s7")
+turbulence_noise_strength = 12.76
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.01
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0wtf"]
+size = Vector2(10.6667, 1.33333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahy7q"]
+size = Vector2(10.6667, 3)
+
+[sub_resource type="Animation" id="Animation_hbdbq"]
+resource_name = "hitbox_spin"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/spin_hitbox:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -12.5664]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("main_body/spin_hitbox/Area2D:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("main_body/spin_hitbox/Area2D:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wn4q3"]
-size = Vector2(1.1227, 8.72022)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6du1"]
-size = Vector2(9.26946, 0.982888)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc0rk"]
-size = Vector2(10, 1)
-
-[sub_resource type="Animation" id="Animation_q52qy"]
-resource_name = "slash1"
-length = 0.3
+[sub_resource type="Animation" id="Animation_d3wpg"]
+resource_name = "hitbox_sweep"
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("main_body/Hitbox_1:position")
+tracks/0/path = NodePath("main_body/sweep_hitbox/Area2D:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(4, 4)]
+"times": PackedFloat32Array(0, 0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("main_body/Hitbox_1:monitoring")
+tracks/1/path = NodePath("main_body/sweep_hitbox/Area2D:monitorable")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true, false]
 }
-
-[sub_resource type="Animation" id="Animation_40vi2"]
-resource_name = "slash2"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("main_body/Hitbox_2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("main_body/sweep_hitbox:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-2, -4)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("main_body/Hitbox_2:monitoring")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"values": [Vector2(12.3333, 18.6667), Vector2(12.333, -20)]
 }
 
-[sub_resource type="Animation" id="Animation_5f4vt"]
-resource_name = "slash3"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("main_body/Hitbox_3:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-2, 5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("main_body/Hitbox_3:monitoring")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5yh44"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3xo4j"]
 _data = {
-"slash1": SubResource("Animation_q52qy"),
-"slash2": SubResource("Animation_40vi2"),
-"slash3": SubResource("Animation_5f4vt")
+"hitbox_spin": SubResource("Animation_hbdbq"),
+"hitbox_sweep": SubResource("Animation_d3wpg")
 }
 
 [node name="Roukanken" type="Node2D"]
@@ -159,64 +191,52 @@ script = ExtResource("1_mlgwc")
 
 [node name="main_body" type="Node2D" parent="."]
 
-[node name="animations" type="Node2D" parent="main_body"]
+[node name="spin" type="GPUParticles2D" parent="main_body"]
+position = Vector2(0, 1.66667)
+scale = Vector2(1.5, 1.5)
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_oqcsh")
+one_shot = true
+trail_enabled = true
 
-[node name="slash1" type="AnimatedSprite2D" parent="main_body/animations"]
-visible = false
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_qg5tx")
-animation = &"slash"
+[node name="sweep" type="GPUParticles2D" parent="main_body"]
+position = Vector2(12.3333, 18.3333)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_js4hd")
+one_shot = true
+speed_scale = 2.0
+trail_enabled = true
+trail_lifetime = 0.5
 
-[node name="slash2" type="AnimatedSprite2D" parent="main_body/animations"]
-visible = false
-texture_filter = 1
-rotation = -2.25846
-sprite_frames = SubResource("SpriteFrames_qg5tx")
-animation = &"slash"
+[node name="spin_hitbox" type="Node2D" parent="main_body"]
 
-[node name="slash3" type="AnimatedSprite2D" parent="main_body/animations"]
-visible = false
-texture_filter = 1
-rotation = -1.1781
-scale = Vector2(-1, 1)
-sprite_frames = SubResource("SpriteFrames_qg5tx")
-animation = &"slash"
-
-[node name="Hitbox_1" type="Area2D" parent="main_body"]
-rotation = 0.617847
+[node name="Area2D" type="Area2D" parent="main_body/spin_hitbox"]
 collision_layer = 8
 collision_mask = 2
+monitoring = false
+monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Hitbox_1"]
-position = Vector2(1.0689, -1.33545)
-shape = SubResource("RectangleShape2D_wn4q3")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/spin_hitbox/Area2D"]
+position = Vector2(6.33333, -1.98682e-08)
+shape = SubResource("RectangleShape2D_q0wtf")
 
-[node name="Hitbox_2" type="Area2D" parent="main_body"]
-rotation = -0.588176
+[node name="sweep_hitbox" type="Node2D" parent="main_body"]
+position = Vector2(12.3333, 18.6667)
+
+[node name="Area2D" type="Area2D" parent="main_body/sweep_hitbox"]
 collision_layer = 8
 collision_mask = 2
+monitoring = false
+monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Hitbox_2"]
-position = Vector2(-0.63473, -1.50855)
-shape = SubResource("RectangleShape2D_m6du1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/sweep_hitbox/Area2D"]
+shape = SubResource("RectangleShape2D_ahy7q")
 
-[node name="Hitbox_3" type="Area2D" parent="main_body"]
-rotation = 0.673697
-collision_layer = 8
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Hitbox_3"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_pc0rk")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="anims" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_5yh44")
+"": SubResource("AnimationLibrary_3xo4j")
 }
 
-[connection signal="animation_finished" from="main_body/animations/slash1" to="." method="_on_slash_1_animation_finished"]
-[connection signal="animation_finished" from="main_body/animations/slash2" to="." method="_on_slash_2_animation_finished"]
-[connection signal="animation_finished" from="main_body/animations/slash3" to="." method="_on_slash_3_animation_finished"]
-[connection signal="body_entered" from="main_body/Hitbox_1" to="." method="_on_hitbox_1_body_entered"]
-[connection signal="body_entered" from="main_body/Hitbox_2" to="." method="_on_hitbox_2_body_entered"]
-[connection signal="body_entered" from="main_body/Hitbox_3" to="." method="_on_hitbox_3_body_entered"]
+[connection signal="body_entered" from="main_body/spin_hitbox/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="main_body/sweep_hitbox/Area2D" to="." method="_on_area_2d_body_entered"]

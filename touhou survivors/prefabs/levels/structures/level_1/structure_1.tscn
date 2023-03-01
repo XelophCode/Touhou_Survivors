@@ -236,139 +236,167 @@ position = Vector2(-124, -8)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(-28, -29)
 sprite_frames = SubResource("SpriteFrames_yn1ts")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D14" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(62, -220)
 sprite_frames = SubResource("SpriteFrames_yn1ts")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(-249, -37)
 sprite_frames = SubResource("SpriteFrames_yn1ts")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D21" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(-422, 180)
 sprite_frames = SubResource("SpriteFrames_yn1ts")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(67, -58)
 sprite_frames = SubResource("SpriteFrames_h4p1l")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(136, -154)
 sprite_frames = SubResource("SpriteFrames_h4p1l")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D24" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(65, -145)
 sprite_frames = SubResource("SpriteFrames_h4p1l")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(52, 56)
 sprite_frames = SubResource("SpriteFrames_4ohs0")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D26" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(-316, -40)
 sprite_frames = SubResource("SpriteFrames_4ohs0")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D25" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(225, -33)
 sprite_frames = SubResource("SpriteFrames_4ohs0")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D18" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(79, 281)
 sprite_frames = SubResource("SpriteFrames_4ohs0")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D13" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(228, 62)
 sprite_frames = SubResource("SpriteFrames_4ohs0")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(-161, 69)
 sprite_frames = SubResource("SpriteFrames_hbcw3")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D17" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(-90, 212)
 sprite_frames = SubResource("SpriteFrames_hbcw3")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D28" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(23, -282)
 sprite_frames = SubResource("SpriteFrames_hbcw3")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(-155, -56)
 sprite_frames = SubResource("SpriteFrames_d3evl")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D20" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(-320, -171)
 sprite_frames = SubResource("SpriteFrames_d3evl")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D15" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(-83, -255)
 sprite_frames = SubResource("SpriteFrames_d3evl")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D19" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(-233, -239)
 sprite_frames = SubResource("SpriteFrames_d3evl")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(-27, 60)
 sprite_frames = SubResource("SpriteFrames_0v4wu")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D27" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(-241, -164)
 sprite_frames = SubResource("SpriteFrames_0v4wu")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(151, -10)
 sprite_frames = SubResource("SpriteFrames_2enli")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D22" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(369, 197)
 sprite_frames = SubResource("SpriteFrames_2enli")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(222, -118)
 sprite_frames = SubResource("SpriteFrames_2enli")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D23" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(247, -233)
 sprite_frames = SubResource("SpriteFrames_2enli")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(-220, 115)
 sprite_frames = SubResource("SpriteFrames_mhqin")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(7, 167)
 sprite_frames = SubResource("SpriteFrames_m6r2o")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="AnimatedSprite2D16" type="AnimatedSprite2D" parent="elements"]
 position = Vector2(-146, 247)
 sprite_frames = SubResource("SpriteFrames_m6r2o")
+autoplay = "default"
 speed_scale = 0.5

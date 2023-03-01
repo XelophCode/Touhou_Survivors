@@ -1,78 +1,79 @@
-[gd_scene load_steps=16 format=3 uid="uid://lf1s280eux7x"]
+[gd_scene load_steps=20 format=3 uid="uid://lf1s280eux7x"]
 
 [ext_resource type="Script" path="res://scripts/misc/pickups.gd" id="1_0hd7e"]
 [ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="2_hk2gn"]
-[ext_resource type="Texture2D" uid="uid://qtwnt4ssx04l" path="res://sprites/items/pickups/power.png" id="2_tk7jp"]
+[ext_resource type="Texture2D" uid="uid://cco1shtjfu25o" path="res://sprites/items/pickups/faith.png" id="3_ip2rx"]
+[ext_resource type="Texture2D" uid="uid://cl3ydhck3aro1" path="res://sprites/items/pickups/faith_glow.png" id="4_6txtd"]
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_cuysw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o1bd0"]
 resource_local_to_scene = true
 shader = ExtResource("2_hk2gn")
-shader_parameter/rainbow = false
+shader_parameter/rainbow = true
 shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/line_scale = 1.2
+shader_parameter/line_scale = 0.0
 shader_parameter/frequency = 0.5
 shader_parameter/light_offset = 0.5
 shader_parameter/alpha = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ibyft"]
-atlas = ExtResource("2_tk7jp")
-region = Rect2(0, 0, 11, 11)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uvr4"]
+atlas = ExtResource("3_ip2rx")
+region = Rect2(0, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wdqw1"]
-atlas = ExtResource("2_tk7jp")
-region = Rect2(11, 0, 11, 11)
+[sub_resource type="AtlasTexture" id="AtlasTexture_l72mu"]
+atlas = ExtResource("3_ip2rx")
+region = Rect2(13, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iessr"]
-atlas = ExtResource("2_tk7jp")
-region = Rect2(22, 0, 11, 11)
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwa8u"]
+atlas = ExtResource("3_ip2rx")
+region = Rect2(26, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fmp4g"]
-atlas = ExtResource("2_tk7jp")
-region = Rect2(33, 0, 11, 11)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e5wk"]
+atlas = ExtResource("3_ip2rx")
+region = Rect2(39, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_64i85"]
-atlas = ExtResource("2_tk7jp")
-region = Rect2(44, 0, 11, 11)
+[sub_resource type="AtlasTexture" id="AtlasTexture_shgev"]
+atlas = ExtResource("3_ip2rx")
+region = Rect2(0, 13, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rqe75"]
-atlas = ExtResource("2_tk7jp")
-region = Rect2(55, 0, 11, 11)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcy1u"]
+atlas = ExtResource("3_ip2rx")
+region = Rect2(13, 13, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a62it"]
-atlas = ExtResource("2_tk7jp")
-region = Rect2(66, 0, 11, 11)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc3nd"]
+atlas = ExtResource("3_ip2rx")
+region = Rect2(26, 13, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3qgoh"]
-atlas = ExtResource("2_tk7jp")
-region = Rect2(77, 0, 11, 11)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf4xw"]
+atlas = ExtResource("3_ip2rx")
+region = Rect2(39, 13, 13, 13)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_su5mm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ibyft")
+"texture": SubResource("AtlasTexture_5uvr4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wdqw1")
+"texture": SubResource("AtlasTexture_l72mu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iessr")
+"texture": SubResource("AtlasTexture_uwa8u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fmp4g")
+"texture": SubResource("AtlasTexture_8e5wk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_64i85")
+"texture": SubResource("AtlasTexture_shgev")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rqe75")
+"texture": SubResource("AtlasTexture_lcy1u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a62it")
+"texture": SubResource("AtlasTexture_wc3nd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3qgoh")
+"texture": SubResource("AtlasTexture_lf4xw")
 }],
 "loop": true,
 "name": &"spin",
@@ -82,18 +83,51 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbwum"]
 size = Vector2(4, 4)
 
+[sub_resource type="Gradient" id="Gradient_t8im0"]
+colors = PackedColorArray(0.341176, 1, 0.396078, 1, 0.341176, 1, 0.396078, 0)
+
+[sub_resource type="Animation" id="Animation_x3pxg"]
+resource_name = "bob"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 0.5, 2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m6abx"]
+_data = {
+"bob": SubResource("Animation_x3pxg")
+}
+
 [node name="Power" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_0hd7e")
 Type = 0
-sprite = NodePath("AnimatedSprite2D")
+sprite = NodePath("main_body/AnimatedSprite2D")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="main_body" type="Node2D" parent="."]
+position = Vector2(0, -0.875005)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body"]
 z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_o1bd0")
 sprite_frames = SubResource("SpriteFrames_su5mm")
 animation = &"spin"
 autoplay = "spin"
+frame_progress = 0.474783
+
+[node name="FaithGlow" type="Sprite2D" parent="main_body"]
+modulate = Color(1, 1, 1, 0.278431)
+z_index = 2
+texture = ExtResource("4_6txtd")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
@@ -102,8 +136,33 @@ collision_layer = 4
 shape = SubResource("RectangleShape2D_hbwum")
 
 [node name="Shadow" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-1.19209e-07, 3.5)
 scale = Vector2(0.2, 0.175)
 texture = ExtResource("4_cuysw")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 1)
+amount = 16
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+color = Color(0.341176, 1, 0.396078, 1)
+color_ramp = SubResource("Gradient_t8im0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "bob"
+libraries = {
+"": SubResource("AnimationLibrary_m6abx")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

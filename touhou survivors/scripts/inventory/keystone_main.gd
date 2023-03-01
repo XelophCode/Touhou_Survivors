@@ -1,8 +1,14 @@
 extends item_base_class
 
+var alt:bool
+
 func _ready():
 	$main_body.global_position = Globals.player_position + Vector2(randf_range(-120,120),randf_range(-80,80))
-	damage = 3
+	if alt:
+		damage = 30
+		$main_body.scale = Vector2(2.5,2.5)
+	else:
+		damage = 5
 	$AnimationPlayer.play("falling")
 
 func collision():

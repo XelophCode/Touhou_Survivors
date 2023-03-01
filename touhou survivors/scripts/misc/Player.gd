@@ -5,7 +5,7 @@ enum {RIGHT = 1, LEFT = -1, DOWN = 1, UP = -1, CENTER = 0}
 var move:Vector2
 var idle_animation:String = "idle_down"
 @export var walk_animations : Node
-@export var move_speed:float = 2000
+@export var move_speed:float = 3000
 @export var starting_items: StartingItemArrayResource
 @export var reimu_anims : SpriteFrames
 @export var reimu_loadout : StartingItemArrayResource
@@ -19,7 +19,7 @@ var power:int
 var faith:float
 var faith_max:float = 50.0
 var current_items:Array
-var hp:float = 1000000.0
+var hp:float = 100.0
 var damage_taken:float
 var teleport_pos:Vector2
 var tweening_focus:bool = false
@@ -37,6 +37,7 @@ var last_diagonal_anim:String
 var last_diagonal_h_flip:bool
 var moving_diagonaly:bool = false
 var currently_moving_diagonaly:bool = false
+var crystal:float
 
 func _ready():
 	Globals.one_time_spawns = []
@@ -58,7 +59,8 @@ func _ready():
 	Signals.connect("gap_teleport",gap_teleport)
 	Signals.connect("gap_finish",gap_finish)
 	Signals.connect("leveling_up",catch_leveling_up)
-	Signals.connect("current_faith",catch_current_faith)
+	Signals.connect("update_crystal",catch_update_crystal)
+	Signals.connect("decrease_crystal_count",catch_decrease_crystal_count)
 	await get_tree().create_timer(0.1).timeout
 	var counter:int = 0
 	if starting_items != null:
@@ -68,19 +70,18 @@ func _ready():
 			Signals.emit_signal("add_weapon",item.item.spawnable,counter,item.cooldown,item.item.active,item.item.icon,item.occult_orb,true)
 			counter += 1
 
-
 func _physics_process(delta):
-	if hp < $Healthbar.max_value:
-		hp += 0.01
 	Globals.photo_dest = $PhotoPos.global_position
 	$Healthbar.value = hp
 	move = Vector2.ZERO
 	
-	var magic_circle_scale : float = (faith / faith_max) * 2 + 1
+	var magic_circle_scale : float = (crystal / 50) * 2 + 1
 	magic_circle_scale = clamp(magic_circle_scale,1.0,3.0)
 	$MagicCircle.scale = Vector2(magic_circle_scale,magic_circle_scale)
 	
 	if !leveling_up:
+		if hp < $Healthbar.max_value:
+			hp += 0.01
 		hp -= damage_taken
 		if Input.is_action_pressed("focus") and !tweening_focus and !focusing:
 			magic_circle_tween_on(delta)
@@ -146,6 +147,7 @@ func _physics_process(delta):
 			Signals.emit_signal("game_over")
 			alive = false
 	
+	Globals.player_hp = hp
 	move_and_slide()
 
 
@@ -236,6 +238,7 @@ func catch_leveling_up(value):
 		leveling_up = true
 		check_for_move = true
 		$Healthbar.max_value *= 1.1
+		Signals.emit_signal("increase_max_hp",$Healthbar.max_value)
 		hp *= 1.1
 	else:
 		leveling_up = false
@@ -246,18 +249,23 @@ func _on_spawn_afterimage_timeout():
 func _on_sun_ray_anim_timer_timeout():
 	$SunRaysAnims.play("sun_ray")
 
-func catch_current_faith(value):
-	faith = value
 
 func _on_diagonal_input_timeout():
-	if move == Vector2.ZERO:
+	if move == Vector2.ZERO and !Input.is_action_pressed("focus"):
 		idle_animation = last_diagonal_anim
 		walk_animations.flip_h = last_diagonal_h_flip
 		Globals.player_facing = last_diagonal
-
 
 func _on_hitbox_area_entered(area):
 	take_damage(area.get_parent().get_parent(),1.0)
 
 func _on_hitbox_area_exited(area):
 	take_damage(area.get_parent().get_parent(),-1.0)
+
+func catch_update_crystal(value):
+	crystal += 1
+	crystal = clamp(crystal,0,50.0)
+
+func catch_decrease_crystal_count():
+	crystal -= 10
+	crystal = clamp(crystal,0,50.0)

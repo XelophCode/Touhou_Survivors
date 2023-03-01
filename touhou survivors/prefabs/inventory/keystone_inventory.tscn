@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://0pi0oeygxqgf" path="res://sprites/items/inventory_item_BGs/1x3_item_large_bg.png" id="3_jnk5e"]
 [ext_resource type="Material" uid="uid://dun40mejvqphh" path="res://scripts/shaders/materials/inventory_item_shader_material.tres" id="4_oixp3"]
 [ext_resource type="Texture2D" uid="uid://w07iivvsg7ky" path="res://sprites/items/inventory/keystone_item_large.png" id="5_rr06t"]
-[ext_resource type="PackedScene" path="res://prefabs/logic_ui/occult_orb.tscn" id="6_a8eyj"]
+[ext_resource type="PackedScene" uid="uid://63murqtbvxlb" path="res://prefabs/logic_ui/occult_orb.tscn" id="6_a8eyj"]
 [ext_resource type="AnimationLibrary" uid="uid://c3f6dw06ejniu" path="res://resources/animations/libraries/Inventory_Items.res" id="7_r66nk"]
 
 [node name="Keystone" type="Node2D"]
@@ -29,6 +29,7 @@ scale = Vector2(1, 1e-05)
 texture = ExtResource("5_rr06t")
 
 [node name="occult_orb" parent="." instance=ExtResource("6_a8eyj")]
+visible = false
 position = Vector2(-6.5, -28.5)
 scale = Vector2(1, 1e-05)
 

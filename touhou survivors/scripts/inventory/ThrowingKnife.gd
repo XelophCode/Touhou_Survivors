@@ -6,7 +6,7 @@ func _ready():
 	rotation = deg_to_rad(Globals.cardinal_direction_to_rotation(Globals.player_facing))
 	$AnimationPlayer.play("throw")
 	$main_body/KnifeThrow.visible = true
-	if occult_orb:
+	if alt_fire:
 		$main_body/KnifeThrow2.visible = true; $main_body/KnifeThrow3.visible = true
 	
 

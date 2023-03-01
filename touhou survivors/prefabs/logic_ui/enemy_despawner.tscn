@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://dl7hwdk2d1aug"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/EnemyDespawner.gd" id="1_vkbpc"]
 
@@ -6,7 +6,7 @@
 script = ExtResource("1_vkbpc")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 3.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -4,6 +4,9 @@ var random_dest:float = 100.0
 var bat_type:String
 var collision_scale:float = 1.0
 var blood_trail:bool = false
+var random_dest_alt:float = 150
+var alt:bool = false
+var left_right:bool = false
 
 func _ready():
 	$main_body/CPUParticles2D.emitting = blood_trail
@@ -21,7 +24,13 @@ func delete():
 	queue_free()
 
 func random_pos():
-	return Vector2(randf_range(-random_dest,random_dest),-200)
+	if alt:
+		if left_right:
+			return Vector2(randf_range(-random_dest - 100,-random_dest - 150),-150)
+		else:
+			return Vector2(randf_range(random_dest + 100,random_dest + 150),-150)
+	else:
+		return Vector2(randf_range(-random_dest,random_dest),-200)
 
 func _on_area_2d_body_entered(body):
 	do_damage(body)

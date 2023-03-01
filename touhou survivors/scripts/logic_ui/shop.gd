@@ -9,10 +9,6 @@ func _ready():
 	Signals.connect("leveling_up",leveling_up)
 
 func open_shop():
-	
-#	global_position.x = Globals.player_position.x - 100
-#	global_position.y = Globals.player_position.y
-	
 	var items1x1:Array = []
 	var items1x2:Array = []
 	var items1x3:Array = []
@@ -131,4 +127,11 @@ func show_close_sign():
 	$CloseGapSign.play("default")
 
 func _on_close_gap_button_down():
+	$CloseGapSign.material.set_shader_parameter("line_color",Color(0,0,0,1))
 	Signals.emit_signal("leveling_up",false)
+
+func _on_close_gap_mouse_entered():
+	$CloseGapSign.material.set_shader_parameter("line_color",Color(1,1,1,1))
+
+func _on_close_gap_mouse_exited():
+	$CloseGapSign.material.set_shader_parameter("line_color",Color(0,0,0,1))

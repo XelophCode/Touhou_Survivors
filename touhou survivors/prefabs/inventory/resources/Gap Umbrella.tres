@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("1_h2u7j")
-enabled = true
+enabled = false
 item_name = 22
 description = "Open a gap to teleport a short distance!
 POWERUP:

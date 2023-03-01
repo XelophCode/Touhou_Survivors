@@ -13,7 +13,7 @@ func _ready():
 	global_position = Globals.player_position
 	$AnimationPlayer.play("throw")
 	$AnimationPlayer.seek(0)
-	if occult_orb:
+	if alt_fire:
 		size_mod = 2.5; damage = 4
 	else:
 		size_mod = 1.2; damage = 1

@@ -1,7 +1,7 @@
 extends item_base_class
 
 func _ready():
-	if occult_orb:
+	if alt_fire:
 		damage = 2
 	else:
 		damage = 1

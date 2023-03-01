@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("1_cnd7a")
-enabled = true
+enabled = false
 item_name = 12
 description = "(PASSIVE)
 You grow bigger and get more hp!

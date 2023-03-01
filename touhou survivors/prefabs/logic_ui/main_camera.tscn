@@ -27,6 +27,7 @@ _data = {
 [node name="MainCamera" type="Camera2D"]
 z_index = 15
 texture_filter = 1
+position_smoothing_enabled = true
 position_smoothing_speed = 60.0
 script = ExtResource("1_365xw")
 

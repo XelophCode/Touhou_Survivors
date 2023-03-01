@@ -1,11 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://bn7lfio7jg320"]
+[gd_scene load_steps=24 format=3 uid="uid://bn7lfio7jg320"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_78i06"]
 [ext_resource type="PackedScene" uid="uid://cqvtr2xssn8wh" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
-[ext_resource type="Script" path="res://scripts/logic_ui/FolderListResource.gd" id="2_l5ojg"]
 [ext_resource type="PackedScene" uid="uid://cah8y53sm3blk" path="res://prefabs/player/player.tscn" id="3_dutub"]
 [ext_resource type="PackedScene" uid="uid://ckfbrsnhk0xny" path="res://prefabs/logic_ui/scoreboard.tscn" id="3_lb8xk"]
-[ext_resource type="PackedScene" path="res://prefabs/logic_ui/enemy_despawner.tscn" id="4_121vl"]
+[ext_resource type="PackedScene" uid="uid://dl7hwdk2d1aug" path="res://prefabs/logic_ui/enemy_despawner.tscn" id="4_121vl"]
 [ext_resource type="Shader" path="res://scripts/shaders/player_afterimage.gdshader" id="5_1lqtb"]
 [ext_resource type="PackedScene" uid="uid://dibej236818nn" path="res://prefabs/logic_ui/enemy_spawner.tscn" id="5_cql0f"]
 [ext_resource type="Script" path="res://scripts/misc/player_afterimage.gd" id="6_5f4bf"]
@@ -14,20 +13,15 @@
 [ext_resource type="PackedScene" uid="uid://dbqucfdpge4u1" path="res://prefabs/levels/structures/level_1/structure_1.tscn" id="9_0yld4"]
 [ext_resource type="Script" path="res://scripts/enemies/bullet_parent.gd" id="12_on4jv"]
 [ext_resource type="Script" path="res://scripts/logic_ui/weapons.gd" id="12_sxuwu"]
-[ext_resource type="PackedScene" uid="uid://cfflhyetxhgwh" path="res://prefabs/logic_ui/main_camera.tscn" id="14_qqvd4"]
 [ext_resource type="PackedScene" uid="uid://cxtno75a58bkv" path="res://prefabs/logic_ui/player_ui.tscn" id="17_o28hk"]
 [ext_resource type="Script" path="res://scripts/logic_ui/Global_Audio.gd" id="21_7vj3l"]
+[ext_resource type="PackedScene" uid="uid://bs3gkqh2srcmg" path="res://prefabs/misc/score.tscn" id="22_4qbw8"]
 [ext_resource type="AudioStream" uid="uid://elixy6otfi44" path="res://audio/enemy_death.wav" id="22_kmevy"]
+[ext_resource type="PackedScene" uid="uid://lf1s280eux7x" path="res://prefabs/misc/power.tscn" id="22_rqb2j"]
 [ext_resource type="AudioStream" uid="uid://dbkyr4u0q3kvm" path="res://audio/hit.wav" id="23_h7jnw"]
 [ext_resource type="AudioStream" uid="uid://ceauriy8n5qcg" path="res://audio/retribution.ogg" id="23_r0jtr"]
 [ext_resource type="AudioStream" uid="uid://dphx0dcmgohr2" path="res://audio/level_up.ogg" id="24_s40de"]
 [ext_resource type="AudioStream" uid="uid://d1wctbotwnn1x" path="res://audio/applause.wav" id="25_cwolo"]
-[ext_resource type="PackedScene" uid="uid://lf1s280eux7x" path="res://prefabs/misc/power.tscn" id="25_xadln"]
-
-[sub_resource type="Resource" id="Resource_un3jb"]
-script = ExtResource("2_l5ojg")
-FolderPath = "res://prefabs/levels/structures/level_1"
-ResourceCategory = ""
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qx4cd"]
 shader = ExtResource("5_1lqtb")
@@ -36,14 +30,13 @@ shader_parameter/alpha = 1.0
 [node name="Main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_78i06")
-structures = SubResource("Resource_un3jb")
 
 [node name="Scoreboard" parent="." instance=ExtResource("3_lb8xk")]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_804ch")]
 
 [node name="structure_parent" type="Node2D" parent="."]
-texture_filter = 2
+texture_filter = 1
 position = Vector2(0.5, 0.5)
 
 [node name="structure_1" parent="structure_parent" instance=ExtResource("9_0yld4")]
@@ -66,8 +59,6 @@ script = ExtResource("12_on4jv")
 script = ExtResource("12_sxuwu")
 
 [node name="PickupSpawner" parent="." instance=ExtResource("6_qbw7i")]
-
-[node name="MainCamera" parent="." instance=ExtResource("14_qqvd4")]
 
 [node name="PlayerUI" parent="." instance=ExtResource("17_o28hk")]
 
@@ -102,20 +93,56 @@ volume_db = -60.0
 autoplay = true
 bus = &"Music"
 
-[node name="Power" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-27, -3)
+[node name="Power" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-26, 2)
 
-[node name="Power2" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-31, 15)
+[node name="Power2" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-23, 19)
 
-[node name="Power3" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-46, -13)
+[node name="Power3" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-42, 13)
 
-[node name="Power4" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-57, 7)
+[node name="Power4" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-43, -7)
 
-[node name="Power5" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-55, 36)
+[node name="Power5" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-43, 37)
 
-[node name="Power6" parent="." instance=ExtResource("25_xadln")]
-position = Vector2(-29, 37)
+[node name="Score" parent="." instance=ExtResource("22_4qbw8")]
+position = Vector2(-48, 72)
+
+[node name="Score2" parent="." instance=ExtResource("22_4qbw8")]
+position = Vector2(-27, 62)
+
+[node name="Score3" parent="." instance=ExtResource("22_4qbw8")]
+position = Vector2(-33, 89)
+
+[node name="Score4" parent="." instance=ExtResource("22_4qbw8")]
+position = Vector2(-57, 94)
+
+[node name="Score5" parent="." instance=ExtResource("22_4qbw8")]
+position = Vector2(-75, 77)
+
+[node name="Score6" parent="." instance=ExtResource("22_4qbw8")]
+position = Vector2(-78, 109)
+
+[node name="Score7" parent="." instance=ExtResource("22_4qbw8")]
+position = Vector2(-40, 111)
+
+[node name="Score8" parent="." instance=ExtResource("22_4qbw8")]
+position = Vector2(-64, 121)
+
+[node name="Score9" parent="." instance=ExtResource("22_4qbw8")]
+position = Vector2(-21, 110)
+
+[node name="Score10" parent="." instance=ExtResource("22_4qbw8")]
+position = Vector2(-51, 133)
+
+[node name="Score11" parent="." instance=ExtResource("22_4qbw8")]
+position = Vector2(-28, 136)
+
+[node name="Score12" parent="." instance=ExtResource("22_4qbw8")]
+position = Vector2(-84, 94)
+
+[node name="Score13" parent="." instance=ExtResource("22_4qbw8")]
+position = Vector2(-12, 81)

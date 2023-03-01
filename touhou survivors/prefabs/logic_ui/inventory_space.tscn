@@ -1,0 +1,127 @@
+[gd_scene load_steps=12 format=3 uid="uid://b5p8gapbj4hw4"]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/inventory_space.gd" id="1_68yag"]
+[ext_resource type="Texture2D" uid="uid://c50tinougrkay" path="res://sprites/ui/selection_square.png" id="1_dslhh"]
+[ext_resource type="Texture2D" uid="uid://dqhbidcf0bp2y" path="res://sprites/ui/blocked_space.png" id="2_ovav5"]
+[ext_resource type="Shader" path="res://scripts/shaders/dissolve.gdshader" id="3_bg0kx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05nss"]
+size = Vector2(70.4, 70.4001)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pht5v"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wu44u"]
+noise = SubResource("FastNoiseLite_pht5v")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_djbah"]
+resource_local_to_scene = true
+shader = ExtResource("3_bg0kx")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/flash_modifier = 0.0
+shader_parameter/opacity = 1.0
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_wu44u")
+
+[sub_resource type="Animation" id="Animation_0rcsd"]
+resource_name = "blocked_space_dissolve"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlockedSpace:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlockedSpace:material:shader_parameter/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlockedSpace:material:shader_parameter/opacity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"blocked_space_invisible"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_3mwnj"]
+resource_name = "show_blocked"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlockedSpace:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 6.4), Vector2(6.4, 6.4), Vector2(0, 6.4), Vector2(6.4, 6.4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qgesc"]
+_data = {
+"blocked_space_dissolve": SubResource("Animation_0rcsd"),
+"show_blocked": SubResource("Animation_3mwnj")
+}
+
+[node name="inventory_space" type="Area2D"]
+texture_filter = 1
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("1_68yag")
+
+[node name="SelectionSquare" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(6.4, 6.4)
+texture = ExtResource("1_dslhh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_05nss")
+
+[node name="BlockedSpace" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_djbah")
+scale = Vector2(1e-05, 6.4)
+texture = ExtResource("2_ovav5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qgesc")
+}
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

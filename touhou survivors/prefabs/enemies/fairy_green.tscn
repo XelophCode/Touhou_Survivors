@@ -67,10 +67,11 @@ floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_0tb2f")
 tier = 0
-type = 1
+type = 0
 sprite = NodePath("AnimatedSprite2D")
 animation = NodePath("")
 shadow = NodePath("Shadow")
+base_speed = 500.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 3

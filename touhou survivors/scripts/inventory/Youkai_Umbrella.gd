@@ -7,7 +7,7 @@ var spawn_count:int
 @export var umbrellas_without_orb:int = 1
 
 func _ready():
-	if occult_orb:
+	if alt_fire:
 		spawn_count = umbrellas_with_orb
 	else:
 		spawn_count = umbrellas_without_orb

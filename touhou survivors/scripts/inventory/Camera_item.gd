@@ -1,9 +1,11 @@
 extends item_base_class
 
+var size_1:float = 62.0
+var size_2:float = 37.0
 var wm:float = Globals.wind_mult()
 var wd:float = Globals.wind_div()
-var width:float = 62.0
-var height:float = 37.0
+var width:float
+var height:float
 var enemies_to_damage:Array = []
 var img
 @export var photo : PackedScene
@@ -16,14 +18,22 @@ func _ready():
 	
 	scale.x = 0.5;scale.y = 0.5
 	
-	if occult_orb:
-		damage = 3
+	damage = 3
+	
+	if alt_fire:
+		width = size_1
+		height = size_2
+		
 	else:
-		damage = 1
+		width = size_2
+		height = size_1
+		$main_body.rotation_degrees += 90
 	
 	start = $pos.global_position
 	img = get_viewport().get_texture().get_image()
 	rotation = deg_to_rad(Globals.cardinal_direction_to_rotation(Globals.player_facing))
+	
+	
 
 
 func _process(delta):
@@ -42,8 +52,13 @@ func delete():
 	
 
 func camera_flash():
+	
+	
 	$Flash.visible = true
 	$Flash.play("default")
+
+func hide_camera_frame():
+	$main_body/Sprite2D.visible = false
 
 func create_photo():
 	var posneg:float
@@ -98,6 +113,7 @@ func create_photo():
 	inst.photo_texture.scale = Vector2(wd,wd)
 	inst.photo_border.rotation = deg_to_rad(photo_border_rot)
 	inst.rotation_degrees = photo_rot
+	inst.alt = !alt_fire
 	get_parent().get_parent().add_child(inst)
 
 func _on_area_2d_body_entered(body):

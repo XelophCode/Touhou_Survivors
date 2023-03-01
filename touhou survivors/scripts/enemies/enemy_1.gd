@@ -25,6 +25,7 @@ func _physics_process(delta):
 		if $knockback_timer.is_stopped():
 			$knockback_timer.start()
 	
+	
 	if leveling_up:
 		velocity = Vector2.ZERO
 	move_and_slide()
@@ -49,7 +50,7 @@ func _physics_process(delta):
 		queue_free()
 
 func despawn():
-	if global_position.distance_to(Globals.player_position) > 400:
+	if global_position.distance_to(Globals.player_position) > 235:
 		queue_free()
 
 func _on_knockback_timer_timeout():

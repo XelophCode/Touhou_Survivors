@@ -1,16 +1,14 @@
 extends item_base_class
 
 @export var bomb : PackedScene
-var spawn_count:int
-@export var bombs_with_orb:int = 5
-@export var bombs_without_orb:int = 1
+var spawn_count:float = 3.0
 
 func _ready():
-	if occult_orb:
-		spawn_count = bombs_with_orb
-	else:
-		spawn_count = bombs_without_orb
 	for i in spawn_count:
-		get_parent().call_deferred("add_child",bomb.instantiate())
+		var bomb_inst = bomb.instantiate()
+		bomb_inst.alt = alt_fire
+		get_parent().call_deferred("add_child",bomb_inst)
+		if !alt_fire:
+			await get_tree().create_timer(0.5).timeout
 	queue_free()
 	

@@ -20,14 +20,14 @@ func _process(_delta):
 			icon.position = $icon_positions.get_child(counter).position
 			counter += 1
 
-func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bool,icon:Texture,occult_orb:bool,autostart:bool = false):
+func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bool,icon:Texture,rotated:bool,autostart:bool = false):
 	if !inventory_item_ids.has(inventory_item_id):
 		if active:
 			inventory_item_ids.append(inventory_item_id)
 			var timer_new = Timer.new()
 			timer_new.wait_time = cooldown
 			timer_new.autostart = autostart
-			timer_new.connect("timeout",spawn_weapon.bind(scene,occult_orb))
+			timer_new.connect("timeout",spawn_weapon.bind(scene,rotated))
 			timer_instances[inventory_item_id] = timer_new.get_instance_id()
 			get_node("timer_instances").add_child(timer_new)
 			var icon_inst = $icon_base.duplicate()
@@ -46,12 +46,12 @@ func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bo
 			$icon_instances.add_child(icon_inst)
 			var scene_inst = scene.instantiate()
 			passive_item_ids[inventory_item_id] = scene_inst.get_instance_id()
-			scene_inst.occult_orb = occult_orb
+			scene_inst.alt_fire = rotated
 			Signals.emit_signal("weapon_add_child",scene_inst)
 
-func spawn_weapon(item,occult_orb):
+func spawn_weapon(item,rotated):
 	var new_weapon_inst = item.instantiate()
-	new_weapon_inst.occult_orb = occult_orb
+	new_weapon_inst.alt_fire = rotated
 	Signals.emit_signal("weapon_add_child",new_weapon_inst)
 
 func remove_weapon(inventory_item_id:int,active):
@@ -71,15 +71,15 @@ func remove_weapon(inventory_item_id:int,active):
 			timer_instances.erase(inventory_item_id)
 			icon_instances.erase(inventory_item_id)
 
-func modify_weapon(scene:PackedScene,inventory_item_id:int):
+func modify_weapon(scene:PackedScene,inventory_item_id:int,rotated:bool):
 	if timer_instances != {}:
 		if timer_instances.has(inventory_item_id):
 			var inst_id:int = timer_instances[inventory_item_id]
 			var inst := instance_from_id(inst_id)
 			inst.disconnect("timeout",spawn_weapon)
-			inst.connect("timeout",spawn_weapon.bind(scene,true))
+			inst.connect("timeout",spawn_weapon.bind(scene,rotated))
 	if passive_item_ids.has(inventory_item_id):
-		instance_from_id(passive_item_ids[inventory_item_id]).update()
+		instance_from_id(passive_item_ids[inventory_item_id]).update(rotated)
 
 func leveling_up(value:bool):
 	if value:

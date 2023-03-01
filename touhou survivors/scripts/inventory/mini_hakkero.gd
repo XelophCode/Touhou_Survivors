@@ -1,10 +1,10 @@
 extends item_base_class
 
 func _ready():
-	if occult_orb:
-		$main_body.scale = Vector2(2.0,3.0)
+	if alt_fire:
+		$main_body.scale = Vector2(2.0,1.0)
 	else:
-		pass
+		$main_body.scale = Vector2(1.0,2.0)
 	
 	damage = 3
 	rotation = deg_to_rad(Globals.cardinal_direction_to_rotation(Globals.player_facing))

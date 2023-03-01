@@ -96,7 +96,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_flb6e")
 }],
-"loop": false,
+"loop": true,
 "name": &"puddle",
 "speed": 12.0
 }]

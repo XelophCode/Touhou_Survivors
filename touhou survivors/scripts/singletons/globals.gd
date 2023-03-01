@@ -10,6 +10,9 @@ var photo_dest:Vector2
 enum {Reimu,Marisa}
 var current_character:int = 0
 var audio_reset:float
+var player_hp:float
+var crystal_count:float
+var holding_item:bool = false
 
 #USED IN CAMERA ITEM FOR GETTING RECT2 SCALE
 func wind_mult():

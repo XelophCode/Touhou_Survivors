@@ -19,7 +19,7 @@ func _ready():
 	move.x = initial_magnitude
 	global_position = Globals.player_position
 	
-	if occult_orb:
+	if alt_fire:
 		scale.x = 2; scale.y = 2
 	else:
 		scale.x = 1; scale.y = 1

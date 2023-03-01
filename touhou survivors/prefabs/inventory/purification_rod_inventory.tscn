@@ -29,6 +29,7 @@ scale = Vector2(1, 1e-05)
 texture = ExtResource("4_fp73r")
 
 [node name="occult_orb" parent="." instance=ExtResource("3_imvxg")]
+visible = false
 position = Vector2(-6.5, -17.5)
 scale = Vector2(1, 1e-05)
 

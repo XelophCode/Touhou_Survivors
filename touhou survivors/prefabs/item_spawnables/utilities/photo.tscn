@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6jnla"]
 resource_local_to_scene = true
 shader = ExtResource("2_86r7i")
-shader_parameter/texture_value = null
+shader_parameter/texture_value = 0.0
 shader_parameter/texture_alpha = 1.0
 
 [sub_resource type="Animation" id="Animation_lx38d"]

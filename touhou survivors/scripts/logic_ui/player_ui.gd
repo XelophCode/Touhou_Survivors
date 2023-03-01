@@ -21,6 +21,8 @@ var leveling_up:bool = false
 var occult_orb_max:float = 10.0
 var current_lvl:int = 1
 var escape_can_unpause:bool = false
+var crystal:float
+var crystal_count:float
 var is_paused:bool = false:
 	set(value):
 		is_paused = value
@@ -29,12 +31,8 @@ var is_paused:bool = false:
 		await get_tree().create_timer(0.1).timeout
 		escape_can_unpause = is_paused
 
-var current_orb:int:
-	set(value):
-		current_orb = value
-		Signals.emit_signal("update_orb_count",current_orb)
-
 func _ready():
+	Globals.crystal_count = 0
 	$AnimationPlayer.play("fade_out")
 	match Globals.current_character:
 		Globals.Reimu: character_portrait.sprite_frames = reimu_portrait
@@ -46,11 +44,13 @@ func _ready():
 	Signals.connect("current_faith",catch_current_faith)
 	Signals.connect("reduce_orb_count",catch_reduce_orb_count)
 	Signals.connect("game_over",catch_game_over)
-	
-	for orb in $UI/OccultOrbParent.get_children():
-		orb.get_child(1).max_value = occult_orb_max
+	Signals.connect("increase_max_hp",catch_increase_max_hp)
+	Signals.connect("update_crystal",catch_update_crystal)
+	Signals.connect("decrease_crystal_count",catch_decrease_crystal_count)
+	Signals.connect("not_enough_crystals",catch_not_enough_crystals)
 
 func _process(delta):
+	$UI/Crystalbar.value = lerp($UI/Crystalbar.value, crystal, delta*2)
 	if Input.is_action_just_pressed("escape"):
 		is_paused = !is_paused
 	
@@ -58,19 +58,6 @@ func _process(delta):
 	
 	power = lerp(power,power_update,delta*4)
 	powerbar.value = power
-	
-	faith = lerp(faith,faith_update,delta*4)
-	if faith > occult_orb_max:
-		current_orb = 1
-		if faith > occult_orb_max * 2:
-			current_orb = 2
-			if faith > occult_orb_max * 3:
-				current_orb = 3
-				if faith > occult_orb_max * 4:
-					current_orb = 4
-	else:
-		current_orb = 0
-	$UI/OccultOrbParent.get_child(current_orb).get_child(1).value = faith - occult_orb_max * current_orb
 	
 	if !leveling_up:
 		playtime_second += delta
@@ -85,6 +72,10 @@ func _process(delta):
 		else :
 			playtime_stringed = str(playtime_minute) + ":" + str(playtime_floored)
 		time_label.text = str(playtime_stringed)
+		$UI/Time2.text = str(playtime_stringed)
+	
+	$UI/Healthbar.value = Globals.player_hp
+	
 
 func _on_portrait_anims_timeout():
 	var random_anim:Array = ["head_bob","blink"]
@@ -109,33 +100,18 @@ func catch_current_power(value):
 func catch_next_lvl_update(value):
 	powerbar.max_value = value
 
-func update_occult_orbs():
-	var old_orb_target = current_orb_target
-	if Globals.faith > Globals.occult_orb_max:
-		current_orb_target = 1
-		if Globals.faith > Globals.occult_orb_max * 2:
-			current_orb_target = 2
-			if Globals.faith > Globals.occult_orb_max * 3:
-				current_orb_target = 3
-				if Globals.faith > Globals.occult_orb_max * 4:
-					current_orb_target = 4
-	else:
-		current_orb_target = 0
-	
-	if old_orb_target > current_orb_target:
-		$OccultOrbParent.get_child(old_orb_target).get_child(1).value = 0
-	
-	$OccultOrbParent.get_child(current_orb_target).get_child(1).value = Globals.faith - Globals.occult_orb_max * current_orb_target
-
 func catch_leveling_up(value):
 	leveling_up = value
 	if leveling_up:
+		$ScreenDim.visible = true
+		$AnimationPlayer2.play("dim_screen")
 		confetti.emitting = true
 		character_portrait.play("smile")
 		$PortraitAnims.stop()
 		current_lvl += 1
 		lvl_label.text = "Lvl " + str(current_lvl)
 	else:
+		$ScreenDim.visible = false
 		confetti.emitting = false
 		character_portrait.play("head_bob")
 		$PortraitAnims.start()
@@ -161,3 +137,31 @@ func catch_game_over():
 
 func goto_main_menu():
 	get_tree().change_scene_to_file("res://prefabs/levels/main_menu.tscn")
+
+func catch_increase_max_hp(value):
+	$UI/Healthbar.max_value = value
+
+func catch_update_crystal(value):
+	crystal += value
+	if crystal >= $UI/Crystalbar.max_value:
+		if Globals.crystal_count >= 9.0:
+			crystal = $UI/Crystalbar.max_value
+		else:
+			$UI/shard_count.material.set_shader_parameter("flash_color",Color(1,1,1,1))
+			$AnimationPlayer3.play("crystal_number_flash")
+			crystal = 0
+			Globals.crystal_count += 1.0
+			Globals.crystal_count = clamp(Globals.crystal_count,0,9.0)
+			$UI/shard_count.frame = Globals.crystal_count
+
+func catch_decrease_crystal_count():
+	$UI/shard_count.frame = Globals.crystal_count
+	$UI/shard_count.material.set_shader_parameter("flash_color",Color(1,1,1,1))
+	$AnimationPlayer3.play("crystal_number_flash")
+
+func catch_not_enough_crystals():
+	$UI/shard_count.material.set_shader_parameter("flash_color",Color(1,0,0,1))
+	$AnimationPlayer3.play("number_flash_red_shake")
+
+func _on_crystal_anim_timeout():
+	$UI/Crystal.play("default")

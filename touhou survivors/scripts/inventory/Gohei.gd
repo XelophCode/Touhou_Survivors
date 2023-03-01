@@ -7,10 +7,9 @@ func _ready():
 	$main_body/swing/swing_sprite.play("swing")
 	$main_body/slash/slash_sprite.play("slash")
 	$AnimationPlayer.play("slash_move")
-	if occult_orb:
-		damage = 6
-	else:
-		damage = 2
+	if alt_fire:
+		rotation_degrees += 90
+	damage = 10
 
 func _process(_delta):
 	global_position = Globals.player_position

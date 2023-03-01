@@ -4,6 +4,7 @@ var move : Vector2
 var move_speed : float = 80
 var velocity : Vector2
 @export var explosion : PackedScene
+var alt:bool
 
 func _ready():
 	rotation = deg_to_rad(randi_range(0,359))
@@ -15,7 +16,8 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body):
 	do_damage(body)
-	spawn_explosion()
+	if alt:
+		spawn_explosion()
 
 
 func spawn_explosion():

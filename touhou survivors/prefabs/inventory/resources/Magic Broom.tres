@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("1_f064l")
-enabled = true
+enabled = false
 item_name = 6
 description = "(PASSIVE ITEM)
 Move slightly faster!

@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckid1l333r16a"]
+[gd_scene load_steps=33 format=3 uid="uid://ckid1l333r16a"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Mochi_Mallet.gd" id="1_a46w8"]
 [ext_resource type="Texture2D" uid="uid://cwq6bxqcvdqwt" path="res://sprites/items/item_spawnables/hammer_swing_animation.png" id="2_do4ye"]
+[ext_resource type="Texture2D" uid="uid://cylrnqrnsddvn" path="res://sprites/items/item_spawnables/mochi_mallet_slam.png" id="3_k6uei"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iu0d7"]
 atlas = ExtResource("2_do4ye")
@@ -95,8 +96,82 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4miy"]
+atlas = ExtResource("3_k6uei")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g11xu"]
+atlas = ExtResource("3_k6uei")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0to5"]
+atlas = ExtResource("3_k6uei")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwveq"]
+atlas = ExtResource("3_k6uei")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkyr8"]
+atlas = ExtResource("3_k6uei")
+region = Rect2(20, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gurpa"]
+atlas = ExtResource("3_k6uei")
+region = Rect2(40, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stcii"]
+atlas = ExtResource("3_k6uei")
+region = Rect2(0, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt2kw"]
+atlas = ExtResource("3_k6uei")
+region = Rect2(20, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dblsu"]
+atlas = ExtResource("3_k6uei")
+region = Rect2(40, 40, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tuc0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4miy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g11xu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0to5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwveq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkyr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gurpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stcii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kt2kw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dblsu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_qynue"]
 radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m3e68"]
+radius = 5.0
 
 [sub_resource type="Animation" id="Animation_yjvql"]
 resource_name = "hitbox_move"
@@ -132,6 +207,50 @@ _data = {
 "hitbox_move": SubResource("Animation_yjvql")
 }
 
+[sub_resource type="Animation" id="Animation_idody"]
+resource_name = "slam"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/slam:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"slam_hitbox_off"
+}, {
+"args": [],
+"method": &"slam_hitbox_on"
+}, {
+"args": [],
+"method": &"slam_hitbox_off"
+}, {
+"args": [],
+"method": &"check_for_slam_repeat"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7k6ew"]
+_data = {
+"slam": SubResource("Animation_idody")
+}
+
 [node name="Mochi_Mallet" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_a46w8")
@@ -139,19 +258,44 @@ script = ExtResource("1_a46w8")
 [node name="main_body" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_qixmf")
+
+[node name="slam" type="AnimatedSprite2D" parent="main_body"]
+visible = false
+position = Vector2(4, -1.5)
+sprite_frames = SubResource("SpriteFrames_tuc0r")
+frame = 7
 
 [node name="Area2D" type="Area2D" parent="main_body"]
 collision_layer = 8
 collision_mask = 2
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
 position = Vector2(4, 2)
 shape = SubResource("CircleShape2D_qynue")
+
+[node name="slamhitbox" type="Area2D" parent="main_body"]
+collision_layer = 8
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/slamhitbox"]
+position = Vector2(8, 0)
+shape = SubResource("CircleShape2D_m3e68")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_rbhi2")
 }
 
+[node name="slam_anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7k6ew")
+}
+
 [connection signal="body_entered" from="main_body/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="main_body/slamhitbox" to="." method="_on_slamhitbox_body_entered"]

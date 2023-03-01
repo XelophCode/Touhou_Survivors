@@ -40,6 +40,9 @@ var occult_orb:bool = false
 var orb_count:int
 var area_awaiting_camera_still
 var highlight_area_delay:Array
+var rotated:bool = false
+var previous_rotated:bool = false
+var currently_in_weapons:bool = false
 
 func find_rotational_offset():
 	var rot:int = round(rad_to_deg(rotation))
@@ -119,7 +122,6 @@ func _ready():
 	
 
 func _process(delta):
-	
 	if $ItemSprite.material.get_shader_parameter("flash_modifier") > 0:
 		$ItemSprite.material.set_shader_parameter("flash_modifier",lerp($ItemSprite.material.get_shader_parameter("flash_modifier"),0.0,delta*3))
 	if left_mouse_button_held:
@@ -129,11 +131,13 @@ func _process(delta):
 		$ItemLargeBg.visible = false
 		global_position = get_global_mouse_position()
 		if Input.is_action_just_pressed("rotate_item"):
+			rotated = !rotated
 			rotation += deg_to_rad(90)
 			if round(rad_to_deg(rotation)) >= 360:
 				rotation = 0
 			find_rotational_offset()
 	else:
+		find_rotational_offset()
 		global_position = new_position
 		rotation = new_rotation
 		if show_highlight:
@@ -143,35 +147,39 @@ func click_detection(event):
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("left_mouse_button"):
 			holding_item()
-		if event.is_action_pressed("right_mouse_button"):
-			if occult_orb_progress.value < occult_orb_progress.max_value and orb_count > 0:
-				Signals.emit_signal("reduce_orb_count")
-				occult_orb_progress.value = occult_orb_progress.max_value
-				occult_orb = true
-				if in_inventory:
-					Signals.emit_signal("modify_weapon",scene,get_instance_id())
 
 func holding_item():
+	Globals.holding_item = true
 	Signals.emit_signal("hide_tooltip")
 	find_rotational_offset()
 	left_mouse_button_held = true
 	z_index += 50
 
 func not_holding_item():
+	Globals.holding_item = false
 	Signals.emit_signal("show_tooltip")
+	
 	left_mouse_button_held = false
 	z_index -= 50
 	if slots_currently_hovering == slot_count and hovering_occupied_space == 0:
 		new_position = slot_position_hovering
 		new_rotation = rotation
+		
 		if in_inventory:
-			Signals.emit_signal("add_weapon",scene,get_instance_id(),item_cooldown,active,icon,occult_orb)
+			if currently_in_weapons and rotated != previous_rotated:
+				Signals.emit_signal("modify_weapon",scene,get_instance_id(),rotated)
+			Signals.emit_signal("add_weapon",scene,get_instance_id(),item_cooldown,active,icon,rotated)
+			currently_in_weapons = true
 			if one_time_spawn:
 				Globals.one_time_spawns.append(item_name)
 		else:
 			Signals.emit_signal("remove_weapon",get_instance_id(),active)
+			currently_in_weapons = false
 			if one_time_spawn:
 				Globals.one_time_spawns.erase(item_name)
+		previous_rotated = rotated
+	else:
+		rotated = previous_rotated
 
 func occupied_and_stack_exited(area):
 	if area.collision_layer == 64:

@@ -968,3 +968,5 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_32618")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tuowy")
 
 [connection signal="button_down" from="CloseGap" to="." method="_on_close_gap_button_down"]
+[connection signal="mouse_entered" from="CloseGap" to="." method="_on_close_gap_mouse_entered"]
+[connection signal="mouse_exited" from="CloseGap" to="." method="_on_close_gap_mouse_exited"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://coqvef1m70lp6"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_8g5kb"]
-[ext_resource type="PackedScene" path="res://prefabs/item_grid_layouts/1x1.tscn" id="2_mfb60"]
+[ext_resource type="PackedScene" uid="uid://bwaw5f7habkcj" path="res://prefabs/item_grid_layouts/1x1.tscn" id="2_mfb60"]
 [ext_resource type="Texture2D" uid="uid://bcp21l3ejmjkf" path="res://sprites/items/inventory_item_BGs/1x1_item_large_bg.png" id="3_cuk1h"]
 [ext_resource type="Texture2D" uid="uid://c5ikfckb0g6fc" path="res://sprites/items/inventory/frog_item_large.png" id="4_o3vem"]
 [ext_resource type="Material" uid="uid://dun40mejvqphh" path="res://scripts/shaders/materials/inventory_item_shader_material.tres" id="4_w74ih"]
@@ -29,6 +29,7 @@ scale = Vector2(1, 1e-05)
 texture = ExtResource("4_o3vem")
 
 [node name="occult_orb" parent="." instance=ExtResource("5_joibh")]
+visible = false
 position = Vector2(-6.5, -6.5)
 scale = Vector2(1, 1e-05)
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://b31mt4qpb60kt"]
+[gd_scene load_steps=22 format=3 uid="uid://b31mt4qpb60kt"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Purification_Rod.gd" id="1_o1oos"]
 [ext_resource type="Texture2D" uid="uid://cvif0fd1jwjle" path="res://sprites/items/item_spawnables/star_animation.png" id="2_3scuj"]
+[ext_resource type="Texture2D" uid="uid://dbojwj5n2wnx7" path="res://sprites/items/item_spawnables/star_glow.png" id="3_4xo6v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q7sg0"]
 atlas = ExtResource("2_3scuj")
@@ -112,63 +113,78 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2s2u7"]
 size = Vector2(22, 22)
 
-[sub_resource type="Animation" id="Animation_acog3"]
-resource_name = "spin"
-length = 1.5
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_omq0b"]
+resource_name = "glow"
+length = 1.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("main_body:rotation")
+tracks/0/path = NodePath("main_body/StarGlow:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 0.05),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_l1smk"]
-_data = {
-"spin": SubResource("Animation_acog3")
-}
-
-[sub_resource type="Animation" id="Animation_r8j4j"]
-resource_name = "move"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("main_body:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(160, 0)]
+"update": 1,
+"values": [false, true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("main_body:scale")
+tracks/1/path = NodePath("main_body/StarGlow:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.05, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0.01, 0.01)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/2/type = "method"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".")
+tracks/2/path = NodePath("main_body/Area2D:monitoring")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.5),
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("main_body/Area2D:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("main_body/AnimatedSprite2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -176,9 +192,9 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hr00l"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hvy6u"]
 _data = {
-"move": SubResource("Animation_r8j4j")
+"glow": SubResource("Animation_omq0b")
 }
 
 [node name="Purification_Rod" type="Node2D"]
@@ -186,14 +202,22 @@ texture_filter = 1
 script = ExtResource("1_o1oos")
 
 [node name="main_body" type="Node2D" parent="."]
-rotation = 2.19129
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body"]
 sprite_frames = SubResource("SpriteFrames_xtmo0")
+autoplay = "default"
+
+[node name="StarGlow" type="Sprite2D" parent="main_body"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1, 1)
+texture = ExtResource("3_4xo6v")
 
 [node name="Area2D" type="Area2D" parent="main_body"]
 collision_layer = 8
 collision_mask = 2
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
 position = Vector2(1, 1)
@@ -201,12 +225,7 @@ shape = SubResource("RectangleShape2D_2s2u7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_l1smk")
-}
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_hr00l")
+"": SubResource("AnimationLibrary_hvy6u")
 }
 
 [connection signal="animation_finished" from="main_body/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

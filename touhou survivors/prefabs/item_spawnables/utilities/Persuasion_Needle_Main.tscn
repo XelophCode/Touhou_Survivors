@@ -60,6 +60,7 @@ script = ExtResource("1_0if4a")
 
 [node name="main_body" type="Node2D" parent="."]
 position = Vector2(5, 0)
+scale = Vector2(2, 2)
 
 [node name="Needles" type="Sprite2D" parent="main_body"]
 modulate = Color(1, 1, 1, 0)

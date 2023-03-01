@@ -3,7 +3,7 @@ class_name item_base_class
 
 @onready var damage_popup = preload("res://prefabs/logic_ui/damage_popup.tscn")
 var damage:int = 0
-var occult_orb:bool = false
+var alt_fire:bool = false
 
 func do_damage(body):
 	Signals.emit_signal("hit_sfx")

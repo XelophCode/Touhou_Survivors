@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cr46qcvplk30l"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_8g5kb"]
-[ext_resource type="PackedScene" path="res://prefabs/item_grid_layouts/1x1.tscn" id="2_mfb60"]
+[ext_resource type="PackedScene" uid="uid://bwaw5f7habkcj" path="res://prefabs/item_grid_layouts/1x1.tscn" id="2_mfb60"]
 [ext_resource type="Texture2D" uid="uid://bcp21l3ejmjkf" path="res://sprites/items/inventory_item_BGs/1x1_item_large_bg.png" id="3_cuk1h"]
 [ext_resource type="Texture2D" uid="uid://ba4enldw0j873" path="res://sprites/items/inventory/homing_amulet_item_large.png" id="4_c4ybh"]
 [ext_resource type="Material" uid="uid://dun40mejvqphh" path="res://scripts/shaders/materials/inventory_item_shader_material.tres" id="4_d8krh"]
@@ -29,6 +29,7 @@ scale = Vector2(1, 1e-05)
 texture = ExtResource("4_c4ybh")
 
 [node name="occult_orb" parent="." instance=ExtResource("5_joibh")]
+visible = false
 position = Vector2(-6.5, -6.5)
 scale = Vector2(1, 1e-05)
 

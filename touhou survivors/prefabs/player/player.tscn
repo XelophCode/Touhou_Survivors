@@ -1,10 +1,13 @@
-[gd_scene load_steps=53 format=3 uid="uid://cah8y53sm3blk"]
+[gd_scene load_steps=67 format=3 uid="uid://cah8y53sm3blk"]
 
 [ext_resource type="Script" path="res://scripts/misc/Player.gd" id="1_37at3"]
+[ext_resource type="Script" path="res://scripts/logic_ui/starting_item_array_resource.gd" id="2_1hfqh"]
 [ext_resource type="SpriteFrames" uid="uid://1ntee1x116bu" path="res://sprites/actors/player_anims/reimu_anims.tres" id="2_7dit5"]
 [ext_resource type="Texture2D" uid="uid://bsv6waqhjtkfp" path="res://sprites/actors/reimu.png" id="2_kv5a8"]
 [ext_resource type="SpriteFrames" uid="uid://sk6puibpi7rk" path="res://sprites/actors/player_anims/marisa_anims.tres" id="3_a8dmt"]
+[ext_resource type="Resource" uid="uid://cs84ylbtu68ud" path="res://prefabs/inventory/resources/Sake.tres" id="3_d3lte"]
 [ext_resource type="Resource" uid="uid://bjiup0gph2ug5" path="res://prefabs/character_loadouts/reimu_loadout.tres" id="3_x7nw1"]
+[ext_resource type="Script" path="res://scripts/logic_ui/starting_item_resource.gd" id="4_5nt4m"]
 [ext_resource type="Texture2D" uid="uid://bf1kq504es3wr" path="res://sprites/misc/magic_circle_1.png" id="5_bvy6o"]
 [ext_resource type="Resource" uid="uid://c0nvv6vbgcgav" path="res://prefabs/character_loadouts/marisa_loadout.tres" id="5_nelpm"]
 [ext_resource type="Texture2D" uid="uid://dbie4j5btns2w" path="res://sprites/ui/sun_rays.png" id="6_4k0vm"]
@@ -17,6 +20,16 @@
 [ext_resource type="Texture2D" uid="uid://cmipbsbn7fy1" path="res://sprites/actors/marisa.png" id="10_aj2c0"]
 [ext_resource type="Texture2D" uid="uid://dww5avsvqu437" path="res://sprites/ui/black_cloud.png" id="13_1x8ei"]
 [ext_resource type="Texture2D" uid="uid://cutr1tv2w1e6r" path="res://sprites/ui/smoke_08.png" id="13_scd75"]
+
+[sub_resource type="Resource" id="Resource_55rm0"]
+script = ExtResource("4_5nt4m")
+item = ExtResource("3_d3lte")
+cooldown = 4
+occult_orb = true
+
+[sub_resource type="Resource" id="Resource_5hr3a"]
+script = ExtResource("2_1hfqh")
+starting_item = Array[ExtResource("4_5nt4m")]([SubResource("Resource_55rm0")])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_emnmw"]
 radius = 14.0357
@@ -486,6 +499,53 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.508403, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.129412, 1, 1, 1, 0)
 
+[sub_resource type="Gradient" id="Gradient_i83e0"]
+offsets = PackedFloat32Array(0, 0.37415, 0.755102)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.337255, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x1f1f"]
+gradient = SubResource("Gradient_i83e0")
+
+[sub_resource type="Curve" id="Curve_yd8b5"]
+max_value = 10.0
+_data = [Vector2(0, 0.863636), 0.0, 0.0, 0, 0, Vector2(0.769663, 1.31818), 2.08798, 2.08798, 0, 0, Vector2(1, 8.18182), 70.7955, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qmf2o"]
+curve = SubResource("Curve_yd8b5")
+
+[sub_resource type="Curve" id="Curve_qupug"]
+_data = [Vector2(0.191011, 0), 0.0, 0.42381, 0, 0, Vector2(0.494382, 1), 0.0, 0.0, 0, 0, Vector2(0.837079, 0), -0.142781, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_oye4s"]
+curve = SubResource("Curve_qupug")
+
+[sub_resource type="Curve" id="Curve_i4t2d"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.505618, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_53wa6"]
+curve = SubResource("Curve_i4t2d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d6758"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+spread = 10.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 80.0
+initial_velocity_max = 80.0
+orbit_velocity_min = 0.25
+orbit_velocity_max = 0.25
+orbit_velocity_curve = SubResource("CurveTexture_oye4s")
+linear_accel_min = 4.0
+linear_accel_max = 4.0
+linear_accel_curve = SubResource("CurveTexture_qmf2o")
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_53wa6")
+color_ramp = SubResource("GradientTexture1D_x1f1f")
+
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("walk_animations")]
 z_index = 7
 texture_filter = 1
@@ -493,6 +553,7 @@ collision_mask = 0
 floor_constant_speed = true
 script = ExtResource("1_37at3")
 walk_animations = NodePath("WalkAnimations")
+starting_items = SubResource("Resource_5hr3a")
 reimu_anims = ExtResource("2_7dit5")
 reimu_loadout = ExtResource("3_x7nw1")
 marisa_anims = ExtResource("3_a8dmt")
@@ -539,6 +600,7 @@ vframes = 10
 frame = 56
 
 [node name="Healthbar" type="ProgressBar" parent="."]
+visible = false
 offset_left = -4.0
 offset_top = 6.0
 offset_right = 4.0
@@ -611,7 +673,7 @@ libraries = {
 }
 
 [node name="spawn_afterimage" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.2
 autostart = true
 
 [node name="sun_ray_anim_timer" type="Timer" parent="."]
@@ -672,6 +734,19 @@ position = Vector2(175, -58)
 [node name="DiagonalInput" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_speed = 30.0
+
+[node name="CPUParticles2D4" type="GPUParticles2D" parent="."]
+position = Vector2(-69, 0)
+scale = Vector2(0.1, 0.1)
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_d6758")
+lifetime = 13.0
+trail_enabled = true
+trail_lifetime = 1.0
+trail_sections = 16
 
 [connection signal="area_entered" from="MagicCircle/ItemPull" to="." method="_on_item_pull_area_entered"]
 [connection signal="area_exited" from="MagicCircle/ItemPull" to="." method="_on_item_pull_area_exited"]

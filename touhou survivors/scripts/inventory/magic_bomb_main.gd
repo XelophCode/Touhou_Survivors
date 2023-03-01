@@ -1,22 +1,17 @@
 extends item_base_class
 
 var flash_amt:float = 0
+var alt:bool = false
 
 func _ready():
 	damage = 3
 	global_position = Globals.player_position
-	$AnimationPlayer.play("bomb_throw")
-	rotation = deg_to_rad(randi_range(0,359))
-	$main_body/MagicBomb.rotation = -rotation
-
-func _process(delta):
-	$main_body/MagicBomb.material.set_shader_parameter("flash_modifier",lerp($main_body/MagicBomb.material.get_shader_parameter("flash_modifier"),flash_amt,delta*3))
-
-func flash_amt_one():
-	flash_amt = 1.0
-
-func flash_amt_zero():
-	flash_amt = 0.0
+	if alt:
+		$AnimationPlayer.play("bomb_throw")
+		rotation = deg_to_rad(randi_range(0,359))
+		$main_body/MagicBomb.rotation = -rotation
+	else:
+		$Timer.start()
 
 func bomb_grow_anim():
 	$AnimationPlayer.play("bomb_grow")
@@ -35,3 +30,6 @@ func _on_area_2d_body_entered(body):
 
 func _on_explosion_animation_finished():
 	queue_free()
+
+func _on_timer_timeout():
+	bomb_grow_anim()

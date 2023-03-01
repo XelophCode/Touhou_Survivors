@@ -5,9 +5,10 @@
 [node name="ParallaxBackground" type="ParallaxBackground"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-texture_filter = 2
+texture_filter = 1
 motion_mirroring = Vector2(448, 256)
 
 [node name="Grassbg" type="Sprite2D" parent="ParallaxLayer"]
+texture_filter = 1
 texture = ExtResource("1_q31tv")
 centered = false
