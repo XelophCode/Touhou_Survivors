@@ -11,7 +11,7 @@ enum {Reimu,Marisa}
 var current_character:int = 0
 var audio_reset:float
 var player_hp:float
-var crystal_count:float
+var crystal_count:float = 100.0
 var holding_item:bool = false
 
 #USED IN CAMERA ITEM FOR GETTING RECT2 SCALE

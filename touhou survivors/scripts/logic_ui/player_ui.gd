@@ -32,7 +32,7 @@ var is_paused:bool = false:
 		escape_can_unpause = is_paused
 
 func _ready():
-	Globals.crystal_count = 0
+	Globals.crystal_count = 100.0
 	$AnimationPlayer.play("fade_out")
 	match Globals.current_character:
 		Globals.Reimu: character_portrait.sprite_frames = reimu_portrait

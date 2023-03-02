@@ -46,3 +46,4 @@ signal current_crystal_count
 signal decrease_crystal_count
 signal not_enough_crystals
 signal show_blocked_spaces
+signal reroll_gap

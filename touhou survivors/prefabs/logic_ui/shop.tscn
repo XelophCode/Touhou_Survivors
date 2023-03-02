@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://6dwuqj2vu1k8"]
+[gd_scene load_steps=62 format=3 uid="uid://6dwuqj2vu1k8"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/shop.gd" id="1_gaew4"]
 [ext_resource type="Resource" uid="uid://c2bi36gqx52ns" path="res://resources/all_inv_items.tres" id="2_ahjw3"]
@@ -382,6 +382,22 @@ animations = [{
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32618"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tuowy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fi8pl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vib5l"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_atitf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_30pud"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_86slv"]
 
 [node name="Shop" type="Node2D"]
 z_index = 16
@@ -967,6 +983,22 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_yv221")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_32618")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tuowy")
 
+[node name="Reroll" type="Button" parent="."]
+offset_left = -34.0
+offset_top = 90.0
+offset_right = -10.0
+offset_bottom = 97.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fi8pl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vib5l")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_atitf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_30pud")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_86slv")
+button_mask = 2
+
+[connection signal="animation_finished" from="CloseGapSign" to="." method="_on_close_gap_sign_animation_finished"]
 [connection signal="button_down" from="CloseGap" to="." method="_on_close_gap_button_down"]
 [connection signal="mouse_entered" from="CloseGap" to="." method="_on_close_gap_mouse_entered"]
 [connection signal="mouse_exited" from="CloseGap" to="." method="_on_close_gap_mouse_exited"]
+[connection signal="button_down" from="Reroll" to="." method="_on_reroll_button_down"]
+[connection signal="mouse_entered" from="Reroll" to="." method="_on_reroll_mouse_entered"]
+[connection signal="mouse_exited" from="Reroll" to="." method="_on_reroll_mouse_exited"]

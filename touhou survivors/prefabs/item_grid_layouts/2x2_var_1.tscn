@@ -56,6 +56,13 @@ z_index = 1
 shape = SubResource("RectangleShape2D_relvh")
 debug_color = Color(0.658824, 0.0392157, 0.803922, 0.419608)
 
+[node name="set_detection" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="set_detection"]
+polygon = PackedVector2Array(16, 16, 25, 16, 25, 6, 16, 6, 16, -6, 25, -6, 25, -16, 16, -16, 16, -25, 6, -25, 6, -16, -6, -16, -6, -25, -16, -25, -16, -16, -25, -16, -25, -6, -16, -6, -16, 6, -25, 6, -25, 16, -16, 16, -16, 25, -6, 25, -6, 16, 6, 16, 6, 25, 16, 25)
+
 [connection signal="area_entered" from="click_and_inventory" to="." method="_on_click_and_inventory_area_entered"]
 [connection signal="area_exited" from="click_and_inventory" to="." method="_on_click_and_inventory_area_exited"]
 [connection signal="input_event" from="click_and_inventory" to="." method="_on_click_and_inventory_input_event"]
@@ -67,3 +74,5 @@ debug_color = Color(0.658824, 0.0392157, 0.803922, 0.419608)
 [connection signal="area_exited" from="additional_placement" to="." method="_on_additional_placement_area_exited"]
 [connection signal="area_entered" from="occupied_and_stack" to="." method="_on_occupied_and_stack_area_entered"]
 [connection signal="area_exited" from="occupied_and_stack" to="." method="_on_occupied_and_stack_area_exited"]
+[connection signal="area_entered" from="set_detection" to="." method="_on_set_detection_area_entered"]
+[connection signal="area_exited" from="set_detection" to="." method="_on_set_detection_area_exited"]

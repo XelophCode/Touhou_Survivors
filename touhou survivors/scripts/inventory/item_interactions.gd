@@ -51,3 +51,9 @@ func calculate_slot_position_hovering():
 		parent.slot_position_hovering = main_area.global_position + parent.rotational_offset
 	else:
 		parent.slot_position_hovering = Vector2.ZERO
+
+func _on_set_detection_area_entered(area):
+	parent.adjacent_items.append(area.get_parent().parent)
+
+func _on_set_detection_area_exited(area):
+	parent.adjacent_items.erase(area.get_parent().parent)

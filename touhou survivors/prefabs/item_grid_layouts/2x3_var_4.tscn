@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://o02qlmtrq81a"]
 
 [ext_resource type="Script" path="res://scripts/inventory/item_interactions.gd" id="1_jh82p"]
 
@@ -49,6 +49,13 @@ collision_mask = 96
 position = Vector2(0.5, 0.5)
 polygon = PackedVector2Array(-17, -28, 16, -28, 16, -17, -6, -17, -6, 27, -17, 27, -17, -17)
 
+[node name="set_detection" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="set_detection"]
+polygon = PackedVector2Array(-6, -17, 6, -17, 6, -8, 16, -8, 16, -17, 25, -17, 25, -27, 16, -27, 16, -36, 6, -36, 6, -27, -6, -27, -6, -36, -16, -36, -16, -27, -25, -27, -25, -17, -16, -17, -16, -5, -25, -5, -25, 5, -16, 5, -16, 17, -25, 17, -25, 27, -16, 27, -16, 36, -6, 36, -6, 27, 3, 27, 3, 17, -6, 17, -6, 5, 3, 5, 3, -5, -6, -5)
+
 [connection signal="area_entered" from="click_and_inventory" to="." method="_on_click_and_inventory_area_entered"]
 [connection signal="area_exited" from="click_and_inventory" to="." method="_on_click_and_inventory_area_exited"]
 [connection signal="input_event" from="click_and_inventory" to="." method="_on_click_and_inventory_input_event"]
@@ -60,3 +67,5 @@ polygon = PackedVector2Array(-17, -28, 16, -28, 16, -17, -6, -17, -6, 27, -17, 2
 [connection signal="area_exited" from="additional_placement" to="." method="_on_additional_placement_area_exited"]
 [connection signal="area_entered" from="occupied_and_stack" to="." method="_on_occupied_and_stack_area_entered"]
 [connection signal="area_exited" from="occupied_and_stack" to="." method="_on_occupied_and_stack_area_exited"]
+[connection signal="area_entered" from="set_detection" to="." method="_on_set_detection_area_entered"]
+[connection signal="area_exited" from="set_detection" to="." method="_on_set_detection_area_exited"]

@@ -4,11 +4,14 @@ enum {_1x1,_1x2,_1x3,_2x2,_2x3}
 var eyes_scrolling : float
 
 @export var inv_items : all_items
+var rerolling:bool = false
+var can_reroll:bool = false
 
 func _ready():
 	Signals.connect("leveling_up",leveling_up)
 
 func open_shop():
+	rerolling = false
 	var items1x1:Array = []
 	var items1x2:Array = []
 	var items1x3:Array = []
@@ -85,9 +88,6 @@ func open_shop():
 	
 	Signals.emit_signal("spawn_inventory_items",items_to_spawn)
 	
-#	for items in items_to_spawn:
-#		items.position += Globals.player_position + Vector2(-100,0)
-#		get_parent().get_node("PlayerInventory").call_deferred("add_child",items)
 
 func leveling_up(value:bool):
 	if value:
@@ -116,6 +116,9 @@ func pass_metadata_to_item(inst, item):
 	inst.active = item.active
 	inst.item_cooldown = item.cooldown
 	inst.one_time_spawn = item.one_time_spawn
+	if item.item_set != null:
+		for i in item.item_set:
+			inst.item_set.append(i.item_name)
 
 func _process(delta):
 	eyes_scrolling -= delta * 8
@@ -123,8 +126,9 @@ func _process(delta):
 	$ShopGridBG/mask/eyes.rotation += delta / 30
 
 func show_close_sign():
-	$CloseGapSign.visible = true
-	$CloseGapSign.play("default")
+	if !rerolling:
+		$CloseGapSign.visible = true
+		$CloseGapSign.play("default")
 
 func _on_close_gap_button_down():
 	$CloseGapSign.material.set_shader_parameter("line_color",Color(0,0,0,1))
@@ -135,3 +139,43 @@ func _on_close_gap_mouse_entered():
 
 func _on_close_gap_mouse_exited():
 	$CloseGapSign.material.set_shader_parameter("line_color",Color(0,0,0,1))
+
+
+func _on_close_gap_sign_animation_finished():
+	if $CloseGapSign.frame == 0:
+		$CloseGapSign.visible = false
+		rerolling = true
+		$AnimationPlayer.play_backwards("stretch")
+		await get_tree().create_timer(1.0).timeout
+		open_shop()
+		$CPUParticles2D.emitting = true
+		$AnimationPlayer.play("stretch")
+		$CPUParticles2D2.emitting = true
+	else:
+		can_reroll = true
+		$Reroll.visible = true
+		$CloseGap.visible = true
+
+func _on_reroll_button_down():
+	if can_reroll:
+		if Globals.crystal_count > 0:
+			$Reroll.visible = false
+			$CloseGap.visible = false
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			Signals.emit_signal("show_right_click_tip",false)
+			Signals.emit_signal("reroll_gap")
+			$CloseGapSign.play_backwards("default")
+			Globals.crystal_count -= 1.0
+			Signals.emit_signal("decrease_crystal_count")
+			can_reroll = false
+		else:
+			Signals.emit_signal("not_enough_crystals")
+
+
+func _on_reroll_mouse_entered():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	Signals.emit_signal("show_right_click_tip",true)
+
+func _on_reroll_mouse_exited():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Signals.emit_signal("show_right_click_tip",false)

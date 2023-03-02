@@ -43,6 +43,8 @@ var highlight_area_delay:Array
 var rotated:bool = false
 var previous_rotated:bool = false
 var currently_in_weapons:bool = false
+var adjacent_items:Array
+var item_set:Array
 
 func find_rotational_offset():
 	var rot:int = round(rad_to_deg(rotation))
@@ -94,7 +96,6 @@ func pop_in_animation():
 	await get_tree().create_timer(randf_range(0.3,1.2)).timeout
 	$ItemSprite.visible = true
 	$AnimationPlayer.play("Inventory_Items/sprite_stretch")
-	$ItemSprite.material.set_shader_parameter("flash_modifier",1.0)
 	await get_tree().create_timer(0.01).timeout
 	$ItemLargeBg.visible = true
 	for i in highlight_area_delay:
@@ -112,6 +113,7 @@ func _ready():
 		show_highlight = true
 	Signals.connect("leveling_up",leveling_up)
 	Signals.connect("update_orb_count",catch_update_orb_count)
+	Signals.connect("reroll_gap",catch_reroll_gap)
 	find_rotational_offset()
 	spawn_offset = get_child(0).get_node("main_placement").position * -1
 	global_position += spawn_offset + rotational_offset
@@ -122,8 +124,6 @@ func _ready():
 	
 
 func _process(delta):
-	if $ItemSprite.material.get_shader_parameter("flash_modifier") > 0:
-		$ItemSprite.material.set_shader_parameter("flash_modifier",lerp($ItemSprite.material.get_shader_parameter("flash_modifier"),0.0,delta*3))
 	if left_mouse_button_held:
 		if Input.is_action_just_released("left_mouse_button"):
 			not_holding_item()
@@ -149,6 +149,7 @@ func click_detection(event):
 			holding_item()
 
 func holding_item():
+	print(str(item_set))
 	Globals.holding_item = true
 	Signals.emit_signal("hide_tooltip")
 	find_rotational_offset()
@@ -156,6 +157,7 @@ func holding_item():
 	z_index += 50
 
 func not_holding_item():
+	
 	Globals.holding_item = false
 	Signals.emit_signal("show_tooltip")
 	
@@ -180,6 +182,15 @@ func not_holding_item():
 		previous_rotated = rotated
 	else:
 		rotated = previous_rotated
+	
+	if adjacent_items != []:
+		print(item_name + ": " + str(adjacent_items[0].current_item))
+	
+	var num_matching:float
+	for i in adjacent_items:
+		if item_set.has(i.current_item):
+			num_matching += 1.0
+	print("matching: " + str(num_matching))
 
 func occupied_and_stack_exited(area):
 	if area.collision_layer == 64:
@@ -208,3 +219,11 @@ func show_tooltip():
 	Globals.tooltip_info.push_front([item_name,item_description])
 	if !left_mouse_button_held:
 		Signals.emit_signal("show_tooltip")
+
+func catch_reroll_gap():
+	if !in_inventory:
+		$ItemLargeBg.visible = false
+		$AnimationPlayer.play_backwards("Inventory_Items/sprite_stretch")
+		await get_tree().create_timer(0.75).timeout
+		$ItemSprite.visible = false
+		queue_free()
