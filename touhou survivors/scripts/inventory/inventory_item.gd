@@ -12,6 +12,7 @@ var icon : Texture
 
 @onready var occult_orb_progress = $occult_orb/occult_orb_progress
 @onready var occult_orb_shimmer = $occult_orb/shimmer
+@onready var item_large_bg = $ItemLargeBg
 
 var do_stretch_anim:bool = true
 var show_highlight:bool = false
@@ -45,6 +46,15 @@ var previous_rotated:bool = false
 var currently_in_weapons:bool = false
 var adjacent_items:Array
 var item_set:Array
+var set_matches:Dictionary
+var current_match:Array
+var currently_in_set:bool = false
+var set_selection:int
+var spell_card_id:int = -1
+var spell_card_color:Color
+var spell_card
+var spell_card_cooldown
+var spell_card_icon
 
 func find_rotational_offset():
 	var rot:int = round(rad_to_deg(rotation))
@@ -114,6 +124,7 @@ func _ready():
 	Signals.connect("leveling_up",leveling_up)
 	Signals.connect("update_orb_count",catch_update_orb_count)
 	Signals.connect("reroll_gap",catch_reroll_gap)
+	Signals.connect("check_matching_sets",catch_check_matching_sets)
 	find_rotational_offset()
 	spawn_offset = get_child(0).get_node("main_placement").position * -1
 	global_position += spawn_offset + rotational_offset
@@ -147,9 +158,48 @@ func click_detection(event):
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("left_mouse_button"):
 			holding_item()
+		if event.is_action_pressed("right_mouse_button"):
+			if set_matches.size() > 1:
+				for i in current_match:
+					i.current_match = []
+					i.set_matches = {}
+					i.currently_in_set = false
+					i.item_large_bg.material.set_shader_parameter("line_scale",0.0)
+					i.spell_card_id = -1
+				
+				set_selection += 1
+				if set_selection >= set_matches.size():
+					set_selection = 0
+					current_match = set_matches[set_selection]
+				else:
+					current_match = set_matches[set_selection]
+				if current_match.size() > 0:
+					for i in current_match:
+						i.current_match = []
+						i.spell_card_id = spell_card_id
+						i.spell_card_color = spell_card_color
+						i.current_match.append(self)
+						for c in current_match:
+							if c != i:
+								i.current_match.append(c)
+						i.get_other_item_matches()
 
 func holding_item():
-	print(str(item_set))
+	$ItemHighlight.visible = false
+	set_selection = 0
+	if current_match.size() > 0:
+		Signals.emit_signal("remove_weapon",spell_card_id,true)
+		for i in current_match:
+			i.current_match = []
+			i.set_matches = {}
+			i.item_large_bg.material.set_shader_parameter("line_scale",0.0)
+			i.currently_in_set = false
+			i.spell_card_id = -1
+		current_match = []
+		set_matches = {}
+		item_large_bg.material.set_shader_parameter("line_scale",0.0)
+		currently_in_set = false
+		spell_card_id = -1
 	Globals.holding_item = true
 	Signals.emit_signal("hide_tooltip")
 	find_rotational_offset()
@@ -157,9 +207,12 @@ func holding_item():
 	z_index += 50
 
 func not_holding_item():
-	
+	$ItemHighlight.visible = true
 	Globals.holding_item = false
 	Signals.emit_signal("show_tooltip")
+	
+	Signals.emit_signal("show_hand_cursor",true)
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	
 	left_mouse_button_held = false
 	z_index -= 50
@@ -168,6 +221,7 @@ func not_holding_item():
 		new_rotation = rotation
 		
 		if in_inventory:
+			Signals.emit_signal("check_matching_sets")
 			if currently_in_weapons and rotated != previous_rotated:
 				Signals.emit_signal("modify_weapon",scene,get_instance_id(),rotated)
 			Signals.emit_signal("add_weapon",scene,get_instance_id(),item_cooldown,active,icon,rotated)
@@ -183,14 +237,79 @@ func not_holding_item():
 	else:
 		rotated = previous_rotated
 	
-	if adjacent_items != []:
-		print(item_name + ": " + str(adjacent_items[0].current_item))
-	
-	var num_matching:float
+	if in_inventory and !currently_in_set:
+		check_for_item_set()
+
+
+func check_for_item_set():
+	if adjacent_items.size() > 1:
+		find_matches()
+		if current_match.size() > 0:
+			for i in current_match:
+				i.current_match = []
+				i.spell_card_id = spell_card_id
+				i.spell_card_color = spell_card_color
+				i.current_match.append(self)
+				for c in current_match:
+					if c != i:
+						i.current_match.append(c)
+				i.get_other_item_matches()
+
+func find_matches(autofill_set_0:bool = false):
+	var matching_items_1:Array
+	var matching_items_2:Array
+	var matching_items_1_value:int = -1
+	var matching_items_2_value:int = -1
 	for i in adjacent_items:
-		if item_set.has(i.current_item):
-			num_matching += 1.0
-	print("matching: " + str(num_matching))
+		if item_set.has(i.current_item) and !i.currently_in_set:
+			if matching_items_1_value == -1:
+				matching_items_1_value = i.current_item
+				matching_items_1.append(i)
+			elif matching_items_2_value == -1 and i.current_item != matching_items_1_value and !i.currently_in_set:
+				matching_items_2_value = i.current_item
+				matching_items_2.append(i)
+			else:
+				if !i.currently_in_set:
+					match i.current_item:
+						matching_items_1_value: matching_items_1.append(i)
+						matching_items_2_value: matching_items_2.append(i)
+	
+	if matching_items_1.size() > 0 and matching_items_2.size() > 0:
+		set_matches = {}
+		var match_val:int
+		var matches:Array
+		if autofill_set_0:
+			set_matches[0] = current_match
+			match_val += 1
+		for m in matching_items_1:
+			for a in m.adjacent_items:
+				if matching_items_2.has(a):
+					matches.append(m)
+					matches.append(a)
+					if autofill_set_0:
+						if !(current_match.has(matches[0]) and current_match.has(matches[1])):
+							set_matches[match_val] = matches
+					else:
+						set_matches[match_val] = matches
+						match_val += 1
+					matches = []
+	if set_matches != {}:
+		if !autofill_set_0:
+			var rand_id:int = randi_range(1,10000)
+			while Globals.rand_id_assigns.has(rand_id):
+				rand_id = randi_range(1,10000)
+			Globals.rand_id_assigns.append(rand_id)
+			spell_card_id = rand_id
+			spell_card_color = Globals.random_color()
+			Signals.emit_signal("add_weapon",spell_card,spell_card_id,spell_card_cooldown,true,spell_card_icon,false,false,spell_card_color)
+		current_match = set_matches[0]
+		$ItemLargeBg.material.set_shader_parameter("line_scale",1.0)
+		$ItemLargeBg.material.set_shader_parameter("line_color",spell_card_color)
+		currently_in_set = true
+
+func get_other_item_matches():
+	set_matches[0] = current_match
+	find_matches(true)
 
 func occupied_and_stack_exited(area):
 	if area.collision_layer == 64:
@@ -207,15 +326,27 @@ func occupied_and_stack_entered(area):
 		highlight_area_delay.append(area)
 
 func hide_tooltip():
+	$ItemHighlight.visible = false
+	Signals.emit_signal("show_hand_cursor",false)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if in_inventory:
 		Signals.emit_signal("show_icon_highlight",get_instance_id(),false)
+		if set_matches.size() > 1:
+			Signals.emit_signal("show_spell_card_right_click",false)
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Globals.tooltip_info.erase([item_name,item_description])
 	if Globals.tooltip_info == []:
 		Signals.emit_signal("hide_tooltip")
 
 func show_tooltip():
+	$ItemHighlight.visible = true
+	Signals.emit_signal("show_hand_cursor",true)
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	if in_inventory:
 		Signals.emit_signal("show_icon_highlight",get_instance_id(),true)
+		if set_matches.size() > 1:
+			Signals.emit_signal("show_spell_card_right_click",true)
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	Globals.tooltip_info.push_front([item_name,item_description])
 	if !left_mouse_button_held:
 		Signals.emit_signal("show_tooltip")
@@ -227,3 +358,37 @@ func catch_reroll_gap():
 		await get_tree().create_timer(0.75).timeout
 		$ItemSprite.visible = false
 		queue_free()
+
+func catch_check_matching_sets():
+	if currently_in_set:
+		set_matches = {}
+		
+		var matching_items_1:Array
+		var matching_items_2:Array
+		var matching_items_1_value:int = -1
+		var matching_items_2_value:int = -1
+		for i in adjacent_items:
+			if item_set.has(i.current_item):
+				if matching_items_1_value == -1:
+					matching_items_1_value = i.current_item
+					matching_items_1.append(i)
+				elif matching_items_2_value == -1 and i.current_item != matching_items_1_value:
+					matching_items_2_value = i.current_item
+					matching_items_2.append(i)
+				else:
+					match i.current_item:
+						matching_items_1_value: matching_items_1.append(i)
+						matching_items_2_value: matching_items_2.append(i)
+		
+		if matching_items_1.size() > 0 and matching_items_2.size() > 0:
+			set_matches = {}
+			var match_val:int
+			var matches:Array
+			for m in matching_items_1:
+				for a in m.adjacent_items:
+					if matching_items_2.has(a):
+						matches.append(m)
+						matches.append(a)
+						set_matches[match_val] = matches
+						match_val += 1
+						matches = []

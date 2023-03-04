@@ -20,7 +20,7 @@ func _process(_delta):
 			icon.position = $icon_positions.get_child(counter).position
 			counter += 1
 
-func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bool,icon:Texture,rotated:bool,autostart:bool = false):
+func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bool,icon:Texture,rotated:bool,autostart:bool = false,icon_color:Color = Color(1,1,1,1)):
 	if !inventory_item_ids.has(inventory_item_id):
 		if active:
 			inventory_item_ids.append(inventory_item_id)
@@ -33,6 +33,7 @@ func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bo
 			var icon_inst = $icon_base.duplicate()
 			icon_inst.get_child(0).timer_id = timer_new.get_instance_id()
 			icon_inst.get_child(0).visible = true
+			icon_inst.get_child(1).modulate = icon_color
 			icon_inst.texture = icon
 			icon_inst.visible = true
 			icon_instances[inventory_item_id] = icon_inst.get_instance_id()
@@ -94,6 +95,6 @@ func leveling_up(value:bool):
 func catch_show_icon_highlight(inventory_item_id:int, show_highlight:bool):
 	if icon_instances.has(inventory_item_id):
 		if show_highlight:
-			instance_from_id(icon_instances[inventory_item_id]).get_child(1).visible = true
+			instance_from_id(icon_instances[inventory_item_id]).get_child(2).visible = true
 		else:
-			instance_from_id(icon_instances[inventory_item_id]).get_child(1).visible = false
+			instance_from_id(icon_instances[inventory_item_id]).get_child(2).visible = false

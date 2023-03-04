@@ -1,0 +1,23 @@
+Yinyang Orb - 0
+Sake - 1
+Gohei - 2
+Roukanken - 3
+Throwing Knife - 4
+Rock - 5
+Magic Broom - 6
+Mini Hakkero - 7
+Homing Amulet - 8
+Frog - 9
+Haniwa - 10
+Camera - 11
+Miracle Mallet - 12
+Persuasion Needles - 13
+Icicle - 14
+Youkai Umbrella - 15
+Purification Rod - 16
+Mochi Mallet - 17
+Magic Bomb - 18
+Shanghai Doll - 19
+Bat - 20
+Keystone - 21
+Gap Umbrella - 22

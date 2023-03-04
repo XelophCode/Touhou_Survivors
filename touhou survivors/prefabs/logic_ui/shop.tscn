@@ -1,7 +1,7 @@
 [gd_scene load_steps=62 format=3 uid="uid://6dwuqj2vu1k8"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/shop.gd" id="1_gaew4"]
-[ext_resource type="Resource" uid="uid://c2bi36gqx52ns" path="res://resources/all_inv_items.tres" id="2_ahjw3"]
+[ext_resource type="Resource" uid="uid://bhrux5cunou3f" path="res://prefabs/inventory/resources/all_items.tres" id="2_p2j3w"]
 [ext_resource type="Texture2D" uid="uid://efsbea8ixkb8" path="res://sprites/ui/shop_animation.png" id="3_qcc5h"]
 [ext_resource type="Texture2D" uid="uid://bhrnsmv5gb61c" path="res://sprites/ui/shop_mask.png" id="4_64pnb"]
 [ext_resource type="Texture2D" uid="uid://c50tinougrkay" path="res://sprites/ui/selection_square.png" id="4_h3d3g"]
@@ -402,7 +402,7 @@ border_color = Color(1, 1, 1, 1)
 [node name="Shop" type="Node2D"]
 z_index = 16
 script = ExtResource("1_gaew4")
-inv_items = ExtResource("2_ahjw3")
+inv_items = ExtResource("2_p2j3w")
 
 [node name="ShopGridBG" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

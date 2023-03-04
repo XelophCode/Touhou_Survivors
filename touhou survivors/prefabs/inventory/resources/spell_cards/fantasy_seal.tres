@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpellCardResource" load_steps=4 format=3 uid="uid://dau86lgtistk6"]
+
+[ext_resource type="Script" path="res://scripts/inventory/spell_card_resource.gd" id="1_k14oj"]
+[ext_resource type="Texture2D" uid="uid://sjt4f6boqhlx" path="res://sprites/items/item_icons/fantasy_seal_icon.png" id="1_s817s"]
+[ext_resource type="PackedScene" uid="uid://br1ag5uotasyw" path="res://prefabs/item_spawnables/Fantasy_Seal.tscn" id="3_s83ut"]
+
+[resource]
+script = ExtResource("1_k14oj")
+icon = ExtResource("1_s817s")
+spawnable = ExtResource("3_s83ut")
+cooldown = 20.0

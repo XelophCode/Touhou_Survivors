@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfy43xefxju21"]
+[gd_scene load_steps=11 format=3 uid="uid://bfy43xefxju21"]
 
+[ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="1_4pam8"]
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_kpods"]
 [ext_resource type="Texture2D" uid="uid://b7mthcrg283ux" path="res://sprites/items/inventory_item_BGs/1x2_item_large_bg.png" id="2_1n2dx"]
 [ext_resource type="PackedScene" uid="uid://vbx5x6eo558v" path="res://prefabs/item_grid_layouts/1x2.tscn" id="2_54vwm"]
@@ -7,10 +8,22 @@
 [ext_resource type="Texture2D" uid="uid://dsnig4tuwiwyn" path="res://sprites/items/inventory/icicle_item_large.png" id="4_h7iid"]
 [ext_resource type="Material" uid="uid://dun40mejvqphh" path="res://scripts/shaders/materials/inventory_item_shader_material.tres" id="4_t5xvr"]
 [ext_resource type="AnimationLibrary" uid="uid://c3f6dw06ejniu" path="res://resources/animations/libraries/Inventory_Items.res" id="6_t4lma"]
+[ext_resource type="Texture2D" uid="uid://b2iw27seypyyn" path="res://sprites/items/inventory_item_BGs/1x2_item_large_bg_highlight.png" id="7_72wsp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdw00"]
+resource_local_to_scene = true
+shader = ExtResource("1_4pam8")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(0.184314, 0.996078, 1, 1)
+shader_parameter/line_scale = 0.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
 
 [node name="Icicle" type="Node2D"]
 z_index = 6
 texture_filter = 1
+material = SubResource("ShaderMaterial_hdw00")
 script = ExtResource("1_kpods")
 
 [node name="1x2" parent="." instance=ExtResource("2_54vwm")]
@@ -27,6 +40,10 @@ texture_filter = 1
 material = ExtResource("4_t5xvr")
 scale = Vector2(1, 1e-05)
 texture = ExtResource("4_h7iid")
+
+[node name="ItemHighlight" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("7_72wsp")
 
 [node name="occult_orb" parent="." instance=ExtResource("3_imvxg")]
 visible = false

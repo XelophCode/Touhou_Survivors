@@ -49,6 +49,8 @@ func _ready():
 	Signals.connect("decrease_crystal_count",catch_decrease_crystal_count)
 	Signals.connect("not_enough_crystals",catch_not_enough_crystals)
 
+
+
 func _process(delta):
 	$UI/Crystalbar.value = lerp($UI/Crystalbar.value, crystal, delta*2)
 	if Input.is_action_just_pressed("escape"):

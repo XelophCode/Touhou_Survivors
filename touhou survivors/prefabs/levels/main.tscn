@@ -146,3 +146,48 @@ position = Vector2(-84, 94)
 
 [node name="Score13" parent="." instance=ExtResource("22_4qbw8")]
 position = Vector2(-12, 81)
+
+[node name="Power6" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-61, 4)
+
+[node name="Power7" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-64, 23)
+
+[node name="Power8" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-63, -19)
+
+[node name="Power9" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-39, -30)
+
+[node name="Power10" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-20, -23)
+
+[node name="Power11" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-62, -41)
+
+[node name="Power12" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-87, -30)
+
+[node name="Power13" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-79, -7)
+
+[node name="Power14" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-83, 10)
+
+[node name="Power15" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-76, 43)
+
+[node name="Power16" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-94, 34)
+
+[node name="Power17" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-108, 9)
+
+[node name="Power18" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-103, -14)
+
+[node name="Power19" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-96, 55)
+
+[node name="Power20" parent="." instance=ExtResource("22_rqb2j")]
+position = Vector2(-117, 39)

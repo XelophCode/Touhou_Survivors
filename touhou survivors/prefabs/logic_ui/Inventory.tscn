@@ -1,10 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbjpy4ciqe0t1"]
+[gd_scene load_steps=10 format=3 uid="uid://cbjpy4ciqe0t1"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Inventory.gd" id="1_3pi44"]
-[ext_resource type="Texture2D" uid="uid://cbhjmj2kket3h" path="res://sprites/ui/inventory_tier_2.png" id="2_458l6"]
-[ext_resource type="Texture2D" uid="uid://dlp4uu8f2tx87" path="res://sprites/ui/inventory_tier_3.png" id="3_0c3ml"]
 [ext_resource type="Texture2D" uid="uid://cqm8ntmgk6b77" path="res://sprites/ui/reimu_inventory_grid.png" id="3_5tnkq"]
-[ext_resource type="Texture2D" uid="uid://7lamkxrkeine" path="res://sprites/ui/inventory_tier_4.png" id="4_i2iuv"]
 [ext_resource type="Texture2D" uid="uid://cfvrk7qd5ak34" path="res://sprites/ui/Reimu_fullbody.png" id="4_y7bd6"]
 [ext_resource type="Texture2D" uid="uid://cwpjrj4r7487o" path="res://sprites/ui/inventory_tier_1.png" id="6_8lf0a"]
 [ext_resource type="Texture2D" uid="uid://b8dc57h6lkxnf" path="res://sprites/ui/marisa_fullbody.png" id="6_p1b1m"]
@@ -64,9 +61,6 @@ _data = {
 z_index = 16
 texture_filter = 1
 script = ExtResource("1_3pi44")
-blocked_spaces_tier_2 = ExtResource("2_458l6")
-blocked_spaces_tier_3 = ExtResource("3_0c3ml")
-blocked_spaces_tier_4 = ExtResource("4_i2iuv")
 blocked_spaces = NodePath("InventoryGridArt/BlockedSpaces")
 character_art = NodePath("CharacterArt")
 grid_art = NodePath("InventoryGridArt")

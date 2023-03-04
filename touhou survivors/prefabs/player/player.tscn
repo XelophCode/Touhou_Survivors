@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://cah8y53sm3blk"]
+[gd_scene load_steps=66 format=3 uid="uid://cah8y53sm3blk"]
 
 [ext_resource type="Script" path="res://scripts/misc/Player.gd" id="1_37at3"]
 [ext_resource type="Script" path="res://scripts/logic_ui/starting_item_array_resource.gd" id="2_1hfqh"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bsv6waqhjtkfp" path="res://sprites/actors/reimu.png" id="2_kv5a8"]
 [ext_resource type="SpriteFrames" uid="uid://sk6puibpi7rk" path="res://sprites/actors/player_anims/marisa_anims.tres" id="3_a8dmt"]
 [ext_resource type="Resource" uid="uid://cs84ylbtu68ud" path="res://prefabs/inventory/resources/Sake.tres" id="3_d3lte"]
-[ext_resource type="Resource" uid="uid://bjiup0gph2ug5" path="res://prefabs/character_loadouts/reimu_loadout.tres" id="3_x7nw1"]
 [ext_resource type="Script" path="res://scripts/logic_ui/starting_item_resource.gd" id="4_5nt4m"]
 [ext_resource type="Texture2D" uid="uid://bf1kq504es3wr" path="res://sprites/misc/magic_circle_1.png" id="5_bvy6o"]
 [ext_resource type="Resource" uid="uid://c0nvv6vbgcgav" path="res://prefabs/character_loadouts/marisa_loadout.tres" id="5_nelpm"]
@@ -555,7 +554,6 @@ script = ExtResource("1_37at3")
 walk_animations = NodePath("WalkAnimations")
 starting_items = SubResource("Resource_5hr3a")
 reimu_anims = ExtResource("2_7dit5")
-reimu_loadout = ExtResource("3_x7nw1")
 marisa_anims = ExtResource("3_a8dmt")
 marisa_loadout = ExtResource("5_nelpm")
 reimu_spritesheet = ExtResource("2_kv5a8")

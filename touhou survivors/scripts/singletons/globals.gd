@@ -13,6 +13,7 @@ var audio_reset:float
 var player_hp:float
 var crystal_count:float = 100.0
 var holding_item:bool = false
+var rand_id_assigns:Array
 
 #USED IN CAMERA ITEM FOR GETTING RECT2 SCALE
 func wind_mult():
@@ -67,3 +68,15 @@ func any_input():
 		if Input.is_action_just_pressed(key):
 			key_pressed = true
 	return key_pressed
+
+func random_color():
+	var random_color:Array
+	var color_1:float = randf_range(0,0.1)
+	var color_2:float = randf_range(0.3,0.7)
+	var color_3:float = randf_range(0.8,1.0)
+	random_color.append(color_1)
+	random_color.append(color_2)
+	random_color.append(color_3)
+	random_color.shuffle()
+	return Color(random_color[0],random_color[1],random_color[2],1.0)
+

@@ -26,6 +26,7 @@ var player_level:float = 1.0
 @export var next_lvl_increase_rate:float = 2.0
 
 func _ready():
+	Globals.rand_id_assigns = []
 	Signals.connect("update_power",catch_update_power)
 	Signals.connect("update_faith",catch_update_faith)
 	Signals.connect("leveling_up",catch_leveling_up)

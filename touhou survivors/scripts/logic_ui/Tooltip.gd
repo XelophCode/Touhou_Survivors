@@ -1,6 +1,7 @@
 extends Node2D
 
-var hide_descriptions : bool = false
+var hide_descriptions : bool = true
+var show_tooltips : bool = false
 var item_name : String = ""
 var stack_amt : String = ""
 var stack_limit : String = ""
@@ -35,7 +36,8 @@ func hide_tooltip():
 	visible = false
 
 func show_tooltip():
-	visible = true
+	if show_tooltips:
+		visible = true
 	update_tag = true
 
 func catch_leveling_up(value):

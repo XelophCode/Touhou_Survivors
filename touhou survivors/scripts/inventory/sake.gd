@@ -5,7 +5,7 @@ extends item_base_class
 @onready var sprite := $main_body/sprite/sprite
 @onready var shadow := $main_body/sprite/shadow
 
-var size_mod:float = 1.0
+var size_mod:float = 3.0
 var bottle_broken:bool = false
 
 func _ready():
@@ -13,10 +13,8 @@ func _ready():
 	global_position = Globals.player_position
 	$AnimationPlayer.play("throw")
 	$AnimationPlayer.seek(0)
-	if alt_fire:
-		size_mod = 2.5; damage = 4
-	else:
-		size_mod = 1.2; damage = 1
+	damage = 6
+	
 
 func _on_hitbox_body_entered(body):
 	do_damage(body)
@@ -32,8 +30,8 @@ func break_bottle():
 
 func _process(delta):
 	if bottle_broken:
-		$main_body.scale.x = lerp($main_body.scale.x,size_mod,1 * delta)
-		$main_body.scale.y = lerp($main_body.scale.y,size_mod,1 * delta)
+		$main_body.scale.x = lerp($main_body.scale.x,size_mod, delta)
+		$main_body.scale.y = lerp($main_body.scale.y,size_mod, delta)
 
 func _on_animations_animation_finished():
 	if animated_sprite.animation == "bottle_break":

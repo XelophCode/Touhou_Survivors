@@ -1,12 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgr4io8khvi34"]
+[gd_scene load_steps=11 format=3 uid="uid://cgr4io8khvi34"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_15mq7"]
-[ext_resource type="PackedScene" path="res://prefabs/item_grid_layouts/1x3.tscn" id="2_1g3p7"]
+[ext_resource type="PackedScene" uid="uid://boi2ok4gfebk7" path="res://prefabs/item_grid_layouts/1x3.tscn" id="2_1g3p7"]
 [ext_resource type="Texture2D" uid="uid://0pi0oeygxqgf" path="res://sprites/items/inventory_item_BGs/1x3_item_large_bg.png" id="3_jnk5e"]
+[ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="3_ormy0"]
 [ext_resource type="Material" uid="uid://dun40mejvqphh" path="res://scripts/shaders/materials/inventory_item_shader_material.tres" id="4_oixp3"]
 [ext_resource type="Texture2D" uid="uid://w07iivvsg7ky" path="res://sprites/items/inventory/keystone_item_large.png" id="5_rr06t"]
 [ext_resource type="PackedScene" uid="uid://63murqtbvxlb" path="res://prefabs/logic_ui/occult_orb.tscn" id="6_a8eyj"]
 [ext_resource type="AnimationLibrary" uid="uid://c3f6dw06ejniu" path="res://resources/animations/libraries/Inventory_Items.res" id="7_r66nk"]
+[ext_resource type="Texture2D" uid="uid://tpsbiy3841jl" path="res://sprites/items/inventory_item_BGs/1x3_item_large_bg_highlight.png" id="7_t68xb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v88ns"]
+resource_local_to_scene = true
+shader = ExtResource("3_ormy0")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(0.184314, 0.996078, 1, 1)
+shader_parameter/line_scale = 0.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
 
 [node name="Keystone" type="Node2D"]
 z_index = 6
@@ -19,6 +31,7 @@ script = ExtResource("1_15mq7")
 visible = false
 modulate = Color(1, 1, 1, 0)
 texture_filter = 1
+material = SubResource("ShaderMaterial_v88ns")
 texture = ExtResource("3_jnk5e")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
@@ -27,6 +40,10 @@ texture_filter = 1
 material = ExtResource("4_oixp3")
 scale = Vector2(1, 1e-05)
 texture = ExtResource("5_rr06t")
+
+[node name="ItemHighlight" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("7_t68xb")
 
 [node name="occult_orb" parent="." instance=ExtResource("6_a8eyj")]
 visible = false

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://25wjlnir7g8a"
-path="res://.godot/imported/right_click.png-49823aaac81a334557e55e62b94c6cf3.ctex"
+path="res://.godot/imported/right_click_crystal.png-598ccb2378a3ceb5d3445711b7c8ec3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/right_click.png"
-dest_files=["res://.godot/imported/right_click.png-49823aaac81a334557e55e62b94c6cf3.ctex"]
+source_file="res://sprites/ui/right_click_crystal.png"
+dest_files=["res://.godot/imported/right_click_crystal.png-598ccb2378a3ceb5d3445711b7c8ec3c.ctex"]
 
 [params]
 

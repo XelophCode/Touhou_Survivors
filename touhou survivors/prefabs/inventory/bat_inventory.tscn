@@ -1,12 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0yj2nsc4fb5v"]
+[gd_scene load_steps=11 format=3 uid="uid://d0yj2nsc4fb5v"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_arorj"]
 [ext_resource type="PackedScene" uid="uid://bwaw5f7habkcj" path="res://prefabs/item_grid_layouts/1x1.tscn" id="2_fp7la"]
+[ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="3_4nlnn"]
 [ext_resource type="Texture2D" uid="uid://bcp21l3ejmjkf" path="res://sprites/items/inventory_item_BGs/1x1_item_large_bg.png" id="3_5k1wv"]
 [ext_resource type="Material" uid="uid://dun40mejvqphh" path="res://scripts/shaders/materials/inventory_item_shader_material.tres" id="4_ppuly"]
 [ext_resource type="Texture2D" uid="uid://3if6ao1pfs6b" path="res://sprites/items/inventory/Bat_item_large.png" id="5_yr5mu"]
 [ext_resource type="PackedScene" uid="uid://63murqtbvxlb" path="res://prefabs/logic_ui/occult_orb.tscn" id="6_rnytf"]
+[ext_resource type="Texture2D" uid="uid://csehh14x17k6h" path="res://sprites/items/inventory_item_BGs/1x1_item_large_bg_highlight.png" id="7_1ftp1"]
 [ext_resource type="AnimationLibrary" uid="uid://c3f6dw06ejniu" path="res://resources/animations/libraries/Inventory_Items.res" id="7_gqru3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qhrl1"]
+resource_local_to_scene = true
+shader = ExtResource("3_4nlnn")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(0.184314, 0.996078, 1, 1)
+shader_parameter/line_scale = 0.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
 
 [node name="Bat" type="Node2D"]
 z_index = 6
@@ -19,6 +31,7 @@ script = ExtResource("1_arorj")
 visible = false
 modulate = Color(1, 1, 1, 0)
 texture_filter = 1
+material = SubResource("ShaderMaterial_qhrl1")
 texture = ExtResource("3_5k1wv")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
@@ -27,6 +40,10 @@ texture_filter = 1
 material = ExtResource("4_ppuly")
 scale = Vector2(1, 1e-05)
 texture = ExtResource("5_yr5mu")
+
+[node name="ItemHighlight" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("7_1ftp1")
 
 [node name="occult_orb" parent="." instance=ExtResource("6_rnytf")]
 visible = false

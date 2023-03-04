@@ -1,21 +1,22 @@
-[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://cbidup4rcsngx"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=6 format=3 uid="uid://dsnenjl57rt8n"]
 
-[ext_resource type="Texture2D" uid="uid://bf07fvhfd7nmc" path="res://sprites/items/item_icons/persuasion_needle_icon.png" id="1_7vgm6"]
-[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_joj67"]
-[ext_resource type="PackedScene" uid="uid://c0rdmnqj7dxli" path="res://prefabs/inventory/persuasion_needle_inventory.tscn" id="2_83cwd"]
-[ext_resource type="PackedScene" uid="uid://jxnh11mdu5ay" path="res://prefabs/item_spawnables/Persuasion_Needles.tscn" id="4_v16l3"]
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_cvwtj"]
+[ext_resource type="Texture2D" uid="uid://bf07fvhfd7nmc" path="res://sprites/items/item_icons/persuasion_needle_icon.png" id="1_s6l1f"]
+[ext_resource type="PackedScene" uid="uid://c0rdmnqj7dxli" path="res://prefabs/inventory/persuasion_needle_inventory.tscn" id="2_wdlb7"]
+[ext_resource type="PackedScene" uid="uid://jxnh11mdu5ay" path="res://prefabs/item_spawnables/Persuasion_Needles.tscn" id="4_qcijw"]
+[ext_resource type="Resource" uid="uid://dau86lgtistk6" path="res://prefabs/inventory/resources/spell_cards/fantasy_seal.tres" id="5_wgw1b"]
 
 [resource]
-script = ExtResource("1_joj67")
+script = ExtResource("1_cvwtj")
 enabled = true
 item_name = 13
-description = "Throw needles in rapid succession!
-POWERUP:
-Throw more needles!"
+description = ""
 inventory_size = 0
-inventory = ExtResource("2_83cwd")
-spawnable = ExtResource("4_v16l3")
-icon = ExtResource("1_7vgm6")
+inventory = ExtResource("2_wdlb7")
+spawnable = ExtResource("4_qcijw")
+icon = ExtResource("1_s6l1f")
 active = true
-cooldown = 3
+cooldown = 5
 one_time_spawn = false
+item_set = Array[int]([2, 8])
+spell_card = ExtResource("5_wgw1b")

@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://ru4xiuel4omq"]
+[gd_scene load_steps=24 format=3 uid="uid://cokydxk2wfjqf"]
 
-[ext_resource type="Texture2D" uid="uid://25wjlnir7g8a" path="res://sprites/ui/right_click.png" id="1_xyj0j"]
 [ext_resource type="Shader" path="res://scripts/shaders/damage_flash.gdshader" id="2_4solo"]
 [ext_resource type="Script" path="res://scripts/logic_ui/RightClickTip.gd" id="2_po0yo"]
+[ext_resource type="Texture2D" uid="uid://25wjlnir7g8a" path="res://sprites/ui/right_click_crystal.png" id="3_nxbjj"]
+[ext_resource type="Texture2D" uid="uid://bchadlgn7qvbl" path="res://sprites/ui/hand_cursor.png" id="4_mfuqj"]
+[ext_resource type="Texture2D" uid="uid://cjest1dsg3l2o" path="res://sprites/ui/right_click_spell_card.png" id="4_vt20a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_umdy1"]
 shader = ExtResource("2_4solo")
@@ -10,27 +12,59 @@ shader_parameter/flash_color = Color(1, 0.121569, 0.133333, 1)
 shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o77gj"]
-atlas = ExtResource("1_xyj0j")
+atlas = ExtResource("3_nxbjj")
 region = Rect2(0, 0, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8aggh"]
-atlas = ExtResource("1_xyj0j")
+atlas = ExtResource("3_nxbjj")
 region = Rect2(20, 0, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iiwis"]
-atlas = ExtResource("1_xyj0j")
+atlas = ExtResource("3_nxbjj")
 region = Rect2(40, 0, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gbesq"]
-atlas = ExtResource("1_xyj0j")
+atlas = ExtResource("3_nxbjj")
 region = Rect2(0, 20, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ps5s"]
-atlas = ExtResource("1_xyj0j")
+atlas = ExtResource("3_nxbjj")
 region = Rect2(20, 20, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7x1v0"]
-atlas = ExtResource("1_xyj0j")
+atlas = ExtResource("3_nxbjj")
+region = Rect2(40, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qaqh4"]
+atlas = ExtResource("4_mfuqj")
+region = Rect2(0, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqe1i"]
+atlas = ExtResource("4_mfuqj")
+region = Rect2(13, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wep28"]
+atlas = ExtResource("4_vt20a")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gemyv"]
+atlas = ExtResource("4_vt20a")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unbxs"]
+atlas = ExtResource("4_vt20a")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii7sb"]
+atlas = ExtResource("4_vt20a")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svg0w"]
+atlas = ExtResource("4_vt20a")
+region = Rect2(20, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx057"]
+atlas = ExtResource("4_vt20a")
 region = Rect2(40, 20, 20, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_53n4m"]
@@ -55,7 +89,41 @@ animations = [{
 "texture": SubResource("AtlasTexture_7x1v0")
 }],
 "loop": true,
-"name": &"default",
+"name": &"crystal",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qaqh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqe1i")
+}],
+"loop": true,
+"name": &"hand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wep28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gemyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unbxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii7sb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svg0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx057")
+}],
+"loop": true,
+"name": &"spell_card",
 "speed": 6.0
 }]
 
@@ -102,7 +170,8 @@ script = ExtResource("2_po0yo")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_umdy1")
 sprite_frames = SubResource("SpriteFrames_53n4m")
-autoplay = "default"
+animation = &"hand"
+autoplay = "crystal"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -20,4 +20,5 @@ var name : Array = ["Yinyang Orb","Sake","Gohei","Roukanken","Throwing Knife","R
 @export var active : bool = true
 @export var cooldown : int
 @export var one_time_spawn : bool = false
-@export var item_set:Array[InventoryItemResource]
+@export var item_set:Array[int]
+@export var spell_card:SpellCardResource

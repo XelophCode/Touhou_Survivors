@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://bbqngghgfgoow" path="res://sprites/ui/crystal.png" id="13_uxnfn"]
 [ext_resource type="PackedScene" uid="uid://04yuy6nwpd5q" path="res://prefabs/logic_ui/tooltip.tscn" id="13_x4fa0"]
 [ext_resource type="Environment" uid="uid://5eytrk3240f8" path="res://resources/main_environment.tres" id="17_8pmbs"]
-[ext_resource type="PackedScene" uid="uid://ru4xiuel4omq" path="res://prefabs/logic_ui/right_click_tip.tscn" id="19_2m38r"]
+[ext_resource type="PackedScene" uid="uid://cokydxk2wfjqf" path="res://prefabs/logic_ui/right_click_tip.tscn" id="19_2m38r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn5md"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
@@ -665,6 +665,7 @@ wait_time = 13.0
 autostart = true
 
 [node name="Shop" parent="." instance=ExtResource("10_by00x")]
+visible = false
 z_index = 17
 position = Vector2(115, 125)
 
@@ -674,6 +675,14 @@ position = Vector2(300, 125)
 
 [node name="PlayerInventory" parent="." instance=ExtResource("10_oguq7")]
 z_index = 20
+
+[node name="lines" type="Node2D" parent="."]
+visible = false
+z_index = 33
+
+[node name="Line2D" type="Line2D" parent="lines"]
+points = PackedVector2Array(0, 0, 376, 151, 59, 185, 0, 0)
+width = 1.0
 
 [node name="Confetti" type="CPUParticles2D" parent="."]
 position = Vector2(214, -22)

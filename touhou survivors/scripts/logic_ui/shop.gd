@@ -117,8 +117,11 @@ func pass_metadata_to_item(inst, item):
 	inst.item_cooldown = item.cooldown
 	inst.one_time_spawn = item.one_time_spawn
 	if item.item_set != null:
-		for i in item.item_set:
-			inst.item_set.append(i.item_name)
+		inst.item_set = item.item_set
+	if item.spell_card != null:
+		inst.spell_card = item.spell_card.spawnable
+		inst.spell_card_icon = item.spell_card.icon
+		inst.spell_card_cooldown = item.spell_card.cooldown
 
 func _process(delta):
 	eyes_scrolling -= delta * 8
@@ -131,13 +134,19 @@ func show_close_sign():
 		$CloseGapSign.play("default")
 
 func _on_close_gap_button_down():
+	Signals.emit_signal("show_hand_cursor",false)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	$CloseGapSign.material.set_shader_parameter("line_color",Color(0,0,0,1))
 	Signals.emit_signal("leveling_up",false)
 
 func _on_close_gap_mouse_entered():
+	Signals.emit_signal("show_hand_cursor",true)
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	$CloseGapSign.material.set_shader_parameter("line_color",Color(1,1,1,1))
 
 func _on_close_gap_mouse_exited():
+	Signals.emit_signal("show_hand_cursor",false)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	$CloseGapSign.material.set_shader_parameter("line_color",Color(0,0,0,1))
 
 
