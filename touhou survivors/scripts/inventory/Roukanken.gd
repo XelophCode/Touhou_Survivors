@@ -9,9 +9,9 @@ func _ready():
 		$main_body/sweep.emitting = true
 		$anims.play("hitbox_sweep")
 		rotation_degrees = Globals.cardinal_direction_to_rotation(Globals.player_facing)
-	damage = 5.0
+	damage = randi_range(8,10)
 
-func _process(delta):
+func _process(_delta):
 	if alt_fire:
 		global_position = Globals.player_position
 

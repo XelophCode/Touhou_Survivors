@@ -12,11 +12,13 @@ script = ExtResource("1_ij4e6")
 
 [node name="main_body" type="Node2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="main_body"]
+[node name="main_body_2" type="Node2D" parent="main_body"]
+
+[node name="Area2D" type="Area2D" parent="main_body/main_body_2"]
 collision_layer = 512
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/main_body_2/Area2D"]
 shape = SubResource("CircleShape2D_fia0b")
 
-[node name="BulletSprite" type="Sprite2D" parent="main_body"]
+[node name="BulletSprite" type="Sprite2D" parent="main_body/main_body_2"]
 texture = ExtResource("2_ww4p2")

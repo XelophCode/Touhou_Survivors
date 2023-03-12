@@ -4,7 +4,7 @@ var flash_amt:float = 0
 var alt:bool = false
 
 func _ready():
-	damage = 3
+	damage = randi_range(8,12)
 	global_position = Globals.player_position
 	if alt:
 		$AnimationPlayer.play("bomb_throw")

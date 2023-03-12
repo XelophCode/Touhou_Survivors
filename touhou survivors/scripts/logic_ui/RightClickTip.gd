@@ -8,7 +8,7 @@ func _ready():
 	Signals.connect("show_spell_card_right_click",catch_show_spell_card_right_click)
 	Signals.connect("show_hand_cursor",catch_show_hand_cursor)
 
-func _process(delta):
+func _process(_delta):
 	global_position.x = get_global_mouse_position().x + 2
 	global_position.y = get_global_mouse_position().y + 6
 	if Globals.holding_item:

@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://mnbo7kayfdp0"]
+
+[ext_resource type="Script" path="res://scripts/inventory/Yinyang_main.gd" id="1_jtxsb"]
+[ext_resource type="Texture2D" uid="uid://biurxy4k2u8or" path="res://sprites/items/item_spawnables/yinyang.png" id="2_7pq2f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_stcv6"]
+radius = 6.08276
+
+[sub_resource type="Animation" id="Animation_v8atm"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/main_body_2/Yinyang:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i4xs4"]
+_data = {
+"spin": SubResource("Animation_v8atm")
+}
+
+[sub_resource type="Animation" id="Animation_a7d1j"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/main_body_2/Yinyang:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j46ku"]
+_data = {
+"fade_out": SubResource("Animation_a7d1j")
+}
+
+[node name="Yinyang_main" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_jtxsb")
+
+[node name="main_body" type="Node2D" parent="."]
+
+[node name="main_body_2" type="Node2D" parent="main_body"]
+
+[node name="Yinyang" type="Sprite2D" parent="main_body/main_body_2"]
+rotation = 5.4404
+texture = ExtResource("2_7pq2f")
+
+[node name="Area2D" type="Area2D" parent="main_body/main_body_2"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/main_body_2/Area2D"]
+shape = SubResource("CircleShape2D_stcv6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spin"
+libraries = {
+"": SubResource("AnimationLibrary_i4xs4")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j46ku")
+}
+
+[connection signal="body_entered" from="main_body/main_body_2/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://cxtno75a58bkv"]
+[gd_scene load_steps=102 format=3 uid="uid://cxtno75a58bkv"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/player_ui.gd" id="1_i5u1q"]
 [ext_resource type="SpriteFrames" uid="uid://bfm8psvacuqtm" path="res://sprites/ui/character_portraits/reimu_portrait.tres" id="2_lwihl"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://04yuy6nwpd5q" path="res://prefabs/logic_ui/tooltip.tscn" id="13_x4fa0"]
 [ext_resource type="Environment" uid="uid://5eytrk3240f8" path="res://resources/main_environment.tres" id="17_8pmbs"]
 [ext_resource type="PackedScene" uid="uid://cokydxk2wfjqf" path="res://prefabs/logic_ui/right_click_tip.tscn" id="19_2m38r"]
+[ext_resource type="Texture2D" uid="uid://bad488ler0kop" path="res://sprites/ui/damage_fullscreen.png" id="20_g8vl8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn5md"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
@@ -498,13 +499,163 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(18, 52.5), Vector2(19, 52.5), Vector2(17, 52.5), Vector2(18, 52.5)]
+"values": [Vector2(19.5, 53.5), Vector2(20.5, 53.5), Vector2(18.5, 53.5), Vector2(19.5, 53.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pio6a"]
 _data = {
 "crystal_number_flash": SubResource("Animation_8h1q4"),
 "number_flash_red_shake": SubResource("Animation_8py4r")
+}
+
+[sub_resource type="Animation" id="Animation_74fya"]
+resource_name = "fade_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageFullscreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_damage_modulate"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qrwwu"]
+resource_name = "modulate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageFullscreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_m33xq"]
+resource_name = "fade_out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageFullscreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wlne1"]
+_data = {
+"fade_in": SubResource("Animation_74fya"),
+"fade_out": SubResource("Animation_m33xq"),
+"modulate": SubResource("Animation_qrwwu")
+}
+
+[sub_resource type="Animation" id="Animation_5a8ct"]
+resource_name = "shake"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/CharacterPortrait:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(21, 24.5), Vector2(23, 24.5), Vector2(19, 24.5), Vector2(21, 24.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Healthbar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(9.5, 42), Vector2(11.5, 42), Vector2(7.5, 42), Vector2(9.5, 42)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Crystalbar:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(25.5, 48), Vector2(27.5, 48), Vector2(23.5, 48), Vector2(25.5, 48)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/PortraitBorder:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(35, 34), Vector2(37, 34), Vector2(33, 34), Vector2(35, 34)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/shard_count:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(19.5, 53.5), Vector2(21.5, 53.5), Vector2(17.5, 53.5), Vector2(19.5, 53.5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/Crystal:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(12.5, 53.5), Vector2(14.5, 53.5), Vector2(10.5, 53.5), Vector2(12.5, 53.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lgd3a"]
+_data = {
+"shake": SubResource("Animation_5a8ct")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0qhdl"]
@@ -551,12 +702,12 @@ texture_filter = 1
 
 [node name="Powerbar" type="ProgressBar" parent="UI"]
 offset_left = 2.0
-offset_top = 2.0
+offset_top = 1.0
 offset_right = 424.0
-offset_bottom = 5.0
+offset_bottom = 6.0
 theme_override_styles/background = SubResource("StyleBoxFlat_jn5md")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0c2de")
-max_value = 5.0
+max_value = 15.0
 step = 0.001
 value = 1.0
 show_percentage = false
@@ -566,6 +717,7 @@ position = Vector2(213, 3.5)
 texture = ExtResource("5_7g6dd")
 
 [node name="Vignette" type="Sprite2D" parent="UI"]
+modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(213, 120)
 texture = ExtResource("8_2iy3q")
 
@@ -594,6 +746,7 @@ text = "0.00"
 horizontal_alignment = 1
 
 [node name="Level" type="Label" parent="UI"]
+visible = false
 offset_left = 6.0
 offset_top = 40.0
 offset_right = 27.0
@@ -606,26 +759,26 @@ text = "Lvl 1"
 
 [node name="WeaponSpawner" parent="UI" instance=ExtResource("6_1x5oq")]
 z_index = 18
-position = Vector2(43, 17)
+position = Vector2(47, 17)
 
 [node name="CharacterPortrait" type="AnimatedSprite2D" parent="UI"]
-position = Vector2(19.5, 24.5)
+position = Vector2(21, 24.5)
 sprite_frames = SubResource("SpriteFrames_xm2mk")
 animation = &"smile"
 
 [node name="Healthbar" type="ProgressBar" parent="UI"]
-offset_left = 8.0
+offset_left = 9.5
 offset_top = 42.0
-offset_right = 59.0
+offset_right = 60.5
 offset_bottom = 46.0
 theme_override_styles/background = SubResource("StyleBoxFlat_3o7uu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8rjty")
 show_percentage = false
 
 [node name="Crystalbar" type="ProgressBar" parent="UI"]
-offset_left = 24.0
+offset_left = 25.5
 offset_top = 48.0
-offset_right = 64.0
+offset_right = 65.4997
 offset_bottom = 50.0
 theme_override_styles/background = SubResource("StyleBoxFlat_5cbha")
 theme_override_styles/fill = SubResource("StyleBoxFlat_p864l")
@@ -634,7 +787,7 @@ step = 0.001
 show_percentage = false
 
 [node name="PortraitBorder" type="Sprite2D" parent="UI"]
-position = Vector2(33, 34)
+position = Vector2(35, 34)
 texture = ExtResource("10_hvsvi")
 
 [node name="FPS" type="Label" parent="UI"]
@@ -649,11 +802,11 @@ horizontal_alignment = 2
 
 [node name="shard_count" type="AnimatedSprite2D" parent="UI"]
 material = SubResource("ShaderMaterial_hquiq")
-position = Vector2(17.5, 53.5)
+position = Vector2(19.5, 53.5)
 sprite_frames = SubResource("SpriteFrames_e80tj")
 
 [node name="Crystal" type="AnimatedSprite2D" parent="UI"]
-position = Vector2(10.5, 53.5)
+position = Vector2(12.5, 53.5)
 sprite_frames = SubResource("SpriteFrames_38gws")
 
 [node name="PortraitAnims" type="Timer" parent="."]
@@ -707,6 +860,11 @@ hue_variation_curve = SubResource("Curve_5b2b6")
 [node name="RightClickTip" parent="." instance=ExtResource("19_2m38r")]
 z_index = 31
 
+[node name="DamageFullscreen" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("20_g8vl8")
+centered = false
+
 [node name="FullscreenBlack" type="Sprite2D" parent="."]
 visible = false
 z_index = 20
@@ -733,6 +891,16 @@ libraries = {
 [node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_pio6a")
+}
+
+[node name="damage_screen" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wlne1")
+}
+
+[node name="damage_shake" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lgd3a")
 }
 
 [node name="PauseMenu" type="Control" parent="."]

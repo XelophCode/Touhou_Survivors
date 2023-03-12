@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bpoqg2vvfocy5"]
+[gd_scene load_steps=23 format=3 uid="uid://bpoqg2vvfocy5"]
 
 [ext_resource type="Script" path="res://scripts/inventory/sake.gd" id="1_jjt8d"]
+[ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="2_g45jw"]
 [ext_resource type="Texture2D" uid="uid://beiqsp8k70j2n" path="res://sprites/items/item_spawnables/sake_item_small.png" id="2_hngom"]
 [ext_resource type="Texture2D" uid="uid://dgl3poqp1itug" path="res://sprites/items/item_spawnables/sake_bottle_break.png" id="3_n6kny"]
 
@@ -109,7 +110,7 @@ resource_name = "fade_out"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("main_body/sprite:modulate")
+tracks/0/path = NodePath("main_body/main_body_2/sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -129,7 +130,61 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"delete"
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_la3hb"]
+resource_name = "swing"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/main_body_2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 60), Vector2(0, 60), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("main_body/main_body_2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("main_body/main_body_2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
 }]
 }
 
@@ -166,37 +221,42 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y76u4"]
 _data = {
 "fade_out": SubResource("Animation_im22q"),
+"swing": SubResource("Animation_la3hb"),
 "throw": SubResource("Animation_77tm3")
 }
 
-[node name="Sake" type="Node2D"]
+[node name="Sake" type="Node2D" node_paths=PackedStringArray("animated_sprite", "sprite", "shadow", "main_body")]
 texture_filter = 1
-scale = Vector2(2, 2)
 script = ExtResource("1_jjt8d")
+animated_sprite = NodePath("main_body/main_body_2/sprite/animations")
+sprite = NodePath("main_body/main_body_2/sprite/sprite")
+shadow = NodePath("main_body/main_body_2/sprite/shadow")
+main_body = NodePath("main_body")
 
 [node name="main_body" type="Node2D" parent="."]
 
-[node name="sprite" type="Node2D" parent="main_body"]
+[node name="main_body_2" type="Node2D" parent="main_body"]
 
-[node name="shadow" type="Panel" parent="main_body/sprite"]
-offset_left = -2.0
-offset_top = -1.0
-offset_right = 3.0
-offset_bottom = 4.0
+[node name="sprite" type="Node2D" parent="main_body/main_body_2"]
 
-[node name="sprite" type="Sprite2D" parent="main_body/sprite"]
+[node name="shadow" type="Sprite2D" parent="main_body/main_body_2/sprite"]
+position = Vector2(0.375, 2.625)
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("2_g45jw")
+
+[node name="sprite" type="Sprite2D" parent="main_body/main_body_2/sprite"]
 texture = ExtResource("2_hngom")
 
-[node name="animations" type="AnimatedSprite2D" parent="main_body/sprite"]
+[node name="animations" type="AnimatedSprite2D" parent="main_body/main_body_2/sprite"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_vq8xp")
 animation = &"puddle"
 
-[node name="hitbox" type="Area2D" parent="main_body"]
+[node name="hitbox" type="Area2D" parent="main_body/main_body_2"]
 collision_layer = 8
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/main_body_2/hitbox"]
 shape = SubResource("RectangleShape2D_vpcen")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -206,13 +266,11 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 8.0
-autostart = true
 
 [node name="HitboxToggle" type="Timer" parent="."]
 wait_time = 2.0
-autostart = true
 
-[connection signal="animation_finished" from="main_body/sprite/animations" to="." method="_on_animations_animation_finished"]
-[connection signal="body_entered" from="main_body/hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="animation_finished" from="main_body/main_body_2/sprite/animations" to="." method="_on_animations_animation_finished"]
+[connection signal="body_entered" from="main_body/main_body_2/hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="HitboxToggle" to="." method="_on_hitbox_toggle_timeout"]

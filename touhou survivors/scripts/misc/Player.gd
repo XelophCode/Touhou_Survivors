@@ -38,6 +38,8 @@ var last_diagonal_h_flip:bool
 var moving_diagonaly:bool = false
 var currently_moving_diagonaly:bool = false
 var crystal:float
+var magic_circle_size:float = 1.0
+var emit_damage_taken:bool = true
 
 func _ready():
 	Globals.one_time_spawns = []
@@ -75,6 +77,9 @@ func _physics_process(delta):
 	$Healthbar.value = hp
 	move = Vector2.ZERO
 	
+	if Input.is_action_just_pressed("print_debug"):
+		print(str(damage_taken))
+	
 	var magic_circle_scale : float = (crystal / 50) * 2 + 1
 	magic_circle_scale = clamp(magic_circle_scale,1.0,3.0)
 	$MagicCircle.scale = Vector2(magic_circle_scale,magic_circle_scale)
@@ -91,10 +96,16 @@ func _physics_process(delta):
 		
 		move.x = Input.get_action_raw_strength("move_right") - Input.get_action_raw_strength("move_left")
 		move.y = Input.get_action_raw_strength("move_down") - Input.get_action_raw_strength("move_up")
-		if damage_taken != 0:
+		if damage_taken > 0:
 			$damage_effect.emitting = true
+			if emit_damage_taken:
+				Signals.emit_signal("taking_damage",true)
+				emit_damage_taken = false
 		else:
 			$damage_effect.emitting = false
+			if !emit_damage_taken:
+				Signals.emit_signal("taking_damage",false)
+				emit_damage_taken = true
 	else:
 		$damage_effect.emitting = false
 		if check_for_move:
@@ -139,6 +150,8 @@ func _physics_process(delta):
 	Globals.player_position = global_position
 	
 	velocity = move.normalized() * (delta) * move_speed
+	if Input.is_action_pressed("focus"):
+		velocity = velocity/2
 	
 	if hp < 1 and !leveling_up:
 		velocity = Vector2.ZERO
@@ -257,12 +270,12 @@ func _on_diagonal_input_timeout():
 		Globals.player_facing = last_diagonal
 
 func _on_hitbox_area_entered(area):
-	take_damage(area.get_parent().get_parent(),1.0)
+	take_damage(area.get_parent().get_parent().get_parent(),1.0)
 
 func _on_hitbox_area_exited(area):
-	take_damage(area.get_parent().get_parent(),-1.0)
+	take_damage(area.get_parent().get_parent().get_parent(),-1.0)
 
-func catch_update_crystal(value):
+func catch_update_crystal(_value):
 	crystal += 1
 	crystal = clamp(crystal,0,50.0)
 

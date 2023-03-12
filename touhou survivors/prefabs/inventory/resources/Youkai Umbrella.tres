@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("1_7tek8")
-enabled = true
+enabled = false
 item_name = 15
 description = "Throw a youkai umbrella at enemies!
 POWERUP:
@@ -19,3 +19,4 @@ icon = ExtResource("1_igyw3")
 active = true
 cooldown = 6
 one_time_spawn = false
+item_set = Array[int]([])

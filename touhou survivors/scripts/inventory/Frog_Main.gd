@@ -8,16 +8,17 @@ var alt:bool
 
 func _ready():
 	rotation = deg_to_rad(randi_range(0,359))
-	damage = 1
+	damage = randi_range(1,2)
 
 func _process(delta):
 	velocity = move * delta
 	$main_body.translate(velocity)
 
 func _on_area_2d_body_entered(body):
-	do_damage(body)
 	if alt:
 		spawn_explosion()
+	do_damage(body)
+
 
 
 func spawn_explosion():

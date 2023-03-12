@@ -44,9 +44,10 @@ func get_window_scale():
 		279: tier = 1
 		399: tier = 2
 		519: tier = 3
-		759: tier = 4
+		749: tier = 4
 		1119: tier = 5
 		1080: tier = 5
+		_: print("ERROR: NO MATCHING RESOLUTION '" + str(get_window().get_size_with_decorations().y) + "'")
 	return tier
 
 func cardinal_direction_to_rotation(direction:Vector2):
@@ -70,13 +71,17 @@ func any_input():
 	return key_pressed
 
 func random_color():
-	var random_color:Array
+	var random_color_array:Array = []
 	var color_1:float = randf_range(0,0.1)
 	var color_2:float = randf_range(0.3,0.7)
 	var color_3:float = randf_range(0.8,1.0)
-	random_color.append(color_1)
-	random_color.append(color_2)
-	random_color.append(color_3)
-	random_color.shuffle()
-	return Color(random_color[0],random_color[1],random_color[2],1.0)
+	random_color_array.append(color_1)
+	random_color_array.append(color_2)
+	random_color_array.append(color_3)
+	random_color_array.shuffle()
+	return Color(random_color_array[0],random_color_array[1],random_color_array[2],1.0)
 
+func pos_neg(value):
+	var random_pos_neg:Array = [-1,1]
+	random_pos_neg.shuffle()
+	return value * random_pos_neg[0]

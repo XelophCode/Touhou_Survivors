@@ -19,3 +19,4 @@ icon = ExtResource("1_nsrp4")
 active = true
 cooldown = 15
 one_time_spawn = true
+item_set = Array[int]([])

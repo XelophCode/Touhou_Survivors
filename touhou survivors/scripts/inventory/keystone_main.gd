@@ -5,10 +5,10 @@ var alt:bool
 func _ready():
 	$main_body.global_position = Globals.player_position + Vector2(randf_range(-120,120),randf_range(-80,80))
 	if alt:
-		damage = 30
+		damage = randi_range(30,35)
 		$main_body.scale = Vector2(2.5,2.5)
 	else:
-		damage = 5
+		damage = randi_range(8,10)
 	$AnimationPlayer.play("falling")
 
 func collision():

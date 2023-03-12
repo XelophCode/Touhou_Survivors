@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://p45wocscra4m"]
+[gd_scene load_steps=8 format=3 uid="uid://p45wocscra4m"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_208ll"]
 [ext_resource type="Texture2D" uid="uid://3h0tt3c1ie18" path="res://sprites/actors/divine_spirit.png" id="2_budkh"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_rs1np"]
+[ext_resource type="PackedScene" uid="uid://dhnxpfiirfwyx" path="res://prefabs/enemies/bullets/bullet_spawner.tscn" id="4_ij4lv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pifu0"]
 radius = 6.08276
@@ -54,5 +55,15 @@ initial_velocity_min = 1.0
 initial_velocity_max = 8.0
 scale_amount_curve = SubResource("Curve_sy5dp")
 color_ramp = SubResource("Gradient_48ps4")
+
+[node name="bullet_spawner" parent="." instance=ExtResource("4_ij4lv")]
+size_random = 0.2
+enabled = true
+oneshot = true
+chance_to_shoot = 5.0
+bullet_count = 15.0
+bullet_count_random = 5.0
+shot_gap = 0.08
+spin = 10.0
 
 [connection signal="timeout" from="knockback_timer" to="." method="_on_knockback_timer_timeout"]

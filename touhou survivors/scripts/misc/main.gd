@@ -31,4 +31,4 @@ func _ready():
 #		structure_locations.append(spawn_location)
 #		var struct_inst = structures.all_resources.pick_random().instantiate()
 #		struct_inst.global_position = spawn_location
-#		$structure_parent.add_child(struct_inst)
+#		$structure_parent.add_child(struct_inst)  

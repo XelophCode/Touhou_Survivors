@@ -19,3 +19,4 @@ icon = ExtResource("1_hr6jf")
 active = true
 cooldown = 5
 one_time_spawn = false
+item_set = Array[int]([])

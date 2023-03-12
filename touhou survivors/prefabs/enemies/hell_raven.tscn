@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://koq3127tvpxy"]
+[gd_scene load_steps=16 format=3 uid="uid://koq3127tvpxy"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_23577"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_ol2jl"]
 [ext_resource type="Texture2D" uid="uid://cgjnwamhktu4r" path="res://sprites/actors/Hell_Raven.png" id="3_cws7h"]
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_oosve"]
+[ext_resource type="PackedScene" uid="uid://dhnxpfiirfwyx" path="res://prefabs/enemies/bullets/bullet_spawner.tscn" id="5_sf1ds"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eayx2"]
 atlas = ExtResource("3_cws7h")
@@ -58,6 +59,40 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_pifu0"]
 radius = 5.0
 
+[sub_resource type="Animation" id="Animation_0tw7o"]
+resource_name = "squash_n_stretch"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, 0.0, -0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dj01d"]
+_data = {
+"squash_n_stretch": SubResource("Animation_0tw7o")
+}
+
 [node name="HellRaven" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shadow")]
 collision_layer = 2
 collision_mask = 2
@@ -92,5 +127,23 @@ wait_time = 0.25
 position = Vector2(-2.68221e-07, 5)
 scale = Vector2(0.3, 0.25)
 texture = ExtResource("4_oosve")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "squash_n_stretch"
+libraries = {
+"": SubResource("AnimationLibrary_dj01d")
+}
+
+[node name="bullet_spawner" parent="." instance=ExtResource("5_sf1ds")]
+speed_random = 0.02
+enabled = true
+oneshot = true
+chance_to_shoot = 5.0
+bullet_count = 25.0
+bullet_count_random = 8.0
+shoot_cooldown = 10.0
+shot_gap = 0.08
+spiral_strength = 10.0
+spin = 10.0
 
 [connection signal="timeout" from="knockback_timer" to="." method="_on_knockback_timer_timeout"]

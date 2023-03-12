@@ -11,7 +11,7 @@ var enemy_spawn_edge_offset = 20
 var viewport_halved:Vector2 = Vector2(213,120)
 var spawn_zones:Array
 
-@export var spawn_limit:int = 300
+@export var spawn_limit:int = 400
 @export var fairy_red : PackedScene
 @export var fairy_green : PackedScene
 @export var fairy_blue : PackedScene
@@ -39,8 +39,8 @@ var leveling_up:bool = false
 func _ready():
 	Signals.connect("increase_threat",catch_increase_threat)
 	Signals.connect("leveling_up",catch_leveling_up)
-	enemies_high_chance = [fairy_red,fairy_green]
-	enemies_low_chance = [fairy_blue]
+	enemies_high_chance = [fairy_blue,fairy_green]
+	enemies_low_chance = [fairy_red]
 
 func _on_timer_timeout():
 	spawn_enemy()

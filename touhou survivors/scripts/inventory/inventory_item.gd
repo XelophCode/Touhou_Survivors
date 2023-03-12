@@ -134,7 +134,7 @@ func _ready():
 	occult_orb_progress.max_value = 1
 	
 
-func _process(delta):
+func _process(_delta):
 	if left_mouse_button_held:
 		if Input.is_action_just_released("left_mouse_button"):
 			not_holding_item()
@@ -256,8 +256,8 @@ func check_for_item_set():
 				i.get_other_item_matches()
 
 func find_matches(autofill_set_0:bool = false):
-	var matching_items_1:Array
-	var matching_items_2:Array
+	var matching_items_1:Array = []
+	var matching_items_2:Array = []
 	var matching_items_1_value:int = -1
 	var matching_items_2_value:int = -1
 	for i in adjacent_items:
@@ -276,7 +276,7 @@ func find_matches(autofill_set_0:bool = false):
 	
 	if matching_items_1.size() > 0 and matching_items_2.size() > 0:
 		set_matches = {}
-		var match_val:int
+		var match_val:int = 0
 		var matches:Array
 		if autofill_set_0:
 			set_matches[0] = current_match
@@ -363,8 +363,8 @@ func catch_check_matching_sets():
 	if currently_in_set:
 		set_matches = {}
 		
-		var matching_items_1:Array
-		var matching_items_2:Array
+		var matching_items_1:Array = []
+		var matching_items_2:Array = []
 		var matching_items_1_value:int = -1
 		var matching_items_2_value:int = -1
 		for i in adjacent_items:
@@ -382,7 +382,7 @@ func catch_check_matching_sets():
 		
 		if matching_items_1.size() > 0 and matching_items_2.size() > 0:
 			set_matches = {}
-			var match_val:int
+			var match_val:int = 0
 			var matches:Array
 			for m in matching_items_1:
 				for a in m.adjacent_items:

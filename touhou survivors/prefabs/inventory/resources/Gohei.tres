@@ -18,5 +18,5 @@ icon = ExtResource("1_2x7l7")
 active = true
 cooldown = 5
 one_time_spawn = false
-item_set = Array[int]([8, 13])
+item_set = Array[int]([0, 8])
 spell_card = ExtResource("5_hnntp")

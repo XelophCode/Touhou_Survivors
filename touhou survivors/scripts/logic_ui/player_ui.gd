@@ -32,7 +32,7 @@ var is_paused:bool = false:
 		escape_can_unpause = is_paused
 
 func _ready():
-	Globals.crystal_count = 100.0
+	Globals.crystal_count = 0
 	$AnimationPlayer.play("fade_out")
 	match Globals.current_character:
 		Globals.Reimu: character_portrait.sprite_frames = reimu_portrait
@@ -41,13 +41,12 @@ func _ready():
 	Signals.connect("current_power",catch_current_power)
 	Signals.connect("next_lvl_update",catch_next_lvl_update)
 	Signals.connect("leveling_up",catch_leveling_up)
-	Signals.connect("current_faith",catch_current_faith)
-	Signals.connect("reduce_orb_count",catch_reduce_orb_count)
 	Signals.connect("game_over",catch_game_over)
 	Signals.connect("increase_max_hp",catch_increase_max_hp)
 	Signals.connect("update_crystal",catch_update_crystal)
 	Signals.connect("decrease_crystal_count",catch_decrease_crystal_count)
 	Signals.connect("not_enough_crystals",catch_not_enough_crystals)
+	Signals.connect("taking_damage",catch_taking_damage)
 
 
 
@@ -93,9 +92,6 @@ func _on_character_portrait_animation_finished():
 	if character_portrait.animation == "blink":
 		character_portrait.frame = 0
 
-func catch_current_faith(value):
-	faith_update = value
-
 func catch_current_power(value):
 	power_update = value
 
@@ -118,8 +114,6 @@ func catch_leveling_up(value):
 		character_portrait.play("head_bob")
 		$PortraitAnims.start()
 
-func catch_reduce_orb_count():
-	Signals.emit_signal("update_faith",-occult_orb_max)
 
 func _on_resume_button_down():
 	is_paused = false
@@ -155,11 +149,28 @@ func catch_update_crystal(value):
 			Globals.crystal_count += 1.0
 			Globals.crystal_count = clamp(Globals.crystal_count,0,9.0)
 			$UI/shard_count.frame = Globals.crystal_count
+			$UI/Crystalbar.max_value = scale_max_crystal()
+
+func scale_max_crystal():
+	var max_crystal:float = 0
+	match Globals.crystal_count:
+		0.0: max_crystal = 10
+		1.0: max_crystal = 11
+		2.0: max_crystal = 12
+		3.0: max_crystal = 14
+		4.0: max_crystal = 16
+		5.0: max_crystal = 18
+		6.0: max_crystal = 20
+		7.0: max_crystal = 24
+		8.0: max_crystal = 28
+		9.0: max_crystal = 34
+	return max_crystal
 
 func catch_decrease_crystal_count():
 	$UI/shard_count.frame = Globals.crystal_count
 	$UI/shard_count.material.set_shader_parameter("flash_color",Color(1,1,1,1))
 	$AnimationPlayer3.play("crystal_number_flash")
+	$UI/Crystalbar.max_value = scale_max_crystal()
 
 func catch_not_enough_crystals():
 	$UI/shard_count.material.set_shader_parameter("flash_color",Color(1,0,0,1))
@@ -167,3 +178,14 @@ func catch_not_enough_crystals():
 
 func _on_crystal_anim_timeout():
 	$UI/Crystal.play("default")
+
+func play_damage_modulate():
+	$damage_screen.play("modulate")
+
+func catch_taking_damage(value):
+	if value:
+		$damage_screen.play("fade_in")
+		$damage_shake.play("shake")
+		character_portrait.play("damage")
+	else:
+		$damage_screen.play("fade_out")

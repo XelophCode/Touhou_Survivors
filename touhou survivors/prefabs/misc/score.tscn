@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://bs3gkqh2srcmg"]
+[gd_scene load_steps=23 format=3 uid="uid://bs3gkqh2srcmg"]
 
 [ext_resource type="Script" path="res://scripts/misc/pickups.gd" id="1_pfhar"]
 [ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="2_7yg5n"]
 [ext_resource type="Texture2D" uid="uid://c7csohy4y7c05" path="res://sprites/items/pickups/crystal.png" id="3_suhen"]
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_iiwew"]
 [ext_resource type="Texture2D" uid="uid://cx5jxi4amejva" path="res://sprites/items/pickups/crystal_glow.png" id="5_ct5a2"]
+[ext_resource type="Animation" uid="uid://cfcbmmek8gbwq" path="res://resources/animations/flicker.res" id="6_0vkpl"]
 
 [sub_resource type="Curve" id="Curve_h0ou0"]
 _data = [Vector2(0, 1), 0.0, -0.319134, 0, 1, Vector2(0.541237, 0.827273), -0.671861, -0.671861, 0, 0, Vector2(1, 0.318182), -1.1097, 0.0, 1, 0]
@@ -111,6 +112,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1pse"]
 size = Vector2(4, 4)
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jvuar"]
+_data = {
+"flicker": ExtResource("6_0vkpl")
+}
+
 [node name="Score" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_pfhar")
 Type = 2
@@ -163,6 +169,11 @@ shape = SubResource("RectangleShape2D_s1pse")
 wait_time = 20.0
 one_shot = true
 autostart = true
+
+[node name="FlickerAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jvuar")
+}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

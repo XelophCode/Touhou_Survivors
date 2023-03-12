@@ -9,7 +9,7 @@ func _ready():
 		$main_body.scale = Vector2(2.0,2.0)
 		global_position = Globals.player_position
 	
-	damage = 4
+	damage = randi_range(6,8)
 
 func _on_area_2d_body_entered(body):
 	do_damage(body)

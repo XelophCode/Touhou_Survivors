@@ -19,3 +19,4 @@ icon = ExtResource("1_0gt4m")
 active = true
 cooldown = 7
 one_time_spawn = false
+item_set = Array[int]([])

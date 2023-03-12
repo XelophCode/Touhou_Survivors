@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/inventory/Inventory.gd" id="1_3pi44"]
 [ext_resource type="Texture2D" uid="uid://cqm8ntmgk6b77" path="res://sprites/ui/reimu_inventory_grid.png" id="3_5tnkq"]
 [ext_resource type="Texture2D" uid="uid://cfvrk7qd5ak34" path="res://sprites/ui/Reimu_fullbody.png" id="4_y7bd6"]
-[ext_resource type="Texture2D" uid="uid://cwpjrj4r7487o" path="res://sprites/ui/inventory_tier_1.png" id="6_8lf0a"]
+[ext_resource type="Texture2D" uid="uid://4skehakv76yi" path="res://sprites/ui/general_inventory_grid.png" id="5_m1hsr"]
 [ext_resource type="Texture2D" uid="uid://b8dc57h6lkxnf" path="res://sprites/ui/marisa_fullbody.png" id="6_p1b1m"]
 [ext_resource type="PackedScene" uid="uid://b5p8gapbj4hw4" path="res://prefabs/logic_ui/inventory_space.tscn" id="9_egxg3"]
 
@@ -61,7 +61,7 @@ _data = {
 z_index = 16
 texture_filter = 1
 script = ExtResource("1_3pi44")
-blocked_spaces = NodePath("InventoryGridArt/BlockedSpaces")
+blocked_spaces = NodePath("")
 character_art = NodePath("CharacterArt")
 grid_art = NodePath("InventoryGridArt")
 reimu_char_art = ExtResource("4_y7bd6")
@@ -72,10 +72,9 @@ texture_filter = 1
 position = Vector2(32.5, 0)
 texture = ExtResource("3_5tnkq")
 
-[node name="BlockedSpaces" type="Sprite2D" parent="InventoryGridArt"]
-visible = false
-position = Vector2(-32, 0)
-texture = ExtResource("6_8lf0a")
+[node name="GeneralInventoryGrid" type="Sprite2D" parent="InventoryGridArt"]
+position = Vector2(-0.5, 0)
+texture = ExtResource("5_m1hsr")
 
 [node name="CharacterArt" type="Sprite2D" parent="."]
 position = Vector2(106, 18)

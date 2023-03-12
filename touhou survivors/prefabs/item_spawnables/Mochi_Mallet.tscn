@@ -265,7 +265,6 @@ sprite_frames = SubResource("SpriteFrames_qixmf")
 visible = false
 position = Vector2(4, -1.5)
 sprite_frames = SubResource("SpriteFrames_tuc0r")
-frame = 7
 
 [node name="Area2D" type="Area2D" parent="main_body"]
 collision_layer = 8

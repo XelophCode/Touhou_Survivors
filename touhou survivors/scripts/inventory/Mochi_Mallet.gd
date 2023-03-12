@@ -5,7 +5,7 @@ var total_slams:float = 3.0
 func _ready():
 	
 	global_position = Globals.player_position
-	damage = 10
+	damage = randi_range(12,17)
 
 	if alt_fire:
 		scale_mod(2.0)

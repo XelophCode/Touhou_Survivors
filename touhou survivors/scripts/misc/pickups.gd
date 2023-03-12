@@ -33,6 +33,16 @@ func _on_area_2d_body_entered(_body):
 
 func catch_leveling_up(lvlup):
 	leveling_up = lvlup
+	if leveling_up:
+		if !$Timer.is_stopped():
+			$Timer.paused = true
+		if $FlickerAnim.is_playing():
+			$FlickerAnim.pause()
+	else:
+		if $Timer.paused == true:
+			$Timer.paused = false
+		else:
+			$FlickerAnim.play()
 
 func _on_timer_timeout():
-	queue_free()
+	$FlickerAnim.play("flicker")

@@ -50,3 +50,4 @@ signal reroll_gap
 signal check_matching_sets
 signal show_spell_card_right_click
 signal show_hand_cursor
+signal taking_damage

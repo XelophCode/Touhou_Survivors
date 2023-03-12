@@ -9,7 +9,7 @@ func _ready():
 	$AnimationPlayer.play("slash_move")
 	if alt_fire:
 		rotation_degrees += 90
-	damage = 10
+	damage = randi_range(13,17)
 
 func _process(_delta):
 	global_position = Globals.player_position

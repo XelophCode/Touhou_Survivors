@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5nb6c4vdc2go"]
+[gd_scene load_steps=17 format=3 uid="uid://c5nb6c4vdc2go"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_svmvi"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_5a5g3"]
@@ -72,6 +72,40 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_pifu0"]
 radius = 6.08276
 
+[sub_resource type="Animation" id="Animation_0tw7o"]
+resource_name = "squash_n_stretch"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, 0.0, -0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dj01d"]
+_data = {
+"squash_n_stretch": SubResource("Animation_0tw7o")
+}
+
 [node name="Daiyousei" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shadow")]
 collision_layer = 2
 collision_mask = 2
@@ -85,14 +119,16 @@ type = 0
 sprite = NodePath("AnimatedSprite2D")
 face_player = true
 shadow = NodePath("Shadow")
-base_speed = 2500.0
+base_speed = 1500.0
 hp = 200
-damage = 20.0
+damage = 10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 3
 texture_filter = 1
 material = ExtResource("2_5a5g3")
+scale = Vector2(1, 0.983789)
+skew = 0.0141465
 sprite_frames = SubResource("SpriteFrames_cotxy")
 animation = &"neutral"
 autoplay = "neutral"
@@ -107,5 +143,11 @@ wait_time = 0.25
 position = Vector2(-2.68221e-07, 6)
 scale = Vector2(0.3, 0.25)
 texture = ExtResource("4_rdn2n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "squash_n_stretch"
+libraries = {
+"": SubResource("AnimationLibrary_dj01d")
+}
 
 [connection signal="timeout" from="knockback_timer" to="." method="_on_knockback_timer_timeout"]

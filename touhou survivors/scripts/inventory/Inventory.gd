@@ -1,13 +1,8 @@
 extends Node2D
 
 var level:int = 1
-var tier_one:Array = [1,2,3,8,9,10,15,16,17]
-var tier_two:Array = [1,2,3,8,9,10,15,16,17,4,11,18,25,24,23,22]
-var tier_three:Array = [1,2,3,8,9,10,15,16,17,4,11,18,25,24,23,22,5,12,19,26,33,32,31,30,29]
-var tier_four:Array = [1,2,3,8,9,10,15,16,17,4,11,18,25,24,23,22,5,12,19,26,33,32,31,30,29,6,13,20,27,34,41,40,39,38,37,36]
-var tier_five:Array = [1,2,3,8,9,10,15,16,17,4,11,18,25,24,23,22,5,12,19,26,33,32,31,30,29,6,13,20,27,34,41,40,39,38,37,36,7,14,21,28,35,42,49,48,47,46,45,44,43]
-var current_tier:Array
 var reimu_blocked_spaces:Array = [1,2,3,4,5,6,7,9,13,15,16,17,18,19,20,21,23,27,30,34,37,41,44,48]
+var cross_blocked_spaces:Array = [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49]
 @export var blocked_spaces : Node
 @export var character_art : Node
 @export var grid_art : Node
@@ -20,7 +15,7 @@ func _ready():
 		Globals.Marisa: character_art.texture = marisa_char_art
 	Signals.connect("leveling_up",leveling_up)
 	
-	for i in reimu_blocked_spaces:
+	for i in cross_blocked_spaces:
 		var space = $InventoryGrid.get_child(i-1).get_child(0)
 		space.blocked = true
 		space.monitoring = false

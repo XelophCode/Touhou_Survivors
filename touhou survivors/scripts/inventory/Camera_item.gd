@@ -18,7 +18,7 @@ func _ready():
 	
 	scale.x = 0.5;scale.y = 0.5
 	
-	damage = 3
+	damage = randi_range(4,5)
 	
 	if alt_fire:
 		width = size_1

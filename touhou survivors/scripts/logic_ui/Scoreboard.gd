@@ -16,7 +16,7 @@ var crystal:float:
 		crystal = value
 		Signals.emit_signal("current_crystal",crystal)
 
-var next_lvl:float = 5.0:
+var next_lvl:float = 15.0:
 	set(value):
 		next_lvl = value
 		Signals.emit_signal("next_lvl_update",next_lvl)
@@ -50,6 +50,7 @@ func check_for_lvl_up():
 			9.0: next_lvl_increase_rate = 1.4
 			11.0: next_lvl_increase_rate = 1.2
 			15.0: next_lvl_increase_rate = 1.1
+			_: pass
 		
 		next_lvl *= next_lvl_increase_rate
 

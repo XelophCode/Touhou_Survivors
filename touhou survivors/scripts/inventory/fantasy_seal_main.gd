@@ -9,7 +9,7 @@ func _ready():
 	sprite.modulate = Globals.random_color()
 	global_position = Globals.player_position
 	$main_body/main_body_2.scale += Vector2(scale_mod, scale_mod)
-	damage = 10
+	damage = randi_range(10,15)
 
 func _process(delta):
 	scale_mod += delta

@@ -20,3 +20,4 @@ icon = ExtResource("1_bifjr")
 active = false
 cooldown = 5
 one_time_spawn = true
+item_set = Array[int]([])

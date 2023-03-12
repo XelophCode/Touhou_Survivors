@@ -15,10 +15,10 @@
 [ext_resource type="Script" path="res://scripts/logic_ui/weapons.gd" id="12_sxuwu"]
 [ext_resource type="PackedScene" uid="uid://cxtno75a58bkv" path="res://prefabs/logic_ui/player_ui.tscn" id="17_o28hk"]
 [ext_resource type="Script" path="res://scripts/logic_ui/Global_Audio.gd" id="21_7vj3l"]
-[ext_resource type="PackedScene" uid="uid://bs3gkqh2srcmg" path="res://prefabs/misc/score.tscn" id="22_4qbw8"]
+[ext_resource type="PackedScene" uid="uid://dhnxpfiirfwyx" path="res://prefabs/enemies/bullets/bullet_spawner.tscn" id="21_vy2hh"]
 [ext_resource type="AudioStream" uid="uid://elixy6otfi44" path="res://audio/enemy_death.wav" id="22_kmevy"]
-[ext_resource type="PackedScene" uid="uid://lf1s280eux7x" path="res://prefabs/misc/power.tscn" id="22_rqb2j"]
 [ext_resource type="AudioStream" uid="uid://dbkyr4u0q3kvm" path="res://audio/hit.wav" id="23_h7jnw"]
+[ext_resource type="PackedScene" uid="uid://bh7vwqtkpxd82" path="res://prefabs/enemies/bullets/bullet_2.tscn" id="23_mlmtd"]
 [ext_resource type="AudioStream" uid="uid://ceauriy8n5qcg" path="res://audio/retribution.ogg" id="23_r0jtr"]
 [ext_resource type="AudioStream" uid="uid://dphx0dcmgohr2" path="res://audio/level_up.ogg" id="24_s40de"]
 [ext_resource type="AudioStream" uid="uid://d1wctbotwnn1x" path="res://audio/applause.wav" id="25_cwolo"]
@@ -36,6 +36,7 @@ script = ExtResource("1_78i06")
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_804ch")]
 
 [node name="structure_parent" type="Node2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(0.5, 0.5)
 
@@ -53,6 +54,7 @@ player_afterimage = ExtResource("7_e0sq4")
 [node name="EnemySpawner" parent="." instance=ExtResource("5_cql0f")]
 
 [node name="Bullets" type="Node2D" parent="."]
+z_index = 10
 script = ExtResource("12_on4jv")
 
 [node name="weapons" type="Node2D" parent="."]
@@ -93,101 +95,17 @@ volume_db = -60.0
 autoplay = true
 bus = &"Music"
 
-[node name="Power" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-26, 2)
-
-[node name="Power2" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-23, 19)
-
-[node name="Power3" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-42, 13)
-
-[node name="Power4" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-43, -7)
-
-[node name="Power5" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-43, 37)
-
-[node name="Score" parent="." instance=ExtResource("22_4qbw8")]
-position = Vector2(-48, 72)
-
-[node name="Score2" parent="." instance=ExtResource("22_4qbw8")]
-position = Vector2(-27, 62)
-
-[node name="Score3" parent="." instance=ExtResource("22_4qbw8")]
-position = Vector2(-33, 89)
-
-[node name="Score4" parent="." instance=ExtResource("22_4qbw8")]
-position = Vector2(-57, 94)
-
-[node name="Score5" parent="." instance=ExtResource("22_4qbw8")]
-position = Vector2(-75, 77)
-
-[node name="Score6" parent="." instance=ExtResource("22_4qbw8")]
-position = Vector2(-78, 109)
-
-[node name="Score7" parent="." instance=ExtResource("22_4qbw8")]
-position = Vector2(-40, 111)
-
-[node name="Score8" parent="." instance=ExtResource("22_4qbw8")]
-position = Vector2(-64, 121)
-
-[node name="Score9" parent="." instance=ExtResource("22_4qbw8")]
-position = Vector2(-21, 110)
-
-[node name="Score10" parent="." instance=ExtResource("22_4qbw8")]
-position = Vector2(-51, 133)
-
-[node name="Score11" parent="." instance=ExtResource("22_4qbw8")]
-position = Vector2(-28, 136)
-
-[node name="Score12" parent="." instance=ExtResource("22_4qbw8")]
-position = Vector2(-84, 94)
-
-[node name="Score13" parent="." instance=ExtResource("22_4qbw8")]
-position = Vector2(-12, 81)
-
-[node name="Power6" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-61, 4)
-
-[node name="Power7" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-64, 23)
-
-[node name="Power8" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-63, -19)
-
-[node name="Power9" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-39, -30)
-
-[node name="Power10" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-20, -23)
-
-[node name="Power11" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-62, -41)
-
-[node name="Power12" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-87, -30)
-
-[node name="Power13" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-79, -7)
-
-[node name="Power14" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-83, 10)
-
-[node name="Power15" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-76, 43)
-
-[node name="Power16" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-94, 34)
-
-[node name="Power17" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-108, 9)
-
-[node name="Power18" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-103, -14)
-
-[node name="Power19" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-96, 55)
-
-[node name="Power20" parent="." instance=ExtResource("22_rqb2j")]
-position = Vector2(-117, 39)
+[node name="bullet_spawner" parent="." instance=ExtResource("21_vy2hh")]
+position = Vector2(-34, -20)
+bullets = Array[PackedScene]([ExtResource("23_mlmtd")])
+speed_random = 0.02
+size_random = 0.2
+bullet_count = 8.0
+bullet_count_random = 2.0
+initial_shoot_cooldown = 1.0
+shoot_cooldown = 2.0
+shot_gap = 0.04
+aim_at_player = true
+spiral_strength = 10.0
+frequency = 3.0
+amplitude = 60.0

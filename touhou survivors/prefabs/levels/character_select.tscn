@@ -1,7 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://do63og25gtn6j"]
+[gd_scene load_steps=42 format=3 uid="uid://do63og25gtn6j"]
 
 [ext_resource type="Texture2D" uid="uid://qrttyf07rc81" path="res://sprites/ui/character_select.png" id="1_1h6fy"]
 [ext_resource type="Script" path="res://scripts/logic_ui/character_select.gd" id="1_hwynl"]
+[ext_resource type="PackedScene" uid="uid://bn7lfio7jg320" path="res://prefabs/levels/main.tscn" id="2_e7qi4"]
 [ext_resource type="Texture2D" uid="uid://bsv6waqhjtkfp" path="res://sprites/actors/reimu.png" id="3_lllma"]
 [ext_resource type="Texture2D" uid="uid://cmipbsbn7fy1" path="res://sprites/actors/marisa.png" id="4_k41ao"]
 [ext_resource type="Shader" path="res://scripts/shaders/dissolve.gdshader" id="5_d7pbv"]
@@ -31,100 +32,100 @@ anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xt0ml"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w14x2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2y5l"]
 atlas = ExtResource("3_lllma")
-region = Rect2(0, 88, 11, 11)
+region = Rect2(1, 105, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r8eon"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2snfs"]
 atlas = ExtResource("3_lllma")
-region = Rect2(11, 88, 11, 11)
+region = Rect2(14, 105, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ni8vn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k85tl"]
 atlas = ExtResource("3_lllma")
-region = Rect2(22, 88, 11, 11)
+region = Rect2(27, 105, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2n56j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bee1"]
 atlas = ExtResource("3_lllma")
-region = Rect2(33, 88, 11, 11)
+region = Rect2(40, 105, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3rijm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5khb"]
 atlas = ExtResource("3_lllma")
-region = Rect2(44, 88, 11, 11)
+region = Rect2(53, 105, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qwxtb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hk1nv"]
 atlas = ExtResource("3_lllma")
-region = Rect2(55, 88, 11, 11)
+region = Rect2(66, 105, 13, 13)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hm8jp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w14x2")
+"texture": SubResource("AtlasTexture_p2y5l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r8eon")
+"texture": SubResource("AtlasTexture_2snfs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ni8vn")
+"texture": SubResource("AtlasTexture_k85tl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2n56j")
+"texture": SubResource("AtlasTexture_4bee1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3rijm")
+"texture": SubResource("AtlasTexture_y5khb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qwxtb")
+"texture": SubResource("AtlasTexture_hk1nv")
 }],
 "loop": true,
 "name": &"default",
 "speed": 12.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4wqau"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ew5tc"]
 atlas = ExtResource("4_k41ao")
-region = Rect2(0, 88, 11, 11)
+region = Rect2(1, 105, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i8o8t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbfvp"]
 atlas = ExtResource("4_k41ao")
-region = Rect2(11, 88, 11, 11)
+region = Rect2(14, 105, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_277p1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwu7c"]
 atlas = ExtResource("4_k41ao")
-region = Rect2(22, 88, 11, 11)
+region = Rect2(27, 105, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x8xtp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fle4"]
 atlas = ExtResource("4_k41ao")
-region = Rect2(33, 88, 11, 11)
+region = Rect2(40, 105, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kemim"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpghx"]
 atlas = ExtResource("4_k41ao")
-region = Rect2(44, 88, 11, 11)
+region = Rect2(53, 105, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iyw57"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq82j"]
 atlas = ExtResource("4_k41ao")
-region = Rect2(55, 88, 11, 11)
+region = Rect2(66, 105, 13, 13)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_unbd8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4wqau")
+"texture": SubResource("AtlasTexture_ew5tc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i8o8t")
+"texture": SubResource("AtlasTexture_rbfvp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_277p1")
+"texture": SubResource("AtlasTexture_kwu7c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x8xtp")
+"texture": SubResource("AtlasTexture_5fle4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kemim")
+"texture": SubResource("AtlasTexture_bpghx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iyw57")
+"texture": SubResource("AtlasTexture_lq82j")
 }],
 "loop": true,
 "name": &"default",
@@ -212,6 +213,7 @@ _data = {
 texture_filter = 1
 script = ExtResource("1_hwynl")
 fullscreen_pink = NodePath("FullscreenPink")
+main_game_scene = ExtResource("2_e7qi4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

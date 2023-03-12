@@ -7,7 +7,7 @@ var direction:bool = false
 
 func _ready():
 	
-	damage = 3
+	damage = randi_range(5,6)
 	global_position = Globals.player_position
 	if alt_fire:
 		rotation = deg_to_rad(Globals.cardinal_direction_to_rotation(Globals.player_facing))

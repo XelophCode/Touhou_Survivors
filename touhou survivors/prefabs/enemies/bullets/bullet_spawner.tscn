@@ -5,7 +5,7 @@
 
 [node name="bullet_spawner" type="Node2D"]
 script = ExtResource("1_bux6f")
-bullet = ExtResource("2_ciakk")
+bullets = Array[PackedScene]([ExtResource("2_ciakk")])
 
 [node name="Initialize" type="Timer" parent="."]
 wait_time = 0.5

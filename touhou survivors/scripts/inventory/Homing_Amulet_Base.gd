@@ -8,7 +8,7 @@ var alt:bool = false
 
 
 func _ready():
-	damage = 1
+	damage = randi_range(1,2)
 	global_position = Globals.player_position
 	if alt:
 		starting_move = Vector2(2,0)

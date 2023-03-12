@@ -6,9 +6,12 @@ var eyes_scrolling : float
 @export var inv_items : all_items
 var rerolling:bool = false
 var can_reroll:bool = false
+var spawn_count:Vector2 = Vector2(9,10)
+var player_level:float = 1.0
 
 func _ready():
 	Signals.connect("leveling_up",leveling_up)
+	
 
 func open_shop():
 	rerolling = false
@@ -83,14 +86,21 @@ func open_shop():
 	
 	items_to_spawn.shuffle()
 	
-	for i in randi_range(0,4):
+	for i in randi_range(spawn_count.x,spawn_count.y):
 		items_to_spawn.pop_front()
 	
 	Signals.emit_signal("spawn_inventory_items",items_to_spawn)
 	
 
 func leveling_up(value:bool):
+	player_level += 1.0
 	if value:
+		match player_level:
+			3.0: spawn_count = Vector2(7,8)
+			5.0: spawn_count = Vector2(5,7)
+			10.0: spawn_count = Vector2(3,6)
+			15.0: spawn_count = Vector2(1,4)
+			
 		$CPUParticles2D.emitting = true
 		$AnimationPlayer.play("stretch")
 		$CPUParticles2D2.emitting = true

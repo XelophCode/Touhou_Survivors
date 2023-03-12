@@ -19,3 +19,4 @@ icon = ExtResource("1_h4x1s")
 active = true
 cooldown = 10
 one_time_spawn = false
+item_set = Array[int]([])
