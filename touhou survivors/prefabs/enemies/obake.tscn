@@ -1,60 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://ck0wophtbfk1"]
+[gd_scene load_steps=11 format=3 uid="uid://ck0wophtbfk1"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_rpv4w"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_2kqm6"]
-[ext_resource type="Texture2D" uid="uid://d06mw78lq2t7f" path="res://sprites/actors/Obake.png" id="3_jtuk5"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_info.gd" id="2_57nke"]
+[ext_resource type="SpriteFrames" uid="uid://cumjlxw1cpjq8" path="res://resources/animations/sprite_frames/obake.tres" id="3_7o6j0"]
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_qc6hy"]
 [ext_resource type="PackedScene" uid="uid://dhnxpfiirfwyx" path="res://prefabs/enemies/bullets/bullet_spawner.tscn" id="5_bjtq5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3cdt3"]
-atlas = ExtResource("3_jtuk5")
-region = Rect2(0, 0, 23, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2c0lh"]
-atlas = ExtResource("3_jtuk5")
-region = Rect2(23, 0, 23, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bhjge"]
-atlas = ExtResource("3_jtuk5")
-region = Rect2(46, 0, 23, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nbiq1"]
-atlas = ExtResource("3_jtuk5")
-region = Rect2(0, 23, 23, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ylmn"]
-atlas = ExtResource("3_jtuk5")
-region = Rect2(23, 23, 23, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vreay"]
-atlas = ExtResource("3_jtuk5")
-region = Rect2(46, 23, 23, 23)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cotxy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3cdt3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2c0lh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bhjge")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nbiq1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ylmn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vreay")
-}],
-"loop": true,
-"name": &"neutral",
-"speed": 6.0
-}]
+[sub_resource type="Resource" id="Resource_50d23"]
+script = ExtResource("2_57nke")
+name = "Obake"
+sprite = ExtResource("3_7o6j0")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wmxvi"]
 radius = 6.0
@@ -96,12 +52,13 @@ _data = {
 
 [node name="Obake" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shadow")]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 2050
 slide_on_ceiling = false
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_rpv4w")
+info = SubResource("Resource_50d23")
 tier = 1
 type = 0
 sprite = NodePath("AnimatedSprite2D")
@@ -112,7 +69,7 @@ shadow = NodePath("Shadow")
 z_index = 3
 texture_filter = 1
 material = ExtResource("2_2kqm6")
-sprite_frames = SubResource("SpriteFrames_cotxy")
+sprite_frames = ExtResource("3_7o6j0")
 animation = &"neutral"
 autoplay = "neutral"
 

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=6 format=3 uid="uid://opfw80mmt0g8"]
+
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_2340c"]
+[ext_resource type="Texture2D" uid="uid://da5g8ugomtti8" path="res://sprites/items/item_icons/nature_wand_icon.png" id="1_c64p3"]
+[ext_resource type="PackedScene" uid="uid://bfwngat27yyue" path="res://prefabs/inventory/nature_wand_inventory.tscn" id="2_sgtjj"]
+[ext_resource type="PackedScene" uid="uid://d2wcrth1j7dcd" path="res://prefabs/item_spawnables/nature_wand.tscn" id="4_pvw2b"]
+[ext_resource type="Resource" uid="uid://w726sh3x7las" path="res://prefabs/inventory/resources/spell_cards/alice_grimoire.tres" id="5_nywtc"]
+
+[resource]
+script = ExtResource("1_2340c")
+enabled = true
+item_name = 24
+description = ""
+inventory_size = 2
+inventory = ExtResource("2_sgtjj")
+spawnable = ExtResource("4_pvw2b")
+icon = ExtResource("1_c64p3")
+active = true
+cooldown = 8
+one_time_spawn = false
+item_set = Array[int]([19, 23])
+spell_card = ExtResource("5_nywtc")

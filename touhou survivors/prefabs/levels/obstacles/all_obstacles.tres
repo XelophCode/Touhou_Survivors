@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="all_obstacles_resource" load_steps=6 format=3 uid="uid://nikxwywwcj82"]
+
+[ext_resource type="PackedScene" uid="uid://lb72hq3347sl" path="res://prefabs/levels/obstacles/new_lantern.tscn" id="1_pir3v"]
+[ext_resource type="Script" path="res://scripts/misc/all_obstacles.gd" id="1_x1y0a"]
+[ext_resource type="PackedScene" uid="uid://b0v60gh2tsx8n" path="res://prefabs/levels/obstacles/old_lantern.tscn" id="2_s2g8t"]
+[ext_resource type="PackedScene" uid="uid://c1jgunkjqcsv3" path="res://prefabs/levels/obstacles/sakura.tscn" id="3_04ta8"]
+[ext_resource type="PackedScene" uid="uid://bsbunnxftybb0" path="res://prefabs/levels/obstacles/torii_gate.tscn" id="4_8turv"]
+
+[resource]
+script = ExtResource("1_x1y0a")
+obstacles = Array[PackedScene]([ExtResource("1_pir3v"), ExtResource("2_s2g8t"), ExtResource("3_04ta8"), ExtResource("4_8turv")])

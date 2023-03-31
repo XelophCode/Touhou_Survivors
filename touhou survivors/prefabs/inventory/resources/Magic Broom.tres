@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://cja4r4b1usdgu"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=6 format=3 uid="uid://cja4r4b1usdgu"]
 
 [ext_resource type="Texture2D" uid="uid://byo3yvdkmvwvm" path="res://sprites/items/item_icons/magic_broom_icon.png" id="1_bifjr"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_f064l"]
 [ext_resource type="PackedScene" uid="uid://l4tuyvi7bigo" path="res://prefabs/inventory/magic_broom_inventory.tscn" id="1_mgfyw"]
 [ext_resource type="PackedScene" uid="uid://bmk675i5gpaw3" path="res://prefabs/item_spawnables/Magic_Broom.tscn" id="4_3ulkp"]
+[ext_resource type="Resource" uid="uid://cborgawowinbr" path="res://prefabs/inventory/resources/spell_cards/master_spark.tres" id="5_xkjeh"]
 
 [resource]
 script = ExtResource("1_f064l")
-enabled = false
+enabled = true
 item_name = 6
 description = "(PASSIVE ITEM)
 Move slightly faster!
@@ -17,7 +18,8 @@ inventory_size = 2
 inventory = ExtResource("1_mgfyw")
 spawnable = ExtResource("4_3ulkp")
 icon = ExtResource("1_bifjr")
-active = false
-cooldown = 5
-one_time_spawn = true
-item_set = Array[int]([])
+active = true
+cooldown = 7
+one_time_spawn = false
+item_set = Array[int]([7, 25])
+spell_card = ExtResource("5_xkjeh")

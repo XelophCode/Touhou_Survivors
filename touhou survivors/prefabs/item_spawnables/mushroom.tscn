@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvtkqego6pbom"]
+
+[ext_resource type="Script" path="res://scripts/inventory/exploding_mushroom.gd" id="1_ts8by"]
+[ext_resource type="PackedScene" uid="uid://dlon7ye3ybgxp" path="res://prefabs/item_spawnables/utilities/mushroom_main.tscn" id="2_8d1o1"]
+
+[node name="exploding_mushroom" type="Node2D"]
+script = ExtResource("1_ts8by")
+mushroom = ExtResource("2_8d1o1")

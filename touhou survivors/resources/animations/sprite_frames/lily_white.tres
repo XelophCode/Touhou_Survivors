@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://d2j3ryjhwa3fv"]
+
+[ext_resource type="Texture2D" uid="uid://dqqcif3ajaj2q" path="res://sprites/actors/lily_white.png" id="1_cfxue"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8n1a"]
+atlas = ExtResource("1_cfxue")
+region = Rect2(0, 0, 19, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwu7x"]
+atlas = ExtResource("1_cfxue")
+region = Rect2(19, 0, 19, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hafe"]
+atlas = ExtResource("1_cfxue")
+region = Rect2(38, 0, 19, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2gaf"]
+atlas = ExtResource("1_cfxue")
+region = Rect2(0, 22, 19, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaggr"]
+atlas = ExtResource("1_cfxue")
+region = Rect2(19, 22, 19, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0onwh"]
+atlas = ExtResource("1_cfxue")
+region = Rect2(38, 22, 19, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg3q1"]
+atlas = ExtResource("1_cfxue")
+region = Rect2(0, 44, 19, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6eng"]
+atlas = ExtResource("1_cfxue")
+region = Rect2(19, 44, 19, 22)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8n1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwu7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hafe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2gaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oaggr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0onwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wg3q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6eng")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 8.0
+}]

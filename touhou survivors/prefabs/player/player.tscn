@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cah8y53sm3blk"]
+[gd_scene load_steps=59 format=3 uid="uid://cah8y53sm3blk"]
 
 [ext_resource type="Script" path="res://scripts/misc/Player.gd" id="1_37at3"]
 [ext_resource type="SpriteFrames" uid="uid://1ntee1x116bu" path="res://sprites/actors/player_anims/reimu_anims.tres" id="2_7dit5"]
@@ -525,10 +525,13 @@ _data = {
 "squash_n_stretch": SubResource("Animation_o30dh")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_itp5o"]
+radius = 4.0
+
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("walk_animations")]
 z_index = 7
 texture_filter = 1
-collision_mask = 0
+collision_mask = 2048
 floor_constant_speed = true
 script = ExtResource("1_37at3")
 walk_animations = NodePath("WalkAnimations")
@@ -659,18 +662,21 @@ wait_time = 30.0
 autostart = true
 
 [node name="Sakura" type="GPUParticles2D" parent="."]
+z_index = 3
 position = Vector2(-55, 0)
 process_material = SubResource("ParticleProcessMaterial_xb3vs")
 texture = ExtResource("7_iakcq")
 lifetime = 10.0
 
 [node name="Sun_spots" type="GPUParticles2D" parent="."]
+z_index = 3
 amount = 3
 process_material = SubResource("ParticleProcessMaterial_x0ngv")
 texture = ExtResource("7_xwjmk")
 lifetime = 10.0
 
 [node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+z_index = 3
 position = Vector2(-34, 0)
 amount = 60
 lifetime = 30.0
@@ -687,6 +693,7 @@ scale_amount_curve = SubResource("Curve_hq1bc")
 color_ramp = SubResource("Gradient_mrskv")
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+z_index = 3
 position = Vector2(-68, 0)
 amount = 10
 lifetime = 20.0
@@ -713,6 +720,7 @@ one_shot = true
 position_smoothing_speed = 30.0
 
 [node name="CPUParticles2D4" type="GPUParticles2D" parent="."]
+z_index = 3
 position = Vector2(-92, 0)
 scale = Vector2(0.1, 0.1)
 amount = 2
@@ -727,6 +735,9 @@ autoplay = "squash_n_stretch"
 libraries = {
 "": SubResource("AnimationLibrary_gy00o")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_itp5o")
 
 [connection signal="area_entered" from="MagicCircle/ItemPull" to="." method="_on_item_pull_area_entered"]
 [connection signal="area_exited" from="MagicCircle/ItemPull" to="." method="_on_item_pull_area_exited"]

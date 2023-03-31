@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpellCardResource" load_steps=4 format=3 uid="uid://cborgawowinbr"]
+
+[ext_resource type="Script" path="res://scripts/inventory/spell_card_resource.gd" id="1_crvu0"]
+[ext_resource type="Texture2D" uid="uid://balecnmlihjv8" path="res://sprites/items/item_icons/master_spark_icon.png" id="1_vgrg2"]
+[ext_resource type="PackedScene" uid="uid://ta072pb8fb2w" path="res://prefabs/item_spawnables/master_spark.tscn" id="3_fesn4"]
+
+[resource]
+script = ExtResource("1_crvu0")
+icon = ExtResource("1_vgrg2")
+spawnable = ExtResource("3_fesn4")
+cooldown = 23.0

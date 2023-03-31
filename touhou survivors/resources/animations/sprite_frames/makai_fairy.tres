@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://euhaceopm8qi"]
+
+[ext_resource type="Texture2D" uid="uid://cmpjehpqgsch8" path="res://sprites/actors/Makai_Fairy.png" id="1_hruhc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx47g"]
+atlas = ExtResource("1_hruhc")
+region = Rect2(0, 0, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej8e2"]
+atlas = ExtResource("1_hruhc")
+region = Rect2(23, 0, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wdnf"]
+atlas = ExtResource("1_hruhc")
+region = Rect2(0, 23, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3amfw"]
+atlas = ExtResource("1_hruhc")
+region = Rect2(23, 23, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s8em"]
+atlas = ExtResource("1_hruhc")
+region = Rect2(0, 46, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xgm1"]
+atlas = ExtResource("1_hruhc")
+region = Rect2(23, 46, 23, 23)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx47g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej8e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wdnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3amfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0s8em")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xgm1")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 12.0
+}]

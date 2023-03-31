@@ -14,7 +14,7 @@ occult_orb = false
 [sub_resource type="Resource" id="Resource_wlrje"]
 script = ExtResource("3_g1ki0")
 item = ExtResource("4_cwquw")
-cooldown = 4
+cooldown = 10
 occult_orb = false
 
 [resource]

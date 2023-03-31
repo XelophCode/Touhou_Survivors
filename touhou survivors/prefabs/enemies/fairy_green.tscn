@@ -1,60 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://dg2x72v8eacu4"]
+[gd_scene load_steps=11 format=3 uid="uid://dg2x72v8eacu4"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_0tb2f"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_cc4cd"]
-[ext_resource type="Texture2D" uid="uid://txl4lm8uclks" path="res://sprites/actors/fairy_3.png" id="3_eytfq"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_info.gd" id="2_sv13t"]
+[ext_resource type="SpriteFrames" uid="uid://ceqyr58gprcc7" path="res://resources/animations/sprite_frames/fairy_green.tres" id="3_l57aw"]
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_v5en2"]
 [ext_resource type="PackedScene" uid="uid://dhnxpfiirfwyx" path="res://prefabs/enemies/bullets/bullet_spawner.tscn" id="5_wp2op"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_shahj"]
-atlas = ExtResource("3_eytfq")
-region = Rect2(0, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_or13v"]
-atlas = ExtResource("3_eytfq")
-region = Rect2(13, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ide42"]
-atlas = ExtResource("3_eytfq")
-region = Rect2(26, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_juhml"]
-atlas = ExtResource("3_eytfq")
-region = Rect2(39, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qmr5w"]
-atlas = ExtResource("3_eytfq")
-region = Rect2(52, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s8iet"]
-atlas = ExtResource("3_eytfq")
-region = Rect2(65, 0, 13, 13)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cotxy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_shahj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_or13v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ide42")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_juhml")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qmr5w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s8iet")
-}],
-"loop": true,
-"name": &"neutral",
-"speed": 12.0
-}]
+[sub_resource type="Resource" id="Resource_k0bni"]
+script = ExtResource("2_sv13t")
+name = "Green Fairy"
+sprite = ExtResource("3_l57aw")
+metadata/_editor_prop_ptr_sprite = NodePath("AnimatedSprite2D")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pifu0"]
 radius = 6.08276
@@ -95,12 +52,13 @@ _data = {
 
 [node name="FairyGreen" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "animation", "shadow")]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 2050
 slide_on_ceiling = false
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_0tb2f")
+info = SubResource("Resource_k0bni")
 tier = 0
 type = 0
 sprite = NodePath("AnimatedSprite2D")
@@ -115,7 +73,7 @@ texture_filter = 1
 material = ExtResource("2_cc4cd")
 scale = Vector2(1, 0.958365)
 skew = -0.0363336
-sprite_frames = SubResource("SpriteFrames_cotxy")
+sprite_frames = ExtResource("3_l57aw")
 animation = &"neutral"
 autoplay = "neutral"
 

@@ -1,10 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://jjsunl81if2b"]
+[gd_scene load_steps=6 format=3 uid="uid://jjsunl81if2b"]
 
 [ext_resource type="Script" path="res://scripts/enemies/bullet_1.gd" id="1_ij4e6"]
 [ext_resource type="Texture2D" uid="uid://c82g4jkkydnr1" path="res://sprites/misc/bullets/bullet_1.png" id="2_ww4p2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fia0b"]
 radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnlw6"]
+atlas = ExtResource("2_ww4p2")
+region = Rect2(0, 0, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ueqcv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnlw6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="bullet" type="Node2D"]
 texture_filter = 1
@@ -20,5 +35,5 @@ collision_layer = 512
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/main_body_2/Area2D"]
 shape = SubResource("CircleShape2D_fia0b")
 
-[node name="BulletSprite" type="Sprite2D" parent="main_body/main_body_2"]
-texture = ExtResource("2_ww4p2")
+[node name="BulletSprite" type="AnimatedSprite2D" parent="main_body/main_body_2"]
+sprite_frames = SubResource("SpriteFrames_ueqcv")

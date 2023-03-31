@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://bg4q3xunhuj5u"]
+
+[ext_resource type="Texture2D" uid="uid://btswaovrwvdid" path="res://sprites/actors/vengeful_spirit.png" id="1_nnxal"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0jk7"]
+atlas = ExtResource("1_nnxal")
+region = Rect2(0, 0, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2tyx"]
+atlas = ExtResource("1_nnxal")
+region = Rect2(23, 0, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70w2o"]
+atlas = ExtResource("1_nnxal")
+region = Rect2(46, 0, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcl6j"]
+atlas = ExtResource("1_nnxal")
+region = Rect2(0, 23, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luqff"]
+atlas = ExtResource("1_nnxal")
+region = Rect2(23, 23, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae5xk"]
+atlas = ExtResource("1_nnxal")
+region = Rect2(46, 23, 23, 23)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0jk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2tyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70w2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcl6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luqff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae5xk")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 6.0
+}]

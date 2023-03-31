@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://bgjwct24kff6i"]
+
+[ext_resource type="Texture2D" uid="uid://cgjnwamhktu4r" path="res://sprites/actors/Hell_Raven.png" id="1_w1a6n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eayx2"]
+atlas = ExtResource("1_w1a6n")
+region = Rect2(0, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_638f1"]
+atlas = ExtResource("1_w1a6n")
+region = Rect2(18, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5skc"]
+atlas = ExtResource("1_w1a6n")
+region = Rect2(36, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n5hu"]
+atlas = ExtResource("1_w1a6n")
+region = Rect2(0, 14, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4k1y"]
+atlas = ExtResource("1_w1a6n")
+region = Rect2(18, 14, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3jlj"]
+atlas = ExtResource("1_w1a6n")
+region = Rect2(36, 14, 18, 14)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eayx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_638f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5skc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n5hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4k1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3jlj")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 12.0
+}]

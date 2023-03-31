@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtn5em2q4d3mx"]
+
+[ext_resource type="Script" path="res://scripts/inventory/magic_tome.gd" id="1_13boc"]
+[ext_resource type="PackedScene" uid="uid://c7nthdfow41hh" path="res://prefabs/item_spawnables/utilities/fireball.tscn" id="2_1ees7"]
+[ext_resource type="PackedScene" uid="uid://pqg7xs4fa41h" path="res://prefabs/item_spawnables/utilities/water_splash.tscn" id="3_5u3pw"]
+
+[node name="magic_tome" type="Node2D"]
+script = ExtResource("1_13boc")
+fireball = ExtResource("2_1ees7")
+water_splash = ExtResource("3_5u3pw")

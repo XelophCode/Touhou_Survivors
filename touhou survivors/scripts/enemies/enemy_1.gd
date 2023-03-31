@@ -2,6 +2,7 @@ extends enemy_base_class
 
 var leveling_up:bool = false
 var max_knockback:float
+@export var info:enemy_info
 
 func _ready():
 	Signals.connect("leveling_up",catch_leveling_up)
@@ -15,9 +16,9 @@ func _physics_process(delta):
 	
 	if face_player:
 		if direction_to_player.x >= 0:
-			sprite.scale.x = 1
+			sprite.flip_h = false
 		else:
-			sprite.scale.x = -1
+			sprite.flip_h = true
 	
 	if knockback:
 		velocity = -direction_to_player * (delta*2000)
@@ -33,6 +34,7 @@ func _physics_process(delta):
 		if alive:
 			Signals.emit_signal("enemy_death_sfx")
 			Signals.emit_signal("spawn_pickup",global_position,type,tier)
+			Signals.emit_signal("spawn_mon",global_position)
 			if shadow != null:
 				shadow.visible = false
 			$knockback_timer.start(100)

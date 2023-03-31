@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://d0w17033o0y34"]
+
+[ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_u8r34"]
+[ext_resource type="PackedScene" uid="uid://cps4isq1c140k" path="res://prefabs/item_grid_layouts/2x2_var_1.tscn" id="2_kipvk"]
+[ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="3_h5lw0"]
+[ext_resource type="Texture2D" uid="uid://qv7xuvpa3v10" path="res://sprites/items/inventory_item_BGs/2x2_item_large_bg.png" id="4_bq8mr"]
+[ext_resource type="Material" uid="uid://dun40mejvqphh" path="res://scripts/shaders/materials/inventory_item_shader_material.tres" id="5_mc1uv"]
+[ext_resource type="Texture2D" uid="uid://cljuujp6ixvkw" path="res://sprites/items/inventory/megaphone_gun_inventory_large.png" id="6_o128u"]
+[ext_resource type="Texture2D" uid="uid://c7oa4hju8qu6k" path="res://sprites/items/inventory_item_BGs/2x2_item_large_bg_highlight.png" id="7_g8w4m"]
+[ext_resource type="AnimationLibrary" uid="uid://c3f6dw06ejniu" path="res://resources/animations/libraries/Inventory_Items.res" id="8_dl2em"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_223nq"]
+resource_local_to_scene = true
+shader = ExtResource("3_h5lw0")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(0.184314, 0.996078, 1, 1)
+shader_parameter/line_scale = 0.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[node name="MegaphoneGun" type="Node2D"]
+z_index = 6
+texture_filter = 1
+script = ExtResource("1_u8r34")
+
+[node name="2x2_var_1" parent="." instance=ExtResource("2_kipvk")]
+
+[node name="ItemLargeBg" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+material = SubResource("ShaderMaterial_223nq")
+texture = ExtResource("4_bq8mr")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+material = ExtResource("5_mc1uv")
+scale = Vector2(1, 1e-05)
+texture = ExtResource("6_o128u")
+
+[node name="ItemHighlight" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("7_g8w4m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"Inventory_Items": ExtResource("8_dl2em")
+}

@@ -8,4 +8,4 @@
 script = ExtResource("1_k14oj")
 icon = ExtResource("1_s817s")
 spawnable = ExtResource("3_s83ut")
-cooldown = 20.0
+cooldown = 22.0

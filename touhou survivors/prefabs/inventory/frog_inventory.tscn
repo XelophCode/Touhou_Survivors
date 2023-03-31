@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://coqvef1m70lp6"]
+[gd_scene load_steps=10 format=3 uid="uid://coqvef1m70lp6"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_8g5kb"]
 [ext_resource type="PackedScene" uid="uid://bwaw5f7habkcj" path="res://prefabs/item_grid_layouts/1x1.tscn" id="2_mfb60"]
@@ -6,7 +6,6 @@
 [ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="3_j7hxc"]
 [ext_resource type="Texture2D" uid="uid://c5ikfckb0g6fc" path="res://sprites/items/inventory/frog_item_large.png" id="4_o3vem"]
 [ext_resource type="Material" uid="uid://dun40mejvqphh" path="res://scripts/shaders/materials/inventory_item_shader_material.tres" id="4_w74ih"]
-[ext_resource type="PackedScene" uid="uid://63murqtbvxlb" path="res://prefabs/logic_ui/occult_orb.tscn" id="5_joibh"]
 [ext_resource type="AnimationLibrary" uid="uid://c3f6dw06ejniu" path="res://resources/animations/libraries/Inventory_Items.res" id="6_w861n"]
 [ext_resource type="Texture2D" uid="uid://csehh14x17k6h" path="res://sprites/items/inventory_item_BGs/1x1_item_large_bg_highlight.png" id="7_4dbny"]
 
@@ -18,7 +17,7 @@ shader_parameter/line_color = Color(0.184314, 0.996078, 1, 1)
 shader_parameter/line_scale = 0.0
 shader_parameter/frequency = 0.5
 shader_parameter/light_offset = 0.5
-shader_parameter/alpha = null
+shader_parameter/alpha = 1.0
 
 [node name="Frog" type="Node2D"]
 z_index = 6
@@ -44,11 +43,6 @@ texture = ExtResource("4_o3vem")
 [node name="ItemHighlight" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("7_4dbny")
-
-[node name="occult_orb" parent="." instance=ExtResource("5_joibh")]
-visible = false
-position = Vector2(-6.5, -6.5)
-scale = Vector2(1, 1e-05)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

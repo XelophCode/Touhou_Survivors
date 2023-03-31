@@ -1,73 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://de7be4uyjd811"]
+[gd_scene load_steps=10 format=3 uid="uid://de7be4uyjd811"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_i3kvw"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_info.gd" id="2_c3m8b"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_d28hf"]
-[ext_resource type="Texture2D" uid="uid://dqqcif3ajaj2q" path="res://sprites/actors/lily_white.png" id="3_5lpb4"]
+[ext_resource type="SpriteFrames" uid="uid://d2j3ryjhwa3fv" path="res://resources/animations/sprite_frames/lily_white.tres" id="3_u8yn4"]
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_jcqnw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a8n1a"]
-atlas = ExtResource("3_5lpb4")
-region = Rect2(0, 0, 19, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rwu7x"]
-atlas = ExtResource("3_5lpb4")
-region = Rect2(19, 0, 19, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0hafe"]
-atlas = ExtResource("3_5lpb4")
-region = Rect2(38, 0, 19, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f2gaf"]
-atlas = ExtResource("3_5lpb4")
-region = Rect2(0, 22, 19, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oaggr"]
-atlas = ExtResource("3_5lpb4")
-region = Rect2(19, 22, 19, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0onwh"]
-atlas = ExtResource("3_5lpb4")
-region = Rect2(38, 22, 19, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wg3q1"]
-atlas = ExtResource("3_5lpb4")
-region = Rect2(0, 44, 19, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t6eng"]
-atlas = ExtResource("3_5lpb4")
-region = Rect2(19, 44, 19, 22)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cotxy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a8n1a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rwu7x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0hafe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f2gaf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oaggr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0onwh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wg3q1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t6eng")
-}],
-"loop": true,
-"name": &"neutral",
-"speed": 8.0
-}]
+[sub_resource type="Resource" id="Resource_t1iw5"]
+script = ExtResource("2_c3m8b")
+name = "Lily White"
+sprite = ExtResource("3_u8yn4")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iocf3"]
 radius = 6.0
@@ -109,12 +51,13 @@ _data = {
 
 [node name="LilyWhite" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shadow")]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 2050
 slide_on_ceiling = false
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_i3kvw")
+info = SubResource("Resource_t1iw5")
 tier = 1
 type = 0
 sprite = NodePath("AnimatedSprite2D")
@@ -128,7 +71,7 @@ damage = 8.0
 z_index = 3
 texture_filter = 1
 material = ExtResource("2_d28hf")
-sprite_frames = SubResource("SpriteFrames_cotxy")
+sprite_frames = ExtResource("3_u8yn4")
 animation = &"neutral"
 autoplay = "neutral"
 

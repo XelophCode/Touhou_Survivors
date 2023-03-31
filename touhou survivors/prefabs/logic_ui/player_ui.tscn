@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://cxtno75a58bkv"]
+[gd_scene load_steps=141 format=3 uid="uid://cxtno75a58bkv"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/player_ui.gd" id="1_i5u1q"]
 [ext_resource type="SpriteFrames" uid="uid://bfm8psvacuqtm" path="res://sprites/ui/character_portraits/reimu_portrait.tres" id="2_lwihl"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cfbld0no123ax" path="res://sprites/ui/powerbar_border.png" id="5_7g6dd"]
 [ext_resource type="PackedScene" uid="uid://iqvjyq5tkfb0" path="res://prefabs/logic_ui/weapon_spawner.tscn" id="6_1x5oq"]
 [ext_resource type="Shader" path="res://scripts/shaders/rainbow.gdshader" id="6_sxk2r"]
+[ext_resource type="Shader" path="res://scripts/shaders/dissolve_2.gdshader" id="7_mfad4"]
+[ext_resource type="Texture2D" uid="uid://dqbnr55wnk61k" path="res://sprites/ui/timer_effect.png" id="7_qxr2u"]
 [ext_resource type="Texture2D" uid="uid://bjuq7vtc66ft3" path="res://sprites/ui/vignette.png" id="8_2iy3q"]
 [ext_resource type="Shader" path="res://scripts/shaders/dissolve.gdshader" id="10_6vywg"]
 [ext_resource type="PackedScene" uid="uid://6dwuqj2vu1k8" path="res://prefabs/logic_ui/shop.tscn" id="10_by00x"]
@@ -24,8 +26,10 @@
 [ext_resource type="Texture2D" uid="uid://bbqngghgfgoow" path="res://sprites/ui/crystal.png" id="13_uxnfn"]
 [ext_resource type="PackedScene" uid="uid://04yuy6nwpd5q" path="res://prefabs/logic_ui/tooltip.tscn" id="13_x4fa0"]
 [ext_resource type="Environment" uid="uid://5eytrk3240f8" path="res://resources/main_environment.tres" id="17_8pmbs"]
+[ext_resource type="Texture2D" uid="uid://pxw6irgq5bpa" path="res://sprites/items/pickups/mon.png" id="17_l0i28"]
 [ext_resource type="PackedScene" uid="uid://cokydxk2wfjqf" path="res://prefabs/logic_ui/right_click_tip.tscn" id="19_2m38r"]
 [ext_resource type="Texture2D" uid="uid://bad488ler0kop" path="res://sprites/ui/damage_fullscreen.png" id="20_g8vl8"]
+[ext_resource type="Texture2D" uid="uid://brrahyuj8m1ta" path="res://sprites/ui/pause_overlay.png" id="27_knhde"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn5md"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
@@ -34,6 +38,15 @@ bg_color = Color(0.12549, 0.12549, 0.12549, 1)
 bg_color = Color(0.501961, 1, 0.568627, 1)
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ysfkj"]
+shader = ExtResource("7_mfad4")
+shader_parameter/speed = 0.012
+shader_parameter/frequency_y = 5.105
+shader_parameter/frequency_x = 28.585
+shader_parameter/amplitude_y = 1.376
+shader_parameter/amplitude_x = 32.99
+shader_parameter/inclination = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8cgau"]
 shader = ExtResource("6_sxk2r")
@@ -351,6 +364,77 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jmo7"]
+atlas = ExtResource("17_l0i28")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktfjw"]
+atlas = ExtResource("17_l0i28")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlgr2"]
+atlas = ExtResource("17_l0i28")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o51wf"]
+atlas = ExtResource("17_l0i28")
+region = Rect2(0, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gped5"]
+atlas = ExtResource("17_l0i28")
+region = Rect2(10, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t56xu"]
+atlas = ExtResource("17_l0i28")
+region = Rect2(20, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2ycn"]
+atlas = ExtResource("17_l0i28")
+region = Rect2(0, 20, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn70x"]
+atlas = ExtResource("17_l0i28")
+region = Rect2(10, 20, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf7v7"]
+atlas = ExtResource("17_l0i28")
+region = Rect2(20, 20, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8q4su"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jmo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktfjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlgr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o51wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gped5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t56xu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2ycn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn70x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf7v7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 19.0
+}]
+
 [sub_resource type="Curve" id="Curve_jnjyb"]
 _data = [Vector2(0, 1), 0.0, -0.317695, 0, 1, Vector2(0.543689, 0.827273), -0.702273, -0.702273, 0, 0, Vector2(1, 0.209091), -1.35474, 0.0, 1, 0]
 point_count = 3
@@ -386,6 +470,111 @@ shader_parameter/flash_modifier = null
 shader_parameter/opacity = 1.0
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_sbjtb")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xddyr"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0gd83"]
+noise = SubResource("FastNoiseLite_xddyr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_esg11"]
+resource_local_to_scene = true
+shader = ExtResource("10_6vywg")
+shader_parameter/dissolve_value = 0.0
+shader_parameter/flash_modifier = null
+shader_parameter/opacity = 1.0
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_0gd83")
+
+[sub_resource type="Animation" id="Animation_kilkf"]
+resource_name = "enemy_GO_rearrange"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gameover/black/enemy/killed_by:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(134, 79), Vector2(30, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gameover/black/enemy/killed_by:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gameover/black/enemy/enemy_name:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(134, 142), Vector2(120, 50)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gameover/black/enemy/enemy_name:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Gameover/black/enemy/enemy_sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(212, 119), Vector2(220, 55)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Gameover/black/enemy/enemy_sprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1hw0i"]
+resource_name = "enemy_sprite_scale_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gameover/black/enemy/enemy_sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(3, 3)]
+}
+
 [sub_resource type="Animation" id="Animation_mxmu2"]
 resource_name = "fade_out"
 tracks/0/type = "value"
@@ -403,11 +592,10 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ubr6i"]
 resource_name = "gameover"
-length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Gameover:material:shader_parameter/dissolve_value")
+tracks/0/path = NodePath("Gameover/black:material:shader_parameter/dissolve_value")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -423,18 +611,191 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(3),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"goto_main_menu"
+"method": &"game_over_stats"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_dhh15"]
+resource_name = "pickup_GO_rearrange"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gameover/black/final_pickups/pickups_gathered:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(66, 86), Vector2(20, 80)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gameover/black/final_pickups/pickups_gathered:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gameover/black/final_pickups/faith:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(65, 111), Vector2(5, 95)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gameover/black/final_pickups/faith:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Gameover/black/final_pickups/crystals:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(65, 133), Vector2(5, 110)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Gameover/black/final_pickups/crystals:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Gameover/black/final_pickups/mon:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(65, 153), Vector2(5, 125)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Gameover/black/final_pickups/mon:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_x5g30"]
+resource_name = "press_to_continue"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gameover/black/return_to_main_menu/any_button:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s8stv"]
+resource_name = "time_GO_rearrange"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gameover/black/final_time/time_survived:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(100, 90), Vector2(30, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gameover/black/final_time/time_survived:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gameover/black/final_time/time:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(180, 118), Vector2(150, 20)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gameover/black/final_time/time:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6scmd"]
 _data = {
+"enemy_GO_rearrange": SubResource("Animation_kilkf"),
+"enemy_sprite_scale_in": SubResource("Animation_1hw0i"),
 "fade_out": SubResource("Animation_mxmu2"),
-"gameover": SubResource("Animation_ubr6i")
+"gameover": SubResource("Animation_ubr6i"),
+"pickup_GO_rearrange": SubResource("Animation_dhh15"),
+"press_to_continue": SubResource("Animation_x5g30"),
+"time_GO_rearrange": SubResource("Animation_s8stv")
 }
 
 [sub_resource type="Animation" id="Animation_rggqb"]
@@ -538,22 +899,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_qrwwu"]
-resource_name = "modulate"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DamageFullscreen:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_m33xq"]
 resource_name = "fade_out"
 length = 0.2
@@ -568,6 +913,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qrwwu"]
+resource_name = "modulate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageFullscreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wlne1"]
@@ -658,6 +1019,238 @@ _data = {
 "shake": SubResource("Animation_5a8ct")
 }
 
+[sub_resource type="Animation" id="Animation_lkkuk"]
+resource_local_to_scene = true
+resource_name = "default"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../UI/mon_labels/mon0:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(406, 228), Vector2(406, 225), Vector2(406, 228)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../UI/mon_labels/mon0:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.7), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0djku"]
+_data = {
+"default": SubResource("Animation_lkkuk")
+}
+
+[sub_resource type="Animation" id="Animation_fmteb"]
+resource_name = "default"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../UI/mon_labels/mon1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(398, 228), Vector2(398, 225), Vector2(398, 228)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../UI/mon_labels/mon1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.7), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8k214"]
+_data = {
+"default": SubResource("Animation_fmteb")
+}
+
+[sub_resource type="Animation" id="Animation_0c17v"]
+resource_name = "default"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../UI/mon_labels/mon2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(390, 228), Vector2(390, 225), Vector2(390, 228)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../UI/mon_labels/mon2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.7), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1q2dk"]
+_data = {
+"default": SubResource("Animation_0c17v")
+}
+
+[sub_resource type="Animation" id="Animation_e3jji"]
+resource_name = "default"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../UI/mon_labels/mon3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(382, 228), Vector2(382, 225), Vector2(382, 228)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../UI/mon_labels/mon3:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.7), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fmocx"]
+_data = {
+"default": SubResource("Animation_e3jji")
+}
+
+[sub_resource type="Animation" id="Animation_uca1w"]
+resource_name = "default"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../UI/mon_labels/mon4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(374, 228), Vector2(374, 225), Vector2(374, 228)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../UI/mon_labels/mon4:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.7), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ojk2"]
+_data = {
+"default": SubResource("Animation_uca1w")
+}
+
+[sub_resource type="Animation" id="Animation_dj1dh"]
+resource_name = "default"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../UI/mon_labels/mon5:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(366, 228), Vector2(366, 225), Vector2(366, 228)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../UI/mon_labels/mon5:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.7), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81m7s"]
+_data = {
+"default": SubResource("Animation_dj1dh")
+}
+
+[sub_resource type="Animation" id="Animation_50f58"]
+resource_name = "default"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../UI/mon_labels/mon6:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(358, 228), Vector2(358, 225), Vector2(358, 228)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../UI/mon_labels/mon6:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.7), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_csr8f"]
+_data = {
+"default": SubResource("Animation_50f58")
+}
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0qhdl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r23ak"]
@@ -679,9 +1272,130 @@ corner_detail = 20
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6h1ky"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_18p55"]
+[sub_resource type="Animation" id="Animation_7gmu6"]
+resource_name = "slide_in"
+length = 0.4
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Resume:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(450, 146), Vector2(325, 146)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Options:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(450, 175), Vector2(309, 175)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(450, 206), Vector2(277, 206)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("overlay:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(450, -2), Vector2(237, -2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../ScreenDim:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.175, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../ScreenDim:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.175, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("character_portrait", "time_label", "lvl_label", "powerbar", "confetti")]
+[sub_resource type="Animation" id="Animation_sj5ht"]
+resource_name = "slide_out"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Resume:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(325, 146), Vector2(450, 146)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Options:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(309, 175), Vector2(450, 175)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(277, 206), Vector2(450, 206)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aueef"]
+_data = {
+"slide_in": SubResource("Animation_7gmu6"),
+"slide_out": SubResource("Animation_sj5ht")
+}
+
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("character_portrait", "time_label", "lvl_label", "powerbar", "confetti", "time_survived_label", "final_time_label", "killed_by_text", "enemy_name", "enemy_sprite", "pickups_label", "faith_label", "crystals_label", "mon_label", "any_button_label")]
 script = ExtResource("1_i5u1q")
 character_portrait = NodePath("UI/CharacterPortrait")
 time_label = NodePath("UI/Time")
@@ -690,6 +1404,16 @@ powerbar = NodePath("UI/Powerbar")
 confetti = NodePath("Confetti")
 reimu_portrait = ExtResource("2_lwihl")
 marisa_portrait = ExtResource("3_8rrdf")
+time_survived_label = NodePath("Gameover/black/final_time/time_survived")
+final_time_label = NodePath("Gameover/black/final_time/time")
+killed_by_text = NodePath("Gameover/black/enemy/killed_by")
+enemy_name = NodePath("Gameover/black/enemy/enemy_name")
+enemy_sprite = NodePath("Gameover/black/enemy/enemy_sprite")
+pickups_label = NodePath("Gameover/black/final_pickups/pickups_gathered")
+faith_label = NodePath("Gameover/black/final_pickups/faith")
+crystals_label = NodePath("Gameover/black/final_pickups/crystals")
+mon_label = NodePath("Gameover/black/final_pickups/mon")
+any_button_label = NodePath("Gameover/black/return_to_main_menu/any_button")
 
 [node name="ScreenDim" type="Sprite2D" parent="."]
 visible = false
@@ -720,6 +1444,15 @@ texture = ExtResource("5_7g6dd")
 modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(213, 120)
 texture = ExtResource("8_2iy3q")
+
+[node name="TimerEffect" type="Sprite2D" parent="UI"]
+position = Vector2(70, 225)
+texture = ExtResource("7_qxr2u")
+
+[node name="TimerEffect2" type="Sprite2D" parent="UI"]
+material = SubResource("ShaderMaterial_ysfkj")
+position = Vector2(70, 224.5)
+texture = ExtResource("7_qxr2u")
 
 [node name="Time" type="Label" parent="UI"]
 material = SubResource("ShaderMaterial_8cgau")
@@ -782,7 +1515,7 @@ offset_right = 65.4997
 offset_bottom = 50.0
 theme_override_styles/background = SubResource("StyleBoxFlat_5cbha")
 theme_override_styles/fill = SubResource("StyleBoxFlat_p864l")
-max_value = 10.0
+max_value = 5.0
 step = 0.001
 show_percentage = false
 
@@ -808,6 +1541,104 @@ sprite_frames = SubResource("SpriteFrames_e80tj")
 [node name="Crystal" type="AnimatedSprite2D" parent="UI"]
 position = Vector2(12.5, 53.5)
 sprite_frames = SubResource("SpriteFrames_38gws")
+
+[node name="mon_sprite" type="AnimatedSprite2D" parent="UI"]
+position = Vector2(419, 233)
+sprite_frames = SubResource("SpriteFrames_8q4su")
+autoplay = "default"
+frame_progress = 0.314505
+
+[node name="mon_labels" type="Node2D" parent="UI"]
+
+[node name="mon0" type="Label" parent="UI/mon_labels"]
+offset_left = 406.0
+offset_top = 228.0
+offset_right = 422.0
+offset_bottom = 251.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.984314, 0.72549, 0.329412, 1)
+theme_override_fonts/font = ExtResource("3_nqdip")
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="mon1" type="Label" parent="UI/mon_labels"]
+visible = false
+offset_left = 398.0
+offset_top = 228.0
+offset_right = 414.0
+offset_bottom = 251.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.984314, 0.72549, 0.329412, 1)
+theme_override_fonts/font = ExtResource("3_nqdip")
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="mon2" type="Label" parent="UI/mon_labels"]
+visible = false
+offset_left = 390.0
+offset_top = 228.0
+offset_right = 406.0
+offset_bottom = 251.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.984314, 0.72549, 0.329412, 1)
+theme_override_fonts/font = ExtResource("3_nqdip")
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="mon3" type="Label" parent="UI/mon_labels"]
+visible = false
+offset_left = 382.0
+offset_top = 228.0
+offset_right = 398.0
+offset_bottom = 251.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.984314, 0.72549, 0.329412, 1)
+theme_override_fonts/font = ExtResource("3_nqdip")
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="mon4" type="Label" parent="UI/mon_labels"]
+visible = false
+offset_left = 374.0
+offset_top = 228.0
+offset_right = 390.0
+offset_bottom = 251.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.984314, 0.72549, 0.329412, 1)
+theme_override_fonts/font = ExtResource("3_nqdip")
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="mon5" type="Label" parent="UI/mon_labels"]
+visible = false
+offset_left = 366.0
+offset_top = 228.0
+offset_right = 382.0
+offset_bottom = 251.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.984314, 0.72549, 0.329412, 1)
+theme_override_fonts/font = ExtResource("3_nqdip")
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="mon6" type="Label" parent="UI/mon_labels"]
+visible = false
+offset_left = 358.0
+offset_top = 228.0
+offset_right = 374.0
+offset_bottom = 251.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.984314, 0.72549, 0.329412, 1)
+theme_override_fonts/font = ExtResource("3_nqdip")
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="PortraitAnims" type="Timer" parent="."]
 wait_time = 5.0
@@ -866,17 +1697,151 @@ texture = ExtResource("20_g8vl8")
 centered = false
 
 [node name="FullscreenBlack" type="Sprite2D" parent="."]
-visible = false
 z_index = 20
 material = SubResource("ShaderMaterial_y8vt8")
 texture = ExtResource("11_88u87")
 centered = false
 
-[node name="Gameover" type="Sprite2D" parent="."]
+[node name="GameoverOld" type="Sprite2D" parent="."]
 z_index = 21
 material = SubResource("ShaderMaterial_6ncw0")
 texture = ExtResource("12_gdljk")
 centered = false
+
+[node name="Gameover" type="Node2D" parent="."]
+visible = false
+z_index = 21
+texture_filter = 1
+
+[node name="black" type="Sprite2D" parent="Gameover"]
+material = SubResource("ShaderMaterial_esg11")
+texture = ExtResource("11_88u87")
+centered = false
+
+[node name="final_time" type="Node2D" parent="Gameover/black"]
+
+[node name="time_survived" type="Label" parent="Gameover/black/final_time"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = 90.0
+offset_right = 324.0
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_nqdip")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="time" type="Label" parent="Gameover/black/final_time"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 180.0
+offset_top = 118.0
+offset_right = 244.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_nqdip")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="enemy" type="Node2D" parent="Gameover/black"]
+
+[node name="killed_by" type="Label" parent="Gameover/black/enemy"]
+offset_left = 134.0
+offset_top = 79.0
+offset_right = 294.0
+offset_bottom = 102.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_nqdip")
+horizontal_alignment = 1
+
+[node name="enemy_name" type="Label" parent="Gameover/black/enemy"]
+offset_left = 134.0
+offset_top = 142.0
+offset_right = 294.003
+offset_bottom = 165.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_nqdip")
+horizontal_alignment = 1
+
+[node name="enemy_sprite" type="AnimatedSprite2D" parent="Gameover/black/enemy"]
+position = Vector2(212, 119)
+scale = Vector2(3, 3)
+animation = &""
+
+[node name="final_pickups" type="Node2D" parent="Gameover/black"]
+
+[node name="pickups_gathered" type="Label" parent="Gameover/black/final_pickups"]
+offset_left = 66.0
+offset_top = 86.0
+offset_right = 360.0
+offset_bottom = 109.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_nqdip")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="faith" type="Label" parent="Gameover/black/final_pickups"]
+visible = false
+offset_left = 65.0
+offset_top = 111.0
+offset_right = 359.0
+offset_bottom = 134.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_nqdip")
+text = "faith: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="crystals" type="Label" parent="Gameover/black/final_pickups"]
+visible = false
+offset_left = 65.0
+offset_top = 133.0
+offset_right = 359.0
+offset_bottom = 156.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_nqdip")
+text = "crystals: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mon" type="Label" parent="Gameover/black/final_pickups"]
+visible = false
+offset_left = 65.0
+offset_top = 153.0
+offset_right = 359.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_nqdip")
+text = "mon: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="return_to_main_menu" type="Node2D" parent="Gameover/black"]
+
+[node name="any_button" type="Label" parent="Gameover/black/return_to_main_menu"]
+visible = false
+offset_left = 139.0
+offset_top = 213.0
+offset_right = 433.0
+offset_bottom = 236.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_nqdip")
+text = "press to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -903,8 +1868,45 @@ libraries = {
 "": SubResource("AnimationLibrary_lgd3a")
 }
 
+[node name="mon_anims" type="Node" parent="."]
+
+[node name="mon0" type="AnimationPlayer" parent="mon_anims"]
+libraries = {
+"": SubResource("AnimationLibrary_0djku")
+}
+
+[node name="mon1" type="AnimationPlayer" parent="mon_anims"]
+libraries = {
+"": SubResource("AnimationLibrary_8k214")
+}
+
+[node name="mon2" type="AnimationPlayer" parent="mon_anims"]
+libraries = {
+"": SubResource("AnimationLibrary_1q2dk")
+}
+
+[node name="mon3" type="AnimationPlayer" parent="mon_anims"]
+libraries = {
+"": SubResource("AnimationLibrary_fmocx")
+}
+
+[node name="mon4" type="AnimationPlayer" parent="mon_anims"]
+libraries = {
+"": SubResource("AnimationLibrary_7ojk2")
+}
+
+[node name="mon5" type="AnimationPlayer" parent="mon_anims"]
+libraries = {
+"": SubResource("AnimationLibrary_81m7s")
+}
+
+[node name="mon6" type="AnimationPlayer" parent="mon_anims"]
+libraries = {
+"": SubResource("AnimationLibrary_csr8f")
+}
+
 [node name="PauseMenu" type="Control" parent="."]
-process_mode = 2
+process_mode = 3
 visible = false
 z_index = 35
 layout_mode = 3
@@ -915,12 +1917,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_m1qpx")
 
+[node name="overlay" type="TextureRect" parent="PauseMenu"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 450.0
+offset_top = -2.0
+offset_right = 641.0
+offset_bottom = 242.0
+texture = ExtResource("27_knhde")
+
 [node name="Resume" type="Button" parent="PauseMenu"]
 layout_mode = 0
-offset_left = 166.0
-offset_top = 46.0
-offset_right = 262.0
-offset_bottom = 66.0
+offset_left = 450.0
+offset_top = 146.0
+offset_right = 546.0
+offset_bottom = 166.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -931,13 +1942,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_73gst")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_x35ta")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6h1ky")
 text = "RESUME"
+alignment = 2
 
 [node name="Options" type="Button" parent="PauseMenu"]
 layout_mode = 0
-offset_left = 166.0
-offset_top = 75.0
-offset_right = 278.0
-offset_bottom = 95.0
+offset_left = 450.0
+offset_top = 175.0
+offset_right = 562.0
+offset_bottom = 195.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -948,13 +1960,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_73gst")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_x35ta")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6h1ky")
 text = "OPTIONS"
+alignment = 2
 
 [node name="MainMenu" type="Button" parent="PauseMenu"]
 layout_mode = 0
-offset_left = 166.0
-offset_top = 105.0
-offset_right = 310.0
-offset_bottom = 125.0
+offset_left = 450.0
+offset_top = 206.0
+offset_right = 594.0
+offset_bottom = 226.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -966,24 +1979,13 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_x35ta")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6h1ky")
 text = "MAIN MENU
 "
+alignment = 2
 
-[node name="CheckBox" type="CheckBox" parent="PauseMenu"]
-layout_mode = 0
-offset_left = 161.0
-offset_top = 133.0
-offset_right = 185.0
-offset_bottom = 157.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_18p55")
-
-[node name="Label" type="Label" parent="PauseMenu"]
-layout_mode = 0
-offset_left = 187.0
-offset_top = 140.0
-offset_right = 267.0
-offset_bottom = 151.0
-theme_override_fonts/font = ExtResource("3_nqdip")
-theme_override_font_sizes/font_size = 8
-text = "MUTE MUSIC"
+[node name="pause_anims" type="AnimationPlayer" parent="PauseMenu"]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_aueef")
+}
 
 [node name="Audio" type="Node" parent="."]
 
@@ -998,4 +2000,3 @@ environment = ExtResource("17_8pmbs")
 [connection signal="timeout" from="CrystalAnim" to="." method="_on_crystal_anim_timeout"]
 [connection signal="button_down" from="PauseMenu/Resume" to="." method="_on_resume_button_down"]
 [connection signal="button_up" from="PauseMenu/MainMenu" to="." method="_on_main_menu_button_up"]
-[connection signal="toggled" from="PauseMenu/CheckBox" to="." method="_on_check_box_toggled"]

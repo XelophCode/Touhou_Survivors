@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhjau0yq12v0y"]
+[gd_scene load_steps=10 format=3 uid="uid://dhjau0yq12v0y"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_lxcp8"]
 [ext_resource type="PackedScene" uid="uid://o02qlmtrq81a" path="res://prefabs/item_grid_layouts/2x3_var_4.tscn" id="2_dbdcv"]
 [ext_resource type="Texture2D" uid="uid://csx3mhowlt8ti" path="res://sprites/items/inventory_item_BGs/2x3var3_item_large_bg.png" id="3_0yp86"]
-[ext_resource type="PackedScene" uid="uid://63murqtbvxlb" path="res://prefabs/logic_ui/occult_orb.tscn" id="3_entxo"]
 [ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="3_nkdyc"]
 [ext_resource type="Texture2D" uid="uid://b2s716ahp815g" path="res://sprites/items/inventory/mochi_mallet_item_large.png" id="4_fw24g"]
 [ext_resource type="Material" uid="uid://dun40mejvqphh" path="res://scripts/shaders/materials/inventory_item_shader_material.tres" id="4_uf5eh"]
@@ -44,11 +43,6 @@ texture = ExtResource("4_fw24g")
 [node name="ItemHighlight" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("7_xparh")
-
-[node name="occult_orb" parent="." instance=ExtResource("3_entxo")]
-visible = false
-position = Vector2(-17.5, -28.5)
-scale = Vector2(1, 1e-05)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,36 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://cw8okaiykxwve"]
+[gd_scene load_steps=11 format=3 uid="uid://cw8okaiykxwve"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_hx72y"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_info.gd" id="2_il6tf"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_vehaw"]
-[ext_resource type="Texture2D" uid="uid://bag53gslnyqro" path="res://sprites/actors/Hannya_Mask.png" id="3_o875q"]
+[ext_resource type="SpriteFrames" uid="uid://cmrfr17cjealx" path="res://resources/animations/sprite_frames/hannya_mask.tres" id="3_pt7ry"]
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_0c65o"]
+
+[sub_resource type="Resource" id="Resource_guiwe"]
+script = ExtResource("2_il6tf")
+name = "Hannya Mask"
+sprite = ExtResource("3_pt7ry")
 
 [sub_resource type="Curve" id="Curve_4d701"]
 max_value = 10.0
 _data = [Vector2(0, 8.54545), 0.0, -8.13636, 0, 1, Vector2(1, 0.409091), -8.13636, 0.0, 1, 0]
 point_count = 2
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a5xry"]
-atlas = ExtResource("3_o875q")
-region = Rect2(0, 0, 33, 38)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6busw"]
-atlas = ExtResource("3_o875q")
-region = Rect2(33, 0, 33, 38)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cotxy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a5xry")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6busw")
-}],
-"loop": true,
-"name": &"neutral",
-"speed": 2.0
-}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5cr84"]
 height = 26.0
@@ -71,12 +55,13 @@ _data = {
 
 [node name="HannyaMask" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "particles", "animation", "shadow")]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 2050
 slide_on_ceiling = false
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_hx72y")
+info = SubResource("Resource_guiwe")
 tier = 1
 type = 0
 sprite = NodePath("AnimatedSprite2D")
@@ -101,7 +86,7 @@ texture_filter = 1
 material = ExtResource("2_vehaw")
 scale = Vector2(1, 0.940449)
 skew = -0.0519685
-sprite_frames = SubResource("SpriteFrames_cotxy")
+sprite_frames = ExtResource("3_pt7ry")
 animation = &"neutral"
 autoplay = "neutral"
 

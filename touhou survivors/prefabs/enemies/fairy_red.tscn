@@ -1,60 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://bj73dxprcyxxr"]
+[gd_scene load_steps=11 format=3 uid="uid://bj73dxprcyxxr"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_jv5o1"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_info.gd" id="2_dkxwk"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="3_tnfnn"]
-[ext_resource type="Texture2D" uid="uid://xp6e3x6f2i5n" path="res://sprites/actors/fairy_2.png" id="3_yj1lr"]
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_0mj2j"]
+[ext_resource type="SpriteFrames" uid="uid://cdh8chtj36e3a" path="res://resources/animations/sprite_frames/fairy_red.tres" id="4_2xj5b"]
 [ext_resource type="PackedScene" uid="uid://dhnxpfiirfwyx" path="res://prefabs/enemies/bullets/bullet_spawner.tscn" id="5_fcl4w"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n0odp"]
-atlas = ExtResource("3_yj1lr")
-region = Rect2(0, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sfb87"]
-atlas = ExtResource("3_yj1lr")
-region = Rect2(13, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qw5li"]
-atlas = ExtResource("3_yj1lr")
-region = Rect2(26, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_apjtq"]
-atlas = ExtResource("3_yj1lr")
-region = Rect2(39, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bhjj0"]
-atlas = ExtResource("3_yj1lr")
-region = Rect2(52, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_amwp5"]
-atlas = ExtResource("3_yj1lr")
-region = Rect2(65, 0, 13, 13)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cotxy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n0odp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sfb87")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qw5li")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_apjtq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bhjj0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_amwp5")
-}],
-"loop": true,
-"name": &"neutral",
-"speed": 12.0
-}]
+[sub_resource type="Resource" id="Resource_4r31p"]
+script = ExtResource("2_dkxwk")
+name = "Red Fairy"
+sprite = ExtResource("4_2xj5b")
+metadata/_editor_prop_ptr_sprite = null
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pifu0"]
 radius = 6.08276
@@ -95,12 +52,13 @@ _data = {
 
 [node name="FairyRed" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shadow")]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 2050
 slide_on_ceiling = false
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_jv5o1")
+info = SubResource("Resource_4r31p")
 tier = 1
 type = 0
 sprite = NodePath("AnimatedSprite2D")
@@ -112,7 +70,7 @@ hp = 10
 z_index = 3
 texture_filter = 1
 material = ExtResource("3_tnfnn")
-sprite_frames = SubResource("SpriteFrames_cotxy")
+sprite_frames = ExtResource("4_2xj5b")
 animation = &"neutral"
 autoplay = "neutral"
 

@@ -1,0 +1,60 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://cjdacljlwtehl"]
+
+[ext_resource type="Texture2D" uid="uid://cdh1ttvro2esn" path="res://sprites/actors/Evil_Eye.png" id="1_uq0i4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq4bs"]
+atlas = ExtResource("1_uq0i4")
+region = Rect2(0, 0, 19, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebx8y"]
+atlas = ExtResource("1_uq0i4")
+region = Rect2(19, 0, 19, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oohb"]
+atlas = ExtResource("1_uq0i4")
+region = Rect2(0, 13, 19, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bywl"]
+atlas = ExtResource("1_uq0i4")
+region = Rect2(19, 13, 19, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0qx5"]
+atlas = ExtResource("1_uq0i4")
+region = Rect2(0, 26, 19, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4hqj"]
+atlas = ExtResource("1_uq0i4")
+region = Rect2(19, 26, 19, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sukfv"]
+atlas = ExtResource("1_uq0i4")
+region = Rect2(0, 39, 19, 13)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jq4bs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebx8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0oohb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bywl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0qx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4hqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sukfv")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 7.0
+}]

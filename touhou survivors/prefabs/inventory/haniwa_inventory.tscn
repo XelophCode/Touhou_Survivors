@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddp641ggaldxh"]
+[gd_scene load_steps=10 format=3 uid="uid://ddp641ggaldxh"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_kpods"]
 [ext_resource type="Texture2D" uid="uid://b7mthcrg283ux" path="res://sprites/items/inventory_item_BGs/1x2_item_large_bg.png" id="2_1n2dx"]
 [ext_resource type="PackedScene" uid="uid://vbx5x6eo558v" path="res://prefabs/item_grid_layouts/1x2.tscn" id="2_54vwm"]
 [ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="3_8n2nv"]
-[ext_resource type="PackedScene" uid="uid://63murqtbvxlb" path="res://prefabs/logic_ui/occult_orb.tscn" id="3_imvxg"]
 [ext_resource type="Texture2D" uid="uid://f1cmcvdb3spy" path="res://sprites/items/inventory/haniwa_item_large.png" id="4_caaxe"]
 [ext_resource type="Material" uid="uid://dun40mejvqphh" path="res://scripts/shaders/materials/inventory_item_shader_material.tres" id="4_i7ykn"]
 [ext_resource type="AnimationLibrary" uid="uid://c3f6dw06ejniu" path="res://resources/animations/libraries/Inventory_Items.res" id="6_trrud"]
@@ -44,11 +43,6 @@ texture = ExtResource("4_caaxe")
 [node name="ItemHighlight" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("7_yws7i")
-
-[node name="occult_orb" parent="." instance=ExtResource("3_imvxg")]
-visible = false
-position = Vector2(-6.5, -17.5)
-scale = Vector2(1, 1e-05)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

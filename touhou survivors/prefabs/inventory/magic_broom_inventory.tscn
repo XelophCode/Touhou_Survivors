@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://l4tuyvi7bigo"]
+[gd_scene load_steps=10 format=3 uid="uid://l4tuyvi7bigo"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_gmwkj"]
 [ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="3_m6t0p"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://0pi0oeygxqgf" path="res://sprites/items/inventory_item_BGs/1x3_item_large_bg.png" id="5_6s2qm"]
 [ext_resource type="AnimationLibrary" uid="uid://c3f6dw06ejniu" path="res://resources/animations/libraries/Inventory_Items.res" id="6_4aw2r"]
 [ext_resource type="Texture2D" uid="uid://bm125ylmjm8t7" path="res://sprites/items/inventory/magic_broom_item_large.png" id="6_n74pm"]
-[ext_resource type="PackedScene" uid="uid://63murqtbvxlb" path="res://prefabs/logic_ui/occult_orb.tscn" id="7_cmf44"]
 [ext_resource type="Texture2D" uid="uid://tpsbiy3841jl" path="res://sprites/items/inventory_item_BGs/1x3_item_large_bg_highlight.png" id="7_w5s0t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_esxr3"]
@@ -44,11 +43,6 @@ texture = ExtResource("6_n74pm")
 [node name="ItemHighlight" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("7_w5s0t")
-
-[node name="occult_orb" parent="." instance=ExtResource("7_cmf44")]
-visible = false
-position = Vector2(-6.5, -28.5)
-scale = Vector2(1, 1e-05)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

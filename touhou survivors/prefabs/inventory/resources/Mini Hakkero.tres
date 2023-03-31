@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://daa2d2kbrv372"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=6 format=3 uid="uid://daa2d2kbrv372"]
 
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_2hi8w"]
 [ext_resource type="Texture2D" uid="uid://b2lreg6pjgai8" path="res://sprites/items/item_icons/mini_hakkero_icon.png" id="1_53mqq"]
 [ext_resource type="PackedScene" uid="uid://dda7bmb44nql1" path="res://prefabs/inventory/mini_hakkero_inventory.tscn" id="1_yuss0"]
 [ext_resource type="PackedScene" uid="uid://c04dxo7uor0l0" path="res://prefabs/item_spawnables/Mini_Hakkero.tscn" id="4_2lhf3"]
+[ext_resource type="Resource" uid="uid://cborgawowinbr" path="res://prefabs/inventory/resources/spell_cards/master_spark.tres" id="5_n3aqa"]
 
 [resource]
 script = ExtResource("1_2hi8w")
@@ -17,6 +18,7 @@ inventory = ExtResource("1_yuss0")
 spawnable = ExtResource("4_2lhf3")
 icon = ExtResource("1_53mqq")
 active = true
-cooldown = 11
+cooldown = 5
 one_time_spawn = false
-item_set = Array[int]([])
+item_set = Array[int]([6, 25])
+spell_card = ExtResource("5_n3aqa")

@@ -21,6 +21,11 @@ var next_lvl:float = 15.0:
 		next_lvl = value
 		Signals.emit_signal("next_lvl_update",next_lvl)
 
+var total_power:float:
+	set(value):
+		total_power = value
+		Signals.emit_signal("total_power",total_power)
+
 var player_level:float = 1.0
 
 @export var next_lvl_increase_rate:float = 2.0
@@ -37,9 +42,10 @@ func catch_update_faith(update):
 
 func catch_update_power(update):
 	power += update
+	total_power += update
 
 func check_for_lvl_up():
-	if power >= next_lvl:
+	if power >= next_lvl and Globals.player_alive:
 		player_level += 1.0
 		Signals.emit_signal("leveling_up",true)
 		power = power - next_lvl

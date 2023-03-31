@@ -40,8 +40,12 @@ var currently_moving_diagonaly:bool = false
 var crystal:float
 var magic_circle_size:float = 1.0
 var emit_damage_taken:bool = true
+var damage_entities:Array
+var last_damage_taken:enemy_info
 
 func _ready():
+	Globals.player_alive = true
+	Globals.player_z_index = z_index
 	Globals.one_time_spawns = []
 	var custom_loadout:StartingItemArrayResource
 	if starting_items != null:
@@ -156,8 +160,9 @@ func _physics_process(delta):
 	if hp < 1 and !leveling_up:
 		velocity = Vector2.ZERO
 		if alive:
+			Globals.player_alive = false
 			walk_animations.visible = false
-			Signals.emit_signal("game_over")
+			Signals.emit_signal("game_over",last_damage_taken)
 			alive = false
 	
 	Globals.player_hp = hp
@@ -166,9 +171,12 @@ func _physics_process(delta):
 
 func _on_hitbox_body_entered(body):
 	take_damage(body,1.0)
+	damage_entities.push_front(body.info)
+	last_damage_taken = damage_entities[0]
 
 func _on_hitbox_body_exited(body):
 	take_damage(body,-1.0)
+	damage_entities.erase(body.info)
 
 func take_damage(entity,addsub:float):
 	damage_taken += entity.damage * addsub
@@ -219,10 +227,11 @@ func gap_close():
 	Signals.emit_signal("gap_close")
 
 func _on_item_pull_area_entered(area):
-	area.get_parent().move_towards_player = true
+	
+	area.owner.move_towards_player = true
 
 func _on_item_pull_area_exited(area):
-	area.get_parent().move_towards_player = false
+	area.owner.move_towards_player = false
 
 func magic_circle_tween_on(delta):
 	focusing = true
@@ -271,9 +280,12 @@ func _on_diagonal_input_timeout():
 
 func _on_hitbox_area_entered(area):
 	take_damage(area.get_parent().get_parent().get_parent(),1.0)
+#	damage_entities.push_front(area)
+#	print(str(damage_entities))
 
 func _on_hitbox_area_exited(area):
 	take_damage(area.get_parent().get_parent().get_parent(),-1.0)
+#	damage_entities.erase(area)
 
 func catch_update_crystal(_value):
 	crystal += 1

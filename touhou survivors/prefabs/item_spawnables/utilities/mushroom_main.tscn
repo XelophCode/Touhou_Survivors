@@ -1,0 +1,220 @@
+[gd_scene load_steps=15 format=3 uid="uid://dlon7ye3ybgxp"]
+
+[ext_resource type="Script" path="res://scripts/inventory/mushroom_main.gd" id="1_khjm3"]
+[ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="2_jfgep"]
+[ext_resource type="Texture2D" uid="uid://b26i3dy0onm1g" path="res://sprites/items/item_spawnables/mushroom_explosion.png" id="3_fct8v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omb7e"]
+size = Vector2(10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m6fi"]
+atlas = ExtResource("3_fct8v")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_001ro"]
+atlas = ExtResource("3_fct8v")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5yht"]
+atlas = ExtResource("3_fct8v")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_popuw"]
+atlas = ExtResource("3_fct8v")
+region = Rect2(0, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efqbm"]
+atlas = ExtResource("3_fct8v")
+region = Rect2(10, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsvh4"]
+atlas = ExtResource("3_fct8v")
+region = Rect2(20, 10, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vnqk0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m6fi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_001ro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5yht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_popuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efqbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsvh4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_5617r"]
+resource_name = "bounce"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/main_body_2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.8, 1.8), Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("main_body/main_body_2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(60, 0), Vector2(65, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"explode"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_yqhwq"]
+resource_name = "explode"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/main_body_2/main_body_3/Area2D:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("main_body/main_body_2/main_body_3/Area2D:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("main_body/main_body_2/main_body_3/Area2D/CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("main_body/main_body_2/main_body_3/AnimatedSprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("main_body/main_body_2/Shadow:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ddqna"]
+_data = {
+"bounce": SubResource("Animation_5617r"),
+"explode": SubResource("Animation_yqhwq")
+}
+
+[node name="mushroom_main" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_khjm3")
+
+[node name="main_body" type="Node2D" parent="."]
+
+[node name="main_body_2" type="Node2D" parent="main_body"]
+
+[node name="Shadow" type="Sprite2D" parent="main_body/main_body_2"]
+modulate = Color(1, 1, 1, 0.705882)
+position = Vector2(-5.96046e-08, 2)
+scale = Vector2(0.1, 0.05)
+texture = ExtResource("2_jfgep")
+
+[node name="main_body_3" type="Node2D" parent="main_body/main_body_2"]
+
+[node name="Area2D" type="Area2D" parent="main_body/main_body_2/main_body_3"]
+collision_layer = 8
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/main_body_2/main_body_3/Area2D"]
+scale = Vector2(1e-05, 1e-05)
+shape = SubResource("RectangleShape2D_omb7e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body/main_body_2/main_body_3"]
+sprite_frames = SubResource("SpriteFrames_vnqk0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ddqna")
+}
+
+[connection signal="body_entered" from="main_body/main_body_2/main_body_3/Area2D" to="." method="_on_area_2d_body_entered"]

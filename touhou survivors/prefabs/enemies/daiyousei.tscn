@@ -1,73 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://c5nb6c4vdc2go"]
+[gd_scene load_steps=10 format=3 uid="uid://c5nb6c4vdc2go"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_svmvi"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_5a5g3"]
-[ext_resource type="Texture2D" uid="uid://lxjnknc6yic" path="res://sprites/actors/Daiyousei.png" id="3_x0q7l"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_info.gd" id="2_p348f"]
+[ext_resource type="SpriteFrames" uid="uid://blm4vdaqyb8r4" path="res://resources/animations/sprite_frames/daiyousei.tres" id="3_d8ixp"]
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_rdn2n"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_53pmw"]
-atlas = ExtResource("3_x0q7l")
-region = Rect2(0, 0, 15, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wtvl4"]
-atlas = ExtResource("3_x0q7l")
-region = Rect2(15, 0, 15, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5coqy"]
-atlas = ExtResource("3_x0q7l")
-region = Rect2(30, 0, 15, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cqdbh"]
-atlas = ExtResource("3_x0q7l")
-region = Rect2(0, 17, 15, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fd68p"]
-atlas = ExtResource("3_x0q7l")
-region = Rect2(15, 17, 15, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dkd2l"]
-atlas = ExtResource("3_x0q7l")
-region = Rect2(30, 17, 15, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p482q"]
-atlas = ExtResource("3_x0q7l")
-region = Rect2(0, 34, 15, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k8ln5"]
-atlas = ExtResource("3_x0q7l")
-region = Rect2(15, 34, 15, 17)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cotxy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_53pmw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wtvl4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5coqy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cqdbh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fd68p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dkd2l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p482q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k8ln5")
-}],
-"loop": true,
-"name": &"neutral",
-"speed": 8.0
-}]
+[sub_resource type="Resource" id="Resource_r3nbe"]
+script = ExtResource("2_p348f")
+name = "Daiyousei"
+sprite = ExtResource("3_d8ixp")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pifu0"]
 radius = 6.08276
@@ -108,12 +50,13 @@ _data = {
 
 [node name="Daiyousei" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shadow")]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 2050
 slide_on_ceiling = false
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_svmvi")
+info = SubResource("Resource_r3nbe")
 tier = 1
 type = 0
 sprite = NodePath("AnimatedSprite2D")
@@ -129,9 +72,10 @@ texture_filter = 1
 material = ExtResource("2_5a5g3")
 scale = Vector2(1, 0.983789)
 skew = 0.0141465
-sprite_frames = SubResource("SpriteFrames_cotxy")
+sprite_frames = ExtResource("3_d8ixp")
 animation = &"neutral"
 autoplay = "neutral"
+frame_progress = 0.476853
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pifu0")

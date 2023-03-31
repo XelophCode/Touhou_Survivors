@@ -14,6 +14,8 @@ var player_hp:float
 var crystal_count:float = 100.0
 var holding_item:bool = false
 var rand_id_assigns:Array
+var player_z_index:float
+var player_alive:bool = true
 
 #USED IN CAMERA ITEM FOR GETTING RECT2 SCALE
 func wind_mult():
@@ -62,11 +64,19 @@ func cardinal_direction_to_rotation(direction:Vector2):
 		Vector2(DOWN,RIGHT): return -315
 		Vector2.ZERO: return 0
 
-func any_input():
+func any_input_just_pressed():
 	var key_pressed:bool = false
 	var all_keys:Array = ["focus","move_left","move_right","move_up","move_down","left_mouse_button","right_mouse_button","rotate_item","select","focus","escape"]
 	for key in all_keys:
 		if Input.is_action_just_pressed(key):
+			key_pressed = true
+	return key_pressed
+
+func any_input_pressed():
+	var key_pressed:bool = false
+	var all_keys:Array = ["focus","move_left","move_right","move_up","move_down","left_mouse_button","right_mouse_button","rotate_item","select","focus","escape"]
+	for key in all_keys:
+		if Input.is_action_pressed(key):
 			key_pressed = true
 	return key_pressed
 

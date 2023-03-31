@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://v5fuitl121ly"]
+
+[ext_resource type="Texture2D" uid="uid://3h0tt3c1ie18" path="res://sprites/actors/divine_spirit.png" id="1_uomeo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wab6s"]
+atlas = ExtResource("1_uomeo")
+region = Rect2(0, 0, 13, 13)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wab6s")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]

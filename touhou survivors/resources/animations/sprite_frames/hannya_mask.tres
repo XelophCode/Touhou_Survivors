@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://cmrfr17cjealx"]
+
+[ext_resource type="Texture2D" uid="uid://bag53gslnyqro" path="res://sprites/actors/Hannya_Mask.png" id="1_d2hvk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5xry"]
+atlas = ExtResource("1_d2hvk")
+region = Rect2(0, 0, 33, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6busw"]
+atlas = ExtResource("1_d2hvk")
+region = Rect2(33, 0, 33, 38)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5xry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6busw")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 2.0
+}]

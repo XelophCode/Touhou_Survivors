@@ -1,67 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://tywq0rhjxwfj"]
+[gd_scene load_steps=11 format=3 uid="uid://tywq0rhjxwfj"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_jxy2m"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_joxlg"]
-[ext_resource type="Texture2D" uid="uid://cdh1ttvro2esn" path="res://sprites/actors/Evil_Eye.png" id="3_kk5vq"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_info.gd" id="2_wq3el"]
+[ext_resource type="SpriteFrames" uid="uid://cjdacljlwtehl" path="res://resources/animations/sprite_frames/evil_eye.tres" id="3_3d7m4"]
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_oj7cd"]
 [ext_resource type="PackedScene" uid="uid://dhnxpfiirfwyx" path="res://prefabs/enemies/bullets/bullet_spawner.tscn" id="5_sykj0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jq4bs"]
-atlas = ExtResource("3_kk5vq")
-region = Rect2(0, 0, 19, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ebx8y"]
-atlas = ExtResource("3_kk5vq")
-region = Rect2(19, 0, 19, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0oohb"]
-atlas = ExtResource("3_kk5vq")
-region = Rect2(0, 13, 19, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8bywl"]
-atlas = ExtResource("3_kk5vq")
-region = Rect2(19, 13, 19, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x0qx5"]
-atlas = ExtResource("3_kk5vq")
-region = Rect2(0, 26, 19, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q4hqj"]
-atlas = ExtResource("3_kk5vq")
-region = Rect2(19, 26, 19, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sukfv"]
-atlas = ExtResource("3_kk5vq")
-region = Rect2(0, 39, 19, 13)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cotxy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jq4bs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ebx8y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0oohb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8bywl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x0qx5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q4hqj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sukfv")
-}],
-"loop": true,
-"name": &"neutral",
-"speed": 7.0
-}]
+[sub_resource type="Resource" id="Resource_8hs36"]
+script = ExtResource("2_wq3el")
+name = "Evil Eye"
+sprite = ExtResource("3_3d7m4")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pifu0"]
 radius = 5.0
@@ -102,12 +51,13 @@ _data = {
 
 [node name="EvilEye" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shadow")]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 2050
 slide_on_ceiling = false
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_jxy2m")
+info = SubResource("Resource_8hs36")
 tier = 1
 type = 0
 sprite = NodePath("AnimatedSprite2D")
@@ -122,7 +72,7 @@ texture_filter = 1
 material = ExtResource("2_joxlg")
 scale = Vector2(1, 0.952052)
 skew = -0.0418421
-sprite_frames = SubResource("SpriteFrames_cotxy")
+sprite_frames = ExtResource("3_3d7m4")
 animation = &"neutral"
 autoplay = "neutral"
 

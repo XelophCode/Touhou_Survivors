@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://l2w3nj3uadu0"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=6 format=3 uid="uid://l2w3nj3uadu0"]
 
 [ext_resource type="Texture2D" uid="uid://blvq1ncoutg80" path="res://sprites/items/item_icons/Shanghai_Doll_icon.png" id="1_h4x1s"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_vkwul"]
 [ext_resource type="PackedScene" uid="uid://cjff6uqius63r" path="res://prefabs/inventory/shanghai_doll_inventory.tscn" id="2_uopwg"]
 [ext_resource type="PackedScene" uid="uid://b70tsufjrgjur" path="res://prefabs/item_spawnables/Shanghai_Doll.tscn" id="4_18yxk"]
+[ext_resource type="Resource" uid="uid://w726sh3x7las" path="res://prefabs/inventory/resources/spell_cards/alice_grimoire.tres" id="5_m6ptx"]
 
 [resource]
 script = ExtResource("1_vkwul")
@@ -17,6 +18,7 @@ inventory = ExtResource("2_uopwg")
 spawnable = ExtResource("4_18yxk")
 icon = ExtResource("1_h4x1s")
 active = true
-cooldown = 10
+cooldown = 12
 one_time_spawn = false
-item_set = Array[int]([])
+item_set = Array[int]([23, 24])
+spell_card = ExtResource("5_m6ptx")

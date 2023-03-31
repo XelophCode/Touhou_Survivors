@@ -51,3 +51,6 @@ signal check_matching_sets
 signal show_spell_card_right_click
 signal show_hand_cursor
 signal taking_damage
+signal spawn_mon
+signal increase_mon
+signal total_power

@@ -13,7 +13,7 @@ func _ready():
 
 func _process(_delta):
 	if !$PressStart.visible and !$Buttons.visible:
-		if Globals.any_input():
+		if Globals.any_input_just_pressed():
 			main_animation_player.stop()
 			main_menu_bg.position.y = 480
 			$FullscreenWhite.visible = false
@@ -23,7 +23,7 @@ func _process(_delta):
 			main_menu_logo.material.set_shader_parameter("opacity",1.0)
 			show_press_start()
 	elif $PressStart.visible and !$Buttons.visible:
-		if Globals.any_input():
+		if Globals.any_input_just_pressed():
 			$Buttons.visible = true
 			$PressStart.visible = false
 			$Audio/select.play()

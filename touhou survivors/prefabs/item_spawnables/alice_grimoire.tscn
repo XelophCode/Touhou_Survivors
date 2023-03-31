@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://q2ht3kvlwp4h"]
+
+[ext_resource type="Script" path="res://scripts/inventory/alice_grimoire.gd" id="1_gaaeg"]
+[ext_resource type="PackedScene" uid="uid://brktr273403ex" path="res://prefabs/item_spawnables/utilities/grimoire.tscn" id="2_6fs1s"]
+
+[node name="alice_grimoire" type="Node2D"]
+script = ExtResource("1_gaaeg")
+grimoire = ExtResource("2_6fs1s")

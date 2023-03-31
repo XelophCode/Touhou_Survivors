@@ -1,0 +1,143 @@
+[gd_scene load_steps=17 format=3 uid="uid://b1q35i5sr0tiq"]
+
+[ext_resource type="Script" path="res://scripts/misc/mon_pickup.gd" id="1_83nte"]
+[ext_resource type="Texture2D" uid="uid://pxw6irgq5bpa" path="res://sprites/items/pickups/mon.png" id="2_6av2j"]
+[ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="2_svcia"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1367i"]
+atlas = ExtResource("2_6av2j")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxcej"]
+atlas = ExtResource("2_6av2j")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5mcy"]
+atlas = ExtResource("2_6av2j")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hora"]
+atlas = ExtResource("2_6av2j")
+region = Rect2(0, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i306d"]
+atlas = ExtResource("2_6av2j")
+region = Rect2(10, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56hqu"]
+atlas = ExtResource("2_6av2j")
+region = Rect2(20, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuey7"]
+atlas = ExtResource("2_6av2j")
+region = Rect2(0, 20, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e7o8"]
+atlas = ExtResource("2_6av2j")
+region = Rect2(10, 20, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoy8a"]
+atlas = ExtResource("2_6av2j")
+region = Rect2(20, 20, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iynb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1367i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxcej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5mcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hora")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i306d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56hqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kuey7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e7o8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yoy8a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 18.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c45no"]
+radius = 2.0
+
+[sub_resource type="Animation" id="Animation_4qiee"]
+resource_name = "bounce"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i6ocd"]
+_data = {
+"bounce": SubResource("Animation_4qiee")
+}
+
+[node name="mon" type="Node2D" node_paths=PackedStringArray("sprite")]
+texture_filter = 1
+script = ExtResource("1_83nte")
+sprite = NodePath("main_body/main_body_2/sprite/AnimatedSprite2D")
+
+[node name="main_body" type="Node2D" parent="."]
+
+[node name="main_body_2" type="Node2D" parent="main_body"]
+
+[node name="sprite" type="Node2D" parent="main_body/main_body_2"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Shadow" type="Sprite2D" parent="main_body/main_body_2/sprite"]
+modulate = Color(1, 1, 1, 0.556863)
+position = Vector2(-1.78814e-07, 4)
+scale = Vector2(0.2, 0.1)
+texture = ExtResource("2_svcia")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_body/main_body_2/sprite"]
+sprite_frames = SubResource("SpriteFrames_iynb6")
+autoplay = "default"
+frame_progress = 0.159323
+
+[node name="Area2D" type="Area2D" parent="main_body/main_body_2"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/main_body_2/Area2D"]
+shape = SubResource("CircleShape2D_c45no")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "bounce"
+libraries = {
+"": SubResource("AnimationLibrary_i6ocd")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="main_body/main_body_2/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

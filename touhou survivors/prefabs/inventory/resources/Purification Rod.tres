@@ -17,6 +17,6 @@ inventory = ExtResource("2_pn8e6")
 spawnable = ExtResource("4_itta0")
 icon = ExtResource("1_4df1o")
 active = true
-cooldown = 8
+cooldown = 6
 one_time_spawn = false
 item_set = Array[int]([])

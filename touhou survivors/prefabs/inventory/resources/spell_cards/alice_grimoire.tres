@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpellCardResource" load_steps=4 format=3 uid="uid://w726sh3x7las"]
+
+[ext_resource type="Script" path="res://scripts/inventory/spell_card_resource.gd" id="1_qte6y"]
+[ext_resource type="Texture2D" uid="uid://cwp8kmcewmma5" path="res://sprites/items/item_icons/grimoire_of_alice_icon.png" id="1_wc4q7"]
+[ext_resource type="PackedScene" uid="uid://q2ht3kvlwp4h" path="res://prefabs/item_spawnables/alice_grimoire.tscn" id="3_xl2f5"]
+
+[resource]
+script = ExtResource("1_qte6y")
+icon = ExtResource("1_wc4q7")
+spawnable = ExtResource("3_xl2f5")
+cooldown = 20.0

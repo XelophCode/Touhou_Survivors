@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=6 format=3 uid="uid://chnbg3mnl8c71"]
+
+[ext_resource type="Texture2D" uid="uid://bnv7d4xevu3ir" path="res://sprites/items/item_icons/magic_tome_icon.png" id="1_supir"]
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_vuwod"]
+[ext_resource type="PackedScene" uid="uid://blfpg8q82vufi" path="res://prefabs/inventory/magic_tome_inventory.tscn" id="2_38ngd"]
+[ext_resource type="PackedScene" uid="uid://dtn5em2q4d3mx" path="res://prefabs/item_spawnables/magic_tome.tscn" id="4_qy3s1"]
+[ext_resource type="Resource" uid="uid://w726sh3x7las" path="res://prefabs/inventory/resources/spell_cards/alice_grimoire.tres" id="5_tpn2p"]
+
+[resource]
+script = ExtResource("1_vuwod")
+enabled = true
+item_name = 23
+description = ""
+inventory_size = 3
+inventory = ExtResource("2_38ngd")
+spawnable = ExtResource("4_qy3s1")
+icon = ExtResource("1_supir")
+active = true
+cooldown = 7
+one_time_spawn = false
+item_set = Array[int]([19, 24])
+spell_card = ExtResource("5_tpn2p")

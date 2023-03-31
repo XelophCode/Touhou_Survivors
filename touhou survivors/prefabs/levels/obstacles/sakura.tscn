@@ -1,0 +1,133 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1jgunkjqcsv3"]
+
+[ext_resource type="Script" path="res://scripts/misc/environment_object.gd" id="1_wfdh8"]
+[ext_resource type="Shader" path="res://scripts/shaders/halftone.gdshader" id="2_2ujy1"]
+[ext_resource type="Texture2D" uid="uid://uox4rapslwa8" path="res://sprites/environment/sakura.png" id="3_877bt"]
+
+[sub_resource type="Gradient" id="Gradient_rvpxq"]
+offsets = PackedFloat32Array(0, 0.717822, 1)
+colors = PackedColorArray(0.929412, 0.501961, 0.6, 1, 0.929412, 0.501961, 0.6, 1, 0.929412, 0.501961, 0.6, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5qh73"]
+resource_local_to_scene = true
+shader = ExtResource("2_2ujy1")
+shader_parameter/size = 64
+shader_parameter/dot_size = 2.0
+shader_parameter/value_multiplier = -0.4
+shader_parameter/invert = false
+shader_parameter/opacity = 1.0
+shader_parameter/dots_mix = 0.0
+
+[sub_resource type="Animation" id="Animation_ijg3t"]
+resource_name = "fade_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:material:shader_parameter/opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:material:shader_parameter/dots_mix")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.35]
+}
+
+[sub_resource type="Animation" id="Animation_flhs0"]
+resource_name = "fade_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:material:shader_parameter/opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:material:shader_parameter/dots_mix")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.35, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xyx1t"]
+_data = {
+"fade_in": SubResource("Animation_ijg3t"),
+"fade_out": SubResource("Animation_flhs0")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tcw0y"]
+radius = 5.0
+
+[node name="Sakura" type="Node2D"]
+z_index = 8
+texture_filter = 1
+position = Vector2(-1, 2)
+script = ExtResource("1_wfdh8")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(4, -15)
+amount = 3
+lifetime = 3.0
+emission_shape = 1
+emission_sphere_radius = 11.32
+direction = Vector2(1, -1)
+spread = 13.06
+gravity = Vector2(0, 0)
+initial_velocity_min = 8.06
+initial_velocity_max = 16.14
+color_ramp = SubResource("Gradient_rvpxq")
+
+[node name="sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5qh73")
+scale = Vector2(1, 1.00511)
+texture = ExtResource("3_877bt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xyx1t")
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(8, 20)
+collision_layer = 2048
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_tcw0y")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-14, -28, -37, -15, -37, -7, -20, 0, -2, 0, 5, 8, 5, 19, 12, 19, 12, 9, 25, 3, 27, -3, 39, -4, 39, -19, 28, -21, 16, -28)
+
+[node name="center" type="Marker2D" parent="."]
+position = Vector2(0, 11)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,60 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://dacwl72a3cl50"]
+[gd_scene load_steps=11 format=3 uid="uid://dacwl72a3cl50"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_st87k"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_2g6in"]
-[ext_resource type="Texture2D" uid="uid://btswaovrwvdid" path="res://sprites/actors/vengeful_spirit.png" id="3_35ssk"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_info.gd" id="2_km355"]
+[ext_resource type="SpriteFrames" uid="uid://bg4q3xunhuj5u" path="res://resources/animations/sprite_frames/vengeful_spirit.tres" id="3_oksgn"]
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_0ivn3"]
 [ext_resource type="PackedScene" uid="uid://dhnxpfiirfwyx" path="res://prefabs/enemies/bullets/bullet_spawner.tscn" id="5_t55kf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p0jk7"]
-atlas = ExtResource("3_35ssk")
-region = Rect2(0, 0, 23, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m2tyx"]
-atlas = ExtResource("3_35ssk")
-region = Rect2(23, 0, 23, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_70w2o"]
-atlas = ExtResource("3_35ssk")
-region = Rect2(46, 0, 23, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wcl6j"]
-atlas = ExtResource("3_35ssk")
-region = Rect2(0, 23, 23, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_luqff"]
-atlas = ExtResource("3_35ssk")
-region = Rect2(23, 23, 23, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ae5xk"]
-atlas = ExtResource("3_35ssk")
-region = Rect2(46, 23, 23, 23)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cotxy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p0jk7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m2tyx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_70w2o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wcl6j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_luqff")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ae5xk")
-}],
-"loop": true,
-"name": &"neutral",
-"speed": 6.0
-}]
+[sub_resource type="Resource" id="Resource_up80k"]
+script = ExtResource("2_km355")
+name = "Vengeful Spirit"
+sprite = ExtResource("3_oksgn")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_275ba"]
 radius = 5.0
@@ -96,12 +52,13 @@ _data = {
 
 [node name="VengefulSpirit" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shadow")]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 2050
 slide_on_ceiling = false
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_st87k")
+info = SubResource("Resource_up80k")
 tier = 1
 type = 0
 sprite = NodePath("AnimatedSprite2D")
@@ -113,7 +70,7 @@ damage = 2.0
 z_index = 3
 texture_filter = 1
 material = ExtResource("2_2g6in")
-sprite_frames = SubResource("SpriteFrames_cotxy")
+sprite_frames = ExtResource("3_oksgn")
 animation = &"neutral"
 autoplay = "neutral"
 

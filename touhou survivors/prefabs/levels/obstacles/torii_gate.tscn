@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsbunnxftybb0"]
+
+[ext_resource type="Script" path="res://scripts/misc/environment_object.gd" id="1_3hond"]
+[ext_resource type="Shader" path="res://scripts/shaders/halftone.gdshader" id="1_vwy3s"]
+[ext_resource type="Texture2D" uid="uid://b23tjyp6erko4" path="res://sprites/environment/torii_gate.png" id="2_32lfy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5qh73"]
+resource_local_to_scene = true
+shader = ExtResource("1_vwy3s")
+shader_parameter/size = 64
+shader_parameter/dot_size = 2.0
+shader_parameter/value_multiplier = -0.4
+shader_parameter/invert = false
+shader_parameter/opacity = 1.0
+shader_parameter/dots_mix = 0.0
+
+[sub_resource type="Animation" id="Animation_ijg3t"]
+resource_name = "fade_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:material:shader_parameter/opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:material:shader_parameter/dots_mix")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.35]
+}
+
+[sub_resource type="Animation" id="Animation_flhs0"]
+resource_name = "fade_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:material:shader_parameter/opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:material:shader_parameter/dots_mix")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.35, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xyx1t"]
+_data = {
+"fade_in": SubResource("Animation_ijg3t"),
+"fade_out": SubResource("Animation_flhs0")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tcw0y"]
+radius = 4.0
+
+[node name="ToriiGate" type="Node2D"]
+z_index = 8
+texture_filter = 1
+position = Vector2(-1, 2)
+script = ExtResource("1_3hond")
+
+[node name="sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5qh73")
+scale = Vector2(1, 1.00511)
+texture = ExtResource("2_32lfy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xyx1t")
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-15, 11)
+collision_layer = 2048
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_tcw0y")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(16, 11)
+collision_layer = 2048
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("CircleShape2D_tcw0y")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-14, -22, -29, -22, -29, -15, -23, -15, -23, -7, -19, -7, -19, 11, -11, 11, -11, -6, 12, -6, 12, 11, 20, 11, 20, -8, 24, -8, 24, -15, 30, -15, 30, -22, 15, -22, 15, -19, -14, -19)
+
+[node name="center" type="Marker2D" parent="."]
+position = Vector2(0, 11)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

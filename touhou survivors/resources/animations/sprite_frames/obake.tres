@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://cumjlxw1cpjq8"]
+
+[ext_resource type="Texture2D" uid="uid://d06mw78lq2t7f" path="res://sprites/actors/Obake.png" id="1_1ygic"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cdt3"]
+atlas = ExtResource("1_1ygic")
+region = Rect2(0, 0, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c0lh"]
+atlas = ExtResource("1_1ygic")
+region = Rect2(23, 0, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhjge"]
+atlas = ExtResource("1_1ygic")
+region = Rect2(46, 0, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbiq1"]
+atlas = ExtResource("1_1ygic")
+region = Rect2(0, 23, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ylmn"]
+atlas = ExtResource("1_1ygic")
+region = Rect2(23, 23, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vreay"]
+atlas = ExtResource("1_1ygic")
+region = Rect2(46, 23, 23, 23)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cdt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c0lh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhjge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbiq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ylmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vreay")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 6.0
+}]

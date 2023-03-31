@@ -10,8 +10,6 @@ var stack_count_max:int = 5
 var scene : PackedScene
 var icon : Texture
 
-@onready var occult_orb_progress = $occult_orb/occult_orb_progress
-@onready var occult_orb_shimmer = $occult_orb/shimmer
 @onready var item_large_bg = $ItemLargeBg
 
 var do_stretch_anim:bool = true
@@ -85,7 +83,6 @@ func leveling_up(value:bool):
 	highlight_area_delay = []
 	if value:
 		$ItemSprite.scale.y = 0
-		$occult_orb.scale.y = 0
 		show_highlight = false
 		$ItemLargeBg.visible = false
 		pop_in_animation()
@@ -131,8 +128,6 @@ func _ready():
 	new_position = position
 	slot_position_hovering = position
 	slot_count = get_child(0).get_node("additional_placement").get_child_count() + get_child(0).get_node("main_placement").get_child_count()
-	occult_orb_progress.max_value = 1
-	
 
 func _process(_delta):
 	if left_mouse_button_held:

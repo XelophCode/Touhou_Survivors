@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://bn7lfio7jg320"]
+[gd_scene load_steps=23 format=3 uid="uid://cerifwegjcfki"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_78i06"]
 [ext_resource type="PackedScene" uid="uid://cqvtr2xssn8wh" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
+[ext_resource type="Resource" uid="uid://nikxwywwcj82" path="res://prefabs/levels/obstacles/all_obstacles.tres" id="2_ybswb"]
 [ext_resource type="PackedScene" uid="uid://cah8y53sm3blk" path="res://prefabs/player/player.tscn" id="3_dutub"]
 [ext_resource type="PackedScene" uid="uid://ckfbrsnhk0xny" path="res://prefabs/logic_ui/scoreboard.tscn" id="3_lb8xk"]
 [ext_resource type="PackedScene" uid="uid://dl7hwdk2d1aug" path="res://prefabs/logic_ui/enemy_despawner.tscn" id="4_121vl"]
@@ -10,15 +11,13 @@
 [ext_resource type="Script" path="res://scripts/misc/player_afterimage.gd" id="6_5f4bf"]
 [ext_resource type="PackedScene" uid="uid://bvyow6vg7hdt6" path="res://prefabs/logic_ui/pickup_spawner.tscn" id="6_qbw7i"]
 [ext_resource type="PackedScene" uid="uid://fj0acbfbqp0h" path="res://prefabs/player/player_after_image.tscn" id="7_e0sq4"]
-[ext_resource type="PackedScene" uid="uid://dbqucfdpge4u1" path="res://prefabs/levels/structures/level_1/structure_1.tscn" id="9_0yld4"]
+[ext_resource type="PackedScene" uid="uid://bd75ojfiucvw" path="res://prefabs/misc/mon_spawner.tscn" id="11_8j68e"]
 [ext_resource type="Script" path="res://scripts/enemies/bullet_parent.gd" id="12_on4jv"]
 [ext_resource type="Script" path="res://scripts/logic_ui/weapons.gd" id="12_sxuwu"]
 [ext_resource type="PackedScene" uid="uid://cxtno75a58bkv" path="res://prefabs/logic_ui/player_ui.tscn" id="17_o28hk"]
 [ext_resource type="Script" path="res://scripts/logic_ui/Global_Audio.gd" id="21_7vj3l"]
-[ext_resource type="PackedScene" uid="uid://dhnxpfiirfwyx" path="res://prefabs/enemies/bullets/bullet_spawner.tscn" id="21_vy2hh"]
 [ext_resource type="AudioStream" uid="uid://elixy6otfi44" path="res://audio/enemy_death.wav" id="22_kmevy"]
 [ext_resource type="AudioStream" uid="uid://dbkyr4u0q3kvm" path="res://audio/hit.wav" id="23_h7jnw"]
-[ext_resource type="PackedScene" uid="uid://bh7vwqtkpxd82" path="res://prefabs/enemies/bullets/bullet_2.tscn" id="23_mlmtd"]
 [ext_resource type="AudioStream" uid="uid://ceauriy8n5qcg" path="res://audio/retribution.ogg" id="23_r0jtr"]
 [ext_resource type="AudioStream" uid="uid://dphx0dcmgohr2" path="res://audio/level_up.ogg" id="24_s40de"]
 [ext_resource type="AudioStream" uid="uid://d1wctbotwnn1x" path="res://audio/applause.wav" id="25_cwolo"]
@@ -30,17 +29,13 @@ shader_parameter/alpha = 1.0
 [node name="Main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_78i06")
+all_obstacles = ExtResource("2_ybswb")
 
 [node name="Scoreboard" parent="." instance=ExtResource("3_lb8xk")]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_804ch")]
 
-[node name="structure_parent" type="Node2D" parent="."]
-visible = false
-texture_filter = 1
-position = Vector2(0.5, 0.5)
-
-[node name="structure_1" parent="structure_parent" instance=ExtResource("9_0yld4")]
+[node name="obstacle_parent" type="Node2D" parent="."]
 
 [node name="player_afterimage" type="Node2D" parent="."]
 material = SubResource("ShaderMaterial_qx4cd")
@@ -52,6 +47,8 @@ player_afterimage = ExtResource("7_e0sq4")
 [node name="EnemyDespawner" parent="." instance=ExtResource("4_121vl")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_cql0f")]
+
+[node name="mon_spawner" parent="." instance=ExtResource("11_8j68e")]
 
 [node name="Bullets" type="Node2D" parent="."]
 z_index = 10
@@ -94,18 +91,3 @@ stream = ExtResource("23_r0jtr")
 volume_db = -60.0
 autoplay = true
 bus = &"Music"
-
-[node name="bullet_spawner" parent="." instance=ExtResource("21_vy2hh")]
-position = Vector2(-34, -20)
-bullets = Array[PackedScene]([ExtResource("23_mlmtd")])
-speed_random = 0.02
-size_random = 0.2
-bullet_count = 8.0
-bullet_count_random = 2.0
-initial_shoot_cooldown = 1.0
-shoot_cooldown = 2.0
-shot_gap = 0.04
-aim_at_player = true
-spiral_strength = 10.0
-frequency = 3.0
-amplitude = 60.0

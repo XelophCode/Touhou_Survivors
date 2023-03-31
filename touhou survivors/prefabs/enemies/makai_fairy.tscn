@@ -1,61 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://dbvvv0b1y0vlq"]
+[gd_scene load_steps=12 format=3 uid="uid://dbvvv0b1y0vlq"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_kst31"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_qbhms"]
-[ext_resource type="Texture2D" uid="uid://cmpjehpqgsch8" path="res://sprites/actors/Makai_Fairy.png" id="3_ne6oa"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_info.gd" id="2_t5wkb"]
+[ext_resource type="SpriteFrames" uid="uid://euhaceopm8qi" path="res://resources/animations/sprite_frames/makai_fairy.tres" id="3_y1nyj"]
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="4_1litn"]
 [ext_resource type="PackedScene" uid="uid://dhnxpfiirfwyx" path="res://prefabs/enemies/bullets/bullet_spawner.tscn" id="5_xml26"]
-[ext_resource type="PackedScene" uid="uid://bh7vwqtkpxd82" path="res://prefabs/enemies/bullets/bullet_2.tscn" id="6_tapg6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gx47g"]
-atlas = ExtResource("3_ne6oa")
-region = Rect2(0, 0, 23, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ej8e2"]
-atlas = ExtResource("3_ne6oa")
-region = Rect2(23, 0, 23, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2wdnf"]
-atlas = ExtResource("3_ne6oa")
-region = Rect2(0, 23, 23, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3amfw"]
-atlas = ExtResource("3_ne6oa")
-region = Rect2(23, 23, 23, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0s8em"]
-atlas = ExtResource("3_ne6oa")
-region = Rect2(0, 46, 23, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0xgm1"]
-atlas = ExtResource("3_ne6oa")
-region = Rect2(23, 46, 23, 23)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cotxy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gx47g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ej8e2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2wdnf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3amfw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0s8em")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0xgm1")
-}],
-"loop": true,
-"name": &"neutral",
-"speed": 12.0
-}]
+[sub_resource type="Resource" id="Resource_je8m3"]
+script = ExtResource("2_t5wkb")
+name = "Makai Fairy"
+sprite = ExtResource("3_y1nyj")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pifu0"]
 radius = 6.08276
@@ -101,12 +56,13 @@ _data = {
 
 [node name="MakaiFairy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "shadow")]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 2050
 slide_on_ceiling = false
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_kst31")
+info = SubResource("Resource_je8m3")
 tier = 1
 type = 0
 sprite = NodePath("AnimatedSprite2D")
@@ -119,7 +75,7 @@ damage = 4.0
 z_index = 3
 texture_filter = 1
 material = ExtResource("2_qbhms")
-sprite_frames = SubResource("SpriteFrames_cotxy")
+sprite_frames = ExtResource("3_y1nyj")
 animation = &"neutral"
 autoplay = "neutral"
 
@@ -157,7 +113,6 @@ libraries = {
 
 [node name="bullet_spawner" parent="." instance=ExtResource("5_xml26")]
 position = Vector2(-34, -20)
-bullets = Array[PackedScene]([ExtResource("6_tapg6")])
 speed_random = 0.02
 size_random = 0.2
 enabled = true

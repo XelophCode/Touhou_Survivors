@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://cswcrts7s8uh4"]
+
+[ext_resource type="Script" path="res://scripts/inventory/umbrella_alt.gd" id="1_4huxr"]
+[ext_resource type="Texture2D" uid="uid://bfqrtr4ejmb2e" path="res://sprites/items/item_spawnables/umbrella.png" id="2_grgye"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wchr3"]
+radius = 7.0
+
+[sub_resource type="Animation" id="Animation_xq2sp"]
+resource_name = "umbrella"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/main_body_2/Umbrella:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wjdu8"]
+_data = {
+"umbrella": SubResource("Animation_xq2sp")
+}
+
+[node name="umbrella_alt" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_4huxr")
+
+[node name="main_body" type="Node2D" parent="."]
+
+[node name="main_body_2" type="Node2D" parent="main_body"]
+
+[node name="Umbrella" type="Sprite2D" parent="main_body/main_body_2"]
+texture = ExtResource("2_grgye")
+
+[node name="Area2D" type="Area2D" parent="main_body/main_body_2"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/main_body_2/Area2D"]
+shape = SubResource("CircleShape2D_wchr3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "umbrella"
+libraries = {
+"": SubResource("AnimationLibrary_wjdu8")
+}
+
+[connection signal="body_entered" from="main_body/main_body_2/Area2D" to="." method="_on_area_2d_body_entered"]

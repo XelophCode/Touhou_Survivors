@@ -1,9 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://p45wocscra4m"]
+[gd_scene load_steps=10 format=3 uid="uid://p45wocscra4m"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_208ll"]
-[ext_resource type="Texture2D" uid="uid://3h0tt3c1ie18" path="res://sprites/actors/divine_spirit.png" id="2_budkh"]
 [ext_resource type="Material" uid="uid://5evdjcxtvvb8" path="res://resources/materials/dissolve_shader.tres" id="2_rs1np"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_info.gd" id="3_ye2is"]
+[ext_resource type="SpriteFrames" uid="uid://v5fuitl121ly" path="res://resources/animations/sprite_frames/divine_spirit.tres" id="4_ajew8"]
 [ext_resource type="PackedScene" uid="uid://dhnxpfiirfwyx" path="res://prefabs/enemies/bullets/bullet_spawner.tscn" id="4_ij4lv"]
+
+[sub_resource type="Resource" id="Resource_r001n"]
+script = ExtResource("3_ye2is")
+name = "Divine Spirit"
+sprite = ExtResource("4_ajew8")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pifu0"]
 radius = 6.08276
@@ -21,12 +27,13 @@ colors = PackedColorArray(0.871883, 1, 0.997086, 0.47451, 1, 1, 1, 0.301961, 1, 
 texture_filter = 1
 material = ExtResource("2_rs1np")
 collision_layer = 2
-collision_mask = 2
+collision_mask = 2050
 slide_on_ceiling = false
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_208ll")
+info = SubResource("Resource_r001n")
 tier = 1
 type = 2
 sprite = NodePath("Sprite2D")
@@ -40,9 +47,9 @@ shape = SubResource("CircleShape2D_pifu0")
 [node name="knockback_timer" type="Timer" parent="."]
 wait_time = 0.25
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_rs1np")
-texture = ExtResource("2_budkh")
+sprite_frames = ExtResource("4_ajew8")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 amount = 100

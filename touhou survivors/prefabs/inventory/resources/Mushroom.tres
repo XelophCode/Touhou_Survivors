@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=6 format=3 uid="uid://b4ykvdqxophpx"]
+
+[ext_resource type="Texture2D" uid="uid://blwnc3f5eyeqa" path="res://sprites/items/item_icons/mushroom_icon.png" id="1_0mdd0"]
+[ext_resource type="PackedScene" uid="uid://bcoych7ohrn1u" path="res://prefabs/inventory/mushroom_inventory.tscn" id="2_3l83u"]
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="3_onrmu"]
+[ext_resource type="PackedScene" uid="uid://dvtkqego6pbom" path="res://prefabs/item_spawnables/mushroom.tscn" id="4_jajuc"]
+[ext_resource type="Resource" uid="uid://cborgawowinbr" path="res://prefabs/inventory/resources/spell_cards/master_spark.tres" id="5_p0n3n"]
+
+[resource]
+script = ExtResource("3_onrmu")
+enabled = true
+item_name = 25
+description = ""
+inventory_size = 0
+inventory = ExtResource("2_3l83u")
+spawnable = ExtResource("4_jajuc")
+icon = ExtResource("1_0mdd0")
+active = true
+cooldown = 12
+one_time_spawn = false
+item_set = Array[int]([6, 7])
+spell_card = ExtResource("5_p0n3n")

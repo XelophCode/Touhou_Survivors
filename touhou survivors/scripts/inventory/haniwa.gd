@@ -15,7 +15,6 @@ func _ready():
 	global_position = Globals.player_position
 	rotation_degrees = Globals.cardinal_direction_to_rotation(Globals.player_facing)
 	$main_body.rotation = -rotation
-#	move = Vector2(move_speed,0).rotated(deg_to_rad(Globals.cardinal_direction_to_rotation(Globals.player_facing)))
 
 func _process(delta):
 	time += delta

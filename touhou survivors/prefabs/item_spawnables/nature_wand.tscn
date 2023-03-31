@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2wcrth1j7dcd"]
+
+[ext_resource type="Script" path="res://scripts/inventory/nature_wand.gd" id="1_kiqjx"]
+[ext_resource type="PackedScene" uid="uid://b6m04vu6j2d81" path="res://prefabs/item_spawnables/utilities/raincloud.tscn" id="2_fwgyt"]
+[ext_resource type="PackedScene" uid="uid://bsa875ojpflls" path="res://prefabs/item_spawnables/utilities/tornado.tscn" id="3_x7qvw"]
+
+[node name="nature_wand" type="Node2D"]
+script = ExtResource("1_kiqjx")
+raincloud = ExtResource("2_fwgyt")
+tornado = ExtResource("3_x7qvw")
