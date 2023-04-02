@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b470ad5krn17t"]
+
+[ext_resource type="Script" path="res://scripts/inventory/lunar_bow.gd" id="1_mglhg"]
+[ext_resource type="PackedScene" uid="uid://sfawltviyy34" path="res://prefabs/item_spawnables/utilities/arrow.tscn" id="2_cj0ka"]
+
+[node name="lunar_bow" type="Node2D"]
+script = ExtResource("1_mglhg")
+arrow = ExtResource("2_cj0ka")

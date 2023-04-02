@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=6 format=3 uid="uid://c55c7o536bvhj"]
+
+[ext_resource type="Texture2D" uid="uid://beskev2jxicis" path="res://sprites/items/item_icons/lunar_bow_icon.png" id="1_o31tb"]
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_um56b"]
+[ext_resource type="PackedScene" uid="uid://v4sr80t8mre1" path="res://prefabs/inventory/lunar_bow_inventory.tscn" id="2_70mc1"]
+[ext_resource type="PackedScene" uid="uid://b470ad5krn17t" path="res://prefabs/item_spawnables/lunar_bow.tscn" id="4_qjlii"]
+[ext_resource type="Resource" uid="uid://x7e0cci32b8f" path="res://prefabs/inventory/resources/spell_cards/invisible_full_moon.tres" id="5_d0ou5"]
+
+[resource]
+script = ExtResource("1_um56b")
+enabled = true
+item_name = 27
+description = ""
+inventory_size = 4
+inventory = ExtResource("2_70mc1")
+spawnable = ExtResource("4_qjlii")
+icon = ExtResource("1_o31tb")
+active = true
+cooldown = 5
+one_time_spawn = false
+item_set = Array[int]([17, 26])
+spell_card = ExtResource("5_d0ou5")

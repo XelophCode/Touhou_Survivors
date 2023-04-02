@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://cfscduoamv134"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=6 format=3 uid="uid://cfscduoamv134"]
 
 [ext_resource type="Texture2D" uid="uid://cjv3rvr006q8h" path="res://sprites/items/item_icons/mochi_mallet_icon.png" id="1_ak21u"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_ohlde"]
 [ext_resource type="PackedScene" uid="uid://dhjau0yq12v0y" path="res://prefabs/inventory/mochi_mallet_inventory.tscn" id="2_p47pa"]
 [ext_resource type="PackedScene" uid="uid://ckid1l333r16a" path="res://prefabs/item_spawnables/Mochi_Mallet.tscn" id="4_rng7k"]
+[ext_resource type="Resource" uid="uid://x7e0cci32b8f" path="res://prefabs/inventory/resources/spell_cards/invisible_full_moon.tres" id="5_tyhjw"]
 
 [resource]
 script = ExtResource("1_ohlde")
@@ -19,4 +20,5 @@ icon = ExtResource("1_ak21u")
 active = true
 cooldown = 5
 one_time_spawn = false
-item_set = Array[int]([])
+item_set = Array[int]([26, 27])
+spell_card = ExtResource("5_tyhjw")

@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://biave4ge758hn"]
+[gd_scene load_steps=4 format=3 uid="uid://biave4ge758hn"]
 
 [ext_resource type="Script" path="res://scripts/inventory/megaphone_gun.gd" id="1_0j0er"]
+[ext_resource type="PackedScene" uid="uid://dtxxtcv05u5kd" path="res://prefabs/item_spawnables/utilities/bullet.tscn" id="2_d8aqe"]
+[ext_resource type="PackedScene" uid="uid://dtuofq2rd7ovy" path="res://prefabs/item_spawnables/utilities/shockwave.tscn" id="3_youy7"]
 
 [node name="megaphone_gun" type="Node2D"]
 script = ExtResource("1_0j0er")
+bullet = ExtResource("2_d8aqe")
+shockwave = ExtResource("3_youy7")

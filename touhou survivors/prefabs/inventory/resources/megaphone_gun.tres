@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=6 format=3 uid="uid://d3d2yo7wla5r4"]
+
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_6tqqg"]
+[ext_resource type="Texture2D" uid="uid://ba4y04aqxwynd" path="res://sprites/items/item_icons/megaphone_gun_icon.png" id="1_r48x3"]
+[ext_resource type="PackedScene" uid="uid://d0w17033o0y34" path="res://prefabs/inventory/megaphone_gun_inventory.tscn" id="2_qkpnw"]
+[ext_resource type="PackedScene" uid="uid://biave4ge758hn" path="res://prefabs/item_spawnables/megaphone_gun.tscn" id="4_jpkh5"]
+[ext_resource type="Resource" uid="uid://x7e0cci32b8f" path="res://prefabs/inventory/resources/spell_cards/invisible_full_moon.tres" id="5_aehih"]
+
+[resource]
+script = ExtResource("1_6tqqg")
+enabled = true
+item_name = 26
+description = ""
+inventory_size = 3
+inventory = ExtResource("2_qkpnw")
+spawnable = ExtResource("4_jpkh5")
+icon = ExtResource("1_r48x3")
+active = true
+cooldown = 8
+one_time_spawn = false
+item_set = Array[int]([17, 27])
+spell_card = ExtResource("5_aehih")

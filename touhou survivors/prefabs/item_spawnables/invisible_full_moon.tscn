@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://drhm575qad02v"]
+
+[ext_resource type="Script" path="res://scripts/inventory/invisible_full_moon.gd" id="1_uuy3l"]
+[ext_resource type="PackedScene" uid="uid://dpfxvaabano1j" path="res://prefabs/item_spawnables/utilities/sc_bullet.tscn" id="2_oxjdx"]
+
+[node name="invisible_full_moon" type="Node2D"]
+script = ExtResource("1_uuy3l")
+bullet = ExtResource("2_oxjdx")

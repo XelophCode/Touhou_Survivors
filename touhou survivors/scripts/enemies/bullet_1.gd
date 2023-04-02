@@ -18,7 +18,7 @@ func _ready():
 	$main_body.rotation_degrees = spread
 
 func _process(delta):
-	if global_position.distance_to(Globals.player_position) > 300:
+	if $main_body/main_body_2.global_position.distance_to(Globals.player_position) > 300:
 		queue_free()
 	var move = speed
 	if leveling_up:

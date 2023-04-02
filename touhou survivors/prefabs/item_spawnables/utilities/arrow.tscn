@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://sfawltviyy34"]
+
+[ext_resource type="Script" path="res://scripts/inventory/arrow.gd" id="1_1r12i"]
+[ext_resource type="Texture2D" uid="uid://m28hbgf2yjp0" path="res://sprites/items/item_spawnables/arrow.png" id="2_71iea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kt3d1"]
+size = Vector2(8, 2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5x52l"]
+radius = 16.0
+
+[node name="arrow" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_1r12i")
+
+[node name="main_body" type="Node2D" parent="."]
+
+[node name="main_body_2" type="Node2D" parent="main_body"]
+
+[node name="hit" type="Area2D" parent="main_body/main_body_2"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/main_body_2/hit"]
+shape = SubResource("RectangleShape2D_kt3d1")
+
+[node name="homing" type="Area2D" parent="main_body/main_body_2"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/main_body_2/homing"]
+shape = SubResource("CircleShape2D_5x52l")
+
+[node name="Arrow" type="Sprite2D" parent="main_body/main_body_2"]
+texture = ExtResource("2_71iea")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="main_body/main_body_2/hit" to="." method="_on_hit_body_entered"]
+[connection signal="body_entered" from="main_body/main_body_2/homing" to="." method="_on_homing_body_entered"]
+[connection signal="body_exited" from="main_body/main_body_2/homing" to="." method="_on_homing_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

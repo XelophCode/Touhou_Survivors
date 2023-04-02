@@ -25,6 +25,8 @@ ITEM CODES:
 	Magic Tome - 23
 	Nature Wand - 24
 	Mushroom - 25
+	Megaphone Gun - 26
+	Lunar Bow - 27
 
 SPELL CARDS:
 	Fantasy Seal:
@@ -41,3 +43,8 @@ SPELL CARDS:
 		Mini Hakkero - 7
 		Magic Broom - 6
 		Mushroom - 25
+	
+	Invisible Full Moon:
+		Mochi Mallet - 17
+		Megaphone Gun - 26
+		Lunar Bow - 27

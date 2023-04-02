@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpellCardResource" load_steps=4 format=3 uid="uid://x7e0cci32b8f"]
+
+[ext_resource type="Texture2D" uid="uid://c36omaxpr5xec" path="res://sprites/items/item_icons/invisible_full_moon_icon.png" id="1_adkdu"]
+[ext_resource type="Script" path="res://scripts/inventory/spell_card_resource.gd" id="1_rbuoe"]
+[ext_resource type="PackedScene" uid="uid://drhm575qad02v" path="res://prefabs/item_spawnables/invisible_full_moon.tscn" id="3_08ena"]
+
+[resource]
+script = ExtResource("1_rbuoe")
+icon = ExtResource("1_adkdu")
+spawnable = ExtResource("3_08ena")
+cooldown = 23.0
