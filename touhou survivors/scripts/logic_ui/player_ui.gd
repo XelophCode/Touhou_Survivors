@@ -59,6 +59,7 @@ var mon:int:
 		mon = value
 		mon = clamp(mon,0,9999999)
 		var mon_str = str(mon)
+		Signals.emit_signal("mon_sfx")
 		for i in mon_str.length():
 			var old_txt:String = $UI/mon_labels.get_child(i).text
 			
@@ -151,7 +152,10 @@ func _on_character_portrait_animation_finished():
 		character_portrait.frame = 0
 
 func catch_current_power(value):
+	var power_percent:float = $UI/Powerbar.value / $UI/Powerbar.max_value
 	power_update = value
+	if power_update > $UI/Powerbar.value:
+		Signals.emit_signal("faith_sfx",power_percent)
 
 func catch_next_lvl_update(value):
 	powerbar.max_value = value
@@ -306,6 +310,7 @@ func catch_increase_max_hp(value):
 	$UI/Healthbar.max_value = value
 
 func catch_update_crystal(value):
+	Signals.emit_signal("crystal_sfx")
 	crystal += value
 	if crystal >= $UI/Crystalbar.max_value:
 		if Globals.crystal_count >= 9.0:
@@ -341,6 +346,7 @@ func catch_decrease_crystal_count():
 	$UI/Crystalbar.max_value = scale_max_crystal()
 
 func catch_not_enough_crystals():
+	Signals.emit_signal("not_enough_crystals_sfx")
 	$UI/shard_count.material.set_shader_parameter("flash_color",Color(1,0,0,1))
 	$AnimationPlayer3.play("number_flash_red_shake")
 
@@ -352,6 +358,7 @@ func play_damage_modulate():
 
 func catch_taking_damage(value):
 	if value:
+		Signals.emit_signal("player_damage_sfx")
 		$damage_screen.play("fade_in")
 		$damage_shake.play("shake")
 		character_portrait.play("damage")
@@ -366,3 +373,7 @@ func catch_current_crystal(value):
 
 func catch_total_power(value):
 	current_faith = value
+
+func _on_options_button_down():
+	$PauseMenu/Options_Menu.visible = true
+	$PauseMenu/pause_anims.play("scroll")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpellCardResource" load_steps=4 format=3 uid="uid://djsdr7dn1ej62"]
+
+[ext_resource type="Script" path="res://scripts/inventory/spell_card_resource.gd" id="1_0r7h4"]
+[ext_resource type="Texture2D" uid="uid://da5hl1uqa0ru7" path="res://sprites/items/item_icons/peerless_wind_god_icon.png" id="1_0vf3q"]
+[ext_resource type="PackedScene" uid="uid://bdyq76ykh0u8w" path="res://prefabs/item_spawnables/peerless_wind_god.tscn" id="3_33ocx"]
+
+[resource]
+script = ExtResource("1_0r7h4")
+icon = ExtResource("1_0vf3q")
+spawnable = ExtResource("3_33ocx")
+cooldown = 22.0

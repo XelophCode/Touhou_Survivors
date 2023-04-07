@@ -6,6 +6,7 @@ var text_val:float = 0.0
 var alt:bool = false
 
 func _ready():
+	Signals.emit_signal("camera_sfx")
 	var tween = create_tween()
 	tween.tween_property(self,"text_val",1.0,0.4)
 	if alt:

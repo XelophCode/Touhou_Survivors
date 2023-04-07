@@ -9,6 +9,7 @@ func _ready():
 		var raincloud_inst = raincloud.instantiate()
 		get_parent().call_deferred("add_child",raincloud_inst)
 	else:
+		Signals.emit_signal("tornado_sfx")
 		for i in spawn_count:
 			var tornado_inst = tornado.instantiate()
 			get_parent().call_deferred("add_child",tornado_inst)

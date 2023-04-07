@@ -27,6 +27,8 @@ ITEM CODES:
 	Mushroom - 25
 	Megaphone Gun - 26
 	Lunar Bow - 27
+	Leaf Fan - 28
+	Tripod - 29
 
 SPELL CARDS:
 	Fantasy Seal:
@@ -48,3 +50,9 @@ SPELL CARDS:
 		Mochi Mallet - 17
 		Megaphone Gun - 26
 		Lunar Bow - 27
+	
+	Peerless Wind God:
+		Camera - 11
+		Leaf Fan - 28
+		Tripod - 29
+	

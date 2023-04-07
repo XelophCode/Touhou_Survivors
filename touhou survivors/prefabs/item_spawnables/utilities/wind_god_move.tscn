@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=3 uid="uid://opkjn4u2t3ab"]
+
+[ext_resource type="Script" path="res://scripts/inventory/wind_god_move.gd" id="1_u00kw"]
+[ext_resource type="Texture2D" uid="uid://2jy3eofj2l0y" path="res://sprites/items/item_spawnables/fast_move_lines.png" id="2_13s0n"]
+[ext_resource type="PackedScene" uid="uid://dxugj3gfp37y5" path="res://prefabs/item_spawnables/utilities/wind_god_leafs.tscn" id="2_v765l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26cdq"]
+size = Vector2(20, 2)
+
+[sub_resource type="Animation" id="Animation_dbfhi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/main_body_2/main_body_3/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_ngwta"]
+resource_name = "default"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/main_body_2/main_body_3/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("main_body/main_body_2/main_body_3/Area2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-220, 0), Vector2(220, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"spawn_leafs"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6wbp7"]
+_data = {
+"RESET": SubResource("Animation_dbfhi"),
+"default": SubResource("Animation_ngwta")
+}
+
+[node name="wind_god_move" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_u00kw")
+leaf = ExtResource("2_v765l")
+
+[node name="main_body" type="Node2D" parent="."]
+position = Vector2(0, -80)
+
+[node name="main_body_2" type="Node2D" parent="main_body"]
+
+[node name="main_body_3" type="Node2D" parent="main_body/main_body_2"]
+
+[node name="Area2D" type="Area2D" parent="main_body/main_body_2/main_body_3"]
+position = Vector2(-220, 0)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/main_body_2/main_body_3/Area2D"]
+shape = SubResource("RectangleShape2D_26cdq")
+
+[node name="Sprite2D" type="Sprite2D" parent="main_body/main_body_2/main_body_3"]
+texture = ExtResource("2_13s0n")
+vframes = 9
+frame = 1
+
+[node name="leaf_points" type="Node2D" parent="main_body/main_body_2/main_body_3"]
+
+[node name="Marker2D" type="Marker2D" parent="main_body/main_body_2/main_body_3/leaf_points"]
+position = Vector2(-131, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="main_body/main_body_2/main_body_3/leaf_points"]
+position = Vector2(-61, 0)
+
+[node name="Marker2D3" type="Marker2D" parent="main_body/main_body_2/main_body_3/leaf_points"]
+position = Vector2(53, 0)
+
+[node name="Marker2D4" type="Marker2D" parent="main_body/main_body_2/main_body_3/leaf_points"]
+position = Vector2(119, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_6wbp7")
+}
+
+[connection signal="body_entered" from="main_body/main_body_2/main_body_3/Area2D" to="." method="_on_area_2d_body_entered"]

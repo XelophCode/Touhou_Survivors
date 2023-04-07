@@ -12,6 +12,10 @@ func _ready():
 	$AnimationPlayer.play("falling")
 
 func collision():
+	if alt:
+		Signals.emit_signal("keystone_large_sfx")
+	else:
+		Signals.emit_signal("keystone_small_sfx")
 	$main_body/Keystone.play("collision")
 	$main_body/Area2D.monitoring = true
 

@@ -22,8 +22,9 @@ func bomb_explosion():
 	$main_body/Explosion.visible = true
 	$main_body/Explosion.play("default")
 	$main_body/Area2D.monitoring = true
-	$main_body/Panel.visible = false
+	$main_body/Shadow.visible = false
 	$AnimationPlayer.play("bomb_explosion")
+	Signals.emit_signal("explosion_sfx")
 
 func _on_area_2d_body_entered(body):
 	do_damage(body)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/inventory/magic_bomb_main.gd" id="1_p2thr"]
 [ext_resource type="Shader" path="res://scripts/shaders/magic_bomb_flash.gdshader" id="2_jt4yf"]
+[ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="2_pnl8o"]
 [ext_resource type="Texture2D" uid="uid://dqs1c3kuxyyr6" path="res://sprites/items/item_spawnables/magic_bomb.png" id="3_yyp0r"]
 [ext_resource type="Texture2D" uid="uid://bn1xflwdfgr05" path="res://sprites/items/item_spawnables/bomb_explosion.png" id="4_fsqqx"]
 [ext_resource type="Shader" path="res://scripts/shaders/explosion.gdshader" id="4_vqvmg"]
@@ -15,13 +16,6 @@ shader_parameter/force = 0.079
 shader_parameter/size = 0.0
 shader_parameter/thickness = 0.05
 shader_parameter/offset = 0.005
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7mkj"]
-bg_color = Color(0, 0, 0, 0.282353)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hpx18"]
 resource_local_to_scene = true
@@ -220,25 +214,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(2, 2), Vector2(1, 1), Vector2(1.8, 1.8), Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("main_body/Panel:modulate")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.282353), Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 1), Color(1, 1, 1, 0.745098), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -260,18 +242,16 @@ script = ExtResource("1_p2thr")
 
 [node name="main_body" type="Node2D" parent="."]
 
+[node name="Shadow" type="Sprite2D" parent="main_body"]
+position = Vector2(0, 3)
+scale = Vector2(0.3, 0.25)
+texture = ExtResource("2_pnl8o")
+
 [node name="Sprite2D" type="Sprite2D" parent="main_body"]
 visible = false
 material = SubResource("ShaderMaterial_hwq4x")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_niqh7")
-
-[node name="Panel" type="Panel" parent="main_body"]
-offset_left = -5.0
-offset_top = -1.0
-offset_right = 5.0
-offset_bottom = 7.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_l7mkj")
 
 [node name="MagicBomb" type="Sprite2D" parent="main_body"]
 material = SubResource("ShaderMaterial_hpx18")

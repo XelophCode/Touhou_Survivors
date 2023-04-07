@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://hflt5dmt7505"]
+
+[ext_resource type="Script" path="res://scripts/inventory/leaf_fan.gd" id="1_ppn57"]
+[ext_resource type="PackedScene" uid="uid://45h3dhejornk" path="res://prefabs/item_spawnables/utilities/leaf.tscn" id="2_y37py"]
+
+[node name="leaf_fan" type="Node2D"]
+script = ExtResource("1_ppn57")
+leaf = ExtResource("2_y37py")

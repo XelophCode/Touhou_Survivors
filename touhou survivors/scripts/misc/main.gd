@@ -5,8 +5,8 @@ var rand_pos_neg:Array = [-60,60]
 var spawn_count:float = 80
 
 func _ready():
-	var tween_music = create_tween()
-	tween_music.tween_property($Audio/Music,"volume_db",-15.0,2)
+#	var tween_music = create_tween()
+#	tween_music.tween_property($Audio/Music,"volume_db",-15.0,2)
 	var x_spawn:Array = []
 	var y_spawn:Array = []
 	var count:float = 1

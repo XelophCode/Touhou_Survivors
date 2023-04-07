@@ -10,7 +10,7 @@ func _ready():
 		move_dir = -1.0
 	else:
 		move_dir = 1.0
-	damage = 1
+	damage = randi_range(1,3)
 	if alt:
 		rotation = deg_to_rad(randi_range(0,359))
 		$AnimationPlayer.play("move")

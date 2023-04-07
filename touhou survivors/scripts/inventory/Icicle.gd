@@ -7,7 +7,7 @@ var direction:bool = false
 
 func _ready():
 	
-	damage = randi_range(5,6)
+	damage = randi_range(11,14)
 	global_position = Globals.player_position
 	if alt_fire:
 		rotation = deg_to_rad(Globals.cardinal_direction_to_rotation(Globals.player_facing))
@@ -22,6 +22,7 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	do_damage(body)
 	if alt_fire:
+		Signals.emit_signal("icicle_explode_sfx")
 		for i in fragment_count:
 			var frag_inst = fragments.instantiate()
 			frag_inst.global_position = $main_body.global_position

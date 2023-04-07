@@ -8,6 +8,7 @@ var alt:bool = false
 
 
 func _ready():
+	Signals.emit_signal("amulet_sfx")
 	damage = randi_range(1,2)
 	global_position = Globals.player_position
 	if alt:

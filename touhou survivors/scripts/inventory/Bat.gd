@@ -7,6 +7,7 @@ var large_bat:bool = true
 var left_right:bool = false
 
 func _ready():
+	Signals.emit_signal("bat_sfx")
 	if alt_fire:
 		for i in bat_count_without_orb:
 			var inst = bat.instantiate()

@@ -137,6 +137,7 @@ func _process(_delta):
 		$ItemLargeBg.visible = false
 		global_position = get_global_mouse_position()
 		if Input.is_action_just_pressed("rotate_item"):
+			Signals.emit_signal("rotate_sfx")
 			rotated = !rotated
 			rotation += deg_to_rad(90)
 			if round(rad_to_deg(rotation)) >= 360:
@@ -180,6 +181,7 @@ func click_detection(event):
 						i.get_other_item_matches()
 
 func holding_item():
+	Signals.emit_signal("item_grab_sfx")
 	$ItemHighlight.visible = false
 	set_selection = 0
 	if current_match.size() > 0:
@@ -202,6 +204,7 @@ func holding_item():
 	z_index += 50
 
 func not_holding_item():
+	Signals.emit_signal("item_place_sfx")
 	$ItemHighlight.visible = true
 	Globals.holding_item = false
 	Signals.emit_signal("show_tooltip")

@@ -1,6 +1,7 @@
 extends item_base_class
 
 func _ready():
+	Signals.emit_signal("frog_explosion_sfx")
 	damage = 1
 	$AnimatedSprite2D.play("explosion")
 

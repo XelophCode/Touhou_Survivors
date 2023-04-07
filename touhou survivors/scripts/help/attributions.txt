@@ -1,0 +1,3 @@
+Sound Effects:
+	coin_explosion - https://opengameart.org/content/sack-of-gold
+	

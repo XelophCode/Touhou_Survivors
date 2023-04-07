@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d2ufh3jf1j7er"
+path="res://.godot/imported/Dream_Battle_4_Demo_Drafting_the_Speed (1).mp3-30cede30c547faf418a95b953310f714.mp3str"
+
+[deps]
+
+source_file="res://audio/Dream_Battle_4_Demo_Drafting_the_Speed (1).mp3"
+dest_files=["res://.godot/imported/Dream_Battle_4_Demo_Drafting_the_Speed (1).mp3-30cede30c547faf418a95b953310f714.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=3.01
+bpm=0
+beat_count=0
+bar_beats=4

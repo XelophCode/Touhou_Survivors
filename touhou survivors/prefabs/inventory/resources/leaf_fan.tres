@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=6 format=3 uid="uid://c48vm1j6jfvip"]
+
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_8hstl"]
+[ext_resource type="Texture2D" uid="uid://buplq64exs86v" path="res://sprites/items/item_icons/leaf_fan_icon.png" id="1_bg2nc"]
+[ext_resource type="PackedScene" uid="uid://bbfy3xysqqhug" path="res://prefabs/inventory/leaf_fan_inventory.tscn" id="2_y01qs"]
+[ext_resource type="PackedScene" uid="uid://hflt5dmt7505" path="res://prefabs/item_spawnables/leaf_fan.tscn" id="4_6ekno"]
+[ext_resource type="Resource" uid="uid://djsdr7dn1ej62" path="res://prefabs/inventory/resources/spell_cards/peerless_wind_god.tres" id="5_y2i8w"]
+
+[resource]
+script = ExtResource("1_8hstl")
+enabled = true
+item_name = 28
+description = ""
+inventory_size = 1
+inventory = ExtResource("2_y01qs")
+spawnable = ExtResource("4_6ekno")
+icon = ExtResource("1_bg2nc")
+active = true
+cooldown = 9
+one_time_spawn = false
+item_set = Array[int]([11, 29])
+spell_card = ExtResource("5_y2i8w")

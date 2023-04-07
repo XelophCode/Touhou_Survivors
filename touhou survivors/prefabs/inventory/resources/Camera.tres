@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=5 format=3 uid="uid://dr74b4m7ur8lp"]
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=6 format=3 uid="uid://dr74b4m7ur8lp"]
 
 [ext_resource type="Texture2D" uid="uid://fffwb0of7363" path="res://sprites/items/item_icons/camera_icon.png" id="1_jaqa5"]
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_wutpu"]
 [ext_resource type="PackedScene" uid="uid://cd3ck2mx1cf17" path="res://prefabs/inventory/camera_inventory.tscn" id="2_wpd21"]
 [ext_resource type="PackedScene" uid="uid://2g8mm51qwkj5" path="res://prefabs/item_spawnables/Camera.tscn" id="4_pg7tf"]
+[ext_resource type="Resource" uid="uid://djsdr7dn1ej62" path="res://prefabs/inventory/resources/spell_cards/peerless_wind_god.tres" id="5_yyosy"]
 
 [resource]
 script = ExtResource("1_wutpu")
@@ -19,4 +20,5 @@ icon = ExtResource("1_jaqa5")
 active = true
 cooldown = 7
 one_time_spawn = false
-item_set = Array[int]([])
+item_set = Array[int]([28, 29])
+spell_card = ExtResource("5_yyosy")

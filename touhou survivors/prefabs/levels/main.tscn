@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cerifwegjcfki"]
+[gd_scene load_steps=45 format=3 uid="uid://cerifwegjcfki"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_78i06"]
 [ext_resource type="PackedScene" uid="uid://cqvtr2xssn8wh" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
@@ -16,11 +16,33 @@
 [ext_resource type="Script" path="res://scripts/logic_ui/weapons.gd" id="12_sxuwu"]
 [ext_resource type="PackedScene" uid="uid://cxtno75a58bkv" path="res://prefabs/logic_ui/player_ui.tscn" id="17_o28hk"]
 [ext_resource type="Script" path="res://scripts/logic_ui/Global_Audio.gd" id="21_7vj3l"]
+[ext_resource type="AudioStream" uid="uid://ylr6c87p2he6" path="res://audio/gold_sack_2.wav" id="21_ofhyh"]
+[ext_resource type="AudioStream" uid="uid://cmlq5vmjloidm" path="res://audio/faith_1.wav" id="22_gl1ux"]
 [ext_resource type="AudioStream" uid="uid://elixy6otfi44" path="res://audio/enemy_death.wav" id="22_kmevy"]
+[ext_resource type="AudioStream" uid="uid://b0owvi2cbkqht" path="res://audio/crystal_1.wav" id="23_25cac"]
 [ext_resource type="AudioStream" uid="uid://dbkyr4u0q3kvm" path="res://audio/hit.wav" id="23_h7jnw"]
-[ext_resource type="AudioStream" uid="uid://ceauriy8n5qcg" path="res://audio/retribution.ogg" id="23_r0jtr"]
+[ext_resource type="AudioStream" uid="uid://ugy1ai2nl5m" path="res://audio/tornado.wav" id="24_r106g"]
 [ext_resource type="AudioStream" uid="uid://dphx0dcmgohr2" path="res://audio/level_up.ogg" id="24_s40de"]
 [ext_resource type="AudioStream" uid="uid://d1wctbotwnn1x" path="res://audio/applause.wav" id="25_cwolo"]
+[ext_resource type="AudioStream" uid="uid://1jjs3upuo84x" path="res://audio/player_damaged.wav" id="25_fx7ad"]
+[ext_resource type="AudioStream" uid="uid://d2ufh3jf1j7er" path="res://audio/Dream_Battle_4_Demo_Drafting_the_Speed (1).mp3" id="26_4rv83"]
+[ext_resource type="AudioStream" uid="uid://dvnu187j6g0wf" path="res://audio/explosion.wav" id="26_si4me"]
+[ext_resource type="AudioStream" uid="uid://2pbpo6ih4elx" path="res://audio/item_grab_2.wav" id="27_n7cke"]
+[ext_resource type="AudioStream" uid="uid://bi6unubjg1kjp" path="res://audio/item_place.wav" id="28_tgk1o"]
+[ext_resource type="AudioStream" uid="uid://dg45i4xgv5i7v" path="res://audio/rotate_2.wav" id="29_3o8nw"]
+[ext_resource type="AudioStream" uid="uid://cpa66ej715iy8" path="res://audio/not_enough_crystals.wav" id="30_2pryb"]
+[ext_resource type="AudioStream" uid="uid://de4m6mikk0hfv" path="res://audio/remove_blocked_space.wav" id="31_ew8fl"]
+[ext_resource type="AudioStream" uid="uid://rc6o10vj5a7j" path="res://audio/gohei_swing.wav" id="32_7imfu"]
+[ext_resource type="AudioStream" uid="uid://cwjqn6w3igtb2" path="res://audio/amulet_throw.wav" id="33_rbs61"]
+[ext_resource type="AudioStream" uid="uid://cn7a6f5xarxwn" path="res://audio/bat.wav" id="34_airx4"]
+[ext_resource type="AudioStream" uid="uid://c3axwdnuaisj5" path="res://audio/camera_1.wav" id="35_g0r37"]
+[ext_resource type="AudioStream" uid="uid://dmrorg2ey7eim" path="res://audio/frog_explosion.wav" id="36_4qqid"]
+[ext_resource type="AudioStream" uid="uid://ccomgtdssti6x" path="res://audio/haniwa.wav" id="37_a5esa"]
+[ext_resource type="AudioStream" uid="uid://cwd20hprqi6a2" path="res://audio/icicle_explode.wav" id="38_xvwkn"]
+[ext_resource type="AudioStream" uid="uid://bgyfkxab0f0a4" path="res://audio/keystone.wav" id="39_fqj1r"]
+[ext_resource type="AudioStream" uid="uid://cibpy0nehhy6b" path="res://audio/leaf_fan.wav" id="40_go4i5"]
+[ext_resource type="AudioStream" uid="uid://dues4oonilrfs" path="res://audio/arrow.wav" id="41_xg48u"]
+[ext_resource type="AudioStream" uid="uid://dq44svlnn4di" path="res://audio/star_2.wav" id="42_gmybk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qx4cd"]
 shader = ExtResource("5_1lqtb")
@@ -61,33 +83,174 @@ script = ExtResource("12_sxuwu")
 
 [node name="PlayerUI" parent="." instance=ExtResource("17_o28hk")]
 
-[node name="Global_Audio" type="Node" parent="." node_paths=PackedStringArray("enemy_death", "hit", "level_up", "applause")]
+[node name="Global_Audio" type="Node" parent="." node_paths=PackedStringArray("enemy_death", "hit", "level_up", "applause", "coin_explosion", "faith", "crystal", "tornado", "player_damage", "explosion", "item_grab", "item_place", "rotate", "not_enough_crystals", "remove_blocked_space", "gohei", "amulet", "bat", "camera", "frog_explosion", "haniwa", "icicle_explode", "keystone_small", "keystone_large", "leaf_fan", "arrow", "star")]
 script = ExtResource("21_7vj3l")
 enemy_death = NodePath("Enemy_Death")
 hit = NodePath("Hit")
 level_up = NodePath("Level_Up")
 applause = NodePath("Applause")
+coin_explosion = NodePath("coin_explosion")
+faith = NodePath("faith")
+crystal = NodePath("crystal")
+tornado = NodePath("tornado")
+player_damage = NodePath("player_damage")
+explosion = NodePath("explosion")
+item_grab = NodePath("item_grab")
+item_place = NodePath("item_place")
+rotate = NodePath("rotate")
+not_enough_crystals = NodePath("not_enough_crystals")
+remove_blocked_space = NodePath("remove_blocked_space")
+gohei = NodePath("gohei")
+amulet = NodePath("amulet")
+bat = NodePath("bat")
+camera = NodePath("camera")
+frog_explosion = NodePath("frog_explosion")
+haniwa = NodePath("haniwa")
+icicle_explode = NodePath("icicle_explode")
+keystone_small = NodePath("keystone_small")
+keystone_large = NodePath("keystone_large")
+leaf_fan = NodePath("leaf_fan")
+arrow = NodePath("arrow")
+star = NodePath("star")
 
 [node name="Enemy_Death" type="AudioStreamPlayer" parent="Global_Audio"]
 stream = ExtResource("22_kmevy")
-volume_db = -30.0
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="Hit" type="AudioStreamPlayer" parent="Global_Audio"]
 stream = ExtResource("23_h7jnw")
-volume_db = -30.0
+volume_db = -20.0
+bus = &"SFX"
 
 [node name="Level_Up" type="AudioStreamPlayer" parent="Global_Audio"]
 stream = ExtResource("24_s40de")
-volume_db = -10.0
+volume_db = 5.0
+bus = &"SFX"
 
 [node name="Applause" type="AudioStreamPlayer" parent="Global_Audio"]
 stream = ExtResource("25_cwolo")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="coin_explosion" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("21_ofhyh")
+volume_db = -3.0
+bus = &"SFX"
+
+[node name="faith" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("22_gl1ux")
+volume_db = -4.0
+pitch_scale = 0.6
+bus = &"SFX"
+
+[node name="crystal" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("23_25cac")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="tornado" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("24_r106g")
+volume_db = -18.0
+bus = &"item_sfx"
+
+[node name="player_damage" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("25_fx7ad")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="explosion" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("26_si4me")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="item_grab" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("27_n7cke")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="item_place" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("28_tgk1o")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="rotate" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("29_3o8nw")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="not_enough_crystals" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("30_2pryb")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="remove_blocked_space" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("31_ew8fl")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="gohei" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("32_7imfu")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="amulet" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("33_rbs61")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="bat" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("34_airx4")
 volume_db = -20.0
+bus = &"item_sfx"
+
+[node name="camera" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("35_g0r37")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="frog_explosion" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("36_4qqid")
+volume_db = -22.0
+bus = &"item_sfx"
+
+[node name="haniwa" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("37_a5esa")
+volume_db = -20.0
+bus = &"item_sfx"
+
+[node name="icicle_explode" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("38_xvwkn")
+volume_db = -20.0
+bus = &"item_sfx"
+
+[node name="keystone_small" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("39_fqj1r")
+volume_db = -20.0
+
+[node name="keystone_large" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("39_fqj1r")
+volume_db = -10.0
+pitch_scale = 0.7
+
+[node name="leaf_fan" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("40_go4i5")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="arrow" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("41_xg48u")
+volume_db = -10.0
+bus = &"item_sfx"
+
+[node name="star" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("42_gmybk")
+volume_db = -25.0
+bus = &"item_sfx"
 
 [node name="Audio" type="Node" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("23_r0jtr")
-volume_db = -60.0
+stream = ExtResource("26_4rv83")
 autoplay = true
 bus = &"Music"

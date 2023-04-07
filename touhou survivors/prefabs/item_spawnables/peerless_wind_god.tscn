@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdyq76ykh0u8w"]
+
+[ext_resource type="Script" path="res://scripts/inventory/peerless_wind_god.gd" id="1_ygycq"]
+[ext_resource type="PackedScene" uid="uid://opkjn4u2t3ab" path="res://prefabs/item_spawnables/utilities/wind_god_move.tscn" id="2_aq4tp"]
+
+[node name="peerless_wind_god" type="Node2D"]
+script = ExtResource("1_ygycq")
+wind = ExtResource("2_aq4tp")

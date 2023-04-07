@@ -4,6 +4,7 @@ extends item_base_class
 var rot:float
 
 func _ready():
+	Signals.emit_signal("star_sfx")
 	damage = randi_range(1,2)
 	sprite.modulate = Globals.random_color()
 	$main_body.rotation_degrees = rot

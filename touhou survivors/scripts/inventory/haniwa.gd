@@ -10,6 +10,7 @@ var time : float
 var y_out:float
 
 func _ready():
+	Signals.emit_signal("haniwa_sfx")
 	damage = randi_range(8,10)
 	
 	global_position = Globals.player_position

@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=3 uid="uid://cxtno75a58bkv"]
+[gd_scene load_steps=145 format=3 uid="uid://cxtno75a58bkv"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/player_ui.gd" id="1_i5u1q"]
 [ext_resource type="SpriteFrames" uid="uid://bfm8psvacuqtm" path="res://sprites/ui/character_portraits/reimu_portrait.tres" id="2_lwihl"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://cokydxk2wfjqf" path="res://prefabs/logic_ui/right_click_tip.tscn" id="19_2m38r"]
 [ext_resource type="Texture2D" uid="uid://bad488ler0kop" path="res://sprites/ui/damage_fullscreen.png" id="20_g8vl8"]
 [ext_resource type="Texture2D" uid="uid://brrahyuj8m1ta" path="res://sprites/ui/pause_overlay.png" id="27_knhde"]
+[ext_resource type="Texture2D" uid="uid://dmomn8uwmp0se" path="res://sprites/ui/scroll_anim.png" id="29_f32ti"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn5md"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
@@ -1272,6 +1273,10 @@ corner_detail = 20
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6h1ky"]
 
+[sub_resource type="Curve" id="Curve_7n2hj"]
+_data = [Vector2(0, 0.909091), 0.0, -0.0622496, 0, 0, Vector2(0.613861, 0.690909), -1.0202, -1.0202, 0, 0, Vector2(1, 0), -1.78928, 0.0, 1, 0]
+point_count = 3
+
 [sub_resource type="Animation" id="Animation_7gmu6"]
 resource_name = "slide_in"
 length = 0.4
@@ -1327,11 +1332,11 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../ScreenDim:visible")
+tracks/4/path = NodePath("../PauseScreenDim:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.175, 0.2),
+"times": PackedFloat32Array(0.2, 0.225),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -1339,11 +1344,11 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../ScreenDim:modulate")
+tracks/5/path = NodePath("../PauseScreenDim:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.175, 0.2, 0.4),
+"times": PackedFloat32Array(0.2, 0.225, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -1389,8 +1394,90 @@ tracks/2/keys = {
 "values": [Vector2(277, 206), Vector2(450, 206)]
 }
 
+[sub_resource type="Animation" id="Animation_2pgyg"]
+resource_name = "scroll"
+length = 0.7
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Options_Menu/Scroll:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Options_Menu/Scroll:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-280, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Options_Menu/dust_1:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Options_Menu/dust_2:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Options_Menu/Scroll:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.275, 0.3, 0.325, 0.35, 0.375, 0.4, 0.425, 0.45, 0.475, 0.5, 0.525, 0.55, 0.575, 0.6, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_ipdxe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Options_Menu/Scroll:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aueef"]
 _data = {
+"RESET": SubResource("Animation_ipdxe"),
+"scroll": SubResource("Animation_2pgyg"),
 "slide_in": SubResource("Animation_7gmu6"),
 "slide_out": SubResource("Animation_sj5ht")
 }
@@ -1660,14 +1747,6 @@ position = Vector2(300, 125)
 [node name="PlayerInventory" parent="." instance=ExtResource("10_oguq7")]
 z_index = 20
 
-[node name="lines" type="Node2D" parent="."]
-visible = false
-z_index = 33
-
-[node name="Line2D" type="Line2D" parent="lines"]
-points = PackedVector2Array(0, 0, 376, 151, 59, 185, 0, 0)
-width = 1.0
-
 [node name="Confetti" type="CPUParticles2D" parent="."]
 position = Vector2(214, -22)
 emitting = false
@@ -1694,6 +1773,13 @@ z_index = 31
 [node name="DamageFullscreen" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 texture = ExtResource("20_g8vl8")
+centered = false
+
+[node name="PauseScreenDim" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 35
+texture = ExtResource("4_g0qq0")
 centered = false
 
 [node name="FullscreenBlack" type="Sprite2D" parent="."]
@@ -1778,7 +1864,7 @@ horizontal_alignment = 1
 
 [node name="enemy_sprite" type="AnimatedSprite2D" parent="Gameover/black/enemy"]
 position = Vector2(212, 119)
-scale = Vector2(3, 3)
+scale = Vector2(1e-05, 1e-05)
 animation = &""
 
 [node name="final_pickups" type="Node2D" parent="Gameover/black"]
@@ -1981,6 +2067,56 @@ text = "MAIN MENU
 "
 alignment = 2
 
+[node name="Options_Menu" type="Control" parent="PauseMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="dust_1" type="CPUParticles2D" parent="PauseMenu/Options_Menu"]
+position = Vector2(385, 193)
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, 1)
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 80.0
+initial_velocity_max = 80.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_7n2hj")
+color = Color(0.458824, 0.458824, 0.458824, 1)
+
+[node name="dust_2" type="CPUParticles2D" parent="PauseMenu/Options_Menu"]
+position = Vector2(385, 44)
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 80.0
+initial_velocity_max = 80.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_7n2hj")
+color = Color(0.458824, 0.458824, 0.458824, 1)
+
+[node name="Scroll" type="Sprite2D" parent="PauseMenu/Options_Menu"]
+texture_filter = 1
+position = Vector2(-280, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("29_f32ti")
+centered = false
+hframes = 3
+vframes = 5
+
 [node name="pause_anims" type="AnimationPlayer" parent="PauseMenu"]
 process_mode = 3
 libraries = {
@@ -1999,4 +2135,5 @@ environment = ExtResource("17_8pmbs")
 [connection signal="timeout" from="PortraitAnims" to="." method="_on_portrait_anims_timeout"]
 [connection signal="timeout" from="CrystalAnim" to="." method="_on_crystal_anim_timeout"]
 [connection signal="button_down" from="PauseMenu/Resume" to="." method="_on_resume_button_down"]
+[connection signal="button_down" from="PauseMenu/Options" to="." method="_on_options_button_down"]
 [connection signal="button_up" from="PauseMenu/MainMenu" to="." method="_on_main_menu_button_up"]

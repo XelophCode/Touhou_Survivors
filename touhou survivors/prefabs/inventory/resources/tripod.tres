@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=6 format=3 uid="uid://b2gmv74leylir"]
+
+[ext_resource type="Texture2D" uid="uid://c4kjfvkst6ml3" path="res://sprites/items/item_icons/tripod_icon.png" id="1_7dmmx"]
+[ext_resource type="PackedScene" uid="uid://h0lojgvribv2" path="res://prefabs/inventory/tripod_inventory.tscn" id="1_bxgdn"]
+[ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_qw3lj"]
+[ext_resource type="PackedScene" uid="uid://fmo840cx7owg" path="res://prefabs/item_spawnables/tripod.tscn" id="4_wu1ak"]
+[ext_resource type="Resource" uid="uid://djsdr7dn1ej62" path="res://prefabs/inventory/resources/spell_cards/peerless_wind_god.tres" id="5_vqc2r"]
+
+[resource]
+script = ExtResource("1_qw3lj")
+enabled = true
+item_name = 29
+description = ""
+inventory_size = 4
+inventory = ExtResource("1_bxgdn")
+spawnable = ExtResource("4_wu1ak")
+icon = ExtResource("1_7dmmx")
+active = true
+cooldown = 5
+one_time_spawn = false
+item_set = Array[int]([11, 28])
+spell_card = ExtResource("5_vqc2r")

@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbfy3xysqqhug"]
+
+[ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_qphab"]
+[ext_resource type="PackedScene" uid="uid://vbx5x6eo558v" path="res://prefabs/item_grid_layouts/1x2.tscn" id="2_gr4qu"]
+[ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="3_nwsma"]
+[ext_resource type="Texture2D" uid="uid://b7mthcrg283ux" path="res://sprites/items/inventory_item_BGs/1x2_item_large_bg.png" id="4_vxk8w"]
+[ext_resource type="Material" uid="uid://dun40mejvqphh" path="res://scripts/shaders/materials/inventory_item_shader_material.tres" id="5_sqnsd"]
+[ext_resource type="Texture2D" uid="uid://ks1odxhkyqha" path="res://sprites/items/inventory/leaf_fan_item_large.png" id="6_1ohx2"]
+[ext_resource type="Texture2D" uid="uid://b2iw27seypyyn" path="res://sprites/items/inventory_item_BGs/1x2_item_large_bg_highlight.png" id="7_xwqrj"]
+[ext_resource type="AnimationLibrary" uid="uid://c3f6dw06ejniu" path="res://resources/animations/libraries/Inventory_Items.res" id="8_ajg5f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dj05x"]
+resource_local_to_scene = true
+shader = ExtResource("3_nwsma")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(0.184314, 0.996078, 1, 1)
+shader_parameter/line_scale = 0.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[node name="LeafFan" type="Node2D"]
+z_index = 6
+texture_filter = 1
+script = ExtResource("1_qphab")
+
+[node name="1x2" parent="." instance=ExtResource("2_gr4qu")]
+
+[node name="ItemLargeBg" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+material = SubResource("ShaderMaterial_dj05x")
+texture = ExtResource("4_vxk8w")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+material = ExtResource("5_sqnsd")
+scale = Vector2(1, 1e-05)
+texture = ExtResource("6_1ohx2")
+
+[node name="ItemHighlight" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("7_xwqrj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"Inventory_Items": ExtResource("8_ajg5f")
+}

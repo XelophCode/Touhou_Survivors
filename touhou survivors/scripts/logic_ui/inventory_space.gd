@@ -11,6 +11,7 @@ func _on_input_event(_viewport, event, _shape_idx):
 		if event.is_action_pressed("right_mouse_button"):
 			if blocked:
 				if Globals.crystal_count > 0:
+					Signals.emit_signal("remove_blocked_space_sfx")
 					$AnimationPlayer.play("blocked_space_dissolve")
 					monitorable = true
 					monitoring = true
