@@ -10,9 +10,8 @@
 script = ExtResource("1_2hi8w")
 enabled = true
 item_name = 7
-description = "Fire a magic laser!
-POWERUP:
-Fire a really big magic laser!"
+description = "vertical: long laser
+horizontal: wide laser"
 inventory_size = 3
 inventory = ExtResource("1_yuss0")
 spawnable = ExtResource("4_2lhf3")

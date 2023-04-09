@@ -5,6 +5,7 @@ var loop_count:float = 3.0
 var is_looping:bool = false
 
 func _ready():
+	Signals.emit_signal("master_spark_sfx")
 	damage = randi_range(5,8)
 	$main_body.rotation_degrees = Globals.cardinal_direction_to_rotation(Globals.player_facing)
 	global_position = Globals.player_position

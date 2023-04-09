@@ -5,6 +5,7 @@ var distance:float
 
 
 func _ready():
+	Signals.emit_signal("yinyang_sfx")
 	damage = randi_range(8,12)
 	global_position = Globals.player_position
 

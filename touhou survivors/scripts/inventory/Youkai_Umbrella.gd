@@ -15,6 +15,7 @@ func _ready():
 
 func move_umbrella():
 	if attack_count > 0:
+		Signals.emit_signal("youkai_umbrella_jump_sfx")
 		$main_body/main_body_2/AnimatedSprite2D.play("move")
 		var rand_pos: Vector2 = Vector2(randf_range(-40,40),randf_range(-25,25))
 		if $main_body/main_body_2.position.x > rand_pos.x:

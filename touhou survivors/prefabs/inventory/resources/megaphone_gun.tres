@@ -10,7 +10,8 @@
 script = ExtResource("1_6tqqg")
 enabled = true
 item_name = 26
-description = ""
+description = "vertical: soundwave blast
+horizontal: fire bullets"
 inventory_size = 3
 inventory = ExtResource("2_qkpnw")
 spawnable = ExtResource("4_jpkh5")

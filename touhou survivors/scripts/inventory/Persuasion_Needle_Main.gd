@@ -3,6 +3,7 @@ extends item_base_class
 var alt:bool
 
 func _ready():
+	Signals.emit_signal("persuasion_needle_sfx")
 	$main_body.scale = Vector2(2.0,2.0)
 	global_position = Globals.player_position
 	if alt:

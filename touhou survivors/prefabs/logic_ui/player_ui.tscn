@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://04yuy6nwpd5q" path="res://prefabs/logic_ui/tooltip.tscn" id="13_x4fa0"]
 [ext_resource type="Environment" uid="uid://5eytrk3240f8" path="res://resources/main_environment.tres" id="17_8pmbs"]
 [ext_resource type="Texture2D" uid="uid://pxw6irgq5bpa" path="res://sprites/items/pickups/mon.png" id="17_l0i28"]
+[ext_resource type="Texture2D" uid="uid://dwrn02us5388t" path="res://sprites/items/item_icons/icon_border.png" id="18_i862g"]
 [ext_resource type="PackedScene" uid="uid://cokydxk2wfjqf" path="res://prefabs/logic_ui/right_click_tip.tscn" id="19_2m38r"]
 [ext_resource type="Texture2D" uid="uid://bad488ler0kop" path="res://sprites/ui/damage_fullscreen.png" id="20_g8vl8"]
 [ext_resource type="Texture2D" uid="uid://brrahyuj8m1ta" path="res://sprites/ui/pause_overlay.png" id="27_knhde"]
@@ -1277,6 +1278,71 @@ corner_detail = 20
 _data = [Vector2(0, 0.909091), 0.0, -0.0622496, 0, 0, Vector2(0.613861, 0.690909), -1.0202, -1.0202, 0, 0, Vector2(1, 0), -1.78928, 0.0, 1, 0]
 point_count = 3
 
+[sub_resource type="Animation" id="Animation_2pgyg"]
+resource_name = "scroll"
+length = 0.7
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Options_Menu/Scroll:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Options_Menu/Scroll:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-280, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Options_Menu/dust_1:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Options_Menu/dust_2:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Options_Menu/Scroll:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.275, 0.3, 0.325, 0.35, 0.375, 0.4, 0.425, 0.45, 0.475, 0.5, 0.525, 0.55, 0.575, 0.6, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11, 12, 13]
+}
+
 [sub_resource type="Animation" id="Animation_7gmu6"]
 resource_name = "slide_in"
 length = 0.4
@@ -1394,95 +1460,14 @@ tracks/2/keys = {
 "values": [Vector2(277, 206), Vector2(450, 206)]
 }
 
-[sub_resource type="Animation" id="Animation_2pgyg"]
-resource_name = "scroll"
-length = 0.7
-step = 0.025
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Options_Menu/Scroll:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Options_Menu/Scroll:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-280, 0), Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Options_Menu/dust_1:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Options_Menu/dust_2:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Options_Menu/Scroll:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.275, 0.3, 0.325, 0.35, 0.375, 0.4, 0.425, 0.45, 0.475, 0.5, 0.525, 0.55, 0.575, 0.6, 0.625),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11, 12, 13]
-}
-
-[sub_resource type="Animation" id="Animation_ipdxe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Options_Menu/Scroll:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aueef"]
 _data = {
-"RESET": SubResource("Animation_ipdxe"),
 "scroll": SubResource("Animation_2pgyg"),
 "slide_in": SubResource("Animation_7gmu6"),
 "slide_out": SubResource("Animation_sj5ht")
 }
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("character_portrait", "time_label", "lvl_label", "powerbar", "confetti", "time_survived_label", "final_time_label", "killed_by_text", "enemy_name", "enemy_sprite", "pickups_label", "faith_label", "crystals_label", "mon_label", "any_button_label")]
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("character_portrait", "time_label", "lvl_label", "powerbar", "confetti", "q_button_prompt", "r_button_prompt", "inven_button_prompts", "time_survived_label", "final_time_label", "killed_by_text", "enemy_name", "enemy_sprite", "pickups_label", "faith_label", "crystals_label", "mon_label", "any_button_label")]
 script = ExtResource("1_i5u1q")
 character_portrait = NodePath("UI/CharacterPortrait")
 time_label = NodePath("UI/Time")
@@ -1491,6 +1476,9 @@ powerbar = NodePath("UI/Powerbar")
 confetti = NodePath("Confetti")
 reimu_portrait = ExtResource("2_lwihl")
 marisa_portrait = ExtResource("3_8rrdf")
+q_button_prompt = NodePath("UI/inven_button_prompts/Q_button_prompt")
+r_button_prompt = NodePath("UI/inven_button_prompts/R_button_prompt")
+inven_button_prompts = NodePath("UI/inven_button_prompts")
 time_survived_label = NodePath("Gameover/black/final_time/time_survived")
 final_time_label = NodePath("Gameover/black/final_time/time")
 killed_by_text = NodePath("Gameover/black/enemy/killed_by")
@@ -1726,6 +1714,43 @@ theme_override_fonts/font = ExtResource("3_nqdip")
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="inven_button_prompts" type="Node2D" parent="UI"]
+visible = false
+
+[node name="Q_button_prompt" type="Node2D" parent="UI/inven_button_prompts"]
+visible = false
+position = Vector2(-94, 0)
+
+[node name="IconBorder" type="Sprite2D" parent="UI/inven_button_prompts/Q_button_prompt"]
+position = Vector2(233, 230)
+texture = ExtResource("18_i862g")
+
+[node name="Label" type="Label" parent="UI/inven_button_prompts/Q_button_prompt"]
+offset_left = 229.0
+offset_top = 226.0
+offset_right = 269.0
+offset_bottom = 249.0
+theme_override_fonts/font = ExtResource("3_nqdip")
+theme_override_font_sizes/font_size = 8
+text = "Q show item description"
+
+[node name="R_button_prompt" type="Node2D" parent="UI/inven_button_prompts"]
+visible = false
+position = Vector2(-57, 0)
+
+[node name="IconBorder" type="Sprite2D" parent="UI/inven_button_prompts/R_button_prompt"]
+position = Vector2(233, 230)
+texture = ExtResource("18_i862g")
+
+[node name="Label" type="Label" parent="UI/inven_button_prompts/R_button_prompt"]
+offset_left = 229.0
+offset_top = 226.0
+offset_right = 269.0
+offset_bottom = 249.0
+theme_override_fonts/font = ExtResource("3_nqdip")
+theme_override_font_sizes/font_size = 8
+text = "R rotate item"
 
 [node name="PortraitAnims" type="Timer" parent="."]
 wait_time = 5.0

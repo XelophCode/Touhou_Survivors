@@ -10,7 +10,8 @@
 script = ExtResource("1_cvwtj")
 enabled = true
 item_name = 13
-description = ""
+description = "vertical: throw forward
+horizontal: throw backwards"
 inventory_size = 0
 inventory = ExtResource("2_wdlb7")
 spawnable = ExtResource("4_qcijw")

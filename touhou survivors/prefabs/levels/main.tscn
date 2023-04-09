@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cerifwegjcfki"]
+[gd_scene load_steps=60 format=3 uid="uid://cerifwegjcfki"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_78i06"]
 [ext_resource type="PackedScene" uid="uid://cqvtr2xssn8wh" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
@@ -43,6 +43,21 @@
 [ext_resource type="AudioStream" uid="uid://cibpy0nehhy6b" path="res://audio/leaf_fan.wav" id="40_go4i5"]
 [ext_resource type="AudioStream" uid="uid://dues4oonilrfs" path="res://audio/arrow.wav" id="41_xg48u"]
 [ext_resource type="AudioStream" uid="uid://dq44svlnn4di" path="res://audio/star_2.wav" id="42_gmybk"]
+[ext_resource type="AudioStream" uid="uid://dcu0pguoal74v" path="res://audio/gap_2.wav" id="43_p8r8y"]
+[ext_resource type="AudioStream" uid="uid://8e0bpitm55h5" path="res://audio/fireball.wav" id="44_fbh52"]
+[ext_resource type="AudioStream" uid="uid://b7lkpebsqt27l" path="res://audio/fireball_split.wav" id="45_pfs3r"]
+[ext_resource type="AudioStream" uid="uid://83toodfj51kq" path="res://audio/water.wav" id="46_whj1a"]
+[ext_resource type="AudioStream" uid="uid://bovdrollpqnp1" path="res://audio/megaphone_blast.wav" id="47_s56ge"]
+[ext_resource type="AudioStream" uid="uid://clg2ts2c1kcr6" path="res://audio/megaphone_bullet_2.wav" id="48_xwegj"]
+[ext_resource type="AudioStream" uid="uid://ctosu2t8oog0x" path="res://audio/master_spark.wav" id="49_8tbao"]
+[ext_resource type="AudioStream" uid="uid://c8u0t08kt63c2" path="res://audio/mini_hakkero.wav" id="50_6sx1e"]
+[ext_resource type="AudioStream" uid="uid://osoar4y7e5ue" path="res://audio/mochi_mallet_bash.wav" id="51_rhur8"]
+[ext_resource type="AudioStream" uid="uid://bxcmm3dkfbcp3" path="res://audio/mochi_mallet_swing.wav" id="52_dn8mc"]
+[ext_resource type="AudioStream" uid="uid://dxt7mrhn6ry5j" path="res://audio/raincloud.wav" id="53_gfg5k"]
+[ext_resource type="AudioStream" uid="uid://wmm0sxo1lqm" path="res://audio/roukanken_flurry.wav" id="54_si6h8"]
+[ext_resource type="AudioStream" uid="uid://7mofabq2yc0r" path="res://audio/roukanken_spin.wav" id="55_c4ba0"]
+[ext_resource type="AudioStream" uid="uid://bxo54xvxgbsja" path="res://audio/sake_bottle_break.wav" id="56_y2gre"]
+[ext_resource type="AudioStream" uid="uid://dq66hae8nmcca" path="res://audio/youkai_umbrella.wav" id="57_0kava"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qx4cd"]
 shader = ExtResource("5_1lqtb")
@@ -83,7 +98,7 @@ script = ExtResource("12_sxuwu")
 
 [node name="PlayerUI" parent="." instance=ExtResource("17_o28hk")]
 
-[node name="Global_Audio" type="Node" parent="." node_paths=PackedStringArray("enemy_death", "hit", "level_up", "applause", "coin_explosion", "faith", "crystal", "tornado", "player_damage", "explosion", "item_grab", "item_place", "rotate", "not_enough_crystals", "remove_blocked_space", "gohei", "amulet", "bat", "camera", "frog_explosion", "haniwa", "icicle_explode", "keystone_small", "keystone_large", "leaf_fan", "arrow", "star")]
+[node name="Global_Audio" type="Node" parent="." node_paths=PackedStringArray("enemy_death", "hit", "level_up", "applause", "coin_explosion", "faith", "crystal", "tornado", "player_damage", "explosion", "item_grab", "item_place", "rotate", "not_enough_crystals", "remove_blocked_space", "gohei", "amulet", "bat", "camera", "frog_explosion", "haniwa", "icicle_explode", "keystone_small", "keystone_large", "leaf_fan", "arrow", "star", "gap_open", "fireball", "fireball_split", "water", "megaphone_blast", "megaphone_bullet", "master_spark", "mini_hakkero", "mochi_mallet_bash", "mochi_mallet_swing", "mushroom_explode", "raincloud", "persuasion_needle", "roukanken_flurry", "roukanken_spin", "sake_swing", "sake_bottle_break", "shanghai_attack", "knife_throw", "tripod_swing", "yinyang", "youkai_umbrella_jump")]
 script = ExtResource("21_7vj3l")
 enemy_death = NodePath("Enemy_Death")
 hit = NodePath("Hit")
@@ -112,6 +127,28 @@ keystone_large = NodePath("keystone_large")
 leaf_fan = NodePath("leaf_fan")
 arrow = NodePath("arrow")
 star = NodePath("star")
+gap_open = NodePath("gap_open")
+fireball = NodePath("fireball")
+fireball_split = NodePath("fireball_split")
+water = NodePath("water")
+megaphone_blast = NodePath("megaphone_blast")
+megaphone_bullet = NodePath("megaphone_bullet")
+master_spark = NodePath("master_spark")
+mini_hakkero = NodePath("mini_hakkero")
+mochi_mallet_bash = NodePath("mochi_mallet_bash")
+mochi_mallet_swing = NodePath("mochi_mallet_swing")
+mushroom_explode = NodePath("mushroom_explode")
+raincloud = NodePath("raincloud")
+persuasion_needle = NodePath("persuasion_needle")
+roukanken_flurry = NodePath("roukanken_flurry")
+roukanken_spin = NodePath("roukanken_spin")
+sake_swing = NodePath("sake_swing")
+sake_bottle_break = NodePath("sake_bottle_break")
+shanghai_attack = NodePath("shanghai_attack")
+knife_throw = NodePath("throwing_knife")
+tripod_swing = NodePath("tripod_swing")
+yinyang = NodePath("yinyang")
+youkai_umbrella_jump = NodePath("youkai_umbrella_jump")
 
 [node name="Enemy_Death" type="AudioStreamPlayer" parent="Global_Audio"]
 stream = ExtResource("22_kmevy")
@@ -246,6 +283,116 @@ bus = &"item_sfx"
 [node name="star" type="AudioStreamPlayer" parent="Global_Audio"]
 stream = ExtResource("42_gmybk")
 volume_db = -25.0
+bus = &"item_sfx"
+
+[node name="gap_open" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("43_p8r8y")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="fireball" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("44_fbh52")
+volume_db = -10.0
+bus = &"item_sfx"
+
+[node name="fireball_split" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("45_pfs3r")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="water" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("46_whj1a")
+volume_db = -10.0
+bus = &"item_sfx"
+
+[node name="megaphone_blast" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("47_s56ge")
+volume_db = -10.0
+bus = &"item_sfx"
+
+[node name="megaphone_bullet" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("48_xwegj")
+volume_db = -10.0
+bus = &"item_sfx"
+
+[node name="master_spark" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("49_8tbao")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="mini_hakkero" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("50_6sx1e")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="mochi_mallet_bash" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("51_rhur8")
+volume_db = -10.0
+bus = &"item_sfx"
+
+[node name="mochi_mallet_swing" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("52_dn8mc")
+volume_db = -10.0
+bus = &"item_sfx"
+
+[node name="mushroom_explode" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("36_4qqid")
+volume_db = -22.0
+bus = &"item_sfx"
+
+[node name="raincloud" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("53_gfg5k")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="persuasion_needle" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("33_rbs61")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="roukanken_flurry" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("54_si6h8")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="roukanken_spin" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("55_c4ba0")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="sake_swing" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("52_dn8mc")
+volume_db = -10.0
+bus = &"item_sfx"
+
+[node name="sake_bottle_break" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("56_y2gre")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="shanghai_attack" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("56_y2gre")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="throwing_knife" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("33_rbs61")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="tripod_swing" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("52_dn8mc")
+volume_db = -10.0
+bus = &"item_sfx"
+
+[node name="yinyang" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("40_go4i5")
+volume_db = -15.0
+bus = &"item_sfx"
+
+[node name="youkai_umbrella_jump" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("57_0kava")
+volume_db = -15.0
 bus = &"item_sfx"
 
 [node name="Audio" type="Node" parent="."]

@@ -9,9 +9,8 @@
 script = ExtResource("1_gjrs4")
 enabled = true
 item_name = 10
-description = "Moves in a line dealing damage!
-POWERUP:
-Grows larger to hit more enemies!"
+description = "vertical: moves in a line
+horizontal: moves in a zigzag"
 inventory_size = 1
 inventory = ExtResource("2_c01km")
 spawnable = ExtResource("4_062sx")

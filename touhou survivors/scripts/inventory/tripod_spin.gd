@@ -1,6 +1,7 @@
 extends item_base_class
 
 func _ready():
+	Signals.emit_signal("tripod_swing_sfx")
 	global_position = Globals.player_position
 	damage = randi_range(16,19)
 	$main_body.rotation_degrees = randf_range(0,359)

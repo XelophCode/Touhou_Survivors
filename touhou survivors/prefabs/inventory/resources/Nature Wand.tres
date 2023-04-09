@@ -10,7 +10,8 @@
 script = ExtResource("1_2340c")
 enabled = true
 item_name = 24
-description = ""
+description = "vertical: tornados
+horizontal: raincloud"
 inventory_size = 2
 inventory = ExtResource("2_sgtjj")
 spawnable = ExtResource("4_pvw2b")

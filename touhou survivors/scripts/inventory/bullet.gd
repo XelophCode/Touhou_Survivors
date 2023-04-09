@@ -4,6 +4,7 @@ var rot:float
 var alt:bool
 
 func _ready():
+	Signals.emit_signal("megaphone_bullet_sfx")
 	damage = randi_range(7,10)
 	global_position = Globals.player_position
 	$main_body.rotation_degrees = Globals.cardinal_direction_to_rotation(Globals.player_facing) + rot

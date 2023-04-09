@@ -10,9 +10,7 @@
 script = ExtResource("1_wutpu")
 enabled = true
 item_name = 11
-description = "Take a picture of multiple enemies!
-POWERUP:
-Deal more damage!"
+description = "rotate to change the orientation of the photo."
 inventory_size = 3
 inventory = ExtResource("2_wpd21")
 spawnable = ExtResource("4_pg7tf")

@@ -6,7 +6,7 @@ var eyes_scrolling : float
 @export var inv_items : all_items
 var rerolling:bool = false
 var can_reroll:bool = false
-var spawn_count:Vector2 = Vector2(0,1)
+var spawn_count:Vector2 = Vector2(9,10)
 var player_level:float = 1.0
 
 func _ready():
@@ -198,3 +198,6 @@ func _on_reroll_mouse_entered():
 func _on_reroll_mouse_exited():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Signals.emit_signal("show_right_click_tip",false)
+
+func play_open_sfx():
+	Signals.emit_signal("gap_open_sfx")

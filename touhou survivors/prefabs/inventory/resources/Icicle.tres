@@ -9,9 +9,8 @@
 script = ExtResource("1_4j2bg")
 enabled = true
 item_name = 14
-description = "Throw an icicle that breaks into shards!
-POWERUP:
-More damage and more shards!"
+description = "vertical: spins in place throwing shards
+horizontal: throw and shatter on contact"
 inventory_size = 1
 inventory = ExtResource("2_iigot")
 spawnable = ExtResource("4_t4uoh")

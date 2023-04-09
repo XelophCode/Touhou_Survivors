@@ -8,6 +8,9 @@ extends CanvasLayer
 @export var confetti : Node
 @export var reimu_portrait : SpriteFrames
 @export var marisa_portrait : SpriteFrames
+@export var q_button_prompt : Node2D
+@export var r_button_prompt : Node2D
+@export var inven_button_prompts : Node2D
 
 @export_group("gameover")
 @export_subgroup("time")
@@ -82,7 +85,7 @@ var is_paused:bool = false:
 		escape_can_unpause = is_paused
 
 func _ready():
-	Globals.crystal_count = 1000
+	Globals.crystal_count = 0
 	$AnimationPlayer.play("fade_out")
 	match Globals.current_character:
 		Globals.Reimu: character_portrait.sprite_frames = reimu_portrait
@@ -100,6 +103,9 @@ func _ready():
 	Signals.connect("increase_mon",catch_increase_mon)
 	Signals.connect("current_crystal",catch_current_crystal)
 	Signals.connect("total_power",catch_total_power)
+	Signals.connect("holding_item",catch_holding_item)
+	Signals.connect("show_tooltip",catch_show_tooltip)
+	Signals.connect("hide_tooltip",catch_hide_tooltip)
 
 func _process(delta):
 	
@@ -163,6 +169,9 @@ func catch_next_lvl_update(value):
 func catch_leveling_up(value):
 	leveling_up = value
 	if leveling_up:
+		inven_button_prompts.visible = true
+		q_button_prompt.visible = false
+		r_button_prompt.visible = false
 		$ScreenDim.visible = true
 		$AnimationPlayer2.play("dim_screen")
 		confetti.emitting = true
@@ -171,6 +180,9 @@ func catch_leveling_up(value):
 		current_lvl += 1
 		lvl_label.text = "Lvl " + str(current_lvl)
 	else:
+		inven_button_prompts.visible = false
+		q_button_prompt.visible = false
+		r_button_prompt.visible = false
 		$ScreenDim.visible = false
 		confetti.emitting = false
 		character_portrait.play("head_bob")
@@ -304,7 +316,7 @@ func game_over_stats():
 	can_skip_anims = false
 
 func goto_main_menu():
-	get_tree().change_scene_to_file("res://prefabs/levels/main_menu.tscn")
+	get_tree().change_scene_to_file(ProjectSettings.localize_path("res://prefabs/levels/main_menu.tscn"))
 
 func catch_increase_max_hp(value):
 	$UI/Healthbar.max_value = value
@@ -375,5 +387,20 @@ func catch_total_power(value):
 	current_faith = value
 
 func _on_options_button_down():
-	$PauseMenu/Options_Menu.visible = true
-	$PauseMenu/pause_anims.play("scroll")
+	if false:
+		$PauseMenu/Options_Menu.visible = true
+		$PauseMenu/pause_anims.play("scroll")
+
+func catch_holding_item(value):
+	if value:
+		q_button_prompt.visible = false
+		r_button_prompt.visible = true
+	else:
+		q_button_prompt.visible = true
+		r_button_prompt.visible = false
+
+func catch_show_tooltip():
+	q_button_prompt.visible = true
+
+func catch_hide_tooltip():
+	q_button_prompt.visible = false

@@ -45,6 +45,7 @@ func random_pos():
 	return Vector2(randf_range(-move_amt,move_amt),randf_range(-move_amt,move_amt))
 
 func attack():
+	Signals.emit_signal("shanghai_attack_sfx")
 	$main_body/Shanghai.play("default")
 	$main_body/Area2D.monitoring = true
 	$AnimationPlayer.play("attack")

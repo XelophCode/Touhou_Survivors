@@ -9,9 +9,8 @@
 script = ExtResource("1_hl2ni")
 enabled = true
 item_name = 3
-description = "Slice nearby enemies!
-POWERUP:
-Slice three times!"
+description = "vertical: multi-slash in front of you
+horizontal: multi-slash spin"
 inventory_size = 2
 inventory = ExtResource("1_700we")
 spawnable = ExtResource("4_58eia")

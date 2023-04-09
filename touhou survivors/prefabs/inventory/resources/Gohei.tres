@@ -10,7 +10,8 @@
 script = ExtResource("1_1iw6h")
 enabled = true
 item_name = 2
-description = ""
+description = "Vetical: swing side to side
+Horizontal: swing forwards backwards"
 inventory_size = 4
 inventory = ExtResource("1_r44fl")
 spawnable = ExtResource("4_kdsux")

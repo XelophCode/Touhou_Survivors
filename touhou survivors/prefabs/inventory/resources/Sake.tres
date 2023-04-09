@@ -9,9 +9,8 @@
 script = ExtResource("1_mvvnp")
 enabled = true
 item_name = 1
-description = "Throw a sake bottle that leaves a puddle which damages!
-POWERUP:
-Throw a larger bottle!"
+description = "vertical: swing the bottle
+horizontal: throw the bottle"
 inventory_size = 4
 inventory = ExtResource("1_d3sek")
 spawnable = ExtResource("4_en4je")

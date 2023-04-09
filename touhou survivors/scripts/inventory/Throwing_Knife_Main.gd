@@ -5,6 +5,7 @@ var aimed_rot:float
 var alt:bool = false
 
 func _ready():
+	Signals.emit_signal("knife_throw_sfx")
 	damage = randi_range(3,5)
 	global_position = Globals.player_position
 	if alt:

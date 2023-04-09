@@ -9,9 +9,8 @@
 script = ExtResource("1_jja7e")
 enabled = true
 item_name = 21
-description = "Keystone that falls on enemies!
-POWERUP:
-More keystones!"
+description = "vertical: one big keystone
+horizontal: several small keystones"
 inventory_size = 2
 inventory = ExtResource("2_cw6bf")
 spawnable = ExtResource("4_qoyle")

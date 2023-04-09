@@ -1,6 +1,7 @@
 extends item_base_class
 
 func _ready():
+	Signals.emit_signal("mini_hakkero_sfx")
 	if alt_fire:
 		$main_body.scale = Vector2(2.0,1.0)
 	else:

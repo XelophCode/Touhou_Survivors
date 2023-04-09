@@ -10,9 +10,8 @@
 script = ExtResource("1_pkc7r")
 enabled = true
 item_name = 0
-description = "Yinyang orb that spirals outwards dealing damage!
-POWERUP:
-Larger Yinyang orb!"
+description = "vertical: orbs spin outwards
+horizontal: orbs stay nearby"
 inventory_size = 3
 inventory = ExtResource("1_qaxv5")
 spawnable = ExtResource("4_mhyqb")

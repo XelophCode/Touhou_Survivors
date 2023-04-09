@@ -10,7 +10,8 @@
 script = ExtResource("1_vuwod")
 enabled = true
 item_name = 23
-description = ""
+description = "vertical: shoot a fireball
+horizontal: torrent of water"
 inventory_size = 3
 inventory = ExtResource("2_38ngd")
 spawnable = ExtResource("4_qy3s1")

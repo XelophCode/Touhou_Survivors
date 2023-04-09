@@ -10,9 +10,8 @@
 script = ExtResource("1_vkwul")
 enabled = true
 item_name = 19
-description = "Summon a doll that attacks with a razer blade!
-POWERUP:
-Summon an army of Shanghai's"
+description = "vertical: random positions
+horizontal: formation"
 inventory_size = 0
 inventory = ExtResource("2_uopwg")
 spawnable = ExtResource("4_18yxk")

@@ -10,7 +10,8 @@
 script = ExtResource("1_qw3lj")
 enabled = true
 item_name = 29
-description = ""
+description = "vertical: swing tripod
+horizontal: throw tripods"
 inventory_size = 4
 inventory = ExtResource("1_bxgdn")
 spawnable = ExtResource("4_wu1ak")

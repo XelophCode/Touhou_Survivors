@@ -10,7 +10,8 @@
 script = ExtResource("1_um56b")
 enabled = true
 item_name = 27
-description = ""
+description = "vertical: fire a spread of arrows
+horizontal: fire arrows sequentially"
 inventory_size = 4
 inventory = ExtResource("2_70mc1")
 spawnable = ExtResource("4_qjlii")

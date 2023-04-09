@@ -4,6 +4,7 @@ var move:float
 var rot:float
 
 func _ready():
+	Signals.emit_signal("raincloud_sfx")
 	global_position = Globals.player_position
 	rot = randf_range(0,359)
 	damage = randi_range(10,12)

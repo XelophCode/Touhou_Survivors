@@ -10,9 +10,8 @@
 script = ExtResource("1_ohlde")
 enabled = true
 item_name = 17
-description = "Swing a mallet in a circle around you!
-POWERUP:
-Swing a bigger mallet!"
+description = "vertical: smash frontal enemies
+horizontal: spin with mallet"
 inventory_size = 4
 inventory = ExtResource("2_p47pa")
 spawnable = ExtResource("4_rng7k")

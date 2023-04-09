@@ -3,15 +3,14 @@
 [ext_resource type="Script" path="res://scripts/inventory/InventoryItemResource.gd" id="1_7tek8"]
 [ext_resource type="Texture2D" uid="uid://b0xgo7h28ljr2" path="res://sprites/items/item_icons/youkai_umbrella_icon.png" id="1_igyw3"]
 [ext_resource type="PackedScene" uid="uid://byr3cq3tieo21" path="res://prefabs/inventory/youkai_umbrella_inventory.tscn" id="2_r7ndh"]
-[ext_resource type="PackedScene" path="res://prefabs/item_spawnables/Youkai_Umbrella.tscn" id="4_bo4gs"]
+[ext_resource type="PackedScene" uid="uid://d0m4lg54t41k5" path="res://prefabs/item_spawnables/Youkai_Umbrella.tscn" id="4_bo4gs"]
 
 [resource]
 script = ExtResource("1_7tek8")
 enabled = true
 item_name = 15
-description = "Throw a youkai umbrella at enemies!
-POWERUP:
-Throw three umbrellas!"
+description = "vertical: release small umbrellas
+horizontal: release large umbrella"
 inventory_size = 4
 inventory = ExtResource("2_r7ndh")
 spawnable = ExtResource("4_bo4gs")

@@ -16,6 +16,7 @@ func _ready():
 		$AnimationPlayer.play("bounce")
 
 func explode():
+	Signals.emit_signal("mushroom_explode_sfx")
 	$AnimationPlayer.play("explode")
 
 func _on_area_2d_body_entered(body):

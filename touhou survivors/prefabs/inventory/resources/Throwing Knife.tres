@@ -9,9 +9,8 @@
 script = ExtResource("1_cvwd6")
 enabled = true
 item_name = 4
-description = "Throw a knife that pierces through enemies!
-POWERUP:
-Throw three knives in a fan pattern!"
+description = "vertical: throw in a circle
+horizontal: throw in a spread"
 inventory_size = 1
 inventory = ExtResource("1_x7d8e")
 spawnable = ExtResource("4_5ebtv")

@@ -27,6 +27,28 @@ extends Node
 @export var leaf_fan : AudioStreamPlayer
 @export var arrow : AudioStreamPlayer
 @export var star : AudioStreamPlayer
+@export var gap_open : AudioStreamPlayer
+@export var fireball : AudioStreamPlayer
+@export var fireball_split : AudioStreamPlayer
+@export var water : AudioStreamPlayer
+@export var megaphone_blast : AudioStreamPlayer
+@export var megaphone_bullet : AudioStreamPlayer
+@export var master_spark : AudioStreamPlayer
+@export var mini_hakkero : AudioStreamPlayer
+@export var mochi_mallet_bash : AudioStreamPlayer
+@export var mochi_mallet_swing : AudioStreamPlayer
+@export var mushroom_explode : AudioStreamPlayer
+@export var raincloud : AudioStreamPlayer
+@export var persuasion_needle : AudioStreamPlayer
+@export var roukanken_flurry : AudioStreamPlayer
+@export var roukanken_spin : AudioStreamPlayer
+@export var sake_swing : AudioStreamPlayer
+@export var sake_bottle_break : AudioStreamPlayer
+@export var shanghai_attack : AudioStreamPlayer
+@export var knife_throw : AudioStreamPlayer
+@export var tripod_swing : AudioStreamPlayer
+@export var yinyang : AudioStreamPlayer
+@export var youkai_umbrella_jump : AudioStreamPlayer
 
 func _ready():
 	Signals.connect("enemy_death_sfx",catch_enemy_death_sfx)
@@ -55,6 +77,28 @@ func _ready():
 	Signals.connect("leaf_fan_sfx",catch_leaf_fan_sfx)
 	Signals.connect("arrow_sfx",catch_arrow_sfx)
 	Signals.connect("star_sfx",catch_star_sfx)
+	Signals.connect("gap_open_sfx",catch_gap_open_sfx)
+	Signals.connect("fireball_sfx",catch_fireball_sfx)
+	Signals.connect("fireball_split_sfx",catch_fireball_split_sfx)
+	Signals.connect("water_sfx",catch_water_sfx)
+	Signals.connect("megaphone_blast_sfx",catch_megaphone_blast_sfx)
+	Signals.connect("megaphone_bullet_sfx",catch_megaphone_bullet_sfx)
+	Signals.connect("master_spark_sfx",catch_master_spark_sfx)
+	Signals.connect("mini_hakkero_sfx",catch_mini_hakkero_sfx)
+	Signals.connect("mochi_mallet_bash_sfx",catch_mochi_mallet_bash_sfx)
+	Signals.connect("mochi_mallet_swing_sfx",catch_mochi_mallet_swing_sfx)
+	Signals.connect("mushroom_explode_sfx",catch_mushroom_explode_sfx)
+	Signals.connect("raincloud_sfx",catch_raincloud_sfx)
+	Signals.connect("persuasion_needle_sfx",catch_persuasion_needle_sfx)
+	Signals.connect("roukanken_flurry_sfx",catch_roukanken_flurry_sfx)
+	Signals.connect("roukanken_spin_sfx",catch_roukanken_spin_sfx)
+	Signals.connect("sake_swing_sfx",catch_sake_swing_sfx)
+	Signals.connect("sake_bottle_break_sfx",catch_sake_bottle_break_sfx)
+	Signals.connect("shanghai_attack_sfx",catch_shanghai_attack_sfx)
+	Signals.connect("knife_throw_sfx",catch_knife_throw_sfx)
+	Signals.connect("tripod_swing_sfx",catch_tripod_swing_sfx)
+	Signals.connect("yinyang_sfx",catch_yinyang_sfx)
+	Signals.connect("youkai_umbrella_jump_sfx",catch_youkai_umbrella_jump_sfx)
 
 func catch_enemy_death_sfx():
 	if !enemy_death.playing:
@@ -153,4 +197,75 @@ func catch_star_sfx():
 	star.pitch_scale = randf_range(0.9,1.1)
 	star.play()
 
+func catch_gap_open_sfx():
+	gap_open.play()
 
+func catch_fireball_sfx():
+	fireball.play()
+
+func catch_fireball_split_sfx():
+	fireball_split.play()
+
+func catch_water_sfx():
+	water.play()
+
+func catch_megaphone_blast_sfx():
+	megaphone_blast.play()
+
+func catch_megaphone_bullet_sfx():
+	megaphone_bullet.pitch_scale = randf_range(0.8,1.2)
+	megaphone_bullet.play()
+
+func catch_master_spark_sfx():
+	master_spark.play()
+
+func catch_mini_hakkero_sfx():
+	mini_hakkero.play()
+
+func catch_mochi_mallet_bash_sfx():
+	mochi_mallet_bash.play()
+
+func catch_mochi_mallet_swing_sfx():
+	mochi_mallet_swing.play()
+
+func catch_mushroom_explode_sfx():
+	mushroom_explode.pitch_scale = randf_range(0.9,1.1)
+	mushroom_explode.play()
+
+func catch_raincloud_sfx():
+	if !raincloud.playing:
+		raincloud.play()
+
+func catch_persuasion_needle_sfx():
+	persuasion_needle.pitch_scale = randf_range(0.8,1.2)
+	persuasion_needle.play()
+
+func catch_roukanken_flurry_sfx():
+	roukanken_flurry.play()
+
+func catch_roukanken_spin_sfx():
+	roukanken_spin.play()
+
+func catch_sake_swing_sfx():
+	if !sake_swing.playing:
+		sake_swing.play()
+
+func catch_sake_bottle_break_sfx():
+	sake_bottle_break.play()
+
+func catch_shanghai_attack_sfx():
+	shanghai_attack.pitch_scale = randf_range(0.8,1.2)
+	shanghai_attack.play()
+
+func catch_knife_throw_sfx():
+	knife_throw.pitch_scale = randf_range(0.8,1.2)
+	knife_throw.play()
+
+func catch_tripod_swing_sfx():
+	tripod_swing.play()
+
+func catch_yinyang_sfx():
+	yinyang.play()
+
+func catch_youkai_umbrella_jump_sfx():
+	youkai_umbrella_jump.play()

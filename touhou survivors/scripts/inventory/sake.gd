@@ -22,6 +22,7 @@ func _ready():
 		$AnimationPlayer.play("throw")
 		$AnimationPlayer.seek(0)
 	else:
+		Signals.emit_signal("sake_swing_sfx")
 		$main_body.global_position = Globals.player_position
 		damage = randi_range(12,17)
 		$main_body.rotation_degrees = Globals.cardinal_direction_to_rotation(Globals.player_facing)
@@ -37,6 +38,7 @@ func _on_hitbox_body_entered(body):
 	do_damage(body)
 
 func break_bottle():
+	Signals.emit_signal("sake_bottle_break_sfx")
 	$main_body/main_body_2/sprite/animations.rotation -= rotation
 	shadow.visible = false
 	sprite.visible = false

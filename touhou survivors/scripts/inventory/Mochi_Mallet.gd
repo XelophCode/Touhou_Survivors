@@ -13,6 +13,7 @@ func _ready():
 		$main_body.rotation_degrees = Globals.cardinal_direction_to_rotation(Globals.player_facing)
 		$main_body/slam.visible = true
 	else:
+		Signals.emit_signal("mochi_mallet_swing_sfx")
 		$main_body/AnimatedSprite2D.visible = true
 		$main_body/Area2D.monitorable = true
 		$main_body/Area2D.monitoring = true
@@ -34,6 +35,7 @@ func _on_area_2d_body_entered(body):
 	do_damage(body)
 
 func slam_hitbox_on():
+	Signals.emit_signal("mochi_mallet_bash_sfx")
 	$main_body/slamhitbox.monitorable = true
 	$main_body/slamhitbox.monitoring = true
 
@@ -51,3 +53,7 @@ func check_for_slam_repeat():
 
 func _on_slamhitbox_body_entered(body):
 	do_damage(body)
+
+
+func _on_timer_timeout():
+	queue_free()

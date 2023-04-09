@@ -10,7 +10,8 @@
 script = ExtResource("1_8hstl")
 enabled = true
 item_name = 28
-description = ""
+description = "vertical: create a leaf barrier
+horizontal: throw leafs in front of you"
 inventory_size = 1
 inventory = ExtResource("2_y01qs")
 spawnable = ExtResource("4_6ekno")

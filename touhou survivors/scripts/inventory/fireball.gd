@@ -5,6 +5,7 @@ var spawn_count:float = 12.0
 var small_fire_rot:float
 
 func _ready():
+	Signals.emit_signal("fireball_sfx")
 	global_position = Globals.player_position
 	damage = randi_range(7,9)
 	$main_body.rotation_degrees = Globals.cardinal_direction_to_rotation(Globals.player_facing)
@@ -14,6 +15,7 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body):
 	do_damage(body)
+	Signals.emit_signal("fireball_split_sfx")
 	for i in spawn_count:
 		var small_fire_inst = small_fireball.instantiate()
 		small_fire_inst.global_position = $main_body/main_body_2.global_position

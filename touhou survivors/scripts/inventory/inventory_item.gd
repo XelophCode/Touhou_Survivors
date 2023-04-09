@@ -182,6 +182,7 @@ func click_detection(event):
 
 func holding_item():
 	Signals.emit_signal("item_grab_sfx")
+	Signals.emit_signal("holding_item",true)
 	$ItemHighlight.visible = false
 	set_selection = 0
 	if current_match.size() > 0:
@@ -205,6 +206,7 @@ func holding_item():
 
 func not_holding_item():
 	Signals.emit_signal("item_place_sfx")
+	Signals.emit_signal("holding_item",false)
 	$ItemHighlight.visible = true
 	Globals.holding_item = false
 	Signals.emit_signal("show_tooltip")

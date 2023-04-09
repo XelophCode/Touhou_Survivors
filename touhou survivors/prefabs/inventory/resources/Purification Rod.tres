@@ -9,9 +9,8 @@
 script = ExtResource("3_01o4n")
 enabled = true
 item_name = 16
-description = "Create a magic star sigil that damages enemies!
-POWERUP:
-create a larger star!"
+description = "vertical: sigil spawns under you
+horizontal: sigil spawns near you"
 inventory_size = 1
 inventory = ExtResource("2_pn8e6")
 spawnable = ExtResource("4_itta0")

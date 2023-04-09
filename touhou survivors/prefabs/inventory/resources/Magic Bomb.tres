@@ -9,9 +9,8 @@
 script = ExtResource("1_pueeg")
 enabled = true
 item_name = 18
-description = "Throw a bomb that explodes after a short time!
-POWERUP:
-Throw multiple bombs!"
+description = "vertical: place bombs on ground
+horizontal: throw bombs nearby"
 inventory_size = 3
 inventory = ExtResource("2_1uqxi")
 spawnable = ExtResource("4_qfghh")
