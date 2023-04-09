@@ -37,6 +37,10 @@ func _ready():
 	Signals.connect("leveling_up",catch_leveling_up)
 	Signals.connect("update_crystal",catch_update_crystal)
 
+func _process(delta):
+	if Input.is_action_just_pressed("print_debug"):
+		do_lvl_up()
+
 func catch_update_faith(update):
 	faith += update
 
@@ -46,19 +50,22 @@ func catch_update_power(update):
 
 func check_for_lvl_up():
 	if power >= next_lvl and Globals.player_alive:
-		player_level += 1.0
-		Signals.emit_signal("leveling_up",true)
-		power = power - next_lvl
-		
-		match player_level:
-			4.0: next_lvl_increase_rate = 1.8
-			7.0: next_lvl_increase_rate = 1.6
-			9.0: next_lvl_increase_rate = 1.4
-			11.0: next_lvl_increase_rate = 1.2
-			15.0: next_lvl_increase_rate = 1.1
-			_: pass
-		
-		next_lvl *= next_lvl_increase_rate
+		do_lvl_up()
+
+func do_lvl_up():
+	player_level += 1.0
+	Signals.emit_signal("leveling_up",true)
+	power = power - next_lvl
+	
+	match player_level:
+		4.0: next_lvl_increase_rate = 1.8
+		7.0: next_lvl_increase_rate = 1.6
+		9.0: next_lvl_increase_rate = 1.4
+		11.0: next_lvl_increase_rate = 1.2
+		15.0: next_lvl_increase_rate = 1.1
+		_: pass
+	
+	next_lvl *= next_lvl_increase_rate
 
 func _on_threat_timeout():
 	Signals.emit_signal("increase_threat")

@@ -53,6 +53,7 @@ var spell_card_color:Color
 var spell_card
 var spell_card_cooldown
 var spell_card_icon
+var found_new_position:bool = false
 
 func find_rotational_offset():
 	var rot:int = round(rad_to_deg(rotation))
@@ -217,6 +218,7 @@ func not_holding_item():
 	left_mouse_button_held = false
 	z_index -= 50
 	if slots_currently_hovering == slot_count and hovering_occupied_space == 0:
+		found_new_position = true
 		new_position = slot_position_hovering
 		new_rotation = rotation
 		
@@ -237,8 +239,12 @@ func not_holding_item():
 	else:
 		rotated = previous_rotated
 	
-	if in_inventory and !currently_in_set:
+	
+	
+	if in_inventory and !currently_in_set and found_new_position:
 		check_for_item_set()
+	
+	found_new_position = false
 
 
 func check_for_item_set():

@@ -11,6 +11,7 @@ extends CanvasLayer
 @export var q_button_prompt : Node2D
 @export var r_button_prompt : Node2D
 @export var inven_button_prompts : Node2D
+@export var main_menu_packed : PackedScene
 
 @export_group("gameover")
 @export_subgroup("time")
@@ -85,7 +86,7 @@ var is_paused:bool = false:
 		escape_can_unpause = is_paused
 
 func _ready():
-	Globals.crystal_count = 0
+	Globals.crystal_count = 1000
 	$AnimationPlayer.play("fade_out")
 	match Globals.current_character:
 		Globals.Reimu: character_portrait.sprite_frames = reimu_portrait
@@ -316,7 +317,7 @@ func game_over_stats():
 	can_skip_anims = false
 
 func goto_main_menu():
-	get_tree().change_scene_to_file(ProjectSettings.localize_path("res://prefabs/levels/main_menu.tscn"))
+	get_tree().change_scene_to_file("res://prefabs/levels/main_menu.tscn")
 
 func catch_increase_max_hp(value):
 	$UI/Healthbar.max_value = value

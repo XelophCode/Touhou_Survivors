@@ -357,6 +357,18 @@ tracks/3/keys = {
 "method": &"go_to_character_select"
 }]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FullscreenPink:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_34fhc"]
 _data = {
@@ -504,6 +516,7 @@ position = Vector2(213, 120)
 texture = ExtResource("10_ora8p")
 
 [node name="FullscreenPink" type="Sprite2D" parent="."]
+visible = false
 z_index = 10
 material = SubResource("ShaderMaterial_pfq75")
 position = Vector2(213, 120)

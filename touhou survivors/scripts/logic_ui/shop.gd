@@ -6,7 +6,7 @@ var eyes_scrolling : float
 @export var inv_items : all_items
 var rerolling:bool = false
 var can_reroll:bool = false
-var spawn_count:Vector2 = Vector2(9,10)
+var spawn_count:Vector2 = Vector2(0,1)
 var player_level:float = 1.0
 
 func _ready():

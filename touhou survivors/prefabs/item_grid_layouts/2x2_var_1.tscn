@@ -28,6 +28,7 @@ collision_mask = 32
 
 [node name="MainPlacement" type="CollisionShape2D" parent="main_placement"]
 position = Vector2(-11, -11)
+scale = Vector2(0.9, 0.9)
 shape = SubResource("RectangleShape2D_ny4f7")
 debug_color = Color(1, 0, 0.0823529, 0.419608)
 
@@ -37,22 +38,27 @@ collision_mask = 32
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="additional_placement"]
 position = Vector2(-11, 11)
+scale = Vector2(0.9, 0.9)
 shape = SubResource("RectangleShape2D_ny4f7")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="additional_placement"]
 position = Vector2(11, 11)
+scale = Vector2(0.9, 0.9)
 shape = SubResource("RectangleShape2D_ny4f7")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="additional_placement"]
 position = Vector2(11, -11)
+scale = Vector2(0.9, 0.9)
 shape = SubResource("RectangleShape2D_ny4f7")
 
 [node name="occupied_and_stack" type="Area2D" parent="."]
+position = Vector2(0.5, 0.5)
 collision_layer = 64
 collision_mask = 96
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="occupied_and_stack"]
 z_index = 1
+position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_relvh")
 debug_color = Color(0.658824, 0.0392157, 0.803922, 0.419608)
 

@@ -25,12 +25,14 @@ func _on_marisa_mouse_exited():
 	$Loadouts/Loadout2.visible = false
 
 func _on_reimu_button_down():
+	$Reimu.disabled = true
 	Globals.current_character = Globals.Reimu
 	$Loadouts.visible = false
 	$Audio/select.play()
 	$AnimationPlayer.play("fade_in")
 
 func _on_marisa_button_down():
+	$Marisa.disabled = true
 	Globals.current_character = Globals.Marisa
 	$Loadouts.visible = false
 	$Audio/select.play()

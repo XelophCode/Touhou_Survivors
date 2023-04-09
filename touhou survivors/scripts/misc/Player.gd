@@ -81,8 +81,6 @@ func _physics_process(delta):
 	$Healthbar.value = hp
 	move = Vector2.ZERO
 	
-	if Input.is_action_just_pressed("print_debug"):
-		print(str(damage_taken))
 	
 	var magic_circle_scale : float = (crystal / 50) * 2 + 1
 	magic_circle_scale = clamp(magic_circle_scale,1.0,3.0)

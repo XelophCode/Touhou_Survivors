@@ -5,6 +5,12 @@ extends Node2D
 var show_highlight:bool = false
 var main_area
 
+func toggle_set_detection():
+	$set_detection.monitorable = false
+	$set_detection.monitoring = false
+	$set_detection.monitorable = true
+	$set_detection.monitoring = true
+
 func _ready():
 	parent.offset_setting = offset_setting
 

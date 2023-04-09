@@ -8,6 +8,7 @@ extends Node2D
 var reset_audio_DB:float
 
 func _ready():
+	$FullscreenPink.visible = false
 	var tween = create_tween()
 	tween.tween_property($Audio/music,"volume_db",0.0,3)
 
@@ -36,6 +37,7 @@ func show_press_start():
 	main_animation_player.play("press_start")
 
 func _on_start_button_down():
+	$Buttons/Start.disabled = true
 	$Audio/select.play()
 	button_anims.play("start")
 	await get_tree().create_timer(0.3).timeout
@@ -44,17 +46,17 @@ func _on_start_button_down():
 	Globals.audio_reset = AudioServer.get_bus_volume_db(0)
 	var tween = create_tween()
 	tween.tween_method(fade_audio,AudioServer.get_bus_volume_db(0),-60,1.9)
-	
 
 func go_to_character_select():
 	await get_tree().create_timer(0.5).timeout
-	
 	get_tree().change_scene_to_file("res://prefabs/levels/character_select.tscn")
+	
 
 func fade_audio(value:float):
 	AudioServer.set_bus_volume_db(0,value)
 
 func _on_quit_button_down():
+	$Buttons/Quit.disabled = true
 	$Audio/select.play()
 	button_anims.play("quit")
 	await get_tree().create_timer(0.3).timeout
