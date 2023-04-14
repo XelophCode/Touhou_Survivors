@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/prstart.ttf-8d85d491d1fb017cf2fbe7a0895f974f.
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8

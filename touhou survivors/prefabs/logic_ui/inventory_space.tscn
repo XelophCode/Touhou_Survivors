@@ -1,9 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5p8gapbj4hw4"]
+[gd_scene load_steps=17 format=3 uid="uid://b5p8gapbj4hw4"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/inventory_space.gd" id="1_68yag"]
 [ext_resource type="Texture2D" uid="uid://c50tinougrkay" path="res://sprites/ui/selection_square.png" id="1_dslhh"]
 [ext_resource type="Texture2D" uid="uid://dqhbidcf0bp2y" path="res://sprites/ui/blocked_space.png" id="2_ovav5"]
+[ext_resource type="Texture2D" uid="uid://35ru8k16famh" path="res://sprites/ui/blocked_space_2.png" id="3_535gm"]
 [ext_resource type="Shader" path="res://scripts/shaders/dissolve.gdshader" id="3_bg0kx"]
+[ext_resource type="Texture2D" uid="uid://copvckt1r3uvu" path="res://sprites/ui/blocked_space_3.png" id="4_istip"]
+[ext_resource type="Texture2D" uid="uid://byxki5hxeb8yb" path="res://sprites/ui/blocked_space_4.png" id="5_ha3jy"]
+[ext_resource type="Script" path="res://scripts/misc/blocked_spaces_resource.gd" id="6_4g07g"]
+
+[sub_resource type="Resource" id="Resource_3v4mi"]
+script = ExtResource("6_4g07g")
+images = Array[Texture2D]([ExtResource("2_ovav5"), ExtResource("3_535gm"), ExtResource("4_istip"), ExtResource("5_ha3jy")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05nss"]
 size = Vector2(70.4, 70.4001)
@@ -102,6 +110,7 @@ texture_filter = 1
 collision_layer = 32
 collision_mask = 16
 script = ExtResource("1_68yag")
+blocked_space_images = SubResource("Resource_3v4mi")
 
 [node name="SelectionSquare" type="Sprite2D" parent="."]
 visible = false

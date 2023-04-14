@@ -11,7 +11,7 @@ var enemy_spawn_edge_offset = 20
 var viewport_halved:Vector2 = Vector2(213,120)
 var spawn_zones:Array
 
-@export var spawn_limit:int = 400
+@export var spawn_limit:int = 200
 @export var fairy_red : PackedScene
 @export var fairy_green : PackedScene
 @export var fairy_blue : PackedScene

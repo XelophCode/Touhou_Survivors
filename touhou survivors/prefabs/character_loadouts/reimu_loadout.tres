@@ -1,22 +1,15 @@
-[gd_resource type="Resource" script_class="StartingItemArrayResource" load_steps=7 format=3 uid="uid://bjiup0gph2ug5"]
+[gd_resource type="Resource" script_class="StartingItemArrayResource" load_steps=5 format=3 uid="uid://bjiup0gph2ug5"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/starting_item_array_resource.gd" id="1_a8exm"]
 [ext_resource type="Resource" uid="uid://clqfycyywlhc0" path="res://prefabs/inventory/resources/Gohei.tres" id="2_b5u4n"]
 [ext_resource type="Script" path="res://scripts/logic_ui/starting_item_resource.gd" id="3_g1ki0"]
-[ext_resource type="Resource" uid="uid://bs2bk2bfgqu2v" path="res://prefabs/inventory/resources/Homing Amulet.tres" id="4_cwquw"]
 
 [sub_resource type="Resource" id="Resource_irov7"]
 script = ExtResource("3_g1ki0")
 item = ExtResource("2_b5u4n")
-cooldown = 5
-occult_orb = false
-
-[sub_resource type="Resource" id="Resource_wlrje"]
-script = ExtResource("3_g1ki0")
-item = ExtResource("4_cwquw")
-cooldown = 10
+cooldown = 3
 occult_orb = false
 
 [resource]
 script = ExtResource("1_a8exm")
-starting_item = Array[ExtResource("3_g1ki0")]([SubResource("Resource_irov7"), SubResource("Resource_wlrje")])
+starting_item = Array[ExtResource("3_g1ki0")]([SubResource("Resource_irov7")])

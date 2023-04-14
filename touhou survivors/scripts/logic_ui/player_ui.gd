@@ -13,6 +13,20 @@ extends CanvasLayer
 @export var inven_button_prompts : Node2D
 @export var main_menu_packed : PackedScene
 
+@export_group("options")
+@export_subgroup("video_options")
+@export var video_tab : Node2D
+@export var resolution_options : OptionButton
+@export var window_options : OptionButton
+@export var monitor_options : OptionButton
+@export var revert_label : Label
+@export var revert_timer : Timer
+@export var keep_video_settings : Node2D
+@export_subgroup("audio_options")
+@export var audio_tab : Node2D
+@export_subgroup("input_options")
+@export var input_tab : Node2D
+
 @export_group("gameover")
 @export_subgroup("time")
 @export var time_survived_label:Label
@@ -57,6 +71,10 @@ var current_faith:float
 var final_crystal:float
 var final_faith:float
 var is_gameover:bool = false
+var video_settings:Array = [Vector2(426,240),0,0]
+var video_settings_new:Array = [Vector2(426,240),0,0]
+var screen_center:Vector2i
+var video_settings_indices:Array = [0,0,0]
 
 var mon:int:
 	set(value):
@@ -86,6 +104,12 @@ var is_paused:bool = false:
 		escape_can_unpause = is_paused
 
 func _ready():
+	monitor_options.clear()
+	for i in DisplayServer.get_screen_count():
+		monitor_options.add_item("Monitor " + str(i),i)
+	screen_center = DisplayServer.window_get_position()
+	screen_center.x += 426/2
+	screen_center.y += 240/2
 	Globals.crystal_count = 1000
 	$AnimationPlayer.play("fade_out")
 	match Globals.current_character:
@@ -388,9 +412,7 @@ func catch_total_power(value):
 	current_faith = value
 
 func _on_options_button_down():
-	if false:
-		$PauseMenu/Options_Menu.visible = true
-		$PauseMenu/pause_anims.play("scroll")
+	$PauseMenu/pause_anims.play("scroll")
 
 func catch_holding_item(value):
 	if value:
@@ -405,3 +427,108 @@ func catch_show_tooltip():
 
 func catch_hide_tooltip():
 	q_button_prompt.visible = false
+
+
+func _on_video_b_button_down():
+	video_tab.visible = true
+	audio_tab.visible = false
+	input_tab.visible = false
+
+
+func _on_audio_b_button_down():
+	video_settings_new = video_settings
+	reset_video_options()
+	video_tab.visible = false
+	audio_tab.visible = true
+	input_tab.visible = false
+
+
+func _on_input_b_button_down():
+	video_settings_new = video_settings
+	reset_video_options()
+	video_tab.visible = false
+	audio_tab.visible = false
+	input_tab.visible = true
+
+
+func _on_resolution_item_selected(index):
+	match index:
+		0: video_settings_new[0] = Vector2(426,240)
+		1: video_settings_new[0] = Vector2(640,360)
+		2: video_settings_new[0] = Vector2(854,480)
+		3: video_settings_new[0] = Vector2(1280,720)
+		4: video_settings_new[0] = Vector2(1920,1080)
+		5: video_settings_new[0] = Vector2(2560,1440)
+		6: video_settings_new[0] = Vector2(3840,2160)
+
+
+func _on_video_apply_button_down():
+	DisplayServer.window_set_size(video_settings_new[0])
+	
+	DisplayServer.window_set_position(Vector2i(screen_center.x - video_settings_new[0].x/2,screen_center.y - video_settings_new[0].y/2))
+	match video_settings_new[1]:
+		0: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		1: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		2: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	
+	DisplayServer.window_set_current_screen(video_settings_new[2])
+	
+	keep_video_settings.visible = true
+	revert_timer.start()
+
+
+func _on_window_item_selected(index):
+	video_settings_new[1] = index
+
+func _on_monitor_item_selected(index):
+	video_settings_new[2] = index
+
+#KEEP VIDEO SETTINGS
+func _on_yes_button_down():
+	video_settings[0] = video_settings_new[0]
+	video_settings[1] = video_settings_new[1]
+	video_settings[2] = video_settings_new[2]
+	video_settings_indices[0] = resolution_options.selected
+	video_settings_indices[1] = window_options.selected
+	video_settings_indices[2] = monitor_options.selected
+	keep_video_settings.visible = false
+
+func revert_video_changes():
+	DisplayServer.window_set_size(video_settings[0])
+	
+	DisplayServer.window_set_position(Vector2i(screen_center.x - video_settings[0].x/2,screen_center.y - video_settings[0].y/2))
+	match video_settings[1]:
+		0: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		1: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		2: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	
+	DisplayServer.window_set_current_screen(video_settings[2])
+
+func reset_video_options():
+	resolution_options.selected = video_settings_indices[0]
+	window_options.selected = video_settings_indices[1]
+	monitor_options.selected = video_settings_indices[2]
+
+func _on_timer_timeout():
+	keep_video_settings.visible = false
+	revert_video_changes()
+
+func _on_no_button_down():
+	revert_timer.stop()
+	revert_video_changes()
+	keep_video_settings.visible = false
+
+func _on_close_button_down():
+	$PauseMenu/pause_anims.play_backwards("scroll")
+
+func _on_master_value_changed(value):
+	AudioServer.set_bus_volume_db(0,value)
+
+func _on_music_value_changed(value):
+	AudioServer.set_bus_volume_db(1,value)
+
+func _on_sfx_value_changed(value):
+	AudioServer.set_bus_volume_db(2,value)
+
+func _on_item_sfx_value_changed(value):
+	AudioServer.set_bus_volume_db(3,value)

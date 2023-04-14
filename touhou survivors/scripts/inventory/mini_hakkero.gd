@@ -7,7 +7,7 @@ func _ready():
 	else:
 		$main_body.scale = Vector2(1.0,2.0)
 	
-	damage = 3
+	damage = randi_range(12,15)
 	rotation = deg_to_rad(Globals.cardinal_direction_to_rotation(Globals.player_facing))
 	$main_body/AnimatedSprite2D.play("default")
 	$main_body/AnimatedSprite2D.frame = 0

@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var mon:PackedScene
-var spawn_count:int = randi_range(1,3)
+var spawn_count:int = randi_range(1,2)
 
 func _ready():
 	Signals.connect("spawn_mon",catch_spawn_mon)

@@ -1,8 +1,10 @@
 extends Area2D
 
 var blocked:bool = false
+@export var blocked_space_images : blocked_space_images
 
 func _ready():
+	$BlockedSpace.texture = blocked_space_images.images.pick_random()
 	Signals.connect("show_blocked_spaces",catch_show_blocked_spaces)
 	Signals.connect("leveling_up",catch_leveling_up)
 

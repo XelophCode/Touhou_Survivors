@@ -13,6 +13,11 @@ func _ready():
 	tween.tween_property($Audio/music,"volume_db",0.0,3)
 
 func _process(_delta):
+	if $Tutorial.visible:
+		if Globals.any_input_just_pressed():
+			$Tutorial.visible = false
+			$Buttons.visible = true
+	
 	if !$PressStart.visible and !$Buttons.visible:
 		if Globals.any_input_just_pressed():
 			main_animation_player.stop()
@@ -50,7 +55,7 @@ func _on_start_button_down():
 func go_to_character_select():
 	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://prefabs/levels/character_select.tscn")
-	
+
 
 func fade_audio(value:float):
 	AudioServer.set_bus_volume_db(0,value)
@@ -64,3 +69,6 @@ func _on_quit_button_down():
 	await get_tree().create_timer(0.5).timeout
 	get_tree().quit()
 
+func _on_manual_button_up():
+	$Tutorial.visible = true
+	$Buttons.visible = false
