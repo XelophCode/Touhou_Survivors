@@ -42,3 +42,34 @@ func go_to_main_game_scene():
 	await get_tree().create_timer(0.5).timeout
 	
 	get_tree().change_scene_to_file("res://prefabs/levels/main.tscn")
+
+func _on_remilia_button_down():
+	$Remilia.disabled = true
+	Globals.current_character = Globals.Remilia
+	$Loadouts.visible = false
+	$Audio/select.play()
+	$AnimationPlayer.play("fade_in")
+
+func _on_remilia_mouse_entered():
+	$RemiliaSprite.play("default")
+	$Loadouts/Loadout2.visible = true
+
+func _on_remilia_mouse_exited():
+	$RemiliaSprite.stop()
+	$Loadouts/Loadout2.visible = false
+
+
+func _on_aya_button_down():
+	$Aya.disabled = true
+	Globals.current_character = Globals.Aya
+	$Loadouts.visible = false
+	$Audio/select.play()
+	$AnimationPlayer.play("fade_in")
+
+func _on_aya_mouse_entered():
+	$AyaSprite.play("default")
+	$Loadouts/Loadout2.visible = true
+
+func _on_aya_mouse_exited():
+	$AyaSprite.stop()
+	$Loadouts/Loadout2.visible = false

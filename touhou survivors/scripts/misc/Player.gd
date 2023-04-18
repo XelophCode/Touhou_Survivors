@@ -7,13 +7,25 @@ var idle_animation:String = "idle_down"
 @export var walk_animations : Node
 @export var move_speed:float = 3000
 @export var starting_items: StartingItemArrayResource
-@export var reimu_anims : SpriteFrames
-@export var reimu_loadout : StartingItemArrayResource
-@export var marisa_anims : SpriteFrames
-@export var marisa_loadout : StartingItemArrayResource
 
+
+
+@export_group("character_spritesheets")
 @export var reimu_spritesheet : Texture2D
 @export var marisa_spritesheet : Texture2D
+@export var remilia_spritesheet : Texture2D
+@export var aya_spritesheet : Texture2D
+@export_group("character_anims")
+@export var reimu_anims : SpriteFrames
+@export var marisa_anims : SpriteFrames
+@export var remilia_anims : SpriteFrames
+@export var aya_anims : SpriteFrames
+@export_group("character_loadouts")
+@export var reimu_loadout : StartingItemArrayResource
+@export var marisa_loadout : StartingItemArrayResource
+@export var remilia_loadout : StartingItemArrayResource
+@export var aya_loadout : StartingItemArrayResource
+
 
 var power:int
 var faith:float
@@ -52,8 +64,10 @@ func _ready():
 		custom_loadout = starting_items
 		starting_loadout_override = true
 	match Globals.current_character:
-		Globals.Reimu: walk_animations.sprite_frames = reimu_anims; starting_items = reimu_loadout; $Teleport_Mask/TeleportAnimation.texture = reimu_spritesheet
-		Globals.Marisa: walk_animations.sprite_frames = marisa_anims; starting_items = marisa_loadout; $Teleport_Mask/TeleportAnimation.texture = marisa_spritesheet
+		Globals.Reimu: walk_animations.sprite_frames = reimu_anims; starting_items = reimu_loadout;
+		Globals.Marisa: walk_animations.sprite_frames = marisa_anims; starting_items = marisa_loadout;
+		Globals.Remilia: walk_animations.sprite_frames = remilia_anims; starting_items = remilia_loadout; 
+		Globals.Aya: walk_animations.sprite_frames = aya_anims; starting_items = aya_loadout
 	if starting_loadout_override:
 		starting_items = custom_loadout
 	

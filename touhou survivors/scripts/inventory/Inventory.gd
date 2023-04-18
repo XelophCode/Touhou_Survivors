@@ -8,11 +8,15 @@ var cross_blocked_spaces:Array = [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,
 @export var grid_art : Node
 @export var reimu_char_art : Texture2D
 @export var marisa_char_art : Texture2D
+@export var remilia_char_art : Texture2D
+@export var aya_char_art : Texture2D
 
 func _ready():
 	match Globals.current_character:
 		Globals.Reimu: character_art.texture = reimu_char_art
 		Globals.Marisa: character_art.texture = marisa_char_art
+		Globals.Remilia: character_art.texture = remilia_char_art
+		Globals.Aya: character_art.texture = aya_char_art
 	Signals.connect("leveling_up",leveling_up)
 	
 	for i in cross_blocked_spaces:

@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbjpy4ciqe0t1"]
+[gd_scene load_steps=12 format=3 uid="uid://cbjpy4ciqe0t1"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Inventory.gd" id="1_3pi44"]
 [ext_resource type="Texture2D" uid="uid://cqm8ntmgk6b77" path="res://sprites/ui/reimu_inventory_grid.png" id="3_5tnkq"]
+[ext_resource type="Texture2D" uid="uid://p82t7r4dabck" path="res://sprites/ui/remilia_fullbody.png" id="4_s68vk"]
 [ext_resource type="Texture2D" uid="uid://cfvrk7qd5ak34" path="res://sprites/ui/Reimu_fullbody.png" id="4_y7bd6"]
+[ext_resource type="Texture2D" uid="uid://gk6xagtea1id" path="res://sprites/ui/aya_fullbody.png" id="5_cb2sk"]
 [ext_resource type="Texture2D" uid="uid://4skehakv76yi" path="res://sprites/ui/general_inventory_grid.png" id="5_m1hsr"]
 [ext_resource type="Texture2D" uid="uid://b8dc57h6lkxnf" path="res://sprites/ui/marisa_fullbody.png" id="6_p1b1m"]
 [ext_resource type="PackedScene" uid="uid://b5p8gapbj4hw4" path="res://prefabs/logic_ui/inventory_space.tscn" id="9_egxg3"]
@@ -66,6 +68,8 @@ character_art = NodePath("CharacterArt")
 grid_art = NodePath("InventoryGridArt")
 reimu_char_art = ExtResource("4_y7bd6")
 marisa_char_art = ExtResource("6_p1b1m")
+remilia_char_art = ExtResource("4_s68vk")
+aya_char_art = ExtResource("5_cb2sk")
 
 [node name="InventoryGridArt" type="Sprite2D" parent="."]
 texture_filter = 1

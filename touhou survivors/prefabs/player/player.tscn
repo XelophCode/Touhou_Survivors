@@ -1,20 +1,26 @@
-[gd_scene load_steps=59 format=3 uid="uid://cah8y53sm3blk"]
+[gd_scene load_steps=65 format=3 uid="uid://cah8y53sm3blk"]
 
 [ext_resource type="Script" path="res://scripts/misc/Player.gd" id="1_37at3"]
 [ext_resource type="SpriteFrames" uid="uid://1ntee1x116bu" path="res://sprites/actors/player_anims/reimu_anims.tres" id="2_7dit5"]
 [ext_resource type="Texture2D" uid="uid://bsv6waqhjtkfp" path="res://sprites/actors/reimu.png" id="2_kv5a8"]
 [ext_resource type="Resource" uid="uid://bjiup0gph2ug5" path="res://prefabs/character_loadouts/reimu_loadout.tres" id="3_3td3m"]
 [ext_resource type="SpriteFrames" uid="uid://sk6puibpi7rk" path="res://sprites/actors/player_anims/marisa_anims.tres" id="3_a8dmt"]
+[ext_resource type="Texture2D" uid="uid://bbc8i5krdqu5y" path="res://sprites/actors/remilia.png" id="4_60ajd"]
 [ext_resource type="Texture2D" uid="uid://bf1kq504es3wr" path="res://sprites/misc/magic_circle_1.png" id="5_bvy6o"]
+[ext_resource type="Texture2D" uid="uid://by5675jsqe86b" path="res://sprites/actors/Aya.png" id="5_ddlo1"]
 [ext_resource type="Resource" uid="uid://c0nvv6vbgcgav" path="res://prefabs/character_loadouts/marisa_loadout.tres" id="5_nelpm"]
 [ext_resource type="Texture2D" uid="uid://dbie4j5btns2w" path="res://sprites/ui/sun_rays.png" id="6_4k0vm"]
 [ext_resource type="Texture2D" uid="uid://bqsgbej3ai1oo" path="res://sprites/actors/player_mask.png" id="6_d0cf2"]
 [ext_resource type="Texture2D" uid="uid://bex5m364h1ons" path="res://sprites/misc/magic_circle_2.png" id="6_dwehi"]
 [ext_resource type="Texture2D" uid="uid://rkhprq2a3yag" path="res://sprites/ui/Sakura.png" id="7_iakcq"]
+[ext_resource type="SpriteFrames" uid="uid://dvsj13jqfa0xt" path="res://sprites/actors/player_anims/remilia_anims.tres" id="7_kl7io"]
 [ext_resource type="Texture2D" uid="uid://d1lf6hf02n3s3" path="res://sprites/ui/sun_spot.png" id="7_xwjmk"]
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="8_sbskd"]
+[ext_resource type="SpriteFrames" uid="uid://dbc43d1v6ag6a" path="res://sprites/actors/player_anims/aya_anims.tres" id="9_7ncri"]
 [ext_resource type="Texture2D" uid="uid://cmipbsbn7fy1" path="res://sprites/actors/marisa.png" id="10_aj2c0"]
+[ext_resource type="Resource" uid="uid://fgm8ffl4ij5a" path="res://prefabs/character_loadouts/remilia_loadout.tres" id="10_kxkvi"]
 [ext_resource type="Texture2D" uid="uid://dww5avsvqu437" path="res://sprites/ui/black_cloud.png" id="13_1x8ei"]
+[ext_resource type="Resource" uid="uid://dptgwujc6kncj" path="res://prefabs/character_loadouts/aya_loadout.tres" id="13_r21x4"]
 [ext_resource type="Texture2D" uid="uid://cutr1tv2w1e6r" path="res://sprites/ui/smoke_08.png" id="13_scd75"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_emnmw"]
@@ -535,12 +541,18 @@ collision_mask = 2048
 floor_constant_speed = true
 script = ExtResource("1_37at3")
 walk_animations = NodePath("WalkAnimations")
-reimu_anims = ExtResource("2_7dit5")
-reimu_loadout = ExtResource("3_3td3m")
-marisa_anims = ExtResource("3_a8dmt")
-marisa_loadout = ExtResource("5_nelpm")
 reimu_spritesheet = ExtResource("2_kv5a8")
 marisa_spritesheet = ExtResource("10_aj2c0")
+remilia_spritesheet = ExtResource("4_60ajd")
+aya_spritesheet = ExtResource("5_ddlo1")
+reimu_anims = ExtResource("2_7dit5")
+marisa_anims = ExtResource("3_a8dmt")
+remilia_anims = ExtResource("7_kl7io")
+aya_anims = ExtResource("9_7ncri")
+reimu_loadout = ExtResource("3_3td3m")
+marisa_loadout = ExtResource("5_nelpm")
+remilia_loadout = ExtResource("10_kxkvi")
+aya_loadout = ExtResource("13_r21x4")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(-2.68221e-07, 4)

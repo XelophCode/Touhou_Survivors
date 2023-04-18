@@ -1,17 +1,21 @@
 extends CanvasLayer
 
 @export var main_menu : PackedScene
-@export var character_portrait : Node
+@export var character_portrait : AnimatedSprite2D
 @export var time_label : Node
 @export var lvl_label : Node
 @export var powerbar : Node
 @export var confetti : Node
-@export var reimu_portrait : SpriteFrames
-@export var marisa_portrait : SpriteFrames
 @export var q_button_prompt : Node2D
 @export var r_button_prompt : Node2D
 @export var inven_button_prompts : Node2D
 @export var main_menu_packed : PackedScene
+
+@export_group("character_portraits")
+@export var reimu_portrait : SpriteFrames
+@export var marisa_portrait : SpriteFrames
+@export var remilia_portrait : SpriteFrames
+@export var aya_portrait : SpriteFrames
 
 @export_group("options")
 @export_subgroup("video_options")
@@ -115,6 +119,8 @@ func _ready():
 	match Globals.current_character:
 		Globals.Reimu: character_portrait.sprite_frames = reimu_portrait
 		Globals.Marisa: character_portrait.sprite_frames = marisa_portrait
+		Globals.Remilia: character_portrait.sprite_frames = remilia_portrait
+		Globals.Aya: character_portrait.sprite_frames = aya_portrait
 	
 	Signals.connect("current_power",catch_current_power)
 	Signals.connect("next_lvl_update",catch_next_lvl_update)

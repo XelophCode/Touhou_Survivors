@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="StartingItemArrayResource" load_steps=5 format=3 uid="uid://dptgwujc6kncj"]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/starting_item_array_resource.gd" id="1_aw2u3"]
+[ext_resource type="Resource" uid="uid://dr74b4m7ur8lp" path="res://prefabs/inventory/resources/Camera.tres" id="2_2vts3"]
+[ext_resource type="Script" path="res://scripts/logic_ui/starting_item_resource.gd" id="3_6rg00"]
+
+[sub_resource type="Resource" id="Resource_messp"]
+script = ExtResource("3_6rg00")
+item = ExtResource("2_2vts3")
+cooldown = 3
+occult_orb = false
+
+[resource]
+script = ExtResource("1_aw2u3")
+starting_item = Array[ExtResource("3_6rg00")]([SubResource("Resource_messp")])

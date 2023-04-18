@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://do63og25gtn6j"]
+[gd_scene load_steps=58 format=3 uid="uid://do63og25gtn6j"]
 
 [ext_resource type="Texture2D" uid="uid://qrttyf07rc81" path="res://sprites/ui/character_select.png" id="1_1h6fy"]
 [ext_resource type="Script" path="res://scripts/logic_ui/character_select.gd" id="1_hwynl"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cmipbsbn7fy1" path="res://sprites/actors/marisa.png" id="4_k41ao"]
 [ext_resource type="Shader" path="res://scripts/shaders/dissolve.gdshader" id="5_d7pbv"]
 [ext_resource type="Texture2D" uid="uid://d0wh6yjoa56pg" path="res://sprites/ui/fullscreen_pink.png" id="6_a87dc"]
+[ext_resource type="Texture2D" uid="uid://bbc8i5krdqu5y" path="res://sprites/actors/remilia.png" id="6_rkprf"]
+[ext_resource type="Texture2D" uid="uid://by5675jsqe86b" path="res://sprites/actors/Aya.png" id="7_r3fx0"]
 [ext_resource type="AudioStream" uid="uid://b70f4b73su13x" path="res://audio/select2.ogg" id="8_0tpla"]
 [ext_resource type="Texture2D" uid="uid://0ydohqq6lp21" path="res://sprites/ui/fullscreen_black.png" id="8_bpbp1"]
 [ext_resource type="Texture2D" uid="uid://do4lmusiq4cvh" path="res://sprites/items/inventory/gohei_item_large.png" id="8_co7c0"]
@@ -132,6 +134,106 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjvn6"]
+atlas = ExtResource("6_rkprf")
+region = Rect2(0, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf1nn"]
+atlas = ExtResource("6_rkprf")
+region = Rect2(13, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbajt"]
+atlas = ExtResource("6_rkprf")
+region = Rect2(26, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5r1wu"]
+atlas = ExtResource("6_rkprf")
+region = Rect2(39, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tp67"]
+atlas = ExtResource("6_rkprf")
+region = Rect2(52, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmgum"]
+atlas = ExtResource("6_rkprf")
+region = Rect2(65, 104, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tig1a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjvn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nf1nn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbajt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5r1wu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tp67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmgum")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7ekc"]
+atlas = ExtResource("7_r3fx0")
+region = Rect2(0, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shpxe"]
+atlas = ExtResource("7_r3fx0")
+region = Rect2(13, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrmiu"]
+atlas = ExtResource("7_r3fx0")
+region = Rect2(26, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxbmv"]
+atlas = ExtResource("7_r3fx0")
+region = Rect2(39, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvbbn"]
+atlas = ExtResource("7_r3fx0")
+region = Rect2(52, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s30ov"]
+atlas = ExtResource("7_r3fx0")
+region = Rect2(65, 104, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjt8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7ekc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shpxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrmiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxbmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvbbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s30ov")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gxoal"]
 noise_type = 4
 
@@ -242,6 +344,26 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 
+[node name="Remilia" type="Button" parent="."]
+offset_left = 71.0
+offset_top = 39.0
+offset_right = 93.0
+offset_bottom = 61.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+
+[node name="Aya" type="Button" parent="."]
+offset_left = 15.0
+offset_top = 67.0
+offset_right = 37.0
+offset_bottom = 89.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+
 [node name="ReimuSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(26, 50)
 scale = Vector2(2, 2)
@@ -252,7 +374,18 @@ position = Vector2(54, 50)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_unbd8")
 
+[node name="RemiliaSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(82, 50)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_tig1a")
+
+[node name="AyaSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(26, 78)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_sjt8t")
+
 [node name="FullscreenPink" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_4mwes")
 texture = ExtResource("6_a87dc")
 centered = false
@@ -319,3 +452,9 @@ stream = ExtResource("8_0tpla")
 [connection signal="button_down" from="Marisa" to="." method="_on_marisa_button_down"]
 [connection signal="mouse_entered" from="Marisa" to="." method="_on_marisa_mouse_entered"]
 [connection signal="mouse_exited" from="Marisa" to="." method="_on_marisa_mouse_exited"]
+[connection signal="button_down" from="Remilia" to="." method="_on_remilia_button_down"]
+[connection signal="mouse_entered" from="Remilia" to="." method="_on_remilia_mouse_entered"]
+[connection signal="mouse_exited" from="Remilia" to="." method="_on_remilia_mouse_exited"]
+[connection signal="button_down" from="Aya" to="." method="_on_aya_button_down"]
+[connection signal="mouse_entered" from="Aya" to="." method="_on_aya_mouse_entered"]
+[connection signal="mouse_exited" from="Aya" to="." method="_on_aya_mouse_exited"]

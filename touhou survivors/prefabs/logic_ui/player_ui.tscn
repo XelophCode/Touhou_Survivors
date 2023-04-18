@@ -1,4 +1,4 @@
-[gd_scene load_steps=188 format=3 uid="uid://cxtno75a58bkv"]
+[gd_scene load_steps=190 format=3 uid="uid://cxtno75a58bkv"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/player_ui.gd" id="1_i5u1q"]
 [ext_resource type="SpriteFrames" uid="uid://bfm8psvacuqtm" path="res://sprites/ui/character_portraits/reimu_portrait.tres" id="2_lwihl"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://ciojqae21qxjp" path="res://sprites/ui/screen_dim.png" id="4_g0qq0"]
 [ext_resource type="PackedScene" uid="uid://duy7c65fo6x65" path="res://prefabs/levels/main_menu.tscn" id="4_t7v5k"]
 [ext_resource type="Texture2D" uid="uid://cfbld0no123ax" path="res://sprites/ui/powerbar_border.png" id="5_7g6dd"]
+[ext_resource type="SpriteFrames" uid="uid://dr1c4dftqwsy8" path="res://sprites/ui/character_portraits/remilia_portrait.tres" id="5_wf4rf"]
 [ext_resource type="PackedScene" uid="uid://iqvjyq5tkfb0" path="res://prefabs/logic_ui/weapon_spawner.tscn" id="6_1x5oq"]
+[ext_resource type="SpriteFrames" uid="uid://b1fftiih5ju56" path="res://sprites/ui/character_portraits/aya_portrait.tres" id="6_575fh"]
 [ext_resource type="Shader" path="res://scripts/shaders/rainbow.gdshader" id="6_sxk2r"]
 [ext_resource type="Shader" path="res://scripts/shaders/dissolve_2.gdshader" id="7_mfad4"]
 [ext_resource type="Texture2D" uid="uid://dqbnr55wnk61k" path="res://sprites/ui/timer_effect.png" id="7_qxr2u"]
@@ -1719,12 +1721,14 @@ time_label = NodePath("UI/Time")
 lvl_label = NodePath("UI/Level")
 powerbar = NodePath("UI/Powerbar")
 confetti = NodePath("Confetti")
-reimu_portrait = ExtResource("2_lwihl")
-marisa_portrait = ExtResource("3_8rrdf")
 q_button_prompt = NodePath("UI/inven_button_prompts/Q_button_prompt")
 r_button_prompt = NodePath("UI/inven_button_prompts/R_button_prompt")
 inven_button_prompts = NodePath("UI/inven_button_prompts")
 main_menu_packed = ExtResource("4_t7v5k")
+reimu_portrait = ExtResource("2_lwihl")
+marisa_portrait = ExtResource("3_8rrdf")
+remilia_portrait = ExtResource("5_wf4rf")
+aya_portrait = ExtResource("6_575fh")
 video_tab = NodePath("PauseMenu/Options_Menu/main/Video")
 resolution_options = NodePath("PauseMenu/Options_Menu/main/Video/resolution")
 window_options = NodePath("PauseMenu/Options_Menu/main/Video/window")
@@ -2664,6 +2668,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_r5mtx")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7qthj")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_mks7v")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_buq53")
+action_mode = 0
 text = "No"
 
 [node name="Timer" type="Timer" parent="PauseMenu/Options_Menu/main/Video/keep_video_settings"]

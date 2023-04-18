@@ -7,7 +7,7 @@ var player_facing:Vector2 = Vector2(0,1)
 var one_time_spawns:Array
 var tooltip_info:Array = []
 var photo_dest:Vector2
-enum {Reimu,Marisa}
+enum {Reimu,Marisa,Remilia,Aya}
 var current_character:int = 0
 var audio_reset:float
 var player_hp:float
