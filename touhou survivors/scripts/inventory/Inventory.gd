@@ -2,7 +2,7 @@ extends Node2D
 
 var level:int = 1
 var reimu_blocked_spaces:Array = [1,2,3,4,5,6,7,9,13,15,16,17,18,19,20,21,23,27,30,34,37,41,44,48]
-var cross_blocked_spaces:Array = [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49]
+var cross_blocked_spaces:Array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,20,21,22,23,25,27,28,29,30,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49]
 @export var blocked_spaces : Node
 @export var character_art : Node
 @export var grid_art : Node
@@ -10,6 +10,9 @@ var cross_blocked_spaces:Array = [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,
 @export var marisa_char_art : Texture2D
 @export var remilia_char_art : Texture2D
 @export var aya_char_art : Texture2D
+@export var suika_char_art : Texture2D
+@export var reisen_char_art : Texture2D
+@export var youmu_char_art : Texture2D
 
 func _ready():
 	match Globals.current_character:
@@ -17,6 +20,9 @@ func _ready():
 		Globals.Marisa: character_art.texture = marisa_char_art
 		Globals.Remilia: character_art.texture = remilia_char_art
 		Globals.Aya: character_art.texture = aya_char_art
+		Globals.Suika: character_art.texture = suika_char_art
+		Globals.Reisen: character_art.texture = reisen_char_art
+		Globals.Youmu: character_art.texture = youmu_char_art
 	Signals.connect("leveling_up",leveling_up)
 	
 	for i in cross_blocked_spaces:

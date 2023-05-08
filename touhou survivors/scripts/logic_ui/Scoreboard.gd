@@ -28,7 +28,7 @@ var total_power:float:
 
 var player_level:float = 1.0
 
-@export var next_lvl_increase_rate:float = 2.0
+@export var next_lvl_increase_rate:float = 3.0
 
 func _ready():
 	Globals.rand_id_assigns = []
@@ -36,10 +36,6 @@ func _ready():
 	Signals.connect("update_faith",catch_update_faith)
 	Signals.connect("leveling_up",catch_leveling_up)
 	Signals.connect("update_crystal",catch_update_crystal)
-
-func _process(delta):
-	if Input.is_action_just_pressed("print_debug"):
-		do_lvl_up()
 
 func catch_update_faith(update):
 	faith += update
@@ -58,9 +54,10 @@ func do_lvl_up():
 	power = power - next_lvl
 	
 	match player_level:
-		4.0: next_lvl_increase_rate = 1.8
-		7.0: next_lvl_increase_rate = 1.6
-		9.0: next_lvl_increase_rate = 1.4
+		3.0: next_lvl_increase_rate = 1.6
+		4.0: next_lvl_increase_rate = 1.5
+		7.0: next_lvl_increase_rate = 1.4
+		9.0: next_lvl_increase_rate = 1.3
 		11.0: next_lvl_increase_rate = 1.2
 		15.0: next_lvl_increase_rate = 1.1
 		_: pass

@@ -5,17 +5,9 @@ var move_towards_player:bool = false
 var leveling_up:bool = false
 var move:Vector2
 
-signal root_node
-
 func _ready():
-	sprite.frame = randi_range(0,8)
-	emit_signal("root_node",self)
 	Signals.connect("leveling_up",catch_leveling_up)
-	init_tween()
-
-func init_tween():
-	var tween = create_tween()
-	tween.tween_property($main_body/main_body_2,"position",Vector2(randf_range(-10,10),randf_range(-10,10)),0.6)
+	$main_body.position += Vector2(randf_range(-5,5),randf_range(-5,5))
 
 func _process(delta):
 	if move_towards_player and !leveling_up:
@@ -27,7 +19,7 @@ func _process(delta):
 func catch_leveling_up(value):
 	leveling_up = value
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	Signals.emit_signal("increase_mon")
 	queue_free()
 

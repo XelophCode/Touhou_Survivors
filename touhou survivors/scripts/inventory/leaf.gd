@@ -18,7 +18,7 @@ func _ready():
 		$AnimationPlayer.play("leaf_spin")
 		
 
-func _process(delta):
+func _process(_delta):
 	if !alt:
 		global_position = Globals.player_position
 

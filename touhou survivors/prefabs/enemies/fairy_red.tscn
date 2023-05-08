@@ -11,7 +11,6 @@
 script = ExtResource("2_dkxwk")
 name = "Red Fairy"
 sprite = ExtResource("4_2xj5b")
-metadata/_editor_prop_ptr_sprite = null
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pifu0"]
 radius = 6.08276

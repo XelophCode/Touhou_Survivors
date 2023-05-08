@@ -38,7 +38,7 @@ tier = 1
 type = 2
 sprite = NodePath("Sprite2D")
 particles = NodePath("CPUParticles2D")
-base_speed = 400.0
+base_speed = 600.0
 hp = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -12,6 +12,7 @@ func _ready():
 	Signals.connect("modify_weapon",modify_weapon)
 	Signals.connect("leveling_up",leveling_up)
 	Signals.connect("show_icon_highlight",catch_show_icon_highlight)
+	Signals.connect("stop_weapons",catch_stop_weapons)
 
 func _process(_delta):
 	var counter = 0
@@ -98,3 +99,7 @@ func catch_show_icon_highlight(inventory_item_id:int, show_highlight:bool):
 			instance_from_id(icon_instances[inventory_item_id]).get_child(2).visible = true
 		else:
 			instance_from_id(icon_instances[inventory_item_id]).get_child(2).visible = false
+
+func catch_stop_weapons():
+	for timer in $timer_instances.get_children():
+		timer.paused = true

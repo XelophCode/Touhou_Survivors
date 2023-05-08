@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="StartingItemArrayResource" load_steps=5 format=3 uid="uid://bd7l6uaqpsas1"]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/starting_item_array_resource.gd" id="1_1vsju"]
+[ext_resource type="Resource" uid="uid://cs84ylbtu68ud" path="res://prefabs/inventory/resources/Sake.tres" id="2_gluf2"]
+[ext_resource type="Script" path="res://scripts/logic_ui/starting_item_resource.gd" id="3_u5oqy"]
+
+[sub_resource type="Resource" id="Resource_buqfo"]
+script = ExtResource("3_u5oqy")
+item = ExtResource("2_gluf2")
+cooldown = 5
+occult_orb = false
+
+[resource]
+script = ExtResource("1_1vsju")
+starting_item = Array[ExtResource("3_u5oqy")]([SubResource("Resource_buqfo")])

@@ -4,28 +4,34 @@ enum {RIGHT = 1, LEFT = -1, DOWN = 1, UP = -1, CENTER = 0}
 
 var move:Vector2
 var idle_animation:String = "idle_down"
-@export var walk_animations : Node
+@export var walk_animations : AnimatedSprite2D
 @export var move_speed:float = 3000
 @export var starting_items: StartingItemArrayResource
-
-
 
 @export_group("character_spritesheets")
 @export var reimu_spritesheet : Texture2D
 @export var marisa_spritesheet : Texture2D
 @export var remilia_spritesheet : Texture2D
 @export var aya_spritesheet : Texture2D
+@export var suika_spritesheet : Texture2D
+@export var reisen_spritesheet : Texture2D
+@export var youmu_spritesheet : Texture2D
 @export_group("character_anims")
 @export var reimu_anims : SpriteFrames
 @export var marisa_anims : SpriteFrames
 @export var remilia_anims : SpriteFrames
 @export var aya_anims : SpriteFrames
+@export var suika_anims : SpriteFrames
+@export var reisen_anims : SpriteFrames
+@export var youmu_anims : SpriteFrames
 @export_group("character_loadouts")
 @export var reimu_loadout : StartingItemArrayResource
 @export var marisa_loadout : StartingItemArrayResource
 @export var remilia_loadout : StartingItemArrayResource
 @export var aya_loadout : StartingItemArrayResource
-
+@export var suika_loadout : StartingItemArrayResource
+@export var reisen_loadout : StartingItemArrayResource
+@export var youmu_loadout : StartingItemArrayResource
 
 var power:int
 var faith:float
@@ -54,6 +60,10 @@ var magic_circle_size:float = 1.0
 var emit_damage_taken:bool = true
 var damage_entities:Array
 var last_damage_taken:enemy_info
+var move_right = "move_disabled"
+var move_left = "move_disabled"
+var move_up = "move_disabled"
+var move_down = "move_disabled"
 
 func _ready():
 	Globals.player_alive = true
@@ -68,6 +78,12 @@ func _ready():
 		Globals.Marisa: walk_animations.sprite_frames = marisa_anims; starting_items = marisa_loadout;
 		Globals.Remilia: walk_animations.sprite_frames = remilia_anims; starting_items = remilia_loadout; 
 		Globals.Aya: walk_animations.sprite_frames = aya_anims; starting_items = aya_loadout
+		Globals.Suika: walk_animations.sprite_frames = suika_anims; starting_items = suika_loadout
+		Globals.Reisen: walk_animations.sprite_frames = reisen_anims; starting_items = reisen_loadout
+		Globals.Youmu: walk_animations.sprite_frames = youmu_anims; starting_items = youmu_loadout
+	
+	$death.sprite_frames = walk_animations.sprite_frames
+	
 	if starting_loadout_override:
 		starting_items = custom_loadout
 	
@@ -76,11 +92,11 @@ func _ready():
 	$Healthbar.max_value = hp
 	Signals.connect("modify_player_speed",modify_speed)
 	Signals.connect("modify_player_scale",modify_scale)
-	Signals.connect("gap_teleport",gap_teleport)
-	Signals.connect("gap_finish",gap_finish)
 	Signals.connect("leveling_up",catch_leveling_up)
 	Signals.connect("update_crystal",catch_update_crystal)
 	Signals.connect("decrease_crystal_count",catch_decrease_crystal_count)
+	Signals.connect("game_start_complete",catch_game_start_complete)
+	Signals.connect("delete_player",catch_delete_player)
 	await get_tree().create_timer(0.1).timeout
 	var counter:int = 0
 	if starting_items != null:
@@ -110,8 +126,8 @@ func _physics_process(delta):
 		if !Input.is_action_pressed("focus") and !tweening_focus:
 			magic_circle_tween_off(delta)
 		
-		move.x = Input.get_action_raw_strength("move_right") - Input.get_action_raw_strength("move_left")
-		move.y = Input.get_action_raw_strength("move_down") - Input.get_action_raw_strength("move_up")
+		move.x = Input.get_action_raw_strength(move_right) - Input.get_action_raw_strength(move_left)
+		move.y = Input.get_action_raw_strength(move_down) - Input.get_action_raw_strength(move_up)
 		if damage_taken > 0:
 			$damage_effect.emitting = true
 			if emit_damage_taken:
@@ -137,6 +153,23 @@ func _physics_process(delta):
 	
 	if currently_moving_diagonaly and !moving_diagonaly:
 		$DiagonalInput.start()
+	
+	if hp < 1 and !leveling_up:
+		move = Vector2.ZERO
+		velocity = Vector2.ZERO
+		if alive:
+			Globals.player_alive = false
+			$death.visible = true
+			$death_explosion.visible = true
+			walk_animations.play("idle_down")
+			$WalkAnimations/Halo.visible = true
+			$AnimationPlayer.play("death")
+			Signals.emit_signal("death_explosion_sfx")
+			Signals.emit_signal("death_sfx")
+			Signals.emit_signal("stop_weapons")
+			Signals.emit_signal("game_over",last_damage_taken)
+			Signals.emit_signal("game_over_music")
+			alive = false
 	
 	if !Input.is_action_pressed("focus"):
 		if move != Vector2(0,0):
@@ -169,13 +202,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("focus"):
 		velocity = velocity/2
 	
-	if hp < 1 and !leveling_up:
-		velocity = Vector2.ZERO
-		if alive:
-			Globals.player_alive = false
-			walk_animations.visible = false
-			Signals.emit_signal("game_over",last_damage_taken)
-			alive = false
+	
 	
 	Globals.player_hp = hp
 	move_and_slide()
@@ -221,22 +248,6 @@ func modify_scale(interaction:String, scale_mod:float, health_mod:float, inv_hea
 			afterimage_scale = 1.0
 			hp *= inverted_health_mod
 
-func gap_teleport(center_player:Vector2,teleport_destination:Vector2):
-	$AnimationPlayer.play("gap_teleport_in")
-	teleport_pos = teleport_destination
-	var tween = create_tween()
-	tween.tween_property(self,"global_position",center_player,0.25)
-	tween.tween_callback(gap_camera_tween.bind(teleport_destination))
-
-func gap_camera_tween(camera_destination:Vector2):
-	Signals.emit_signal("gap_camera_tween",camera_destination)
-
-func gap_finish():
-	$AnimationPlayer.play("gap_teleport_out")
-	global_position = teleport_pos
-
-func gap_close():
-	Signals.emit_signal("gap_close")
 
 func _on_item_pull_area_entered(area):
 	
@@ -306,3 +317,13 @@ func catch_update_crystal(_value):
 func catch_decrease_crystal_count():
 	crystal -= 10
 	crystal = clamp(crystal,0,50.0)
+
+func catch_game_start_complete():
+	move_right = "move_right"
+	move_left = "move_left"
+	move_up = "move_up"
+	move_down = "move_down"
+
+func catch_delete_player():
+	queue_free()
+

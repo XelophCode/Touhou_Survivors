@@ -49,6 +49,8 @@ extends Node
 @export var tripod_swing : AudioStreamPlayer
 @export var yinyang : AudioStreamPlayer
 @export var youkai_umbrella_jump : AudioStreamPlayer
+@export var death_explosion : AudioStreamPlayer
+@export var death : AudioStreamPlayer
 
 func _ready():
 	Signals.connect("enemy_death_sfx",catch_enemy_death_sfx)
@@ -99,6 +101,8 @@ func _ready():
 	Signals.connect("tripod_swing_sfx",catch_tripod_swing_sfx)
 	Signals.connect("yinyang_sfx",catch_yinyang_sfx)
 	Signals.connect("youkai_umbrella_jump_sfx",catch_youkai_umbrella_jump_sfx)
+	Signals.connect("death_explosion_sfx",catch_death_explosion_sfx)
+	Signals.connect("death_sfx",catch_death_sfx)
 
 func catch_enemy_death_sfx():
 	if !enemy_death.playing:
@@ -269,3 +273,9 @@ func catch_yinyang_sfx():
 
 func catch_youkai_umbrella_jump_sfx():
 	youkai_umbrella_jump.play()
+
+func catch_death_explosion_sfx():
+	death_explosion.play()
+
+func catch_death_sfx():
+	death.play()

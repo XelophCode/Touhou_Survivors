@@ -5,8 +5,9 @@ var rand_pos_neg:Array = [-60,60]
 var spawn_count:float = 80
 
 func _ready():
-#	var tween_music = create_tween()
-#	tween_music.tween_property($Audio/Music,"volume_db",-15.0,2)
+	Signals.connect("go_to_main_menu",catch_go_to_main_menu)
+	Signals.connect("game_start_complete",catch_game_start_complete)
+	Signals.connect("game_over_music",catch_game_over_music)
 	var x_spawn:Array = []
 	var y_spawn:Array = []
 	var count:float = 1
@@ -29,4 +30,20 @@ func _ready():
 		var obst_inst = all_obstacles.obstacles.pick_random().instantiate()
 		obst_inst.global_position = spawn_location
 		$obstacle_parent.add_child(obst_inst)
-		
+	
+
+func catch_go_to_main_menu():
+	get_tree().change_scene_to_file("res://prefabs/levels/main_menu.tscn")
+	
+
+func catch_game_start_complete():
+	pass
+
+
+func _on_intro_ready():
+	await get_tree().create_timer(3.0).timeout
+	$music/music.play()
+
+func catch_game_over_music():
+	$music/music.stop()
+	$music/game_over.play()

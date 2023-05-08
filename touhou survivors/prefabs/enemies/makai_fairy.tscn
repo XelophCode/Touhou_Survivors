@@ -67,9 +67,9 @@ tier = 1
 type = 0
 sprite = NodePath("AnimatedSprite2D")
 shadow = NodePath("Shadow")
-base_speed = 500.0
+base_speed = 600.0
 hp = 50
-damage = 4.0
+damage = 2.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cerifwegjcfki"]
+[gd_scene load_steps=64 format=3 uid="uid://cerifwegjcfki"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_78i06"]
 [ext_resource type="PackedScene" uid="uid://cqvtr2xssn8wh" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
@@ -25,7 +25,6 @@
 [ext_resource type="AudioStream" uid="uid://dphx0dcmgohr2" path="res://audio/level_up.ogg" id="24_s40de"]
 [ext_resource type="AudioStream" uid="uid://d1wctbotwnn1x" path="res://audio/applause.wav" id="25_cwolo"]
 [ext_resource type="AudioStream" uid="uid://1jjs3upuo84x" path="res://audio/player_damaged.wav" id="25_fx7ad"]
-[ext_resource type="AudioStream" uid="uid://d2ufh3jf1j7er" path="res://audio/Dream_Battle_4_Demo_Drafting_the_Speed (1).mp3" id="26_4rv83"]
 [ext_resource type="AudioStream" uid="uid://dvnu187j6g0wf" path="res://audio/explosion.wav" id="26_si4me"]
 [ext_resource type="AudioStream" uid="uid://2pbpo6ih4elx" path="res://audio/item_grab_2.wav" id="27_n7cke"]
 [ext_resource type="AudioStream" uid="uid://bi6unubjg1kjp" path="res://audio/item_place.wav" id="28_tgk1o"]
@@ -58,6 +57,11 @@
 [ext_resource type="AudioStream" uid="uid://7mofabq2yc0r" path="res://audio/roukanken_spin.wav" id="55_c4ba0"]
 [ext_resource type="AudioStream" uid="uid://bxo54xvxgbsja" path="res://audio/sake_bottle_break.wav" id="56_y2gre"]
 [ext_resource type="AudioStream" uid="uid://dq66hae8nmcca" path="res://audio/youkai_umbrella.wav" id="57_0kava"]
+[ext_resource type="AudioStream" uid="uid://c1yrbgkxnwfdq" path="res://audio/death_explosion.wav" id="58_3efp2"]
+[ext_resource type="AudioStream" uid="uid://27ess3b0bnei" path="res://audio/MISSION START MASTERED.wav" id="58_sjrdv"]
+[ext_resource type="AudioStream" uid="uid://d0fpnqpd4c5me" path="res://audio/death_sfx.wav" id="59_0p0eb"]
+[ext_resource type="AudioStream" uid="uid://cuyqdeff7fxyx" path="res://audio/Dream Battle 4 Long MASTERED.wav" id="59_ndkev"]
+[ext_resource type="AudioStream" uid="uid://88qfvxhspj0f" path="res://audio/GAME OVER MASTERED.wav" id="60_ikpjo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qx4cd"]
 shader = ExtResource("5_1lqtb")
@@ -98,7 +102,7 @@ script = ExtResource("12_sxuwu")
 
 [node name="PlayerUI" parent="." instance=ExtResource("17_o28hk")]
 
-[node name="Global_Audio" type="Node" parent="." node_paths=PackedStringArray("enemy_death", "hit", "level_up", "applause", "coin_explosion", "faith", "crystal", "tornado", "player_damage", "explosion", "item_grab", "item_place", "rotate", "not_enough_crystals", "remove_blocked_space", "gohei", "amulet", "bat", "camera", "frog_explosion", "haniwa", "icicle_explode", "keystone_small", "keystone_large", "leaf_fan", "arrow", "star", "gap_open", "fireball", "fireball_split", "water", "megaphone_blast", "megaphone_bullet", "master_spark", "mini_hakkero", "mochi_mallet_bash", "mochi_mallet_swing", "mushroom_explode", "raincloud", "persuasion_needle", "roukanken_flurry", "roukanken_spin", "sake_swing", "sake_bottle_break", "shanghai_attack", "knife_throw", "tripod_swing", "yinyang", "youkai_umbrella_jump")]
+[node name="Global_Audio" type="Node" parent="." node_paths=PackedStringArray("enemy_death", "hit", "level_up", "applause", "coin_explosion", "faith", "crystal", "tornado", "player_damage", "explosion", "item_grab", "item_place", "rotate", "not_enough_crystals", "remove_blocked_space", "gohei", "amulet", "bat", "camera", "frog_explosion", "haniwa", "icicle_explode", "keystone_small", "keystone_large", "leaf_fan", "arrow", "star", "gap_open", "fireball", "fireball_split", "water", "megaphone_blast", "megaphone_bullet", "master_spark", "mini_hakkero", "mochi_mallet_bash", "mochi_mallet_swing", "mushroom_explode", "raincloud", "persuasion_needle", "roukanken_flurry", "roukanken_spin", "sake_swing", "sake_bottle_break", "shanghai_attack", "knife_throw", "tripod_swing", "yinyang", "youkai_umbrella_jump", "death_explosion", "death")]
 script = ExtResource("21_7vj3l")
 enemy_death = NodePath("Enemy_Death")
 hit = NodePath("Hit")
@@ -149,6 +153,8 @@ knife_throw = NodePath("throwing_knife")
 tripod_swing = NodePath("tripod_swing")
 yinyang = NodePath("yinyang")
 youkai_umbrella_jump = NodePath("youkai_umbrella_jump")
+death_explosion = NodePath("death_explosion")
+death = NodePath("death")
 
 [node name="Enemy_Death" type="AudioStreamPlayer" parent="Global_Audio"]
 stream = ExtResource("22_kmevy")
@@ -395,9 +401,29 @@ stream = ExtResource("57_0kava")
 volume_db = -15.0
 bus = &"item_sfx"
 
-[node name="Audio" type="Node" parent="."]
+[node name="death_explosion" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("58_3efp2")
+volume_db = -15.0
+bus = &"SFX"
 
-[node name="Music" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("26_4rv83")
+[node name="death" type="AudioStreamPlayer" parent="Global_Audio"]
+stream = ExtResource("59_0p0eb")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="music" type="Node" parent="."]
+
+[node name="intro" type="AudioStreamPlayer" parent="music"]
+stream = ExtResource("58_sjrdv")
 autoplay = true
 bus = &"Music"
+
+[node name="music" type="AudioStreamPlayer" parent="music"]
+stream = ExtResource("59_ndkev")
+bus = &"Music"
+
+[node name="game_over" type="AudioStreamPlayer" parent="music"]
+stream = ExtResource("60_ikpjo")
+bus = &"Music"
+
+[connection signal="ready" from="music/intro" to="." method="_on_intro_ready"]

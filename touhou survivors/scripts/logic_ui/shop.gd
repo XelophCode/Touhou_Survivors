@@ -3,15 +3,49 @@ extends Node2D
 enum {_1x1,_1x2,_1x3,_2x2,_2x3}
 var eyes_scrolling : float
 
+enum ITEMS {bat,camera,frog,gohei,haniwa,amulet,icicle,keystone,fan,bow,bomb,broom,tome,megaphone,hakkero,mallet,mushroom,wand,roukanken,sake,shanghai,knife,tripod,yinyang,umbrella,needle,rod}
+
 @export var inv_items : all_items
 var rerolling:bool = false
 var can_reroll:bool = false
-var spawn_count:Vector2 = Vector2(0,1)
+var spawn_count:Vector2 = Vector2(9,10)
 var player_level:float = 1.0
+var inventory_items:Array
 
 func _ready():
 	Signals.connect("leveling_up",leveling_up)
-	
+	inventory_items = inv_items.items
+	for i in Globals.disabled_items:
+		var item_id : int
+		match i:
+			ITEMS.bat: item_id = 0
+			ITEMS.camera: item_id = 1
+			ITEMS.frog: item_id = 2
+			ITEMS.gohei: item_id = 4
+			ITEMS.haniwa: item_id = 5
+			ITEMS.amulet: item_id = 6
+			ITEMS.icicle: item_id = 7
+			ITEMS.keystone: item_id = 8
+			ITEMS.fan: item_id = 28
+			ITEMS.bow: item_id = 27
+			ITEMS.bomb: item_id = 9
+			ITEMS.broom: item_id = 10
+			ITEMS.tome: item_id = 23
+			ITEMS.megaphone: item_id = 26
+			ITEMS.hakkero: item_id = 11
+			ITEMS.mallet: item_id = 12
+			ITEMS.mushroom: item_id = 25
+			ITEMS.wand: item_id = 24
+			ITEMS.roukanken: item_id = 17
+			ITEMS.sake: item_id = 18
+			ITEMS.shanghai: item_id = 19
+			ITEMS.knife: item_id = 20
+			ITEMS.tripod: item_id = 29
+			ITEMS.yinyang: item_id = 21
+			ITEMS.umbrella: item_id = 22
+			ITEMS.needle: item_id = 14
+			ITEMS.rod: item_id = 15
+		inventory_items[item_id].enabled = false
 
 func open_shop():
 	rerolling = false
@@ -21,8 +55,8 @@ func open_shop():
 	var items2x2:Array = []
 	var items2x3:Array = []
 	
-	for item in inv_items.items:
-		if !Globals.one_time_spawns.has(item.name[item.item_name]) and item.enabled:
+	for item in inventory_items:
+		if item.enabled:
 			match item.inventory_size:
 				_1x1: items1x1.append(item)
 				_1x2: items1x2.append(item)
@@ -86,7 +120,7 @@ func open_shop():
 	
 	items_to_spawn.shuffle()
 	
-	for i in randi_range(spawn_count.x,spawn_count.y):
+	for i in snappedf(randf_range(spawn_count.x,spawn_count.y),1.0):
 		items_to_spawn.pop_front()
 	
 	Signals.emit_signal("spawn_inventory_items",items_to_spawn)
@@ -96,10 +130,12 @@ func leveling_up(value:bool):
 	player_level += 1.0
 	if value:
 		match player_level:
-			3.0: spawn_count = Vector2(7,8)
-			5.0: spawn_count = Vector2(5,7)
-			10.0: spawn_count = Vector2(3,6)
-			15.0: spawn_count = Vector2(1,4)
+			2.0: spawn_count = Vector2(7,8)
+			3.0: spawn_count = Vector2(6,7)
+			4.0: spawn_count = Vector2(5,6)
+			5.0: spawn_count = Vector2(4,6)
+			8.0: spawn_count = Vector2(3,6)
+			10.0: spawn_count = Vector2(1,4)
 			
 		$CPUParticles2D.emitting = true
 		$AnimationPlayer.play("stretch")

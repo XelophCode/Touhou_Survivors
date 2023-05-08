@@ -40,7 +40,7 @@ func _ready():
 	if enabled:
 		$Initialize.start(initial_shoot_cooldown)
 		init_bullet_count = bullet_count
-		bullet_count = bullet_count + Globals.pos_neg(randi_range(0,bullet_count_random))
+		bullet_count = bullet_count + snappedf(Globals.pos_neg(randf_range(0,bullet_count_random)),1.0)
 		bullet_count = clamp(bullet_count,1,bullet_count + bullet_count_random)
 		Signals.connect("leveling_up",catch_leveling_up)
 
@@ -76,7 +76,7 @@ func _on_loop_timeout():
 			else:
 				bullet_inst.size = size
 			
-			bullet_inst.spread = Globals.pos_neg(randi_range(0,spread))
+			bullet_inst.spread = snappedf(Globals.pos_neg(randf_range(0,spread)),1.0)
 			bullet_inst.global_position = global_position
 			bullet_inst.rotation = rotation
 			bullet_inst.spiral_strength = spiral_strength
@@ -94,7 +94,7 @@ func _on_loop_timeout():
 
 func reset_cooldown():
 	amplitude_look_at_player = true
-	bullet_count = init_bullet_count + Globals.pos_neg(randi_range(0,bullet_count_random))
+	bullet_count = init_bullet_count + snappedf(Globals.pos_neg(randf_range(0,bullet_count_random)),1.0)
 	bullet_count = clamp(bullet_count,1,bullet_count + bullet_count_random)
 	$Loop.stop()
 	$Initialize.start(shoot_cooldown)

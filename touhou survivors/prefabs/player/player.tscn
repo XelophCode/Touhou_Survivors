@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://cah8y53sm3blk"]
+[gd_scene load_steps=84 format=3 uid="uid://cah8y53sm3blk"]
 
 [ext_resource type="Script" path="res://scripts/misc/Player.gd" id="1_37at3"]
 [ext_resource type="SpriteFrames" uid="uid://1ntee1x116bu" path="res://sprites/actors/player_anims/reimu_anims.tres" id="2_7dit5"]
@@ -10,18 +10,51 @@
 [ext_resource type="Texture2D" uid="uid://by5675jsqe86b" path="res://sprites/actors/Aya.png" id="5_ddlo1"]
 [ext_resource type="Resource" uid="uid://c0nvv6vbgcgav" path="res://prefabs/character_loadouts/marisa_loadout.tres" id="5_nelpm"]
 [ext_resource type="Texture2D" uid="uid://dbie4j5btns2w" path="res://sprites/ui/sun_rays.png" id="6_4k0vm"]
-[ext_resource type="Texture2D" uid="uid://bqsgbej3ai1oo" path="res://sprites/actors/player_mask.png" id="6_d0cf2"]
 [ext_resource type="Texture2D" uid="uid://bex5m364h1ons" path="res://sprites/misc/magic_circle_2.png" id="6_dwehi"]
+[ext_resource type="Texture2D" uid="uid://2nx4tft4pcbc" path="res://sprites/actors/suika.png" id="6_le0f2"]
+[ext_resource type="Texture2D" uid="uid://bf5r0philpxf2" path="res://sprites/actors/reisen.png" id="7_cjivt"]
 [ext_resource type="Texture2D" uid="uid://rkhprq2a3yag" path="res://sprites/ui/Sakura.png" id="7_iakcq"]
 [ext_resource type="SpriteFrames" uid="uid://dvsj13jqfa0xt" path="res://sprites/actors/player_anims/remilia_anims.tres" id="7_kl7io"]
 [ext_resource type="Texture2D" uid="uid://d1lf6hf02n3s3" path="res://sprites/ui/sun_spot.png" id="7_xwjmk"]
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="8_sbskd"]
+[ext_resource type="Texture2D" uid="uid://dpu81nbrqd3h6" path="res://sprites/actors/youmu.png" id="8_yocvm"]
 [ext_resource type="SpriteFrames" uid="uid://dbc43d1v6ag6a" path="res://sprites/actors/player_anims/aya_anims.tres" id="9_7ncri"]
 [ext_resource type="Texture2D" uid="uid://cmipbsbn7fy1" path="res://sprites/actors/marisa.png" id="10_aj2c0"]
 [ext_resource type="Resource" uid="uid://fgm8ffl4ij5a" path="res://prefabs/character_loadouts/remilia_loadout.tres" id="10_kxkvi"]
+[ext_resource type="SpriteFrames" uid="uid://chva372ax8gry" path="res://sprites/actors/player_anims/suika_anims.tres" id="11_4xk8f"]
 [ext_resource type="Texture2D" uid="uid://dww5avsvqu437" path="res://sprites/ui/black_cloud.png" id="13_1x8ei"]
+[ext_resource type="SpriteFrames" uid="uid://ckux702n83crd" path="res://sprites/actors/player_anims/reisen_anims.tres" id="13_qoj5q"]
 [ext_resource type="Resource" uid="uid://dptgwujc6kncj" path="res://prefabs/character_loadouts/aya_loadout.tres" id="13_r21x4"]
 [ext_resource type="Texture2D" uid="uid://cutr1tv2w1e6r" path="res://sprites/ui/smoke_08.png" id="13_scd75"]
+[ext_resource type="SpriteFrames" uid="uid://buulnodwyup3f" path="res://sprites/actors/player_anims/youmu_anims.tres" id="15_w4hq5"]
+[ext_resource type="Resource" uid="uid://bd7l6uaqpsas1" path="res://prefabs/character_loadouts/suika_loadout.tres" id="16_ywtlr"]
+[ext_resource type="Script" path="res://scripts/logic_ui/starting_item_array_resource.gd" id="19_qb5qy"]
+[ext_resource type="Texture2D" uid="uid://7q167a5bd3nl" path="res://sprites/actors/halo.png" id="20_0tyjj"]
+[ext_resource type="Resource" uid="uid://d3d2yo7wla5r4" path="res://prefabs/inventory/resources/megaphone_gun.tres" id="20_isrqm"]
+[ext_resource type="Script" path="res://scripts/logic_ui/starting_item_resource.gd" id="21_du15d"]
+[ext_resource type="Resource" uid="uid://q6uhplcwo5xe" path="res://prefabs/inventory/resources/Roukanken.tres" id="24_1f74a"]
+[ext_resource type="Shader" path="res://scripts/shaders/explosion.gdshader" id="26_ho5b1"]
+[ext_resource type="Texture2D" uid="uid://xbifc8dmi5qv" path="res://icon.svg" id="27_tegxe"]
+
+[sub_resource type="Resource" id="Resource_hfyvq"]
+script = ExtResource("21_du15d")
+item = ExtResource("20_isrqm")
+cooldown = 4
+occult_orb = false
+
+[sub_resource type="Resource" id="Resource_b4x65"]
+script = ExtResource("19_qb5qy")
+starting_item = Array[ExtResource("21_du15d")]([SubResource("Resource_hfyvq")])
+
+[sub_resource type="Resource" id="Resource_gtivt"]
+script = ExtResource("21_du15d")
+item = ExtResource("24_1f74a")
+cooldown = 4
+occult_orb = true
+
+[sub_resource type="Resource" id="Resource_ajqnm"]
+script = ExtResource("19_qb5qy")
+starting_item = Array[ExtResource("21_du15d")]([SubResource("Resource_gtivt")])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_emnmw"]
 radius = 14.0357
@@ -57,274 +90,73 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.504202, 1)
 colors = PackedColorArray(0, 0.729412, 0, 0, 0.0686275, 0.764706, 0, 1, 0.137255, 0.8, 0, 0)
 
-[sub_resource type="Animation" id="Animation_n73m6"]
-resource_name = "gap_teleport_in"
-length = 0.35
-step = 0.05
+[sub_resource type="Animation" id="Animation_j8e42"]
+resource_name = "death"
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WalkAnimations:visible")
+tracks/0/path = NodePath("WalkAnimations:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Teleport_Mask/TeleportAnimation:visible")
+tracks/1/path = NodePath("WalkAnimations:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"times": PackedFloat32Array(0.45, 0.55, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.690196), Color(1, 1, 1, 0.376471)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Teleport_Mask:position")
-tracks/2/interp = 1
+tracks/2/path = NodePath("WalkAnimations:position")
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.25),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.45, 2.3, 3.7, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -6), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(-10, -38.5), Vector2(10, -71.5), Vector2(0, -110)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Teleport_Mask/TeleportAnimation:position")
-tracks/3/interp = 1
+tracks/3/path = NodePath("Camera2D:offset")
+tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.25, 0.35),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 11)]
+"values": [Vector2(0, 0), Vector2(-10, 0), Vector2(10, 0), Vector2(-5, 0), Vector2(0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Teleport_Mask:visible")
+tracks/4/path = NodePath("death_explosion:material:shader_parameter/size")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Healthbar:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("hitbox:monitoring")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("hitbox:monitorable")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Teleport_Mask/TeleportAnimation:scale")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.35),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.9, 1), Vector2(1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Item_Pickup:disabled")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_aopch"]
-resource_name = "gap_teleport_out"
-length = 0.35
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WalkAnimations:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.35),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Teleport_Mask/TeleportAnimation:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.35),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Teleport_Mask:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.25, 0.35),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -6), Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Teleport_Mask/TeleportAnimation:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 11), Vector2(0, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Teleport_Mask:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.35),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Healthbar:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.35),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("hitbox:monitoring")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.35),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("hitbox:monitorable")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.35),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath(".")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0.35),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"gap_close"
-}]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Teleport_Mask/TeleportAnimation:scale")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.35),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.9, 1), Vector2(1, 1)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Item_Pickup:disabled")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0.35),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"values": [0.045, 1.1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k157t"]
 _data = {
-"gap_teleport_in": SubResource("Animation_n73m6"),
-"gap_teleport_out": SubResource("Animation_aopch")
+"death": SubResource("Animation_j8e42")
 }
 
 [sub_resource type="Animation" id="Animation_y65ni"]
@@ -534,6 +366,36 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_itp5o"]
 radius = 4.0
 
+[sub_resource type="Animation" id="Animation_gq3i7"]
+resource_name = "zoom"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.55, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(2.5, 2.5), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rfgwc"]
+_data = {
+"zoom": SubResource("Animation_gq3i7")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ieubf"]
+shader = ExtResource("26_ho5b1")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/force = 0.573
+shader_parameter/size = 0.045
+shader_parameter/thickness = 0.08
+shader_parameter/offset = null
+
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("walk_animations")]
 z_index = 7
 texture_filter = 1
@@ -545,14 +407,23 @@ reimu_spritesheet = ExtResource("2_kv5a8")
 marisa_spritesheet = ExtResource("10_aj2c0")
 remilia_spritesheet = ExtResource("4_60ajd")
 aya_spritesheet = ExtResource("5_ddlo1")
+suika_spritesheet = ExtResource("6_le0f2")
+reisen_spritesheet = ExtResource("7_cjivt")
+youmu_spritesheet = ExtResource("8_yocvm")
 reimu_anims = ExtResource("2_7dit5")
 marisa_anims = ExtResource("3_a8dmt")
 remilia_anims = ExtResource("7_kl7io")
 aya_anims = ExtResource("9_7ncri")
+suika_anims = ExtResource("11_4xk8f")
+reisen_anims = ExtResource("13_qoj5q")
+youmu_anims = ExtResource("15_w4hq5")
 reimu_loadout = ExtResource("3_3td3m")
 marisa_loadout = ExtResource("5_nelpm")
 remilia_loadout = ExtResource("10_kxkvi")
 aya_loadout = ExtResource("13_r21x4")
+suika_loadout = ExtResource("16_ywtlr")
+reisen_loadout = SubResource("Resource_b4x65")
+youmu_loadout = SubResource("Resource_ajqnm")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(-2.68221e-07, 4)
@@ -581,16 +452,17 @@ texture = ExtResource("6_dwehi")
 sprite_frames = ExtResource("2_7dit5")
 animation = &"walk_up"
 
-[node name="Teleport_Mask" type="Sprite2D" parent="."]
+[node name="Halo" type="Sprite2D" parent="WalkAnimations"]
 visible = false
-clip_children = 1
-texture = ExtResource("6_d0cf2")
+z_index = 1
+position = Vector2(0, -4)
+texture = ExtResource("20_0tyjj")
 
-[node name="TeleportAnimation" type="Sprite2D" parent="Teleport_Mask"]
-texture = ExtResource("2_kv5a8")
-hframes = 6
-vframes = 10
-frame = 56
+[node name="death" type="AnimatedSprite2D" parent="."]
+visible = false
+rotation = 1.5708
+sprite_frames = ExtResource("2_7dit5")
+animation = &"walk_up"
 
 [node name="Healthbar" type="ProgressBar" parent="."]
 visible = false
@@ -624,6 +496,7 @@ color_ramp = SubResource("Gradient_pqeed")
 
 [node name="Item_Pickup" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_3vg3m")
+disabled = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 amount = 20
@@ -729,6 +602,7 @@ wait_time = 0.05
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.2, 1.2)
 position_smoothing_speed = 30.0
 
 [node name="CPUParticles2D4" type="GPUParticles2D" parent="."]
@@ -750,6 +624,19 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_itp5o")
+
+[node name="cam_zoom" type="AnimationPlayer" parent="."]
+autoplay = "zoom"
+libraries = {
+"": SubResource("AnimationLibrary_rfgwc")
+}
+
+[node name="death_explosion" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_ieubf")
+position = Vector2(1.50001, -1.5)
+scale = Vector2(2.80469, 1.58594)
+texture = ExtResource("27_tegxe")
 
 [connection signal="area_entered" from="MagicCircle/ItemPull" to="." method="_on_item_pull_area_entered"]
 [connection signal="area_exited" from="MagicCircle/ItemPull" to="." method="_on_item_pull_area_exited"]

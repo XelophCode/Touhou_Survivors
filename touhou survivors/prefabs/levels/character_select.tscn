@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://do63og25gtn6j"]
+[gd_scene load_steps=160 format=3 uid="uid://do63og25gtn6j"]
 
 [ext_resource type="Texture2D" uid="uid://qrttyf07rc81" path="res://sprites/ui/character_select.png" id="1_1h6fy"]
 [ext_resource type="Script" path="res://scripts/logic_ui/character_select.gd" id="1_hwynl"]
@@ -8,14 +8,59 @@
 [ext_resource type="Shader" path="res://scripts/shaders/dissolve.gdshader" id="5_d7pbv"]
 [ext_resource type="Texture2D" uid="uid://d0wh6yjoa56pg" path="res://sprites/ui/fullscreen_pink.png" id="6_a87dc"]
 [ext_resource type="Texture2D" uid="uid://bbc8i5krdqu5y" path="res://sprites/actors/remilia.png" id="6_rkprf"]
+[ext_resource type="Shader" path="res://scripts/shaders/damage_flash.gdshader" id="6_ysg0h"]
 [ext_resource type="Texture2D" uid="uid://by5675jsqe86b" path="res://sprites/actors/Aya.png" id="7_r3fx0"]
 [ext_resource type="AudioStream" uid="uid://b70f4b73su13x" path="res://audio/select2.ogg" id="8_0tpla"]
 [ext_resource type="Texture2D" uid="uid://0ydohqq6lp21" path="res://sprites/ui/fullscreen_black.png" id="8_bpbp1"]
 [ext_resource type="Texture2D" uid="uid://do4lmusiq4cvh" path="res://sprites/items/inventory/gohei_item_large.png" id="8_co7c0"]
-[ext_resource type="Texture2D" uid="uid://ba4enldw0j873" path="res://sprites/items/inventory/homing_amulet_item_large.png" id="9_m1lwd"]
+[ext_resource type="Texture2D" uid="uid://2nx4tft4pcbc" path="res://sprites/actors/suika.png" id="8_fcdpo"]
+[ext_resource type="Texture2D" uid="uid://bf5r0philpxf2" path="res://sprites/actors/reisen.png" id="10_oxk8p"]
 [ext_resource type="FontFile" uid="uid://4g0oq0v08h0h" path="res://resources/fonts/prstart.ttf" id="10_tgr8l"]
-[ext_resource type="Texture2D" uid="uid://dp46mw25dtbw" path="res://sprites/items/inventory/magic_bomb_inventory_large.png" id="11_ninr7"]
+[ext_resource type="Texture2D" uid="uid://dpu81nbrqd3h6" path="res://sprites/actors/youmu.png" id="11_j3ewa"]
 [ext_resource type="Texture2D" uid="uid://ddrco5dt6ym60" path="res://sprites/items/inventory/Mini_Hakkero_inventory_large.png" id="12_rmmfu"]
+[ext_resource type="Texture2D" uid="uid://b78nq7skdbn7a" path="res://sprites/items/item_icons/bat_icon.png" id="13_olb1m"]
+[ext_resource type="Texture2D" uid="uid://cfvrk7qd5ak34" path="res://sprites/ui/Reimu_fullbody.png" id="14_ws2hw"]
+[ext_resource type="Texture2D" uid="uid://fffwb0of7363" path="res://sprites/items/item_icons/camera_icon.png" id="14_xge3k"]
+[ext_resource type="Texture2D" uid="uid://dirm3gb7138r4" path="res://sprites/items/item_icons/frog_icon.png" id="15_dwhmn"]
+[ext_resource type="Texture2D" uid="uid://b8dc57h6lkxnf" path="res://sprites/ui/marisa_fullbody.png" id="16_0trob"]
+[ext_resource type="Texture2D" uid="uid://bdxbg5d0dutgi" path="res://sprites/items/item_icons/gohei_icon.png" id="16_ph7jh"]
+[ext_resource type="Texture2D" uid="uid://p82t7r4dabck" path="res://sprites/ui/remilia_fullbody.png" id="16_x0nk4"]
+[ext_resource type="Texture2D" uid="uid://3if6ao1pfs6b" path="res://sprites/items/inventory/Bat_item_large.png" id="17_4imcn"]
+[ext_resource type="Texture2D" uid="uid://b6s8c3wtty4ow" path="res://sprites/items/item_icons/haniwa_icon.png" id="17_pnl8t"]
+[ext_resource type="Texture2D" uid="uid://b6vjojvffb5kp" path="res://sprites/items/item_icons/homing_amulet_icon.png" id="18_05spu"]
+[ext_resource type="AudioStream" uid="uid://dj1q2lh400863" path="res://audio/MENU MASTERED.wav" id="18_fu6ec"]
+[ext_resource type="Texture2D" uid="uid://gk6xagtea1id" path="res://sprites/ui/aya_fullbody.png" id="18_rbabs"]
+[ext_resource type="Texture2D" uid="uid://35rk86psgo35" path="res://sprites/items/item_icons/icicle_icon.png" id="19_e8sdn"]
+[ext_resource type="Texture2D" uid="uid://c362ahxy4f0wy" path="res://sprites/items/inventory/camera_inventory_large.png" id="19_ld5ku"]
+[ext_resource type="Texture2D" uid="uid://pxw6irgq5bpa" path="res://sprites/items/pickups/mon.png" id="20_diedt"]
+[ext_resource type="Texture2D" uid="uid://thvpmw5egb4" path="res://sprites/items/item_icons/keystone_icon.png" id="20_ky172"]
+[ext_resource type="Texture2D" uid="uid://ds37u333mrbl1" path="res://sprites/ui/suika_fullbody.png" id="20_tfusd"]
+[ext_resource type="Texture2D" uid="uid://dsm78eg6pdm2h" path="res://sprites/items/inventory/sake_item_large.png" id="21_1xgna"]
+[ext_resource type="Texture2D" uid="uid://buplq64exs86v" path="res://sprites/items/item_icons/leaf_fan_icon.png" id="21_2g6ix"]
+[ext_resource type="Texture2D" uid="uid://beskev2jxicis" path="res://sprites/items/item_icons/lunar_bow_icon.png" id="22_ff358"]
+[ext_resource type="Texture2D" uid="uid://dtbdap36pyeys" path="res://sprites/ui/reisen_fullbody.png" id="23_d5j5p"]
+[ext_resource type="Texture2D" uid="uid://cvnlaigdqggxe" path="res://sprites/items/item_icons/magic_bomb_icon.png" id="23_ivvy8"]
+[ext_resource type="Texture2D" uid="uid://byo3yvdkmvwvm" path="res://sprites/items/item_icons/magic_broom_icon.png" id="24_6equi"]
+[ext_resource type="Texture2D" uid="uid://cljuujp6ixvkw" path="res://sprites/items/inventory/megaphone_gun_inventory_large.png" id="24_80qcc"]
+[ext_resource type="Texture2D" uid="uid://bnv7d4xevu3ir" path="res://sprites/items/item_icons/magic_tome_icon.png" id="25_amact"]
+[ext_resource type="Texture2D" uid="uid://cqwqu7jpqg2h6" path="res://sprites/ui/youmu_fullbody.png" id="26_g2d17"]
+[ext_resource type="Texture2D" uid="uid://ba4y04aqxwynd" path="res://sprites/items/item_icons/megaphone_gun_icon.png" id="26_qg833"]
+[ext_resource type="Texture2D" uid="uid://b2lreg6pjgai8" path="res://sprites/items/item_icons/mini_hakkero_icon.png" id="27_qwlm8"]
+[ext_resource type="Texture2D" uid="uid://bqm7yfbw13ps5" path="res://sprites/items/inventory/roukanken_item_large.png" id="27_wo3kn"]
+[ext_resource type="Texture2D" uid="uid://cjv3rvr006q8h" path="res://sprites/items/item_icons/mochi_mallet_icon.png" id="28_gba5r"]
+[ext_resource type="Texture2D" uid="uid://blwnc3f5eyeqa" path="res://sprites/items/item_icons/mushroom_icon.png" id="29_if1xa"]
+[ext_resource type="Texture2D" uid="uid://da5g8ugomtti8" path="res://sprites/items/item_icons/nature_wand_icon.png" id="30_dqobr"]
+[ext_resource type="Texture2D" uid="uid://bf07fvhfd7nmc" path="res://sprites/items/item_icons/persuasion_needle_icon.png" id="31_xutl1"]
+[ext_resource type="Texture2D" uid="uid://m2nbl6b4pdom" path="res://sprites/items/item_icons/purification_rod_icon.png" id="32_054io"]
+[ext_resource type="Texture2D" uid="uid://bsojmatemejlh" path="res://sprites/items/item_icons/roukanken_icon.png" id="33_gjugo"]
+[ext_resource type="Texture2D" uid="uid://c73g2ljuotrkh" path="res://sprites/items/item_icons/sake_icon.png" id="34_n8xc1"]
+[ext_resource type="Texture2D" uid="uid://blvq1ncoutg80" path="res://sprites/items/item_icons/Shanghai_Doll_icon.png" id="35_a3a6k"]
+[ext_resource type="Texture2D" uid="uid://3bby3uso1xyt" path="res://sprites/items/item_icons/throwing_knife_icon.png" id="36_jfj6v"]
+[ext_resource type="Texture2D" uid="uid://c4kjfvkst6ml3" path="res://sprites/items/item_icons/tripod_icon.png" id="37_yg8xv"]
+[ext_resource type="Texture2D" uid="uid://p1dbo03hu8ia" path="res://sprites/items/item_icons/yinyang_icon.png" id="38_jvpnv"]
+[ext_resource type="Texture2D" uid="uid://b0xgo7h28ljr2" path="res://sprites/items/item_icons/youkai_umbrella_icon.png" id="39_dolmf"]
+[ext_resource type="Texture2D" uid="uid://dwrn02us5388t" path="res://sprites/items/item_icons/icon_border.png" id="40_7qlrg"]
+[ext_resource type="Script" path="res://scripts/logic_ui/item_remove_buttons.gd" id="41_fcwoo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4nj4"]
 
@@ -134,6 +179,11 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ars0f"]
+shader = ExtResource("6_ysg0h")
+shader_parameter/flash_color = Color(0, 0, 0, 1)
+shader_parameter/flash_modifier = 0.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjvn6"]
 atlas = ExtResource("6_rkprf")
 region = Rect2(0, 104, 13, 13)
@@ -184,6 +234,11 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sucm7"]
+shader = ExtResource("6_ysg0h")
+shader_parameter/flash_color = Color(0, 0, 0, 1)
+shader_parameter/flash_modifier = 0.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_a7ekc"]
 atlas = ExtResource("7_r3fx0")
 region = Rect2(0, 104, 13, 13)
@@ -233,6 +288,312 @@ animations = [{
 "name": &"default",
 "speed": 12.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1qvkk"]
+resource_local_to_scene = true
+shader = ExtResource("6_ysg0h")
+shader_parameter/flash_color = Color(0, 0, 0, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yp44o"]
+atlas = ExtResource("8_fcdpo")
+region = Rect2(0, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jesa"]
+atlas = ExtResource("8_fcdpo")
+region = Rect2(13, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xajqm"]
+atlas = ExtResource("8_fcdpo")
+region = Rect2(26, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plrlp"]
+atlas = ExtResource("8_fcdpo")
+region = Rect2(39, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbi5b"]
+atlas = ExtResource("8_fcdpo")
+region = Rect2(52, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20wlq"]
+atlas = ExtResource("8_fcdpo")
+region = Rect2(65, 104, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hxyg1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yp44o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jesa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xajqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plrlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbi5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20wlq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8rke"]
+shader = ExtResource("6_ysg0h")
+shader_parameter/flash_color = Color(0, 0, 0, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp0tg"]
+atlas = ExtResource("10_oxk8p")
+region = Rect2(0, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1su16"]
+atlas = ExtResource("10_oxk8p")
+region = Rect2(13, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6trvo"]
+atlas = ExtResource("10_oxk8p")
+region = Rect2(26, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v02go"]
+atlas = ExtResource("10_oxk8p")
+region = Rect2(39, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjw88"]
+atlas = ExtResource("10_oxk8p")
+region = Rect2(52, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aolcu"]
+atlas = ExtResource("10_oxk8p")
+region = Rect2(65, 104, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_us53x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hp0tg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1su16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6trvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v02go")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjw88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aolcu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_064fa"]
+shader = ExtResource("6_ysg0h")
+shader_parameter/flash_color = Color(0, 0, 0, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x41pp"]
+atlas = ExtResource("11_j3ewa")
+region = Rect2(0, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqhlh"]
+atlas = ExtResource("11_j3ewa")
+region = Rect2(13, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6qhi"]
+atlas = ExtResource("11_j3ewa")
+region = Rect2(26, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwllv"]
+atlas = ExtResource("11_j3ewa")
+region = Rect2(39, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qfjb"]
+atlas = ExtResource("11_j3ewa")
+region = Rect2(52, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_051rh"]
+atlas = ExtResource("11_j3ewa")
+region = Rect2(65, 104, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t0g4e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x41pp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqhlh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6qhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwllv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qfjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_051rh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="ImageTexture" id="ImageTexture_7aatw"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_6t055"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_oiwxm"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_4agoy"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_gkkql"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_883n0"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_b7ec1"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_jv04m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_anx44"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hehd6"]
+bg_color = Color(0.0117647, 0.0117647, 0.0117647, 0.768627)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6bf2h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fng74"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.113725, 0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aopno"]
+bg_color = Color(0.0117647, 0.0117647, 0.0117647, 0.768627)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.113725, 0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s8bjh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td14g"]
+atlas = ExtResource("20_diedt")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k242t"]
+atlas = ExtResource("20_diedt")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gu1y"]
+atlas = ExtResource("20_diedt")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq15p"]
+atlas = ExtResource("20_diedt")
+region = Rect2(0, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8hnh"]
+atlas = ExtResource("20_diedt")
+region = Rect2(10, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwuxy"]
+atlas = ExtResource("20_diedt")
+region = Rect2(20, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6o75"]
+atlas = ExtResource("20_diedt")
+region = Rect2(0, 20, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skyh2"]
+atlas = ExtResource("20_diedt")
+region = Rect2(10, 20, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfc0l"]
+atlas = ExtResource("20_diedt")
+region = Rect2(20, 20, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efl4g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_td14g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k242t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gu1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yq15p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8hnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwuxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6o75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skyh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfc0l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 18.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ifvd1"]
+resource_local_to_scene = true
+shader = ExtResource("6_ysg0h")
+shader_parameter/flash_color = Color(0, 0, 0, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mmqbd"]
+shader = ExtResource("6_ysg0h")
+shader_parameter/flash_color = Color(0, 0, 0, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gkff3"]
+shader = ExtResource("6_ysg0h")
+shader_parameter/flash_color = Color(0, 0, 0, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ut2d0"]
+shader = ExtResource("6_ysg0h")
+shader_parameter/flash_color = Color(0, 0, 0, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hlh8d"]
+shader = ExtResource("6_ysg0h")
+shader_parameter/flash_color = Color(0, 0, 0, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gxoal"]
 noise_type = 4
@@ -304,6 +665,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [1.0, 0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Loadouts:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fg3a8"]
 _data = {
@@ -311,11 +684,70 @@ _data = {
 "fade_out": SubResource("Animation_bs5a7")
 }
 
-[node name="character_select" type="Node2D" node_paths=PackedStringArray("fullscreen_pink")]
+[sub_resource type="Animation" id="Animation_wn4t1"]
+resource_name = "not_enough_mon"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mon:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0.0509804, 1), Color(1, 0, 0.0509804, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sx34c"]
+_data = {
+"not_enough_mon": SubResource("Animation_wn4t1")
+}
+
+[node name="character_select" type="Node2D" node_paths=PackedStringArray("fullscreen_pink", "reimu_button", "marisa_button", "remilia_button", "aya_button", "suika_button", "reisen_button", "youmu_button", "reimu_sprite", "marisa_sprite", "remilia_sprite", "aya_sprite", "suika_sprite", "reisen_sprite", "youmu_sprite", "reimu_loadout", "marisa_loadout", "remilia_loadout", "remilia_portrait", "remilia_info", "aya_loadout", "aya_portrait", "aya_info", "suika_loadout", "suika_portrait", "suika_info", "reisen_loadout", "reisen_portrait", "reisen_info", "youmu_loadout", "youmu_portrait", "youmu_info", "mon_label", "cost", "item_disable_cost_label", "item_disable_cost", "anim_player_2", "item_dis_count")]
 texture_filter = 1
 script = ExtResource("1_hwynl")
 fullscreen_pink = NodePath("FullscreenPink")
 main_game_scene = ExtResource("2_e7qi4")
+reimu_button = NodePath("Reimu")
+marisa_button = NodePath("Marisa")
+remilia_button = NodePath("Remilia")
+aya_button = NodePath("Aya")
+suika_button = NodePath("Suika")
+reisen_button = NodePath("Reisen")
+youmu_button = NodePath("Youmu")
+reimu_sprite = NodePath("characters/ReimuSprite")
+marisa_sprite = NodePath("characters/MarisaSprite")
+remilia_sprite = NodePath("characters/RemiliaSprite")
+aya_sprite = NodePath("characters/AyaSprite")
+suika_sprite = NodePath("characters/SuikaSprite")
+reisen_sprite = NodePath("characters/ReisenSprite")
+youmu_sprite = NodePath("characters/YoumuSprite")
+reimu_loadout = NodePath("Loadouts/reimu_loadout")
+marisa_loadout = NodePath("Loadouts/marisa_loadout")
+remilia_loadout = NodePath("Loadouts/remilia_loadout")
+remilia_portrait = NodePath("Loadouts/remilia_loadout/RemiliaFullbody")
+remilia_info = NodePath("Loadouts/remilia_loadout/remilia_info")
+aya_loadout = NodePath("Loadouts/aya_loadout")
+aya_portrait = NodePath("Loadouts/aya_loadout/AyaFullbody")
+aya_info = NodePath("Loadouts/aya_loadout/aya_info")
+suika_loadout = NodePath("Loadouts/suika_loadout")
+suika_portrait = NodePath("Loadouts/suika_loadout/SuikaFullbody")
+suika_info = NodePath("Loadouts/suika_loadout/suika_info")
+reisen_loadout = NodePath("Loadouts/reisen_loadout")
+reisen_portrait = NodePath("Loadouts/reisen_loadout/ReisenFullbody")
+reisen_info = NodePath("Loadouts/reisen_loadout/reisen_info")
+youmu_loadout = NodePath("Loadouts/youmu_loadout")
+youmu_portrait = NodePath("Loadouts/youmu_loadout/YoumuFullbody")
+youmu_info = NodePath("Loadouts/youmu_loadout/youmu_info")
+mon_label = NodePath("mon")
+cost = NodePath("cost")
+item_disable_cost_label = NodePath("item_disable_cost/cost/mon2")
+item_disable_cost = NodePath("item_disable_cost")
+anim_player_2 = NodePath("AnimationPlayer2")
+item_dis_count = NodePath("disable_items/Label3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -324,10 +756,23 @@ anchor_mode = 0
 texture = ExtResource("1_1h6fy")
 centered = false
 
+[node name="CharacterSelect2" type="Sprite2D" parent="."]
+position = Vector2(-11, 0)
+texture = ExtResource("1_1h6fy")
+centered = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 260.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("10_tgr8l")
+text = "Character Select"
+
 [node name="Reimu" type="Button" parent="."]
-offset_left = 15.0
+offset_left = 4.0
 offset_top = 39.0
-offset_right = 37.0
+offset_right = 26.0
 offset_bottom = 61.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
@@ -335,9 +780,9 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 
 [node name="Marisa" type="Button" parent="."]
-offset_left = 43.0
+offset_left = 32.0
 offset_top = 39.0
-offset_right = 65.0
+offset_right = 54.0
 offset_bottom = 61.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
@@ -345,9 +790,9 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 
 [node name="Remilia" type="Button" parent="."]
-offset_left = 71.0
+offset_left = 60.0
 offset_top = 39.0
-offset_right = 93.0
+offset_right = 82.0
 offset_bottom = 61.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
@@ -355,37 +800,1694 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 
 [node name="Aya" type="Button" parent="."]
-offset_left = 15.0
+offset_left = 4.0
 offset_top = 67.0
-offset_right = 37.0
+offset_right = 26.0
 offset_bottom = 89.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 
-[node name="ReimuSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(26, 50)
+[node name="Suika" type="Button" parent="."]
+offset_left = 32.0
+offset_top = 67.0
+offset_right = 54.0
+offset_bottom = 89.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+
+[node name="Reisen" type="Button" parent="."]
+offset_left = 60.0
+offset_top = 67.0
+offset_right = 82.0
+offset_bottom = 89.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+
+[node name="Youmu" type="Button" parent="."]
+offset_left = 4.0
+offset_top = 95.0
+offset_right = 26.0
+offset_bottom = 117.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+
+[node name="characters" type="Node2D" parent="."]
+
+[node name="ReimuSprite" type="AnimatedSprite2D" parent="characters"]
+position = Vector2(15, 50)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hm8jp")
 
-[node name="MarisaSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(54, 50)
+[node name="MarisaSprite" type="AnimatedSprite2D" parent="characters"]
+position = Vector2(43, 50)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_unbd8")
 
-[node name="RemiliaSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(82, 50)
+[node name="RemiliaSprite" type="AnimatedSprite2D" parent="characters"]
+material = SubResource("ShaderMaterial_ars0f")
+position = Vector2(71, 50)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_tig1a")
 
-[node name="AyaSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(26, 78)
+[node name="AyaSprite" type="AnimatedSprite2D" parent="characters"]
+material = SubResource("ShaderMaterial_sucm7")
+position = Vector2(15, 78)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sjt8t")
 
-[node name="FullscreenPink" type="Sprite2D" parent="."]
+[node name="SuikaSprite" type="AnimatedSprite2D" parent="characters"]
+material = SubResource("ShaderMaterial_1qvkk")
+position = Vector2(43, 78)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_hxyg1")
+
+[node name="ReisenSprite" type="AnimatedSprite2D" parent="characters"]
+material = SubResource("ShaderMaterial_e8rke")
+position = Vector2(71, 78)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_us53x")
+
+[node name="YoumuSprite" type="AnimatedSprite2D" parent="characters"]
+material = SubResource("ShaderMaterial_064fa")
+position = Vector2(15, 106)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_t0g4e")
+
+[node name="disable_items" type="Node2D" parent="."]
+position = Vector2(-267, -142)
+scale = Vector2(2, 2)
+
+[node name="Line2D" type="Line2D" parent="disable_items"]
+position = Vector2(6.5, -4.5)
+points = PackedVector2Array(340, 158, 202, 158)
+width = 50.0
+default_color = Color(0.546052, 0.61, 0.3843, 1)
+
+[node name="Line2D2" type="Line2D" parent="disable_items"]
+position = Vector2(-10.5, -2.5)
+points = PackedVector2Array(327.535, 151, 219, 151)
+width = 50.0
+default_color = Color(0.546052, 0.61, 0.3843, 1)
+
+[node name="Label2" type="Label" parent="disable_items"]
+offset_left = 209.0
+offset_top = 125.0
+offset_right = 465.0
+offset_bottom = 148.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 8
+text = "remove items from play"
+
+[node name="Label3" type="Label" parent="disable_items"]
+offset_left = 302.5
+offset_top = 125.0
+offset_right = 558.5
+offset_bottom = 148.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 8
+text = "0/5"
+
+[node name="item_icons" type="Node2D" parent="disable_items"]
+
+[node name="BatIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(218, 139)
+texture = ExtResource("13_olb1m")
+
+[node name="CameraIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(233, 139)
+texture = ExtResource("14_xge3k")
+
+[node name="FrogIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(248, 139)
+texture = ExtResource("15_dwhmn")
+
+[node name="GoheiIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(263, 139)
+texture = ExtResource("16_ph7jh")
+
+[node name="HaniwaIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(278, 139)
+texture = ExtResource("17_pnl8t")
+
+[node name="HomingAmuletIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(293, 139)
+texture = ExtResource("18_05spu")
+
+[node name="IcicleIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(308, 139)
+texture = ExtResource("19_e8sdn")
+
+[node name="KeystoneIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(323, 139)
+texture = ExtResource("20_ky172")
+
+[node name="LeafFanIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(338, 139)
+texture = ExtResource("21_2g6ix")
+
+[node name="LunarBowIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(218, 154)
+texture = ExtResource("22_ff358")
+
+[node name="MagicBombIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(233, 154)
+texture = ExtResource("23_ivvy8")
+
+[node name="MagicBroomIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(248, 154)
+texture = ExtResource("24_6equi")
+
+[node name="MagicTomeIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(263, 154)
+texture = ExtResource("25_amact")
+
+[node name="MegaphoneGunIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(278, 154)
+texture = ExtResource("26_qg833")
+
+[node name="MiniHakkeroIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(293, 154)
+texture = ExtResource("27_qwlm8")
+
+[node name="MochiMalletIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(308, 154)
+texture = ExtResource("28_gba5r")
+
+[node name="MushroomIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(323, 154)
+texture = ExtResource("29_if1xa")
+
+[node name="NatureWandIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(338, 154)
+texture = ExtResource("30_dqobr")
+
+[node name="PersuasionNeedleIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(323, 169)
+texture = ExtResource("31_xutl1")
+
+[node name="PurificationRodIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(338, 169)
+texture = ExtResource("32_054io")
+
+[node name="RoukankenIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(218, 169)
+texture = ExtResource("33_gjugo")
+
+[node name="SakeIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(233, 169)
+texture = ExtResource("34_n8xc1")
+
+[node name="ShanghaiDollIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(248, 169)
+texture = ExtResource("35_a3a6k")
+
+[node name="ThrowingKnifeIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(263, 169)
+texture = ExtResource("36_jfj6v")
+
+[node name="TripodIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(278, 169)
+texture = ExtResource("37_yg8xv")
+
+[node name="YinyangIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(293, 169)
+texture = ExtResource("38_jvpnv")
+
+[node name="YoukaiUmbrellaIcon" type="Sprite2D" parent="disable_items/item_icons"]
+position = Vector2(308, 169)
+texture = ExtResource("39_dolmf")
+
+[node name="icon_borders" type="Node2D" parent="disable_items"]
+
+[node name="IconBorder" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(218, 139)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder2" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(233, 139)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder3" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(248, 139)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder4" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(263, 139)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder5" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(278, 139)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder6" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(293, 139)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder7" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(308, 139)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder8" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(323, 139)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder9" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(338, 139)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder10" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(218, 154)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder11" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(233, 154)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder12" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(248, 154)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder13" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(263, 154)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder14" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(278, 154)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder15" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(293, 154)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder16" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(308, 154)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder17" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(323, 154)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder18" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(338, 154)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder19" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(218, 169)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder20" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(233, 169)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder21" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(248, 169)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder22" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(263, 169)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder23" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(278, 169)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder24" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(293, 169)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder25" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(308, 169)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder26" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(323, 169)
+texture = ExtResource("40_7qlrg")
+
+[node name="IconBorder27" type="Sprite2D" parent="disable_items/icon_borders"]
+position = Vector2(338, 169)
+texture = ExtResource("40_7qlrg")
+
+[node name="xlist" type="Node2D" parent="disable_items"]
 visible = false
+
+[node name="x1" type="Node2D" parent="disable_items/xlist"]
+
+[node name="Line2D2" type="Line2D" parent="disable_items/xlist/x1"]
+points = PackedVector2Array(342, 128.5, 344.5, 131.5)
+width = 0.5
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/xlist/x1"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(342, 128.5, 339.5, 131.5)
+width = 0.5
+default_color = Color(1, 0, 0, 1)
+
+[node name="x2" type="Node2D" parent="disable_items/xlist"]
+position = Vector2(-3.5, 0)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/xlist/x2"]
+points = PackedVector2Array(342, 128.5, 344.5, 131.5)
+width = 0.5
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/xlist/x2"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(342, 128.5, 339.5, 131.5)
+width = 0.5
+default_color = Color(1, 0, 0, 1)
+
+[node name="x3" type="Node2D" parent="disable_items/xlist"]
+position = Vector2(-7, 0)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/xlist/x3"]
+points = PackedVector2Array(342, 128.5, 344.5, 131.5)
+width = 0.5
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/xlist/x3"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(342, 128.5, 339.5, 131.5)
+width = 0.5
+default_color = Color(1, 0, 0, 1)
+
+[node name="x4" type="Node2D" parent="disable_items/xlist"]
+position = Vector2(-10.5, 0)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/xlist/x4"]
+points = PackedVector2Array(342, 128.5, 344.5, 131.5)
+width = 0.5
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/xlist/x4"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(342, 128.5, 339.5, 131.5)
+width = 0.5
+default_color = Color(1, 0, 0, 1)
+
+[node name="x5" type="Node2D" parent="disable_items/xlist"]
+position = Vector2(-14, 0)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/xlist/x5"]
+points = PackedVector2Array(342, 128.5, 344.5, 131.5)
+width = 0.5
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/xlist/x5"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(342, 128.5, 339.5, 131.5)
+width = 0.5
+default_color = Color(1, 0, 0, 1)
+
+[node name="itemxs" type="Node2D" parent="disable_items"]
+visible = false
+
+[node name="x1" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-125, 10.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x1"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x1"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x2" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-110, 10.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x2"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x2"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x3" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-95, 10.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x3"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x3"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x4" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-80, 10.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x4"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x4"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x5" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-65, 10.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x5"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x5"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x6" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-50, 10.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x6"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x6"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x7" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-35, 10.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x7"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x7"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x8" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-20, 10.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x8"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x8"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x9" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-5, 10.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x9"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x9"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x10" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-125, 25.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x10"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x10"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x11" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-110, 25.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x11"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x11"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x12" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-95, 25.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x12"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x12"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x13" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-80, 25.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x13"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x13"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x14" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-65, 25.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x14"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x14"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x15" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-50, 25.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x15"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x15"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x16" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-35, 25.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x16"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x16"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x17" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-20, 25.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x17"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x17"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x18" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-5, 25.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x18"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x18"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x19" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-125, 40.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x19"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x19"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x20" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-110, 40.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x20"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x20"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x21" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-95, 40.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x21"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x21"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x22" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-80, 40.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x22"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x22"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x23" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-65, 40.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x23"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x23"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x24" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-50, 40.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x24"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x24"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x25" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-35, 40.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x25"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x25"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x26" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-20, 40.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x26"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x26"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="x27" type="Node2D" parent="disable_items/itemxs"]
+position = Vector2(-5, 40.5)
+
+[node name="Line2D2" type="Line2D" parent="disable_items/itemxs/x27"]
+points = PackedVector2Array(338, 123.5, 348, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="disable_items/itemxs/x27"]
+position = Vector2(2.5, 0)
+points = PackedVector2Array(345.5, 123.5, 335.5, 133.5)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="item_buttons" type="Node2D" parent="disable_items"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("41_fcwoo")
+
+[node name="CheckBox" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 425.0
+offset_top = 267.0
+offset_right = 449.0
+offset_bottom = 291.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox2" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 455.0
+offset_top = 267.0
+offset_right = 479.0
+offset_bottom = 291.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox3" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 485.0
+offset_top = 267.0
+offset_right = 509.0
+offset_bottom = 291.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox4" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 515.0
+offset_top = 267.0
+offset_right = 539.0
+offset_bottom = 291.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox5" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 545.0
+offset_top = 267.0
+offset_right = 569.0
+offset_bottom = 291.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox6" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 575.0
+offset_top = 267.0
+offset_right = 599.0
+offset_bottom = 291.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox7" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 605.0
+offset_top = 267.0
+offset_right = 629.0
+offset_bottom = 291.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox8" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 635.0
+offset_top = 267.0
+offset_right = 659.0
+offset_bottom = 291.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox9" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 665.0
+offset_top = 267.0
+offset_right = 689.0
+offset_bottom = 291.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox10" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 425.0
+offset_top = 297.0
+offset_right = 449.0
+offset_bottom = 321.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox11" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 455.0
+offset_top = 297.0
+offset_right = 479.0
+offset_bottom = 321.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox12" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 485.0
+offset_top = 297.0
+offset_right = 509.0
+offset_bottom = 321.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox13" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 515.0
+offset_top = 297.0
+offset_right = 539.0
+offset_bottom = 321.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox14" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 545.0
+offset_top = 297.0
+offset_right = 569.0
+offset_bottom = 321.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox15" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 575.0
+offset_top = 297.0
+offset_right = 599.0
+offset_bottom = 321.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox16" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 605.0
+offset_top = 297.0
+offset_right = 629.0
+offset_bottom = 321.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox17" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 635.0
+offset_top = 297.0
+offset_right = 659.0
+offset_bottom = 321.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox18" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 665.0
+offset_top = 297.0
+offset_right = 689.0
+offset_bottom = 321.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox19" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 425.0
+offset_top = 327.0
+offset_right = 449.0
+offset_bottom = 351.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox20" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 455.0
+offset_top = 327.0
+offset_right = 479.0
+offset_bottom = 351.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox21" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 485.0
+offset_top = 327.0
+offset_right = 509.0
+offset_bottom = 351.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox22" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 515.0
+offset_top = 327.0
+offset_right = 539.0
+offset_bottom = 351.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox23" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 545.0
+offset_top = 327.0
+offset_right = 569.0
+offset_bottom = 351.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox24" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 575.0
+offset_top = 327.0
+offset_right = 599.0
+offset_bottom = 351.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox25" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 605.0
+offset_top = 327.0
+offset_right = 629.0
+offset_bottom = 351.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox26" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 635.0
+offset_top = 327.0
+offset_right = 659.0
+offset_bottom = 351.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="CheckBox27" type="CheckBox" parent="disable_items/item_buttons"]
+offset_left = 665.0
+offset_top = 327.0
+offset_right = 689.0
+offset_bottom = 351.0
+scale = Vector2(0.92, 0.92)
+theme_override_icons/checked = SubResource("ImageTexture_7aatw")
+theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
+theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
+theme_override_icons/unchecked_disabled = SubResource("ImageTexture_4agoy")
+theme_override_icons/radio_checked = SubResource("ImageTexture_gkkql")
+theme_override_icons/radio_checked_disabled = SubResource("ImageTexture_883n0")
+theme_override_icons/radio_unchecked = SubResource("ImageTexture_b7ec1")
+theme_override_icons/radio_unchecked_disabled = SubResource("ImageTexture_jv04m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_anx44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+
+[node name="mon_anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(415, 227)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_efl4g")
+autoplay = "default"
+frame_progress = 0.478424
+
+[node name="mon" type="Label" parent="."]
+layout_direction = 3
+offset_left = -405.0
+offset_top = 217.0
+offset_right = -389.0
+offset_bottom = 240.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_tgr8l")
+text = "0"
+vertical_alignment = 1
+
+[node name="cost" type="Node2D" parent="."]
+visible = false
+position = Vector2(41, 74)
+scale = Vector2(0.5, 0.5)
+
+[node name="mon_anim2" type="AnimatedSprite2D" parent="cost"]
+position = Vector2(186, 191)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_efl4g")
+autoplay = "default"
+frame_progress = 0.841988
+
+[node name="mon2" type="Label" parent="cost"]
+layout_direction = 3
+offset_left = -176.0
+offset_top = 181.0
+offset_right = -112.0
+offset_bottom = 204.0
+theme_override_fonts/font = ExtResource("10_tgr8l")
+text = "1000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Loadouts" type="Node2D" parent="."]
+visible = false
+
+[node name="reimu_loadout" type="Node2D" parent="Loadouts"]
+visible = false
+
+[node name="GoheiItemLarge" type="Sprite2D" parent="Loadouts/reimu_loadout"]
+position = Vector2(207, 75.8095)
+scale = Vector2(0.619048, 0.619048)
+texture = ExtResource("8_co7c0")
+
+[node name="ReimuFullbody" type="Sprite2D" parent="Loadouts/reimu_loadout"]
+position = Vector2(130, 94)
+texture = ExtResource("14_ws2hw")
+
+[node name="Label" type="Label" parent="Loadouts/reimu_loadout"]
+offset_left = 157.0
+offset_top = 34.0
+offset_right = 413.0
+offset_bottom = 60.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+text = "Reimu Hakurei"
+
+[node name="Label2" type="Label" parent="Loadouts/reimu_loadout"]
+offset_left = 226.0
+offset_top = 57.0
+offset_right = 424.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0.482353, 0.878431, 0.862745, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 10
+text = "Starts with a Gohei
+item with close
+range & high damage"
+
+[node name="marisa_loadout" type="Node2D" parent="Loadouts"]
+visible = false
+
+[node name="MarisaFullbody" type="Sprite2D" parent="Loadouts/marisa_loadout"]
+position = Vector2(121, 99)
+texture = ExtResource("16_0trob")
+
+[node name="MiniHakkeroInventoryLarge" type="Sprite2D" parent="Loadouts/marisa_loadout"]
+position = Vector2(200, 75)
+texture = ExtResource("12_rmmfu")
+
+[node name="Label3" type="Label" parent="Loadouts/marisa_loadout"]
+offset_left = 157.0
+offset_top = 34.0
+offset_right = 413.0
+offset_bottom = 60.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+text = "Marisa Kirisame"
+
+[node name="Label4" type="Label" parent="Loadouts/marisa_loadout"]
+offset_left = 226.0
+offset_top = 57.0
+offset_right = 424.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0.482353, 0.878431, 0.862745, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 10
+text = "Starts with a Mini
+Hakkero, long range
+with medium damage"
+
+[node name="remilia_loadout" type="Node2D" parent="Loadouts"]
+visible = false
+
+[node name="RemiliaFullbody" type="Sprite2D" parent="Loadouts/remilia_loadout"]
+material = SubResource("ShaderMaterial_ifvd1")
+position = Vector2(127, 99)
+texture = ExtResource("16_x0nk4")
+
+[node name="remilia_info" type="Node2D" parent="Loadouts/remilia_loadout"]
+
+[node name="Label5" type="Label" parent="Loadouts/remilia_loadout/remilia_info"]
+offset_left = 157.0
+offset_top = 34.0
+offset_right = 413.0
+offset_bottom = 60.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+text = "Remilia Scarlet"
+
+[node name="Label6" type="Label" parent="Loadouts/remilia_loadout/remilia_info"]
+offset_left = 226.0
+offset_top = 57.0
+offset_right = 424.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0.482353, 0.878431, 0.862745, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 10
+text = "Starts with a swarm
+of bats, low damage
+good crowd control"
+
+[node name="BatItemLarge" type="Sprite2D" parent="Loadouts/remilia_loadout/remilia_info"]
+position = Vector2(201, 68)
+texture = ExtResource("17_4imcn")
+
+[node name="BatItemLarge2" type="Sprite2D" parent="Loadouts/remilia_loadout/remilia_info"]
+position = Vector2(212, 72)
+texture = ExtResource("17_4imcn")
+
+[node name="BatItemLarge3" type="Sprite2D" parent="Loadouts/remilia_loadout/remilia_info"]
+position = Vector2(204, 85)
+texture = ExtResource("17_4imcn")
+
+[node name="aya_loadout" type="Node2D" parent="Loadouts"]
+visible = false
+
+[node name="AyaFullbody" type="Sprite2D" parent="Loadouts/aya_loadout"]
+material = SubResource("ShaderMaterial_mmqbd")
+position = Vector2(128, 102)
+texture = ExtResource("18_rbabs")
+
+[node name="aya_info" type="Node2D" parent="Loadouts/aya_loadout"]
+
+[node name="CameraInventoryLarge" type="Sprite2D" parent="Loadouts/aya_loadout/aya_info"]
+position = Vector2(192, 70)
+texture = ExtResource("19_ld5ku")
+
+[node name="Label5" type="Label" parent="Loadouts/aya_loadout/aya_info"]
+offset_left = 157.0
+offset_top = 34.0
+offset_right = 413.0
+offset_bottom = 60.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+text = "Aya Shameimaru"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label6" type="Label" parent="Loadouts/aya_loadout/aya_info"]
+offset_left = 214.0
+offset_top = 57.0
+offset_right = 424.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0.482353, 0.878431, 0.862745, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 10
+text = "Starts a camera, 
+hits multiple enemies
+for medium damage"
+metadata/_edit_use_anchors_ = true
+
+[node name="suika_loadout" type="Node2D" parent="Loadouts"]
+visible = false
+
+[node name="SuikaFullbody" type="Sprite2D" parent="Loadouts/suika_loadout"]
+material = SubResource("ShaderMaterial_gkff3")
+position = Vector2(116, 89)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("20_tfusd")
+
+[node name="suika_info" type="Node2D" parent="Loadouts/suika_loadout"]
+
+[node name="Sakebottle" type="Sprite2D" parent="Loadouts/suika_loadout/suika_info"]
+position = Vector2(193, 76.8095)
+scale = Vector2(0.619048, 0.619048)
+texture = ExtResource("21_1xgna")
+
+[node name="Label5" type="Label" parent="Loadouts/suika_loadout/suika_info"]
+offset_left = 157.0
+offset_top = 34.0
+offset_right = 413.0
+offset_bottom = 60.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+text = "Suika Ibuki"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label6" type="Label" parent="Loadouts/suika_loadout/suika_info"]
+offset_left = 214.0
+offset_top = 57.0
+offset_right = 424.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0.482353, 0.878431, 0.862745, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 10
+text = "Starts with a Sake
+Bottle, medium range
+with large damage"
+metadata/_edit_use_anchors_ = true
+
+[node name="reisen_loadout" type="Node2D" parent="Loadouts"]
+visible = false
+
+[node name="ReisenFullbody" type="Sprite2D" parent="Loadouts/reisen_loadout"]
+material = SubResource("ShaderMaterial_ut2d0")
+position = Vector2(121, 102)
+texture = ExtResource("23_d5j5p")
+
+[node name="reisen_info" type="Node2D" parent="Loadouts/reisen_loadout"]
+
+[node name="Sakebottle" type="Sprite2D" parent="Loadouts/reisen_loadout/reisen_info"]
+position = Vector2(172, 70.8095)
+scale = Vector2(0.904762, 0.904762)
+texture = ExtResource("24_80qcc")
+
+[node name="Label5" type="Label" parent="Loadouts/reisen_loadout/reisen_info"]
+offset_left = 112.0
+offset_top = 34.0
+offset_right = 448.0
+offset_bottom = 60.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 14
+text = "Reisen Udongein Inaba"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label6" type="Label" parent="Loadouts/reisen_loadout/reisen_info"]
+offset_left = 194.0
+offset_top = 57.0
+offset_right = 424.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0.482353, 0.878431, 0.862745, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 10
+text = "Starts with a Megaphone
+Gun that fires a 
+volley of bullets"
+metadata/_edit_use_anchors_ = true
+
+[node name="youmu_loadout" type="Node2D" parent="Loadouts"]
+visible = false
+
+[node name="YoumuFullbody" type="Sprite2D" parent="Loadouts/youmu_loadout"]
+material = SubResource("ShaderMaterial_hlh8d")
+position = Vector2(120, 94)
+texture = ExtResource("26_g2d17")
+
+[node name="youmu_info" type="Node2D" parent="Loadouts/youmu_loadout"]
+
+[node name="roukanken" type="Sprite2D" parent="Loadouts/youmu_loadout/youmu_info"]
+position = Vector2(165.318, 75.4286)
+scale = Vector2(0.736607, 0.736607)
+texture = ExtResource("27_wo3kn")
+
+[node name="Label5" type="Label" parent="Loadouts/youmu_loadout/youmu_info"]
+offset_left = 145.0
+offset_top = 32.0
+offset_right = 481.0
+offset_bottom = 58.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+text = "Youmu Konpaku"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label6" type="Label" parent="Loadouts/youmu_loadout/youmu_info"]
+offset_left = 181.0
+offset_top = 57.0
+offset_right = 421.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0.482353, 0.878431, 0.862745, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 10
+text = "Starts with Roukanken
+Unleash a spinning slash
+at nearby enemies"
+metadata/_edit_use_anchors_ = true
+
+[node name="FullscreenPink" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_4mwes")
 texture = ExtResource("6_a87dc")
 centered = false
@@ -394,47 +2496,6 @@ centered = false
 material = SubResource("ShaderMaterial_gqgm0")
 texture = ExtResource("8_bpbp1")
 centered = false
-
-[node name="Loadouts" type="Node2D" parent="."]
-
-[node name="Loadout" type="Node2D" parent="Loadouts"]
-visible = false
-
-[node name="GoheiItemLarge" type="Sprite2D" parent="Loadouts/Loadout"]
-position = Vector2(183, 115)
-texture = ExtResource("8_co7c0")
-
-[node name="HomingAmuletItemLarge" type="Sprite2D" parent="Loadouts/Loadout"]
-position = Vector2(235, 116)
-scale = Vector2(2, 2)
-texture = ExtResource("9_m1lwd")
-
-[node name="Label" type="Label" parent="Loadouts/Loadout"]
-offset_left = 129.0
-offset_top = 59.0
-offset_right = 385.0
-offset_bottom = 85.0
-theme_override_fonts/font = ExtResource("10_tgr8l")
-text = "STARTING LOADOUT"
-
-[node name="Loadout2" type="Node2D" parent="Loadouts"]
-visible = false
-
-[node name="Label" type="Label" parent="Loadouts/Loadout2"]
-offset_left = 129.0
-offset_top = 59.0
-offset_right = 385.0
-offset_bottom = 85.0
-theme_override_fonts/font = ExtResource("10_tgr8l")
-text = "STARTING LOADOUT"
-
-[node name="MagicBombInventoryLarge" type="Sprite2D" parent="Loadouts/Loadout2"]
-position = Vector2(183, 120)
-texture = ExtResource("11_ninr7")
-
-[node name="MiniHakkeroInventoryLarge" type="Sprite2D" parent="Loadouts/Loadout2"]
-position = Vector2(239, 121)
-texture = ExtResource("12_rmmfu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -445,6 +2506,55 @@ libraries = {
 
 [node name="select" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("8_0tpla")
+volume_db = 12.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("18_fu6ec")
+autoplay = true
+bus = &"Music"
+
+[node name="disable_all" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 428.0
+offset_bottom = 240.0
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sx34c")
+}
+
+[node name="item_disable_cost" type="Node2D" parent="."]
+visible = false
+
+[node name="cost" type="Node2D" parent="item_disable_cost"]
+position = Vector2(-152, -168)
+
+[node name="Line2D" type="Line2D" parent="item_disable_cost/cost"]
+position = Vector2(-2, -4)
+points = PackedVector2Array(121, 192, 192, 192)
+width = 18.0
+default_color = Color(0, 0, 0, 0.576471)
+
+[node name="mon_anim2" type="AnimatedSprite2D" parent="item_disable_cost/cost"]
+position = Vector2(180, 188)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_efl4g")
+autoplay = "default"
+frame_progress = 0.841988
+
+[node name="mon2" type="Label" parent="item_disable_cost/cost"]
+layout_direction = 3
+offset_left = -170.0
+offset_top = 178.0
+offset_right = -122.0
+offset_bottom = 201.0
+theme_override_fonts/font = ExtResource("10_tgr8l")
+text = "800"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="button_down" from="Reimu" to="." method="_on_reimu_button_down"]
 [connection signal="mouse_entered" from="Reimu" to="." method="_on_reimu_mouse_entered"]
@@ -458,3 +2568,93 @@ stream = ExtResource("8_0tpla")
 [connection signal="button_down" from="Aya" to="." method="_on_aya_button_down"]
 [connection signal="mouse_entered" from="Aya" to="." method="_on_aya_mouse_entered"]
 [connection signal="mouse_exited" from="Aya" to="." method="_on_aya_mouse_exited"]
+[connection signal="button_down" from="Suika" to="." method="_on_suika_button_down"]
+[connection signal="mouse_entered" from="Suika" to="." method="_on_suika_mouse_entered"]
+[connection signal="mouse_exited" from="Suika" to="." method="_on_suika_mouse_exited"]
+[connection signal="button_down" from="Reisen" to="." method="_on_reisen_button_down"]
+[connection signal="mouse_entered" from="Reisen" to="." method="_on_reisen_mouse_entered"]
+[connection signal="mouse_exited" from="Reisen" to="." method="_on_reisen_mouse_exited"]
+[connection signal="button_down" from="Youmu" to="." method="_on_youmu_button_down"]
+[connection signal="mouse_entered" from="Youmu" to="." method="_on_youmu_mouse_entered"]
+[connection signal="mouse_exited" from="Youmu" to="." method="_on_youmu_mouse_exited"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox" to="disable_items/item_buttons" method="_on_check_box_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox" to="disable_items/item_buttons" method="_on_check_box_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox" to="disable_items/item_buttons" method="_on_check_box_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox2" to="disable_items/item_buttons" method="_on_check_box_2_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox2" to="disable_items/item_buttons" method="_on_check_box_2_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox2" to="disable_items/item_buttons" method="_on_check_box_2_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox3" to="disable_items/item_buttons" method="_on_check_box_3_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox3" to="disable_items/item_buttons" method="_on_check_box_3_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox3" to="disable_items/item_buttons" method="_on_check_box_3_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox4" to="disable_items/item_buttons" method="_on_check_box_4_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox4" to="disable_items/item_buttons" method="_on_check_box_4_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox4" to="disable_items/item_buttons" method="_on_check_box_4_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox5" to="disable_items/item_buttons" method="_on_check_box_5_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox5" to="disable_items/item_buttons" method="_on_check_box_5_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox5" to="disable_items/item_buttons" method="_on_check_box_5_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox6" to="disable_items/item_buttons" method="_on_check_box_6_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox6" to="disable_items/item_buttons" method="_on_check_box_6_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox6" to="disable_items/item_buttons" method="_on_check_box_6_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox7" to="disable_items/item_buttons" method="_on_check_box_7_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox7" to="disable_items/item_buttons" method="_on_check_box_7_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox7" to="disable_items/item_buttons" method="_on_check_box_7_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox8" to="disable_items/item_buttons" method="_on_check_box_8_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox8" to="disable_items/item_buttons" method="_on_check_box_8_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox8" to="disable_items/item_buttons" method="_on_check_box_8_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox9" to="disable_items/item_buttons" method="_on_check_box_9_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox9" to="disable_items/item_buttons" method="_on_check_box_9_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox9" to="disable_items/item_buttons" method="_on_check_box_9_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox10" to="disable_items/item_buttons" method="_on_check_box_10_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox10" to="disable_items/item_buttons" method="_on_check_box_10_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox10" to="disable_items/item_buttons" method="_on_check_box_10_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox11" to="disable_items/item_buttons" method="_on_check_box_11_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox11" to="disable_items/item_buttons" method="_on_check_box_11_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox11" to="disable_items/item_buttons" method="_on_check_box_11_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox12" to="disable_items/item_buttons" method="_on_check_box_12_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox12" to="disable_items/item_buttons" method="_on_check_box_12_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox12" to="disable_items/item_buttons" method="_on_check_box_12_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox13" to="disable_items/item_buttons" method="_on_check_box_13_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox13" to="disable_items/item_buttons" method="_on_check_box_13_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox13" to="disable_items/item_buttons" method="_on_check_box_13_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox14" to="disable_items/item_buttons" method="_on_check_box_14_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox14" to="disable_items/item_buttons" method="_on_check_box_14_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox14" to="disable_items/item_buttons" method="_on_check_box_14_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox15" to="disable_items/item_buttons" method="_on_check_box_15_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox15" to="disable_items/item_buttons" method="_on_check_box_15_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox15" to="disable_items/item_buttons" method="_on_check_box_15_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox16" to="disable_items/item_buttons" method="_on_check_box_16_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox16" to="disable_items/item_buttons" method="_on_check_box_16_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox16" to="disable_items/item_buttons" method="_on_check_box_16_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox17" to="disable_items/item_buttons" method="_on_check_box_17_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox17" to="disable_items/item_buttons" method="_on_check_box_17_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox17" to="disable_items/item_buttons" method="_on_check_box_17_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox18" to="disable_items/item_buttons" method="_on_check_box_18_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox18" to="disable_items/item_buttons" method="_on_check_box_18_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox18" to="disable_items/item_buttons" method="_on_check_box_18_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox19" to="disable_items/item_buttons" method="_on_check_box_19_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox19" to="disable_items/item_buttons" method="_on_check_box_19_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox19" to="disable_items/item_buttons" method="_on_check_box_19_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox20" to="disable_items/item_buttons" method="_on_check_box_20_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox20" to="disable_items/item_buttons" method="_on_check_box_20_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox20" to="disable_items/item_buttons" method="_on_check_box_20_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox21" to="disable_items/item_buttons" method="_on_check_box_21_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox21" to="disable_items/item_buttons" method="_on_check_box_21_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox21" to="disable_items/item_buttons" method="_on_check_box_21_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox22" to="disable_items/item_buttons" method="_on_check_box_22_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox22" to="disable_items/item_buttons" method="_on_check_box_22_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox22" to="disable_items/item_buttons" method="_on_check_box_22_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox23" to="disable_items/item_buttons" method="_on_check_box_23_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox23" to="disable_items/item_buttons" method="_on_check_box_23_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox23" to="disable_items/item_buttons" method="_on_check_box_23_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox24" to="disable_items/item_buttons" method="_on_check_box_24_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox24" to="disable_items/item_buttons" method="_on_check_box_24_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox24" to="disable_items/item_buttons" method="_on_check_box_24_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox25" to="disable_items/item_buttons" method="_on_check_box_25_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox25" to="disable_items/item_buttons" method="_on_check_box_25_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox25" to="disable_items/item_buttons" method="_on_check_box_25_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox26" to="disable_items/item_buttons" method="_on_check_box_26_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox26" to="disable_items/item_buttons" method="_on_check_box_26_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox26" to="disable_items/item_buttons" method="_on_check_box_26_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox27" to="disable_items/item_buttons" method="_on_check_box_27_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox27" to="disable_items/item_buttons" method="_on_check_box_27_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/CheckBox27" to="disable_items/item_buttons" method="_on_check_box_27_toggled"]

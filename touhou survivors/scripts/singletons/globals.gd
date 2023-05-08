@@ -7,7 +7,7 @@ var player_facing:Vector2 = Vector2(0,1)
 var one_time_spawns:Array
 var tooltip_info:Array = []
 var photo_dest:Vector2
-enum {Reimu,Marisa,Remilia,Aya}
+enum {Reimu,Marisa,Remilia,Aya,Suika,Reisen,Youmu}
 var current_character:int = 0
 var audio_reset:float
 var player_hp:float
@@ -16,6 +16,11 @@ var holding_item:bool = false
 var rand_id_assigns:Array
 var player_z_index:float
 var player_alive:bool = true
+var screen_center:Vector2
+var settings:Dictionary
+var disabled_items:Array
+
+const settings_file_path : String = "user://settings.dat"
 
 #USED IN CAMERA ITEM FOR GETTING RECT2 SCALE
 func wind_mult():
@@ -33,22 +38,24 @@ func wind_div():
 	var div:float
 	match get_window_scale():
 		1: div = 1
-		2: div = 0.75
-		3: div = 0.5
+		2: div = 0.6
+		3: div = 0.4
 		4: div = 0.33
 		5: div = 0.2
+		6: div = 0.15
 	return div
 
 #CAN BE USED TO GET CURRENT RESOLUTION
 func get_window_scale():
 	var tier:int
 	match get_window().get_size_with_decorations().y:
-		279: tier = 1
-		399: tier = 2
-		519: tier = 3
+		269: tier = 1
+		389: tier = 2
+		509: tier = 3
 		749: tier = 4
-		1119: tier = 5
-		1080: tier = 5
+		1109: tier = 5
+		1469: tier = 5
+		2189: tier = 6
 		_: print("ERROR: NO MATCHING RESOLUTION '" + str(get_window().get_size_with_decorations().y) + "'")
 	return tier
 

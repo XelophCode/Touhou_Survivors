@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-@export var main_menu : PackedScene
 @export var character_portrait : AnimatedSprite2D
 @export var time_label : Node
 @export var lvl_label : Node
@@ -16,6 +15,9 @@ extends CanvasLayer
 @export var marisa_portrait : SpriteFrames
 @export var remilia_portrait : SpriteFrames
 @export var aya_portrait : SpriteFrames
+@export var suika_portrait : SpriteFrames
+@export var reisen_portrait : SpriteFrames
+@export var youmu_portrait : SpriteFrames
 
 @export_group("options")
 @export_subgroup("video_options")
@@ -77,8 +79,11 @@ var final_faith:float
 var is_gameover:bool = false
 var video_settings:Array = [Vector2(426,240),0,0]
 var video_settings_new:Array = [Vector2(426,240),0,0]
-var screen_center:Vector2i
+var screen_center:Vector2
 var video_settings_indices:Array = [0,0,0]
+var player_dead:bool = false
+var game_over_press:bool = false
+var playtime_absolute:float = 0
 
 var mon:int:
 	set(value):
@@ -112,15 +117,21 @@ func _ready():
 	for i in DisplayServer.get_screen_count():
 		monitor_options.add_item("Monitor " + str(i),i)
 	screen_center = DisplayServer.window_get_position()
-	screen_center.x += 426/2
-	screen_center.y += 240/2
-	Globals.crystal_count = 1000
+	screen_center.x += 426.0/2
+	screen_center.y += 240.0/2
+	Globals.crystal_count = 0
 	$AnimationPlayer.play("fade_out")
 	match Globals.current_character:
 		Globals.Reimu: character_portrait.sprite_frames = reimu_portrait
 		Globals.Marisa: character_portrait.sprite_frames = marisa_portrait
 		Globals.Remilia: character_portrait.sprite_frames = remilia_portrait
 		Globals.Aya: character_portrait.sprite_frames = aya_portrait
+		Globals.Suika: character_portrait.sprite_frames = suika_portrait
+		Globals.Reisen: character_portrait.sprite_frames = reisen_portrait
+		Globals.Youmu: character_portrait.sprite_frames = youmu_portrait
+	
+	var loaded_settings = Appdata.load_file(Appdata.SETTINGS)
+	$UI/FPS.visible = loaded_settings.SHOW_FPS
 	
 	Signals.connect("current_power",catch_current_power)
 	Signals.connect("next_lvl_update",catch_next_lvl_update)
@@ -137,9 +148,11 @@ func _ready():
 	Signals.connect("holding_item",catch_holding_item)
 	Signals.connect("show_tooltip",catch_show_tooltip)
 	Signals.connect("hide_tooltip",catch_hide_tooltip)
+	Signals.connect("delete_ui",catch_delete_ui)
+	Signals.connect("show_fps",catch_show_fps)
 
 func _process(delta):
-	
+	var current_time:String = time_label.text
 	if can_skip_anims:
 		if Globals.any_input_pressed():
 			skip_anims = true
@@ -158,6 +171,7 @@ func _process(delta):
 	powerbar.value = power
 	
 	if !leveling_up:
+		playtime_absolute += delta
 		playtime_second += delta
 		var playtime_floored = floor(playtime_second)
 		if playtime_floored > 59:
@@ -171,6 +185,15 @@ func _process(delta):
 			playtime_stringed = str(playtime_minute) + ":" + str(playtime_floored)
 		time_label.text = str(playtime_stringed)
 		$UI/Time2.text = str(playtime_stringed)
+	
+	if player_dead:
+		time_label.text = current_time
+		$UI/Time2.text = current_time
+		if game_over_press:
+			if Globals.any_input_just_pressed():
+				$Gameover.visible = true
+				$AnimationPlayer.play("gameover")
+				game_over_press = false
 	
 	$UI/Healthbar.value = Globals.player_hp
 
@@ -229,13 +252,14 @@ func _on_main_menu_button_up():
 	goto_main_menu()
 
 func catch_game_over(info:enemy_info):
+	player_dead = true
 	game_over_mon = mon
 	final_time = time_label.text
 	final_crystal = current_crystal
 	final_faith = current_faith
 	gameover_info = info
-	$Gameover.visible = true
-	$AnimationPlayer.play("gameover")
+	$pre_gameover.visible = true
+	$AnimationPlayer.play("pre_gameover")
 
 func game_over_stats():
 	is_gameover = true
@@ -347,7 +371,24 @@ func game_over_stats():
 	can_skip_anims = false
 
 func goto_main_menu():
-	get_tree().change_scene_to_file("res://prefabs/levels/main_menu.tscn")
+	var loaded_save = Appdata.load_file(Appdata.SAVE)
+	var previous_mon = loaded_save.MON
+	var new_mon = previous_mon + game_over_mon
+	var mon_lifetime = loaded_save.MON_LIFETIME + game_over_mon
+	Appdata.save_file(Appdata.SAVE,"MON",new_mon)
+	Appdata.save_file(Appdata.SAVE,"MON_LIFETIME",mon_lifetime)
+	
+	if playtime_absolute > loaded_save.BEST_TIME_NUM:
+		Appdata.save_file(Appdata.SAVE,"BEST_TIME_NUM",playtime_absolute)
+		Appdata.save_file(Appdata.SAVE,"BEST_TIME_STRING",final_time)
+	
+	Appdata.save_file(Appdata.SAVE,"DEATHS",loaded_save.DEATHS + 1)
+	Appdata.save_file(Appdata.SAVE,"FAITH_LIFETIME",loaded_save.FAITH_LIFETIME + final_faith)
+	Appdata.save_file(Appdata.SAVE,"CRYSTALS_LIFETIME",loaded_save.CRYSTALS_LIFETIME + final_crystal)
+	
+	
+	Signals.emit_signal("go_to_main_menu")
+	
 
 func catch_increase_max_hp(value):
 	$UI/Healthbar.max_value = value
@@ -370,16 +411,16 @@ func catch_update_crystal(value):
 func scale_max_crystal():
 	var max_crystal:float = 0
 	match Globals.crystal_count:
-		0.0: max_crystal = 5
-		1.0: max_crystal = 11
-		2.0: max_crystal = 12
-		3.0: max_crystal = 14
-		4.0: max_crystal = 16
-		5.0: max_crystal = 18
-		6.0: max_crystal = 20
-		7.0: max_crystal = 24
-		8.0: max_crystal = 28
-		9.0: max_crystal = 34
+		0.0: max_crystal = 8
+		1.0: max_crystal = 15
+		2.0: max_crystal = 30
+		3.0: max_crystal = 35
+		4.0: max_crystal = 40
+		5.0: max_crystal = 45
+		6.0: max_crystal = 50
+		7.0: max_crystal = 60
+		8.0: max_crystal = 70
+		9.0: max_crystal = 80
 	return max_crystal
 
 func catch_decrease_crystal_count():
@@ -418,7 +459,7 @@ func catch_total_power(value):
 	current_faith = value
 
 func _on_options_button_down():
-	$PauseMenu/pause_anims.play("scroll")
+	Signals.emit_signal("open_options_menu")
 
 func catch_holding_item(value):
 	if value:
@@ -434,107 +475,21 @@ func catch_show_tooltip():
 func catch_hide_tooltip():
 	q_button_prompt.visible = false
 
+func game_start_anim_go():
+	$Game_start_anims.play("go")
 
-func _on_video_b_button_down():
-	video_tab.visible = true
-	audio_tab.visible = false
-	input_tab.visible = false
+func game_start_complete():
+	Signals.emit_signal("game_start_complete")
 
+func catch_delete_ui():
+	queue_free()
 
-func _on_audio_b_button_down():
-	video_settings_new = video_settings
-	reset_video_options()
-	video_tab.visible = false
-	audio_tab.visible = true
-	input_tab.visible = false
+func _on_tree_exited():
+	Signals.emit_signal("ui_deleted")
 
+func press_to_continue():
+	$AnimationPlayer.play("pre_gameover_press_to_continue")
+	game_over_press = true
 
-func _on_input_b_button_down():
-	video_settings_new = video_settings
-	reset_video_options()
-	video_tab.visible = false
-	audio_tab.visible = false
-	input_tab.visible = true
-
-
-func _on_resolution_item_selected(index):
-	match index:
-		0: video_settings_new[0] = Vector2(426,240)
-		1: video_settings_new[0] = Vector2(640,360)
-		2: video_settings_new[0] = Vector2(854,480)
-		3: video_settings_new[0] = Vector2(1280,720)
-		4: video_settings_new[0] = Vector2(1920,1080)
-		5: video_settings_new[0] = Vector2(2560,1440)
-		6: video_settings_new[0] = Vector2(3840,2160)
-
-
-func _on_video_apply_button_down():
-	DisplayServer.window_set_size(video_settings_new[0])
-	
-	DisplayServer.window_set_position(Vector2i(screen_center.x - video_settings_new[0].x/2,screen_center.y - video_settings_new[0].y/2))
-	match video_settings_new[1]:
-		0: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		1: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
-		2: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	
-	DisplayServer.window_set_current_screen(video_settings_new[2])
-	
-	keep_video_settings.visible = true
-	revert_timer.start()
-
-
-func _on_window_item_selected(index):
-	video_settings_new[1] = index
-
-func _on_monitor_item_selected(index):
-	video_settings_new[2] = index
-
-#KEEP VIDEO SETTINGS
-func _on_yes_button_down():
-	video_settings[0] = video_settings_new[0]
-	video_settings[1] = video_settings_new[1]
-	video_settings[2] = video_settings_new[2]
-	video_settings_indices[0] = resolution_options.selected
-	video_settings_indices[1] = window_options.selected
-	video_settings_indices[2] = monitor_options.selected
-	keep_video_settings.visible = false
-
-func revert_video_changes():
-	DisplayServer.window_set_size(video_settings[0])
-	
-	DisplayServer.window_set_position(Vector2i(screen_center.x - video_settings[0].x/2,screen_center.y - video_settings[0].y/2))
-	match video_settings[1]:
-		0: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		1: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
-		2: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	
-	DisplayServer.window_set_current_screen(video_settings[2])
-
-func reset_video_options():
-	resolution_options.selected = video_settings_indices[0]
-	window_options.selected = video_settings_indices[1]
-	monitor_options.selected = video_settings_indices[2]
-
-func _on_timer_timeout():
-	keep_video_settings.visible = false
-	revert_video_changes()
-
-func _on_no_button_down():
-	revert_timer.stop()
-	revert_video_changes()
-	keep_video_settings.visible = false
-
-func _on_close_button_down():
-	$PauseMenu/pause_anims.play_backwards("scroll")
-
-func _on_master_value_changed(value):
-	AudioServer.set_bus_volume_db(0,value)
-
-func _on_music_value_changed(value):
-	AudioServer.set_bus_volume_db(1,value)
-
-func _on_sfx_value_changed(value):
-	AudioServer.set_bus_volume_db(2,value)
-
-func _on_item_sfx_value_changed(value):
-	AudioServer.set_bus_volume_db(3,value)
+func catch_show_fps(value):
+	$UI/FPS.visible = value

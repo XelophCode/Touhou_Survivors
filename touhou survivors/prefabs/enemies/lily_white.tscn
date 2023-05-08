@@ -63,9 +63,9 @@ type = 0
 sprite = NodePath("AnimatedSprite2D")
 face_player = true
 shadow = NodePath("Shadow")
-base_speed = 1200.0
+base_speed = 900.0
 hp = 100
-damage = 8.0
+damage = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 3

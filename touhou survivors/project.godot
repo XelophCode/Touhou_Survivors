@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="touhou survivors"
-run/main_scene="res://prefabs/levels/main_menu.tscn"
+config/name="Touhou: Gensokyo Survivors"
+run/main_scene="res://prefabs/levels/initialize.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 run/max_fps=60
 boot_splash/show_image=false
@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 Signals="*res://scripts/singletons/signals.gd"
 Globals="*res://scripts/singletons/globals.gd"
+Appdata="*res://scripts/logic_ui/appdata.gd"
 
 [display]
 
@@ -95,10 +96,9 @@ escape={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
-print_debug={
+move_disabled={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"echo":false,"script":null)
-]
+"events": []
 }
 
 [layer_names]

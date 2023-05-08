@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d12qipdsnqqxd"]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/settings_save.gd" id="1_agt6y"]
+
+[node name="settings_save" type="Node"]
+script = ExtResource("1_agt6y")

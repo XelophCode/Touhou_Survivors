@@ -8,7 +8,7 @@ func _ready():
 	$AnimationPlayer.play("default")
 	$main_body/main_body_2/CPUParticles2D.emitting = true
 
-func _process(delta):
+func _process(_delta):
 	global_position = Globals.player_position
 
 func _on_area_2d_body_entered(body):
