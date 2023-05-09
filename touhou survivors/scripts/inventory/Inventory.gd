@@ -13,6 +13,7 @@ var cross_blocked_spaces:Array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,20,21,2
 @export var suika_char_art : Texture2D
 @export var reisen_char_art : Texture2D
 @export var youmu_char_art : Texture2D
+@export var cirno_char_art : Texture2D
 
 func _ready():
 	match Globals.current_character:
@@ -23,6 +24,7 @@ func _ready():
 		Globals.Suika: character_art.texture = suika_char_art
 		Globals.Reisen: character_art.texture = reisen_char_art
 		Globals.Youmu: character_art.texture = youmu_char_art
+		Globals.Cirno: character_art.texture = cirno_char_art
 	Signals.connect("leveling_up",leveling_up)
 	
 	for i in cross_blocked_spaces:

@@ -7,7 +7,7 @@ var player_facing:Vector2 = Vector2(0,1)
 var one_time_spawns:Array
 var tooltip_info:Array = []
 var photo_dest:Vector2
-enum {Reimu,Marisa,Remilia,Aya,Suika,Reisen,Youmu}
+enum {Reimu,Marisa,Remilia,Aya,Suika,Reisen,Youmu,Cirno}
 var current_character:int = 0
 var audio_reset:float
 var player_hp:float
@@ -19,6 +19,14 @@ var player_alive:bool = true
 var screen_center:Vector2
 var settings:Dictionary
 var disabled_items:Array
+var used_items:Array
+var used_items_total:int
+var used_spellcards:Array
+var used_spellcards_total:int
+var simul_spellcard:int
+var all_spellcard:bool
+var lilywhite:int = 0
+var daiyousei:int = 0
 
 const settings_file_path : String = "user://settings.dat"
 

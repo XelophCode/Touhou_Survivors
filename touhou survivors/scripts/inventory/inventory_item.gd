@@ -54,6 +54,7 @@ var spell_card
 var spell_card_cooldown
 var spell_card_icon
 var found_new_position:bool = false
+var item_description_2:String
 
 func find_rotational_offset():
 	var rot:int = round(rad_to_deg(rotation))
@@ -340,6 +341,11 @@ func hide_tooltip():
 		if set_matches.size() > 1:
 			Signals.emit_signal("show_spell_card_right_click",false)
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+#	var desc:String
+#	if !rotated:
+#		desc = item_description
+#	else:
+#		desc = item_description_2
 	Globals.tooltip_info.erase([item_name,item_description])
 	if Globals.tooltip_info == []:
 		Signals.emit_signal("hide_tooltip")
@@ -353,6 +359,11 @@ func show_tooltip():
 		if set_matches.size() > 1:
 			Signals.emit_signal("show_spell_card_right_click",true)
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+#	var desc:String
+#	if !rotated:
+#		desc = item_description
+#	else:
+#		desc = item_description_2
 	Globals.tooltip_info.push_front([item_name,item_description])
 	if !left_mouse_button_held:
 		Signals.emit_signal("show_tooltip")

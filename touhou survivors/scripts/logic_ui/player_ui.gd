@@ -18,6 +18,7 @@ extends CanvasLayer
 @export var suika_portrait : SpriteFrames
 @export var reisen_portrait : SpriteFrames
 @export var youmu_portrait : SpriteFrames
+@export var cirno_portrait : SpriteFrames
 
 @export_group("options")
 @export_subgroup("video_options")
@@ -113,6 +114,8 @@ var is_paused:bool = false:
 		escape_can_unpause = is_paused
 
 func _ready():
+	Globals.lilywhite = false
+	Globals.daiyousei = false
 	monitor_options.clear()
 	for i in DisplayServer.get_screen_count():
 		monitor_options.add_item("Monitor " + str(i),i)
@@ -129,6 +132,7 @@ func _ready():
 		Globals.Suika: character_portrait.sprite_frames = suika_portrait
 		Globals.Reisen: character_portrait.sprite_frames = reisen_portrait
 		Globals.Youmu: character_portrait.sprite_frames = youmu_portrait
+		Globals.Cirno: character_portrait.sprite_frames = cirno_portrait
 	
 	var loaded_settings = Appdata.load_file(Appdata.SETTINGS)
 	$UI/FPS.visible = loaded_settings.SHOW_FPS
@@ -385,7 +389,19 @@ func goto_main_menu():
 	Appdata.save_file(Appdata.SAVE,"DEATHS",loaded_save.DEATHS + 1)
 	Appdata.save_file(Appdata.SAVE,"FAITH_LIFETIME",loaded_save.FAITH_LIFETIME + final_faith)
 	Appdata.save_file(Appdata.SAVE,"CRYSTALS_LIFETIME",loaded_save.CRYSTALS_LIFETIME + final_crystal)
+	Appdata.save_file(Appdata.SAVE,"ITEMS_USED",Globals.used_items_total)
+	Appdata.save_file(Appdata.SAVE,"ITEM_NAMES",Globals.used_items)
+	Appdata.save_file(Appdata.SAVE,"SPELLCARD_NAMES",Globals.used_spellcards)
+	Appdata.save_file(Appdata.SAVE,"SPELLCARDS_USED",Globals.used_spellcards_total)
+	var all_spell:int = 0
+	if Globals.all_spellcard:
+		all_spell = 1
+	Appdata.save_file(Appdata.SAVE,"ALL_SPELLCARDS",all_spell)
+	Appdata.save_file(Appdata.SAVE,"LILY_WHITE",Globals.lilywhite)
+	Appdata.save_file(Appdata.SAVE,"DAIYOUSEI",Globals.daiyousei)
 	
+	
+	print(Globals.used_items_total)
 	
 	Signals.emit_signal("go_to_main_menu")
 	

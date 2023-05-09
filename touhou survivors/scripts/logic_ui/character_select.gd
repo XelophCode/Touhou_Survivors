@@ -11,6 +11,7 @@ extends Node2D
 @export var suika_button : Button
 @export var reisen_button : Button
 @export var youmu_button : Button
+@export var cirno_button : Button
 
 @export_group("character_sprites")
 @export var reimu_sprite : AnimatedSprite2D
@@ -20,6 +21,7 @@ extends Node2D
 @export var suika_sprite : AnimatedSprite2D
 @export var reisen_sprite : AnimatedSprite2D
 @export var youmu_sprite : AnimatedSprite2D
+@export var cirno_sprite : AnimatedSprite2D
 
 @export_group("character_loadouts")
 @export var reimu_loadout : Node2D
@@ -44,6 +46,10 @@ extends Node2D
 @export var youmu_loadout : Node2D
 @export var youmu_portrait : Sprite2D
 @export var youmu_info : Node2D
+@export_subgroup("cirno")
+@export var cirno_loadout : Node2D
+@export var cirno_portrait : Sprite2D
+@export var cirno_info : Node2D
 
 @export_group("misc")
 @export var mon_label : Label
@@ -89,6 +95,10 @@ func _ready():
 				youmu_portrait.material.set_shader_parameter("flash_modifier",1.0)
 				youmu_sprite.material.set_shader_parameter("flash_modifier",1.0)
 				youmu_info.visible = false
+			"Cirno":
+				cirno_portrait.material.set_shader_parameter("flash_modifier",1.0)
+				cirno_sprite.material.set_shader_parameter("flash_modifier",1.0)
+				cirno_info.visible = false
 
 func _process(delta):
 	item_disable_cost.position.x = get_global_mouse_position().x
@@ -119,6 +129,10 @@ func check_for_unlock(char_name:String):
 				youmu_portrait.material.set_shader_parameter("flash_modifier",0.0)
 				youmu_sprite.material.set_shader_parameter("flash_modifier",0.0)
 				youmu_info.visible = true
+			"Cirno": 
+				cirno_portrait.material.set_shader_parameter("flash_modifier",0.0)
+				cirno_sprite.material.set_shader_parameter("flash_modifier",0.0)
+				cirno_info.visible = true
 		cost.visible = false
 		mon_label.text = str(mon)
 	else:
@@ -290,4 +304,26 @@ func _on_youmu_mouse_exited():
 func show_item_disable_cost(show:bool):
 	item_disable_cost.visible = show
 
+func _on_cirno_button_down():
+	if locked_characters.has("Cirno"):
+		check_for_unlock("Cirno")
+		return
+	$disable_all.visible = true
+	Globals.current_character = Globals.Cirno
+	$Loadouts.visible = false
+	$Audio/select.play()
+	$AnimationPlayer.play("fade_in")
+	update_save()
 
+func _on_cirno_mouse_entered():
+	cirno_sprite.play("default")
+	cirno_loadout.visible = true
+	if locked_characters.has("Cirno"):
+		cost.visible = true
+	else:
+		cirno_info.visible = true
+
+func _on_cirno_mouse_exited():
+	cirno_sprite.stop()
+	cirno_loadout.visible = false
+	cost.visible = false

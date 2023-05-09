@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=3 uid="uid://do63og25gtn6j"]
+[gd_scene load_steps=172 format=3 uid="uid://do63og25gtn6j"]
 
 [ext_resource type="Texture2D" uid="uid://qrttyf07rc81" path="res://sprites/ui/character_select.png" id="1_1h6fy"]
 [ext_resource type="Script" path="res://scripts/logic_ui/character_select.gd" id="1_hwynl"]
@@ -18,6 +18,7 @@
 [ext_resource type="FontFile" uid="uid://4g0oq0v08h0h" path="res://resources/fonts/prstart.ttf" id="10_tgr8l"]
 [ext_resource type="Texture2D" uid="uid://dpu81nbrqd3h6" path="res://sprites/actors/youmu.png" id="11_j3ewa"]
 [ext_resource type="Texture2D" uid="uid://ddrco5dt6ym60" path="res://sprites/items/inventory/Mini_Hakkero_inventory_large.png" id="12_rmmfu"]
+[ext_resource type="Texture2D" uid="uid://b5dbn5tioic4b" path="res://sprites/actors/cirno.png" id="13_hyajx"]
 [ext_resource type="Texture2D" uid="uid://b78nq7skdbn7a" path="res://sprites/items/item_icons/bat_icon.png" id="13_olb1m"]
 [ext_resource type="Texture2D" uid="uid://cfvrk7qd5ak34" path="res://sprites/ui/Reimu_fullbody.png" id="14_ws2hw"]
 [ext_resource type="Texture2D" uid="uid://fffwb0of7363" path="res://sprites/items/item_icons/camera_icon.png" id="14_xge3k"]
@@ -61,6 +62,8 @@
 [ext_resource type="Texture2D" uid="uid://b0xgo7h28ljr2" path="res://sprites/items/item_icons/youkai_umbrella_icon.png" id="39_dolmf"]
 [ext_resource type="Texture2D" uid="uid://dwrn02us5388t" path="res://sprites/items/item_icons/icon_border.png" id="40_7qlrg"]
 [ext_resource type="Script" path="res://scripts/logic_ui/item_remove_buttons.gd" id="41_fcwoo"]
+[ext_resource type="Texture2D" uid="uid://c8uuhtaxr64p3" path="res://sprites/ui/cirno_fullbody.png" id="58_ebuxr"]
+[ext_resource type="Texture2D" uid="uid://dsnig4tuwiwyn" path="res://sprites/items/inventory/icicle_item_large.png" id="59_ex546"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4nj4"]
 
@@ -455,6 +458,61 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whflr"]
+shader = ExtResource("6_ysg0h")
+shader_parameter/flash_color = Color(0, 0, 0, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk4n1"]
+atlas = ExtResource("13_hyajx")
+region = Rect2(0, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgr0e"]
+atlas = ExtResource("13_hyajx")
+region = Rect2(13, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqnaq"]
+atlas = ExtResource("13_hyajx")
+region = Rect2(26, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6dnh"]
+atlas = ExtResource("13_hyajx")
+region = Rect2(39, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vaccf"]
+atlas = ExtResource("13_hyajx")
+region = Rect2(52, 104, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm0ou"]
+atlas = ExtResource("13_hyajx")
+region = Rect2(65, 104, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7pcit"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk4n1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgr0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqnaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6dnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vaccf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm0ou")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [sub_resource type="ImageTexture" id="ImageTexture_7aatw"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_6t055"]
@@ -595,6 +653,11 @@ shader = ExtResource("6_ysg0h")
 shader_parameter/flash_color = Color(0, 0, 0, 1)
 shader_parameter/flash_modifier = 0.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1mgp"]
+shader = ExtResource("6_ysg0h")
+shader_parameter/flash_color = Color(0, 0, 0, 1)
+shader_parameter/flash_modifier = 0.0
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gxoal"]
 noise_type = 4
 
@@ -706,7 +769,7 @@ _data = {
 "not_enough_mon": SubResource("Animation_wn4t1")
 }
 
-[node name="character_select" type="Node2D" node_paths=PackedStringArray("fullscreen_pink", "reimu_button", "marisa_button", "remilia_button", "aya_button", "suika_button", "reisen_button", "youmu_button", "reimu_sprite", "marisa_sprite", "remilia_sprite", "aya_sprite", "suika_sprite", "reisen_sprite", "youmu_sprite", "reimu_loadout", "marisa_loadout", "remilia_loadout", "remilia_portrait", "remilia_info", "aya_loadout", "aya_portrait", "aya_info", "suika_loadout", "suika_portrait", "suika_info", "reisen_loadout", "reisen_portrait", "reisen_info", "youmu_loadout", "youmu_portrait", "youmu_info", "mon_label", "cost", "item_disable_cost_label", "item_disable_cost", "anim_player_2", "item_dis_count")]
+[node name="character_select" type="Node2D" node_paths=PackedStringArray("fullscreen_pink", "reimu_button", "marisa_button", "remilia_button", "aya_button", "suika_button", "reisen_button", "youmu_button", "cirno_button", "reimu_sprite", "marisa_sprite", "remilia_sprite", "aya_sprite", "suika_sprite", "reisen_sprite", "youmu_sprite", "cirno_sprite", "reimu_loadout", "marisa_loadout", "remilia_loadout", "remilia_portrait", "remilia_info", "aya_loadout", "aya_portrait", "aya_info", "suika_loadout", "suika_portrait", "suika_info", "reisen_loadout", "reisen_portrait", "reisen_info", "youmu_loadout", "youmu_portrait", "youmu_info", "cirno_loadout", "cirno_portrait", "cirno_info", "mon_label", "cost", "item_disable_cost_label", "item_disable_cost", "anim_player_2", "item_dis_count")]
 texture_filter = 1
 script = ExtResource("1_hwynl")
 fullscreen_pink = NodePath("FullscreenPink")
@@ -718,6 +781,7 @@ aya_button = NodePath("Aya")
 suika_button = NodePath("Suika")
 reisen_button = NodePath("Reisen")
 youmu_button = NodePath("Youmu")
+cirno_button = NodePath("Cirno")
 reimu_sprite = NodePath("characters/ReimuSprite")
 marisa_sprite = NodePath("characters/MarisaSprite")
 remilia_sprite = NodePath("characters/RemiliaSprite")
@@ -725,6 +789,7 @@ aya_sprite = NodePath("characters/AyaSprite")
 suika_sprite = NodePath("characters/SuikaSprite")
 reisen_sprite = NodePath("characters/ReisenSprite")
 youmu_sprite = NodePath("characters/YoumuSprite")
+cirno_sprite = NodePath("characters/CirnoSprite")
 reimu_loadout = NodePath("Loadouts/reimu_loadout")
 marisa_loadout = NodePath("Loadouts/marisa_loadout")
 remilia_loadout = NodePath("Loadouts/remilia_loadout")
@@ -742,6 +807,9 @@ reisen_info = NodePath("Loadouts/reisen_loadout/reisen_info")
 youmu_loadout = NodePath("Loadouts/youmu_loadout")
 youmu_portrait = NodePath("Loadouts/youmu_loadout/YoumuFullbody")
 youmu_info = NodePath("Loadouts/youmu_loadout/youmu_info")
+cirno_loadout = NodePath("Loadouts/cirno_loadout")
+cirno_portrait = NodePath("Loadouts/cirno_loadout/CirnoFullbody")
+cirno_info = NodePath("Loadouts/cirno_loadout/cirno_info")
 mon_label = NodePath("mon")
 cost = NodePath("cost")
 item_disable_cost_label = NodePath("item_disable_cost/cost/mon2")
@@ -790,10 +858,10 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 
 [node name="Remilia" type="Button" parent="."]
-offset_left = 60.0
-offset_top = 39.0
-offset_right = 82.0
-offset_bottom = 61.0
+offset_left = 4.0
+offset_top = 123.0
+offset_right = 26.0
+offset_bottom = 145.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
@@ -820,10 +888,10 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 
 [node name="Reisen" type="Button" parent="."]
-offset_left = 60.0
-offset_top = 67.0
-offset_right = 82.0
-offset_bottom = 89.0
+offset_left = 32.0
+offset_top = 123.0
+offset_right = 54.0
+offset_bottom = 145.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
@@ -833,6 +901,16 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 offset_left = 4.0
 offset_top = 95.0
 offset_right = 26.0
+offset_bottom = 117.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+
+[node name="Cirno" type="Button" parent="."]
+offset_left = 32.0
+offset_top = 95.0
+offset_right = 54.0
 offset_bottom = 117.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
@@ -853,7 +931,7 @@ sprite_frames = SubResource("SpriteFrames_unbd8")
 
 [node name="RemiliaSprite" type="AnimatedSprite2D" parent="characters"]
 material = SubResource("ShaderMaterial_ars0f")
-position = Vector2(71, 50)
+position = Vector2(15, 134)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_tig1a")
 
@@ -871,7 +949,7 @@ sprite_frames = SubResource("SpriteFrames_hxyg1")
 
 [node name="ReisenSprite" type="AnimatedSprite2D" parent="characters"]
 material = SubResource("ShaderMaterial_e8rke")
-position = Vector2(71, 78)
+position = Vector2(43, 134)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_us53x")
 
@@ -880,6 +958,12 @@ material = SubResource("ShaderMaterial_064fa")
 position = Vector2(15, 106)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_t0g4e")
+
+[node name="CirnoSprite" type="AnimatedSprite2D" parent="characters"]
+material = SubResource("ShaderMaterial_whflr")
+position = Vector2(43, 106)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_7pcit")
 
 [node name="disable_items" type="Node2D" parent="."]
 position = Vector2(-267, -142)
@@ -2181,8 +2265,7 @@ vertical_alignment = 1
 
 [node name="cost" type="Node2D" parent="."]
 visible = false
-position = Vector2(41, 74)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-52, -27)
 
 [node name="mon_anim2" type="AnimatedSprite2D" parent="cost"]
 position = Vector2(186, 191)
@@ -2203,7 +2286,6 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Loadouts" type="Node2D" parent="."]
-visible = false
 
 [node name="reimu_loadout" type="Node2D" parent="Loadouts"]
 visible = false
@@ -2214,7 +2296,8 @@ scale = Vector2(0.619048, 0.619048)
 texture = ExtResource("8_co7c0")
 
 [node name="ReimuFullbody" type="Sprite2D" parent="Loadouts/reimu_loadout"]
-position = Vector2(130, 94)
+position = Vector2(103, 90.75)
+scale = Vector2(0.916667, 0.916667)
 texture = ExtResource("14_ws2hw")
 
 [node name="Label" type="Label" parent="Loadouts/reimu_loadout"]
@@ -2245,7 +2328,7 @@ range & high damage"
 visible = false
 
 [node name="MarisaFullbody" type="Sprite2D" parent="Loadouts/marisa_loadout"]
-position = Vector2(121, 99)
+position = Vector2(103, 91)
 texture = ExtResource("16_0trob")
 
 [node name="MiniHakkeroInventoryLarge" type="Sprite2D" parent="Loadouts/marisa_loadout"]
@@ -2281,7 +2364,7 @@ visible = false
 
 [node name="RemiliaFullbody" type="Sprite2D" parent="Loadouts/remilia_loadout"]
 material = SubResource("ShaderMaterial_ifvd1")
-position = Vector2(127, 99)
+position = Vector2(102, 91)
 texture = ExtResource("16_x0nk4")
 
 [node name="remilia_info" type="Node2D" parent="Loadouts/remilia_loadout"]
@@ -2327,7 +2410,7 @@ visible = false
 
 [node name="AyaFullbody" type="Sprite2D" parent="Loadouts/aya_loadout"]
 material = SubResource("ShaderMaterial_mmqbd")
-position = Vector2(128, 102)
+position = Vector2(106, 95)
 texture = ExtResource("18_rbabs")
 
 [node name="aya_info" type="Node2D" parent="Loadouts/aya_loadout"]
@@ -2367,7 +2450,7 @@ visible = false
 
 [node name="SuikaFullbody" type="Sprite2D" parent="Loadouts/suika_loadout"]
 material = SubResource("ShaderMaterial_gkff3")
-position = Vector2(116, 89)
+position = Vector2(98, 92)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("20_tfusd")
 
@@ -2409,7 +2492,7 @@ visible = false
 
 [node name="ReisenFullbody" type="Sprite2D" parent="Loadouts/reisen_loadout"]
 material = SubResource("ShaderMaterial_ut2d0")
-position = Vector2(121, 102)
+position = Vector2(99, 95)
 texture = ExtResource("23_d5j5p")
 
 [node name="reisen_info" type="Node2D" parent="Loadouts/reisen_loadout"]
@@ -2451,7 +2534,7 @@ visible = false
 
 [node name="YoumuFullbody" type="Sprite2D" parent="Loadouts/youmu_loadout"]
 material = SubResource("ShaderMaterial_hlh8d")
-position = Vector2(120, 94)
+position = Vector2(103, 89)
 texture = ExtResource("26_g2d17")
 
 [node name="youmu_info" type="Node2D" parent="Loadouts/youmu_loadout"]
@@ -2485,6 +2568,47 @@ theme_override_font_sizes/font_size = 10
 text = "Starts with Roukanken
 Unleash a spinning slash
 at nearby enemies"
+metadata/_edit_use_anchors_ = true
+
+[node name="cirno_loadout" type="Node2D" parent="Loadouts"]
+visible = false
+
+[node name="CirnoFullbody" type="Sprite2D" parent="Loadouts/cirno_loadout"]
+material = SubResource("ShaderMaterial_s1mgp")
+position = Vector2(111, 95)
+texture = ExtResource("58_ebuxr")
+
+[node name="cirno_info" type="Node2D" parent="Loadouts/cirno_loadout"]
+
+[node name="icicle" type="Sprite2D" parent="Loadouts/cirno_loadout/cirno_info"]
+position = Vector2(165.318, 75.4286)
+scale = Vector2(0.736607, 0.736607)
+texture = ExtResource("59_ex546")
+
+[node name="Label5" type="Label" parent="Loadouts/cirno_loadout/cirno_info"]
+offset_left = 175.0
+offset_top = 32.0
+offset_right = 511.0
+offset_bottom = 58.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+text = "Cirno"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label6" type="Label" parent="Loadouts/cirno_loadout/cirno_info"]
+offset_left = 181.0
+offset_top = 57.0
+offset_right = 421.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0.482353, 0.878431, 0.862745, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 10
+text = "Starts with an Icicle
+that fragments after
+colliding with an enemy"
 metadata/_edit_use_anchors_ = true
 
 [node name="FullscreenPink" type="Sprite2D" parent="."]
@@ -2577,6 +2701,9 @@ vertical_alignment = 1
 [connection signal="button_down" from="Youmu" to="." method="_on_youmu_button_down"]
 [connection signal="mouse_entered" from="Youmu" to="." method="_on_youmu_mouse_entered"]
 [connection signal="mouse_exited" from="Youmu" to="." method="_on_youmu_mouse_exited"]
+[connection signal="button_down" from="Cirno" to="." method="_on_cirno_button_down"]
+[connection signal="mouse_entered" from="Cirno" to="." method="_on_cirno_mouse_entered"]
+[connection signal="mouse_exited" from="Cirno" to="." method="_on_cirno_mouse_exited"]
 [connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox" to="disable_items/item_buttons" method="_on_check_box_mouse_entered"]
 [connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox" to="disable_items/item_buttons" method="_on_check_box_mouse_exited"]
 [connection signal="toggled" from="disable_items/item_buttons/CheckBox" to="disable_items/item_buttons" method="_on_check_box_toggled"]

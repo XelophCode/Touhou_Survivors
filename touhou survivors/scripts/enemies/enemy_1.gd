@@ -49,6 +49,11 @@ func _physics_process(delta):
 		tween.tween_property(self,"dissolve",0.0,delta*60)
 		await tween.finished
 		
+		if info.name == "Daiyousei":
+			Globals.daiyousei = 1
+		if info.name == "Lily White":
+			Globals.lilywhite = 1
+		
 		queue_free()
 
 func despawn():

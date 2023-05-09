@@ -16,6 +16,7 @@ var idle_animation:String = "idle_down"
 @export var suika_spritesheet : Texture2D
 @export var reisen_spritesheet : Texture2D
 @export var youmu_spritesheet : Texture2D
+@export var cirno_spritesheet : Texture2D
 @export_group("character_anims")
 @export var reimu_anims : SpriteFrames
 @export var marisa_anims : SpriteFrames
@@ -24,6 +25,7 @@ var idle_animation:String = "idle_down"
 @export var suika_anims : SpriteFrames
 @export var reisen_anims : SpriteFrames
 @export var youmu_anims : SpriteFrames
+@export var cirno_anims : SpriteFrames
 @export_group("character_loadouts")
 @export var reimu_loadout : StartingItemArrayResource
 @export var marisa_loadout : StartingItemArrayResource
@@ -32,6 +34,7 @@ var idle_animation:String = "idle_down"
 @export var suika_loadout : StartingItemArrayResource
 @export var reisen_loadout : StartingItemArrayResource
 @export var youmu_loadout : StartingItemArrayResource
+@export var cirno_loadout : StartingItemArrayResource
 
 var power:int
 var faith:float
@@ -81,6 +84,7 @@ func _ready():
 		Globals.Suika: walk_animations.sprite_frames = suika_anims; starting_items = suika_loadout
 		Globals.Reisen: walk_animations.sprite_frames = reisen_anims; starting_items = reisen_loadout
 		Globals.Youmu: walk_animations.sprite_frames = youmu_anims; starting_items = youmu_loadout
+		Globals.Cirno: walk_animations.sprite_frames = cirno_anims; starting_items = cirno_loadout
 	
 	$death.sprite_frames = walk_animations.sprite_frames
 	

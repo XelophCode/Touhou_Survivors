@@ -15,6 +15,7 @@ var name : Array = ["Yinyang Orb","Sake","Gohei","Roukanken","Throwing Knife","R
 "Nature Wand","Mushroom","Megaphone Gun","Lunar Bow","Leaf Fan","Tripod"]
 
 @export_multiline var description = ""
+@export_multiline var description_2 = ""
 @export_enum("1x1","1x2","1x3","2x2","2x3") var inventory_size
 @export var inventory : PackedScene
 @export var spawnable : PackedScene

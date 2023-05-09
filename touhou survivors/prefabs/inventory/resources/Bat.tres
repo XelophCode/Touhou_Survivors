@@ -9,8 +9,10 @@
 script = ExtResource("1_2bvbg")
 enabled = true
 item_name = 20
-description = "Vertical: Bats are closer together
-Horizontal: Bats spread out more"
+description = "Vertical: bats fly upwards
+Horizontal: bats fly sideways
+"
+description_2 = ""
 inventory_size = 0
 inventory = ExtResource("2_ld1ub")
 spawnable = ExtResource("4_c1ryd")

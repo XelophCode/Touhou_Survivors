@@ -56,15 +56,17 @@ func save_file_write_new(file_name:int):
 			write_to_file(settings_file_path,settings)
 		SAVE:
 			save = {
-				"LOCKED_CHARACTERS" = ["Remilia","Aya","Suika","Reisen","Youmu"],
-				"MON" = 9000,
+				"LOCKED_CHARACTERS" = ["Remilia","Aya","Suika","Reisen","Youmu","Cirno"],
+				"MON" = 0,
 				"BEST_TIME_NUM" = 0,
 				"BEST_TIME_STRING" = "0:00",
 				"DEATHS" = 0,
-				"MON_LIFETIME" = 9000,
+				"MON_LIFETIME" = 0,
 				"FAITH_LIFETIME" = 0,
 				"CRYSTALS_LIFETIME" = 0,
+				"ITEM_NAMES" = [],
 				"ITEMS_USED" = 0,
+				"SPELLCARD_NAMES" = [],
 				"SPELLCARDS_USED" = 0,
 				"ALL_SPELLCARDS" = 0,
 				"LILY_WHITE" = 0,

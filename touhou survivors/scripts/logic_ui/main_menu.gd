@@ -17,6 +17,7 @@ extends Node2D
 @export var spellcard_all:Label
 @export var lily_white:Label
 @export var daiyousei:Label
+@export var characters:Label
 
 var reset_audio_DB:float
 var loaded_save
@@ -36,7 +37,12 @@ func _ready():
 	deaths.text = str(loaded_save.DEATHS)
 	faith.text = str(loaded_save.FAITH_LIFETIME)
 	crystals.text = str(loaded_save.CRYSTALS_LIFETIME)
-	
+	items.text = str(loaded_save.ITEMS_USED) + "/27"
+	spellcards.text = str(loaded_save.SPELLCARDS_USED) + "/5"
+	spellcard_all.text = str(loaded_save.ALL_SPELLCARDS) + "/1"
+	lily_white.text = str(loaded_save.LILY_WHITE) + "/1"
+	daiyousei.text = str(loaded_save.DAIYOUSEI) + "/1"
+	characters.text = str(8 - loaded_save.LOCKED_CHARACTERS.size()) + "/8"
 
 func _process(_delta):
 	

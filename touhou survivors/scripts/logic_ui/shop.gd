@@ -157,6 +157,7 @@ func pass_metadata_to_item(inst, item):
 	inst.current_item = item.item_name
 	inst.item_name = item.name[item.item_name]
 	inst.item_description = item.description
+	inst.item_description_2 = item.description_2
 	inst.scene = item.spawnable
 	inst.icon = item.icon
 	inst.active = item.active

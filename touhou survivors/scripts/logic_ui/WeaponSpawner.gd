@@ -5,6 +5,8 @@ var timer_instances:Dictionary
 var items_in_inventory:Array
 var inventory_item_ids:Array
 var passive_item_ids:Dictionary
+var spell_card_icons:Array = ["res://sprites/items/item_icons/fantasy_seal_icon.png","res://sprites/items/item_icons/grimoire_of_alice_icon.png","res://sprites/items/item_icons/invisible_full_moon_icon.png","res://sprites/items/item_icons/master_spark_icon.png","res://sprites/items/item_icons/peerless_wind_god_icon.png"]
+var current_spellcards:Array
 
 func _ready():
 	Signals.connect("add_weapon",add_weapon)
@@ -13,6 +15,13 @@ func _ready():
 	Signals.connect("leveling_up",leveling_up)
 	Signals.connect("show_icon_highlight",catch_show_icon_highlight)
 	Signals.connect("stop_weapons",catch_stop_weapons)
+	var loaded_save = Appdata.load_file(Appdata.SAVE)
+	Globals.used_items = loaded_save.ITEM_NAMES
+	Globals.used_items_total = loaded_save.ITEMS_USED
+	Globals.used_spellcards = loaded_save.SPELLCARD_NAMES
+	Globals.used_spellcards_total = loaded_save.SPELLCARDS_USED
+	Globals.simul_spellcard = 0
+	Globals.all_spellcard = false
 
 func _process(_delta):
 	var counter = 0
@@ -24,6 +33,21 @@ func _process(_delta):
 func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bool,icon:Texture,rotated:bool,autostart:bool = false,icon_color:Color = Color(1,1,1,1)):
 	if !inventory_item_ids.has(inventory_item_id):
 		if active:
+			
+			if !spell_card_icons.has(str(icon.resource_path)):
+				if !Globals.used_items.has(str(icon.resource_path)):
+					Globals.used_items.append(str(icon.resource_path))
+					Globals.used_items_total += 1
+			else:
+				if !Globals.used_spellcards.has(str(icon.resource_path)):
+					Globals.used_spellcards.append(str(icon.resource_path))
+					current_spellcards.append(inventory_item_id)
+					Globals.used_spellcards_total += 1
+					Globals.simul_spellcard += 1
+					if Globals.simul_spellcard == 5:
+						Globals.all_spellcard = true
+					
+			
 			inventory_item_ids.append(inventory_item_id)
 			var timer_new = Timer.new()
 			timer_new.wait_time = cooldown
@@ -55,10 +79,14 @@ func spawn_weapon(item,rotated):
 	var new_weapon_inst = item.instantiate()
 	new_weapon_inst.alt_fire = rotated
 	Signals.emit_signal("weapon_add_child",new_weapon_inst)
+	
 
 func remove_weapon(inventory_item_id:int,active):
 	if inventory_item_ids != []:
 		if inventory_item_ids.has(inventory_item_id):
+			if current_spellcards.has(inventory_item_id):
+				current_spellcards.erase(inventory_item_id)
+				Globals.simul_spellcard -= 1
 			inventory_item_ids.erase(inventory_item_id)
 			if active:
 				var timer_inst_id:int = timer_instances[inventory_item_id]

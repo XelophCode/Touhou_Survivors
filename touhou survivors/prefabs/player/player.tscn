@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://cah8y53sm3blk"]
+[gd_scene load_steps=89 format=3 uid="uid://cah8y53sm3blk"]
 
 [ext_resource type="Script" path="res://scripts/misc/Player.gd" id="1_37at3"]
 [ext_resource type="SpriteFrames" uid="uid://1ntee1x116bu" path="res://sprites/actors/player_anims/reimu_anims.tres" id="2_7dit5"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cdolxtnfa8hal" path="res://sprites/misc/shadow.png" id="8_sbskd"]
 [ext_resource type="Texture2D" uid="uid://dpu81nbrqd3h6" path="res://sprites/actors/youmu.png" id="8_yocvm"]
 [ext_resource type="SpriteFrames" uid="uid://dbc43d1v6ag6a" path="res://sprites/actors/player_anims/aya_anims.tres" id="9_7ncri"]
+[ext_resource type="Texture2D" uid="uid://b5dbn5tioic4b" path="res://sprites/actors/cirno.png" id="9_n6xpk"]
 [ext_resource type="Texture2D" uid="uid://cmipbsbn7fy1" path="res://sprites/actors/marisa.png" id="10_aj2c0"]
 [ext_resource type="Resource" uid="uid://fgm8ffl4ij5a" path="res://prefabs/character_loadouts/remilia_loadout.tres" id="10_kxkvi"]
 [ext_resource type="SpriteFrames" uid="uid://chva372ax8gry" path="res://sprites/actors/player_anims/suika_anims.tres" id="11_4xk8f"]
@@ -28,12 +29,14 @@
 [ext_resource type="Texture2D" uid="uid://cutr1tv2w1e6r" path="res://sprites/ui/smoke_08.png" id="13_scd75"]
 [ext_resource type="SpriteFrames" uid="uid://buulnodwyup3f" path="res://sprites/actors/player_anims/youmu_anims.tres" id="15_w4hq5"]
 [ext_resource type="Resource" uid="uid://bd7l6uaqpsas1" path="res://prefabs/character_loadouts/suika_loadout.tres" id="16_ywtlr"]
+[ext_resource type="SpriteFrames" uid="uid://b7iiaur6lkqfy" path="res://sprites/actors/player_anims/cirno_anims.tres" id="17_vb8ui"]
 [ext_resource type="Script" path="res://scripts/logic_ui/starting_item_array_resource.gd" id="19_qb5qy"]
 [ext_resource type="Texture2D" uid="uid://7q167a5bd3nl" path="res://sprites/actors/halo.png" id="20_0tyjj"]
 [ext_resource type="Resource" uid="uid://d3d2yo7wla5r4" path="res://prefabs/inventory/resources/megaphone_gun.tres" id="20_isrqm"]
 [ext_resource type="Script" path="res://scripts/logic_ui/starting_item_resource.gd" id="21_du15d"]
 [ext_resource type="Resource" uid="uid://q6uhplcwo5xe" path="res://prefabs/inventory/resources/Roukanken.tres" id="24_1f74a"]
 [ext_resource type="Shader" path="res://scripts/shaders/explosion.gdshader" id="26_ho5b1"]
+[ext_resource type="Resource" uid="uid://crwn6pksk2ad3" path="res://prefabs/inventory/resources/Icicle.tres" id="27_8ne25"]
 [ext_resource type="Texture2D" uid="uid://xbifc8dmi5qv" path="res://icon.svg" id="27_tegxe"]
 
 [sub_resource type="Resource" id="Resource_hfyvq"]
@@ -55,6 +58,16 @@ occult_orb = true
 [sub_resource type="Resource" id="Resource_ajqnm"]
 script = ExtResource("19_qb5qy")
 starting_item = Array[ExtResource("21_du15d")]([SubResource("Resource_gtivt")])
+
+[sub_resource type="Resource" id="Resource_we5km"]
+script = ExtResource("21_du15d")
+item = ExtResource("27_8ne25")
+cooldown = 3
+occult_orb = true
+
+[sub_resource type="Resource" id="Resource_75lpr"]
+script = ExtResource("19_qb5qy")
+starting_item = Array[ExtResource("21_du15d")]([SubResource("Resource_we5km")])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_emnmw"]
 radius = 14.0357
@@ -410,6 +423,7 @@ aya_spritesheet = ExtResource("5_ddlo1")
 suika_spritesheet = ExtResource("6_le0f2")
 reisen_spritesheet = ExtResource("7_cjivt")
 youmu_spritesheet = ExtResource("8_yocvm")
+cirno_spritesheet = ExtResource("9_n6xpk")
 reimu_anims = ExtResource("2_7dit5")
 marisa_anims = ExtResource("3_a8dmt")
 remilia_anims = ExtResource("7_kl7io")
@@ -417,6 +431,7 @@ aya_anims = ExtResource("9_7ncri")
 suika_anims = ExtResource("11_4xk8f")
 reisen_anims = ExtResource("13_qoj5q")
 youmu_anims = ExtResource("15_w4hq5")
+cirno_anims = ExtResource("17_vb8ui")
 reimu_loadout = ExtResource("3_3td3m")
 marisa_loadout = ExtResource("5_nelpm")
 remilia_loadout = ExtResource("10_kxkvi")
@@ -424,6 +439,7 @@ aya_loadout = ExtResource("13_r21x4")
 suika_loadout = ExtResource("16_ywtlr")
 reisen_loadout = SubResource("Resource_b4x65")
 youmu_loadout = SubResource("Resource_ajqnm")
+cirno_loadout = SubResource("Resource_75lpr")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(-2.68221e-07, 4)

@@ -15,7 +15,7 @@ run/main_scene="res://prefabs/levels/initialize.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 run/max_fps=60
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://reimu_icon_large_4.png"
 
 [autoload]
 

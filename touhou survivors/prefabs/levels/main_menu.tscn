@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://dqti77sd8cl8p"]
+[gd_scene load_steps=90 format=3 uid="uid://dqti77sd8cl8p"]
 
 [ext_resource type="Texture2D" uid="uid://dejh36tx4twrq" path="res://sprites/ui/touhou survivors main menu.png" id="1_l2cqr"]
 [ext_resource type="Script" path="res://scripts/logic_ui/main_menu.gd" id="1_na2pg"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://djstd20y54vmx" path="res://audio/brokenmoon.mp3" id="6_xeht5"]
 [ext_resource type="AudioStream" uid="uid://doce3jf0s4bkr" path="res://audio/Wind.ogg" id="7_f7de5"]
 [ext_resource type="AudioStream" uid="uid://gaf82k767rpt" path="res://audio/AmbientNatureOutside.wav" id="8_aiubf"]
+[ext_resource type="Texture2D" uid="uid://cohigxsltllva" path="res://sprites/ui/discord.png" id="9_7xol4"]
 [ext_resource type="Texture2D" uid="uid://bbj0dlweweckt" path="res://sprites/ui/tutorial_bg.png" id="9_e3ik8"]
 [ext_resource type="Texture2D" uid="uid://dwrn02us5388t" path="res://sprites/items/item_icons/icon_border.png" id="10_44x5w"]
 [ext_resource type="Texture2D" uid="uid://0ydohqq6lp21" path="res://sprites/ui/fullscreen_black.png" id="10_ora8p"]
@@ -602,7 +603,7 @@ _data = {
 "Sakura": SubResource("Animation_at1lb")
 }
 
-[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("main_menu_bg", "main_menu_logo", "main_animation_player", "button_anims", "time_survived", "lifetime_mon", "deaths", "faith", "crystals", "items", "spellcards", "spellcard_all", "lily_white", "daiyousei")]
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("main_menu_bg", "main_menu_logo", "main_animation_player", "button_anims", "time_survived", "lifetime_mon", "deaths", "faith", "crystals", "items", "spellcards", "spellcard_all", "lily_white", "daiyousei", "characters")]
 texture_filter = 1
 script = ExtResource("1_na2pg")
 main_menu_bg = NodePath("pngs")
@@ -619,6 +620,7 @@ spellcards = NodePath("Achievements/spellcard2")
 spellcard_all = NodePath("Achievements/allspell2")
 lily_white = NodePath("Achievements/lilywhite2")
 daiyousei = NodePath("Achievements/daiyousei2")
+characters = NodePath("Achievements/unlock_all_char2")
 
 [node name="small_sakura" type="CPUParticles2D" parent="."]
 z_index = 1
@@ -777,13 +779,33 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_egdia")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_als0x")
 text = "Achievements"
 
+[node name="Discord" type="Sprite2D" parent="Buttons"]
+position = Vector2(358, 232)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_7xol4")
+
+[node name="xeloph2" type="LinkButton" parent="Buttons"]
+offset_left = 351.0
+offset_top = 225.0
+offset_right = 365.0
+offset_bottom = 239.0
+theme_override_colors/font_color = Color(0.211765, 0.905882, 0.980392, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/underline_spacing = 3
+theme_override_fonts/font = ExtResource("6_t2gpe")
+theme_override_font_sizes/font_size = 14
+underline = 1
+uri = "https://discord.gg/EpkPTT6Vvh"
+
 [node name="Label" type="Label" parent="Buttons"]
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 50.0
 offset_bottom = 24.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("6_t2gpe")
 theme_override_font_sizes/font_size = 7
 text = "ver 1.0"
@@ -1053,6 +1075,28 @@ theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("6_t2gpe")
 theme_override_font_sizes/font_size = 8
 text = "0/1"
+
+[node name="unlock_all_char" type="Label" parent="Achievements"]
+offset_left = 20.0
+offset_top = 190.0
+offset_right = 308.0
+offset_bottom = 213.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("6_t2gpe")
+theme_override_font_sizes/font_size = 8
+text = "unlock all characters:"
+
+[node name="unlock_all_char2" type="Label" parent="Achievements"]
+offset_left = 202.0
+offset_top = 190.0
+offset_right = 490.0
+offset_bottom = 213.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("6_t2gpe")
+theme_override_font_sizes/font_size = 8
+text = "2/8"
 
 [node name="Tutorial" type="Node2D" parent="."]
 visible = false
@@ -1517,6 +1561,226 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("6_t2gpe")
 text = "Developed by:"
 
+[node name="Specialthanks" type="Label" parent="credits/credits"]
+offset_left = 22.0
+offset_top = 126.0
+offset_right = 230.0
+offset_bottom = 149.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("6_t2gpe")
+text = "Special Thanks:
+"
+
+[node name="Line2D3" type="Line2D" parent="credits/credits"]
+position = Vector2(0, 46)
+points = PackedVector2Array(24, 108, 215, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D3" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(0, 13)
+points = PackedVector2Array(24, 108, 117, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D4" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(130, 13)
+points = PackedVector2Array(24, 108, 70, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D5" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(216, 13)
+points = PackedVector2Array(24, 108, 164, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D6" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(216, 0)
+points = PackedVector2Array(24, 108, 132, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D7" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(216, 26)
+points = PackedVector2Array(24, 108, 76, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D8" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(127, 26)
+points = PackedVector2Array(24, 108, 76, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D9" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(62, 26)
+points = PackedVector2Array(24, 108, 56, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D10" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(-1, 26)
+points = PackedVector2Array(24, 108, 61, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D11" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(0, 40)
+points = PackedVector2Array(24, 108, 116, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D12" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(-1, 53)
+points = PackedVector2Array(24, 108, 61, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D13" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(80, 53)
+points = PackedVector2Array(24, 108, 61, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D14" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(127, 40)
+points = PackedVector2Array(24, 108, 163, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D15" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(219, 40)
+points = PackedVector2Array(99, 108, 163, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D16" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(180, 53)
+points = PackedVector2Array(99, 108, 144, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D17" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(76, 53)
+points = PackedVector2Array(99, 108, 170, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D18" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(76, 67)
+points = PackedVector2Array(121, 108, 170, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D19" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(-7, 67)
+points = PackedVector2Array(131, 108, 170, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D20" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(-109, 67)
+points = PackedVector2Array(131, 108, 195, 108)
+width = 12.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Line2D21" type="Line2D" parent="credits/credits/Line2D3"]
+position = Vector2(-74, 67)
+points = PackedVector2Array(415, 104, 472, 104)
+width = 14.0
+default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 26
+
+[node name="Specialthanks2" type="Label" parent="credits/credits"]
+offset_left = 22.0
+offset_top = 151.0
+offset_right = 230.0
+offset_bottom = 174.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/line_spacing = 5
+theme_override_fonts/font = ExtResource("6_t2gpe")
+theme_override_font_sizes/font_size = 8
+text = "Okami473 (the ideas guy)   SensingDefiler
+Awkward Birb     Blair     choclolate lasagna
+Kurb0   Lati    LvlJake    moostle     
+Stupid BBirb    BitterSweetReverie   Deadleaf
+Drago     Heira    Lucky Ghz    Makina
+Mikelli1     nico     Xiichu     "
+
+[node name="Specialthanks3" type="Label" parent="credits/credits"]
+offset_left = 339.0
+offset_top = 207.0
+offset_right = 547.0
+offset_bottom = 231.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/line_spacing = 5
+theme_override_fonts/font = ExtResource("6_t2gpe")
+theme_override_font_sizes/font_size = 13
+text = "明智みかげ"
+
 [node name="Music" type="Label" parent="credits/credits"]
 offset_left = 22.0
 offset_top = 73.0
@@ -1579,9 +1843,9 @@ uri = "https://nownoir.crd.co/"
 
 [node name="close" type="Button" parent="credits/credits"]
 offset_left = 361.0
-offset_top = 214.0
+offset_top = 19.0
 offset_right = 445.0
-offset_bottom = 238.0
+offset_bottom = 43.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -1615,7 +1879,6 @@ position = Vector2(213, 120)
 texture = ExtResource("6_byxag")
 
 [node name="FullscreenBlack" type="Sprite2D" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 10
 position = Vector2(213, 120)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=159 format=3 uid="uid://cxtno75a58bkv"]
+[gd_scene load_steps=160 format=3 uid="uid://cxtno75a58bkv"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/player_ui.gd" id="1_i5u1q"]
 [ext_resource type="SpriteFrames" uid="uid://bfm8psvacuqtm" path="res://sprites/ui/character_portraits/reimu_portrait.tres" id="2_lwihl"]
@@ -19,6 +19,7 @@
 [ext_resource type="SpriteFrames" uid="uid://di35rc1wco84q" path="res://sprites/ui/character_portraits/youmu_portrait.tres" id="9_m2s8y"]
 [ext_resource type="Shader" path="res://scripts/shaders/dissolve.gdshader" id="10_6vywg"]
 [ext_resource type="PackedScene" uid="uid://6dwuqj2vu1k8" path="res://prefabs/logic_ui/shop.tscn" id="10_by00x"]
+[ext_resource type="SpriteFrames" uid="uid://cijf8oxicqn67" path="res://sprites/ui/character_portraits/cirno_portrait.tres" id="10_cruqe"]
 [ext_resource type="Texture2D" uid="uid://6agn05e08r0i" path="res://sprites/ui/player_ui.png" id="10_hvsvi"]
 [ext_resource type="PackedScene" uid="uid://ckctptt6chvp8" path="res://prefabs/logic_ui/player_inventory.tscn" id="10_oguq7"]
 [ext_resource type="Texture2D" uid="uid://bfttyvmooje07" path="res://sprites/ui/reimu_portrait_anims_2.png" id="10_pgs5r"]
@@ -1635,6 +1636,7 @@ aya_portrait = ExtResource("6_575fh")
 suika_portrait = ExtResource("7_8p07g")
 reisen_portrait = ExtResource("8_am0kg")
 youmu_portrait = ExtResource("9_m2s8y")
+cirno_portrait = ExtResource("10_cruqe")
 video_tab = NodePath("PauseMenu/Options_Menu/main/Video")
 resolution_options = NodePath("PauseMenu/Options_Menu/main/Video/resolution")
 window_options = NodePath("PauseMenu/Options_Menu/main/Video/window")
