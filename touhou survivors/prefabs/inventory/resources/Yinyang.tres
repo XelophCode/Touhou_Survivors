@@ -12,6 +12,7 @@ enabled = true
 item_name = 0
 description = "vertical: orbs spin outwards
 horizontal: orbs stay nearby"
+description_2 = ""
 inventory_size = 3
 inventory = ExtResource("1_qaxv5")
 spawnable = ExtResource("4_mhyqb")

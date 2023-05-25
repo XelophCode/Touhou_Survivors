@@ -515,6 +515,7 @@ shape = SubResource("CapsuleShape2D_3vg3m")
 disabled = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
 amount = 20
 emission_shape = 3
 emission_rect_extents = Vector2(200, 100)
@@ -528,6 +529,7 @@ color = Color(0.521569, 0.870588, 0.133333, 1)
 color_ramp = SubResource("Gradient_03k50")
 
 [node name="sun_rays_parent" type="Node2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 100
 
@@ -563,6 +565,7 @@ wait_time = 30.0
 autostart = true
 
 [node name="Sakura" type="GPUParticles2D" parent="."]
+visible = false
 z_index = 3
 position = Vector2(-55, 0)
 process_material = SubResource("ParticleProcessMaterial_xb3vs")
@@ -570,6 +573,7 @@ texture = ExtResource("7_iakcq")
 lifetime = 10.0
 
 [node name="Sun_spots" type="GPUParticles2D" parent="."]
+visible = false
 z_index = 3
 amount = 3
 process_material = SubResource("ParticleProcessMaterial_x0ngv")
@@ -577,6 +581,7 @@ texture = ExtResource("7_xwjmk")
 lifetime = 10.0
 
 [node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+visible = false
 z_index = 3
 position = Vector2(-34, 0)
 amount = 60
@@ -594,6 +599,7 @@ scale_amount_curve = SubResource("Curve_hq1bc")
 color_ramp = SubResource("Gradient_mrskv")
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+visible = false
 z_index = 3
 position = Vector2(-68, 0)
 amount = 10
@@ -622,6 +628,7 @@ zoom = Vector2(1.2, 1.2)
 position_smoothing_speed = 30.0
 
 [node name="CPUParticles2D4" type="GPUParticles2D" parent="."]
+visible = false
 z_index = 3
 position = Vector2(-92, 0)
 scale = Vector2(0.1, 0.1)

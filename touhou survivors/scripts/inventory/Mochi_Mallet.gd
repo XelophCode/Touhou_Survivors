@@ -3,7 +3,6 @@ extends item_base_class
 var total_slams:float = 3.0
 
 func _ready():
-	
 	global_position = Globals.player_position
 	damage = randi_range(12,17)
 

@@ -15,14 +15,16 @@ func _ready():
 	parent.offset_setting = offset_setting
 
 func _on_click_and_inventory_mouse_exited():
-	parent.hide_tooltip()
+	owner.can_show_preview = false
+	owner.hide_tooltip()
 
 func _on_click_and_inventory_mouse_entered():
 	if !Input.is_action_pressed("left_mouse_button"):
+		owner.can_show_preview = true
 		parent.show_tooltip()
 
 func _on_click_and_inventory_input_event(_viewport, event, _shape_idx):
-	parent.click_detection(event)
+	owner.click_detection(event)
 
 func _on_click_and_inventory_area_entered(_area):
 	parent.in_inventory = true
@@ -59,7 +61,8 @@ func calculate_slot_position_hovering():
 		parent.slot_position_hovering = Vector2.ZERO
 
 func _on_set_detection_area_entered(area):
-	parent.adjacent_items.append(area.get_parent().parent)
+	parent.adjacent_items.append(area.owner.owner)
 
 func _on_set_detection_area_exited(area):
-	parent.adjacent_items.erase(area.get_parent().parent)
+	parent.adjacent_items.erase(area.owner.owner)
+	parent.adjacent_items.erase(area.owner.owner)

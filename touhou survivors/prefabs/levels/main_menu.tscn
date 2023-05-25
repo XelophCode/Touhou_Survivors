@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://dqti77sd8cl8p"]
+[gd_scene load_steps=89 format=3 uid="uid://dqti77sd8cl8p"]
 
 [ext_resource type="Texture2D" uid="uid://dejh36tx4twrq" path="res://sprites/ui/touhou survivors main menu.png" id="1_l2cqr"]
 [ext_resource type="Script" path="res://scripts/logic_ui/main_menu.gd" id="1_na2pg"]
@@ -302,12 +302,6 @@ shader_parameter/dissolve_value = 0.0
 shader_parameter/flash_modifier = null
 shader_parameter/opacity = 0.0
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_mkw2s")
-
-[sub_resource type="Environment" id="Environment_45f7v"]
-background_mode = 3
-glow_enabled = true
-glow_intensity = 1.34
-glow_bloom = 0.1
 
 [sub_resource type="Animation" id="Animation_y0tb7"]
 resource_name = "BG_pan"
@@ -1889,9 +1883,6 @@ z_index = 10
 material = SubResource("ShaderMaterial_pfq75")
 position = Vector2(213, 120)
 texture = ExtResource("11_krdlm")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_45f7v")
 
 [node name="MainAnims" type="AnimationPlayer" parent="."]
 autoplay = "BG_pan"

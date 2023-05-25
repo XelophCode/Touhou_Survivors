@@ -12,6 +12,7 @@ enabled = true
 item_name = 28
 description = "vertical: create a leaf barrier
 horizontal: throw leafs in front of you"
+description_2 = ""
 inventory_size = 1
 inventory = ExtResource("2_y01qs")
 spawnable = ExtResource("4_6ekno")

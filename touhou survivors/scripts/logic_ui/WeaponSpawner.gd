@@ -21,7 +21,7 @@ func _ready():
 	Globals.used_spellcards = loaded_save.SPELLCARD_NAMES
 	Globals.used_spellcards_total = loaded_save.SPELLCARDS_USED
 	Globals.simul_spellcard = 0
-	Globals.all_spellcard = false
+	Globals.all_spellcard = loaded_save.ALL_SPELLCARDS
 
 func _process(_delta):
 	var counter = 0
@@ -45,7 +45,7 @@ func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bo
 					Globals.used_spellcards_total += 1
 					Globals.simul_spellcard += 1
 					if Globals.simul_spellcard == 5:
-						Globals.all_spellcard = true
+						Globals.all_spellcard = 1
 					
 			
 			inventory_item_ids.append(inventory_item_id)

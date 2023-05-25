@@ -22,7 +22,7 @@ func _ready():
 		count -= 1
 	x_spawn.shuffle()
 	y_spawn.shuffle()
-
+	
 	for spawn in spawn_count:
 		var xsp = x_spawn.pop_front()
 		var ysp = y_spawn.pop_front()

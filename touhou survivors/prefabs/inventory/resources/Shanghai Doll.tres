@@ -12,6 +12,7 @@ enabled = true
 item_name = 19
 description = "vertical: random positions
 horizontal: formation"
+description_2 = ""
 inventory_size = 0
 inventory = ExtResource("2_uopwg")
 spawnable = ExtResource("4_18yxk")

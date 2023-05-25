@@ -12,6 +12,7 @@ enabled = true
 item_name = 6
 description = "vertical: broom moves in a line
 horizontal: broom spins"
+description_2 = ""
 inventory_size = 2
 inventory = ExtResource("1_mgfyw")
 spawnable = ExtResource("4_3ulkp")

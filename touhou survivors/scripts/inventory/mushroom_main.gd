@@ -3,7 +3,7 @@ extends item_base_class
 var alt:bool
 
 func _ready():
-	damage = randi_range(1,2)
+	damage = randi_range(2,3)
 	global_position = Globals.player_position
 	$main_body/main_body_2/main_body_3.rotation_degrees = randf_range(0,359)
 	if alt:

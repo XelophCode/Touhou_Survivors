@@ -12,6 +12,7 @@ enabled = true
 item_name = 13
 description = "vertical: throw forward
 horizontal: throw backwards"
+description_2 = ""
 inventory_size = 0
 inventory = ExtResource("2_wdlb7")
 spawnable = ExtResource("4_qcijw")

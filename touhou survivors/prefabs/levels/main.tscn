@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://cerifwegjcfki"]
+[gd_scene load_steps=66 format=3 uid="uid://cerifwegjcfki"]
 
 [ext_resource type="Script" path="res://scripts/misc/main.gd" id="1_78i06"]
 [ext_resource type="PackedScene" uid="uid://cqvtr2xssn8wh" path="res://prefabs/logic_ui/parallax_background.tscn" id="1_804ch"]
@@ -8,12 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://dl7hwdk2d1aug" path="res://prefabs/logic_ui/enemy_despawner.tscn" id="4_121vl"]
 [ext_resource type="Shader" path="res://scripts/shaders/player_afterimage.gdshader" id="5_1lqtb"]
 [ext_resource type="PackedScene" uid="uid://dibej236818nn" path="res://prefabs/logic_ui/enemy_spawner.tscn" id="5_cql0f"]
+[ext_resource type="Texture2D" uid="uid://b6r656fy4e36p" path="res://sprites/ui/testgridbg.png" id="5_ej2wf"]
 [ext_resource type="Script" path="res://scripts/misc/player_afterimage.gd" id="6_5f4bf"]
 [ext_resource type="PackedScene" uid="uid://bvyow6vg7hdt6" path="res://prefabs/logic_ui/pickup_spawner.tscn" id="6_qbw7i"]
 [ext_resource type="PackedScene" uid="uid://fj0acbfbqp0h" path="res://prefabs/player/player_after_image.tscn" id="7_e0sq4"]
 [ext_resource type="PackedScene" uid="uid://bd75ojfiucvw" path="res://prefabs/misc/mon_spawner.tscn" id="11_8j68e"]
 [ext_resource type="Script" path="res://scripts/enemies/bullet_parent.gd" id="12_on4jv"]
 [ext_resource type="Script" path="res://scripts/logic_ui/weapons.gd" id="12_sxuwu"]
+[ext_resource type="Script" path="res://scripts/logic_ui/damage_parent.gd" id="12_xt1t1"]
 [ext_resource type="PackedScene" uid="uid://cxtno75a58bkv" path="res://prefabs/logic_ui/player_ui.tscn" id="17_o28hk"]
 [ext_resource type="Script" path="res://scripts/logic_ui/Global_Audio.gd" id="21_7vj3l"]
 [ext_resource type="AudioStream" uid="uid://ylr6c87p2he6" path="res://audio/gold_sack_2.wav" id="21_ofhyh"]
@@ -76,7 +78,13 @@ all_obstacles = ExtResource("2_ybswb")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_804ch")]
 
+[node name="Testgridbg" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, 0)
+texture = ExtResource("5_ej2wf")
+
 [node name="obstacle_parent" type="Node2D" parent="."]
+visible = false
 
 [node name="player_afterimage" type="Node2D" parent="."]
 material = SubResource("ShaderMaterial_qx4cd")
@@ -88,6 +96,10 @@ player_afterimage = ExtResource("7_e0sq4")
 [node name="EnemyDespawner" parent="." instance=ExtResource("4_121vl")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_cql0f")]
+
+[node name="damage_parent" type="Node2D" parent="."]
+visible = false
+script = ExtResource("12_xt1t1")
 
 [node name="mon_spawner" parent="." instance=ExtResource("11_8j68e")]
 

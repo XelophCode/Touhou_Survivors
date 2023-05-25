@@ -27,6 +27,7 @@ var simul_spellcard:int
 var all_spellcard:bool
 var lilywhite:int = 0
 var daiyousei:int = 0
+const secondary_input:Array = ["right_mouse_button","hide_descriptions","focus","spacebar","rotate_item"]
 
 const settings_file_path : String = "user://settings.dat"
 
@@ -61,6 +62,7 @@ func get_window_scale():
 		389: tier = 2
 		509: tier = 3
 		749: tier = 4
+		1080: tier = 5
 		1109: tier = 5
 		1469: tier = 5
 		2189: tier = 6
@@ -78,6 +80,34 @@ func cardinal_direction_to_rotation(direction:Vector2):
 		Vector2.DOWN: return -270
 		Vector2(DOWN,RIGHT): return -315
 		Vector2.ZERO: return 0
+
+func secondary_input_just_pressed():
+	var key_pressed:bool = false
+	for key in secondary_input:
+		if Input.is_action_just_pressed(key):
+			key_pressed = true
+	return key_pressed
+
+func secondary_input_just_released():
+	var key_pressed:bool = false
+	for key in secondary_input:
+		if Input.is_action_just_released(key):
+			key_pressed = true
+	return key_pressed
+
+func secondary_input_pressed():
+	var key_pressed:bool = false
+	for key in secondary_input:
+		if Input.is_action_pressed(key):
+			key_pressed = true
+	return key_pressed
+
+func secondary_input_released():
+	var key_pressed:bool = false
+	for key in secondary_input:
+		if !Input.is_action_pressed(key):
+			key_pressed = true
+	return key_pressed
 
 func any_input_just_pressed():
 	var key_pressed:bool = false
@@ -110,3 +140,46 @@ func pos_neg(value):
 	var random_pos_neg:Array = [-1,1]
 	random_pos_neg.shuffle()
 	return value * random_pos_neg[0]
+
+#func item_code_to_alphabetical_order(code:int):
+#	var new_code:int
+#	match code:
+#		0: pass
+
+func item_code_to_string(code:int):
+	var name:String
+	match code:
+		0: name = "Yinyang Orb"
+		1: name = "Sake"
+		2: name = "Gohei"
+		3: name = "Roukanken"
+		4: name = "Throwing Knife"
+		5: name = "Rock"
+		6: name = "Magic Broom"
+		7: name = "Mini Hakkero"
+		8: name = "Homing Amulet"
+		9: name = "Frogs"
+		10: name = "Haniwa"
+		11: name = "Camera"
+		12: name = "Miracle Mallet"
+		13: name = "Persuasion Needles"
+		14: name = "Icicle"
+		15: name = "Youkai Umbrella"
+		16: name = "Purification Rod"
+		17: name = "Mochi Mallet"
+		18: name = "Magic Bomb"
+		19: name = "Shanghai Doll"
+		20: name = "Bats"
+		21: name = "Keystone"
+		22: name = "Gap Umbrella"
+		23: name = "Magic Tome"
+		24: name = "Nature Wand"
+		25: name = "Mushroom"
+		26: name = "Megaphone Gun"
+		27: name = "Lunar Bow"
+		28: name = "Leaf Fan"
+		29: name = "Tripod"
+	
+	return name
+
+

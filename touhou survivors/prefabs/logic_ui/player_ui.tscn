@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=3 uid="uid://cxtno75a58bkv"]
+[gd_scene load_steps=161 format=3 uid="uid://cxtno75a58bkv"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/player_ui.gd" id="1_i5u1q"]
 [ext_resource type="SpriteFrames" uid="uid://bfm8psvacuqtm" path="res://sprites/ui/character_portraits/reimu_portrait.tres" id="2_lwihl"]
@@ -31,7 +31,6 @@
 [ext_resource type="Script" path="res://scripts/logic_ui/PauseMenu.gd" id="12_m1qpx"]
 [ext_resource type="AudioStream" uid="uid://b70f4b73su13x" path="res://audio/select2.ogg" id="13_fas5w"]
 [ext_resource type="Texture2D" uid="uid://bbqngghgfgoow" path="res://sprites/ui/crystal.png" id="13_uxnfn"]
-[ext_resource type="PackedScene" uid="uid://04yuy6nwpd5q" path="res://prefabs/logic_ui/tooltip.tscn" id="13_x4fa0"]
 [ext_resource type="Environment" uid="uid://5eytrk3240f8" path="res://resources/main_environment.tres" id="17_8pmbs"]
 [ext_resource type="Texture2D" uid="uid://pxw6irgq5bpa" path="res://sprites/items/pickups/mon.png" id="17_l0i28"]
 [ext_resource type="Texture2D" uid="uid://dwrn02us5388t" path="res://sprites/items/item_icons/icon_border.png" id="18_i862g"]
@@ -40,6 +39,8 @@
 [ext_resource type="Texture2D" uid="uid://brrahyuj8m1ta" path="res://sprites/ui/pause_overlay.png" id="27_knhde"]
 [ext_resource type="Texture2D" uid="uid://d038ycc11e2qo" path="res://sprites/ui/fullscreen_red.png" id="32_71p5m"]
 [ext_resource type="PackedScene" uid="uid://c0kbh78tuyeb4" path="res://prefabs/logic_ui/options_menu.tscn" id="34_xnond"]
+[ext_resource type="Texture2D" uid="uid://cfuxboqjoju05" path="res://sprites/ui/fullscreen_white.png" id="41_8bpqs"]
+[ext_resource type="PackedScene" uid="uid://bor4d31b6vegx" path="res://prefabs/logic_ui/item_preview.tscn" id="42_16rs8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn5md"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
@@ -1958,10 +1959,13 @@ color = Color(0, 0.360784, 1, 1)
 hue_variation_max = 1.0
 hue_variation_curve = SubResource("Curve_5b2b6")
 
-[node name="Tooltip" parent="." instance=ExtResource("13_x4fa0")]
-
 [node name="RightClickTip" parent="." instance=ExtResource("19_2m38r")]
 z_index = 31
+
+[node name="item_preview" parent="." instance=ExtResource("42_16rs8")]
+visible = false
+z_index = 34
+position = Vector2(276, 151)
 
 [node name="DamageFullscreen" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -1983,6 +1987,7 @@ texture = ExtResource("11_88u87")
 centered = false
 
 [node name="FullscreenBlackIntro" type="Node2D" parent="."]
+visible = false
 
 [node name="FullscreenBlack2" type="Sprite2D" parent="FullscreenBlackIntro"]
 z_index = 20
@@ -2386,6 +2391,12 @@ stream = ExtResource("13_fas5w")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("17_8pmbs")
+
+[node name="FullscreenWhite" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.341176, 0.658824, 0.266667, 0.0941176)
+texture = ExtResource("41_8bpqs")
+centered = false
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="animation_finished" from="UI/CharacterPortrait" to="." method="_on_character_portrait_animation_finished"]

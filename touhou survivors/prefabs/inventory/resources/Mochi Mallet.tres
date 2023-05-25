@@ -12,6 +12,7 @@ enabled = true
 item_name = 17
 description = "vertical: smash frontal enemies
 horizontal: spin with mallet"
+description_2 = ""
 inventory_size = 4
 inventory = ExtResource("2_p47pa")
 spawnable = ExtResource("4_rng7k")

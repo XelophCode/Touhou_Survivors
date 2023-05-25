@@ -9,3 +9,4 @@ func _ready():
 		get_parent().call_deferred("add_child",wind_inst)
 		await get_tree().create_timer(0.05).timeout
 	queue_free()
+da

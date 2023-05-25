@@ -12,6 +12,7 @@ enabled = true
 item_name = 8
 description = "vertical: locks onto nearby enemies
 horizontal: throw in a spread"
+description_2 = ""
 inventory_size = 0
 inventory = ExtResource("2_f6o31")
 spawnable = ExtResource("4_g0k7q")

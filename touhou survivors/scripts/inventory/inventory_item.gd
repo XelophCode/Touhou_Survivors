@@ -12,6 +12,7 @@ var icon : Texture
 
 @onready var item_large_bg = $ItemLargeBg
 
+
 var do_stretch_anim:bool = true
 var show_highlight:bool = false
 var active:bool
@@ -53,8 +54,10 @@ var spell_card_color:Color
 var spell_card
 var spell_card_cooldown
 var spell_card_icon
-var found_new_position:bool = false
 var item_description_2:String
+var previous_match:Array
+var check_spell_cards:bool = false
+var can_show_preview:bool = false
 
 func find_rotational_offset():
 	var rot:int = round(rad_to_deg(rotation))
@@ -132,13 +135,17 @@ func _ready():
 	slot_count = get_child(0).get_node("additional_placement").get_child_count() + get_child(0).get_node("main_placement").get_child_count()
 
 func _process(_delta):
+	if can_show_preview:
+		if Globals.secondary_input_just_pressed():
+			Signals.item_video.emit(current_item,rotated)
+	
 	if left_mouse_button_held:
 		if Input.is_action_just_released("left_mouse_button"):
 			not_holding_item()
 	if left_mouse_button_held:
 		$ItemLargeBg.visible = false
 		global_position = get_global_mouse_position()
-		if Input.is_action_just_pressed("rotate_item"):
+		if Globals.secondary_input_just_pressed():
 			Signals.emit_signal("rotate_sfx")
 			rotated = !rotated
 			rotation += deg_to_rad(90)
@@ -151,38 +158,48 @@ func _process(_delta):
 		rotation = new_rotation
 		if show_highlight:
 			$ItemLargeBg.visible = true
+		
+		if check_spell_cards:
+			check_spell_cards = false
+			await get_tree().create_timer(0.1).timeout
+			if in_inventory:
+				Signals.emit_signal("check_matching_sets")
+				check_for_item_set()
+			
 
 func click_detection(event):
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("left_mouse_button"):
 			holding_item()
-		if event.is_action_pressed("right_mouse_button"):
-			if set_matches.size() > 1:
-				for i in current_match:
-					i.current_match = []
-					i.set_matches = {}
-					i.currently_in_set = false
-					i.item_large_bg.material.set_shader_parameter("line_scale",0.0)
-					i.spell_card_id = -1
-				
-				set_selection += 1
-				if set_selection >= set_matches.size():
-					set_selection = 0
-					current_match = set_matches[set_selection]
-				else:
-					current_match = set_matches[set_selection]
-				if current_match.size() > 0:
-					for i in current_match:
-						i.current_match = []
-						i.spell_card_id = spell_card_id
-						i.spell_card_color = spell_card_color
-						i.current_match.append(self)
-						for c in current_match:
-							if c != i:
-								i.current_match.append(c)
-						i.get_other_item_matches()
+#		if event.is_action_pressed("right_mouse_button"):
+#			if set_matches.size() > 1:
+#				for i in current_match:
+#					i.current_match = []
+#					i.set_matches = {}
+#					i.currently_in_set = false
+#					i.item_large_bg.material.set_shader_parameter("line_scale",0.0)
+#					i.spell_card_id = -1
+#
+#				set_selection += 1
+#				if set_selection >= set_matches.size():
+#					set_selection = 0
+#					current_match = set_matches[set_selection]
+#				else:
+#					current_match = set_matches[set_selection]
+#				if current_match.size() > 0:
+#					for i in current_match:
+#						i.current_match = []
+#						i.spell_card_id = spell_card_id
+#						i.spell_card_color = spell_card_color
+#						i.current_match.append(self)
+#						for c in current_match:
+#							if c != i:
+#								i.current_match.append(c)
+#						i.get_other_item_matches()
 
 func holding_item():
+	Signals.hide_video.emit()
+	can_show_preview = false
 	Signals.emit_signal("item_grab_sfx")
 	Signals.emit_signal("holding_item",true)
 	$ItemHighlight.visible = false
@@ -207,6 +224,7 @@ func holding_item():
 	z_index += 50
 
 func not_holding_item():
+	can_show_preview = true
 	Signals.emit_signal("item_place_sfx")
 	Signals.emit_signal("holding_item",false)
 	$ItemHighlight.visible = true
@@ -219,12 +237,12 @@ func not_holding_item():
 	left_mouse_button_held = false
 	z_index -= 50
 	if slots_currently_hovering == slot_count and hovering_occupied_space == 0:
-		found_new_position = true
 		new_position = slot_position_hovering
 		new_rotation = rotation
 		
+		
 		if in_inventory:
-			Signals.emit_signal("check_matching_sets")
+			
 			if currently_in_weapons and rotated != previous_rotated:
 				Signals.emit_signal("modify_weapon",scene,get_instance_id(),rotated)
 			Signals.emit_signal("add_weapon",scene,get_instance_id(),item_cooldown,active,icon,rotated)
@@ -240,12 +258,8 @@ func not_holding_item():
 	else:
 		rotated = previous_rotated
 	
-	
-	
-	if in_inventory and !currently_in_set and found_new_position:
-		check_for_item_set()
-	
-	found_new_position = false
+	if !currently_in_set:
+		check_spell_cards = true
 
 
 func check_for_item_set():
@@ -333,14 +347,15 @@ func occupied_and_stack_entered(area):
 		highlight_area_delay.append(area)
 
 func hide_tooltip():
+	Signals.hide_video.emit()
 	$ItemHighlight.visible = false
 	Signals.emit_signal("show_hand_cursor",false)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if in_inventory:
 		Signals.emit_signal("show_icon_highlight",get_instance_id(),false)
-		if set_matches.size() > 1:
-			Signals.emit_signal("show_spell_card_right_click",false)
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+#		if set_matches.size() > 1:
+#			Signals.emit_signal("show_spell_card_right_click",false)
+#			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 #	var desc:String
 #	if !rotated:
 #		desc = item_description
@@ -356,9 +371,9 @@ func show_tooltip():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	if in_inventory:
 		Signals.emit_signal("show_icon_highlight",get_instance_id(),true)
-		if set_matches.size() > 1:
-			Signals.emit_signal("show_spell_card_right_click",true)
-			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+#		if set_matches.size() > 1:
+#			Signals.emit_signal("show_spell_card_right_click",true)
+#			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 #	var desc:String
 #	if !rotated:
 #		desc = item_description

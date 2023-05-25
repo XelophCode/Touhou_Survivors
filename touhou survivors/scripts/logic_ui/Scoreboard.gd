@@ -37,6 +37,10 @@ func _ready():
 	Signals.connect("leveling_up",catch_leveling_up)
 	Signals.connect("update_crystal",catch_update_crystal)
 
+func _process(delta):
+	if Input.is_action_just_pressed("inventory"):
+		do_lvl_up()
+
 func catch_update_faith(update):
 	faith += update
 

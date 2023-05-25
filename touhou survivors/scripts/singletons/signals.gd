@@ -115,3 +115,7 @@ signal death_explosion_sfx
 signal death_sfx
 signal stop_weapons
 signal show_fps
+signal toggle_set_detection
+signal item_video
+signal hide_video
+signal damage_popup_spawn

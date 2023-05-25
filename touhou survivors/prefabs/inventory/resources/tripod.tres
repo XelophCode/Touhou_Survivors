@@ -12,6 +12,7 @@ enabled = true
 item_name = 29
 description = "vertical: swing tripod
 horizontal: throw tripods"
+description_2 = ""
 inventory_size = 4
 inventory = ExtResource("1_bxgdn")
 spawnable = ExtResource("4_wu1ak")

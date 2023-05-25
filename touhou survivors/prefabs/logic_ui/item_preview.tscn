@@ -1,0 +1,177 @@
+[gd_scene load_steps=60 format=3 uid="uid://bor4d31b6vegx"]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/item_preview.gd" id="1_f4vup"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/bats_a.ogv" id="2_pd0ve"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/bats_b.ogv" id="3_eu7nu"]
+[ext_resource type="Texture2D" uid="uid://4t2ub5d14vbl" path="res://sprites/ui/video_gap_bg.png" id="4_hkjpo"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/gohei_a.ogv" id="8_7qb14"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/gohei_b.ogv" id="9_l1ggp"]
+[ext_resource type="Texture2D" uid="uid://b4bo3l4t2b7hm" path="res://sprites/ui/damage_icon.png" id="10_h42kp"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/haniwa_a.ogv" id="10_om1rw"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/haniwa_b.ogv" id="11_ml7i2"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/homing_amulet_a.ogv" id="12_lbw3v"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/camera_a.ogv" id="12_w2jy8"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/homing_amulet_b.ogv" id="13_0vwfc"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/camera_b.ogv" id="13_d6gxq"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/icicle_a.ogv" id="14_jrmcl"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/frog_a.ogv" id="14_ocy1l"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/frog_b.ogv" id="15_3te7n"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/icicle_b.ogv" id="15_jaq1n"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/keystone_a.ogv" id="16_5xp11"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/keystone_b.ogv" id="17_7m11h"]
+[ext_resource type="FontFile" uid="uid://4g0oq0v08h0h" path="res://resources/fonts/prstart.ttf" id="17_cipvs"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/leaf_fan_a.ogv" id="18_c8kd7"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/leaf_fan_b.ogv" id="19_k4tmd"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/lunar_bow_a.ogv" id="20_syqrs"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/lunar_bow_b.ogv" id="21_srgnb"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/magic_bomb_a.ogv" id="22_vajbl"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/magic_bomb_b.ogv" id="23_jl7mj"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/magic_broom_a.ogv" id="24_4p86p"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/magic_broom_b.ogv" id="25_ct137"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/magic_tome_a.ogv" id="26_y32ym"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/magic_tome_b.ogv" id="27_7o7tq"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/megaphone_gun_a.ogv" id="28_25o35"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/megaphone_gun_b.ogv" id="29_p5k7n"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/mini_hakkero_a.ogv" id="30_q3fp3"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/mini_hakkero_b.ogv" id="31_6n4vs"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/mochi_mallet_a.ogv" id="32_ssnet"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/mochi_mallet_b.ogv" id="33_moli3"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/mushroom_a.ogv" id="34_4crx1"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/mushroom_b.ogv" id="35_yiutl"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/nature_wand_a.ogv" id="36_vf07n"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/nature_wand_b.ogv" id="37_c0u42"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/persuasion_needles_a.ogv" id="38_5w7xc"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/persuasion_needles_b.ogv" id="39_wwwjy"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/purification_rod_a.ogv" id="40_bl7p4"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/purification_rod_b.ogv" id="41_5yvo5"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/roukanken_a.ogv" id="42_ujnsr"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/roukanken_b.ogv" id="43_e3kj5"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/sake_a.ogv" id="44_3vang"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/sake_b.ogv" id="45_5p24e"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/shanghai_doll_a.ogv" id="46_chro3"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/shanghai_doll_b.ogv" id="47_jtil6"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/throwing_knife_a.ogv" id="48_jnye3"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/throwing_knife_b.ogv" id="49_gjgwq"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/tripod_a.ogv" id="50_kiobl"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/tripod_b.ogv" id="51_7gwfx"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/yingyang_orb_a.ogv" id="52_5xlpu"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/yingyang_orb_b.ogv" id="53_o6p0p"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/youkai_umbrella_a.ogv" id="54_l6wmk"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/youkai_umbrella_b.ogv" id="55_17uxp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_382ov"]
+bg_color = Color(0, 0, 0, 0.603922)
+expand_margin_left = 3.0
+expand_margin_top = 1.0
+expand_margin_right = 3.0
+
+[node name="item_preview" type="Node2D" node_paths=PackedStringArray("video_player", "video_sprite", "name_label", "damage_label")]
+texture_filter = 1
+script = ExtResource("1_f4vup")
+video_player = NodePath("whole/video/VideoStreamPlayer")
+video_sprite = NodePath("whole/video/Sprite2D")
+name_label = NodePath("whole/labels/name")
+damage_label = NodePath("whole/labels/damage")
+bats_a = ExtResource("2_pd0ve")
+bats_b = ExtResource("3_eu7nu")
+camera_a = ExtResource("12_w2jy8")
+camera_b = ExtResource("13_d6gxq")
+frog_a = ExtResource("14_ocy1l")
+frog_b = ExtResource("15_3te7n")
+gohei_a = ExtResource("8_7qb14")
+gohei_b = ExtResource("9_l1ggp")
+haniwa_a = ExtResource("10_om1rw")
+haniwa_b = ExtResource("11_ml7i2")
+homing_amulet_a = ExtResource("12_lbw3v")
+homing_amulet_b = ExtResource("13_0vwfc")
+icicle_a = ExtResource("14_jrmcl")
+icicle_b = ExtResource("15_jaq1n")
+keystone_a = ExtResource("16_5xp11")
+keystone_b = ExtResource("17_7m11h")
+leaf_fan_a = ExtResource("18_c8kd7")
+leaf_fan_b = ExtResource("19_k4tmd")
+lunar_bow_a = ExtResource("20_syqrs")
+lunar_bow_b = ExtResource("21_srgnb")
+magic_bomb_a = ExtResource("22_vajbl")
+magic_bomb_b = ExtResource("23_jl7mj")
+magic_broom_a = ExtResource("24_4p86p")
+magic_broom_b = ExtResource("25_ct137")
+magic_tome_a = ExtResource("26_y32ym")
+magic_tome_b = ExtResource("27_7o7tq")
+megaphone_gun_a = ExtResource("28_25o35")
+megaphone_gun_b = ExtResource("29_p5k7n")
+mini_hakkero_a = ExtResource("30_q3fp3")
+mini_hakkero_b = ExtResource("31_6n4vs")
+mochi_mallet_a = ExtResource("32_ssnet")
+mochi_mallet_b = ExtResource("33_moli3")
+mushroom_a = ExtResource("34_4crx1")
+mushroom_b = ExtResource("35_yiutl")
+nature_wand_a = ExtResource("36_vf07n")
+nature_wand_b = ExtResource("37_c0u42")
+persuasion_needles_a = ExtResource("38_5w7xc")
+persuasion_needles_b = ExtResource("39_wwwjy")
+purification_rod_a = ExtResource("40_bl7p4")
+purification_rod_b = ExtResource("41_5yvo5")
+roukanken_a = ExtResource("42_ujnsr")
+roukanken_b = ExtResource("43_e3kj5")
+sake_a = ExtResource("44_3vang")
+sake_b = ExtResource("45_5p24e")
+shanghai_doll_a = ExtResource("46_chro3")
+shanghai_doll_b = ExtResource("47_jtil6")
+throwing_knife_a = ExtResource("48_jnye3")
+throwing_knife_b = ExtResource("49_gjgwq")
+tripod_a = ExtResource("50_kiobl")
+tripod_b = ExtResource("51_7gwfx")
+yinyang_orb_a = ExtResource("52_5xlpu")
+yinyang_orb_b = ExtResource("53_o6p0p")
+youkai_umbrella_a = ExtResource("54_l6wmk")
+youkai_umbrella_b = ExtResource("55_17uxp")
+
+[node name="whole" type="Node2D" parent="."]
+
+[node name="video" type="Node2D" parent="whole"]
+scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="whole/video"]
+texture = ExtResource("4_hkjpo")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="whole/video"]
+offset_left = -256.515
+offset_top = -256.515
+offset_right = 255.485
+offset_bottom = 255.485
+stream = ExtResource("2_pd0ve")
+
+[node name="labels" type="Node2D" parent="whole"]
+
+[node name="name" type="Label" parent="whole/labels"]
+layout_direction = 2
+offset_left = -51.0
+offset_top = -52.0
+offset_right = 13.0
+offset_bottom = -41.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("17_cipvs")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_382ov")
+text = "Bats |A|"
+vertical_alignment = 1
+
+[node name="damage" type="Label" parent="whole/labels"]
+layout_direction = 3
+offset_left = -102.0
+offset_top = 43.0
+offset_right = 26.0
+offset_bottom = 62.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.682353, 0.137255, 0.203922, 1)
+theme_override_fonts/font = ExtResource("17_cipvs")
+theme_override_font_sizes/font_size = 16
+text = "1-2"
+vertical_alignment = 1
+
+[node name="DamageIcon" type="Sprite2D" parent="whole"]
+position = Vector2(46, 47)
+texture = ExtResource("10_h42kp")
+
+[connection signal="finished" from="whole/video/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

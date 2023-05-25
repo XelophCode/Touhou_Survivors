@@ -114,15 +114,13 @@ var is_paused:bool = false:
 		escape_can_unpause = is_paused
 
 func _ready():
-	Globals.lilywhite = false
-	Globals.daiyousei = false
 	monitor_options.clear()
 	for i in DisplayServer.get_screen_count():
 		monitor_options.add_item("Monitor " + str(i),i)
 	screen_center = DisplayServer.window_get_position()
 	screen_center.x += 426.0/2
 	screen_center.y += 240.0/2
-	Globals.crystal_count = 0
+	Globals.crystal_count = 1000
 	$AnimationPlayer.play("fade_out")
 	match Globals.current_character:
 		Globals.Reimu: character_portrait.sprite_frames = reimu_portrait
@@ -136,6 +134,9 @@ func _ready():
 	
 	var loaded_settings = Appdata.load_file(Appdata.SETTINGS)
 	$UI/FPS.visible = loaded_settings.SHOW_FPS
+	var loaded_save = Appdata.load_file(Appdata.SAVE)
+	Globals.lilywhite = loaded_save.LILY_WHITE
+	Globals.daiyousei = loaded_save.DAIYOUSEI
 	
 	Signals.connect("current_power",catch_current_power)
 	Signals.connect("next_lvl_update",catch_next_lvl_update)
@@ -393,10 +394,7 @@ func goto_main_menu():
 	Appdata.save_file(Appdata.SAVE,"ITEM_NAMES",Globals.used_items)
 	Appdata.save_file(Appdata.SAVE,"SPELLCARD_NAMES",Globals.used_spellcards)
 	Appdata.save_file(Appdata.SAVE,"SPELLCARDS_USED",Globals.used_spellcards_total)
-	var all_spell:int = 0
-	if Globals.all_spellcard:
-		all_spell = 1
-	Appdata.save_file(Appdata.SAVE,"ALL_SPELLCARDS",all_spell)
+	Appdata.save_file(Appdata.SAVE,"ALL_SPELLCARDS",Globals.all_spellcard)
 	Appdata.save_file(Appdata.SAVE,"LILY_WHITE",Globals.lilywhite)
 	Appdata.save_file(Appdata.SAVE,"DAIYOUSEI",Globals.daiyousei)
 	

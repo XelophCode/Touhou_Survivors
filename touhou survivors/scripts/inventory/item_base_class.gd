@@ -12,4 +12,5 @@ func do_damage(body):
 	var inst = damage_popup.instantiate()
 	inst.value = damage
 	inst.pos = body.global_position
-	get_parent().add_child(inst)
+#	get_parent().add_child(inst)
+	Signals.damage_popup_spawn.emit(inst)

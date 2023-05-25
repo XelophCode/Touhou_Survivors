@@ -12,6 +12,7 @@ enabled = true
 item_name = 23
 description = "vertical: shoot a fireball
 horizontal: torrent of water"
+description_2 = ""
 inventory_size = 3
 inventory = ExtResource("2_38ngd")
 spawnable = ExtResource("4_qy3s1")

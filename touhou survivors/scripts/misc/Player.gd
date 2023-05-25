@@ -67,6 +67,7 @@ var move_right = "move_disabled"
 var move_left = "move_disabled"
 var move_up = "move_disabled"
 var move_down = "move_disabled"
+var toggle_focus:bool = false
 
 func _ready():
 	Globals.player_alive = true
@@ -77,9 +78,9 @@ func _ready():
 		custom_loadout = starting_items
 		starting_loadout_override = true
 	match Globals.current_character:
-		Globals.Reimu: walk_animations.sprite_frames = reimu_anims; starting_items = reimu_loadout;
-		Globals.Marisa: walk_animations.sprite_frames = marisa_anims; starting_items = marisa_loadout;
-		Globals.Remilia: walk_animations.sprite_frames = remilia_anims; starting_items = remilia_loadout; 
+		Globals.Reimu: walk_animations.sprite_frames = reimu_anims; starting_items = reimu_loadout
+		Globals.Marisa: walk_animations.sprite_frames = marisa_anims; starting_items = marisa_loadout
+		Globals.Remilia: walk_animations.sprite_frames = remilia_anims; starting_items = remilia_loadout
 		Globals.Aya: walk_animations.sprite_frames = aya_anims; starting_items = aya_loadout
 		Globals.Suika: walk_animations.sprite_frames = suika_anims; starting_items = suika_loadout
 		Globals.Reisen: walk_animations.sprite_frames = reisen_anims; starting_items = reisen_loadout
@@ -124,11 +125,20 @@ func _physics_process(delta):
 		if hp < $Healthbar.max_value:
 			hp += 0.01
 		hp -= damage_taken
-		if Input.is_action_pressed("focus") and !tweening_focus and !focusing:
-			magic_circle_tween_on(delta)
 		
-		if !Input.is_action_pressed("focus") and !tweening_focus:
-			magic_circle_tween_off(delta)
+		if toggle_focus:
+			if Globals.secondary_input_just_pressed() and !tweening_focus and !focusing:
+				magic_circle_tween_on(delta)
+			if Globals.secondary_input_just_pressed() and !tweening_focus and focusing:
+				magic_circle_tween_off(delta)
+			
+			
+		else:
+			if Globals.secondary_input_pressed() and !tweening_focus and !focusing:
+				magic_circle_tween_on(delta)
+			
+			if !Globals.secondary_input_pressed() and !tweening_focus:
+				magic_circle_tween_off(delta)
 		
 		move.x = Input.get_action_raw_strength(move_right) - Input.get_action_raw_strength(move_left)
 		move.y = Input.get_action_raw_strength(move_down) - Input.get_action_raw_strength(move_up)
@@ -175,7 +185,7 @@ func _physics_process(delta):
 			Signals.emit_signal("game_over_music")
 			alive = false
 	
-	if !Input.is_action_pressed("focus"):
+	if !focusing:
 		if move != Vector2(0,0):
 			Globals.player_facing = move
 			
@@ -203,7 +213,7 @@ func _physics_process(delta):
 	Globals.player_position = global_position
 	
 	velocity = move.normalized() * (delta) * move_speed
-	if Input.is_action_pressed("focus"):
+	if focusing:
 		velocity = velocity/2
 	
 	

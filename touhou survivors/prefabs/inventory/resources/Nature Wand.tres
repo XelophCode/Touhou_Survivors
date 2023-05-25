@@ -12,6 +12,7 @@ enabled = true
 item_name = 24
 description = "vertical: tornados
 horizontal: raincloud"
+description_2 = ""
 inventory_size = 2
 inventory = ExtResource("2_sgtjj")
 spawnable = ExtResource("4_pvw2b")

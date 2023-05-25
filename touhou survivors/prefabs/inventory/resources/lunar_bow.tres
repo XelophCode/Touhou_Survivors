@@ -12,6 +12,7 @@ enabled = true
 item_name = 27
 description = "vertical: fire a spread of arrows
 horizontal: fire arrows sequentially"
+description_2 = ""
 inventory_size = 4
 inventory = ExtResource("2_70mc1")
 spawnable = ExtResource("4_qjlii")

@@ -9,7 +9,7 @@ var alt:bool = false
 var left_right:bool = false
 
 func _ready():
-	damage = randi_range(1,2)
+	damage = randi_range(2,3)
 	$main_body/CPUParticles2D.emitting = blood_trail
 	$main_body/AnimatedSprite2D.play(bat_type)
 	$main_body.global_position = Globals.player_position

@@ -12,6 +12,7 @@ enabled = true
 item_name = 2
 description = "Vetical: swing side to side
 Horizontal: swing forwards backwards"
+description_2 = ""
 inventory_size = 4
 inventory = ExtResource("1_r44fl")
 spawnable = ExtResource("4_kdsux")

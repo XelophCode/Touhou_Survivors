@@ -12,6 +12,7 @@ enabled = true
 item_name = 25
 description = "vertical: throw in a spread in front
 horizontal: leave on ground"
+description_2 = ""
 inventory_size = 0
 inventory = ExtResource("2_3l83u")
 spawnable = ExtResource("4_jajuc")

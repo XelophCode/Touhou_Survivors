@@ -8,7 +8,7 @@ enum ITEMS {bat,camera,frog,gohei,haniwa,amulet,icicle,keystone,fan,bow,bomb,bro
 @export var inv_items : all_items
 var rerolling:bool = false
 var can_reroll:bool = false
-var spawn_count:Vector2 = Vector2(9,10)
+var spawn_count:Vector2 = Vector2(1,2)
 var player_level:float = 1.0
 var inventory_items:Array
 
@@ -130,11 +130,11 @@ func leveling_up(value:bool):
 	player_level += 1.0
 	if value:
 		match player_level:
-			2.0: spawn_count = Vector2(7,8)
-			3.0: spawn_count = Vector2(6,7)
-			4.0: spawn_count = Vector2(5,6)
-			5.0: spawn_count = Vector2(4,6)
-			8.0: spawn_count = Vector2(3,6)
+			3.0: spawn_count = Vector2(7,8)
+			4.0: spawn_count = Vector2(6,7)
+			5.0: spawn_count = Vector2(5,6)
+			6.0: spawn_count = Vector2(4,6)
+			7.0: spawn_count = Vector2(3,6)
 			10.0: spawn_count = Vector2(1,4)
 			
 		$CPUParticles2D.emitting = true
