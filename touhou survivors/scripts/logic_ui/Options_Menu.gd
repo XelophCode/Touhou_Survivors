@@ -19,13 +19,47 @@ extends Control
 @export var item_audio_slider : HSlider
 @export_subgroup("input_options")
 @export var input_tab : Node2D
+@export var toggle_focus_checkbox : CheckBox
+@export var move_up_0 : Button
+@export var move_up_1 : Button
+@export var move_down_0 : Button
+@export var move_down_1 : Button
+@export var move_left_0 : Button
+@export var move_left_1 : Button
+@export var move_right_0 : Button
+@export var move_right_1 : Button
+@export var interactfocus_0 : Button
+@export var interactfocus_1 : Button
+@export var cancel_0 : Button
+@export var cancel_1 : Button
+@export var reset_keybinds : Button
+@export var revert_overlay : Node2D
+@export var revert_key_countdown : Label
+@export var revert_key_timer : Timer
 
 var video_settings:Array = [Vector2(426,240),0,0]
 var video_settings_new:Array = [Vector2(426,240),0,0]
-#var screen_center:Vector2
+
 var video_settings_indices:Array = [0,0,0]
 
+var rebinding_key:bool = false
+var last_action_event:Array
+var action_target:String
+var keybind_button_target:Button
+
+var default_up_0:InputEventKey = InputMap.action_get_events("move_up")[0]
+var default_up_1:InputEventKey = InputMap.action_get_events("move_up")[1]
+
+var last_key_text:String
+var action_event_target:int
+
+var move_up_binds:Array
+var move_down_binds:Array
+var move_left_binds:Array
+var move_right_binds:Array
+
 func _ready():
+	
 	Signals.connect("open_options_menu",catch_open_options_menu)
 	Signals.connect("close_options_menu",catch_close_options_menu)
 	monitor_options.clear()
@@ -64,6 +98,53 @@ func _ready():
 		music_audio_slider.value = loaded_settings.MUSIC_AUDIO
 		sfx_audio_slider.value = loaded_settings.SFX_AUDIO
 		item_audio_slider.value = loaded_settings.ITEM_AUDIO
+		
+		toggle_focus_checkbox.button_pressed = loaded_settings.TOGGLE_FOCUS
+		
+		move_up_0.text = loaded_settings.MOVE_UP[1][0]
+		move_up_1.text = loaded_settings.MOVE_UP[1][1]
+		move_down_0.text = loaded_settings.MOVE_DOWN[1][0]
+		move_down_1.text = loaded_settings.MOVE_DOWN[1][1]
+		move_left_0.text = loaded_settings.MOVE_LEFT[1][0]
+		move_left_1.text = loaded_settings.MOVE_LEFT[1][1]
+		move_right_0.text = loaded_settings.MOVE_RIGHT[1][0]
+		move_right_1.text = loaded_settings.MOVE_RIGHT[1][1]
+		interactfocus_0.text = loaded_settings.INTERACT[1][0]
+		interactfocus_1.text = loaded_settings.INTERACT[1][1]
+		cancel_0.text = loaded_settings.CANCEL[1][0]
+		cancel_1.text = loaded_settings.CANCEL[1][1]
+		
+		load_input(loaded_settings.MOVE_UP,"move_up")
+		load_input(loaded_settings.MOVE_DOWN,"move_down")
+		load_input(loaded_settings.MOVE_LEFT,"move_left")
+		load_input(loaded_settings.MOVE_RIGHT,"move_right")
+		load_interact_input(loaded_settings.INTERACT,"interact")
+		load_input(loaded_settings.CANCEL,"cancel")
+		
+
+func load_input(loaded_input:Array,input_action:String):
+	var input_0 = InputEventKey.new()
+	var input_1 = InputEventKey.new()
+	input_0.physical_keycode = loaded_input[0][0]
+	input_1.physical_keycode = loaded_input[0][1]
+	var input_array:Array = [input_0,input_1]
+	InputMap.action_erase_events(input_action)
+	bind_key(input_array,input_action)
+
+func load_interact_input(loaded_input:Array,input_action:String):
+	InputMap.action_erase_events("interact")
+	var input_key = InputEventKey.new()
+	input_key.physical_keycode = loaded_input[0][0]
+	var input_rmb = InputEventMouseButton.new()
+	input_rmb.button_index = MOUSE_BUTTON_RIGHT
+	InputMap.action_add_event("interact",input_key)
+	InputMap.action_add_event("interact",input_rmb)
+	
+#	var input_0 = InputEventKey.new()
+#	input_0.physical_keycode = loaded_input[0][0]
+#	var input_array:Array = [input_0]
+#	InputMap.action_erase_event(input_action,InputMap.action_get_events(input_action)[0])
+#	bind_key(input_array,input_action)
 
 func _process(_delta):
 	if visible:
@@ -74,6 +155,8 @@ func _process(_delta):
 			video_apply_button.visible = true
 		else:
 			video_apply_button.visible = false
+		
+		revert_key_countdown.text = str(ceil(revert_key_timer.time_left))
 
 func _on_video_b_button_down():
 	video_tab.visible = true
@@ -217,3 +300,152 @@ func audio_save(audio_bus:int, dict_key:String):
 func _on_fps_toggled(button_pressed):
 	Signals.emit_signal("show_fps",button_pressed)
 	Appdata.save_file(Appdata.SETTINGS,"SHOW_FPS",button_pressed)
+
+func _on_toggle_focus_toggled(button_pressed):
+	Signals.toggle_focus.emit(button_pressed)
+	Appdata.save_file(Appdata.SETTINGS,"TOGGLE_FOCUS",button_pressed)
+
+
+func _on_move_up_button_up():
+	keybind_button_target = move_up_0
+	key_rebind("move_up",0)
+func _on_move_up_2_button_up():
+	keybind_button_target = move_up_1
+	key_rebind("move_up",1)
+func _on_move_down_button_up():
+	keybind_button_target = move_down_0
+	key_rebind("move_down",0)
+func _on_move_down_2_button_up():
+	keybind_button_target = move_down_1
+	key_rebind("move_down",1)
+func _on_move_left_button_up():
+	keybind_button_target = move_left_0
+	key_rebind("move_left",0)
+func _on_move_left_2_button_up():
+	keybind_button_target = move_left_1
+	key_rebind("move_left",1)
+func _on_move_right_button_up():
+	keybind_button_target = move_right_0
+	key_rebind("move_right",0)
+func _on_move_right_2_button_up():
+	keybind_button_target = move_right_1
+	key_rebind("move_right",1)
+func _on_interactfocus_button_up():
+	keybind_button_target = interactfocus_0
+	key_rebind("interact",0)
+func _on_interactfocus_2_button_up():
+	keybind_button_target = interactfocus_1
+	key_rebind("interact",1)
+func _on_cancel_button_up():
+	keybind_button_target = cancel_0
+	key_rebind("cancel",0)
+func _on_cancel_2_button_up():
+	keybind_button_target = cancel_1
+	key_rebind("cancel",1)
+
+func key_rebind(action_name:String,event_id:int):
+	last_action_event = InputMap.action_get_events(action_name)
+	last_key_text = keybind_button_target.text
+	keybind_button_target.text = "PRESS KEY"
+	action_event_target = event_id
+	InputMap.action_erase_events(action_name)
+	action_target = action_name
+	revert_key_timer.start()
+	revert_overlay.visible = true
+	rebinding_key = true
+
+func _unhandled_key_input(event):
+	if rebinding_key:
+		last_action_event[action_event_target] = event
+		bind_key(last_action_event,action_target)
+		keybind_button_target.text = str(OS.get_keycode_string(last_action_event[action_event_target].physical_keycode))
+		save_key_bind(action_target)
+		stop_key_rebind()
+
+#func _input(event):
+#	if rebinding_key:
+#		if (event is InputEventKey) or (Input.is_action_just_pressed("right_mouse_button")):
+#			print(str(event))
+#			last_action_event[action_event_target] = event
+#			bind_key(last_action_event,action_target)
+#			if Input.is_action_just_pressed("right_mouse_button"):
+#
+#				keybind_button_target.text = "RMB"
+#			else:
+#				keybind_button_target.text = str(OS.get_keycode_string(last_action_event[action_event_target].physical_keycode))
+#			save_key_bind(action_target)
+#			stop_key_rebind()
+
+func bind_key(action_event,target):
+	for i in action_event:
+		InputMap.action_add_event(target,i)
+
+func save_key_bind(action_target):
+	match action_target:
+		"move_up": Appdata.save_file(Appdata.SETTINGS,"MOVE_UP",[[last_action_event[0].physical_keycode,last_action_event[1].physical_keycode],[move_up_0.text,move_up_1.text]])
+		"move_down": Appdata.save_file(Appdata.SETTINGS,"MOVE_DOWN",[[last_action_event[0].physical_keycode,last_action_event[1].physical_keycode],[move_down_0.text,move_down_1.text]])
+		"move_left": Appdata.save_file(Appdata.SETTINGS,"MOVE_LEFT",[[last_action_event[0].physical_keycode,last_action_event[1].physical_keycode],[move_left_0.text,move_left_1.text]])
+		"move_right": Appdata.save_file(Appdata.SETTINGS,"MOVE_RIGHT",[[last_action_event[0].physical_keycode,last_action_event[1].physical_keycode],[move_right_0.text,move_right_1.text]])
+		"interact": Appdata.save_file(Appdata.SETTINGS,"INTERACT",[[last_action_event[0].physical_keycode],[interactfocus_0.text,interactfocus_1.text]])
+		"cancel": Appdata.save_file(Appdata.SETTINGS,"CANCEL",[[last_action_event[0].physical_keycode,last_action_event[1].physical_keycode],[cancel_0.text,cancel_1.text]])
+
+func stop_key_rebind():
+	revert_key_timer.stop()
+	revert_overlay.visible = false
+	rebinding_key = false
+
+func _on_revert_key_timeout():
+	revert_rebind()
+
+func revert_rebind():
+	for i in last_action_event:
+		InputMap.action_add_event(action_target,i)
+	keybind_button_target.text = last_key_text
+	stop_key_rebind()
+
+func _on_cancel_keybind_button_down():
+	revert_rebind()
+
+
+func _on_reset_keybinds_button_up():
+	bind_reset_keys([87,4194320],"move_up")
+	bind_reset_keys([83,4194322],"move_down")
+	bind_reset_keys([65,4194319],"move_left")
+	bind_reset_keys([68,4194321],"move_right")
+	
+	InputMap.action_erase_events("interact")
+	var input_key = InputEventKey.new()
+	input_key.physical_keycode = 4194325
+	var input_rmb = InputEventMouseButton.new()
+	input_rmb.button_index = MOUSE_BUTTON_RIGHT
+	InputMap.action_add_event("interact",input_key)
+	InputMap.action_add_event("interact",input_rmb)
+	interactfocus_0.text = "Shift"
+	interactfocus_1.text = "RMB"
+	
+	bind_reset_keys([4194306,88],"cancel")
+	
+	
+	Appdata.save_file(Appdata.SETTINGS,"MOVE_UP",[[87,4194320],[move_up_0.text,move_up_1.text]])
+	Appdata.save_file(Appdata.SETTINGS,"MOVE_DOWN",[[83,4194322],[move_down_0.text,move_down_1.text]])
+	Appdata.save_file(Appdata.SETTINGS,"MOVE_LEFT",[[65,4194319],[move_left_0.text,move_left_1.text]])
+	Appdata.save_file(Appdata.SETTINGS,"MOVE_RIGHT",[[68,4194321],[move_right_0.text,move_right_1.text]])
+	Appdata.save_file(Appdata.SETTINGS,"INTERACT",[[4194325],[interactfocus_0.text,interactfocus_1.text]])
+	Appdata.save_file(Appdata.SETTINGS,"CANCEL",[[4194306,88],[cancel_0.text,cancel_1.text]])
+
+func bind_reset_keys(keycodes:Array,input_action:String):
+	var input_0 = InputEventKey.new()
+	var input_1 = InputEventKey.new()
+	input_0.physical_keycode = keycodes[0]
+	input_1.physical_keycode = keycodes[1]
+	var input_array:Array = [input_0,input_1]
+	InputMap.action_erase_events(input_action)
+	bind_key(input_array,input_action)
+	
+	match input_action:
+		"move_up": move_up_0.text = "W"; move_up_1.text = "Up"
+		"move_down": move_down_0.text = "S"; move_down_1.text = "Down"
+		"move_left": move_left_0.text = "A"; move_left_1.text = "Left"
+		"move_right": move_right_0.text = "D"; move_right_1.text = "Right"
+		"cancel": cancel_0.text = "Tab"; cancel_1.text = "X"
+		

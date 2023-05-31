@@ -67,9 +67,12 @@ var move_right = "move_disabled"
 var move_left = "move_disabled"
 var move_up = "move_disabled"
 var move_down = "move_disabled"
-var toggle_focus:bool = false
+var toggle_focus:bool
 
 func _ready():
+	var loaded_settings = Appdata.load_file(Appdata.SETTINGS)
+	toggle_focus = loaded_settings.TOGGLE_FOCUS
+	
 	Globals.player_alive = true
 	Globals.player_z_index = z_index
 	Globals.one_time_spawns = []
@@ -102,6 +105,8 @@ func _ready():
 	Signals.connect("decrease_crystal_count",catch_decrease_crystal_count)
 	Signals.connect("game_start_complete",catch_game_start_complete)
 	Signals.connect("delete_player",catch_delete_player)
+	Signals.toggle_focus.connect(catch_toggle_focus)
+	
 	await get_tree().create_timer(0.1).timeout
 	var counter:int = 0
 	if starting_items != null:
@@ -341,3 +346,5 @@ func catch_game_start_complete():
 func catch_delete_player():
 	queue_free()
 
+func catch_toggle_focus(toggle):
+	toggle_focus = toggle

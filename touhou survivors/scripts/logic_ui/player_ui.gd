@@ -399,8 +399,6 @@ func goto_main_menu():
 	Appdata.save_file(Appdata.SAVE,"DAIYOUSEI",Globals.daiyousei)
 	
 	
-	print(Globals.used_items_total)
-	
 	Signals.emit_signal("go_to_main_menu")
 	
 

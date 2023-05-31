@@ -11,6 +11,7 @@ var can_reroll:bool = false
 var spawn_count:Vector2 = Vector2(1,2)
 var player_level:float = 1.0
 var inventory_items:Array
+var lvling_up:bool = false
 
 func _ready():
 	Signals.connect("leveling_up",leveling_up)
@@ -127,6 +128,7 @@ func open_shop():
 	
 
 func leveling_up(value:bool):
+	lvling_up = value
 	player_level += 1.0
 	if value:
 		match player_level:
@@ -151,6 +153,7 @@ func leveling_up(value:bool):
 		$CPUParticles2D.emitting = false
 		for child in $ShopGrid.get_children():
 			child.get_child(0).set_deferred("monitorable",false)
+		
 
 
 func pass_metadata_to_item(inst, item):
@@ -174,6 +177,9 @@ func _process(delta):
 	eyes_scrolling -= delta * 8
 	$ShopGridBG/mask/eyes.region_rect = Rect2(eyes_scrolling,eyes_scrolling,400,400)
 	$ShopGridBG/mask/eyes.rotation += delta / 30
+	if lvling_up:
+		if Input.is_action_just_pressed("cancel"):
+			close_gap()
 
 func show_close_sign():
 	if !rerolling:
@@ -181,6 +187,11 @@ func show_close_sign():
 		$CloseGapSign.play("default")
 
 func _on_close_gap_button_down():
+	close_gap()
+
+func close_gap():
+	Globals.holding_item = false
+#	Signals.hide_hand_cursor.emit()
 	Signals.emit_signal("show_hand_cursor",false)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	$CloseGapSign.material.set_shader_parameter("line_color",Color(0,0,0,1))

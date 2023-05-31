@@ -4,7 +4,7 @@ extends Node2D
 @export var main_menu_logo : Node
 @export var main_animation_player : Node
 @export var button_anims : Node
-@export var character_select : PackedScene
+@export var version_label : Label
 
 @export_group("achievements")
 @export var time_survived:Label
@@ -43,6 +43,8 @@ func _ready():
 	lily_white.text = str(loaded_save.LILY_WHITE) + "/1"
 	daiyousei.text = str(loaded_save.DAIYOUSEI) + "/1"
 	characters.text = str(8 - loaded_save.LOCKED_CHARACTERS.size()) + "/8"
+	
+	version_label.text = "ver " + Globals.app_version
 
 func _process(_delta):
 	

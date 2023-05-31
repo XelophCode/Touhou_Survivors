@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://c0kbh78tuyeb4"]
+[gd_scene load_steps=60 format=3 uid="uid://c0kbh78tuyeb4"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/Options_Menu.gd" id="1_8rqmw"]
 [ext_resource type="Texture2D" uid="uid://dmomn8uwmp0se" path="res://sprites/ui/scroll_anim.png" id="2_kdsqm"]
@@ -196,6 +196,22 @@ border_width_bottom = 1
 border_color = Color(1, 1, 0.0431373, 1)
 anti_aliasing = false
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fbso"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qth25"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fubj0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0g6nr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t8n8g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vy1g3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oh641"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vkqah"]
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ryvom"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ond82"]
@@ -291,7 +307,7 @@ _data = {
 "scroll_anim": SubResource("Animation_fqlco")
 }
 
-[node name="Options_Menu" type="Control" node_paths=PackedStringArray("video_tab", "resolution_options", "window_options", "monitor_options", "fps_checkbox", "revert_label", "revert_timer", "keep_video_settings", "video_apply_button", "audio_tab", "master_audio_slider", "music_audio_slider", "sfx_audio_slider", "item_audio_slider", "input_tab")]
+[node name="Options_Menu" type="Control" node_paths=PackedStringArray("video_tab", "resolution_options", "window_options", "monitor_options", "fps_checkbox", "revert_label", "revert_timer", "keep_video_settings", "video_apply_button", "audio_tab", "master_audio_slider", "music_audio_slider", "sfx_audio_slider", "item_audio_slider", "input_tab", "toggle_focus_checkbox", "move_up_0", "move_up_1", "move_down_0", "move_down_1", "move_left_0", "move_left_1", "move_right_0", "move_right_1", "interactfocus_0", "interactfocus_1", "cancel_0", "cancel_1", "reset_keybinds", "revert_overlay", "revert_key_countdown", "revert_key_timer")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -315,6 +331,23 @@ music_audio_slider = NodePath("main/Audio/music")
 sfx_audio_slider = NodePath("main/Audio/sfx")
 item_audio_slider = NodePath("main/Audio/item_sfx")
 input_tab = NodePath("main/Input")
+toggle_focus_checkbox = NodePath("main/Input/toggle_focus")
+move_up_0 = NodePath("main/Input/HBoxContainer/move_up")
+move_up_1 = NodePath("main/Input/HBoxContainer/move_up_2")
+move_down_0 = NodePath("main/Input/HBoxContainer2/move_down")
+move_down_1 = NodePath("main/Input/HBoxContainer2/move_down_2")
+move_left_0 = NodePath("main/Input/HBoxContainer3/move_left")
+move_left_1 = NodePath("main/Input/HBoxContainer3/move_left_2")
+move_right_0 = NodePath("main/Input/HBoxContainer4/move_right")
+move_right_1 = NodePath("main/Input/HBoxContainer4/move_right_2")
+interactfocus_0 = NodePath("main/Input/HBoxContainer5/interactfocus")
+interactfocus_1 = NodePath("main/Input/HBoxContainer5/interactfocus_2")
+cancel_0 = NodePath("main/Input/HBoxContainer6/cancel")
+cancel_1 = NodePath("main/Input/HBoxContainer6/cancel_2")
+reset_keybinds = NodePath("main/Input/reset_keybinds")
+revert_overlay = NodePath("main/Input/revert")
+revert_key_countdown = NodePath("main/Input/revert/revert_time")
+revert_key_timer = NodePath("main/Input/revert_key")
 
 [node name="dust_1" type="CPUParticles2D" parent="."]
 position = Vector2(385, 193)
@@ -409,7 +442,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_sdglx")
 text = "Audio"
 
 [node name="input_b" type="Button" parent="main"]
-visible = false
 offset_left = 166.0
 offset_top = 31.0
 offset_right = 208.0
@@ -743,6 +775,244 @@ points = PackedVector2Array(53, 45, 97, 45)
 width = 1.0
 default_color = Color(1, 0.2, 0.2, 1)
 
+[node name="toggle_focus_label" type="Label" parent="main/Input"]
+offset_left = 55.0
+offset_top = 57.0
+offset_right = 207.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "Toggle Focus"
+
+[node name="move_up_label" type="Label" parent="main/Input"]
+offset_left = 55.0
+offset_top = 77.0
+offset_right = 207.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "Move Up"
+
+[node name="move_down_label" type="Label" parent="main/Input"]
+offset_left = 55.0
+offset_top = 98.0
+offset_right = 207.0
+offset_bottom = 121.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "Move Down"
+
+[node name="move_left_label" type="Label" parent="main/Input"]
+offset_left = 55.0
+offset_top = 119.0
+offset_right = 207.0
+offset_bottom = 142.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "Move Left"
+
+[node name="move_right_label" type="Label" parent="main/Input"]
+offset_left = 55.0
+offset_top = 140.0
+offset_right = 207.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "Move Right"
+
+[node name="interactfocus_label" type="Label" parent="main/Input"]
+offset_left = 55.0
+offset_top = 160.0
+offset_right = 207.0
+offset_bottom = 183.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "Interact/Focus"
+
+[node name="cancel_label" type="Label" parent="main/Input"]
+offset_left = 55.0
+offset_top = 181.0
+offset_right = 207.0
+offset_bottom = 204.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "Cancel"
+
+[node name="toggle_focus" type="CheckBox" parent="main/Input"]
+offset_left = 167.0
+offset_top = 46.0
+offset_right = 191.0
+offset_bottom = 70.0
+scale = Vector2(1.15, 1.15)
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_0fbso")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qth25")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="main/Input"]
+offset_left = 173.0
+offset_top = 73.0
+offset_right = 217.0
+offset_bottom = 89.0
+
+[node name="move_up" type="Button" parent="main/Input/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "W"
+
+[node name="move_up_2" type="Button" parent="main/Input/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "Up"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="main/Input"]
+offset_left = 173.0
+offset_top = 94.0
+offset_right = 233.0
+offset_bottom = 110.0
+
+[node name="move_down" type="Button" parent="main/Input/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "S"
+
+[node name="move_down_2" type="Button" parent="main/Input/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "Down"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="main/Input"]
+offset_left = 173.0
+offset_top = 115.0
+offset_right = 233.0
+offset_bottom = 131.0
+
+[node name="move_left" type="Button" parent="main/Input/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "A"
+
+[node name="move_left_2" type="Button" parent="main/Input/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "Left"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="main/Input"]
+offset_left = 173.0
+offset_top = 136.0
+offset_right = 241.0
+offset_bottom = 152.0
+
+[node name="move_right" type="Button" parent="main/Input/HBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "D"
+
+[node name="move_right_2" type="Button" parent="main/Input/HBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "Right"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="main/Input"]
+offset_left = 173.0
+offset_top = 156.0
+offset_right = 257.0
+offset_bottom = 172.0
+
+[node name="interactfocus" type="Button" parent="main/Input/HBoxContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "Shift"
+
+[node name="interactfocus_2" type="Button" parent="main/Input/HBoxContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fubj0")
+button_mask = 0
+text = "RMB"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="main/Input"]
+offset_left = 173.0
+offset_top = 177.0
+offset_right = 257.0
+offset_bottom = 193.0
+
+[node name="cancel" type="Button" parent="main/Input/HBoxContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "Tab"
+
+[node name="cancel_2" type="Button" parent="main/Input/HBoxContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "X"
+
+[node name="reset_keybinds" type="Button" parent="main/Input"]
+offset_left = 274.0
+offset_top = 191.0
+offset_right = 394.0
+offset_bottom = 207.0
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "Reset Keybinds"
+
+[node name="revert" type="Node2D" parent="main/Input"]
+visible = false
+
+[node name="revert_label" type="Label" parent="main/Input/revert"]
+offset_left = 55.0
+offset_top = 198.0
+offset_right = 207.0
+offset_bottom = 221.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "Key will revert in"
+
+[node name="revert_time" type="Label" parent="main/Input/revert"]
+offset_left = 207.0
+offset_top = 198.0
+offset_right = 359.0
+offset_bottom = 221.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_f56xl")
+theme_override_font_sizes/font_size = 8
+text = "9"
+
+[node name="cancel_keybind" type="Button" parent="main/Input/revert"]
+offset_right = 426.0
+offset_bottom = 240.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0g6nr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t8n8g")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vy1g3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_oh641")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vkqah")
+
+[node name="revert_key" type="Timer" parent="main/Input"]
+wait_time = 9.0
+one_shot = true
+
 [node name="ScrollOverlay" type="Sprite2D" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_igmwt")
@@ -774,3 +1044,19 @@ libraries = {
 [connection signal="value_changed" from="main/Audio/sfx" to="." method="_on_sfx_value_changed"]
 [connection signal="drag_ended" from="main/Audio/item_sfx" to="." method="_on_item_sfx_drag_ended"]
 [connection signal="value_changed" from="main/Audio/item_sfx" to="." method="_on_item_sfx_value_changed"]
+[connection signal="toggled" from="main/Input/toggle_focus" to="." method="_on_toggle_focus_toggled"]
+[connection signal="button_up" from="main/Input/HBoxContainer/move_up" to="." method="_on_move_up_button_up"]
+[connection signal="button_up" from="main/Input/HBoxContainer/move_up_2" to="." method="_on_move_up_2_button_up"]
+[connection signal="button_up" from="main/Input/HBoxContainer2/move_down" to="." method="_on_move_down_button_up"]
+[connection signal="button_up" from="main/Input/HBoxContainer2/move_down_2" to="." method="_on_move_down_2_button_up"]
+[connection signal="button_up" from="main/Input/HBoxContainer3/move_left" to="." method="_on_move_left_button_up"]
+[connection signal="button_up" from="main/Input/HBoxContainer3/move_left_2" to="." method="_on_move_left_2_button_up"]
+[connection signal="button_up" from="main/Input/HBoxContainer4/move_right" to="." method="_on_move_right_button_up"]
+[connection signal="button_up" from="main/Input/HBoxContainer4/move_right_2" to="." method="_on_move_right_2_button_up"]
+[connection signal="button_up" from="main/Input/HBoxContainer5/interactfocus" to="." method="_on_interactfocus_button_up"]
+[connection signal="button_up" from="main/Input/HBoxContainer5/interactfocus_2" to="." method="_on_interactfocus_2_button_up"]
+[connection signal="button_up" from="main/Input/HBoxContainer6/cancel" to="." method="_on_cancel_button_up"]
+[connection signal="button_up" from="main/Input/HBoxContainer6/cancel_2" to="." method="_on_cancel_2_button_up"]
+[connection signal="button_up" from="main/Input/reset_keybinds" to="." method="_on_reset_keybinds_button_up"]
+[connection signal="button_down" from="main/Input/revert/cancel_keybind" to="." method="_on_cancel_keybind_button_down"]
+[connection signal="timeout" from="main/Input/revert_key" to="." method="_on_revert_key_timeout"]

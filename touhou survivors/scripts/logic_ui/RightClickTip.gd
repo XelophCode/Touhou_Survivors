@@ -7,6 +7,7 @@ func _ready():
 	Signals.connect("not_enough_crystals",catch_not_enough_crystals)
 	Signals.connect("show_spell_card_right_click",catch_show_spell_card_right_click)
 	Signals.connect("show_hand_cursor",catch_show_hand_cursor)
+	Signals.hide_hand_cursor.connect(catch_hide_hand_cursor)
 
 func _process(_delta):
 	global_position.x = get_global_mouse_position().x + 2
@@ -41,4 +42,8 @@ func catch_show_hand_cursor(value):
 		$AnimatedSprite2D.stop()
 		$AnimatedSprite2D.frame = 0
 
+func catch_hide_hand_cursor():
+	await get_tree().create_timer(0.5).timeout
+	visible = false
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 

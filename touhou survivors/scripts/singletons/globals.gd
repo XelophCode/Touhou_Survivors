@@ -27,7 +27,8 @@ var simul_spellcard:int
 var all_spellcard:bool
 var lilywhite:int = 0
 var daiyousei:int = 0
-const secondary_input:Array = ["right_mouse_button","hide_descriptions","focus","spacebar","rotate_item"]
+const secondary_input:Array = ["interact"]
+const app_version:String = "1.0.1"
 
 const settings_file_path : String = "user://settings.dat"
 

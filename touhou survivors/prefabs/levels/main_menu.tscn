@@ -597,13 +597,14 @@ _data = {
 "Sakura": SubResource("Animation_at1lb")
 }
 
-[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("main_menu_bg", "main_menu_logo", "main_animation_player", "button_anims", "time_survived", "lifetime_mon", "deaths", "faith", "crystals", "items", "spellcards", "spellcard_all", "lily_white", "daiyousei", "characters")]
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("main_menu_bg", "main_menu_logo", "main_animation_player", "button_anims", "version_label", "time_survived", "lifetime_mon", "deaths", "faith", "crystals", "items", "spellcards", "spellcard_all", "lily_white", "daiyousei", "characters")]
 texture_filter = 1
 script = ExtResource("1_na2pg")
 main_menu_bg = NodePath("pngs")
 main_menu_logo = NodePath("pngs/Mainmenulogo")
 main_animation_player = NodePath("MainAnims")
 button_anims = NodePath("ButtonFlash")
+version_label = NodePath("Buttons/version")
 time_survived = NodePath("Achievements/time_surv2")
 lifetime_mon = NodePath("Achievements/lifetime_mon2")
 deaths = NodePath("Achievements/deaths2")
@@ -793,7 +794,7 @@ theme_override_font_sizes/font_size = 14
 underline = 1
 uri = "https://discord.gg/EpkPTT6Vvh"
 
-[node name="Label" type="Label" parent="Buttons"]
+[node name="version" type="Label" parent="Buttons"]
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 50.0

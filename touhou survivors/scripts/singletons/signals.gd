@@ -119,3 +119,5 @@ signal toggle_set_detection
 signal item_video
 signal hide_video
 signal damage_popup_spawn
+signal toggle_focus
+signal hide_hand_cursor
