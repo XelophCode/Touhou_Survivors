@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c37tstw6nl4cc"]
+
+[ext_resource type="AnimationLibrary" uid="uid://c3f6dw06ejniu" path="res://resources/animations/libraries/Inventory_Items.res" id="1_wgbf8"]
+
+[node name="AnimationPlayer" type="AnimationPlayer"]
+libraries = {
+"Inventory_Items": ExtResource("1_wgbf8")
+}

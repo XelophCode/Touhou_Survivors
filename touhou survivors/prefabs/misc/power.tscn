@@ -23,6 +23,7 @@ shader_parameter/line_scale = 0.0
 shader_parameter/frequency = 0.5
 shader_parameter/light_offset = 0.5
 shader_parameter/alpha = 1.0
+shader_parameter/opacity = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uvr4"]
 atlas = ExtResource("3_ip2rx")

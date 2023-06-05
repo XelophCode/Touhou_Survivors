@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfy43xefxju21"]
+[gd_scene load_steps=11 format=3 uid="uid://bfy43xefxju21"]
 
 [ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="1_4pam8"]
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_kpods"]
@@ -18,6 +18,18 @@ shader_parameter/line_scale = 0.0
 shader_parameter/frequency = 0.5
 shader_parameter/light_offset = 0.5
 shader_parameter/alpha = 1.0
+shader_parameter/opacity = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6d8y"]
+resource_local_to_scene = true
+shader = ExtResource("1_4pam8")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_scale = 0.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+shader_parameter/opacity = null
 
 [node name="Icicle" type="Node2D"]
 z_index = 6
@@ -31,6 +43,7 @@ script = ExtResource("1_kpods")
 visible = false
 modulate = Color(1, 1, 1, 0)
 texture_filter = 1
+material = SubResource("ShaderMaterial_a6d8y")
 texture = ExtResource("2_1n2dx")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]

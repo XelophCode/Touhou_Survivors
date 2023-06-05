@@ -100,7 +100,7 @@ func _ready():
 				cirno_sprite.material.set_shader_parameter("flash_modifier",1.0)
 				cirno_info.visible = false
 
-func _process(delta):
+func _process(_delta):
 	item_disable_cost.position.x = get_global_mouse_position().x
 	item_disable_cost.position.y = get_global_mouse_position().y
 
@@ -301,8 +301,8 @@ func _on_youmu_mouse_exited():
 	youmu_loadout.visible = false
 	cost.visible = false
 
-func show_item_disable_cost(show:bool):
-	item_disable_cost.visible = show
+func show_item_disable_cost(show_val:bool):
+	item_disable_cost.visible = show_val
 
 func _on_cirno_button_down():
 	if locked_characters.has("Cirno"):

@@ -7,3 +7,4 @@ resource_local_to_scene = true
 shader = ExtResource("1_8chpg")
 shader_parameter/flash_color = Color(0.882353, 0.360784, 0.87451, 1)
 shader_parameter/flash_modifier = 1.0
+shader_parameter/opacity = 1.0

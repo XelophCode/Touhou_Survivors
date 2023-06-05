@@ -127,6 +127,7 @@ func _ready():
 	Signals.connect("update_orb_count",catch_update_orb_count)
 	Signals.connect("reroll_gap",catch_reroll_gap)
 	Signals.connect("check_matching_sets",catch_check_matching_sets)
+	Signals.fade_ui.connect(catch_fade_ui)
 	find_rotational_offset()
 	spawn_offset = get_child(0).get_node("main_placement").position * -1
 	global_position += spawn_offset + rotational_offset
@@ -424,3 +425,9 @@ func catch_check_matching_sets():
 						set_matches[match_val] = matches
 						match_val += 1
 						matches = []
+
+func catch_fade_ui(fade):
+	if fade:
+		$AnimationPlayer.play("Inventory_Items/fade_out")
+	else:
+		$AnimationPlayer.play("Inventory_Items/fade_in")

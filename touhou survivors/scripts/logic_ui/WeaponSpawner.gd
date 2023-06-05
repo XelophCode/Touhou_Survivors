@@ -45,10 +45,8 @@ func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bo
 					Globals.used_spellcards_total += 1
 				current_spellcards.append(inventory_item_id)
 				Globals.simul_spellcard += 1
-				print(str(Globals.simul_spellcard))
 				if Globals.simul_spellcard == 5:
-					print("all spells achieved")
-					Globals.all_spellcard = true
+					Globals.all_spellcard = 1
 					
 			
 			inventory_item_ids.append(inventory_item_id)
@@ -90,7 +88,6 @@ func remove_weapon(inventory_item_id:int,active):
 			if current_spellcards.has(inventory_item_id):
 				current_spellcards.erase(inventory_item_id)
 				Globals.simul_spellcard -= 1
-				print(str(Globals.simul_spellcard))
 			inventory_item_ids.erase(inventory_item_id)
 			if active:
 				var timer_inst_id:int = timer_instances[inventory_item_id]

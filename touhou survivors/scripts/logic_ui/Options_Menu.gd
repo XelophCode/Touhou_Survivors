@@ -131,7 +131,7 @@ func load_input(loaded_input:Array,input_action:String):
 	InputMap.action_erase_events(input_action)
 	bind_key(input_array,input_action)
 
-func load_interact_input(loaded_input:Array,input_action:String):
+func load_interact_input(loaded_input:Array,_input_action:String):
 	InputMap.action_erase_events("interact")
 	var input_key = InputEventKey.new()
 	input_key.physical_keycode = loaded_input[0][0]
@@ -380,8 +380,8 @@ func bind_key(action_event,target):
 	for i in action_event:
 		InputMap.action_add_event(target,i)
 
-func save_key_bind(action_target):
-	match action_target:
+func save_key_bind(action_target_local):
+	match action_target_local:
 		"move_up": Appdata.save_file(Appdata.SETTINGS,"MOVE_UP",[[last_action_event[0].physical_keycode,last_action_event[1].physical_keycode],[move_up_0.text,move_up_1.text]])
 		"move_down": Appdata.save_file(Appdata.SETTINGS,"MOVE_DOWN",[[last_action_event[0].physical_keycode,last_action_event[1].physical_keycode],[move_down_0.text,move_down_1.text]])
 		"move_left": Appdata.save_file(Appdata.SETTINGS,"MOVE_LEFT",[[last_action_event[0].physical_keycode,last_action_event[1].physical_keycode],[move_left_0.text,move_left_1.text]])

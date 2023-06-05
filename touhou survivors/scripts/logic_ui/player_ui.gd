@@ -120,7 +120,7 @@ func _ready():
 	screen_center = DisplayServer.window_get_position()
 	screen_center.x += 426.0/2
 	screen_center.y += 240.0/2
-	Globals.crystal_count = 10000
+	Globals.crystal_count = 0
 	$AnimationPlayer.play("fade_out")
 	match Globals.current_character:
 		Globals.Reimu: character_portrait.sprite_frames = reimu_portrait
@@ -155,6 +155,7 @@ func _ready():
 	Signals.connect("hide_tooltip",catch_hide_tooltip)
 	Signals.connect("delete_ui",catch_delete_ui)
 	Signals.connect("show_fps",catch_show_fps)
+	Signals.fade_ui.connect(catch_fade_ui)
 
 func _process(delta):
 	var current_time:String = time_label.text
@@ -505,3 +506,9 @@ func press_to_continue():
 
 func catch_show_fps(value):
 	$UI/FPS.visible = value
+
+func catch_fade_ui(fade):
+	if fade:
+		$AnimationPlayer2.play("fade_out")
+	else:
+		$AnimationPlayer2.play("fade_in")

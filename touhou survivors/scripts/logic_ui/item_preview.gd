@@ -68,7 +68,7 @@ func _ready():
 	Signals.hide_video.connect(catch_hide_video)
 	
 
-func _process(delta):
+func _process(_delta):
 	if visible:
 		if Globals.secondary_input_just_released():
 			visible = false

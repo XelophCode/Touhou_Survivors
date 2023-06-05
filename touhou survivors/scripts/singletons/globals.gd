@@ -24,7 +24,7 @@ var used_items_total:int
 var used_spellcards:Array
 var used_spellcards_total:int
 var simul_spellcard:int
-var all_spellcard:bool
+var all_spellcard:int = 0
 var lilywhite:int = 0
 var daiyousei:int = 0
 var leveling_up:bool
@@ -150,39 +150,39 @@ func pos_neg(value):
 #		0: pass
 
 func item_code_to_string(code:int):
-	var name:String
+	var name_s:String
 	match code:
-		0: name = "Yinyang Orb"
-		1: name = "Sake"
-		2: name = "Gohei"
-		3: name = "Roukanken"
-		4: name = "Throwing Knife"
-		5: name = "Rock"
-		6: name = "Magic Broom"
-		7: name = "Mini Hakkero"
-		8: name = "Homing Amulet"
-		9: name = "Frogs"
-		10: name = "Haniwa"
-		11: name = "Camera"
-		12: name = "Miracle Mallet"
-		13: name = "Persuasion Needles"
-		14: name = "Icicle"
-		15: name = "Youkai Umbrella"
-		16: name = "Purification Rod"
-		17: name = "Mochi Mallet"
-		18: name = "Magic Bomb"
-		19: name = "Shanghai Doll"
-		20: name = "Bats"
-		21: name = "Keystone"
-		22: name = "Gap Umbrella"
-		23: name = "Magic Tome"
-		24: name = "Nature Wand"
-		25: name = "Mushroom"
-		26: name = "Megaphone Gun"
-		27: name = "Lunar Bow"
-		28: name = "Leaf Fan"
-		29: name = "Tripod"
+		0: name_s = "Yinyang Orb"
+		1: name_s = "Sake"
+		2: name_s = "Gohei"
+		3: name_s = "Roukanken"
+		4: name_s = "Throwing Knife"
+		5: name_s = "Rock"
+		6: name_s = "Magic Broom"
+		7: name_s = "Mini Hakkero"
+		8: name_s = "Homing Amulet"
+		9: name_s = "Frogs"
+		10: name_s = "Haniwa"
+		11: name_s = "Camera"
+		12: name_s = "Miracle Mallet"
+		13: name_s = "Persuasion Needles"
+		14: name_s = "Icicle"
+		15: name_s = "Youkai Umbrella"
+		16: name_s = "Purification Rod"
+		17: name_s = "Mochi Mallet"
+		18: name_s = "Magic Bomb"
+		19: name_s = "Shanghai Doll"
+		20: name_s = "Bats"
+		21: name_s = "Keystone"
+		22: name_s = "Gap Umbrella"
+		23: name_s = "Magic Tome"
+		24: name_s = "Nature Wand"
+		25: name_s = "Mushroom"
+		26: name_s = "Megaphone Gun"
+		27: name_s = "Lunar Bow"
+		28: name_s = "Leaf Fan"
+		29: name_s = "Tripod"
 	
-	return name
+	return name_s
 
 

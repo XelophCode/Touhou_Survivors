@@ -42,13 +42,13 @@ func update_cost(num_disabled:int):
 		5: new_cost = 800
 	return new_cost
 
-func mouse_entered(show:bool,id):
+func mouse_entered(show_val:bool,id):
 	if number_disabled < 5:
 		if get_child(id).button_pressed:
 			pass
 		else:
 			owner.item_disable_cost_label.text = str(cost)
-			owner.show_item_disable_cost(show)
+			owner.show_item_disable_cost(show_val)
 
 func _on_check_box_toggled(button_pressed):
 	main_check(button_pressed,0)

@@ -45,7 +45,7 @@ func _ready():
 	loaded_save = Appdata.load_file(Appdata.SAVE)
 	
 	var all_spell_text:String
-	if loaded_save.ALL_SPELLCARDS == true:
+	if loaded_save.ALL_SPELLCARDS == 1:
 		all_spell_text = "1"
 	else:
 		all_spell_text = "0"

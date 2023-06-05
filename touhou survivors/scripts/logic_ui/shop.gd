@@ -8,7 +8,7 @@ enum ITEMS {bat,camera,frog,gohei,haniwa,amulet,icicle,keystone,fan,bow,bomb,bro
 @export var inv_items : all_items
 var rerolling:bool = false
 var can_reroll:bool = false
-var spawn_count:Vector2 = Vector2(1,2)
+var spawn_count:Vector2 = Vector2(8,9)
 var player_level:float = 1.0
 var inventory_items:Array
 var lvling_up:bool = false
@@ -206,6 +206,7 @@ func _on_close_gap_sign_animation_finished():
 		open_shop()
 		$CPUParticles2D.emitting = true
 		$AnimationPlayer.play("stretch")
+		$AnimationPlayer2.play("selection_square_fade_in")
 		$CPUParticles2D2.emitting = true
 	else:
 		can_reroll = true
@@ -232,6 +233,8 @@ func play_open_sfx():
 
 func _on_close_gap_button_up():
 	close_gap()
+	$AnimationPlayer2.play("fade_in")
+	Signals.fade_ui.emit(false)
 
 func _on_reroll_gap_button_up():
 	if can_reroll:
@@ -240,6 +243,7 @@ func _on_reroll_gap_button_up():
 			$close_gap.disabled = true
 			Signals.emit_signal("reroll_gap")
 			$CloseGapSign.play_backwards("default")
+			$AnimationPlayer2.play("selection_square_fade_out")
 			Globals.crystal_count -= 1.0
 			Signals.emit_signal("decrease_crystal_count")
 			can_reroll = false
@@ -247,18 +251,25 @@ func _on_reroll_gap_button_up():
 			Signals.emit_signal("not_enough_crystals")
 
 func _on_close_gap_mouse_entered():
-	Signals.emit_signal("show_hand_cursor",true)
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-	$CloseGapSign.material.set_shader_parameter("line_color",Color(1,1,1,1))
+	if !$close_gap.disabled:
+		Signals.emit_signal("show_hand_cursor",true)
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+		$CloseGapSign.material.set_shader_parameter("line_color",Color(1,1,1,1))
+		$AnimationPlayer2.play("fade_out")
+		Signals.fade_ui.emit(true)
 
 func _on_close_gap_mouse_exited():
-	Signals.emit_signal("show_hand_cursor",false)
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	$CloseGapSign.material.set_shader_parameter("line_color",Color(0,0,0,1))
+	if !$close_gap.disabled:
+		Signals.emit_signal("show_hand_cursor",false)
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		$CloseGapSign.material.set_shader_parameter("line_color",Color(0,0,0,1))
+		$AnimationPlayer2.play("fade_in")
+		Signals.fade_ui.emit(false)
 
 func _on_reroll_gap_mouse_entered():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	Signals.emit_signal("show_hand_cursor",true)
+	
 
 func _on_reroll_gap_mouse_exited():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

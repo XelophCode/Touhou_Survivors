@@ -129,7 +129,7 @@ func _physics_process(delta):
 	
 	if !leveling_up:
 		if hp < $Healthbar.max_value:
-			hp += 0.01
+			hp += 0.013
 		hp -= damage_taken
 		
 		if toggle_focus:
@@ -140,10 +140,10 @@ func _physics_process(delta):
 			
 			
 		else:
-			if Globals.secondary_input_pressed() and !tweening_focus and !focusing:
+			if Input.is_action_just_pressed("interact") and !tweening_focus and !focusing:
 				magic_circle_tween_on(delta)
 			
-			if !Globals.secondary_input_pressed() and !tweening_focus:
+			if !Input.is_action_pressed("interact") and !tweening_focus and focusing:
 				magic_circle_tween_off(delta)
 		
 		move.x = Input.get_action_raw_strength(move_right) - Input.get_action_raw_strength(move_left)
@@ -283,7 +283,7 @@ func magic_circle_tween_on(delta):
 	var tween = create_tween()
 	var current_scale:Vector2 = $MagicCircle/Sprites.scale
 	$MagicCircle/Sprites.scale = Vector2.ZERO
-	tween.tween_property($MagicCircle/Sprites,"scale",current_scale,delta*20)
+	tween.tween_property($MagicCircle/Sprites,"scale",current_scale,delta*10)
 	await tween.finished
 	tweening_focus = false
 
@@ -292,7 +292,7 @@ func magic_circle_tween_off(delta):
 	tweening_focus = true
 	var tween = create_tween()
 	var current_scale = $MagicCircle/Sprites.scale
-	tween.tween_property($MagicCircle/Sprites,"scale",Vector2.ZERO,delta*20)
+	tween.tween_property($MagicCircle/Sprites,"scale",Vector2.ZERO,delta*10)
 	await tween.finished
 	$MagicCircle/Sprites.visible = false
 	$MagicCircle/Sprites.scale = current_scale
@@ -316,7 +316,7 @@ func _on_sun_ray_anim_timer_timeout():
 
 
 func _on_diagonal_input_timeout():
-	if move == Vector2.ZERO and !Input.is_action_pressed("focus"):
+	if move == Vector2.ZERO and !Input.is_action_pressed("interact"):
 		idle_animation = last_diagonal_anim
 		walk_animations.flip_h = last_diagonal_h_flip
 		Globals.player_facing = last_diagonal

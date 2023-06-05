@@ -13,13 +13,14 @@
 resource_local_to_scene = true
 shader = ExtResource("3_s1l3b")
 shader_parameter/rainbow = false
-shader_parameter/line_color = Color(0.184314, 0.996078, 1, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_scale = 0.0
 shader_parameter/frequency = 0.5
 shader_parameter/light_offset = 0.5
 shader_parameter/alpha = 1.0
+shader_parameter/opacity = null
 
-[node name="MagicBroom" type="Node2D"]
+[node name="Roukanken" type="Node2D"]
 z_index = 6
 texture_filter = 1
 script = ExtResource("1_lxcp8")

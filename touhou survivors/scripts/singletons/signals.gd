@@ -121,3 +121,5 @@ signal hide_video
 signal damage_popup_spawn
 signal toggle_focus
 signal hide_hand_cursor
+signal fade_ui
+signal fade_selection_square

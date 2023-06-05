@@ -26,6 +26,7 @@ func _ready():
 		Globals.Youmu: character_art.texture = youmu_char_art
 		Globals.Cirno: character_art.texture = cirno_char_art
 	Signals.connect("leveling_up",leveling_up)
+	Signals.fade_ui.connect(catch_fade_ui)
 	
 	for i in cross_blocked_spaces:
 		var space = $InventoryGrid.get_child(i-1).get_child(0)
@@ -49,3 +50,9 @@ func open_inventory():
 
 func slide_anim_finished():
 	Signals.emit_signal("show_blocked_spaces")
+
+func catch_fade_ui(fade):
+	if fade:
+		$AnimationPlayer2.play("fade_out")
+	else:
+		$AnimationPlayer2.play("fade_in")
