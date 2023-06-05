@@ -10,14 +10,14 @@ func _ready():
 
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
-		if event.is_action_pressed("right_mouse_button"):
+		if event.is_action_pressed("left_mouse_button"):
 			if blocked:
 				if Globals.crystal_count > 0:
 					Signals.emit_signal("remove_blocked_space_sfx")
 					$AnimationPlayer.play("blocked_space_dissolve")
 					monitorable = true
 					monitoring = true
-					Signals.emit_signal("show_right_click_tip",false)
+					Signals.emit_signal("show_hand_cursor",false)
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 					Globals.crystal_count -= 1.0
 					Signals.emit_signal("decrease_crystal_count")
@@ -27,12 +27,12 @@ func _on_input_event(_viewport, event, _shape_idx):
 
 func _on_mouse_entered():
 	if $BlockedSpace.visible == true and !Globals.holding_item:
-		Signals.emit_signal("show_right_click_tip",true)
+		Signals.emit_signal("show_hand_cursor",true)
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func _on_mouse_exited():
 	if $BlockedSpace.visible == true:
-		Signals.emit_signal("show_right_click_tip",false)
+		Signals.emit_signal("show_hand_cursor",false)
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func catch_show_blocked_spaces():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=172 format=3 uid="uid://do63og25gtn6j"]
+[gd_scene load_steps=176 format=3 uid="uid://do63og25gtn6j"]
 
 [ext_resource type="Texture2D" uid="uid://qrttyf07rc81" path="res://sprites/ui/character_select.png" id="1_1h6fy"]
 [ext_resource type="Script" path="res://scripts/logic_ui/character_select.gd" id="1_hwynl"]
@@ -62,8 +62,11 @@
 [ext_resource type="Texture2D" uid="uid://b0xgo7h28ljr2" path="res://sprites/items/item_icons/youkai_umbrella_icon.png" id="39_dolmf"]
 [ext_resource type="Texture2D" uid="uid://dwrn02us5388t" path="res://sprites/items/item_icons/icon_border.png" id="40_7qlrg"]
 [ext_resource type="Script" path="res://scripts/logic_ui/item_remove_buttons.gd" id="41_fcwoo"]
+[ext_resource type="FontFile" uid="uid://cvfmxd484foqv" path="res://resources/fonts/yoster.ttf" id="46_h8g4k"]
 [ext_resource type="Texture2D" uid="uid://c8uuhtaxr64p3" path="res://sprites/ui/cirno_fullbody.png" id="58_ebuxr"]
 [ext_resource type="Texture2D" uid="uid://dsnig4tuwiwyn" path="res://sprites/items/inventory/icicle_item_large.png" id="59_ex546"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lwj6m"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4nj4"]
 
@@ -627,6 +630,12 @@ animations = [{
 "speed": 18.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_obk1n"]
+colors = PackedColorArray(0.815686, 0, 0, 1, 1, 0.467, 0.18, 1)
+
+[sub_resource type="Gradient" id="Gradient_sbmvh"]
+colors = PackedColorArray(0.815686, 0, 0.490196, 1, 1, 0.972549, 0.180392, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ifvd1"]
 resource_local_to_scene = true
 shader = ExtResource("6_ysg0h")
@@ -825,6 +834,7 @@ texture = ExtResource("1_1h6fy")
 centered = false
 
 [node name="CharacterSelect2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-11, 0)
 texture = ExtResource("1_1h6fy")
 centered = false
@@ -837,10 +847,20 @@ offset_bottom = 26.0
 theme_override_fonts/font = ExtResource("10_tgr8l")
 text = "Character Select"
 
+[node name="main_menu" type="Button" parent="."]
+offset_left = 352.0
+offset_top = 3.0
+offset_right = 423.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lwj6m")
+text = "Main Menu"
+
 [node name="Reimu" type="Button" parent="."]
-offset_left = 4.0
+offset_left = 231.0
 offset_top = 39.0
-offset_right = 26.0
+offset_right = 253.0
 offset_bottom = 61.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
@@ -848,9 +868,9 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 
 [node name="Marisa" type="Button" parent="."]
-offset_left = 32.0
+offset_left = 259.0
 offset_top = 39.0
-offset_right = 54.0
+offset_right = 281.0
 offset_bottom = 61.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
@@ -858,19 +878,19 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 
 [node name="Remilia" type="Button" parent="."]
-offset_left = 4.0
-offset_top = 123.0
-offset_right = 26.0
-offset_bottom = 145.0
+offset_left = 287.0
+offset_top = 67.0
+offset_right = 309.0
+offset_bottom = 89.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 
 [node name="Aya" type="Button" parent="."]
-offset_left = 4.0
+offset_left = 231.0
 offset_top = 67.0
-offset_right = 26.0
+offset_right = 253.0
 offset_bottom = 89.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
@@ -878,9 +898,9 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 
 [node name="Suika" type="Button" parent="."]
-offset_left = 32.0
+offset_left = 259.0
 offset_top = 67.0
-offset_right = 54.0
+offset_right = 281.0
 offset_bottom = 89.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
@@ -888,30 +908,30 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 
 [node name="Reisen" type="Button" parent="."]
-offset_left = 32.0
-offset_top = 123.0
-offset_right = 54.0
-offset_bottom = 145.0
+offset_left = 315.0
+offset_top = 67.0
+offset_right = 337.0
+offset_bottom = 89.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 
 [node name="Youmu" type="Button" parent="."]
-offset_left = 4.0
-offset_top = 95.0
-offset_right = 26.0
-offset_bottom = 117.0
+offset_left = 287.0
+offset_top = 39.0
+offset_right = 309.0
+offset_bottom = 61.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 
 [node name="Cirno" type="Button" parent="."]
-offset_left = 32.0
-offset_top = 95.0
-offset_right = 54.0
-offset_bottom = 117.0
+offset_left = 315.0
+offset_top = 39.0
+offset_right = 337.0
+offset_bottom = 61.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
@@ -920,48 +940,48 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
 [node name="characters" type="Node2D" parent="."]
 
 [node name="ReimuSprite" type="AnimatedSprite2D" parent="characters"]
-position = Vector2(15, 50)
+position = Vector2(242, 50)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hm8jp")
 
 [node name="MarisaSprite" type="AnimatedSprite2D" parent="characters"]
-position = Vector2(43, 50)
+position = Vector2(270, 50)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_unbd8")
 
 [node name="RemiliaSprite" type="AnimatedSprite2D" parent="characters"]
 material = SubResource("ShaderMaterial_ars0f")
-position = Vector2(15, 134)
+position = Vector2(298, 78)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_tig1a")
 
 [node name="AyaSprite" type="AnimatedSprite2D" parent="characters"]
 material = SubResource("ShaderMaterial_sucm7")
-position = Vector2(15, 78)
+position = Vector2(242, 78)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sjt8t")
 
 [node name="SuikaSprite" type="AnimatedSprite2D" parent="characters"]
 material = SubResource("ShaderMaterial_1qvkk")
-position = Vector2(43, 78)
+position = Vector2(270, 78)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hxyg1")
 
 [node name="ReisenSprite" type="AnimatedSprite2D" parent="characters"]
 material = SubResource("ShaderMaterial_e8rke")
-position = Vector2(43, 134)
+position = Vector2(326, 78)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_us53x")
 
 [node name="YoumuSprite" type="AnimatedSprite2D" parent="characters"]
 material = SubResource("ShaderMaterial_064fa")
-position = Vector2(15, 106)
+position = Vector2(298, 50)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_t0g4e")
 
 [node name="CirnoSprite" type="AnimatedSprite2D" parent="characters"]
 material = SubResource("ShaderMaterial_whflr")
-position = Vector2(43, 106)
+position = Vector2(326, 50)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_7pcit")
 
@@ -2265,7 +2285,7 @@ vertical_alignment = 1
 
 [node name="cost" type="Node2D" parent="."]
 visible = false
-position = Vector2(-52, -27)
+position = Vector2(-84, -27)
 
 [node name="mon_anim2" type="AnimatedSprite2D" parent="cost"]
 position = Vector2(186, 191)
@@ -2291,71 +2311,95 @@ vertical_alignment = 1
 visible = false
 
 [node name="GoheiItemLarge" type="Sprite2D" parent="Loadouts/reimu_loadout"]
+visible = false
 position = Vector2(207, 75.8095)
 scale = Vector2(0.619048, 0.619048)
 texture = ExtResource("8_co7c0")
 
 [node name="ReimuFullbody" type="Sprite2D" parent="Loadouts/reimu_loadout"]
-position = Vector2(103, 90.75)
+position = Vector2(71, 92.75)
 scale = Vector2(0.916667, 0.916667)
 texture = ExtResource("14_ws2hw")
 
+[node name="Line2D" type="Line2D" parent="Loadouts/reimu_loadout"]
+visible = false
+position = Vector2(2, 0)
+points = PackedVector2Array(5, 161, 108, 161)
+default_color = Color(1, 0.301961, 1, 1)
+gradient = SubResource("Gradient_obk1n")
+
 [node name="Label" type="Label" parent="Loadouts/reimu_loadout"]
-offset_left = 157.0
-offset_top = 34.0
-offset_right = 413.0
-offset_bottom = 60.0
+offset_left = 17.0
+offset_top = 156.0
+offset_right = 273.0
+offset_bottom = 182.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 8
 text = "Reimu Hakurei"
 
 [node name="Label2" type="Label" parent="Loadouts/reimu_loadout"]
-offset_left = 226.0
-offset_top = 57.0
-offset_right = 424.0
-offset_bottom = 99.0
-theme_override_colors/font_color = Color(0.482353, 0.878431, 0.862745, 1)
+offset_left = 6.0
+offset_top = 170.0
+offset_right = 204.0
+offset_bottom = 212.0
+theme_override_colors/font_color = Color(0.101961, 0, 0.133333, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("10_tgr8l")
-theme_override_font_sizes/font_size = 10
-text = "Starts with a Gohei
-item with close
-range & high damage"
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+text = "Starts with a    Gohei
+item with close range 
+and high damage"
+
+[node name="Sprite2D" type="Sprite2D" parent="Loadouts/reimu_loadout"]
+position = Vector2(102, 176)
+texture = ExtResource("16_ph7jh")
 
 [node name="marisa_loadout" type="Node2D" parent="Loadouts"]
 visible = false
 
 [node name="MarisaFullbody" type="Sprite2D" parent="Loadouts/marisa_loadout"]
-position = Vector2(103, 91)
+position = Vector2(70, 93)
 texture = ExtResource("16_0trob")
 
 [node name="MiniHakkeroInventoryLarge" type="Sprite2D" parent="Loadouts/marisa_loadout"]
+visible = false
 position = Vector2(200, 75)
 texture = ExtResource("12_rmmfu")
 
+[node name="Sprite2D2" type="Sprite2D" parent="Loadouts/marisa_loadout"]
+position = Vector2(102, 176)
+texture = ExtResource("27_qwlm8")
+
+[node name="Line2D2" type="Line2D" parent="Loadouts/marisa_loadout"]
+visible = false
+position = Vector2(3, 0)
+points = PackedVector2Array(5, 161, 125, 161)
+default_color = Color(1, 0.301961, 1, 1)
+gradient = SubResource("Gradient_sbmvh")
+
 [node name="Label3" type="Label" parent="Loadouts/marisa_loadout"]
-offset_left = 157.0
-offset_top = 34.0
-offset_right = 413.0
-offset_bottom = 60.0
+offset_left = 7.0
+offset_top = 156.0
+offset_right = 127.0
+offset_bottom = 167.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 8
 text = "Marisa Kirisame"
 
 [node name="Label4" type="Label" parent="Loadouts/marisa_loadout"]
-offset_left = 226.0
-offset_top = 57.0
-offset_right = 424.0
-offset_bottom = 99.0
-theme_override_colors/font_color = Color(0.482353, 0.878431, 0.862745, 1)
+offset_left = 6.0
+offset_top = 170.0
+offset_right = 204.0
+offset_bottom = 215.0
+theme_override_colors/font_color = Color(0.101961, 0, 0.133333, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("10_tgr8l")
-theme_override_font_sizes/font_size = 10
-text = "Starts with a Mini
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+text = "Starts with a    Mini-
 Hakkero, long range
 with medium damage"
 
@@ -2364,44 +2408,51 @@ visible = false
 
 [node name="RemiliaFullbody" type="Sprite2D" parent="Loadouts/remilia_loadout"]
 material = SubResource("ShaderMaterial_ifvd1")
-position = Vector2(102, 91)
+position = Vector2(68, 91)
 texture = ExtResource("16_x0nk4")
 
 [node name="remilia_info" type="Node2D" parent="Loadouts/remilia_loadout"]
 
 [node name="Label5" type="Label" parent="Loadouts/remilia_loadout/remilia_info"]
-offset_left = 157.0
-offset_top = 34.0
-offset_right = 413.0
-offset_bottom = 60.0
+offset_left = 11.0
+offset_top = 158.0
+offset_right = 267.0
+offset_bottom = 184.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 8
 text = "Remilia Scarlet"
 
-[node name="Label6" type="Label" parent="Loadouts/remilia_loadout/remilia_info"]
-offset_left = 226.0
-offset_top = 57.0
-offset_right = 424.0
-offset_bottom = 99.0
-theme_override_colors/font_color = Color(0.482353, 0.878431, 0.862745, 1)
+[node name="Label7" type="Label" parent="Loadouts/remilia_loadout/remilia_info"]
+offset_left = 6.0
+offset_top = 170.0
+offset_right = 204.0
+offset_bottom = 215.0
+theme_override_colors/font_color = Color(0.101961, 0, 0.133333, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("10_tgr8l")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
 text = "Starts with a swarm
-of bats, low damage
+of    Bats, low damage
 good crowd control"
 
+[node name="Sprite2D3" type="Sprite2D" parent="Loadouts/remilia_loadout/remilia_info"]
+position = Vector2(31, 190)
+texture = ExtResource("13_olb1m")
+
 [node name="BatItemLarge" type="Sprite2D" parent="Loadouts/remilia_loadout/remilia_info"]
+visible = false
 position = Vector2(201, 68)
 texture = ExtResource("17_4imcn")
 
 [node name="BatItemLarge2" type="Sprite2D" parent="Loadouts/remilia_loadout/remilia_info"]
+visible = false
 position = Vector2(212, 72)
 texture = ExtResource("17_4imcn")
 
 [node name="BatItemLarge3" type="Sprite2D" parent="Loadouts/remilia_loadout/remilia_info"]
+visible = false
 position = Vector2(204, 85)
 texture = ExtResource("17_4imcn")
 
@@ -2410,69 +2461,93 @@ visible = false
 
 [node name="AyaFullbody" type="Sprite2D" parent="Loadouts/aya_loadout"]
 material = SubResource("ShaderMaterial_mmqbd")
-position = Vector2(106, 95)
+position = Vector2(66, 95)
 texture = ExtResource("18_rbabs")
 
 [node name="aya_info" type="Node2D" parent="Loadouts/aya_loadout"]
 
+[node name="Sprite2D4" type="Sprite2D" parent="Loadouts/aya_loadout/aya_info"]
+position = Vector2(72, 176)
+texture = ExtResource("14_xge3k")
+
 [node name="CameraInventoryLarge" type="Sprite2D" parent="Loadouts/aya_loadout/aya_info"]
+visible = false
 position = Vector2(192, 70)
 texture = ExtResource("19_ld5ku")
 
 [node name="Label5" type="Label" parent="Loadouts/aya_loadout/aya_info"]
-offset_left = 157.0
-offset_top = 34.0
-offset_right = 413.0
-offset_bottom = 60.0
+offset_left = 8.0
+offset_top = 159.0
+offset_right = 264.0
+offset_bottom = 185.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 8
 text = "Aya Shameimaru"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label6" type="Label" parent="Loadouts/aya_loadout/aya_info"]
-offset_left = 214.0
-offset_top = 57.0
-offset_right = 424.0
-offset_bottom = 99.0
-theme_override_colors/font_color = Color(0.482353, 0.878431, 0.862745, 1)
+[node name="Label8" type="Label" parent="Loadouts/aya_loadout/aya_info"]
+offset_left = 6.0
+offset_top = 170.0
+offset_right = 204.0
+offset_bottom = 215.0
+theme_override_colors/font_color = Color(0.101961, 0, 0.133333, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("10_tgr8l")
-theme_override_font_sizes/font_size = 10
-text = "Starts a camera, 
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+text = "Starts a    Camera, 
 hits multiple enemies
 for medium damage"
-metadata/_edit_use_anchors_ = true
 
 [node name="suika_loadout" type="Node2D" parent="Loadouts"]
 visible = false
 
 [node name="SuikaFullbody" type="Sprite2D" parent="Loadouts/suika_loadout"]
 material = SubResource("ShaderMaterial_gkff3")
-position = Vector2(98, 92)
+position = Vector2(64, 92)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("20_tfusd")
 
 [node name="suika_info" type="Node2D" parent="Loadouts/suika_loadout"]
 
+[node name="Sprite2D5" type="Sprite2D" parent="Loadouts/suika_loadout/suika_info"]
+position = Vector2(103, 176)
+texture = ExtResource("34_n8xc1")
+
 [node name="Sakebottle" type="Sprite2D" parent="Loadouts/suika_loadout/suika_info"]
+visible = false
 position = Vector2(193, 76.8095)
 scale = Vector2(0.619048, 0.619048)
 texture = ExtResource("21_1xgna")
 
 [node name="Label5" type="Label" parent="Loadouts/suika_loadout/suika_info"]
-offset_left = 157.0
-offset_top = 34.0
-offset_right = 413.0
-offset_bottom = 60.0
+offset_left = 21.0
+offset_top = 159.0
+offset_right = 277.0
+offset_bottom = 185.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 8
 text = "Suika Ibuki"
 metadata/_edit_use_anchors_ = true
 
+[node name="Label9" type="Label" parent="Loadouts/suika_loadout/suika_info"]
+offset_left = 6.0
+offset_top = 170.0
+offset_right = 204.0
+offset_bottom = 215.0
+theme_override_colors/font_color = Color(0.101961, 0, 0.133333, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+text = "Starts with a    Sake
+Bottle, medium range
+with large damage"
+
 [node name="Label6" type="Label" parent="Loadouts/suika_loadout/suika_info"]
+visible = false
 offset_left = 214.0
 offset_top = 57.0
 offset_right = 424.0
@@ -2492,29 +2567,49 @@ visible = false
 
 [node name="ReisenFullbody" type="Sprite2D" parent="Loadouts/reisen_loadout"]
 material = SubResource("ShaderMaterial_ut2d0")
-position = Vector2(99, 95)
+position = Vector2(64, 95)
 texture = ExtResource("23_d5j5p")
 
 [node name="reisen_info" type="Node2D" parent="Loadouts/reisen_loadout"]
 
+[node name="Sprite2D6" type="Sprite2D" parent="Loadouts/reisen_loadout/reisen_info"]
+position = Vector2(9, 190)
+texture = ExtResource("26_qg833")
+
 [node name="Sakebottle" type="Sprite2D" parent="Loadouts/reisen_loadout/reisen_info"]
+visible = false
 position = Vector2(172, 70.8095)
 scale = Vector2(0.904762, 0.904762)
 texture = ExtResource("24_80qcc")
 
 [node name="Label5" type="Label" parent="Loadouts/reisen_loadout/reisen_info"]
-offset_left = 112.0
-offset_top = 34.0
-offset_right = 448.0
-offset_bottom = 60.0
+offset_left = 7.0
+offset_top = 159.0
+offset_right = 343.0
+offset_bottom = 185.0
+scale = Vector2(0.8, 0.8)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_tgr8l")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 8
 text = "Reisen Udongein Inaba"
 metadata/_edit_use_anchors_ = true
 
+[node name="Label10" type="Label" parent="Loadouts/reisen_loadout/reisen_info"]
+offset_left = 3.0
+offset_top = 170.0
+offset_right = 201.0
+offset_bottom = 215.0
+theme_override_colors/font_color = Color(0.101961, 0, 0.133333, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+text = "Starts with a 
+   Megaphone Gun that 
+fires a ton of bullets"
+
 [node name="Label6" type="Label" parent="Loadouts/reisen_loadout/reisen_info"]
+visible = false
 offset_left = 194.0
 offset_top = 57.0
 offset_right = 424.0
@@ -2534,28 +2629,49 @@ visible = false
 
 [node name="YoumuFullbody" type="Sprite2D" parent="Loadouts/youmu_loadout"]
 material = SubResource("ShaderMaterial_hlh8d")
-position = Vector2(103, 89)
+position = Vector2(70, 89)
 texture = ExtResource("26_g2d17")
 
 [node name="youmu_info" type="Node2D" parent="Loadouts/youmu_loadout"]
 
+[node name="Sprite2D7" type="Sprite2D" parent="Loadouts/youmu_loadout/youmu_info"]
+position = Vector2(78, 175)
+texture = ExtResource("33_gjugo")
+
 [node name="roukanken" type="Sprite2D" parent="Loadouts/youmu_loadout/youmu_info"]
+visible = false
 position = Vector2(165.318, 75.4286)
 scale = Vector2(0.736607, 0.736607)
 texture = ExtResource("27_wo3kn")
 
 [node name="Label5" type="Label" parent="Loadouts/youmu_loadout/youmu_info"]
-offset_left = 145.0
-offset_top = 32.0
-offset_right = 481.0
-offset_bottom = 58.0
+offset_left = 13.0
+offset_top = 158.0
+offset_right = 349.0
+offset_bottom = 184.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 8
 text = "Youmu Konpaku"
 metadata/_edit_use_anchors_ = true
 
+[node name="Label11" type="Label" parent="Loadouts/youmu_loadout/youmu_info"]
+offset_left = 2.0
+offset_top = 170.0
+offset_right = 200.0
+offset_bottom = 215.0
+scale = Vector2(0.9, 0.9)
+theme_override_colors/font_color = Color(0.101961, 0, 0.133333, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+text = "Starts with    Roukanken
+Unleash a spinning slash
+at nearby enemies"
+
 [node name="Label6" type="Label" parent="Loadouts/youmu_loadout/youmu_info"]
+visible = false
 offset_left = 181.0
 offset_top = 57.0
 offset_right = 421.0
@@ -2575,28 +2691,49 @@ visible = false
 
 [node name="CirnoFullbody" type="Sprite2D" parent="Loadouts/cirno_loadout"]
 material = SubResource("ShaderMaterial_s1mgp")
-position = Vector2(111, 95)
+position = Vector2(71, 95)
 texture = ExtResource("58_ebuxr")
 
 [node name="cirno_info" type="Node2D" parent="Loadouts/cirno_loadout"]
 
+[node name="Sprite2D8" type="Sprite2D" parent="Loadouts/cirno_loadout/cirno_info"]
+position = Vector2(98, 175)
+texture = ExtResource("19_e8sdn")
+
 [node name="icicle" type="Sprite2D" parent="Loadouts/cirno_loadout/cirno_info"]
+visible = false
 position = Vector2(165.318, 75.4286)
 scale = Vector2(0.736607, 0.736607)
 texture = ExtResource("59_ex546")
 
 [node name="Label5" type="Label" parent="Loadouts/cirno_loadout/cirno_info"]
-offset_left = 175.0
-offset_top = 32.0
-offset_right = 511.0
-offset_bottom = 58.0
+offset_left = 42.0
+offset_top = 158.0
+offset_right = 378.0
+offset_bottom = 184.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_tgr8l")
+theme_override_font_sizes/font_size = 8
 text = "Cirno"
 metadata/_edit_use_anchors_ = true
 
+[node name="Label12" type="Label" parent="Loadouts/cirno_loadout/cirno_info"]
+offset_left = 2.0
+offset_top = 170.0
+offset_right = 200.0
+offset_bottom = 215.0
+scale = Vector2(0.9, 0.9)
+theme_override_colors/font_color = Color(0.101961, 0, 0.133333, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+text = "Starts with an     Icicle
+that fragments after
+colliding with an enemy"
+
 [node name="Label6" type="Label" parent="Loadouts/cirno_loadout/cirno_info"]
+visible = false
 offset_left = 181.0
 offset_top = 57.0
 offset_right = 421.0
@@ -2680,6 +2817,7 @@ text = "800"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="button_up" from="main_menu" to="." method="_on_main_menu_button_up"]
 [connection signal="button_down" from="Reimu" to="." method="_on_reimu_button_down"]
 [connection signal="mouse_entered" from="Reimu" to="." method="_on_reimu_mouse_entered"]
 [connection signal="mouse_exited" from="Reimu" to="." method="_on_reimu_mouse_exited"]

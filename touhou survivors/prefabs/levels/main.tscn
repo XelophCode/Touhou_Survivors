@@ -84,7 +84,6 @@ position = Vector2(-1, 0)
 texture = ExtResource("5_ej2wf")
 
 [node name="obstacle_parent" type="Node2D" parent="."]
-visible = false
 
 [node name="player_afterimage" type="Node2D" parent="."]
 material = SubResource("ShaderMaterial_qx4cd")
@@ -98,7 +97,6 @@ player_afterimage = ExtResource("7_e0sq4")
 [node name="EnemySpawner" parent="." instance=ExtResource("5_cql0f")]
 
 [node name="damage_parent" type="Node2D" parent="."]
-visible = false
 script = ExtResource("12_xt1t1")
 
 [node name="mon_spawner" parent="." instance=ExtResource("11_8j68e")]

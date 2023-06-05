@@ -1,4 +1,4 @@
-[gd_scene load_steps=161 format=3 uid="uid://cxtno75a58bkv"]
+[gd_scene load_steps=165 format=3 uid="uid://cxtno75a58bkv"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/player_ui.gd" id="1_i5u1q"]
 [ext_resource type="SpriteFrames" uid="uid://bfm8psvacuqtm" path="res://sprites/ui/character_portraits/reimu_portrait.tres" id="2_lwihl"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://dwrn02us5388t" path="res://sprites/items/item_icons/icon_border.png" id="18_i862g"]
 [ext_resource type="PackedScene" uid="uid://cokydxk2wfjqf" path="res://prefabs/logic_ui/right_click_tip.tscn" id="19_2m38r"]
 [ext_resource type="Texture2D" uid="uid://bad488ler0kop" path="res://sprites/ui/damage_fullscreen.png" id="20_g8vl8"]
+[ext_resource type="Texture2D" uid="uid://c35rhx8jr4c2x" path="res://sprites/ui/RMB.png" id="26_ns0hv"]
 [ext_resource type="Texture2D" uid="uid://brrahyuj8m1ta" path="res://sprites/ui/pause_overlay.png" id="27_knhde"]
 [ext_resource type="Texture2D" uid="uid://d038ycc11e2qo" path="res://sprites/ui/fullscreen_red.png" id="32_71p5m"]
 [ext_resource type="PackedScene" uid="uid://c0kbh78tuyeb4" path="res://prefabs/logic_ui/options_menu.tscn" id="34_xnond"]
@@ -444,6 +445,28 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 19.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73o0f"]
+atlas = ExtResource("26_ns0hv")
+region = Rect2(0, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukgei"]
+atlas = ExtResource("26_ns0hv")
+region = Rect2(13, 0, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjedk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73o0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukgei")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
 }]
 
 [sub_resource type="Curve" id="Curve_jnjyb"]
@@ -1885,13 +1908,13 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="inven_button_prompts" type="Node2D" parent="UI"]
-visible = false
 
 [node name="Q_button_prompt" type="Node2D" parent="UI/inven_button_prompts"]
 visible = false
 position = Vector2(-94, 0)
 
 [node name="IconBorder" type="Sprite2D" parent="UI/inven_button_prompts/Q_button_prompt"]
+visible = false
 position = Vector2(233, 230)
 texture = ExtResource("18_i862g")
 
@@ -1902,13 +1925,20 @@ offset_right = 269.0
 offset_bottom = 249.0
 theme_override_fonts/font = ExtResource("3_nqdip")
 theme_override_font_sizes/font_size = 8
-text = "Q show item description"
+text = "  show item description"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/inven_button_prompts/Q_button_prompt"]
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_qjedk")
+autoplay = "default"
+frame_progress = 0.344245
 
 [node name="R_button_prompt" type="Node2D" parent="UI/inven_button_prompts"]
 visible = false
-position = Vector2(-57, 0)
+position = Vector2(-62, 0)
 
 [node name="IconBorder" type="Sprite2D" parent="UI/inven_button_prompts/R_button_prompt"]
+visible = false
 position = Vector2(233, 230)
 texture = ExtResource("18_i862g")
 
@@ -1919,7 +1949,13 @@ offset_right = 269.0
 offset_bottom = 249.0
 theme_override_fonts/font = ExtResource("3_nqdip")
 theme_override_font_sizes/font_size = 8
-text = "R rotate item"
+text = "  rotate item"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/inven_button_prompts/R_button_prompt"]
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_qjedk")
+autoplay = "default"
+frame_progress = 0.669013
 
 [node name="PortraitAnims" type="Timer" parent="."]
 wait_time = 5.0
@@ -1987,7 +2023,6 @@ texture = ExtResource("11_88u87")
 centered = false
 
 [node name="FullscreenBlackIntro" type="Node2D" parent="."]
-visible = false
 
 [node name="FullscreenBlack2" type="Sprite2D" parent="FullscreenBlackIntro"]
 z_index = 20

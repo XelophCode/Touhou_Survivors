@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://cah8y53sm3blk"]
+[gd_scene load_steps=90 format=3 uid="uid://cah8y53sm3blk"]
 
 [ext_resource type="Script" path="res://scripts/misc/Player.gd" id="1_37at3"]
 [ext_resource type="SpriteFrames" uid="uid://1ntee1x116bu" path="res://sprites/actors/player_anims/reimu_anims.tres" id="2_7dit5"]
@@ -65,9 +65,15 @@ item = ExtResource("27_8ne25")
 cooldown = 3
 occult_orb = true
 
+[sub_resource type="Resource" id="Resource_853wh"]
+script = ExtResource("21_du15d")
+item = ExtResource("27_8ne25")
+cooldown = 8
+occult_orb = true
+
 [sub_resource type="Resource" id="Resource_75lpr"]
 script = ExtResource("19_qb5qy")
-starting_item = Array[ExtResource("21_du15d")]([SubResource("Resource_we5km")])
+starting_item = Array[ExtResource("21_du15d")]([SubResource("Resource_we5km"), SubResource("Resource_853wh")])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_emnmw"]
 radius = 14.0357

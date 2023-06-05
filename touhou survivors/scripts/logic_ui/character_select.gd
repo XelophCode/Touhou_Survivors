@@ -327,3 +327,10 @@ func _on_cirno_mouse_exited():
 	cirno_sprite.stop()
 	cirno_loadout.visible = false
 	cost.visible = false
+
+
+func _on_main_menu_button_up():
+	Globals.disabled_items = []
+	await get_tree().create_timer(0.1).timeout
+	
+	get_tree().change_scene_to_file("res://prefabs/levels/main_menu.tscn")

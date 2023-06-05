@@ -70,6 +70,7 @@ var move_down = "move_disabled"
 var toggle_focus:bool
 
 func _ready():
+	Globals.leveling_up = false
 	var loaded_settings = Appdata.load_file(Appdata.SETTINGS)
 	toggle_focus = loaded_settings.TOGGLE_FOCUS
 	

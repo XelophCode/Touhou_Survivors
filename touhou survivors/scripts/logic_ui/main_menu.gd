@@ -19,8 +19,20 @@ extends Node2D
 @export var daiyousei:Label
 @export var characters:Label
 
+@export_group("tutorial_videos")
+@export var pg_1_1:VideoStreamPlayer
+@export var pg_1_2:VideoStreamPlayer
+@export var pg_1_3:VideoStreamPlayer
+@export var pg_2_1:VideoStreamPlayer
+@export var pg_2_2:VideoStreamPlayer
+@export var pg_3_1:VideoStreamPlayer
+@export var pg_3_2:VideoStreamPlayer
+
 var reset_audio_DB:float
 var loaded_save
+var current_tut_page:int = 1
+var doing_panning_anim:bool = true
+var doing_press_start_anim:bool = false
 
 func _ready():
 	Signals.connect("options_menu_closed",catch_options_menu_closed)
@@ -32,6 +44,12 @@ func _ready():
 	
 	loaded_save = Appdata.load_file(Appdata.SAVE)
 	
+	var all_spell_text:String
+	if loaded_save.ALL_SPELLCARDS == true:
+		all_spell_text = "1"
+	else:
+		all_spell_text = "0"
+	
 	time_survived.text = loaded_save.BEST_TIME_STRING
 	lifetime_mon.text = str(loaded_save.MON_LIFETIME)
 	deaths.text = str(loaded_save.DEATHS)
@@ -39,7 +57,7 @@ func _ready():
 	crystals.text = str(loaded_save.CRYSTALS_LIFETIME)
 	items.text = str(loaded_save.ITEMS_USED) + "/27"
 	spellcards.text = str(loaded_save.SPELLCARDS_USED) + "/5"
-	spellcard_all.text = str(loaded_save.ALL_SPELLCARDS) + "/1"
+	spellcard_all.text = all_spell_text + "/1"
 	lily_white.text = str(loaded_save.LILY_WHITE) + "/1"
 	daiyousei.text = str(loaded_save.DAIYOUSEI) + "/1"
 	characters.text = str(8 - loaded_save.LOCKED_CHARACTERS.size()) + "/8"
@@ -48,7 +66,7 @@ func _ready():
 
 func _process(_delta):
 	
-	if !$PressStart.visible and !$Buttons.visible:
+	if doing_panning_anim and !doing_press_start_anim:
 		if Globals.any_input_just_pressed():
 			main_animation_player.stop()
 			main_menu_bg.position.y = 480
@@ -58,8 +76,9 @@ func _process(_delta):
 			main_menu_logo.material.set_shader_parameter("flash_modifier",0.0)
 			main_menu_logo.material.set_shader_parameter("opacity",1.0)
 			show_press_start()
-	elif $PressStart.visible and !$Buttons.visible:
+	elif !doing_panning_anim and doing_press_start_anim:
 		if Globals.any_input_just_pressed():
+			doing_press_start_anim = false
 			$Buttons.visible = true
 			$PressStart.visible = false
 			$Audio/select.play()
@@ -68,6 +87,8 @@ func fade_in_logo():
 	main_animation_player.play("logo_fade_in")
 
 func show_press_start():
+	doing_panning_anim = false
+	doing_press_start_anim = true
 	$PressStart.visible = true
 	main_animation_player.play("press_start")
 
@@ -102,7 +123,9 @@ func _on_quit_button_down():
 	get_tree().quit()
 
 func _on_manual_button_up():
-	$Tutorial.visible = true
+	current_tut_page = 1
+	$tutorial_overlay.visible = true
+	play_videos()
 
 func _on_options_button_down():
 	$options_overlay.visible = true
@@ -121,19 +144,59 @@ func _on_close_button_down():
 	$Buttons/manual.visible = true
 	$Buttons/credits.visible = true
 
-func _on_nextpage_button_up():
-	$Tutorial/page_1.visible = false
-	$Tutorial/page_2.visible = true
-
-func _on_prevpage_button_up():
-	$Tutorial/page_1.visible = true
-	$Tutorial/page_2.visible = false
-
-func _on_closttutorial_button_up():
-	$Tutorial.visible = false
-
 func _on_achievements_button_down():
 	$Achievements.visible = true
 
 func _on_closeachievements_button_up():
 	$Achievements.visible = false
+
+
+func _on_close_tutorial_button_up():
+	stop_videos()
+	$tutorial_overlay.visible = false
+	$tutorial_overlay/Tutorial/page_1.visible = true
+	$tutorial_overlay/Tutorial/page_2.visible = false
+	$tutorial_overlay/Tutorial/page_3.visible = false
+	$tutorial_overlay/Tutorial/page_4.visible = false
+	$tutorial_overlay/Tutorial/arrow_left.visible = false
+	$tutorial_overlay/Tutorial/arrow_right.visible = true
+
+func change_tut_page():
+	$tutorial_overlay/Tutorial/page_1.visible = false
+	$tutorial_overlay/Tutorial/page_2.visible = false
+	$tutorial_overlay/Tutorial/page_3.visible = false
+	$tutorial_overlay/Tutorial/page_4.visible = false
+	
+	match current_tut_page:
+		1: $tutorial_overlay/Tutorial/page_1.visible = true; $tutorial_overlay/Tutorial/arrow_left.visible = false
+		2: $tutorial_overlay/Tutorial/page_2.visible = true; $tutorial_overlay/Tutorial/arrow_left.visible = true
+		3: $tutorial_overlay/Tutorial/page_3.visible = true; $tutorial_overlay/Tutorial/arrow_right.visible = true
+		4: $tutorial_overlay/Tutorial/page_4.visible = true; $tutorial_overlay/Tutorial/arrow_right.visible = false
+
+func play_videos():
+	stop_videos()
+	
+	match current_tut_page:
+		1: pg_1_1.play();pg_1_2.play();pg_1_3.play()
+		2: pg_2_1.play();pg_2_2.play()
+		3: pg_3_1.play();pg_3_2.play()
+		4: pass
+
+func stop_videos():
+	pg_1_1.stop()
+	pg_1_2.stop()
+	pg_1_3.stop()
+	pg_2_1.stop()
+	pg_2_2.stop()
+	pg_3_1.stop()
+	pg_3_2.stop()
+
+func _on_b_arrow_left_button_up():
+	current_tut_page -= 1
+	change_tut_page()
+	play_videos()
+
+func _on_b_arrow_right_button_up():
+	current_tut_page += 1
+	change_tut_page()
+	play_videos()

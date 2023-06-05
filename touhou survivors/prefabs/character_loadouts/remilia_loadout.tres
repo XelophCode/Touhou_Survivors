@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StartingItemArrayResource" load_steps=5 format=3 uid="uid://fgm8ffl4ij5a"]
+[gd_resource type="Resource" script_class="StartingItemArrayResource" load_steps=8 format=3 uid="uid://fgm8ffl4ij5a"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/starting_item_array_resource.gd" id="1_qfjun"]
 [ext_resource type="Resource" uid="uid://cqv7rgl04f0xk" path="res://prefabs/inventory/resources/Bat.tres" id="2_6615j"]
@@ -10,6 +10,24 @@ item = ExtResource("2_6615j")
 cooldown = 3
 occult_orb = false
 
+[sub_resource type="Resource" id="Resource_neg5u"]
+script = ExtResource("3_gbkpt")
+item = ExtResource("2_6615j")
+cooldown = 4
+occult_orb = true
+
+[sub_resource type="Resource" id="Resource_nacgt"]
+script = ExtResource("3_gbkpt")
+item = ExtResource("2_6615j")
+cooldown = 5
+occult_orb = false
+
+[sub_resource type="Resource" id="Resource_5ajoq"]
+script = ExtResource("3_gbkpt")
+item = ExtResource("2_6615j")
+cooldown = 6
+occult_orb = true
+
 [resource]
 script = ExtResource("1_qfjun")
-starting_item = Array[ExtResource("3_gbkpt")]([SubResource("Resource_t4sdo")])
+starting_item = Array[ExtResource("3_gbkpt")]([SubResource("Resource_t4sdo"), SubResource("Resource_neg5u"), SubResource("Resource_nacgt"), SubResource("Resource_5ajoq")])

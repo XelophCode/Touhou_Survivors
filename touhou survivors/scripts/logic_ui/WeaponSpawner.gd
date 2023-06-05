@@ -23,6 +23,7 @@ func _ready():
 	Globals.simul_spellcard = 0
 	Globals.all_spellcard = loaded_save.ALL_SPELLCARDS
 
+
 func _process(_delta):
 	var counter = 0
 	if $icon_instances.get_child_count() != 0:
@@ -41,11 +42,13 @@ func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bo
 			else:
 				if !Globals.used_spellcards.has(str(icon.resource_path)):
 					Globals.used_spellcards.append(str(icon.resource_path))
-					current_spellcards.append(inventory_item_id)
 					Globals.used_spellcards_total += 1
-					Globals.simul_spellcard += 1
-					if Globals.simul_spellcard == 5:
-						Globals.all_spellcard = 1
+				current_spellcards.append(inventory_item_id)
+				Globals.simul_spellcard += 1
+				print(str(Globals.simul_spellcard))
+				if Globals.simul_spellcard == 5:
+					print("all spells achieved")
+					Globals.all_spellcard = true
 					
 			
 			inventory_item_ids.append(inventory_item_id)
@@ -75,7 +78,7 @@ func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bo
 			scene_inst.alt_fire = rotated
 			Signals.emit_signal("weapon_add_child",scene_inst)
 
-func spawn_weapon(item,rotated):
+func spawn_weapon(item,rotated:bool = false):
 	var new_weapon_inst = item.instantiate()
 	new_weapon_inst.alt_fire = rotated
 	Signals.emit_signal("weapon_add_child",new_weapon_inst)
@@ -87,6 +90,7 @@ func remove_weapon(inventory_item_id:int,active):
 			if current_spellcards.has(inventory_item_id):
 				current_spellcards.erase(inventory_item_id)
 				Globals.simul_spellcard -= 1
+				print(str(Globals.simul_spellcard))
 			inventory_item_ids.erase(inventory_item_id)
 			if active:
 				var timer_inst_id:int = timer_instances[inventory_item_id]

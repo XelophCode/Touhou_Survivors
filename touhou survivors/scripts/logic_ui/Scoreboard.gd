@@ -38,6 +38,7 @@ func _ready():
 	Signals.connect("update_crystal",catch_update_crystal)
 
 func _process(delta):
+	pass
 	if Input.is_action_just_pressed("inventory"):
 		do_lvl_up()
 
@@ -54,16 +55,17 @@ func check_for_lvl_up():
 
 func do_lvl_up():
 	player_level += 1.0
+	Globals.leveling_up = true
 	Signals.emit_signal("leveling_up",true)
 	power = power - next_lvl
 	
 	match player_level:
-		3.0: next_lvl_increase_rate = 1.6
-		4.0: next_lvl_increase_rate = 1.5
-		7.0: next_lvl_increase_rate = 1.4
-		9.0: next_lvl_increase_rate = 1.3
-		11.0: next_lvl_increase_rate = 1.2
-		15.0: next_lvl_increase_rate = 1.1
+		3.0: next_lvl_increase_rate = 1.5
+		4.0: next_lvl_increase_rate = 1.4
+		7.0: next_lvl_increase_rate = 1.3
+		9.0: next_lvl_increase_rate = 1.2
+		11.0: next_lvl_increase_rate = 1.1
+		20.0: next_lvl_increase_rate = 1.0
 		_: pass
 	
 	next_lvl *= next_lvl_increase_rate

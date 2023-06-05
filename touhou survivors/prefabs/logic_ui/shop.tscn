@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://6dwuqj2vu1k8"]
+[gd_scene load_steps=60 format=3 uid="uid://6dwuqj2vu1k8"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/shop.gd" id="1_gaew4"]
 [ext_resource type="Resource" uid="uid://bhrux5cunou3f" path="res://prefabs/inventory/resources/all_items.tres" id="2_p2j3w"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://c6gqjha4fs8e2" path="res://sprites/ui/shop_grid_2.png" id="11_ofdtv"]
 [ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="12_ghm23"]
 [ext_resource type="Texture2D" uid="uid://bx02v6cc6dfdv" path="res://sprites/ui/shop_close_sign.png" id="13_n2lm3"]
+[ext_resource type="FontFile" uid="uid://cvfmxd484foqv" path="res://resources/fonts/yoster.ttf" id="14_3auu1"]
+[ext_resource type="Texture2D" uid="uid://ctwladrgqpetb" path="res://sprites/ui/shop_buttons.png" id="15_wgucu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5q2q"]
 atlas = ExtResource("3_qcc5h")
@@ -376,34 +378,36 @@ animations = [{
 "speed": 9.0
 }]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vwgy2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ht5wi"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 7.0
+expand_margin_right = 7.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kfvc5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7db8"]
+bg_color = Color(0.215686, 0.215686, 0.215686, 1)
+expand_margin_left = 7.0
+expand_margin_right = 7.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yv221"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0m1d2"]
+bg_color = Color(0.364706, 0.364706, 0.364706, 1)
+expand_margin_left = 7.0
+expand_margin_right = 7.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32618"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60std"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 7.0
+expand_margin_right = 7.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tuowy"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wo5dt"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fi8pl"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vib5l"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_atitf"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_30pud"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_86slv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f28bm"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 7.0
+expand_margin_right = 7.0
 
 [node name="Shop" type="Node2D"]
 z_index = 16
+texture_filter = 1
 script = ExtResource("1_gaew4")
 inv_items = ExtResource("2_p2j3w")
 
@@ -975,33 +979,44 @@ material = SubResource("ShaderMaterial_ho1os")
 position = Vector2(1, 69)
 sprite_frames = SubResource("SpriteFrames_22g1q")
 
-[node name="CloseGap" type="Button" parent="."]
-offset_left = -33.0
-offset_top = 66.0
-offset_right = 36.0
-offset_bottom = 98.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_vwgy2")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_kfvc5")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_yv221")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_32618")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_tuowy")
+[node name="close_gap" type="Button" parent="."]
+offset_left = -83.0
+offset_top = 70.0
+offset_right = -11.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("14_3auu1")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_ht5wi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h7db8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0m1d2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_60std")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wo5dt")
+text = "Close Gap"
 
-[node name="Reroll" type="Button" parent="."]
-offset_left = -34.0
-offset_top = 90.0
-offset_right = -10.0
-offset_bottom = 97.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_fi8pl")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vib5l")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_atitf")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_30pud")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_86slv")
-button_mask = 2
+[node name="reroll_gap" type="Button" parent="."]
+offset_left = 10.0
+offset_top = 70.0
+offset_right = 82.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("14_3auu1")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_ht5wi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h7db8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0m1d2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_f28bm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wo5dt")
+text = "Reroll"
+
+[node name="ShopButtons" type="Sprite2D" parent="."]
+position = Vector2(0, 78)
+texture = ExtResource("15_wgucu")
 
 [connection signal="animation_finished" from="CloseGapSign" to="." method="_on_close_gap_sign_animation_finished"]
-[connection signal="button_down" from="CloseGap" to="." method="_on_close_gap_button_down"]
-[connection signal="mouse_entered" from="CloseGap" to="." method="_on_close_gap_mouse_entered"]
-[connection signal="mouse_exited" from="CloseGap" to="." method="_on_close_gap_mouse_exited"]
-[connection signal="button_down" from="Reroll" to="." method="_on_reroll_button_down"]
-[connection signal="mouse_entered" from="Reroll" to="." method="_on_reroll_mouse_entered"]
-[connection signal="mouse_exited" from="Reroll" to="." method="_on_reroll_mouse_exited"]
+[connection signal="button_up" from="close_gap" to="." method="_on_close_gap_button_up"]
+[connection signal="mouse_entered" from="close_gap" to="." method="_on_close_gap_mouse_entered"]
+[connection signal="mouse_exited" from="close_gap" to="." method="_on_close_gap_mouse_exited"]
+[connection signal="button_up" from="reroll_gap" to="." method="_on_reroll_gap_button_up"]
+[connection signal="mouse_entered" from="reroll_gap" to="." method="_on_reroll_gap_mouse_entered"]
+[connection signal="mouse_exited" from="reroll_gap" to="." method="_on_reroll_gap_mouse_exited"]

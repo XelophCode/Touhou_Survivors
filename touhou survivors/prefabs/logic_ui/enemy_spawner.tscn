@@ -33,6 +33,7 @@ daiyousei = ExtResource("14_v1t1n")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
+autostart = true
 
 [node name="EnemyParent" type="Node2D" parent="."]
 

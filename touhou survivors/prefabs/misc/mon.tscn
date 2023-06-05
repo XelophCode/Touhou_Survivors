@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1q35i5sr0tiq"]
+[gd_scene load_steps=17 format=3 uid="uid://b1q35i5sr0tiq"]
 
 [ext_resource type="Script" path="res://scripts/misc/mon_pickup.gd" id="1_83nte"]
 [ext_resource type="Texture2D" uid="uid://pxw6irgq5bpa" path="res://sprites/items/pickups/mon.png" id="2_6av2j"]
@@ -78,6 +78,41 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_c45no"]
 radius = 2.0
 
+[sub_resource type="Animation" id="Animation_0yjkb"]
+resource_name = "flicker"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xlkon"]
+_data = {
+"flicker": SubResource("Animation_0yjkb")
+}
+
 [node name="mon" type="Node2D" node_paths=PackedStringArray("sprite")]
 texture_filter = 1
 script = ExtResource("1_83nte")
@@ -111,6 +146,11 @@ shape = SubResource("CircleShape2D_c45no")
 wait_time = 15.0
 one_shot = true
 autostart = true
+
+[node name="FlickerAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xlkon")
+}
 
 [connection signal="body_entered" from="main_body/main_body_2/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

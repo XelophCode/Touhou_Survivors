@@ -120,7 +120,7 @@ func _ready():
 	screen_center = DisplayServer.window_get_position()
 	screen_center.x += 426.0/2
 	screen_center.y += 240.0/2
-	Globals.crystal_count = 1000
+	Globals.crystal_count = 10000
 	$AnimationPlayer.play("fade_out")
 	match Globals.current_character:
 		Globals.Reimu: character_portrait.sprite_frames = reimu_portrait

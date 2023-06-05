@@ -27,6 +27,8 @@ var simul_spellcard:int
 var all_spellcard:bool
 var lilywhite:int = 0
 var daiyousei:int = 0
+var leveling_up:bool
+
 const secondary_input:Array = ["interact"]
 const app_version:String = "1.0.1"
 

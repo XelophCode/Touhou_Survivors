@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://dqti77sd8cl8p"]
+[gd_scene load_steps=116 format=3 uid="uid://dqti77sd8cl8p"]
 
 [ext_resource type="Texture2D" uid="uid://dejh36tx4twrq" path="res://sprites/ui/touhou survivors main menu.png" id="1_l2cqr"]
 [ext_resource type="Script" path="res://scripts/logic_ui/main_menu.gd" id="1_na2pg"]
@@ -14,20 +14,52 @@
 [ext_resource type="AudioStream" uid="uid://gaf82k767rpt" path="res://audio/AmbientNatureOutside.wav" id="8_aiubf"]
 [ext_resource type="Texture2D" uid="uid://cohigxsltllva" path="res://sprites/ui/discord.png" id="9_7xol4"]
 [ext_resource type="Texture2D" uid="uid://bbj0dlweweckt" path="res://sprites/ui/tutorial_bg.png" id="9_e3ik8"]
-[ext_resource type="Texture2D" uid="uid://dwrn02us5388t" path="res://sprites/items/item_icons/icon_border.png" id="10_44x5w"]
 [ext_resource type="Texture2D" uid="uid://0ydohqq6lp21" path="res://sprites/ui/fullscreen_black.png" id="10_ora8p"]
-[ext_resource type="Texture2D" uid="uid://r28snpthod2o" path="res://sprites/ui/focus_tutorial.png" id="10_r46te"]
 [ext_resource type="Texture2D" uid="uid://cco1shtjfu25o" path="res://sprites/items/pickups/faith.png" id="10_vgjvy"]
 [ext_resource type="Texture2D" uid="uid://c7csohy4y7c05" path="res://sprites/items/pickups/crystal.png" id="11_a3m78"]
 [ext_resource type="Texture2D" uid="uid://d0wh6yjoa56pg" path="res://sprites/ui/fullscreen_pink.png" id="11_krdlm"]
-[ext_resource type="Texture2D" uid="uid://cm135rcs8abrv" path="res://sprites/ui/spell_card_tutorial.png" id="12_860aj"]
-[ext_resource type="Texture2D" uid="uid://pxw6irgq5bpa" path="res://sprites/items/pickups/mon.png" id="12_xl1fh"]
 [ext_resource type="AudioStream" uid="uid://b70f4b73su13x" path="res://audio/select2.ogg" id="13_lk6tq"]
 [ext_resource type="AudioStream" uid="uid://bk86ssamtojma" path="res://audio/blip.ogg" id="14_4yskp"]
 [ext_resource type="Texture2D" uid="uid://crgk6rprwa7ah" path="res://sprites/ui/arrow_right.png" id="16_v04sv"]
 [ext_resource type="PackedScene" uid="uid://c0kbh78tuyeb4" path="res://prefabs/logic_ui/options_menu.tscn" id="17_pwn2m"]
 [ext_resource type="Texture2D" uid="uid://c1wlfk1svf3s3" path="res://sprites/ui/arrow_left.png" id="18_vxjsa"]
-[ext_resource type="Texture2D" uid="uid://bcujjpcttp6gg" path="res://sprites/ui/item_tutorial.png" id="23_ew7qe"]
+[ext_resource type="Shader" path="res://scripts/shaders/rainbow_outline.gdshader" id="20_kuu85"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/gather_faith_tut.ogv" id="20_ln06q"]
+[ext_resource type="Texture2D" uid="uid://dmixyah5apfgn" path="res://sprites/ui/ogv/frame1/gather_faith_tut_frame1.jpg" id="20_qf0lf"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/autoattack.ogv" id="21_ijsis"]
+[ext_resource type="Script" path="res://scripts/misc/video_player_loop.gd" id="22_i8v6q"]
+[ext_resource type="Texture2D" uid="uid://ctvrfvdk44nxr" path="res://sprites/ui/ogv/frame1/autoattack_frame1.jpg" id="23_wq0iq"]
+[ext_resource type="FontFile" uid="uid://cvfmxd484foqv" path="res://resources/fonts/yoster.ttf" id="24_ghkqj"]
+[ext_resource type="Texture2D" uid="uid://cpf5bxt0a2sxi" path="res://sprites/ui/ogv/frame1/focus_tut_frame1.jpg" id="25_bxttb"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/focus_tut.ogv" id="26_ushmg"]
+[ext_resource type="Texture2D" uid="uid://dnwa1wd0ntobt" path="res://sprites/ui/ogv/frame1/spell_card_tut_frame_1.jpg" id="27_mpgd1"]
+[ext_resource type="Texture2D" uid="uid://bvnhtjbwctg6t" path="res://sprites/ui/ogv/frame1/inventory_tut_frame1.jpg" id="28_1e0ra"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/spell_card_tut.ogv" id="28_x7d75"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/inventory_tut.ogv" id="29_1a3nc"]
+[ext_resource type="Texture2D" uid="uid://sjt4f6boqhlx" path="res://sprites/items/item_icons/fantasy_seal_icon.png" id="29_htglm"]
+[ext_resource type="Texture2D" uid="uid://bdxbg5d0dutgi" path="res://sprites/items/item_icons/gohei_icon.png" id="30_fs5da"]
+[ext_resource type="Texture2D" uid="uid://btm07ogp8nhu" path="res://sprites/ui/ogv/frame1/inv_crystal_tut_frame1.jpg" id="30_il5kn"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/inv_crystal_tut.ogv" id="31_jcb7f"]
+[ext_resource type="Texture2D" uid="uid://b6vjojvffb5kp" path="res://sprites/items/item_icons/homing_amulet_icon.png" id="31_q3r7j"]
+[ext_resource type="Texture2D" uid="uid://bf07fvhfd7nmc" path="res://sprites/items/item_icons/persuasion_needle_icon.png" id="32_02ugy"]
+[ext_resource type="Texture2D" uid="uid://cjmf7tbb1u6q6" path="res://sprites/ui/ogv/frame1/rotate_item_tut_frame1.jpg" id="32_uxv43"]
+[ext_resource type="VideoStream" path="res://sprites/ui/ogv/rotate_item_tut.ogv" id="33_gab7j"]
+[ext_resource type="Texture2D" uid="uid://da5hl1uqa0ru7" path="res://sprites/items/item_icons/peerless_wind_god_icon.png" id="33_k7w1n"]
+[ext_resource type="Texture2D" uid="uid://fffwb0of7363" path="res://sprites/items/item_icons/camera_icon.png" id="34_0u3py"]
+[ext_resource type="Texture2D" uid="uid://buplq64exs86v" path="res://sprites/items/item_icons/leaf_fan_icon.png" id="35_leg2g"]
+[ext_resource type="Texture2D" uid="uid://c4kjfvkst6ml3" path="res://sprites/items/item_icons/tripod_icon.png" id="36_gfbh2"]
+[ext_resource type="Texture2D" uid="uid://cwp8kmcewmma5" path="res://sprites/items/item_icons/grimoire_of_alice_icon.png" id="37_w5tel"]
+[ext_resource type="Texture2D" uid="uid://blvq1ncoutg80" path="res://sprites/items/item_icons/Shanghai_Doll_icon.png" id="38_1tp4k"]
+[ext_resource type="Texture2D" uid="uid://bnv7d4xevu3ir" path="res://sprites/items/item_icons/magic_tome_icon.png" id="39_mqr55"]
+[ext_resource type="Texture2D" uid="uid://da5g8ugomtti8" path="res://sprites/items/item_icons/nature_wand_icon.png" id="40_cwe2v"]
+[ext_resource type="Texture2D" uid="uid://c36omaxpr5xec" path="res://sprites/items/item_icons/invisible_full_moon_icon.png" id="41_v7do1"]
+[ext_resource type="Texture2D" uid="uid://ba4y04aqxwynd" path="res://sprites/items/item_icons/megaphone_gun_icon.png" id="42_1bl46"]
+[ext_resource type="Texture2D" uid="uid://beskev2jxicis" path="res://sprites/items/item_icons/lunar_bow_icon.png" id="43_idmja"]
+[ext_resource type="Texture2D" uid="uid://cjv3rvr006q8h" path="res://sprites/items/item_icons/mochi_mallet_icon.png" id="44_1whyk"]
+[ext_resource type="Texture2D" uid="uid://balecnmlihjv8" path="res://sprites/items/item_icons/master_spark_icon.png" id="45_dj685"]
+[ext_resource type="Texture2D" uid="uid://b2lreg6pjgai8" path="res://sprites/items/item_icons/mini_hakkero_icon.png" id="46_oujn5"]
+[ext_resource type="Texture2D" uid="uid://blwnc3f5eyeqa" path="res://sprites/items/item_icons/mushroom_icon.png" id="47_k8l35"]
+[ext_resource type="Texture2D" uid="uid://byo3yvdkmvwvm" path="res://sprites/items/item_icons/magic_broom_icon.png" id="48_81wyo"]
 
 [sub_resource type="Curve" id="Curve_22rfy"]
 _data = [Vector2(0, 0.172727), 0.0, 0.0, 0, 0, Vector2(0.501916, 0.454545), 0.0, 0.0, 0, 0, Vector2(1, 0.136364), 0.0, 0.0, 0, 0]
@@ -74,87 +106,6 @@ anti_aliasing = false
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_egdia"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_als0x"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axy6g"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k32vx"]
-draw_center = false
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 1, 1, 1)
-anti_aliasing = false
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hfi0s"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kuqjn"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2e525"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nrxph"]
-atlas = ExtResource("10_vgjvy")
-region = Rect2(0, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x4vam"]
-atlas = ExtResource("10_vgjvy")
-region = Rect2(13, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_02cmp"]
-atlas = ExtResource("10_vgjvy")
-region = Rect2(26, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hqm7l"]
-atlas = ExtResource("10_vgjvy")
-region = Rect2(39, 0, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c7jnr"]
-atlas = ExtResource("10_vgjvy")
-region = Rect2(0, 13, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ekav5"]
-atlas = ExtResource("10_vgjvy")
-region = Rect2(13, 13, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jmiti"]
-atlas = ExtResource("10_vgjvy")
-region = Rect2(26, 13, 13, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7sklr"]
-atlas = ExtResource("10_vgjvy")
-region = Rect2(39, 13, 13, 13)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8o8it"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nrxph")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x4vam")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_02cmp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hqm7l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c7jnr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ekav5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jmiti")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7sklr")
-}],
-"loop": true,
-"name": &"default",
-"speed": 16.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2166a"]
 atlas = ExtResource("11_a3m78")
@@ -220,76 +171,110 @@ animations = [{
 "speed": 16.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6xq3b"]
-atlas = ExtResource("12_xl1fh")
-region = Rect2(0, 0, 10, 10)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uiwi4"]
+shader = ExtResource("20_kuu85")
+shader_parameter/rainbow = true
+shader_parameter/line_color = null
+shader_parameter/line_scale = 0.5
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2acdw"]
-atlas = ExtResource("12_xl1fh")
-region = Rect2(10, 0, 10, 10)
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrxph"]
+atlas = ExtResource("10_vgjvy")
+region = Rect2(0, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hlaxo"]
-atlas = ExtResource("12_xl1fh")
-region = Rect2(20, 0, 10, 10)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4vam"]
+atlas = ExtResource("10_vgjvy")
+region = Rect2(13, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8sdv7"]
-atlas = ExtResource("12_xl1fh")
-region = Rect2(0, 10, 10, 10)
+[sub_resource type="AtlasTexture" id="AtlasTexture_02cmp"]
+atlas = ExtResource("10_vgjvy")
+region = Rect2(26, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_di4y0"]
-atlas = ExtResource("12_xl1fh")
-region = Rect2(10, 10, 10, 10)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqm7l"]
+atlas = ExtResource("10_vgjvy")
+region = Rect2(39, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ld3f3"]
-atlas = ExtResource("12_xl1fh")
-region = Rect2(20, 10, 10, 10)
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7jnr"]
+atlas = ExtResource("10_vgjvy")
+region = Rect2(0, 13, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vilbf"]
-atlas = ExtResource("12_xl1fh")
-region = Rect2(0, 20, 10, 10)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekav5"]
+atlas = ExtResource("10_vgjvy")
+region = Rect2(13, 13, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_00nyf"]
-atlas = ExtResource("12_xl1fh")
-region = Rect2(10, 20, 10, 10)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmiti"]
+atlas = ExtResource("10_vgjvy")
+region = Rect2(26, 13, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ry61b"]
-atlas = ExtResource("12_xl1fh")
-region = Rect2(20, 20, 10, 10)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sklr"]
+atlas = ExtResource("10_vgjvy")
+region = Rect2(39, 13, 13, 13)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8ej4k"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8o8it"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6xq3b")
+"texture": SubResource("AtlasTexture_nrxph")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2acdw")
+"texture": SubResource("AtlasTexture_x4vam")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hlaxo")
+"texture": SubResource("AtlasTexture_02cmp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8sdv7")
+"texture": SubResource("AtlasTexture_hqm7l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_di4y0")
+"texture": SubResource("AtlasTexture_c7jnr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ld3f3")
+"texture": SubResource("AtlasTexture_ekav5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vilbf")
+"texture": SubResource("AtlasTexture_jmiti")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_00nyf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ry61b")
+"texture": SubResource("AtlasTexture_7sklr")
 }],
 "loop": true,
 "name": &"default",
-"speed": 18.0
+"speed": 16.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_77jeo"]
+shader = ExtResource("20_kuu85")
+shader_parameter/rainbow = true
+shader_parameter/line_color = null
+shader_parameter/line_scale = 0.5
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hvdm4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qhhry"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6nm1g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axy6g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k32vx"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hfi0s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kuqjn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2e525"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_nlgp2"]
 
@@ -436,7 +421,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(0.843137, 0.843137, 0.843137, 0.886275), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g1oim"]
@@ -597,7 +582,7 @@ _data = {
 "Sakura": SubResource("Animation_at1lb")
 }
 
-[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("main_menu_bg", "main_menu_logo", "main_animation_player", "button_anims", "version_label", "time_survived", "lifetime_mon", "deaths", "faith", "crystals", "items", "spellcards", "spellcard_all", "lily_white", "daiyousei", "characters")]
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("main_menu_bg", "main_menu_logo", "main_animation_player", "button_anims", "version_label", "time_survived", "lifetime_mon", "deaths", "faith", "crystals", "items", "spellcards", "spellcard_all", "lily_white", "daiyousei", "characters", "pg_1_1", "pg_1_2", "pg_1_3", "pg_2_1", "pg_2_2", "pg_3_1", "pg_3_2")]
 texture_filter = 1
 script = ExtResource("1_na2pg")
 main_menu_bg = NodePath("pngs")
@@ -616,6 +601,13 @@ spellcard_all = NodePath("Achievements/allspell2")
 lily_white = NodePath("Achievements/lilywhite2")
 daiyousei = NodePath("Achievements/daiyousei2")
 characters = NodePath("Achievements/unlock_all_char2")
+pg_1_1 = NodePath("tutorial_overlay/Tutorial/page_1/autoattack/VideoStreamPlayer")
+pg_1_2 = NodePath("tutorial_overlay/Tutorial/page_1/gather_faith_tut/VideoStreamPlayer")
+pg_1_3 = NodePath("tutorial_overlay/Tutorial/page_1/focus/VideoStreamPlayer")
+pg_2_1 = NodePath("tutorial_overlay/Tutorial/page_2/inventory/VideoStreamPlayer")
+pg_2_2 = NodePath("tutorial_overlay/Tutorial/page_2/inventory2/VideoStreamPlayer")
+pg_3_1 = NodePath("tutorial_overlay/Tutorial/page_3/rotate/VideoStreamPlayer")
+pg_3_2 = NodePath("tutorial_overlay/Tutorial/page_3/spellcard/VideoStreamPlayer")
 
 [node name="small_sakura" type="CPUParticles2D" parent="."]
 z_index = 1
@@ -774,6 +766,11 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_egdia")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_als0x")
 text = "Achievements"
 
+[node name="Line2D" type="Line2D" parent="Buttons"]
+position = Vector2(396, 141)
+points = PackedVector2Array(-47, 91, -30, 91)
+width = 16.0
+
 [node name="Discord" type="Sprite2D" parent="Buttons"]
 position = Vector2(358, 232)
 scale = Vector2(0.5, 0.5)
@@ -815,6 +812,557 @@ offset_right = 427.0
 offset_bottom = 241.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="tutorial_overlay" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -9.0
+offset_top = -8.0
+offset_right = 435.0
+offset_bottom = 248.0
+
+[node name="Tutorial" type="Node2D" parent="tutorial_overlay"]
+z_index = 2
+texture_filter = 1
+position = Vector2(9, 8)
+
+[node name="TutorialBg" type="Sprite2D" parent="tutorial_overlay/Tutorial"]
+texture = ExtResource("9_e3ik8")
+centered = false
+
+[node name="page_1" type="Node2D" parent="tutorial_overlay/Tutorial"]
+
+[node name="autoattack" type="Node2D" parent="tutorial_overlay/Tutorial/page_1"]
+position = Vector2(43, 28)
+scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_1/autoattack"]
+position = Vector2(8.58307e-06, 5.84126e-06)
+scale = Vector2(1.024, 1.12)
+texture = ExtResource("23_wq0iq")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="tutorial_overlay/Tutorial/page_1/autoattack"]
+offset_left = -128.0
+offset_top = -56.0
+offset_right = 128.0
+offset_bottom = 56.0
+stream = ExtResource("21_ijsis")
+script = ExtResource("22_i8v6q")
+
+[node name="gather_faith_tut" type="Node2D" parent="tutorial_overlay/Tutorial/page_1"]
+position = Vector2(113, 97)
+scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_1/gather_faith_tut"]
+position = Vector2(0, -4.99994)
+scale = Vector2(1, 1.00926)
+texture = ExtResource("20_qf0lf")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="tutorial_overlay/Tutorial/page_1/gather_faith_tut"]
+offset_left = -960.0
+offset_top = -550.0
+offset_right = 960.0
+offset_bottom = 538.0
+stream = ExtResource("20_ln06q")
+script = ExtResource("22_i8v6q")
+
+[node name="focus" type="Node2D" parent="tutorial_overlay/Tutorial/page_1"]
+position = Vector2(43, 179)
+scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_1/focus"]
+position = Vector2(-1.35899e-05, -5.66244e-06)
+scale = Vector2(1.024, 1.024)
+texture = ExtResource("25_bxttb")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="tutorial_overlay/Tutorial/page_1/focus"]
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+stream = ExtResource("26_ushmg")
+script = ExtResource("22_i8v6q")
+
+[node name="Label" type="Label" parent="tutorial_overlay/Tutorial/page_1"]
+offset_left = 75.0
+offset_top = 22.0
+offset_right = 308.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "Auto-Attack enemies to get items! "
+
+[node name="Label2" type="Label" parent="tutorial_overlay/Tutorial/page_1"]
+offset_left = 219.0
+offset_top = 83.0
+offset_right = 452.0
+offset_bottom = 113.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "Gather    FAITH to open 
+the GAP for more weapons!"
+
+[node name="Label3" type="Label" parent="tutorial_overlay/Tutorial/page_1"]
+offset_left = 76.0
+offset_top = 156.0
+offset_right = 396.0
+offset_bottom = 201.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "Press SHIFT to FOCUS!
+FOCUS shows item pickup range and locks facing!
+   CRYSTALS increase pickup range!"
+
+[node name="Label4" type="Label" parent="tutorial_overlay/Tutorial/page_1"]
+offset_left = 42.0
+offset_top = 211.0
+offset_right = 362.0
+offset_bottom = 256.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "items with a    rainbow outline     are worth more"
+
+[node name="crystal" type="AnimatedSprite2D" parent="tutorial_overlay/Tutorial/page_1"]
+position = Vector2(82, 192)
+sprite_frames = SubResource("SpriteFrames_l5w7y")
+autoplay = "default"
+frame_progress = 0.245793
+
+[node name="crystal2" type="AnimatedSprite2D" parent="tutorial_overlay/Tutorial/page_1"]
+material = SubResource("ShaderMaterial_uiwi4")
+position = Vector2(129, 218)
+sprite_frames = SubResource("SpriteFrames_l5w7y")
+autoplay = "default"
+frame_progress = 0.245793
+
+[node name="faith" type="AnimatedSprite2D" parent="tutorial_overlay/Tutorial/page_1"]
+position = Vector2(275, 88)
+sprite_frames = SubResource("SpriteFrames_8o8it")
+autoplay = "default"
+frame_progress = 0.862475
+
+[node name="faith2" type="AnimatedSprite2D" parent="tutorial_overlay/Tutorial/page_1"]
+material = SubResource("ShaderMaterial_77jeo")
+position = Vector2(243, 217)
+sprite_frames = SubResource("SpriteFrames_8o8it")
+autoplay = "default"
+frame_progress = 0.862475
+
+[node name="page_2" type="Node2D" parent="tutorial_overlay/Tutorial"]
+visible = false
+
+[node name="Label4" type="Label" parent="tutorial_overlay/Tutorial/page_2"]
+offset_left = 165.0
+offset_top = 35.0
+offset_right = 485.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "move weapons from the GAP to your
+inventory to get more weapons"
+
+[node name="Label5" type="Label" parent="tutorial_overlay/Tutorial/page_2"]
+offset_left = 166.0
+offset_top = 111.0
+offset_right = 486.0
+offset_bottom = 186.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "Spend CRYSTALS to REROLL as well
+as open more inventory space!
+
+spending CRYSTALS will decrease
+your item pickup range"
+
+[node name="inventory" type="Node2D" parent="tutorial_overlay/Tutorial/page_2"]
+position = Vector2(89, 59)
+scale = Vector2(0.075, 0.075)
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_2/inventory"]
+position = Vector2(0, 4.00007)
+scale = Vector2(1, 1.00741)
+texture = ExtResource("28_1e0ra")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="tutorial_overlay/Tutorial/page_2/inventory"]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 548.0
+stream = ExtResource("29_1a3nc")
+script = ExtResource("22_i8v6q")
+
+[node name="inventory2" type="Node2D" parent="tutorial_overlay/Tutorial/page_2"]
+position = Vector2(89, 149)
+scale = Vector2(0.075, 0.075)
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_2/inventory2"]
+position = Vector2(0, 4.00007)
+scale = Vector2(1, 1.00741)
+texture = ExtResource("30_il5kn")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="tutorial_overlay/Tutorial/page_2/inventory2"]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 548.0
+stream = ExtResource("31_jcb7f")
+script = ExtResource("22_i8v6q")
+
+[node name="page_3" type="Node2D" parent="tutorial_overlay/Tutorial"]
+visible = false
+
+[node name="rotate" type="Node2D" parent="tutorial_overlay/Tutorial/page_3"]
+position = Vector2(52, 56)
+scale = Vector2(0.075, 0.075)
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_3/rotate"]
+position = Vector2(0, 0.518037)
+scale = Vector2(1, 0.998705)
+texture = ExtResource("32_uxv43")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="tutorial_overlay/Tutorial/page_3/rotate"]
+offset_left = -400.0
+offset_top = -400.0
+offset_right = 400.0
+offset_bottom = 400.0
+stream = ExtResource("33_gab7j")
+script = ExtResource("22_i8v6q")
+
+[node name="spellcard" type="Node2D" parent="tutorial_overlay/Tutorial/page_3"]
+position = Vector2(52, 127)
+scale = Vector2(0.075, 0.075)
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_3/spellcard"]
+position = Vector2(0, 0.518037)
+scale = Vector2(1, 0.998705)
+texture = ExtResource("27_mpgd1")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="tutorial_overlay/Tutorial/page_3/spellcard"]
+offset_left = -400.0
+offset_top = -400.0
+offset_right = 400.0
+offset_bottom = 400.0
+stream = ExtResource("28_x7d75")
+script = ExtResource("22_i8v6q")
+
+[node name="Label6" type="Label" parent="tutorial_overlay/Tutorial/page_3"]
+offset_left = 94.0
+offset_top = 39.0
+offset_right = 414.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "Rotate weapons with RMB to change
+the effect of the weapon!"
+
+[node name="Label7" type="Label" parent="tutorial_overlay/Tutorial/page_3"]
+offset_left = 94.0
+offset_top = 98.0
+offset_right = 414.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "When certain weapons are touching
+they will make a SPELL CARD!
+
+This is an extremely powerful weapon!"
+
+[node name="page_4" type="Node2D" parent="tutorial_overlay/Tutorial"]
+visible = false
+
+[node name="Label8" type="Label" parent="tutorial_overlay/Tutorial/page_4"]
+offset_left = 23.0
+offset_top = 18.0
+offset_right = 343.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 24
+text = "SPELL CARDS"
+
+[node name="fantasy_seal" type="Node2D" parent="tutorial_overlay/Tutorial/page_4"]
+position = Vector2(-4, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/fantasy_seal"]
+position = Vector2(34, 51)
+texture = ExtResource("29_htglm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/fantasy_seal"]
+position = Vector2(34, 70)
+texture = ExtResource("30_fs5da")
+
+[node name="Sprite2D3" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/fantasy_seal"]
+position = Vector2(34, 86)
+texture = ExtResource("31_q3r7j")
+
+[node name="Sprite2D4" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/fantasy_seal"]
+position = Vector2(34, 101)
+texture = ExtResource("32_02ugy")
+
+[node name="Label9" type="Label" parent="tutorial_overlay/Tutorial/page_4/fantasy_seal"]
+offset_left = 43.0
+offset_top = 45.0
+offset_right = 363.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "Fantasy Seal"
+
+[node name="Label10" type="Label" parent="tutorial_overlay/Tutorial/page_4/fantasy_seal"]
+offset_left = 43.0
+offset_top = 65.0
+offset_right = 363.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "Gohei
+Sealing Amulet
+Persuasion Needles"
+
+[node name="Line2D" type="Line2D" parent="tutorial_overlay/Tutorial/page_4/fantasy_seal"]
+position = Vector2(1, -4)
+points = PackedVector2Array(25, 63, 133, 63)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="peerless_wind_god" type="Node2D" parent="tutorial_overlay/Tutorial/page_4"]
+position = Vector2(176, -24)
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/peerless_wind_god"]
+position = Vector2(34, 51)
+texture = ExtResource("33_k7w1n")
+
+[node name="Sprite2D2" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/peerless_wind_god"]
+position = Vector2(34, 70)
+texture = ExtResource("34_0u3py")
+
+[node name="Sprite2D3" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/peerless_wind_god"]
+position = Vector2(34, 86)
+texture = ExtResource("35_leg2g")
+
+[node name="Sprite2D4" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/peerless_wind_god"]
+position = Vector2(34, 101)
+texture = ExtResource("36_gfbh2")
+
+[node name="Label9" type="Label" parent="tutorial_overlay/Tutorial/page_4/peerless_wind_god"]
+offset_left = 43.0
+offset_top = 45.0
+offset_right = 363.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "Peerless Wind God"
+
+[node name="Label10" type="Label" parent="tutorial_overlay/Tutorial/page_4/peerless_wind_god"]
+offset_left = 43.0
+offset_top = 65.0
+offset_right = 363.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "Camera
+Leaf Fan
+Tripod"
+
+[node name="Line2D" type="Line2D" parent="tutorial_overlay/Tutorial/page_4/peerless_wind_god"]
+position = Vector2(1, -4)
+points = PackedVector2Array(25, 63, 161, 63)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Grimoire of Alice" type="Node2D" parent="tutorial_overlay/Tutorial/page_4"]
+position = Vector2(-4, 75)
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/Grimoire of Alice"]
+position = Vector2(34, 51)
+texture = ExtResource("37_w5tel")
+
+[node name="Sprite2D2" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/Grimoire of Alice"]
+position = Vector2(34, 70)
+texture = ExtResource("38_1tp4k")
+
+[node name="Sprite2D3" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/Grimoire of Alice"]
+position = Vector2(34, 86)
+texture = ExtResource("39_mqr55")
+
+[node name="Sprite2D4" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/Grimoire of Alice"]
+position = Vector2(34, 101)
+texture = ExtResource("40_cwe2v")
+
+[node name="Label9" type="Label" parent="tutorial_overlay/Tutorial/page_4/Grimoire of Alice"]
+offset_left = 43.0
+offset_top = 45.0
+offset_right = 363.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "Grimoire of Alice"
+
+[node name="Label10" type="Label" parent="tutorial_overlay/Tutorial/page_4/Grimoire of Alice"]
+offset_left = 43.0
+offset_top = 65.0
+offset_right = 363.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "Shanghai Doll
+Magic Tome
+Nature Wand"
+
+[node name="Line2D" type="Line2D" parent="tutorial_overlay/Tutorial/page_4/Grimoire of Alice"]
+position = Vector2(1, -4)
+points = PackedVector2Array(25, 63, 161, 63)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Invisible Full Moon" type="Node2D" parent="tutorial_overlay/Tutorial/page_4"]
+position = Vector2(177, 45)
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/Invisible Full Moon"]
+position = Vector2(34, 51)
+texture = ExtResource("41_v7do1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/Invisible Full Moon"]
+position = Vector2(34, 70)
+texture = ExtResource("42_1bl46")
+
+[node name="Sprite2D3" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/Invisible Full Moon"]
+position = Vector2(34, 86)
+texture = ExtResource("43_idmja")
+
+[node name="Sprite2D4" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/Invisible Full Moon"]
+position = Vector2(34, 101)
+texture = ExtResource("44_1whyk")
+
+[node name="Label9" type="Label" parent="tutorial_overlay/Tutorial/page_4/Invisible Full Moon"]
+offset_left = 43.0
+offset_top = 45.0
+offset_right = 363.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "Invisible Full Moon"
+
+[node name="Label10" type="Label" parent="tutorial_overlay/Tutorial/page_4/Invisible Full Moon"]
+offset_left = 43.0
+offset_top = 65.0
+offset_right = 363.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "Megaphone Gun
+Lunar Bow
+Mochi Mallet"
+
+[node name="Line2D" type="Line2D" parent="tutorial_overlay/Tutorial/page_4/Invisible Full Moon"]
+position = Vector2(1, -4)
+points = PackedVector2Array(25, 63, 167, 63)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Master Spark" type="Node2D" parent="tutorial_overlay/Tutorial/page_4"]
+position = Vector2(177, 115)
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/Master Spark"]
+position = Vector2(34, 51)
+texture = ExtResource("45_dj685")
+
+[node name="Sprite2D2" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/Master Spark"]
+position = Vector2(34, 70)
+texture = ExtResource("46_oujn5")
+
+[node name="Sprite2D3" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/Master Spark"]
+position = Vector2(34, 86)
+texture = ExtResource("47_k8l35")
+
+[node name="Sprite2D4" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/Master Spark"]
+position = Vector2(34, 101)
+texture = ExtResource("48_81wyo")
+
+[node name="Label9" type="Label" parent="tutorial_overlay/Tutorial/page_4/Master Spark"]
+offset_left = 43.0
+offset_top = 45.0
+offset_right = 363.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "Master Spark"
+
+[node name="Label10" type="Label" parent="tutorial_overlay/Tutorial/page_4/Master Spark"]
+offset_left = 43.0
+offset_top = 65.0
+offset_right = 363.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "Mini Hakkero
+Mushroom
+Magic Broom"
+
+[node name="Line2D" type="Line2D" parent="tutorial_overlay/Tutorial/page_4/Master Spark"]
+position = Vector2(1, -4)
+points = PackedVector2Array(25, 63, 167, 63)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="arrow_left" type="Node2D" parent="tutorial_overlay/Tutorial"]
+visible = false
+
+[node name="b_arrow_left" type="Button" parent="tutorial_overlay/Tutorial/arrow_left"]
+offset_left = 18.0
+offset_top = 199.0
+offset_right = 50.0
+offset_bottom = 227.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hvdm4")
+
+[node name="ArrowLeft" type="Sprite2D" parent="tutorial_overlay/Tutorial/arrow_left"]
+position = Vector2(36, 212)
+texture = ExtResource("18_vxjsa")
+
+[node name="arrow_right" type="Node2D" parent="tutorial_overlay/Tutorial"]
+
+[node name="b_arrow_right" type="Button" parent="tutorial_overlay/Tutorial/arrow_right"]
+offset_left = 372.0
+offset_top = 199.0
+offset_right = 404.0
+offset_bottom = 227.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qhhry")
+
+[node name="ArrowRight" type="Sprite2D" parent="tutorial_overlay/Tutorial/arrow_right"]
+position = Vector2(386, 212)
+texture = ExtResource("16_v04sv")
+
+[node name="Close_tutorial" type="Button" parent="tutorial_overlay/Tutorial"]
+offset_left = 390.0
+offset_top = 16.0
+offset_right = 406.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_t2gpe")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6nm1g")
+text = "X"
 
 [node name="Achievements" type="Node2D" parent="."]
 visible = false
@@ -1093,431 +1641,6 @@ theme_override_fonts/font = ExtResource("6_t2gpe")
 theme_override_font_sizes/font_size = 8
 text = "2/8"
 
-[node name="Tutorial" type="Node2D" parent="."]
-visible = false
-z_index = 2
-texture_filter = 1
-
-[node name="Control" type="Control" parent="Tutorial"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 426.0
-offset_bottom = 240.0
-
-[node name="TutorialBg" type="Sprite2D" parent="Tutorial"]
-texture = ExtResource("9_e3ik8")
-centered = false
-
-[node name="CLOSE" type="Label" parent="Tutorial"]
-offset_left = 365.0
-offset_top = 17.0
-offset_right = 469.0
-offset_bottom = 28.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "CLOSE"
-
-[node name="closttutorial" type="Button" parent="Tutorial"]
-offset_left = 362.0
-offset_top = 15.0
-offset_right = 408.0
-offset_bottom = 28.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_axy6g")
-theme_override_styles/hover = SubResource("StyleBoxFlat_k32vx")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_hfi0s")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_kuqjn")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2e525")
-
-[node name="page_1" type="Node2D" parent="Tutorial"]
-
-[node name="pickups11" type="Label" parent="Tutorial/page_1"]
-offset_left = 373.0
-offset_top = 223.0
-offset_right = 477.0
-offset_bottom = 234.0
-scale = Vector2(0.5, 0.5)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "next page"
-
-[node name="gameplay" type="Node2D" parent="Tutorial/page_1"]
-position = Vector2(0, -64)
-
-[node name="Line2D" type="Line2D" parent="Tutorial/page_1/gameplay"]
-points = PackedVector2Array(17, 94, 94, 94)
-width = 12.0
-default_color = Color(0.552941, 1, 1, 1)
-
-[node name="pickups10" type="Label" parent="Tutorial/page_1/gameplay"]
-offset_left = 20.0
-offset_top = 90.0
-offset_right = 124.0
-offset_bottom = 101.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "Gameplay:
-"
-
-[node name="pickups5" type="Label" parent="Tutorial/page_1/gameplay"]
-offset_left = 64.0
-offset_top = 103.0
-offset_right = 384.0
-offset_bottom = 147.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_constants/line_spacing = 3
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "Press \"Focus\" to show your item
-pickup range and lock your facing.
-Your item pickup range is determined
-by how many crystals you currently have."
-
-[node name="pickups6" type="Label" parent="Tutorial/page_1/gameplay"]
-offset_left = 142.0
-offset_top = 160.0
-offset_right = 486.0
-offset_bottom = 226.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_constants/line_spacing = 2
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "Move items from the gap on the 
-left to your inventory on 
-the right to get more items."
-
-[node name="FocusTutorial" type="Sprite2D" parent="Tutorial/page_1/gameplay"]
-position = Vector2(36, 122)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("10_r46te")
-
-[node name="ItemTutorial" type="Sprite2D" parent="Tutorial/page_1/gameplay"]
-position = Vector2(76.9174, 219.85)
-scale = Vector2(0.0619635, 0.0619635)
-texture = ExtResource("23_ew7qe")
-
-[node name="Controls" type="Node2D" parent="Tutorial/page_1"]
-position = Vector2(129, 127)
-
-[node name="Line2D3" type="Line2D" parent="Tutorial/page_1/Controls"]
-position = Vector2(-130, -193)
-points = PackedVector2Array(141, 240, 236, 240)
-width = 80.0
-default_color = Color(0, 0.431373, 0.25098, 1)
-
-[node name="pickups5" type="Label" parent="Tutorial/page_1/Controls"]
-offset_left = 17.0
-offset_top = 19.0
-offset_right = 121.0
-offset_bottom = 30.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "Controls:
-"
-
-[node name="pickups7" type="Label" parent="Tutorial/page_1/Controls"]
-offset_left = 64.0
-offset_top = 38.0
-offset_right = 168.0
-offset_bottom = 49.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "Move
-"
-
-[node name="pickups8" type="Label" parent="Tutorial/page_1/Controls"]
-offset_left = 64.0
-offset_top = 63.0
-offset_right = 168.0
-offset_bottom = 74.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "Focus
-"
-
-[node name="pickups6" type="Label" parent="Tutorial/page_1/Controls"]
-offset_left = 17.0
-offset_top = 31.0
-offset_right = 121.0
-offset_bottom = 61.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 7
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "  W 
-A S D"
-
-[node name="pickups9" type="Label" parent="Tutorial/page_1/Controls"]
-offset_left = 17.0
-offset_top = 63.0
-offset_right = 121.0
-offset_bottom = 78.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 7
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "SHIFT"
-
-[node name="IconBorder" type="Sprite2D" parent="Tutorial/page_1/Controls"]
-position = Vector2(36, 35)
-texture = ExtResource("10_44x5w")
-
-[node name="IconBorder2" type="Sprite2D" parent="Tutorial/page_1/Controls"]
-position = Vector2(21, 49)
-texture = ExtResource("10_44x5w")
-
-[node name="IconBorder3" type="Sprite2D" parent="Tutorial/page_1/Controls"]
-position = Vector2(36, 49)
-texture = ExtResource("10_44x5w")
-
-[node name="IconBorder4" type="Sprite2D" parent="Tutorial/page_1/Controls"]
-position = Vector2(51, 49)
-texture = ExtResource("10_44x5w")
-
-[node name="Line2D2" type="Line2D" parent="Tutorial/page_1/Controls"]
-position = Vector2(0, -6)
-points = PackedVector2Array(15, 77, 57, 77, 57, 68, 15, 68, 15, 77)
-width = 1.0
-begin_cap_mode = 1
-
-[node name="item_pickups" type="Node2D" parent="Tutorial/page_1"]
-position = Vector2(240, 127)
-
-[node name="Line2D4" type="Line2D" parent="Tutorial/page_1/item_pickups"]
-position = Vector2(-69, -193)
-points = PackedVector2Array(66, 240, 239, 240)
-width = 80.0
-default_color = Color(0.25098, 0.313726, 0.509804, 1)
-
-[node name="pickups" type="Label" parent="Tutorial/page_1/item_pickups"]
-offset_left = 28.0
-offset_top = 10.0
-offset_right = 132.0
-offset_bottom = 21.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "Item Pickups:"
-
-[node name="pickups2" type="Label" parent="Tutorial/page_1/item_pickups"]
-offset_left = 14.0
-offset_top = 25.0
-offset_right = 278.0
-offset_bottom = 47.0
-scale = Vector2(0.8, 0.8)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "Faith: Open gap to
-get more items!"
-
-[node name="pickups3" type="Label" parent="Tutorial/page_1/item_pickups"]
-offset_left = 15.0
-offset_top = 48.0
-offset_right = 327.0
-offset_bottom = 70.0
-scale = Vector2(0.8, 0.8)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "Crystal: inventory space
-and item gap rerolls!"
-
-[node name="pickups4" type="Label" parent="Tutorial/page_1/item_pickups"]
-offset_left = 16.0
-offset_top = 71.0
-offset_right = 328.0
-offset_bottom = 82.0
-scale = Vector2(0.8, 0.8)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "Mon: Unlock more 
-characters!"
-
-[node name="faith" type="AnimatedSprite2D" parent="Tutorial/page_1/item_pickups"]
-position = Vector2(5, 32)
-sprite_frames = SubResource("SpriteFrames_8o8it")
-autoplay = "default"
-frame_progress = 0.749694
-
-[node name="crystal" type="AnimatedSprite2D" parent="Tutorial/page_1/item_pickups"]
-position = Vector2(5, 55)
-sprite_frames = SubResource("SpriteFrames_l5w7y")
-autoplay = "default"
-frame_progress = 0.799658
-
-[node name="mon" type="AnimatedSprite2D" parent="Tutorial/page_1/item_pickups"]
-position = Vector2(6, 74)
-sprite_frames = SubResource("SpriteFrames_8ej4k")
-autoplay = "default"
-frame_progress = 0.613598
-
-[node name="ArrowRight" type="Sprite2D" parent="Tutorial/page_1"]
-position = Vector2(389, 210)
-texture = ExtResource("16_v04sv")
-
-[node name="nextpage" type="Button" parent="Tutorial/page_1"]
-offset_left = 372.0
-offset_top = 198.0
-offset_right = 410.0
-offset_bottom = 228.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_axy6g")
-theme_override_styles/hover = SubResource("StyleBoxFlat_k32vx")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_hfi0s")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_kuqjn")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2e525")
-
-[node name="page_2" type="Node2D" parent="Tutorial"]
-visible = false
-
-[node name="Spellcards" type="Node2D" parent="Tutorial/page_2"]
-
-[node name="Line2D" type="Line2D" parent="Tutorial/page_2/Spellcards"]
-points = PackedVector2Array(76, 57, 408, 57)
-width = 50.0
-default_color = Color(0.513726, 0.454902, 0.690196, 1)
-
-[node name="Line2D2" type="Line2D" parent="Tutorial/page_2/Spellcards"]
-position = Vector2(0, -12)
-points = PackedVector2Array(14, 166, 406, 166)
-width = 140.0
-default_color = Color(0.513726, 0.196078, 0.372549, 1)
-
-[node name="pickups5" type="Label" parent="Tutorial/page_2/Spellcards"]
-offset_left = 152.0
-offset_top = 87.0
-offset_right = 256.0
-offset_bottom = 98.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "Spell Cards:"
-
-[node name="pickups8" type="Label" parent="Tutorial/page_2/Spellcards"]
-offset_left = -72.0
-offset_top = 104.0
-offset_right = 248.0
-offset_bottom = 258.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "Fantasy Seal:
-Homing Amulet
-Yinyang Orb
-Gohei
-
-
-Grimoire of Alice:
-Shanghai Doll
-Magic Tome
-Nature Wand
-
-"
-horizontal_alignment = 1
-
-[node name="pickups10" type="Label" parent="Tutorial/page_2/Spellcards"]
-offset_left = 137.0
-offset_top = 122.0
-offset_right = 267.0
-offset_bottom = 166.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "Master Spark:
-Mini Hakkero
-Magic Broom
-Mushroom"
-horizontal_alignment = 1
-
-[node name="pickups9" type="Label" parent="Tutorial/page_2/Spellcards"]
-offset_left = 246.0
-offset_top = 104.0
-offset_right = 406.0
-offset_bottom = 258.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "Invisible Full moon:
-Mochi Mallet
-Megaphone Gun
-Lunar Bow
-
-
-Peerless Wind God:
-Camera
-Leaf Fan
-Tripod"
-horizontal_alignment = 1
-
-[node name="spell_card_text" type="Label" parent="Tutorial/page_2/Spellcards"]
-offset_left = 78.0
-offset_top = 39.0
-offset_right = 406.0
-offset_bottom = 84.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_constants/line_spacing = 2
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "Some items create spell cards when placed
-next to each other. These are extremely
-powerfull items that can wipe out most
-nearby enemies."
-
-[node name="SpellCardTutorial" type="Sprite2D" parent="Tutorial/page_2/Spellcards"]
-position = Vector2(43.9286, 57.15)
-scale = Vector2(0.123714, 0.123714)
-texture = ExtResource("12_860aj")
-
-[node name="ArrowRight2" type="Sprite2D" parent="Tutorial/page_2"]
-position = Vector2(389, 210)
-texture = ExtResource("18_vxjsa")
-
-[node name="prevpage" type="Button" parent="Tutorial/page_2"]
-offset_left = 372.0
-offset_top = 198.0
-offset_right = 410.0
-offset_bottom = 228.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_axy6g")
-theme_override_styles/hover = SubResource("StyleBoxFlat_k32vx")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_hfi0s")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_kuqjn")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2e525")
-
-[node name="pickups12" type="Label" parent="Tutorial/page_2"]
-offset_left = 373.0
-offset_top = 223.0
-offset_right = 477.0
-offset_bottom = 234.0
-scale = Vector2(0.5, 0.5)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_t2gpe")
-theme_override_font_sizes/font_size = 8
-text = "prev page"
-
 [node name="options_overlay" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -1568,7 +1691,7 @@ text = "Special Thanks:
 "
 
 [node name="Line2D3" type="Line2D" parent="credits/credits"]
-position = Vector2(0, 46)
+position = Vector2(0, 44)
 points = PackedVector2Array(24, 108, 215, 108)
 width = 12.0
 default_color = Color(0.313726, 0.313726, 0.313726, 0.431373)
@@ -1749,16 +1872,16 @@ round_precision = 26
 
 [node name="Specialthanks2" type="Label" parent="credits/credits"]
 offset_left = 22.0
-offset_top = 151.0
-offset_right = 230.0
-offset_bottom = 174.0
+offset_top = 149.0
+offset_right = 382.0
+offset_bottom = 227.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_constants/line_spacing = 5
 theme_override_fonts/font = ExtResource("6_t2gpe")
 theme_override_font_sizes/font_size = 8
 text = "Okami473 (the ideas guy)   SensingDefiler
-Awkward Birb     Blair     choclolate lasagna
+Awkward Birb     Blair     Chocolate Lasagna
 Kurb0   Lati    LvlJake    moostle     
 Stupid BBirb    BitterSweetReverie   Deadleaf
 Drago     Heira    Lucky Ghz    Makina
@@ -1766,9 +1889,9 @@ Mikelli1     nico     Xiichu     "
 
 [node name="Specialthanks3" type="Label" parent="credits/credits"]
 offset_left = 339.0
-offset_top = 207.0
+offset_top = 205.0
 offset_right = 547.0
-offset_bottom = 231.0
+offset_bottom = 229.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_constants/line_spacing = 5
@@ -1870,6 +1993,7 @@ text = "PRESS START"
 position = Vector2(213, 120)
 
 [node name="FullscreenWhite" type="Sprite2D" parent="."]
+modulate = Color(0.843137, 0.843137, 0.843137, 0.886275)
 position = Vector2(213, 120)
 texture = ExtResource("6_byxag")
 
@@ -1947,8 +2071,8 @@ bus = &"SFX"
 [connection signal="button_up" from="Buttons/manual" to="." method="_on_manual_button_up"]
 [connection signal="button_down" from="Buttons/credits" to="." method="_on_credits_button_down"]
 [connection signal="button_down" from="Buttons/achievements" to="." method="_on_achievements_button_down"]
+[connection signal="button_up" from="tutorial_overlay/Tutorial/arrow_left/b_arrow_left" to="." method="_on_b_arrow_left_button_up"]
+[connection signal="button_up" from="tutorial_overlay/Tutorial/arrow_right/b_arrow_right" to="." method="_on_b_arrow_right_button_up"]
+[connection signal="button_up" from="tutorial_overlay/Tutorial/Close_tutorial" to="." method="_on_close_tutorial_button_up"]
 [connection signal="button_up" from="Achievements/closeachievements" to="." method="_on_closeachievements_button_up"]
-[connection signal="button_up" from="Tutorial/closttutorial" to="." method="_on_closttutorial_button_up"]
-[connection signal="button_up" from="Tutorial/page_1/nextpage" to="." method="_on_nextpage_button_up"]
-[connection signal="button_up" from="Tutorial/page_2/prevpage" to="." method="_on_prevpage_button_up"]
 [connection signal="button_down" from="credits/credits/close" to="." method="_on_close_button_down"]

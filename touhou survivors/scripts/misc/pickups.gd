@@ -10,6 +10,8 @@ var rainbow_outline:bool = false
 var leveling_up:bool = false
 
 func _ready():
+	if Globals.leveling_up:
+		$Timer.paused = true
 	Signals.connect("leveling_up",catch_leveling_up)
 	if rainbow_outline:
 		sprite.material.set_shader_parameter("line_scale",0.5)
