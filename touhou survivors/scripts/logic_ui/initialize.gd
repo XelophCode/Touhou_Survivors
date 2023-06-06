@@ -2,6 +2,7 @@ extends Node2D
 
 var screen_center : Vector2
 
+
 func _ready():
 	screen_center = DisplayServer.window_get_position()
 	screen_center.x += 426.0/2
