@@ -63,6 +63,8 @@ func _ready():
 	characters.text = str(8 - loaded_save.LOCKED_CHARACTERS.size()) + "/8"
 	
 	version_label.text = "ver " + Globals.app_version
+	
+	check_for_unlocked_achievements()
 
 func _process(_delta):
 	
@@ -200,3 +202,17 @@ func _on_b_arrow_right_button_up():
 	current_tut_page += 1
 	change_tut_page()
 	play_videos()
+
+func check_for_unlocked_achievements():
+	var loaded_save = Appdata.load_file(Appdata.SAVE)
+	
+	if loaded_save.DEATHS >= 100:
+		Steam.setAchievement("ach_100_deaths")
+	if loaded_save.MON_LIFETIME >= 100000:
+		Steam.setAchievement("ach_100000_mon")
+	if loaded_save.FAITH_LIFETIME >= 10000:
+		Steam.setAchievement("ach_10000_faith")
+	if loaded_save.CRYSTALS_LIFETIME >= 10000:
+		Steam.setAchievement("ach_10000_crystals")
+	
+	Steam.storeStats()

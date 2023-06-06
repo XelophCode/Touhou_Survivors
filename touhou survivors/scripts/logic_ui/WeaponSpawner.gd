@@ -39,15 +39,22 @@ func add_weapon(scene:PackedScene,inventory_item_id:int,cooldown:float,active:bo
 				if !Globals.used_items.has(str(icon.resource_path)):
 					Globals.used_items.append(str(icon.resource_path))
 					Globals.used_items_total += 1
+					if Globals.used_items_total >= 27:
+						Steam.setAchievement("ach_all_items")
+						Steam.storeStats()
 			else:
 				if !Globals.used_spellcards.has(str(icon.resource_path)):
 					Globals.used_spellcards.append(str(icon.resource_path))
 					Globals.used_spellcards_total += 1
+					if Globals.used_spellcards_total >=5:
+						Steam.setAchievement("ach_all_spellcards")
+						Steam.storeStats()
 				current_spellcards.append(inventory_item_id)
 				Globals.simul_spellcard += 1
 				if Globals.simul_spellcard == 5:
 					Globals.all_spellcard = 1
-					
+					Steam.setAchievement("ach_simul_spellcards")
+					Steam.storeStats()
 			
 			inventory_item_ids.append(inventory_item_id)
 			var timer_new = Timer.new()

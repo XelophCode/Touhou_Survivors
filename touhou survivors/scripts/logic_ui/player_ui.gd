@@ -382,7 +382,7 @@ func goto_main_menu():
 	var new_mon = previous_mon + game_over_mon
 	var mon_lifetime = loaded_save.MON_LIFETIME + game_over_mon
 	Appdata.save_file(Appdata.SAVE,"MON",new_mon)
-	Appdata.save_file(Appdata.SAVE,"MON_LIFETIME",mon_lifetime)
+	Appdata.save_file(Appdata.SAVE,"MON_LIFETIME",new_mon)
 	
 	if playtime_absolute > loaded_save.BEST_TIME_NUM:
 		Appdata.save_file(Appdata.SAVE,"BEST_TIME_NUM",playtime_absolute)
