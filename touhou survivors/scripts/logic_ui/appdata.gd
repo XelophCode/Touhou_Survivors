@@ -130,4 +130,33 @@ func file_version_update(file_name:int):
 			loaded_save["VERSION"] = Globals.app_version
 			#NEW FILE VALUES GO HERE
 			
+			
+			check_for_unlocked_achievements()
+			
 			write_to_file(save_file_path,loaded_save)
+
+func check_for_unlocked_achievements():
+	var loaded_save = load_file(SAVE)
+	
+	if loaded_save.DEATHS >= 100:
+		Steam.setAchievement("ach_100_deaths")
+	if loaded_save.MON_LIFETIME >= 100000:
+		Steam.setAchievement("ach_100000_mon")
+	if loaded_save.FAITH_LIFETIME >= 10000:
+		Steam.setAchievement("ach_10000_faith")
+	if loaded_save.CRYSTALS_LIFETIME >= 10000:
+		Steam.setAchievement("ach_10000_crystals")
+	if loaded_save.ITEMS_USED >= 27:
+		Steam.setAchievement("ach_all_items")
+	if loaded_save.SPELLCARDS_USED >= 5:
+		Steam.setAchievement("ach_all_spellcards")
+	if loaded_save.ALL_SPELLCARDS == 1:
+		Steam.setAchievement("ach_simul_spellcards")
+	if loaded_save.LILY_WHITE == 1:
+		Steam.setAchievement("ach_lily_white")
+	if loaded_save.DAIYOUSEI == 1:
+		Steam.setAchievement("ach_daiyousei")
+	if loaded_save.LOCKED_CHARACTERS.size() == 0:
+		Steam.setAchievement("ach_all_characters")
+	
+	Steam.storeStats()

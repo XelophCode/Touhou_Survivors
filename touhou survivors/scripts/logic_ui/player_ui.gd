@@ -177,6 +177,7 @@ func _process(delta):
 	powerbar.value = power
 	
 	if !leveling_up:
+		
 		playtime_absolute += delta
 		playtime_second += delta
 		var playtime_floored = floor(playtime_second)

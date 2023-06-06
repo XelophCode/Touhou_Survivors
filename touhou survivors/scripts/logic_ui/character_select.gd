@@ -65,6 +65,7 @@ var mon : int = 0:
 
 var locked_characters : Array
 var disabled_items : Array = []
+var unlocked_all_characters : bool = false
 
 func _ready():
 	Globals.disabled_items = []
@@ -73,6 +74,10 @@ func _ready():
 	mon = loaded_save.MON
 	mon_label.text = str(mon)
 	locked_characters = loaded_save.LOCKED_CHARACTERS
+	
+	if locked_characters == []:
+		unlocked_all_characters = true
+	
 	for char_name in locked_characters:
 		match char_name:
 			"Remilia":
@@ -103,6 +108,12 @@ func _ready():
 func _process(_delta):
 	item_disable_cost.position.x = get_global_mouse_position().x
 	item_disable_cost.position.y = get_global_mouse_position().y
+	
+	if !unlocked_all_characters:
+		if locked_characters == []:
+			Steam.setAchievement("ach_all_characters")
+			Steam.storeStats()
+			unlocked_all_characters = true
 
 func check_for_unlock(char_name:String):
 	if mon >= 1000:
