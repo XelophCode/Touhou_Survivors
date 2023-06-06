@@ -49,14 +49,10 @@ func _physics_process(delta):
 		tween.tween_property(self,"dissolve",0.0,delta*60)
 		await tween.finished
 		
-		if info.name == "Daiyousei" and Globals.daiyousei == 0:
+		if info.name == "Daiyousei":
 			Globals.daiyousei = 1
-			Steam.setAchievement("ach_daiyousei")
-			Steam.storeStats()
-		if info.name == "Lily White" and Globals.lilywhite == 0:
+		if info.name == "Lily White":
 			Globals.lilywhite = 1
-			Steam.setAchievement("ach_lily_white")
-			Steam.storeStats()
 		
 		queue_free()
 

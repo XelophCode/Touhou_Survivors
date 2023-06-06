@@ -35,7 +35,6 @@ var doing_panning_anim:bool = true
 var doing_press_start_anim:bool = false
 
 func _ready():
-	check_for_achievements()
 	Signals.connect("options_menu_closed",catch_options_menu_closed)
 	
 	var tween = create_tween()
@@ -64,7 +63,6 @@ func _ready():
 	characters.text = str(8 - loaded_save.LOCKED_CHARACTERS.size()) + "/8"
 	
 	version_label.text = "ver " + Globals.app_version
-
 
 func _process(_delta):
 	
@@ -202,17 +200,3 @@ func _on_b_arrow_right_button_up():
 	current_tut_page += 1
 	change_tut_page()
 	play_videos()
-
-func check_for_achievements():
-	var loaded_save = Appdata.load_file(Appdata.SAVE)
-	
-	if loaded_save.DEATHS >= 100:
-		Steam.setAchievement("ach_100_deaths")
-	if loaded_save.MON_LIFETIME >= 100000:
-		Steam.setAchievement("ach_100000_mon")
-	if loaded_save.FAITH_LIFETIME >= 10000:
-		Steam.setAchievement("ach_10000_faith")
-	if loaded_save.CRYSTALS_LIFETIME >= 10000:
-		Steam.setAchievement("ach_10000_crystals")
-	
-	Steam.storeStats()
