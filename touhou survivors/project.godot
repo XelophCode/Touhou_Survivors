@@ -132,3 +132,7 @@ cancel={
 2d_physics/layer_10="bullets"
 2d_physics/layer_11="item_set_detection"
 2d_physics/layer_12="environment"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"

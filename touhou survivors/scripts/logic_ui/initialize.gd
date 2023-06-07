@@ -4,6 +4,7 @@ var screen_center : Vector2
 
 
 func _ready():
+	print(str(Steam.steamInit()))
 	screen_center = DisplayServer.window_get_position()
 	screen_center.x += 426.0/2
 	screen_center.y += 240.0/2
@@ -11,6 +12,7 @@ func _ready():
 	load_appdata()
 	DisplayServer.window_set_title("Touhou: Gensokyo Survivors")
 	get_tree().change_scene_to_file("res://prefabs/levels/main_menu.tscn")
+	
 
 
 func load_appdata():

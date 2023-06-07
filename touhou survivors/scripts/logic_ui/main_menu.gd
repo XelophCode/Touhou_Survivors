@@ -214,5 +214,17 @@ func check_for_unlocked_achievements():
 		Steam.setAchievement("ach_10000_faith")
 	if loaded_save.CRYSTALS_LIFETIME >= 10000:
 		Steam.setAchievement("ach_10000_crystals")
+	if loaded_save.ITEMS_USED >= 27:
+		Steam.setAchievement("ach_all_items")
+	if loaded_save.SPELLCARDS_USED >= 5:
+		Steam.setAchievement("ach_all_spellcards")
+	if loaded_save.ALL_SPELLCARDS == 1:
+		Steam.setAchievement("ach_simul_spellcards")
+	if loaded_save.LILY_WHITE == 1:
+		Steam.setAchievement("ach_lily_white")
+	if loaded_save.DAIYOUSEI == 1:
+		Steam.setAchievement("ach_daiyousei")
+	if loaded_save.LOCKED_CHARACTERS.size() == 0:
+		Steam.setAchievement("ach_all_characters")
 	
 	Steam.storeStats()
