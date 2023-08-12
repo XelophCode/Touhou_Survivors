@@ -41,10 +41,10 @@
 [ext_resource type="Texture2D" uid="uid://btm07ogp8nhu" path="res://sprites/ui/ogv/frame1/inv_crystal_tut_frame1.jpg" id="30_il5kn"]
 [ext_resource type="VideoStream" path="res://sprites/ui/ogv/inv_crystal_tut.ogv" id="31_jcb7f"]
 [ext_resource type="Texture2D" uid="uid://b6vjojvffb5kp" path="res://sprites/items/item_icons/homing_amulet_icon.png" id="31_q3r7j"]
-[ext_resource type="Texture2D" uid="uid://bf07fvhfd7nmc" path="res://sprites/items/item_icons/persuasion_needle_icon.png" id="32_02ugy"]
 [ext_resource type="Texture2D" uid="uid://cjmf7tbb1u6q6" path="res://sprites/ui/ogv/frame1/rotate_item_tut_frame1.jpg" id="32_uxv43"]
 [ext_resource type="VideoStream" path="res://sprites/ui/ogv/rotate_item_tut.ogv" id="33_gab7j"]
 [ext_resource type="Texture2D" uid="uid://da5hl1uqa0ru7" path="res://sprites/items/item_icons/peerless_wind_god_icon.png" id="33_k7w1n"]
+[ext_resource type="Texture2D" uid="uid://p1dbo03hu8ia" path="res://sprites/items/item_icons/yinyang_icon.png" id="33_nmj4g"]
 [ext_resource type="Texture2D" uid="uid://fffwb0of7363" path="res://sprites/items/item_icons/camera_icon.png" id="34_0u3py"]
 [ext_resource type="Texture2D" uid="uid://buplq64exs86v" path="res://sprites/items/item_icons/leaf_fan_icon.png" id="35_leg2g"]
 [ext_resource type="Texture2D" uid="uid://c4kjfvkst6ml3" path="res://sprites/items/item_icons/tripod_icon.png" id="36_gfbh2"]
@@ -1078,6 +1078,19 @@ they will make a SPELL CARD!
 
 This is an extremely powerful weapon!"
 
+[node name="Label8" type="Label" parent="tutorial_overlay/Tutorial/page_3"]
+offset_left = 94.0
+offset_top = 166.0
+offset_right = 414.0
+offset_bottom = 226.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("24_ghkqj")
+theme_override_font_sizes/font_size = 12
+text = "All 3 items must be touching:
+item A must be touching items B and C,
+item B must be touching items A and C,
+item C must be touching items A and B "
+
 [node name="page_4" type="Node2D" parent="tutorial_overlay/Tutorial"]
 visible = false
 
@@ -1110,7 +1123,7 @@ texture = ExtResource("31_q3r7j")
 
 [node name="Sprite2D4" type="Sprite2D" parent="tutorial_overlay/Tutorial/page_4/fantasy_seal"]
 position = Vector2(34, 101)
-texture = ExtResource("32_02ugy")
+texture = ExtResource("33_nmj4g")
 
 [node name="Label9" type="Label" parent="tutorial_overlay/Tutorial/page_4/fantasy_seal"]
 offset_left = 43.0
@@ -1132,7 +1145,7 @@ theme_override_fonts/font = ExtResource("24_ghkqj")
 theme_override_font_sizes/font_size = 12
 text = "Gohei
 Sealing Amulet
-Persuasion Needles"
+Yinyang Orb"
 
 [node name="Line2D" type="Line2D" parent="tutorial_overlay/Tutorial/page_4/fantasy_seal"]
 position = Vector2(1, -4)

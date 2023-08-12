@@ -836,6 +836,7 @@ theme_override_font_sizes/font_size = 8
 text = "Interact/Focus"
 
 [node name="cancel_label" type="Label" parent="main/Input"]
+visible = false
 offset_left = 55.0
 offset_top = 181.0
 offset_right = 207.0
@@ -947,6 +948,7 @@ button_mask = 0
 text = "RMB"
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="main/Input"]
+visible = false
 offset_left = 173.0
 offset_top = 177.0
 offset_right = 257.0

@@ -1202,6 +1202,15 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_f28bm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wo5dt")
 text = "Reroll"
 
+[node name="button_block" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -99.0
+offset_top = 63.0
+offset_right = 98.0
+offset_bottom = 93.0
+
 [node name="ShopButtons" type="Sprite2D" parent="."]
 position = Vector2(-47, 78)
 texture = ExtResource("15_wgucu")

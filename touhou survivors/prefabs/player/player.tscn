@@ -69,7 +69,7 @@ occult_orb = true
 script = ExtResource("21_du15d")
 item = ExtResource("27_8ne25")
 cooldown = 8
-occult_orb = true
+occult_orb = false
 
 [sub_resource type="Resource" id="Resource_75lpr"]
 script = ExtResource("19_qb5qy")

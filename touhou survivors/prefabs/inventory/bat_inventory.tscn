@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0yj2nsc4fb5v"]
+[gd_scene load_steps=12 format=3 uid="uid://d0yj2nsc4fb5v"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_arorj"]
 [ext_resource type="PackedScene" uid="uid://bwaw5f7habkcj" path="res://prefabs/item_grid_layouts/1x1.tscn" id="2_fp7la"]
@@ -19,6 +19,26 @@ shader_parameter/frequency = 0.5
 shader_parameter/light_offset = 0.5
 shader_parameter/alpha = 1.0
 shader_parameter/opacity = 1.0
+
+[sub_resource type="Animation" id="Animation_fvus6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ItemLargeBg:material:shader_parameter/opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d64qo"]
+_data = {
+"RESET": SubResource("Animation_fvus6")
+}
 
 [node name="Bat" type="Node2D"]
 z_index = 6
@@ -47,5 +67,6 @@ texture = ExtResource("7_1ftp1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
+"": SubResource("AnimationLibrary_d64qo"),
 "Inventory_Items": ExtResource("7_gqru3")
 }

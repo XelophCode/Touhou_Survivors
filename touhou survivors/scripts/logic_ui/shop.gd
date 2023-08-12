@@ -12,6 +12,7 @@ var spawn_count:Vector2 = Vector2(8,9)
 var player_level:float = 1.0
 var inventory_items:Array
 var lvling_up:bool = false
+var can_enable_buttons:bool = false
 
 func _ready():
 	Signals.connect("leveling_up",leveling_up)
@@ -177,9 +178,15 @@ func _process(delta):
 	eyes_scrolling -= delta * 8
 	$ShopGridBG/mask/eyes.region_rect = Rect2(eyes_scrolling,eyes_scrolling,400,400)
 	$ShopGridBG/mask/eyes.rotation += delta / 30
+	
 	if lvling_up:
-		if Input.is_action_just_pressed("cancel") and !$close_gap.disabled:
-			close_gap()
+		if Globals.holding_item:
+			$button_block.visible = true
+		else:
+			$button_block.visible = false
+		
+#		if Input.is_action_just_pressed("cancel") and !$close_gap.disabled and !Globals.holding_item:
+#			close_gap()
 
 func show_close_sign():
 	if !rerolling:
@@ -195,7 +202,9 @@ func close_gap():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	$CloseGapSign.material.set_shader_parameter("line_color",Color(0,0,0,1))
 	Signals.emit_signal("leveling_up",false)
+	$button_block.visible = false
 	Globals.leveling_up = false
+	Signals.hide_video.emit()
 
 func _on_close_gap_sign_animation_finished():
 	if $CloseGapSign.frame == 0:
@@ -210,23 +219,9 @@ func _on_close_gap_sign_animation_finished():
 		$CPUParticles2D2.emitting = true
 	else:
 		can_reroll = true
+		Globals.rerolling = false
 		$reroll_gap.disabled = false
 		$close_gap.disabled = false
-
-func _on_reroll_button_down():
-	if can_reroll:
-		if Globals.crystal_count > 0:
-			$Reroll.visible = false
-			$CloseGap.visible = false
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			Signals.emit_signal("show_right_click_tip",false)
-			Signals.emit_signal("reroll_gap")
-			$CloseGapSign.play_backwards("default")
-			Globals.crystal_count -= 1.0
-			Signals.emit_signal("decrease_crystal_count")
-			can_reroll = false
-		else:
-			Signals.emit_signal("not_enough_crystals")
 
 func play_open_sfx():
 	Signals.emit_signal("gap_open_sfx")
@@ -247,6 +242,7 @@ func _on_reroll_gap_button_up():
 			Globals.crystal_count -= 1.0
 			Signals.emit_signal("decrease_crystal_count")
 			can_reroll = false
+			Globals.rerolling = true
 		else:
 			Signals.emit_signal("not_enough_crystals")
 

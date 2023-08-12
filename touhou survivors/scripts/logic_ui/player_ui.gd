@@ -158,6 +158,11 @@ func _ready():
 	Signals.fade_ui.connect(catch_fade_ui)
 
 func _process(delta):
+	
+	if Input.mouse_mode == Input.MOUSE_MODE_HIDDEN:
+		if Input.is_action_just_pressed("left_mouse_button"):
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 	var current_time:String = time_label.text
 	if can_skip_anims:
 		if Globals.any_input_pressed():

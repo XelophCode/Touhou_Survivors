@@ -10,6 +10,9 @@ func _ready():
 	Signals.hide_hand_cursor.connect(catch_hide_hand_cursor)
 
 func _process(_delta):
+	if Input.MOUSE_MODE_HIDDEN:
+		if Input.is_action_just_pressed("left_mouse_button"):
+			Input.MOUSE_MODE_VISIBLE
 	global_position.x = get_global_mouse_position().x + 2
 	global_position.y = get_global_mouse_position().y + 6
 	if Globals.holding_item:
@@ -18,7 +21,6 @@ func _process(_delta):
 		$AnimatedSprite2D.frame = 1
 	else:
 		z_index = 31
-	
 
 func catch_show_right_click_tip(value):
 	if !Globals.holding_item:

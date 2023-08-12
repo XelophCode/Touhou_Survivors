@@ -175,7 +175,6 @@ func catch_item_video(item_name:int,rotated:bool):
 func catch_hide_video():
 	visible = false
 	video_player.stop()
-	
 
 func _on_video_stream_player_finished():
 	video_player.play()

@@ -26,7 +26,6 @@ func _physics_process(delta):
 		if $knockback_timer.is_stopped():
 			$knockback_timer.start()
 	
-	
 	if leveling_up:
 		velocity = Vector2.ZERO
 	move_and_slide()

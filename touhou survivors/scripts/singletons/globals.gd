@@ -28,6 +28,7 @@ var all_spellcard:int = 0
 var lilywhite:int = 0
 var daiyousei:int = 0
 var leveling_up:bool
+var rerolling:bool = false
 
 const secondary_input:Array = ["interact"]
 const app_version:String = "1.0.1"

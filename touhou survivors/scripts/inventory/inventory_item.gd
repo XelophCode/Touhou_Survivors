@@ -170,7 +170,7 @@ func _process(_delta):
 
 func click_detection(event):
 	if event is InputEventMouseButton:
-		if event.is_action_pressed("left_mouse_button"):
+		if event.is_action_pressed("left_mouse_button") and !Globals.rerolling:
 			holding_item()
 #		if event.is_action_pressed("right_mouse_button"):
 #			if set_matches.size() > 1:
