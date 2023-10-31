@@ -126,7 +126,7 @@ func secondary_input_released():
 
 func any_input_just_pressed():
 	var key_pressed:bool = false
-	var all_keys:Array = ["focus","move_left","move_right","move_up","move_down","left_mouse_button","right_mouse_button","rotate_item","select","focus","escape","start_button_press","a_button_press"]
+	var all_keys:Array = ["focus","move_left","move_right","move_up","move_down","left_mouse_button","right_mouse_button","rotate_item","select","focus","escape","start_button_press","a_button_press","b_button_press","x_button_press"]
 	for key in all_keys:
 		if Input.is_action_just_pressed(key):
 			key_pressed = true
@@ -134,7 +134,7 @@ func any_input_just_pressed():
 
 func any_input_pressed():
 	var key_pressed:bool = false
-	var all_keys:Array = ["focus","move_left","move_right","move_up","move_down","left_mouse_button","right_mouse_button","rotate_item","select","focus","escape"]
+	var all_keys:Array = ["focus","move_left","move_right","move_up","move_down","left_mouse_button","right_mouse_button","rotate_item","select","focus","escape","start_button_press","a_button_press","b_button_press","x_button_press"]
 	for key in all_keys:
 		if Input.is_action_pressed(key):
 			key_pressed = true

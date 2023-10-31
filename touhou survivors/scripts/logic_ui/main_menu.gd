@@ -46,7 +46,7 @@ var doing_panning_anim:bool = true
 var doing_press_start_anim:bool = false
 
 func _ready():
-	
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Signals.connect("options_menu_closed",catch_options_menu_closed)
 	
 	var tween = create_tween()
