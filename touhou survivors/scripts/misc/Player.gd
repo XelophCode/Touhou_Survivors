@@ -5,7 +5,7 @@ enum {RIGHT = 1, LEFT = -1, DOWN = 1, UP = -1, CENTER = 0}
 var move:Vector2
 var idle_animation:String = "idle_down"
 @export var walk_animations : AnimatedSprite2D
-@export var move_speed:float = 3000
+@export var move_speed:float = 2500
 @export var starting_items: StartingItemArrayResource
 
 @export_group("character_spritesheets")
@@ -36,6 +36,9 @@ var idle_animation:String = "idle_down"
 @export var youmu_loadout : StartingItemArrayResource
 @export var cirno_loadout : StartingItemArrayResource
 
+@export_group("spawnables")
+@export var shockwave : PackedScene
+
 var power:int
 var faith:float
 var faith_max:float = 50.0
@@ -63,10 +66,19 @@ var magic_circle_size:float = 1.0
 var emit_damage_taken:bool = true
 var damage_entities:Array
 var last_damage_taken:enemy_info
-var move_right = "move_disabled"
-var move_left = "move_disabled"
-var move_up = "move_disabled"
-var move_down = "move_disabled"
+var move_right : String = "move_disabled"
+var move_left : String = "move_disabled"
+var move_up : String = "move_disabled"
+var move_down : String = "move_disabled"
+var joystick_right : String = "move_disabled"
+var joystick_left : String = "move_disabled"
+var joystick_up : String = "move_disabled"
+var joystick_down : String = "move_disabled"
+var dpad_right : String = "move_disabled"
+var dpad_left : String = "move_disabled"
+var dpad_up : String = "move_disabled"
+var dpad_down : String = "move_disabled"
+
 var toggle_focus:bool
 
 func _ready():
@@ -106,6 +118,7 @@ func _ready():
 	Signals.connect("decrease_crystal_count",catch_decrease_crystal_count)
 	Signals.connect("game_start_complete",catch_game_start_complete)
 	Signals.connect("delete_player",catch_delete_player)
+	Signals.upgrade_health.connect(catch_upgrade_health)
 	Signals.toggle_focus.connect(catch_toggle_focus)
 	
 	await get_tree().create_timer(0.1).timeout
@@ -116,12 +129,14 @@ func _ready():
 				Globals.one_time_spawns.append(item.item.name[item.item.item_name])
 			Signals.emit_signal("add_weapon",item.item.spawnable,counter,item.cooldown,item.item.active,item.item.icon,item.occult_orb,true)
 			counter += 1
+	
+	
+	catch_upgrade_health(Globals.starting_hp_bonus)
 
-func _physics_process(delta):
+func _process(delta):
 	Globals.photo_dest = $PhotoPos.global_position
 	$Healthbar.value = hp
 	move = Vector2.ZERO
-	
 	
 	var magic_circle_scale : float = (crystal / 50) * 2 + 1
 	magic_circle_scale = clamp(magic_circle_scale,1.0,3.0)
@@ -129,7 +144,7 @@ func _physics_process(delta):
 	
 	if !leveling_up:
 		if hp < $Healthbar.max_value:
-			hp += 0.013
+			hp += 0.04
 		hp -= damage_taken
 		
 		if toggle_focus:
@@ -140,14 +155,26 @@ func _physics_process(delta):
 			
 			
 		else:
-			if Input.is_action_just_pressed("interact") and !tweening_focus and !focusing:
+			if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("x_button_press")) and !tweening_focus and !focusing:
 				magic_circle_tween_on(delta)
 			
-			if !Input.is_action_pressed("interact") and !tweening_focus and focusing:
+			if !(Input.is_action_pressed("interact") or Input.is_action_pressed("x_button_press")) and !tweening_focus and focusing:
 				magic_circle_tween_off(delta)
 		
-		move.x = Input.get_action_raw_strength(move_right) - Input.get_action_raw_strength(move_left)
-		move.y = Input.get_action_raw_strength(move_down) - Input.get_action_raw_strength(move_up)
+		
+		var combined_left : float = ceil(Input.get_action_raw_strength(move_left) + Input.get_action_strength(joystick_left) + Input.get_action_raw_strength(dpad_left))
+		var combined_right : float = ceil(Input.get_action_raw_strength(move_right) + Input.get_action_strength(joystick_right) + Input.get_action_raw_strength(dpad_right))
+		var combined_up : float = ceil(Input.get_action_raw_strength(move_up) + Input.get_action_strength(joystick_up) + Input.get_action_raw_strength(dpad_up))
+		var combined_down : float = ceil(Input.get_action_raw_strength(move_down) + Input.get_action_strength(joystick_down) + Input.get_action_raw_strength(dpad_down))
+		
+		combined_left = clampf(combined_left,0,1.0)
+		combined_right = clampf(combined_right,0,1.0)
+		combined_up = clampf(combined_up,0,1.0)
+		combined_down = clampf(combined_down,0,1.0)
+		
+		move.x = combined_right - combined_left
+		move.y = combined_down - combined_up
+		
 		if damage_taken > 0:
 			$damage_effect.emitting = true
 			if emit_damage_taken:
@@ -218,7 +245,7 @@ func _physics_process(delta):
 	
 	Globals.player_position = global_position
 	
-	velocity = move.normalized() * (delta) * move_speed
+	velocity = move.normalized() * (delta) * (move_speed + Globals.speed_bonus)
 	if focusing:
 		velocity = velocity/2
 	
@@ -302,11 +329,18 @@ func catch_leveling_up(value):
 	if value:
 		leveling_up = true
 		check_for_move = true
-		$Healthbar.max_value *= 1.1
-		Signals.emit_signal("increase_max_hp",$Healthbar.max_value)
-		hp *= 1.1
 	else:
 		leveling_up = false
+		spawn_lvlup_shockwave()
+
+func catch_upgrade_health(hp_up:float):
+	$Healthbar.max_value += hp_up
+	Signals.increase_max_hp.emit($Healthbar.max_value)
+	hp += hp_up
+
+func spawn_lvlup_shockwave():
+	var shockwave_inst = shockwave.instantiate()
+	call_deferred("add_child",shockwave_inst)
 
 func _on_spawn_afterimage_timeout():
 	Signals.emit_signal("update_afterimage",walk_animations.sprite_frames,walk_animations.animation,walk_animations.frame,walk_animations.flip_h,afterimage_scale)
@@ -343,6 +377,14 @@ func catch_game_start_complete():
 	move_left = "move_left"
 	move_up = "move_up"
 	move_down = "move_down"
+	joystick_right = "joystick_right"
+	joystick_left = "joystick_left"
+	joystick_up = "joystick_up"
+	joystick_down = "joystick_down"
+	dpad_down = "dpad_down"
+	dpad_left = "dpad_left"
+	dpad_right = "dpad_right"
+	dpad_up = "dpad_up"
 
 func catch_delete_player():
 	queue_free()

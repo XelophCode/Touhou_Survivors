@@ -50,3 +50,5 @@ func load_settings(loaded_settings):
 	AudioServer.set_bus_volume_db(1,loaded_settings.MUSIC_AUDIO)
 	AudioServer.set_bus_volume_db(2,loaded_settings.SFX_AUDIO)
 	AudioServer.set_bus_volume_db(3,loaded_settings.ITEM_AUDIO)
+	
+	

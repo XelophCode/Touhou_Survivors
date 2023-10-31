@@ -7,10 +7,10 @@ var alt_fire:bool = false
 
 func do_damage(body):
 	Signals.emit_signal("hit_sfx")
-	body.hp -= damage
+	body.hp -= damage + Globals.damage_bonus
 	body.knockback = true
 	var inst = damage_popup.instantiate()
-	inst.value = damage
+	inst.value = damage + Globals.damage_bonus
 	inst.pos = body.global_position
 #	get_parent().add_child(inst)
 	Signals.damage_popup_spawn.emit(inst)

@@ -46,14 +46,13 @@ func _on_timer_timeout():
 	spawn_enemy()
 
 func catch_increase_threat():
-	speed_mod += 0.2
-	damage_mod += 0.2
-	health_mod += 0.1
+	speed_mod += 0.4
+	damage_mod += 0.4
+	health_mod += 0.2
 	threat_level += 1.0
 	match threat_level:
-		1.0: enemies_low_chance.append(divine_spirit)
+		1.0: enemies_low_chance.append(obake)
 		2.0: enemies_low_chance.append(hell_raven)
-		3.0: enemies_low_chance.append(obake)
 		4.0: enemies_low_chance.append(vengeful_spirit)
 		5.0: spawn_enemy(true,hannya_mask)
 		6.0: enemies_low_chance.append(evil_eye)

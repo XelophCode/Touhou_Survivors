@@ -50,6 +50,29 @@ extends CanvasLayer
 @export_subgroup("main_menu")
 @export var any_button_label:Label
 
+@export_group("button_prompts")
+@export var kbm1 : AnimatedSprite2D
+@export var kbm2 : AnimatedSprite2D
+@export var kbm3 : AnimatedSprite2D
+@export var kbm4 : AnimatedSprite2D
+@export var xbox1 : AnimatedSprite2D
+@export var xbox2 : AnimatedSprite2D
+@export var xbox3 : AnimatedSprite2D
+@export var xbox4 : AnimatedSprite2D
+@export var playstation1 : AnimatedSprite2D
+@export var playstation2 : AnimatedSprite2D
+@export var playstation3 : AnimatedSprite2D
+@export var playstation4 : AnimatedSprite2D
+@export var nintendo1 : AnimatedSprite2D
+@export var nintendo2 : AnimatedSprite2D
+@export var nintendo3 : AnimatedSprite2D
+@export var nintendo4 : AnimatedSprite2D
+
+@export_group("misc")
+@export var option_button : Button
+@export var hand_icon : Node2D
+@export var interact_prompt : Node2D
+
 var time:float
 var music_muted:bool = false
 var playtime_second:float
@@ -155,13 +178,18 @@ func _ready():
 	Signals.connect("hide_tooltip",catch_hide_tooltip)
 	Signals.connect("delete_ui",catch_delete_ui)
 	Signals.connect("show_fps",catch_show_fps)
+	Signals.update_button_prompts.connect(update_button_prompts)
+	Signals.show_interact_prompt.connect(show_interact_prompt)
 	Signals.fade_ui.connect(catch_fade_ui)
+	
+	update_button_prompts()
 
 func _process(delta):
 	
 	if Input.mouse_mode == Input.MOUSE_MODE_HIDDEN:
 		if Input.is_action_just_pressed("left_mouse_button"):
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+#			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			pass
 	
 	var current_time:String = time_label.text
 	if can_skip_anims:
@@ -173,8 +201,11 @@ func _process(delta):
 			goto_main_menu()
 	
 	$UI/Crystalbar.value = lerp($UI/Crystalbar.value, crystal, delta*2)
-	if Input.is_action_just_pressed("escape") and !is_gameover:
+	if (Input.is_action_just_pressed("escape") or Input.is_action_just_pressed("start_button_press")) and !is_gameover:
+		hand_icon.hide()
 		is_paused = !is_paused
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		
 	
 	$UI/FPS.text = "FPS: " + str(Engine.get_frames_per_second())
 	
@@ -257,6 +288,7 @@ func catch_leveling_up(value):
 func _on_resume_button_down():
 	is_paused = false
 	$Audio/select.play()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_main_menu_button_up():
 	is_paused = false
@@ -410,6 +442,7 @@ func goto_main_menu():
 
 func catch_increase_max_hp(value):
 	$UI/Healthbar.max_value = value
+	$UI/Healthbar.size.x = $UI/Healthbar.max_value / 5
 
 func catch_update_crystal(value):
 	Signals.emit_signal("crystal_sfx")
@@ -478,6 +511,7 @@ func catch_total_power(value):
 
 func _on_options_button_down():
 	Signals.emit_signal("open_options_menu")
+	Globals.former_focused_button = option_button
 
 func catch_holding_item(value):
 	if value:
@@ -517,3 +551,43 @@ func catch_fade_ui(fade):
 		$AnimationPlayer2.play("fade_out")
 	else:
 		$AnimationPlayer2.play("fade_in")
+
+
+func update_button_prompts():
+	var button_type = Globals.button_prompts
+	
+	kbm1.hide();kbm2.hide();kbm3.hide();kbm4.hide()
+	xbox1.hide();xbox2.hide();xbox3.hide();xbox4.hide()
+	playstation1.hide();playstation2.hide();playstation3.hide();playstation4.hide()
+	nintendo1.hide();nintendo2.hide();nintendo3.hide();nintendo4.hide()
+	
+	match button_type:
+		0: kbm1.show();kbm2.show();kbm3.show();kbm4.show()
+		1: xbox1.show();xbox2.show();xbox3.show();xbox4.show()
+		2: playstation1.show();playstation2.show();playstation3.show();playstation4.show()
+		3: nintendo1.show();nintendo2.show();nintendo3.show();nintendo4.show()
+
+
+func show_interact_prompt(value):
+	if value:
+		interact_prompt.show()
+	else:
+		interact_prompt.hide()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

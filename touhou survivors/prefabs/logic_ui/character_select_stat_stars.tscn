@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bri8ak3rb2keu"]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/character_select_stat_stars.gd" id="1_o12vb"]
+[ext_resource type="Texture2D" uid="uid://cq5r6oxwvc0kb" path="res://sprites/ui/star_outline.png" id="2_vj0iq"]
+[ext_resource type="Texture2D" uid="uid://khdy8hmdlcio" path="res://sprites/ui/star_fill.png" id="3_g5j5t"]
+
+[node name="character_select_stat_stars" type="Node2D"]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_o12vb")
+stars = 5
+
+[node name="StarOutline" type="Sprite2D" parent="."]
+position = Vector2(23, 5)
+texture = ExtResource("2_vj0iq")
+
+[node name="fill" type="Node2D" parent="."]
+
+[node name="StarFill" type="Sprite2D" parent="fill"]
+visible = false
+position = Vector2(5, 5)
+texture = ExtResource("3_g5j5t")
+
+[node name="StarFill2" type="Sprite2D" parent="fill"]
+visible = false
+position = Vector2(14, 5)
+texture = ExtResource("3_g5j5t")
+
+[node name="StarFill3" type="Sprite2D" parent="fill"]
+visible = false
+position = Vector2(23, 5)
+texture = ExtResource("3_g5j5t")
+
+[node name="StarFill4" type="Sprite2D" parent="fill"]
+visible = false
+position = Vector2(32, 5)
+texture = ExtResource("3_g5j5t")
+
+[node name="StarFill5" type="Sprite2D" parent="fill"]
+visible = false
+position = Vector2(41, 5)
+texture = ExtResource("3_g5j5t")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=167 format=3 uid="uid://cxtno75a58bkv"]
+[gd_scene load_steps=196 format=3 uid="uid://cxtno75a58bkv"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/player_ui.gd" id="1_i5u1q"]
 [ext_resource type="SpriteFrames" uid="uid://bfm8psvacuqtm" path="res://sprites/ui/character_portraits/reimu_portrait.tres" id="2_lwihl"]
@@ -36,8 +36,11 @@
 [ext_resource type="Texture2D" uid="uid://dwrn02us5388t" path="res://sprites/items/item_icons/icon_border.png" id="18_i862g"]
 [ext_resource type="PackedScene" uid="uid://cokydxk2wfjqf" path="res://prefabs/logic_ui/right_click_tip.tscn" id="19_2m38r"]
 [ext_resource type="Texture2D" uid="uid://bad488ler0kop" path="res://sprites/ui/damage_fullscreen.png" id="20_g8vl8"]
+[ext_resource type="Texture2D" uid="uid://dcnspnlyuh4qy" path="res://sprites/ui/LMB.png" id="25_olhed"]
+[ext_resource type="Texture2D" uid="uid://ca8gownr2tjm0" path="res://sprites/ui/controller_button_prompts.png" id="26_intj5"]
 [ext_resource type="Texture2D" uid="uid://c35rhx8jr4c2x" path="res://sprites/ui/RMB.png" id="26_ns0hv"]
 [ext_resource type="Texture2D" uid="uid://brrahyuj8m1ta" path="res://sprites/ui/pause_overlay.png" id="27_knhde"]
+[ext_resource type="PackedScene" uid="uid://ck1i5jd8kwyce" path="res://prefabs/logic_ui/hand_icon.tscn" id="31_lhods"]
 [ext_resource type="Texture2D" uid="uid://d038ycc11e2qo" path="res://sprites/ui/fullscreen_red.png" id="32_71p5m"]
 [ext_resource type="PackedScene" uid="uid://c0kbh78tuyeb4" path="res://prefabs/logic_ui/options_menu.tscn" id="34_xnond"]
 [ext_resource type="Texture2D" uid="uid://cfuxboqjoju05" path="res://sprites/ui/fullscreen_white.png" id="41_8bpqs"]
@@ -202,18 +205,38 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3o7uu"]
-bg_color = Color(0.243137, 0.207843, 0.27451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rjty"]
-bg_color = Color(0.682353, 0.137255, 0.203922, 1)
-anti_aliasing = false
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cbha"]
 bg_color = Color(0.243137, 0.207843, 0.27451, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p864l"]
 bg_color = Color(0.301961, 0.607843, 0.901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3o7uu"]
+bg_color = Color(0.243137, 0.207843, 0.27451, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.180392, 0.133333, 0.184314, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 20
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rjty"]
+bg_color = Color(0.682353, 0.137255, 0.203922, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.180392, 0.133333, 0.184314, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+anti_aliasing = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hquiq"]
 shader = ExtResource("12_61mgp")
@@ -447,22 +470,198 @@ animations = [{
 "speed": 19.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_73o0f"]
-atlas = ExtResource("26_ns0hv")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm21u"]
+atlas = ExtResource("25_olhed")
 region = Rect2(0, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ukgei"]
-atlas = ExtResource("26_ns0hv")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd1jm"]
+atlas = ExtResource("25_olhed")
 region = Rect2(13, 0, 13, 13)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qjedk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_73o0f")
+"texture": SubResource("AtlasTexture_mm21u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ukgei")
+"texture": SubResource("AtlasTexture_wd1jm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfg06"]
+atlas = ExtResource("26_intj5")
+region = Rect2(31, 1, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qie6v"]
+atlas = ExtResource("26_intj5")
+region = Rect2(46, 1, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_11an2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfg06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qie6v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqyaj"]
+atlas = ExtResource("26_intj5")
+region = Rect2(1, 1, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82oqo"]
+atlas = ExtResource("26_intj5")
+region = Rect2(16, 1, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_46ovr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqyaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82oqo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ut7rx"]
+atlas = ExtResource("26_intj5")
+region = Rect2(61, 1, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3wsa"]
+atlas = ExtResource("26_intj5")
+region = Rect2(76, 1, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q3hjw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ut7rx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3wsa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_051m3"]
+atlas = ExtResource("26_ns0hv")
+region = Rect2(0, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqxo8"]
+atlas = ExtResource("26_ns0hv")
+region = Rect2(13, 0, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3vpqx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_051m3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqxo8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3tpy"]
+atlas = ExtResource("26_intj5")
+region = Rect2(1, 1, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqla5"]
+atlas = ExtResource("26_intj5")
+region = Rect2(16, 1, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_secg1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3tpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqla5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rm27"]
+atlas = ExtResource("26_intj5")
+region = Rect2(1, 16, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auq16"]
+atlas = ExtResource("26_intj5")
+region = Rect2(16, 16, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p61sc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rm27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auq16")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io7pd"]
+atlas = ExtResource("26_intj5")
+region = Rect2(31, 16, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_et3xq"]
+atlas = ExtResource("26_intj5")
+region = Rect2(46, 16, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dbtkm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io7pd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_et3xq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvvrh"]
+atlas = ExtResource("26_ns0hv")
+region = Rect2(0, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iv5nh"]
+atlas = ExtResource("26_ns0hv")
+region = Rect2(13, 0, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wqiea"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvvrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iv5nh")
 }],
 "loop": true,
 "name": &"default",
@@ -1551,7 +1750,14 @@ corner_detail = 20
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x35ta"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6h1ky"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojv8l"]
+bg_color = Color(0.6, 0.6, 0.6, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34b8o"]
+bg_color = Color(0.6, 0.6, 0.6, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gjjdr"]
+bg_color = Color(0.6, 0.6, 0.6, 0.6)
 
 [sub_resource type="Animation" id="Animation_7gmu6"]
 resource_name = "slide_in"
@@ -1629,6 +1835,20 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"focus_resume"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_sj5ht"]
 resource_name = "slide_out"
@@ -1676,14 +1896,14 @@ _data = {
 "slide_out": SubResource("Animation_sj5ht")
 }
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("character_portrait", "time_label", "lvl_label", "powerbar", "confetti", "q_button_prompt", "r_button_prompt", "inven_button_prompts", "video_tab", "resolution_options", "window_options", "monitor_options", "revert_label", "revert_timer", "keep_video_settings", "audio_tab", "input_tab", "time_survived_label", "final_time_label", "killed_by_text", "enemy_name", "enemy_sprite", "pickups_label", "faith_label", "crystals_label", "mon_label", "any_button_label")]
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("character_portrait", "time_label", "lvl_label", "powerbar", "confetti", "q_button_prompt", "r_button_prompt", "inven_button_prompts", "video_tab", "resolution_options", "window_options", "monitor_options", "revert_label", "revert_timer", "keep_video_settings", "audio_tab", "input_tab", "time_survived_label", "final_time_label", "killed_by_text", "enemy_name", "enemy_sprite", "pickups_label", "faith_label", "crystals_label", "mon_label", "any_button_label", "kbm1", "kbm2", "kbm3", "kbm4", "xbox1", "xbox2", "xbox3", "xbox4", "playstation1", "playstation2", "playstation3", "playstation4", "nintendo1", "nintendo2", "nintendo3", "nintendo4", "option_button", "hand_icon", "interact_prompt")]
 script = ExtResource("1_i5u1q")
 character_portrait = NodePath("UI/CharacterPortrait")
 time_label = NodePath("UI/Time")
 lvl_label = NodePath("UI/Level")
 powerbar = NodePath("UI/Powerbar")
 confetti = NodePath("Confetti")
-q_button_prompt = NodePath("UI/inven_button_prompts/Q_button_prompt")
+q_button_prompt = NodePath("UI/inven_button_prompts/prompts/both")
 r_button_prompt = NodePath("UI/inven_button_prompts/R_button_prompt")
 inven_button_prompts = NodePath("UI/inven_button_prompts")
 main_menu_packed = ExtResource("4_t7v5k")
@@ -1714,9 +1934,29 @@ faith_label = NodePath("Gameover/black/final_pickups/faith")
 crystals_label = NodePath("Gameover/black/final_pickups/crystals")
 mon_label = NodePath("Gameover/black/final_pickups/mon")
 any_button_label = NodePath("Gameover/black/return_to_main_menu/any_button")
+kbm1 = NodePath("UI/inven_button_prompts/prompts/both/Interact/kbm")
+kbm2 = NodePath("UI/inven_button_prompts/prompts/both/inspect/kbm")
+kbm3 = NodePath("UI/inven_button_prompts/prompts/single/Interact/kbm")
+kbm4 = NodePath("UI/inven_button_prompts/R_button_prompt/kbm")
+xbox1 = NodePath("UI/inven_button_prompts/prompts/both/Interact/xbox")
+xbox2 = NodePath("UI/inven_button_prompts/prompts/both/inspect/xbox")
+xbox3 = NodePath("UI/inven_button_prompts/prompts/single/Interact/xbox")
+xbox4 = NodePath("UI/inven_button_prompts/R_button_prompt/xbox")
+playstation1 = NodePath("UI/inven_button_prompts/prompts/both/Interact/playstation")
+playstation2 = NodePath("UI/inven_button_prompts/prompts/both/inspect/playstation")
+playstation3 = NodePath("UI/inven_button_prompts/prompts/single/Interact/playstation")
+playstation4 = NodePath("UI/inven_button_prompts/R_button_prompt/playstation")
+nintendo1 = NodePath("UI/inven_button_prompts/prompts/both/Interact/nintendo")
+nintendo2 = NodePath("UI/inven_button_prompts/prompts/both/inspect/nintendo")
+nintendo3 = NodePath("UI/inven_button_prompts/prompts/single/Interact/nintendo")
+nintendo4 = NodePath("UI/inven_button_prompts/R_button_prompt/nintendo")
+option_button = NodePath("PauseMenu/Options")
+hand_icon = NodePath("HandIcon")
+interact_prompt = NodePath("UI/inven_button_prompts/prompts/single/Interact")
 
 [node name="ScreenDim" type="Sprite2D" parent="."]
 visible = false
+modulate = Color(1, 1, 1, 0)
 texture = ExtResource("4_g0qq0")
 centered = false
 
@@ -1798,15 +2038,6 @@ position = Vector2(21, 24.5)
 sprite_frames = SubResource("SpriteFrames_xm2mk")
 animation = &"smile"
 
-[node name="Healthbar" type="ProgressBar" parent="UI"]
-offset_left = 9.5
-offset_top = 42.0
-offset_right = 60.5
-offset_bottom = 46.0
-theme_override_styles/background = SubResource("StyleBoxFlat_3o7uu")
-theme_override_styles/fill = SubResource("StyleBoxFlat_8rjty")
-show_percentage = false
-
 [node name="Crystalbar" type="ProgressBar" parent="UI"]
 offset_left = 25.5
 offset_top = 48.0
@@ -1821,6 +2052,15 @@ show_percentage = false
 [node name="PortraitBorder" type="Sprite2D" parent="UI"]
 position = Vector2(35, 34)
 texture = ExtResource("10_hvsvi")
+
+[node name="Healthbar" type="ProgressBar" parent="UI"]
+offset_left = 12.0
+offset_top = 42.0
+offset_right = 32.0
+offset_bottom = 46.0
+theme_override_styles/background = SubResource("StyleBoxFlat_3o7uu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8rjty")
+show_percentage = false
 
 [node name="FPS" type="Label" parent="UI"]
 visible = false
@@ -1942,29 +2182,128 @@ vertical_alignment = 1
 
 [node name="inven_button_prompts" type="Node2D" parent="UI"]
 
-[node name="Q_button_prompt" type="Node2D" parent="UI/inven_button_prompts"]
+[node name="prompts" type="Node2D" parent="UI/inven_button_prompts"]
+
+[node name="both" type="Node2D" parent="UI/inven_button_prompts/prompts"]
 visible = false
 position = Vector2(-94, 0)
 
-[node name="IconBorder" type="Sprite2D" parent="UI/inven_button_prompts/Q_button_prompt"]
-visible = false
-position = Vector2(233, 230)
-texture = ExtResource("18_i862g")
+[node name="Interact" type="Node2D" parent="UI/inven_button_prompts/prompts/both"]
+position = Vector2(6, 0)
 
-[node name="Label" type="Label" parent="UI/inven_button_prompts/Q_button_prompt"]
-offset_left = 229.0
+[node name="Label" type="Label" parent="UI/inven_button_prompts/prompts/both/Interact"]
+offset_left = 236.0
 offset_top = 226.0
-offset_right = 269.0
+offset_right = 300.0
 offset_bottom = 249.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_nqdip")
 theme_override_font_sizes/font_size = 8
-text = "  show item description"
+text = " Interact"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/inven_button_prompts/Q_button_prompt"]
+[node name="kbm" type="AnimatedSprite2D" parent="UI/inven_button_prompts/prompts/both/Interact"]
 position = Vector2(236, 230)
 sprite_frames = SubResource("SpriteFrames_qjedk")
 autoplay = "default"
 frame_progress = 0.344245
+
+[node name="xbox" type="AnimatedSprite2D" parent="UI/inven_button_prompts/prompts/both/Interact"]
+visible = false
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_11an2")
+autoplay = "default"
+
+[node name="playstation" type="AnimatedSprite2D" parent="UI/inven_button_prompts/prompts/both/Interact"]
+visible = false
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_46ovr")
+autoplay = "default"
+
+[node name="nintendo" type="AnimatedSprite2D" parent="UI/inven_button_prompts/prompts/both/Interact"]
+visible = false
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_q3hjw")
+autoplay = "default"
+
+[node name="inspect" type="Node2D" parent="UI/inven_button_prompts/prompts/both"]
+position = Vector2(95, 0)
+
+[node name="Label" type="Label" parent="UI/inven_button_prompts/prompts/both/inspect"]
+offset_left = 236.0
+offset_top = 226.0
+offset_right = 300.0
+offset_bottom = 249.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_nqdip")
+theme_override_font_sizes/font_size = 8
+text = " Inspect"
+
+[node name="kbm" type="AnimatedSprite2D" parent="UI/inven_button_prompts/prompts/both/inspect"]
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_3vpqx")
+autoplay = "default"
+
+[node name="xbox" type="AnimatedSprite2D" parent="UI/inven_button_prompts/prompts/both/inspect"]
+visible = false
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_secg1")
+autoplay = "default"
+
+[node name="playstation" type="AnimatedSprite2D" parent="UI/inven_button_prompts/prompts/both/inspect"]
+visible = false
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_p61sc")
+autoplay = "default"
+
+[node name="nintendo" type="AnimatedSprite2D" parent="UI/inven_button_prompts/prompts/both/inspect"]
+visible = false
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_dbtkm")
+autoplay = "default"
+
+[node name="single" type="Node2D" parent="UI/inven_button_prompts/prompts"]
+position = Vector2(-94, 0)
+
+[node name="Interact" type="Node2D" parent="UI/inven_button_prompts/prompts/single"]
+visible = false
+position = Vector2(43, 0)
+
+[node name="Label" type="Label" parent="UI/inven_button_prompts/prompts/single/Interact"]
+offset_left = 236.0
+offset_top = 226.0
+offset_right = 300.0
+offset_bottom = 249.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_nqdip")
+theme_override_font_sizes/font_size = 8
+text = " Interact"
+
+[node name="kbm" type="AnimatedSprite2D" parent="UI/inven_button_prompts/prompts/single/Interact"]
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_qjedk")
+autoplay = "default"
+frame_progress = 0.344245
+
+[node name="xbox" type="AnimatedSprite2D" parent="UI/inven_button_prompts/prompts/single/Interact"]
+visible = false
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_11an2")
+autoplay = "default"
+
+[node name="playstation" type="AnimatedSprite2D" parent="UI/inven_button_prompts/prompts/single/Interact"]
+visible = false
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_46ovr")
+autoplay = "default"
+
+[node name="nintendo" type="AnimatedSprite2D" parent="UI/inven_button_prompts/prompts/single/Interact"]
+visible = false
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_q3hjw")
+autoplay = "default"
 
 [node name="R_button_prompt" type="Node2D" parent="UI/inven_button_prompts"]
 visible = false
@@ -1980,15 +2319,34 @@ offset_left = 229.0
 offset_top = 226.0
 offset_right = 269.0
 offset_bottom = 249.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_nqdip")
 theme_override_font_sizes/font_size = 8
 text = "  rotate item"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/inven_button_prompts/R_button_prompt"]
+[node name="kbm" type="AnimatedSprite2D" parent="UI/inven_button_prompts/R_button_prompt"]
+visible = false
 position = Vector2(236, 230)
-sprite_frames = SubResource("SpriteFrames_qjedk")
+sprite_frames = SubResource("SpriteFrames_wqiea")
 autoplay = "default"
-frame_progress = 0.669013
+
+[node name="xbox" type="AnimatedSprite2D" parent="UI/inven_button_prompts/R_button_prompt"]
+visible = false
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_secg1")
+autoplay = "default"
+
+[node name="playstation" type="AnimatedSprite2D" parent="UI/inven_button_prompts/R_button_prompt"]
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_p61sc")
+autoplay = "default"
+
+[node name="nintendo" type="AnimatedSprite2D" parent="UI/inven_button_prompts/R_button_prompt"]
+visible = false
+position = Vector2(236, 230)
+sprite_frames = SubResource("SpriteFrames_dbtkm")
+autoplay = "default"
 
 [node name="PortraitAnims" type="Timer" parent="."]
 wait_time = 5.0
@@ -2005,7 +2363,7 @@ position = Vector2(115, 125)
 
 [node name="Inventory" parent="." instance=ExtResource("11_5oeks")]
 visible = false
-position = Vector2(300, 125)
+position = Vector2(297.2, 113.39)
 
 [node name="PlayerInventory" parent="." instance=ExtResource("10_oguq7")]
 z_index = 20
@@ -2030,6 +2388,9 @@ hue_variation_curve = SubResource("Curve_5b2b6")
 
 [node name="RightClickTip" parent="." instance=ExtResource("19_2m38r")]
 z_index = 31
+
+[node name="HandIcon" parent="." instance=ExtResource("31_lhods")]
+z_index = 100
 
 [node name="item_preview" parent="." instance=ExtResource("42_16rs8")]
 visible = false
@@ -2366,7 +2727,7 @@ libraries = {
 "": SubResource("AnimationLibrary_csr8f")
 }
 
-[node name="PauseMenu" type="Control" parent="."]
+[node name="PauseMenu" type="Control" parent="." node_paths=PackedStringArray("resume_button")]
 process_mode = 3
 visible = false
 z_index = 35
@@ -2377,6 +2738,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_m1qpx")
+resume_button = NodePath("Resume")
 
 [node name="overlay" type="TextureRect" parent="PauseMenu"]
 texture_filter = 1
@@ -2393,6 +2755,8 @@ offset_left = 450.0
 offset_top = 146.0
 offset_right = 546.0
 offset_bottom = 166.0
+focus_neighbor_top = NodePath("../MainMenu")
+focus_neighbor_bottom = NodePath("../Options")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -2401,7 +2765,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_0qhdl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_r23ak")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_73gst")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_x35ta")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6h1ky")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ojv8l")
 text = "RESUME"
 alignment = 2
 
@@ -2411,6 +2775,8 @@ offset_left = 450.0
 offset_top = 175.0
 offset_right = 562.0
 offset_bottom = 195.0
+focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_bottom = NodePath("../MainMenu")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -2419,7 +2785,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_0qhdl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_r23ak")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_73gst")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_x35ta")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6h1ky")
+theme_override_styles/focus = SubResource("StyleBoxFlat_34b8o")
 text = "OPTIONS"
 alignment = 2
 
@@ -2429,6 +2795,8 @@ offset_left = 450.0
 offset_top = 206.0
 offset_right = 594.0
 offset_bottom = 226.0
+focus_neighbor_top = NodePath("../Options")
+focus_neighbor_bottom = NodePath("../Resume")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -2437,7 +2805,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_0qhdl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_r23ak")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_73gst")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_x35ta")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6h1ky")
+theme_override_styles/focus = SubResource("StyleBoxFlat_gjjdr")
 text = "MAIN MENU
 "
 alignment = 2

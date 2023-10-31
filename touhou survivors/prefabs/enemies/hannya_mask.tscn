@@ -53,9 +53,10 @@ _data = {
 "squash_n_stretch": SubResource("Animation_0tw7o")
 }
 
-[node name="HannyaMask" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "particles", "animation", "shadow")]
+[node name="HannyaMask" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "particles", "shadow")]
 collision_layer = 2
 collision_mask = 2050
+motion_mode = 1
 slide_on_ceiling = false
 floor_stop_on_slope = false
 floor_constant_speed = true
@@ -66,7 +67,6 @@ tier = 1
 type = 0
 sprite = NodePath("AnimatedSprite2D")
 particles = NodePath("CPUParticles2D")
-animation = NodePath("")
 shadow = NodePath("Shadow")
 base_speed = 800.0
 hp = 40

@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck1i5jd8kwyce"]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/hand_icon.gd" id="1_4lgt7"]
+[ext_resource type="Texture2D" uid="uid://bchadlgn7qvbl" path="res://sprites/ui/hand_cursor.png" id="2_bie03"]
+[ext_resource type="PackedScene" uid="uid://bo14b4u1us644" path="res://prefabs/logic_ui/collision_id.tscn" id="2_rmmkp"]
+[ext_resource type="Texture2D" uid="uid://bqeo4ht86n8g8" path="res://sprites/ui/hand_cursor_open.png" id="3_6o7eu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_850fb"]
+size = Vector2(1, 1)
+
+[node name="HandIcon" type="Node2D" node_paths=PackedStringArray("collision_id", "point", "open_hand", "closed_hand")]
+visible = false
+z_index = 31
+texture_filter = 1
+script = ExtResource("1_4lgt7")
+collision_id = NodePath("collision_id")
+point = NodePath("icons/point")
+open_hand = NodePath("icons/HandCursorOpen")
+closed_hand = NodePath("icons/closed_hand")
+
+[node name="icons" type="Node2D" parent="."]
+position = Vector2(2, 4.5)
+
+[node name="point" type="Sprite2D" parent="icons"]
+texture = ExtResource("2_bie03")
+region_enabled = true
+region_rect = Rect2(1, 0, 10, 13)
+
+[node name="closed_hand" type="Sprite2D" parent="icons"]
+visible = false
+texture = ExtResource("2_bie03")
+region_enabled = true
+region_rect = Rect2(14, 0, 10, 13)
+
+[node name="HandCursorOpen" type="Sprite2D" parent="icons"]
+visible = false
+texture = ExtResource("3_6o7eu")
+offset = Vector2(0.5, 0)
+
+[node name="collision_id" parent="." instance=ExtResource("2_rmmkp")]
+collision_id = "cursor"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4096
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_850fb")

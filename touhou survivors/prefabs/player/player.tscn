@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://cah8y53sm3blk"]
+[gd_scene load_steps=91 format=3 uid="uid://cah8y53sm3blk"]
 
 [ext_resource type="Script" path="res://scripts/misc/Player.gd" id="1_37at3"]
 [ext_resource type="SpriteFrames" uid="uid://1ntee1x116bu" path="res://sprites/actors/player_anims/reimu_anims.tres" id="2_7dit5"]
@@ -38,6 +38,7 @@
 [ext_resource type="Shader" path="res://scripts/shaders/explosion.gdshader" id="26_ho5b1"]
 [ext_resource type="Resource" uid="uid://crwn6pksk2ad3" path="res://prefabs/inventory/resources/Icicle.tres" id="27_8ne25"]
 [ext_resource type="Texture2D" uid="uid://xbifc8dmi5qv" path="res://icon.svg" id="27_tegxe"]
+[ext_resource type="PackedScene" uid="uid://bq1temlvm6omq" path="res://prefabs/item_spawnables/utilities/level_up_shockwave.tscn" id="28_qctuk"]
 
 [sub_resource type="Resource" id="Resource_hfyvq"]
 script = ExtResource("21_du15d")
@@ -419,6 +420,7 @@ shader_parameter/offset = null
 z_index = 7
 texture_filter = 1
 collision_mask = 2048
+motion_mode = 1
 floor_constant_speed = true
 script = ExtResource("1_37at3")
 walk_animations = NodePath("WalkAnimations")
@@ -446,6 +448,7 @@ suika_loadout = ExtResource("16_ywtlr")
 reisen_loadout = SubResource("Resource_b4x65")
 youmu_loadout = SubResource("Resource_ajqnm")
 cirno_loadout = SubResource("Resource_75lpr")
+shockwave = ExtResource("28_qctuk")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(-2.68221e-07, 4)
@@ -624,7 +627,7 @@ scale_amount_curve = SubResource("Curve_5nvee")
 color_ramp = SubResource("Gradient_do14g")
 
 [node name="PhotoPos" type="Marker2D" parent="."]
-position = Vector2(175, -58)
+position = Vector2(155, -58)
 
 [node name="DiagonalInput" type="Timer" parent="."]
 wait_time = 0.05

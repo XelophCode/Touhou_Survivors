@@ -29,9 +29,16 @@ var lilywhite:int = 0
 var daiyousei:int = 0
 var leveling_up:bool
 var rerolling:bool = false
+var damage_bonus:int = 0
+var starting_hp_bonus:float = 0
+var speed_bonus:float = 0
+var hand_icon_position : Vector2 = Vector2.ZERO
+var spell_card_overlay_visible : bool = false
+var former_focused_button : Button
+var button_prompts : int = 0
 
 const secondary_input:Array = ["interact"]
-const app_version:String = "1.0.1"
+const app_version:String = "1.0.2"
 
 const settings_file_path : String = "user://settings.dat"
 
@@ -90,6 +97,8 @@ func secondary_input_just_pressed():
 	for key in secondary_input:
 		if Input.is_action_just_pressed(key):
 			key_pressed = true
+	if Input.is_action_just_pressed("x_button_press"):
+		key_pressed = true
 	return key_pressed
 
 func secondary_input_just_released():
@@ -97,6 +106,8 @@ func secondary_input_just_released():
 	for key in secondary_input:
 		if Input.is_action_just_released(key):
 			key_pressed = true
+	if Input.is_action_just_released("x_button_press"):
+		key_pressed = true
 	return key_pressed
 
 func secondary_input_pressed():
@@ -115,7 +126,7 @@ func secondary_input_released():
 
 func any_input_just_pressed():
 	var key_pressed:bool = false
-	var all_keys:Array = ["focus","move_left","move_right","move_up","move_down","left_mouse_button","right_mouse_button","rotate_item","select","focus","escape"]
+	var all_keys:Array = ["focus","move_left","move_right","move_up","move_down","left_mouse_button","right_mouse_button","rotate_item","select","focus","escape","start_button_press","a_button_press"]
 	for key in all_keys:
 		if Input.is_action_just_pressed(key):
 			key_pressed = true
@@ -128,6 +139,8 @@ func any_input_pressed():
 		if Input.is_action_pressed(key):
 			key_pressed = true
 	return key_pressed
+
+
 
 func random_color():
 	var random_color_array:Array = []
@@ -185,5 +198,15 @@ func item_code_to_string(code:int):
 		29: name_s = "Tripod"
 	
 	return name_s
+
+
+func connect_mouse_and_focus(button:Button, enter:Callable, exit:Callable):
+	button.mouse_entered.connect(enter)
+	button.mouse_exited.connect(exit)
+	button.focus_entered.connect(enter)
+	button.focus_exited.connect(exit)
+
+
+
 
 

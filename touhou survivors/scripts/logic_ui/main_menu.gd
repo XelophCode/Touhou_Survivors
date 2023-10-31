@@ -5,6 +5,17 @@ extends Node2D
 @export var main_animation_player : Node
 @export var button_anims : Node
 @export var version_label : Label
+@export var hidden_button : Button
+@export var locked_button : Button
+@export var tutorial_button_right : Button
+@export var close_tutorial_button : Button
+@export var tutorial_button : Button
+@export var tutorial_button_left : Button
+@export var options_button : Button
+@export var achievements_close_button : Button
+@export var achievements_button : Button
+@export var credits_close_button : Button
+@export var credits_button : Button
 
 @export_group("achievements")
 @export var time_survived:Label
@@ -35,6 +46,7 @@ var doing_panning_anim:bool = true
 var doing_press_start_anim:bool = false
 
 func _ready():
+	
 	Signals.connect("options_menu_closed",catch_options_menu_closed)
 	
 	var tween = create_tween()
@@ -43,6 +55,9 @@ func _ready():
 	$FullscreenPink.material.set_shader_parameter("dissolve_value",0.0)
 	
 	loaded_save = Appdata.load_file(Appdata.SAVE)
+	var loaded_settings = Appdata.load_file(Appdata.SETTINGS)
+	
+	Globals.button_prompts = loaded_settings.BUTTON_PROMPTS
 	
 	var all_spell_text:String
 	if loaded_save.ALL_SPELLCARDS == 1:
@@ -62,11 +77,24 @@ func _ready():
 	daiyousei.text = str(loaded_save.DAIYOUSEI) + "/1"
 	characters.text = str(8 - loaded_save.LOCKED_CHARACTERS.size()) + "/8"
 	
+	if !loaded_settings.MANUAL_CHECKED:
+		$manual_blink.play("blink")
+	
 	version_label.text = "ver " + Globals.app_version
 	
 	check_for_unlocked_achievements()
 
+func _input(event):
+	if event is InputEventMouseMotion:
+		if !$tutorial_overlay.visible and !$options_overlay.visible and !$credits.visible and !$Achievements.visible:
+			hidden_button.grab_focus()
+
 func _process(_delta):
+	if Input.is_action_just_pressed("left_mouse_button"):
+		if !$tutorial_overlay.visible and !$options_overlay.visible and !$credits.visible and !$Achievements.visible:
+			hidden_button.grab_focus()
+		
+	
 	
 	if doing_panning_anim and !doing_press_start_anim:
 		if Globals.any_input_just_pressed():
@@ -84,6 +112,7 @@ func _process(_delta):
 			$Buttons.visible = true
 			$PressStart.visible = false
 			$Audio/select.play()
+			hidden_button.grab_focus()
 
 func fade_in_logo():
 	main_animation_player.play("logo_fade_in")
@@ -95,6 +124,7 @@ func show_press_start():
 	main_animation_player.play("press_start")
 
 func _on_start_button_down():
+	locked_button.grab_focus()
 	$block_inputs.visible = true
 	$Audio/select.play()
 	button_anims.play("start")
@@ -111,11 +141,12 @@ func _on_start_button_down():
 		tween_audio.tween_property(audio_comp,"volume_db",-60,2.0)
 
 func go_to_character_select():
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.1).timeout
 	get_tree().change_scene_to_file("res://prefabs/levels/character_select.tscn")
 
 
 func _on_quit_button_down():
+	locked_button.grab_focus()
 	$block_inputs.visible = true
 	$Audio/select.play()
 	button_anims.play("quit")
@@ -125,35 +156,45 @@ func _on_quit_button_down():
 	get_tree().quit()
 
 func _on_manual_button_up():
+	tutorial_button_right.grab_focus()
+	close_tutorial_button.focus_neighbor_left = tutorial_button_right.get_path(); close_tutorial_button.focus_neighbor_right = tutorial_button_right.get_path(); close_tutorial_button.focus_neighbor_bottom = tutorial_button_right.get_path(); tutorial_button_right.focus_neighbor_left = tutorial_button_right.get_path()
 	current_tut_page = 1
 	$tutorial_overlay.visible = true
 	play_videos()
+	Appdata.save_file(Appdata.SETTINGS,"MANUAL_CHECKED",true)
+	$manual_blink.stop()
 
 func _on_options_button_down():
 	$options_overlay.visible = true
 	Signals.emit_signal("open_options_menu")
+	Globals.former_focused_button = options_button
 
 func catch_options_menu_closed():
 	$options_overlay.visible = false
 
 func _on_credits_button_down():
+	credits_close_button.grab_focus()
 	$credits.visible = true
 	$Buttons/manual.visible = false
 	$Buttons/credits.visible = false
 
 func _on_close_button_down():
+	credits_button.grab_focus()
 	$credits.visible = false
 	$Buttons/manual.visible = true
 	$Buttons/credits.visible = true
 
 func _on_achievements_button_down():
 	$Achievements.visible = true
+	achievements_close_button.grab_focus()
 
 func _on_closeachievements_button_up():
 	$Achievements.visible = false
+	achievements_button.grab_focus()
 
 
 func _on_close_tutorial_button_up():
+	tutorial_button.grab_focus()
 	stop_videos()
 	$tutorial_overlay.visible = false
 	$tutorial_overlay/Tutorial/page_1.visible = true
@@ -170,10 +211,10 @@ func change_tut_page():
 	$tutorial_overlay/Tutorial/page_4.visible = false
 	
 	match current_tut_page:
-		1: $tutorial_overlay/Tutorial/page_1.visible = true; $tutorial_overlay/Tutorial/arrow_left.visible = false
-		2: $tutorial_overlay/Tutorial/page_2.visible = true; $tutorial_overlay/Tutorial/arrow_left.visible = true
-		3: $tutorial_overlay/Tutorial/page_3.visible = true; $tutorial_overlay/Tutorial/arrow_right.visible = true
-		4: $tutorial_overlay/Tutorial/page_4.visible = true; $tutorial_overlay/Tutorial/arrow_right.visible = false
+		1: $tutorial_overlay/Tutorial/page_1.visible = true; $tutorial_overlay/Tutorial/arrow_left.visible = false; tutorial_button_right.grab_focus(); close_tutorial_button.focus_neighbor_left = tutorial_button_right.get_path(); close_tutorial_button.focus_neighbor_right = tutorial_button_right.get_path(); close_tutorial_button.focus_neighbor_bottom = tutorial_button_right.get_path(); tutorial_button_right.focus_neighbor_left = tutorial_button_right.get_path()
+		2: $tutorial_overlay/Tutorial/page_2.visible = true; $tutorial_overlay/Tutorial/arrow_left.visible = true; tutorial_button_right.focus_neighbor_left = tutorial_button_left.get_path()
+		3: $tutorial_overlay/Tutorial/page_3.visible = true; $tutorial_overlay/Tutorial/arrow_right.visible = true; tutorial_button_left.focus_neighbor_right = tutorial_button_right.get_path()
+		4: $tutorial_overlay/Tutorial/page_4.visible = true; $tutorial_overlay/Tutorial/arrow_right.visible = false; tutorial_button_left.grab_focus(); close_tutorial_button.focus_neighbor_right = tutorial_button_left.get_path(); close_tutorial_button.focus_neighbor_left = tutorial_button_left.get_path(); close_tutorial_button.focus_neighbor_bottom = tutorial_button_left.get_path(); tutorial_button_left.focus_neighbor_right = tutorial_button_left.get_path()
 
 func play_videos():
 	stop_videos()

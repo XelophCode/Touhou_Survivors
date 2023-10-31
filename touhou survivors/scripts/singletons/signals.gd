@@ -123,3 +123,11 @@ signal toggle_focus
 signal hide_hand_cursor
 signal fade_ui
 signal fade_selection_square
+signal upgrade_health
+signal upgrade_damage
+signal upgrade_speed
+signal show_closed_hand
+signal show_open_hand
+signal spell_card_overlay_visible
+signal update_button_prompts
+signal show_interact_prompt

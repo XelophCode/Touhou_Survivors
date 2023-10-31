@@ -10,7 +10,7 @@ func _ready():
 	if animation != null:
 		animation.play(animation.get_animation_list()[0])
 
-func _physics_process(delta):
+func _process(delta):
 	direction_to_player = global_position.direction_to(Globals.player_position).normalized()
 	velocity = direction_to_player * delta * (base_speed * speed_mod)
 	

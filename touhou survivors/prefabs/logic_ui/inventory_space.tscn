@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b5p8gapbj4hw4"]
+[gd_scene load_steps=21 format=3 uid="uid://b5p8gapbj4hw4"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/inventory_space.gd" id="1_68yag"]
 [ext_resource type="Texture2D" uid="uid://c50tinougrkay" path="res://sprites/ui/selection_square.png" id="1_dslhh"]
@@ -26,7 +26,7 @@ resource_local_to_scene = true
 shader = ExtResource("3_bg0kx")
 shader_parameter/dissolve_value = 1.0
 shader_parameter/flash_modifier = 0.0
-shader_parameter/opacity = 1.0
+shader_parameter/opacity = 0.4
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_wu44u")
 
 [sub_resource type="Animation" id="Animation_0rcsd"]
@@ -167,15 +167,20 @@ _data = {
 "fade_out": SubResource("Animation_vpl0r")
 }
 
-[node name="inventory_space" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7a1nk"]
+size = Vector2(105, 105)
+
+[node name="inventory_space" type="Area2D" node_paths=PackedStringArray("click_detection")]
 texture_filter = 1
 collision_layer = 32
 collision_mask = 16
 script = ExtResource("1_68yag")
 blocked_space_images = SubResource("Resource_3v4mi")
+click_detection = NodePath("click_detection")
 
 [node name="SelectionSquare" type="Sprite2D" parent="."]
 visible = false
+modulate = Color(1, 1, 1, 0.156863)
 scale = Vector2(6.4, 6.4)
 texture = ExtResource("1_dslhh")
 
@@ -198,6 +203,11 @@ libraries = {
 "": SubResource("AnimationLibrary_m0p0y")
 }
 
-[connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[node name="click_detection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4096
+monitorable = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="click_detection"]
+shape = SubResource("RectangleShape2D_7a1nk")
+debug_color = Color(0.886275, 0, 0.8, 0.419608)

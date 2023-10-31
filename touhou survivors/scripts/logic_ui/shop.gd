@@ -5,7 +5,15 @@ var eyes_scrolling : float
 
 enum ITEMS {bat,camera,frog,gohei,haniwa,amulet,icicle,keystone,fan,bow,bomb,broom,tome,megaphone,hakkero,mallet,mushroom,wand,roukanken,sake,shanghai,knife,tripod,yinyang,umbrella,needle,rod}
 
+enum {CLOSE_GAP,REROLL}
+
 @export var inv_items : all_items
+@export var close_gap_area : Area2D
+@export var reroll_area : Area2D
+@export var close_gap_bg : ColorRect
+@export var reroll_bg : ColorRect
+
+
 var rerolling:bool = false
 var can_reroll:bool = false
 var spawn_count:Vector2 = Vector2(8,9)
@@ -13,8 +21,46 @@ var player_level:float = 1.0
 var inventory_items:Array
 var lvling_up:bool = false
 var can_enable_buttons:bool = false
+var spell_card_overlay_visible : bool = false
+var b_button_pressed : bool = false
+
+const black : Color = Color.BLACK
+const grey : Color = Color.DIM_GRAY
+
+var button_hovering : int = -1
+
 
 func _ready():
+	b_button_pressed = false
+	Signals.spell_card_overlay_visible.connect(func(value): spell_card_overlay_visible = value)
+	
+	
+	close_gap_area.area_entered.connect(func(_area):
+		if !b_button_pressed:
+			button_hovering = CLOSE_GAP
+			close_gap_bg.color = grey
+			$CloseGapSign.material.set_shader_parameter("line_color",Color(1,1,1,1))
+			$AnimationPlayer2.play("fade_out")
+			Signals.fade_ui.emit(true))
+	close_gap_area.area_exited.connect(func(_area):
+		if !b_button_pressed:
+			button_hovering = -1
+			close_gap_bg.color = black
+			$CloseGapSign.material.set_shader_parameter("line_color",Color(0,0,0,1))
+			$AnimationPlayer2.play("fade_in")
+			Signals.fade_ui.emit(false)
+			Signals.show_interact_prompt.emit(false))
+	reroll_area.area_entered.connect(func(_area):
+		if !b_button_pressed:
+			button_hovering = REROLL
+			reroll_bg.color = grey)
+	reroll_area.area_exited.connect(func(_area):
+		if !b_button_pressed:
+			button_hovering = -1
+			reroll_bg.color = black
+			Signals.show_interact_prompt.emit(false))
+	
+	
 	Signals.connect("leveling_up",leveling_up)
 	inventory_items = inv_items.items
 	for i in Globals.disabled_items:
@@ -132,6 +178,8 @@ func leveling_up(value:bool):
 	lvling_up = value
 	player_level += 1.0
 	if value:
+		b_button_pressed = false
+		spell_card_overlay_visible = false
 		match player_level:
 			3.0: spawn_count = Vector2(7,8)
 			4.0: spawn_count = Vector2(6,7)
@@ -175,18 +223,35 @@ func pass_metadata_to_item(inst, item):
 		inst.spell_card_cooldown = item.spell_card.cooldown
 
 func _process(delta):
+	if !visible:
+		return
+	
 	eyes_scrolling -= delta * 8
 	$ShopGridBG/mask/eyes.region_rect = Rect2(eyes_scrolling,eyes_scrolling,400,400)
 	$ShopGridBG/mask/eyes.rotation += delta / 30
 	
-	if lvling_up:
-		if Globals.holding_item:
-			$button_block.visible = true
-		else:
-			$button_block.visible = false
+	if !Globals.holding_item and !Globals.rerolling:
+		if !b_button_pressed:
+			match button_hovering:
+				CLOSE_GAP:
+					Signals.show_interact_prompt.emit(true)
+					if Input.is_action_just_pressed("left_mouse_button") or Input.is_action_just_pressed("a_button_press"):
+						close_gap_pressed()
+				REROLL:
+					Signals.show_interact_prompt.emit(true)
+					if Input.is_action_just_pressed("left_mouse_button") or Input.is_action_just_pressed("a_button_press"):
+						reroll_gap_button_pressed()
 		
-#		if Input.is_action_just_pressed("cancel") and !$close_gap.disabled and !Globals.holding_item:
-#			close_gap()
+		if !spell_card_overlay_visible:
+			if Input.is_action_just_pressed("b_button_press"):
+				$CloseGapSign.material.set_shader_parameter("line_color",Color(1,1,1,1))
+				$AnimationPlayer2.play("fade_out")
+				Signals.fade_ui.emit(true)
+				b_button_pressed = true
+			
+			if b_button_pressed:
+				if Input.is_action_just_released("b_button_press"):
+					close_gap_pressed()
 
 func show_close_sign():
 	if !rerolling:
@@ -194,15 +259,14 @@ func show_close_sign():
 		$CloseGapSign.play("default")
 
 func close_gap():
-	$reroll_gap.disabled = true
-	$close_gap.disabled = true
+	Signals.show_interact_prompt.emit(false)
 	Globals.holding_item = false
 #	Signals.hide_hand_cursor.emit()
 	Signals.emit_signal("show_hand_cursor",false)
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+#	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	$CloseGapSign.material.set_shader_parameter("line_color",Color(0,0,0,1))
-	Signals.emit_signal("leveling_up",false)
-	$button_block.visible = false
+	Signals.leveling_up.emit(false)
+	Globals.leveling_up = false
 	Globals.leveling_up = false
 	Signals.hide_video.emit()
 
@@ -220,22 +284,20 @@ func _on_close_gap_sign_animation_finished():
 	else:
 		can_reroll = true
 		Globals.rerolling = false
-		$reroll_gap.disabled = false
-		$close_gap.disabled = false
 
 func play_open_sfx():
 	Signals.emit_signal("gap_open_sfx")
 
-func _on_close_gap_button_up():
+
+func close_gap_pressed():
 	close_gap()
 	$AnimationPlayer2.play("fade_in")
 	Signals.fade_ui.emit(false)
 
-func _on_reroll_gap_button_up():
+
+func reroll_gap_button_pressed():
 	if can_reroll:
 		if Globals.crystal_count > 0:
-			$reroll_gap.disabled = true
-			$close_gap.disabled = true
 			Signals.emit_signal("reroll_gap")
 			$CloseGapSign.play_backwards("default")
 			$AnimationPlayer2.play("selection_square_fade_out")
@@ -246,27 +308,3 @@ func _on_reroll_gap_button_up():
 		else:
 			Signals.emit_signal("not_enough_crystals")
 
-func _on_close_gap_mouse_entered():
-	if !$close_gap.disabled:
-		Signals.emit_signal("show_hand_cursor",true)
-		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-		$CloseGapSign.material.set_shader_parameter("line_color",Color(1,1,1,1))
-		$AnimationPlayer2.play("fade_out")
-		Signals.fade_ui.emit(true)
-
-func _on_close_gap_mouse_exited():
-	if !$close_gap.disabled:
-		Signals.emit_signal("show_hand_cursor",false)
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		$CloseGapSign.material.set_shader_parameter("line_color",Color(0,0,0,1))
-		$AnimationPlayer2.play("fade_in")
-		Signals.fade_ui.emit(false)
-
-func _on_reroll_gap_mouse_entered():
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-	Signals.emit_signal("show_hand_cursor",true)
-	
-
-func _on_reroll_gap_mouse_exited():
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	Signals.emit_signal("show_hand_cursor",false)

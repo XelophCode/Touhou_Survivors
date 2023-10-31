@@ -16,6 +16,9 @@ shader_parameter/offset = null
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u4ky5"]
 
+[sub_resource type="Animation" id="Animation_tlqa4"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_1en7a"]
 resource_name = "shockwave"
 length = 0.5
@@ -81,9 +84,6 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(0.3, 0.3), Vector2(2, 2)]
 }
-
-[sub_resource type="Animation" id="Animation_tlqa4"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iy4jj"]
 _data = {

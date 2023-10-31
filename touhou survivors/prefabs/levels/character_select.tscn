@@ -1,4 +1,4 @@
-[gd_scene load_steps=176 format=3 uid="uid://do63og25gtn6j"]
+[gd_scene load_steps=179 format=3 uid="uid://do63og25gtn6j"]
 
 [ext_resource type="Texture2D" uid="uid://qrttyf07rc81" path="res://sprites/ui/character_select.png" id="1_1h6fy"]
 [ext_resource type="Script" path="res://scripts/logic_ui/character_select.gd" id="1_hwynl"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cmipbsbn7fy1" path="res://sprites/actors/marisa.png" id="4_k41ao"]
 [ext_resource type="Shader" path="res://scripts/shaders/dissolve.gdshader" id="5_d7pbv"]
 [ext_resource type="Texture2D" uid="uid://d0wh6yjoa56pg" path="res://sprites/ui/fullscreen_pink.png" id="6_a87dc"]
+[ext_resource type="StyleBox" uid="uid://c8l0mpibb3b56" path="res://resources/stylebox/pink_box.tres" id="6_bhqxu"]
 [ext_resource type="Texture2D" uid="uid://bbc8i5krdqu5y" path="res://sprites/actors/remilia.png" id="6_rkprf"]
 [ext_resource type="Shader" path="res://scripts/shaders/damage_flash.gdshader" id="6_ysg0h"]
 [ext_resource type="Texture2D" uid="uid://by5675jsqe86b" path="res://sprites/actors/Aya.png" id="7_r3fx0"]
@@ -63,27 +64,23 @@
 [ext_resource type="Texture2D" uid="uid://dwrn02us5388t" path="res://sprites/items/item_icons/icon_border.png" id="40_7qlrg"]
 [ext_resource type="Script" path="res://scripts/logic_ui/item_remove_buttons.gd" id="41_fcwoo"]
 [ext_resource type="FontFile" uid="uid://cvfmxd484foqv" path="res://resources/fonts/yoster.ttf" id="46_h8g4k"]
+[ext_resource type="PackedScene" uid="uid://bri8ak3rb2keu" path="res://prefabs/logic_ui/character_select_stat_stars.tscn" id="47_i5m1u"]
 [ext_resource type="Texture2D" uid="uid://c8uuhtaxr64p3" path="res://sprites/ui/cirno_fullbody.png" id="58_ebuxr"]
 [ext_resource type="Texture2D" uid="uid://dsnig4tuwiwyn" path="res://sprites/items/inventory/icicle_item_large.png" id="59_ex546"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lwj6m"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wk837"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tb48x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kpu6w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vdor1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a6tss"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4nj4"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tpxd"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.960784, 0.301961, 0.760784, 1)
-corner_detail = 20
-shadow_color = Color(0, 0, 0, 0)
-anti_aliasing = false
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ebxxn"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xt0ml"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_anmyr"]
 atlas = ExtResource("3_lllma")
@@ -545,7 +542,7 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.8, 0.113725, 0, 1)
+border_color = Color(0.960784, 0.301961, 0.760784, 1)
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aopno"]
@@ -554,10 +551,8 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.8, 0.113725, 0, 1)
+border_color = Color(0.960784, 0.301961, 0.760784, 1)
 anti_aliasing = false
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s8bjh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_td14g"]
 atlas = ExtResource("20_diedt")
@@ -749,6 +744,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"focus_hidden_button"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fg3a8"]
 _data = {
@@ -778,7 +787,7 @@ _data = {
 "not_enough_mon": SubResource("Animation_wn4t1")
 }
 
-[node name="character_select" type="Node2D" node_paths=PackedStringArray("fullscreen_pink", "reimu_button", "marisa_button", "remilia_button", "aya_button", "suika_button", "reisen_button", "youmu_button", "cirno_button", "reimu_sprite", "marisa_sprite", "remilia_sprite", "aya_sprite", "suika_sprite", "reisen_sprite", "youmu_sprite", "cirno_sprite", "reimu_loadout", "marisa_loadout", "remilia_loadout", "remilia_portrait", "remilia_info", "aya_loadout", "aya_portrait", "aya_info", "suika_loadout", "suika_portrait", "suika_info", "reisen_loadout", "reisen_portrait", "reisen_info", "youmu_loadout", "youmu_portrait", "youmu_info", "cirno_loadout", "cirno_portrait", "cirno_info", "mon_label", "cost", "item_disable_cost_label", "item_disable_cost", "anim_player_2", "item_dis_count")]
+[node name="character_select" type="Node2D" node_paths=PackedStringArray("fullscreen_pink", "reimu_button", "marisa_button", "remilia_button", "aya_button", "suika_button", "reisen_button", "youmu_button", "cirno_button", "reimu_sprite", "marisa_sprite", "remilia_sprite", "aya_sprite", "suika_sprite", "reisen_sprite", "youmu_sprite", "cirno_sprite", "reimu_loadout", "marisa_loadout", "remilia_loadout", "remilia_portrait", "remilia_info", "aya_loadout", "aya_portrait", "aya_info", "suika_loadout", "suika_portrait", "suika_info", "reisen_loadout", "reisen_portrait", "reisen_info", "youmu_loadout", "youmu_portrait", "youmu_info", "cirno_loadout", "cirno_portrait", "cirno_info", "mon_label", "cost", "item_disable_cost_label", "item_disable_cost", "anim_player_2", "item_dis_count", "hidden_button")]
 texture_filter = 1
 script = ExtResource("1_hwynl")
 fullscreen_pink = NodePath("FullscreenPink")
@@ -825,6 +834,7 @@ item_disable_cost_label = NodePath("item_disable_cost/cost/mon2")
 item_disable_cost = NodePath("item_disable_cost")
 anim_player_2 = NodePath("AnimationPlayer2")
 item_dis_count = NodePath("disable_items/Label3")
+hidden_button = NodePath("hidden")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -847,14 +857,35 @@ offset_bottom = 26.0
 theme_override_fonts/font = ExtResource("10_tgr8l")
 text = "Character Select"
 
+[node name="hidden" type="Button" parent="."]
+offset_left = -17.0
+offset_top = -17.0
+offset_right = -9.0
+offset_bottom = -9.0
+focus_neighbor_left = NodePath("../Reimu")
+focus_neighbor_top = NodePath("../Reimu")
+focus_neighbor_right = NodePath("../Reimu")
+focus_neighbor_bottom = NodePath("../Reimu")
+focus_next = NodePath("../Reimu")
+focus_previous = NodePath("../Reimu")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wk837")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tb48x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kpu6w")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vdor1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a6tss")
+
 [node name="main_menu" type="Button" parent="."]
 offset_left = 352.0
 offset_top = 3.0
 offset_right = 423.0
 offset_bottom = 23.0
+focus_neighbor_left = NodePath("../Cirno")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Cirno")
 theme_override_fonts/font = ExtResource("46_h8g4k")
 theme_override_font_sizes/font_size = 12
-theme_override_styles/focus = SubResource("StyleBoxEmpty_lwj6m")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 text = "Main Menu"
 
 [node name="Reimu" type="Button" parent="."]
@@ -862,80 +893,112 @@ offset_left = 231.0
 offset_top = 39.0
 offset_right = 253.0
 offset_bottom = 61.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../main_menu")
+focus_neighbor_right = NodePath("../Marisa")
+focus_neighbor_bottom = NodePath("../Aya")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/hover = ExtResource("6_bhqxu")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
 [node name="Marisa" type="Button" parent="."]
 offset_left = 259.0
 offset_top = 39.0
 offset_right = 281.0
 offset_bottom = 61.0
+focus_neighbor_left = NodePath("../Reimu")
+focus_neighbor_top = NodePath("../main_menu")
+focus_neighbor_right = NodePath("../Youmu")
+focus_neighbor_bottom = NodePath("../Suika")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/hover = ExtResource("6_bhqxu")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
 [node name="Remilia" type="Button" parent="."]
 offset_left = 287.0
 offset_top = 67.0
 offset_right = 309.0
 offset_bottom = 89.0
+focus_neighbor_left = NodePath("../Suika")
+focus_neighbor_top = NodePath("../Youmu")
+focus_neighbor_right = NodePath("../Reisen")
+focus_neighbor_bottom = NodePath("../disable_items/item_buttons/haniwa")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/hover = ExtResource("6_bhqxu")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
 [node name="Aya" type="Button" parent="."]
 offset_left = 231.0
 offset_top = 67.0
 offset_right = 253.0
 offset_bottom = 89.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Reimu")
+focus_neighbor_right = NodePath("../Suika")
+focus_neighbor_bottom = NodePath("../disable_items/item_buttons/frog")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/hover = ExtResource("6_bhqxu")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
 [node name="Suika" type="Button" parent="."]
 offset_left = 259.0
 offset_top = 67.0
 offset_right = 281.0
 offset_bottom = 89.0
+focus_neighbor_left = NodePath("../Aya")
+focus_neighbor_top = NodePath("../Marisa")
+focus_neighbor_right = NodePath("../Remilia")
+focus_neighbor_bottom = NodePath("../disable_items/item_buttons/gohei")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/hover = ExtResource("6_bhqxu")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
 [node name="Reisen" type="Button" parent="."]
 offset_left = 315.0
 offset_top = 67.0
 offset_right = 337.0
 offset_bottom = 89.0
+focus_neighbor_left = NodePath("../Remilia")
+focus_neighbor_top = NodePath("../Cirno")
+focus_neighbor_right = NodePath("../main_menu")
+focus_neighbor_bottom = NodePath("../disable_items/item_buttons/homing_amulet")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/hover = ExtResource("6_bhqxu")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
 [node name="Youmu" type="Button" parent="."]
 offset_left = 287.0
 offset_top = 39.0
 offset_right = 309.0
 offset_bottom = 61.0
+focus_neighbor_left = NodePath("../Marisa")
+focus_neighbor_top = NodePath("../main_menu")
+focus_neighbor_right = NodePath("../Cirno")
+focus_neighbor_bottom = NodePath("../Remilia")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/hover = ExtResource("6_bhqxu")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
 [node name="Cirno" type="Button" parent="."]
 offset_left = 315.0
 offset_top = 39.0
 offset_right = 337.0
 offset_bottom = 61.0
+focus_neighbor_left = NodePath("../Youmu")
+focus_neighbor_top = NodePath("../main_menu")
+focus_neighbor_right = NodePath("../main_menu")
+focus_neighbor_bottom = NodePath("../Reisen")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d4nj4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0tpxd")
+theme_override_styles/hover = ExtResource("6_bhqxu")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ebxxn")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0ml")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
 [node name="characters" type="Node2D" parent="."]
 
@@ -1698,12 +1761,16 @@ default_color = Color(1, 0, 0, 1)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("41_fcwoo")
 
-[node name="CheckBox" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="bat" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 425.0
 offset_top = 267.0
 offset_right = 449.0
 offset_bottom = 291.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../leaf_fan")
+focus_neighbor_top = NodePath("../../../Aya")
+focus_neighbor_right = NodePath("../camera")
+focus_neighbor_bottom = NodePath("../bow")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -1717,14 +1784,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox2" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="camera" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 455.0
 offset_top = 267.0
 offset_right = 479.0
 offset_bottom = 291.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../bat")
+focus_neighbor_top = NodePath("../../../Aya")
+focus_neighbor_right = NodePath("../frog")
+focus_neighbor_bottom = NodePath("../bomb")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -1738,14 +1809,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox3" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="frog" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 485.0
 offset_top = 267.0
 offset_right = 509.0
 offset_bottom = 291.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../camera")
+focus_neighbor_top = NodePath("../../../Aya")
+focus_neighbor_right = NodePath("../gohei")
+focus_neighbor_bottom = NodePath("../broom")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -1759,14 +1834,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox4" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="gohei" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 515.0
 offset_top = 267.0
 offset_right = 539.0
 offset_bottom = 291.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../frog")
+focus_neighbor_top = NodePath("../../../Suika")
+focus_neighbor_right = NodePath("../haniwa")
+focus_neighbor_bottom = NodePath("../tome")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -1780,14 +1859,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox5" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="haniwa" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 545.0
 offset_top = 267.0
 offset_right = 569.0
 offset_bottom = 291.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../gohei")
+focus_neighbor_top = NodePath("../../../Remilia")
+focus_neighbor_right = NodePath("../homing_amulet")
+focus_neighbor_bottom = NodePath("../gun")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -1801,14 +1884,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox6" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="homing_amulet" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 575.0
 offset_top = 267.0
 offset_right = 599.0
 offset_bottom = 291.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../haniwa")
+focus_neighbor_top = NodePath("../../../Reisen")
+focus_neighbor_right = NodePath("../icicle")
+focus_neighbor_bottom = NodePath("../mini_hakkero")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -1822,14 +1909,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox7" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="icicle" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 605.0
 offset_top = 267.0
 offset_right = 629.0
 offset_bottom = 291.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../homing_amulet")
+focus_neighbor_top = NodePath("../../../Reisen")
+focus_neighbor_right = NodePath("../keystone")
+focus_neighbor_bottom = NodePath("../mallet")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -1843,14 +1934,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox8" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="keystone" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 635.0
 offset_top = 267.0
 offset_right = 659.0
 offset_bottom = 291.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../icicle")
+focus_neighbor_top = NodePath("../../../Reisen")
+focus_neighbor_right = NodePath("../leaf_fan")
+focus_neighbor_bottom = NodePath("../mushroom")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -1864,14 +1959,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox9" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="leaf_fan" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 665.0
 offset_top = 267.0
 offset_right = 689.0
 offset_bottom = 291.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../keystone")
+focus_neighbor_top = NodePath("../../../Reisen")
+focus_neighbor_right = NodePath("../bat")
+focus_neighbor_bottom = NodePath("../wand")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -1885,14 +1984,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox10" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="bow" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 425.0
 offset_top = 297.0
 offset_right = 449.0
 offset_bottom = 321.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../wand")
+focus_neighbor_top = NodePath("../bat")
+focus_neighbor_right = NodePath("../bomb")
+focus_neighbor_bottom = NodePath("../roukanken")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -1906,14 +2009,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox11" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="bomb" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 455.0
 offset_top = 297.0
 offset_right = 479.0
 offset_bottom = 321.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../bow")
+focus_neighbor_top = NodePath("../camera")
+focus_neighbor_right = NodePath("../broom")
+focus_neighbor_bottom = NodePath("../sake")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -1927,14 +2034,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox12" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="broom" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 485.0
 offset_top = 297.0
 offset_right = 509.0
 offset_bottom = 321.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../bomb")
+focus_neighbor_top = NodePath("../frog")
+focus_neighbor_right = NodePath("../tome")
+focus_neighbor_bottom = NodePath("../doll")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -1948,14 +2059,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox13" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="tome" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 515.0
 offset_top = 297.0
 offset_right = 539.0
 offset_bottom = 321.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../broom")
+focus_neighbor_top = NodePath("../gohei")
+focus_neighbor_right = NodePath("../gun")
+focus_neighbor_bottom = NodePath("../knife")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -1969,14 +2084,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox14" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="gun" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 545.0
 offset_top = 297.0
 offset_right = 569.0
 offset_bottom = 321.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../tome")
+focus_neighbor_top = NodePath("../haniwa")
+focus_neighbor_right = NodePath("../mini_hakkero")
+focus_neighbor_bottom = NodePath("../tripod")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -1990,14 +2109,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox15" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="mini_hakkero" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 575.0
 offset_top = 297.0
 offset_right = 599.0
 offset_bottom = 321.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../gun")
+focus_neighbor_top = NodePath("../homing_amulet")
+focus_neighbor_right = NodePath("../mallet")
+focus_neighbor_bottom = NodePath("../yinyang")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -2011,14 +2134,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox16" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="mallet" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 605.0
 offset_top = 297.0
 offset_right = 629.0
 offset_bottom = 321.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../mini_hakkero")
+focus_neighbor_top = NodePath("../icicle")
+focus_neighbor_right = NodePath("../mushroom")
+focus_neighbor_bottom = NodePath("../umbrella")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -2032,14 +2159,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox17" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="mushroom" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 635.0
 offset_top = 297.0
 offset_right = 659.0
 offset_bottom = 321.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../mallet")
+focus_neighbor_top = NodePath("../keystone")
+focus_neighbor_right = NodePath("../wand")
+focus_neighbor_bottom = NodePath("../needle")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -2053,14 +2184,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox18" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="wand" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 665.0
 offset_top = 297.0
 offset_right = 689.0
 offset_bottom = 321.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../mushroom")
+focus_neighbor_top = NodePath("../leaf_fan")
+focus_neighbor_right = NodePath("../bow")
+focus_neighbor_bottom = NodePath("../purification_rod")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -2074,14 +2209,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox19" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="roukanken" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 425.0
 offset_top = 327.0
 offset_right = 449.0
 offset_bottom = 351.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../purification_rod")
+focus_neighbor_top = NodePath("../bow")
+focus_neighbor_right = NodePath("../sake")
+focus_neighbor_bottom = NodePath(".")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -2095,14 +2234,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox20" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="sake" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 455.0
 offset_top = 327.0
 offset_right = 479.0
 offset_bottom = 351.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../roukanken")
+focus_neighbor_top = NodePath("../bomb")
+focus_neighbor_right = NodePath("../doll")
+focus_neighbor_bottom = NodePath(".")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -2116,14 +2259,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox21" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="doll" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 485.0
 offset_top = 327.0
 offset_right = 509.0
 offset_bottom = 351.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../sake")
+focus_neighbor_top = NodePath("../broom")
+focus_neighbor_right = NodePath("../knife")
+focus_neighbor_bottom = NodePath(".")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -2137,14 +2284,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox22" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="knife" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 515.0
 offset_top = 327.0
 offset_right = 539.0
 offset_bottom = 351.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../doll")
+focus_neighbor_top = NodePath("../tome")
+focus_neighbor_right = NodePath("../tripod")
+focus_neighbor_bottom = NodePath(".")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -2158,14 +2309,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox23" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="tripod" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 545.0
 offset_top = 327.0
 offset_right = 569.0
 offset_bottom = 351.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../knife")
+focus_neighbor_top = NodePath("../gun")
+focus_neighbor_right = NodePath("../yinyang")
+focus_neighbor_bottom = NodePath(".")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -2179,14 +2334,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox24" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="yinyang" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 575.0
 offset_top = 327.0
 offset_right = 599.0
 offset_bottom = 351.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../tripod")
+focus_neighbor_top = NodePath("../mini_hakkero")
+focus_neighbor_right = NodePath("../umbrella")
+focus_neighbor_bottom = NodePath(".")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -2200,14 +2359,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox25" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="umbrella" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 605.0
 offset_top = 327.0
 offset_right = 629.0
 offset_bottom = 351.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../yinyang")
+focus_neighbor_top = NodePath("../mallet")
+focus_neighbor_right = NodePath("../needle")
+focus_neighbor_bottom = NodePath(".")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -2221,14 +2384,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox26" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="needle" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 635.0
 offset_top = 327.0
 offset_right = 659.0
 offset_bottom = 351.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../umbrella")
+focus_neighbor_top = NodePath("../mushroom")
+focus_neighbor_right = NodePath("../purification_rod")
+focus_neighbor_bottom = NodePath(".")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -2242,14 +2409,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
-[node name="CheckBox27" type="CheckBox" parent="disable_items/item_buttons"]
+[node name="purification_rod" type="CheckBox" parent="disable_items/item_buttons"]
 offset_left = 665.0
 offset_top = 327.0
 offset_right = 689.0
 offset_bottom = 351.0
 scale = Vector2(0.92, 0.92)
+focus_neighbor_left = NodePath("../needle")
+focus_neighbor_top = NodePath("../wand")
+focus_neighbor_right = NodePath("../roukanken")
+focus_neighbor_bottom = NodePath(".")
 theme_override_icons/checked = SubResource("ImageTexture_7aatw")
 theme_override_icons/checked_disabled = SubResource("ImageTexture_6t055")
 theme_override_icons/unchecked = SubResource("ImageTexture_oiwxm")
@@ -2263,7 +2434,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hehd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6bf2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fng74")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_aopno")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s8bjh")
+theme_override_styles/focus = ExtResource("6_bhqxu")
 
 [node name="mon_anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(415, 227)
@@ -2306,6 +2477,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Loadouts" type="Node2D" parent="."]
+visible = false
 
 [node name="reimu_loadout" type="Node2D" parent="Loadouts"]
 visible = false
@@ -2356,6 +2528,41 @@ and high damage"
 position = Vector2(102, 176)
 texture = ExtResource("16_ph7jh")
 
+[node name="stats" type="Node2D" parent="Loadouts/reimu_loadout"]
+texture_filter = 1
+
+[node name="Line2D" type="Line2D" parent="Loadouts/reimu_loadout/stats"]
+position = Vector2(146, 4)
+points = PackedVector2Array(-25, 103, -25, 149)
+width = 55.0
+default_color = Color(0.639216, 0.603922, 0.443137, 1)
+
+[node name="Label" type="Label" parent="Loadouts/reimu_loadout/stats"]
+offset_left = 99.0
+offset_top = 109.0
+offset_right = 135.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+text = "hp
+dmg
+spd"
+
+[node name="character_select_stat_stars" parent="Loadouts/reimu_loadout/stats" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 113)
+stars = 2
+
+[node name="character_select_stat_stars2" parent="Loadouts/reimu_loadout/stats" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 128)
+stars = 2
+
+[node name="character_select_stat_stars3" parent="Loadouts/reimu_loadout/stats" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 142)
+stars = 2
+
 [node name="marisa_loadout" type="Node2D" parent="Loadouts"]
 visible = false
 
@@ -2402,6 +2609,41 @@ theme_override_font_sizes/font_size = 12
 text = "Starts with a    Mini-
 Hakkero, long range
 with medium damage"
+
+[node name="stats2" type="Node2D" parent="Loadouts/marisa_loadout"]
+texture_filter = 1
+
+[node name="Line2D" type="Line2D" parent="Loadouts/marisa_loadout/stats2"]
+position = Vector2(146, 4)
+points = PackedVector2Array(-25, 103, -25, 149)
+width = 55.0
+default_color = Color(0.639216, 0.603922, 0.443137, 1)
+
+[node name="Label" type="Label" parent="Loadouts/marisa_loadout/stats2"]
+offset_left = 99.0
+offset_top = 109.0
+offset_right = 135.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+text = "hp
+dmg
+spd"
+
+[node name="character_select_stat_stars" parent="Loadouts/marisa_loadout/stats2" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 113)
+stars = 1
+
+[node name="character_select_stat_stars2" parent="Loadouts/marisa_loadout/stats2" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 128)
+stars = 2
+
+[node name="character_select_stat_stars3" parent="Loadouts/marisa_loadout/stats2" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 142)
+stars = 4
 
 [node name="remilia_loadout" type="Node2D" parent="Loadouts"]
 visible = false
@@ -2456,6 +2698,40 @@ visible = false
 position = Vector2(204, 85)
 texture = ExtResource("17_4imcn")
 
+[node name="stats3" type="Node2D" parent="Loadouts/remilia_loadout"]
+texture_filter = 1
+
+[node name="Line2D" type="Line2D" parent="Loadouts/remilia_loadout/stats3"]
+position = Vector2(146, 4)
+points = PackedVector2Array(-25, 103, -25, 149)
+width = 55.0
+default_color = Color(0.639216, 0.603922, 0.443137, 1)
+
+[node name="Label" type="Label" parent="Loadouts/remilia_loadout/stats3"]
+offset_left = 99.0
+offset_top = 109.0
+offset_right = 135.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+text = "hp
+dmg
+spd"
+
+[node name="character_select_stat_stars" parent="Loadouts/remilia_loadout/stats3" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 113)
+
+[node name="character_select_stat_stars2" parent="Loadouts/remilia_loadout/stats3" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 128)
+stars = 1
+
+[node name="character_select_stat_stars3" parent="Loadouts/remilia_loadout/stats3" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 142)
+stars = 2
+
 [node name="aya_loadout" type="Node2D" parent="Loadouts"]
 visible = false
 
@@ -2500,13 +2776,46 @@ text = "Starts a    Camera,
 hits multiple enemies
 for medium damage"
 
+[node name="stats4" type="Node2D" parent="Loadouts/aya_loadout"]
+texture_filter = 1
+
+[node name="Line2D" type="Line2D" parent="Loadouts/aya_loadout/stats4"]
+position = Vector2(146, 4)
+points = PackedVector2Array(-25, 103, -25, 149)
+width = 55.0
+default_color = Color(0.639216, 0.603922, 0.443137, 1)
+
+[node name="Label" type="Label" parent="Loadouts/aya_loadout/stats4"]
+offset_left = 99.0
+offset_top = 109.0
+offset_right = 135.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+text = "hp
+dmg
+spd"
+
+[node name="character_select_stat_stars" parent="Loadouts/aya_loadout/stats4" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 113)
+stars = 1
+
+[node name="character_select_stat_stars2" parent="Loadouts/aya_loadout/stats4" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 128)
+stars = 1
+
+[node name="character_select_stat_stars3" parent="Loadouts/aya_loadout/stats4" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 142)
+
 [node name="suika_loadout" type="Node2D" parent="Loadouts"]
 visible = false
 
 [node name="SuikaFullbody" type="Sprite2D" parent="Loadouts/suika_loadout"]
 material = SubResource("ShaderMaterial_gkff3")
 position = Vector2(64, 92)
-scale = Vector2(0.9, 0.9)
 texture = ExtResource("20_tfusd")
 
 [node name="suika_info" type="Node2D" parent="Loadouts/suika_loadout"]
@@ -2562,12 +2871,47 @@ Bottle, medium range
 with large damage"
 metadata/_edit_use_anchors_ = true
 
+[node name="stats5" type="Node2D" parent="Loadouts/suika_loadout"]
+texture_filter = 1
+
+[node name="Line2D" type="Line2D" parent="Loadouts/suika_loadout/stats5"]
+position = Vector2(146, 4)
+points = PackedVector2Array(-25, 103, -25, 149)
+width = 55.0
+default_color = Color(0.639216, 0.603922, 0.443137, 1)
+
+[node name="Label" type="Label" parent="Loadouts/suika_loadout/stats5"]
+offset_left = 99.0
+offset_top = 109.0
+offset_right = 135.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+text = "hp
+dmg
+spd"
+
+[node name="character_select_stat_stars" parent="Loadouts/suika_loadout/stats5" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 113)
+stars = 4
+
+[node name="character_select_stat_stars2" parent="Loadouts/suika_loadout/stats5" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 128)
+
+[node name="character_select_stat_stars3" parent="Loadouts/suika_loadout/stats5" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 142)
+stars = 1
+
 [node name="reisen_loadout" type="Node2D" parent="Loadouts"]
 visible = false
 
 [node name="ReisenFullbody" type="Sprite2D" parent="Loadouts/reisen_loadout"]
 material = SubResource("ShaderMaterial_ut2d0")
-position = Vector2(64, 95)
+position = Vector2(64, 92)
+scale = Vector2(1.1, 1.1)
 texture = ExtResource("23_d5j5p")
 
 [node name="reisen_info" type="Node2D" parent="Loadouts/reisen_loadout"]
@@ -2623,6 +2967,41 @@ text = "Starts with a Megaphone
 Gun that fires a 
 volley of bullets"
 metadata/_edit_use_anchors_ = true
+
+[node name="stats6" type="Node2D" parent="Loadouts/reisen_loadout"]
+texture_filter = 1
+
+[node name="Line2D" type="Line2D" parent="Loadouts/reisen_loadout/stats6"]
+position = Vector2(146, 4)
+points = PackedVector2Array(-25, 103, -25, 149)
+width = 55.0
+default_color = Color(0.639216, 0.603922, 0.443137, 1)
+
+[node name="Label" type="Label" parent="Loadouts/reisen_loadout/stats6"]
+offset_left = 99.0
+offset_top = 109.0
+offset_right = 135.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+text = "hp
+dmg
+spd"
+
+[node name="character_select_stat_stars" parent="Loadouts/reisen_loadout/stats6" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 113)
+stars = 2
+
+[node name="character_select_stat_stars2" parent="Loadouts/reisen_loadout/stats6" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 128)
+stars = 1
+
+[node name="character_select_stat_stars3" parent="Loadouts/reisen_loadout/stats6" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 142)
+stars = 3
 
 [node name="youmu_loadout" type="Node2D" parent="Loadouts"]
 visible = false
@@ -2686,6 +3065,41 @@ Unleash a spinning slash
 at nearby enemies"
 metadata/_edit_use_anchors_ = true
 
+[node name="stats7" type="Node2D" parent="Loadouts/youmu_loadout"]
+texture_filter = 1
+
+[node name="Line2D" type="Line2D" parent="Loadouts/youmu_loadout/stats7"]
+position = Vector2(146, 4)
+points = PackedVector2Array(-25, 103, -25, 149)
+width = 55.0
+default_color = Color(0.639216, 0.603922, 0.443137, 1)
+
+[node name="Label" type="Label" parent="Loadouts/youmu_loadout/stats7"]
+offset_left = 99.0
+offset_top = 109.0
+offset_right = 135.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+text = "hp
+dmg
+spd"
+
+[node name="character_select_stat_stars" parent="Loadouts/youmu_loadout/stats7" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 113)
+stars = 1
+
+[node name="character_select_stat_stars2" parent="Loadouts/youmu_loadout/stats7" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 128)
+stars = 4
+
+[node name="character_select_stat_stars3" parent="Loadouts/youmu_loadout/stats7" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 142)
+stars = 4
+
 [node name="cirno_loadout" type="Node2D" parent="Loadouts"]
 visible = false
 
@@ -2747,6 +3161,41 @@ text = "Starts with an Icicle
 that fragments after
 colliding with an enemy"
 metadata/_edit_use_anchors_ = true
+
+[node name="stats8" type="Node2D" parent="Loadouts/cirno_loadout"]
+texture_filter = 1
+
+[node name="Line2D" type="Line2D" parent="Loadouts/cirno_loadout/stats8"]
+position = Vector2(146, 4)
+points = PackedVector2Array(-25, 103, -25, 149)
+width = 55.0
+default_color = Color(0.639216, 0.603922, 0.443137, 1)
+
+[node name="Label" type="Label" parent="Loadouts/cirno_loadout/stats8"]
+offset_left = 99.0
+offset_top = 109.0
+offset_right = 135.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("46_h8g4k")
+theme_override_font_sizes/font_size = 12
+text = "hp
+dmg
+spd"
+
+[node name="character_select_stat_stars" parent="Loadouts/cirno_loadout/stats8" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 113)
+stars = 1
+
+[node name="character_select_stat_stars2" parent="Loadouts/cirno_loadout/stats8" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 128)
+stars = 1
+
+[node name="character_select_stat_stars3" parent="Loadouts/cirno_loadout/stats8" instance=ExtResource("47_i5m1u")]
+position = Vector2(125, 142)
+stars = 1
 
 [node name="FullscreenPink" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_4mwes")
@@ -2819,107 +3268,91 @@ vertical_alignment = 1
 
 [connection signal="button_up" from="main_menu" to="." method="_on_main_menu_button_up"]
 [connection signal="button_down" from="Reimu" to="." method="_on_reimu_button_down"]
-[connection signal="mouse_entered" from="Reimu" to="." method="_on_reimu_mouse_entered"]
-[connection signal="mouse_exited" from="Reimu" to="." method="_on_reimu_mouse_exited"]
 [connection signal="button_down" from="Marisa" to="." method="_on_marisa_button_down"]
-[connection signal="mouse_entered" from="Marisa" to="." method="_on_marisa_mouse_entered"]
-[connection signal="mouse_exited" from="Marisa" to="." method="_on_marisa_mouse_exited"]
 [connection signal="button_down" from="Remilia" to="." method="_on_remilia_button_down"]
-[connection signal="mouse_entered" from="Remilia" to="." method="_on_remilia_mouse_entered"]
-[connection signal="mouse_exited" from="Remilia" to="." method="_on_remilia_mouse_exited"]
 [connection signal="button_down" from="Aya" to="." method="_on_aya_button_down"]
-[connection signal="mouse_entered" from="Aya" to="." method="_on_aya_mouse_entered"]
-[connection signal="mouse_exited" from="Aya" to="." method="_on_aya_mouse_exited"]
 [connection signal="button_down" from="Suika" to="." method="_on_suika_button_down"]
-[connection signal="mouse_entered" from="Suika" to="." method="_on_suika_mouse_entered"]
-[connection signal="mouse_exited" from="Suika" to="." method="_on_suika_mouse_exited"]
 [connection signal="button_down" from="Reisen" to="." method="_on_reisen_button_down"]
-[connection signal="mouse_entered" from="Reisen" to="." method="_on_reisen_mouse_entered"]
-[connection signal="mouse_exited" from="Reisen" to="." method="_on_reisen_mouse_exited"]
 [connection signal="button_down" from="Youmu" to="." method="_on_youmu_button_down"]
-[connection signal="mouse_entered" from="Youmu" to="." method="_on_youmu_mouse_entered"]
-[connection signal="mouse_exited" from="Youmu" to="." method="_on_youmu_mouse_exited"]
 [connection signal="button_down" from="Cirno" to="." method="_on_cirno_button_down"]
-[connection signal="mouse_entered" from="Cirno" to="." method="_on_cirno_mouse_entered"]
-[connection signal="mouse_exited" from="Cirno" to="." method="_on_cirno_mouse_exited"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox" to="disable_items/item_buttons" method="_on_check_box_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox" to="disable_items/item_buttons" method="_on_check_box_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox" to="disable_items/item_buttons" method="_on_check_box_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox2" to="disable_items/item_buttons" method="_on_check_box_2_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox2" to="disable_items/item_buttons" method="_on_check_box_2_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox2" to="disable_items/item_buttons" method="_on_check_box_2_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox3" to="disable_items/item_buttons" method="_on_check_box_3_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox3" to="disable_items/item_buttons" method="_on_check_box_3_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox3" to="disable_items/item_buttons" method="_on_check_box_3_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox4" to="disable_items/item_buttons" method="_on_check_box_4_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox4" to="disable_items/item_buttons" method="_on_check_box_4_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox4" to="disable_items/item_buttons" method="_on_check_box_4_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox5" to="disable_items/item_buttons" method="_on_check_box_5_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox5" to="disable_items/item_buttons" method="_on_check_box_5_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox5" to="disable_items/item_buttons" method="_on_check_box_5_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox6" to="disable_items/item_buttons" method="_on_check_box_6_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox6" to="disable_items/item_buttons" method="_on_check_box_6_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox6" to="disable_items/item_buttons" method="_on_check_box_6_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox7" to="disable_items/item_buttons" method="_on_check_box_7_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox7" to="disable_items/item_buttons" method="_on_check_box_7_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox7" to="disable_items/item_buttons" method="_on_check_box_7_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox8" to="disable_items/item_buttons" method="_on_check_box_8_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox8" to="disable_items/item_buttons" method="_on_check_box_8_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox8" to="disable_items/item_buttons" method="_on_check_box_8_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox9" to="disable_items/item_buttons" method="_on_check_box_9_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox9" to="disable_items/item_buttons" method="_on_check_box_9_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox9" to="disable_items/item_buttons" method="_on_check_box_9_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox10" to="disable_items/item_buttons" method="_on_check_box_10_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox10" to="disable_items/item_buttons" method="_on_check_box_10_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox10" to="disable_items/item_buttons" method="_on_check_box_10_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox11" to="disable_items/item_buttons" method="_on_check_box_11_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox11" to="disable_items/item_buttons" method="_on_check_box_11_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox11" to="disable_items/item_buttons" method="_on_check_box_11_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox12" to="disable_items/item_buttons" method="_on_check_box_12_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox12" to="disable_items/item_buttons" method="_on_check_box_12_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox12" to="disable_items/item_buttons" method="_on_check_box_12_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox13" to="disable_items/item_buttons" method="_on_check_box_13_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox13" to="disable_items/item_buttons" method="_on_check_box_13_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox13" to="disable_items/item_buttons" method="_on_check_box_13_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox14" to="disable_items/item_buttons" method="_on_check_box_14_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox14" to="disable_items/item_buttons" method="_on_check_box_14_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox14" to="disable_items/item_buttons" method="_on_check_box_14_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox15" to="disable_items/item_buttons" method="_on_check_box_15_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox15" to="disable_items/item_buttons" method="_on_check_box_15_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox15" to="disable_items/item_buttons" method="_on_check_box_15_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox16" to="disable_items/item_buttons" method="_on_check_box_16_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox16" to="disable_items/item_buttons" method="_on_check_box_16_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox16" to="disable_items/item_buttons" method="_on_check_box_16_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox17" to="disable_items/item_buttons" method="_on_check_box_17_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox17" to="disable_items/item_buttons" method="_on_check_box_17_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox17" to="disable_items/item_buttons" method="_on_check_box_17_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox18" to="disable_items/item_buttons" method="_on_check_box_18_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox18" to="disable_items/item_buttons" method="_on_check_box_18_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox18" to="disable_items/item_buttons" method="_on_check_box_18_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox19" to="disable_items/item_buttons" method="_on_check_box_19_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox19" to="disable_items/item_buttons" method="_on_check_box_19_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox19" to="disable_items/item_buttons" method="_on_check_box_19_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox20" to="disable_items/item_buttons" method="_on_check_box_20_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox20" to="disable_items/item_buttons" method="_on_check_box_20_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox20" to="disable_items/item_buttons" method="_on_check_box_20_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox21" to="disable_items/item_buttons" method="_on_check_box_21_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox21" to="disable_items/item_buttons" method="_on_check_box_21_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox21" to="disable_items/item_buttons" method="_on_check_box_21_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox22" to="disable_items/item_buttons" method="_on_check_box_22_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox22" to="disable_items/item_buttons" method="_on_check_box_22_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox22" to="disable_items/item_buttons" method="_on_check_box_22_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox23" to="disable_items/item_buttons" method="_on_check_box_23_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox23" to="disable_items/item_buttons" method="_on_check_box_23_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox23" to="disable_items/item_buttons" method="_on_check_box_23_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox24" to="disable_items/item_buttons" method="_on_check_box_24_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox24" to="disable_items/item_buttons" method="_on_check_box_24_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox24" to="disable_items/item_buttons" method="_on_check_box_24_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox25" to="disable_items/item_buttons" method="_on_check_box_25_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox25" to="disable_items/item_buttons" method="_on_check_box_25_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox25" to="disable_items/item_buttons" method="_on_check_box_25_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox26" to="disable_items/item_buttons" method="_on_check_box_26_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox26" to="disable_items/item_buttons" method="_on_check_box_26_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox26" to="disable_items/item_buttons" method="_on_check_box_26_toggled"]
-[connection signal="mouse_entered" from="disable_items/item_buttons/CheckBox27" to="disable_items/item_buttons" method="_on_check_box_27_mouse_entered"]
-[connection signal="mouse_exited" from="disable_items/item_buttons/CheckBox27" to="disable_items/item_buttons" method="_on_check_box_27_mouse_exited"]
-[connection signal="toggled" from="disable_items/item_buttons/CheckBox27" to="disable_items/item_buttons" method="_on_check_box_27_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/bat" to="disable_items/item_buttons" method="_on_check_box_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/bat" to="disable_items/item_buttons" method="_on_check_box_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/bat" to="disable_items/item_buttons" method="_on_check_box_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/camera" to="disable_items/item_buttons" method="_on_check_box_2_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/camera" to="disable_items/item_buttons" method="_on_check_box_2_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/camera" to="disable_items/item_buttons" method="_on_check_box_2_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/frog" to="disable_items/item_buttons" method="_on_check_box_3_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/frog" to="disable_items/item_buttons" method="_on_check_box_3_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/frog" to="disable_items/item_buttons" method="_on_check_box_3_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/gohei" to="disable_items/item_buttons" method="_on_check_box_4_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/gohei" to="disable_items/item_buttons" method="_on_check_box_4_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/gohei" to="disable_items/item_buttons" method="_on_check_box_4_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/haniwa" to="disable_items/item_buttons" method="_on_check_box_5_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/haniwa" to="disable_items/item_buttons" method="_on_check_box_5_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/haniwa" to="disable_items/item_buttons" method="_on_check_box_5_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/homing_amulet" to="disable_items/item_buttons" method="_on_check_box_6_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/homing_amulet" to="disable_items/item_buttons" method="_on_check_box_6_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/homing_amulet" to="disable_items/item_buttons" method="_on_check_box_6_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/icicle" to="disable_items/item_buttons" method="_on_check_box_7_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/icicle" to="disable_items/item_buttons" method="_on_check_box_7_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/icicle" to="disable_items/item_buttons" method="_on_check_box_7_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/keystone" to="disable_items/item_buttons" method="_on_check_box_8_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/keystone" to="disable_items/item_buttons" method="_on_check_box_8_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/keystone" to="disable_items/item_buttons" method="_on_check_box_8_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/leaf_fan" to="disable_items/item_buttons" method="_on_check_box_9_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/leaf_fan" to="disable_items/item_buttons" method="_on_check_box_9_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/leaf_fan" to="disable_items/item_buttons" method="_on_check_box_9_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/bow" to="disable_items/item_buttons" method="_on_check_box_10_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/bow" to="disable_items/item_buttons" method="_on_check_box_10_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/bow" to="disable_items/item_buttons" method="_on_check_box_10_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/bomb" to="disable_items/item_buttons" method="_on_check_box_11_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/bomb" to="disable_items/item_buttons" method="_on_check_box_11_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/bomb" to="disable_items/item_buttons" method="_on_check_box_11_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/broom" to="disable_items/item_buttons" method="_on_check_box_12_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/broom" to="disable_items/item_buttons" method="_on_check_box_12_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/broom" to="disable_items/item_buttons" method="_on_check_box_12_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/tome" to="disable_items/item_buttons" method="_on_check_box_13_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/tome" to="disable_items/item_buttons" method="_on_check_box_13_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/tome" to="disable_items/item_buttons" method="_on_check_box_13_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/gun" to="disable_items/item_buttons" method="_on_check_box_14_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/gun" to="disable_items/item_buttons" method="_on_check_box_14_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/gun" to="disable_items/item_buttons" method="_on_check_box_14_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/mini_hakkero" to="disable_items/item_buttons" method="_on_check_box_15_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/mini_hakkero" to="disable_items/item_buttons" method="_on_check_box_15_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/mini_hakkero" to="disable_items/item_buttons" method="_on_check_box_15_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/mallet" to="disable_items/item_buttons" method="_on_check_box_16_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/mallet" to="disable_items/item_buttons" method="_on_check_box_16_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/mallet" to="disable_items/item_buttons" method="_on_check_box_16_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/mushroom" to="disable_items/item_buttons" method="_on_check_box_17_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/mushroom" to="disable_items/item_buttons" method="_on_check_box_17_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/mushroom" to="disable_items/item_buttons" method="_on_check_box_17_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/wand" to="disable_items/item_buttons" method="_on_check_box_18_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/wand" to="disable_items/item_buttons" method="_on_check_box_18_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/wand" to="disable_items/item_buttons" method="_on_check_box_18_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/roukanken" to="disable_items/item_buttons" method="_on_check_box_19_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/roukanken" to="disable_items/item_buttons" method="_on_check_box_19_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/roukanken" to="disable_items/item_buttons" method="_on_check_box_19_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/sake" to="disable_items/item_buttons" method="_on_check_box_20_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/sake" to="disable_items/item_buttons" method="_on_check_box_20_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/sake" to="disable_items/item_buttons" method="_on_check_box_20_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/doll" to="disable_items/item_buttons" method="_on_check_box_21_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/doll" to="disable_items/item_buttons" method="_on_check_box_21_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/doll" to="disable_items/item_buttons" method="_on_check_box_21_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/knife" to="disable_items/item_buttons" method="_on_check_box_22_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/knife" to="disable_items/item_buttons" method="_on_check_box_22_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/knife" to="disable_items/item_buttons" method="_on_check_box_22_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/tripod" to="disable_items/item_buttons" method="_on_check_box_23_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/tripod" to="disable_items/item_buttons" method="_on_check_box_23_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/tripod" to="disable_items/item_buttons" method="_on_check_box_23_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/yinyang" to="disable_items/item_buttons" method="_on_check_box_24_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/yinyang" to="disable_items/item_buttons" method="_on_check_box_24_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/yinyang" to="disable_items/item_buttons" method="_on_check_box_24_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/umbrella" to="disable_items/item_buttons" method="_on_check_box_25_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/umbrella" to="disable_items/item_buttons" method="_on_check_box_25_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/umbrella" to="disable_items/item_buttons" method="_on_check_box_25_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/needle" to="disable_items/item_buttons" method="_on_check_box_26_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/needle" to="disable_items/item_buttons" method="_on_check_box_26_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/needle" to="disable_items/item_buttons" method="_on_check_box_26_toggled"]
+[connection signal="mouse_entered" from="disable_items/item_buttons/purification_rod" to="disable_items/item_buttons" method="_on_check_box_27_mouse_entered"]
+[connection signal="mouse_exited" from="disable_items/item_buttons/purification_rod" to="disable_items/item_buttons" method="_on_check_box_27_mouse_exited"]
+[connection signal="toggled" from="disable_items/item_buttons/purification_rod" to="disable_items/item_buttons" method="_on_check_box_27_toggled"]

@@ -5,6 +5,7 @@ var rand_pos_neg:Array = [-60,60]
 var spawn_count:float = 80
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Signals.connect("go_to_main_menu",catch_go_to_main_menu)
 	Signals.connect("game_start_complete",catch_game_start_complete)
 	Signals.connect("game_over_music",catch_game_over_music)

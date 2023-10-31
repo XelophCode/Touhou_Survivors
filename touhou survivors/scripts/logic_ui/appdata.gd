@@ -62,7 +62,9 @@ func file_write_new(file_name:int):
 				"MOVE_LEFT" = [[InputMap.action_get_events("move_left")[0].physical_keycode,InputMap.action_get_events("move_left")[1].physical_keycode],["A","Left"]],
 				"MOVE_RIGHT" = [[InputMap.action_get_events("move_right")[0].physical_keycode,InputMap.action_get_events("move_right")[1].physical_keycode],["D","Right"]],
 				"INTERACT" = [[InputMap.action_get_events("interact")[0].physical_keycode],["Shift","RMB"]],
-				"CANCEL" = [[InputMap.action_get_events("cancel")[0].physical_keycode,InputMap.action_get_events("cancel")[1].physical_keycode],["Tab","X"]]
+				"CANCEL" = [[InputMap.action_get_events("cancel")[0].physical_keycode,InputMap.action_get_events("cancel")[1].physical_keycode],["Tab","X"]],
+				"MANUAL_CHECKED" = false,
+				"BUTTON_PROMPTS" = 0
 			}
 			write_to_file(settings_file_path,settings)
 		SAVE:
@@ -123,6 +125,8 @@ func file_version_update(file_name:int):
 			loaded_settings["MOVE_RIGHT"] = [[InputMap.action_get_events("move_right")[0].physical_keycode,InputMap.action_get_events("move_right")[1].physical_keycode],["D","Right"]]
 			loaded_settings["INTERACT"] = [[InputMap.action_get_events("interact")[0].physical_keycode],["Shift","RMB"]]
 			loaded_settings["CANCEL"] = [[InputMap.action_get_events("cancel")[0].physical_keycode,InputMap.action_get_events("cancel")[1].physical_keycode],["Tab","X"]]
+			loaded_settings["MANUAL_CHECKED"] = false
+			loaded_settings["BUTTON_PROMPTS"] = 0
 			write_to_file(settings_file_path,loaded_settings)
 		SAVE:
 			var loaded_save = load_file(SAVE)

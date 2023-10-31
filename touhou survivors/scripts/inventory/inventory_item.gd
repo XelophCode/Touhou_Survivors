@@ -58,6 +58,7 @@ var item_description_2:String
 var previous_match:Array
 var check_spell_cards:bool = false
 var can_show_preview:bool = false
+var can_grab_item : bool = false
 
 func find_rotational_offset():
 	var rot:int = round(rad_to_deg(rotation))
@@ -136,16 +137,23 @@ func _ready():
 	slot_count = get_child(0).get_node("additional_placement").get_child_count() + get_child(0).get_node("main_placement").get_child_count()
 
 func _process(_delta):
+	var button_toggle : bool = true
+	if can_grab_item and !Globals.rerolling and !left_mouse_button_held and !Input.is_action_pressed("b_button_press"):
+		if Input.is_action_just_pressed("left_mouse_button") or Input.is_action_just_pressed("a_button_press"):
+			holding_item()
+			button_toggle = false
+	
 	if can_show_preview:
 		if Globals.secondary_input_just_pressed():
 			Signals.item_video.emit(current_item,rotated)
 	
-	if left_mouse_button_held:
-		if Input.is_action_just_released("left_mouse_button"):
+	if left_mouse_button_held and button_toggle:
+		if Input.is_action_just_released("left_mouse_button") or Input.is_action_just_pressed("a_button_press"):
 			not_holding_item()
+	
 	if left_mouse_button_held:
 		$ItemLargeBg.visible = false
-		global_position = get_global_mouse_position()
+		global_position = Globals.hand_icon_position
 		if Globals.secondary_input_just_pressed():
 			Signals.emit_signal("rotate_sfx")
 			rotated = !rotated
@@ -169,36 +177,13 @@ func _process(_delta):
 			
 
 func click_detection(event):
-	if event is InputEventMouseButton:
-		if event.is_action_pressed("left_mouse_button") and !Globals.rerolling:
-			holding_item()
-#		if event.is_action_pressed("right_mouse_button"):
-#			if set_matches.size() > 1:
-#				for i in current_match:
-#					i.current_match = []
-#					i.set_matches = {}
-#					i.currently_in_set = false
-#					i.item_large_bg.material.set_shader_parameter("line_scale",0.0)
-#					i.spell_card_id = -1
-#
-#				set_selection += 1
-#				if set_selection >= set_matches.size():
-#					set_selection = 0
-#					current_match = set_matches[set_selection]
-#				else:
-#					current_match = set_matches[set_selection]
-#				if current_match.size() > 0:
-#					for i in current_match:
-#						i.current_match = []
-#						i.spell_card_id = spell_card_id
-#						i.spell_card_color = spell_card_color
-#						i.current_match.append(self)
-#						for c in current_match:
-#							if c != i:
-#								i.current_match.append(c)
-#						i.get_other_item_matches()
+	pass
+#	if event is InputEventMouseButton:
+#		if event.is_action_pressed("left_mouse_button") and !Globals.rerolling and !left_mouse_button_held:
+#			holding_item()
 
 func holding_item():
+	Signals.show_closed_hand.emit()
 	Signals.hide_video.emit()
 	can_show_preview = false
 	Signals.emit_signal("item_grab_sfx")
@@ -225,6 +210,7 @@ func holding_item():
 	z_index += 50
 
 func not_holding_item():
+	Signals.show_open_hand.emit()
 	can_show_preview = true
 	Signals.emit_signal("item_place_sfx")
 	Signals.emit_signal("holding_item",false)
@@ -233,7 +219,7 @@ func not_holding_item():
 	Signals.emit_signal("show_tooltip")
 	
 	Signals.emit_signal("show_hand_cursor",true)
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+#	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	
 	left_mouse_button_held = false
 	z_index -= 50
@@ -351,35 +337,21 @@ func hide_tooltip():
 	Signals.hide_video.emit()
 	$ItemHighlight.visible = false
 	Signals.emit_signal("show_hand_cursor",false)
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+#	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if in_inventory:
 		Signals.emit_signal("show_icon_highlight",get_instance_id(),false)
-#		if set_matches.size() > 1:
-#			Signals.emit_signal("show_spell_card_right_click",false)
-#			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-#	var desc:String
-#	if !rotated:
-#		desc = item_description
-#	else:
-#		desc = item_description_2
+	
 	Globals.tooltip_info.erase([item_name,item_description])
 	if Globals.tooltip_info == []:
 		Signals.emit_signal("hide_tooltip")
 
 func show_tooltip():
 	$ItemHighlight.visible = true
-	Signals.emit_signal("show_hand_cursor",true)
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+#	Signals.emit_signal("show_hand_cursor",true)
+#	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	if in_inventory:
 		Signals.emit_signal("show_icon_highlight",get_instance_id(),true)
-#		if set_matches.size() > 1:
-#			Signals.emit_signal("show_spell_card_right_click",true)
-#			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-#	var desc:String
-#	if !rotated:
-#		desc = item_description
-#	else:
-#		desc = item_description_2
+	
 	Globals.tooltip_info.push_front([item_name,item_description])
 	if !left_mouse_button_held:
 		Signals.emit_signal("show_tooltip")

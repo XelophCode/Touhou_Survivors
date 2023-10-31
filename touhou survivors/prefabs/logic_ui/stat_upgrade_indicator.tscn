@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://n0fn6foft1sr"]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/stat_upgrade_indicator.gd" id="1_ahwdw"]
+[ext_resource type="Texture2D" uid="uid://0at2px3pukho" path="res://sprites/ui/dot.png" id="2_6uapk"]
+
+[node name="stat_upgrade_indicator" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_ahwdw")
+
+[node name="Dot" type="Sprite2D" parent="."]
+position = Vector2(1, 1)
+texture = ExtResource("2_6uapk")
+
+[node name="Dot2" type="Sprite2D" parent="."]
+position = Vector2(4, 1)
+texture = ExtResource("2_6uapk")
+
+[node name="Dot3" type="Sprite2D" parent="."]
+position = Vector2(7, 1)
+texture = ExtResource("2_6uapk")
+
+[node name="Dot4" type="Sprite2D" parent="."]
+position = Vector2(10, 1)
+texture = ExtResource("2_6uapk")
+
+[node name="Dot5" type="Sprite2D" parent="."]
+position = Vector2(13, 1)
+texture = ExtResource("2_6uapk")

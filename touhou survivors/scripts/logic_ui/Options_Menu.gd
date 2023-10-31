@@ -11,6 +11,8 @@ extends Control
 @export var revert_timer : Timer
 @export var keep_video_settings : Node2D
 @export var video_apply_button : Button
+@export var keep_video_settings_yes_button : Button
+@export var keep_video_settings_no_button : Button
 @export_subgroup("audio_options")
 @export var audio_tab : Node2D
 @export var master_audio_slider : HSlider
@@ -36,6 +38,12 @@ extends Control
 @export var revert_overlay : Node2D
 @export var revert_key_countdown : Label
 @export var revert_key_timer : Timer
+@export_subgroup("tab_buttons")
+@export var video_tab_button : Button
+@export var audio_tab_button : Button
+@export var input_tab_button : Button
+@export_subgroup("misc")
+@export var hidden_focus : Button
 
 var video_settings:Array = [Vector2(426,240),0,0]
 var video_settings_new:Array = [Vector2(426,240),0,0]
@@ -57,6 +65,8 @@ var move_up_binds:Array
 var move_down_binds:Array
 var move_left_binds:Array
 var move_right_binds:Array
+
+var drop_down_visible : bool = false
 
 func _ready():
 	
@@ -139,17 +149,16 @@ func load_interact_input(loaded_input:Array,_input_action:String):
 	input_rmb.button_index = MOUSE_BUTTON_RIGHT
 	InputMap.action_add_event("interact",input_key)
 	InputMap.action_add_event("interact",input_rmb)
-	
-#	var input_0 = InputEventKey.new()
-#	input_0.physical_keycode = loaded_input[0][0]
-#	var input_array:Array = [input_0]
-#	InputMap.action_erase_event(input_action,InputMap.action_get_events(input_action)[0])
-#	bind_key(input_array,input_action)
+
 
 func _process(_delta):
 	if visible:
-		if Input.is_action_just_pressed("escape"):
+		if (Input.is_action_just_pressed("escape") or Input.is_action_just_pressed("b_button_press") or Input.is_action_just_pressed("start_button_press")) and !keep_video_settings.visible and !revert_overlay.visible and !drop_down_visible:
 			catch_close_options_menu()
+		
+		if revert_overlay.visible:
+			if Input.is_action_just_pressed("a_button_press") or Input.is_action_just_pressed("b_button_press"):
+				revert_rebind()
 		
 		if video_settings != video_settings_new:
 			video_apply_button.visible = true
@@ -162,6 +171,12 @@ func _on_video_b_button_down():
 	video_tab.visible = true
 	audio_tab.visible = false
 	input_tab.visible = false
+	audio_tab_button.focus_neighbor_bottom = resolution_options.get_path()
+	input_tab_button.focus_neighbor_bottom = resolution_options.get_path()
+	video_tab_button.focus_neighbor_bottom = resolution_options.get_path()
+	audio_tab_button.focus_neighbor_top = video_apply_button.get_path()
+	input_tab_button.focus_neighbor_top = video_apply_button.get_path()
+	video_tab_button.focus_neighbor_top = video_apply_button.get_path()
 
 
 func _on_audio_b_button_down():
@@ -169,6 +184,12 @@ func _on_audio_b_button_down():
 	video_tab.visible = false
 	audio_tab.visible = true
 	input_tab.visible = false
+	video_tab_button.focus_neighbor_bottom = master_audio_slider.get_path()
+	input_tab_button.focus_neighbor_bottom = master_audio_slider.get_path()
+	audio_tab_button.focus_neighbor_bottom = master_audio_slider.get_path()
+	video_tab_button.focus_neighbor_top = item_audio_slider.get_path()
+	input_tab_button.focus_neighbor_top = item_audio_slider.get_path()
+	audio_tab_button.focus_neighbor_top = item_audio_slider.get_path()
 
 
 func _on_input_b_button_down():
@@ -176,6 +197,12 @@ func _on_input_b_button_down():
 	video_tab.visible = false
 	audio_tab.visible = false
 	input_tab.visible = true
+	video_tab_button.focus_neighbor_bottom = toggle_focus_checkbox.get_path()
+	audio_tab_button.focus_neighbor_bottom = toggle_focus_checkbox.get_path()
+	input_tab_button.focus_neighbor_bottom = toggle_focus_checkbox.get_path()
+	video_tab_button.focus_neighbor_top = reset_keybinds.get_path()
+	audio_tab_button.focus_neighbor_top = reset_keybinds.get_path()
+	input_tab_button.focus_neighbor_top = reset_keybinds.get_path()
 
 
 func _on_resolution_item_selected(index):
@@ -205,6 +232,8 @@ func _on_video_apply_button_down():
 	
 	keep_video_settings.visible = true
 	revert_timer.start()
+	
+	keep_video_settings_no_button.grab_focus()
 
 
 func _on_window_item_selected(index):
@@ -224,6 +253,8 @@ func _on_yes_button_down():
 	Appdata.save_file(Appdata.SETTINGS,"RESOLUTION",video_settings[0])
 	Appdata.save_file(Appdata.SETTINGS,"WINDOW_MODE",video_settings[1])
 	Appdata.save_file(Appdata.SETTINGS,"MONITOR",video_settings[2])
+	
+	video_tab_button.grab_focus()
 
 func revert_video_changes():
 	DisplayServer.window_set_size(video_settings[0])
@@ -236,7 +267,6 @@ func revert_video_changes():
 	
 	DisplayServer.window_set_current_screen(video_settings[2])
 	reset_video_options()
-	
 
 func reset_video_options():
 	resolution_options.selected = video_settings_indices[0]
@@ -249,11 +279,13 @@ func reset_video_options():
 func _on_timer_timeout():
 	keep_video_settings.visible = false
 	revert_video_changes()
+	video_tab_button.grab_focus()
 
 func _on_no_button_down():
 	revert_timer.stop()
 	revert_video_changes()
 	keep_video_settings.visible = false
+	video_tab_button.grab_focus()
 
 
 func _on_close_button_down():
@@ -344,6 +376,7 @@ func _on_cancel_2_button_up():
 	key_rebind("cancel",1)
 
 func key_rebind(action_name:String,event_id:int):
+	hidden_focus.grab_focus()
 	last_action_event = InputMap.action_get_events(action_name)
 	last_key_text = keybind_button_target.text
 	keybind_button_target.text = "PRESS KEY"
@@ -362,19 +395,6 @@ func _unhandled_key_input(event):
 		save_key_bind(action_target)
 		stop_key_rebind()
 
-#func _input(event):
-#	if rebinding_key:
-#		if (event is InputEventKey) or (Input.is_action_just_pressed("right_mouse_button")):
-#			print(str(event))
-#			last_action_event[action_event_target] = event
-#			bind_key(last_action_event,action_target)
-#			if Input.is_action_just_pressed("right_mouse_button"):
-#
-#				keybind_button_target.text = "RMB"
-#			else:
-#				keybind_button_target.text = str(OS.get_keycode_string(last_action_event[action_event_target].physical_keycode))
-#			save_key_bind(action_target)
-#			stop_key_rebind()
 
 func bind_key(action_event,target):
 	for i in action_event:
@@ -390,6 +410,7 @@ func save_key_bind(action_target_local):
 		"cancel": Appdata.save_file(Appdata.SETTINGS,"CANCEL",[[last_action_event[0].physical_keycode,last_action_event[1].physical_keycode],[cancel_0.text,cancel_1.text]])
 
 func stop_key_rebind():
+	input_tab_button.grab_focus()
 	revert_key_timer.stop()
 	revert_overlay.visible = false
 	rebinding_key = false
@@ -449,3 +470,24 @@ func bind_reset_keys(keycodes:Array,input_action:String):
 		"move_right": move_right_0.text = "D"; move_right_1.text = "Right"
 		"cancel": cancel_0.text = "Tab"; cancel_1.text = "X"
 		
+
+func video_tab_grab_focus():
+	video_tab_button.grab_focus()
+	_on_video_b_button_down()
+
+
+func focus_previous_focus_target():
+	Globals.former_focused_button.grab_focus()
+
+
+func _on_resolution_toggled(button_pressed): drop_down_visible = button_pressed
+func _on_window_toggled(button_pressed): drop_down_visible = button_pressed
+func _on_monitor_toggled(button_pressed): drop_down_visible = button_pressed
+func _on_button_type_toggled(button_pressed): drop_down_visible = button_pressed
+
+
+
+func _on_button_type_item_selected(index):
+	Globals.button_prompts = index
+	Signals.update_button_prompts.emit()
+	Appdata.save_file(Appdata.SETTINGS,"BUTTON_PROMPTS",index)

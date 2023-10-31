@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cbjpy4ciqe0t1"]
+[gd_scene load_steps=38 format=3 uid="uid://cbjpy4ciqe0t1"]
 
 [ext_resource type="Script" path="res://scripts/inventory/Inventory.gd" id="1_3pi44"]
 [ext_resource type="Texture2D" uid="uid://cqm8ntmgk6b77" path="res://sprites/ui/reimu_inventory_grid.png" id="3_5tnkq"]
@@ -12,6 +12,93 @@
 [ext_resource type="Texture2D" uid="uid://cqwqu7jpqg2h6" path="res://sprites/ui/youmu_fullbody.png" id="8_v2can"]
 [ext_resource type="PackedScene" uid="uid://b5p8gapbj4hw4" path="res://prefabs/logic_ui/inventory_space.tscn" id="9_egxg3"]
 [ext_resource type="Texture2D" uid="uid://c8uuhtaxr64p3" path="res://sprites/ui/cirno_fullbody.png" id="9_rtj7p"]
+[ext_resource type="Texture2D" uid="uid://bb0yddtn1ukd5" path="res://sprites/ui/stat_buttons.png" id="12_hlxga"]
+[ext_resource type="FontFile" uid="uid://4g0oq0v08h0h" path="res://resources/fonts/prstart.ttf" id="12_knqrn"]
+[ext_resource type="FontFile" uid="uid://cvfmxd484foqv" path="res://resources/fonts/yoster.ttf" id="13_hrded"]
+[ext_resource type="Texture2D" uid="uid://drdwryjn1j1wp" path="res://sprites/ui/plus.png" id="14_q0l1s"]
+[ext_resource type="Texture2D" uid="uid://ctwladrgqpetb" path="res://sprites/ui/shop_buttons.png" id="15_ph0le"]
+[ext_resource type="PackedScene" uid="uid://n0fn6foft1sr" path="res://prefabs/logic_ui/stat_upgrade_indicator.tscn" id="15_wdmk8"]
+[ext_resource type="Texture2D" uid="uid://bbj0dlweweckt" path="res://sprites/ui/tutorial_bg.png" id="19_pr8tq"]
+[ext_resource type="PackedScene" uid="uid://dckeoh7g5b24o" path="res://prefabs/logic_ui/spell_card_tutorial.tscn" id="20_ixnik"]
+[ext_resource type="PackedScene" uid="uid://bo14b4u1us644" path="res://prefabs/logic_ui/collision_id.tscn" id="21_iioqo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4rjx"]
+bg_color = Color(0, 0, 0, 0.580392)
+
+[sub_resource type="Animation" id="Animation_el1s0"]
+resource_name = "flash"
+length = 0.3
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dmhmw"]
+_data = {
+"flash": SubResource("Animation_el1s0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qji2a"]
+size = Vector2(45.255, 13.485)
+
+[sub_resource type="Animation" id="Animation_idj2g"]
+resource_name = "flash"
+length = 0.3
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5j72"]
+_data = {
+"flash": SubResource("Animation_idj2g")
+}
+
+[sub_resource type="Animation" id="Animation_gi5bj"]
+resource_name = "flash"
+length = 0.3
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D4:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2h1n4"]
+_data = {
+"flash": SubResource("Animation_gi5bj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1a52g"]
+size = Vector2(45.255, 8.185)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vvak"]
+size = Vector2(46.29, 24.26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpird"]
 size = Vector2(156, 156)
@@ -76,7 +163,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.352941), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_8crhe"]
@@ -101,11 +188,10 @@ _data = {
 "fade_out": SubResource("Animation_8crhe")
 }
 
-[node name="Inventory" type="Node2D" node_paths=PackedStringArray("blocked_spaces", "character_art", "grid_art")]
+[node name="Inventory" type="Node2D" node_paths=PackedStringArray("character_art", "grid_art", "hp_potential_label", "hp_current_label", "hp_plus", "hp_line", "hp_up_count", "hp_anim", "dmg_potential_label", "dmg_current_label", "dmg_plus", "dmg_line", "dmg_up_count", "dmg_anim", "spd_potential_label", "spd_current_label", "spd_plus", "spd_line", "spd_up_count", "spd_anim", "spell_card_overlay", "collision_id", "dmg_button_area", "spd_button_area", "hp_button_area", "dmg_bg", "spd_bg", "hp_bg", "dmg_label", "spd_label", "hp_label", "reroll_button_area", "reroll_bg", "spellcard_button_area", "spellcard_bg")]
 z_index = 16
 texture_filter = 1
 script = ExtResource("1_3pi44")
-blocked_spaces = NodePath("")
 character_art = NodePath("CharacterArt")
 grid_art = NodePath("InventoryGridArt")
 reimu_char_art = ExtResource("4_y7bd6")
@@ -116,6 +202,39 @@ suika_char_art = ExtResource("6_1lbwq")
 reisen_char_art = ExtResource("7_ras8c")
 youmu_char_art = ExtResource("8_v2can")
 cirno_char_art = ExtResource("9_rtj7p")
+hp_potential_label = NodePath("InventoryGridArt/hp/hp_potential")
+hp_current_label = NodePath("InventoryGridArt/hp/hp_current")
+hp_plus = NodePath("InventoryGridArt/hp/Plus")
+hp_line = NodePath("InventoryGridArt/hp/Line2D")
+hp_up_count = NodePath("InventoryGridArt/hp/stat_upgrade_indicator")
+hp_anim = NodePath("InventoryGridArt/hp/AnimationPlayer")
+dmg_potential_label = NodePath("InventoryGridArt/damage/dmg_potential")
+dmg_current_label = NodePath("InventoryGridArt/damage/dmg_current")
+dmg_plus = NodePath("InventoryGridArt/damage/Plus")
+dmg_line = NodePath("InventoryGridArt/damage/Line2D2")
+dmg_up_count = NodePath("InventoryGridArt/damage/stat_upgrade_indicator")
+dmg_anim = NodePath("InventoryGridArt/damage/AnimationPlayer")
+spd_potential_label = NodePath("InventoryGridArt/speed/spd_potential")
+spd_current_label = NodePath("InventoryGridArt/speed/spd_current")
+spd_plus = NodePath("InventoryGridArt/speed/Plus")
+spd_line = NodePath("InventoryGridArt/speed/Line2D3")
+spd_up_count = NodePath("InventoryGridArt/speed/stat_upgrade_indicator")
+spd_anim = NodePath("InventoryGridArt/speed/AnimationPlayer")
+spell_card_overlay = NodePath("spell_cards")
+collision_id = NodePath("collision_id")
+dmg_button_area = NodePath("InventoryGridArt/damage/dmg_button_area")
+spd_button_area = NodePath("InventoryGridArt/speed/spd_button_area")
+hp_button_area = NodePath("InventoryGridArt/hp/hp_button_area")
+dmg_bg = NodePath("InventoryGridArt/damage/dmg_button_bg")
+spd_bg = NodePath("InventoryGridArt/speed/spd_button_bg")
+hp_bg = NodePath("InventoryGridArt/hp/hp_button_bg")
+dmg_label = NodePath("InventoryGridArt/damage/dmg_label")
+spd_label = NodePath("InventoryGridArt/speed/spd_label")
+hp_label = NodePath("InventoryGridArt/hp/hp_label")
+reroll_button_area = NodePath("InventoryGridArt/reroll/reroll_button_area")
+reroll_bg = NodePath("InventoryGridArt/reroll/reroll_button_bg")
+spellcard_button_area = NodePath("InventoryGridArt/spellcard_button_area")
+spellcard_bg = NodePath("InventoryGridArt/spellcard_button_bg")
 
 [node name="InventoryGridArt" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -125,6 +244,314 @@ texture = ExtResource("3_5tnkq")
 [node name="GeneralInventoryGrid" type="Sprite2D" parent="InventoryGridArt"]
 position = Vector2(-0.5, 0)
 texture = ExtResource("5_m1hsr")
+
+[node name="hp" type="Node2D" parent="InventoryGridArt"]
+
+[node name="hp_potential" type="Label" parent="InventoryGridArt/hp"]
+offset_left = -86.0
+offset_top = 79.0
+offset_right = -38.0
+offset_bottom = 90.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_knqrn")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_o4rjx")
+text = "80-99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hp_current" type="Label" parent="InventoryGridArt/hp"]
+offset_left = -108.0
+offset_top = 102.0
+offset_right = -18.0
+offset_bottom = 113.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_knqrn")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_o4rjx")
+text = "HP:865"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="hp_button_bg" type="ColorRect" parent="InventoryGridArt/hp"]
+offset_left = -109.0
+offset_top = 86.0
+offset_right = -62.0
+offset_bottom = 100.0
+color = Color(0, 0, 0, 1)
+
+[node name="hp_label" type="Label" parent="InventoryGridArt/hp"]
+offset_left = -108.0
+offset_top = 87.0
+offset_right = -60.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("13_hrded")
+theme_override_font_sizes/font_size = 12
+text = "HP   99"
+
+[node name="Plus" type="Sprite2D" parent="InventoryGridArt/hp"]
+position = Vector2(-84, 93)
+texture = ExtResource("14_q0l1s")
+
+[node name="Line2D" type="Line2D" parent="InventoryGridArt/hp"]
+visible = false
+points = PackedVector2Array(-109, 100, -62, 86)
+width = 2.0
+
+[node name="stat_upgrade_indicator" parent="InventoryGridArt/hp" instance=ExtResource("15_wdmk8")]
+position = Vector2(-109, 80)
+
+[node name="Line2D2" type="Line2D" parent="InventoryGridArt/hp"]
+modulate = Color(1, 1, 1, 0)
+points = PackedVector2Array(-109, 93, -62, 93)
+width = 14.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InventoryGridArt/hp"]
+libraries = {
+"": SubResource("AnimationLibrary_dmhmw")
+}
+
+[node name="hp_button_area" type="Area2D" parent="InventoryGridArt/hp"]
+position = Vector2(-85.39, 93)
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGridArt/hp/hp_button_area"]
+shape = SubResource("RectangleShape2D_qji2a")
+debug_color = Color(0.780392, 0.121569, 1, 0.419608)
+
+[node name="damage" type="Node2D" parent="InventoryGridArt"]
+position = Vector2(53, 0)
+
+[node name="dmg_potential" type="Label" parent="InventoryGridArt/damage"]
+offset_left = -86.0
+offset_top = 79.0
+offset_right = -38.0
+offset_bottom = 90.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_knqrn")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_o4rjx")
+text = "7-9"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="dmg_current" type="Label" parent="InventoryGridArt/damage"]
+offset_left = -108.0
+offset_top = 102.0
+offset_right = -18.0
+offset_bottom = 113.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_knqrn")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_o4rjx")
+text = "DMG:4"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="dmg_button_bg" type="ColorRect" parent="InventoryGridArt/damage"]
+offset_left = -109.0
+offset_top = 86.0
+offset_right = -62.0
+offset_bottom = 100.0
+color = Color(0, 0, 0, 1)
+
+[node name="dmg_label" type="Label" parent="InventoryGridArt/damage"]
+offset_left = -108.0
+offset_top = 87.0
+offset_right = -60.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("13_hrded")
+theme_override_font_sizes/font_size = 12
+text = "DMG   9"
+
+[node name="Plus" type="Sprite2D" parent="InventoryGridArt/damage"]
+position = Vector2(-76, 93)
+texture = ExtResource("14_q0l1s")
+
+[node name="Line2D2" type="Line2D" parent="InventoryGridArt/damage"]
+visible = false
+points = PackedVector2Array(-109, 100, -62, 86)
+width = 2.0
+
+[node name="stat_upgrade_indicator" parent="InventoryGridArt/damage" instance=ExtResource("15_wdmk8")]
+position = Vector2(-109, 80)
+
+[node name="Line2D3" type="Line2D" parent="InventoryGridArt/damage"]
+modulate = Color(1, 1, 1, 0)
+points = PackedVector2Array(-109, 93, -62, 93)
+width = 14.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InventoryGridArt/damage"]
+libraries = {
+"": SubResource("AnimationLibrary_o5j72")
+}
+
+[node name="dmg_button_area" type="Area2D" parent="InventoryGridArt/damage"]
+position = Vector2(-85.39, 93)
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGridArt/damage/dmg_button_area"]
+shape = SubResource("RectangleShape2D_qji2a")
+debug_color = Color(0.780392, 0.121569, 1, 0.419608)
+
+[node name="speed" type="Node2D" parent="InventoryGridArt"]
+position = Vector2(106, 0)
+
+[node name="spd_potential" type="Label" parent="InventoryGridArt/speed"]
+offset_left = -86.0
+offset_top = 79.0
+offset_right = -38.0
+offset_bottom = 90.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_knqrn")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_o4rjx")
+text = "2-4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="spd_current" type="Label" parent="InventoryGridArt/speed"]
+offset_left = -108.0
+offset_top = 102.0
+offset_right = -18.0
+offset_bottom = 113.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_knqrn")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_o4rjx")
+text = "SPD:4"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="spd_button_bg" type="ColorRect" parent="InventoryGridArt/speed"]
+offset_left = -109.0
+offset_top = 86.0
+offset_right = -62.0
+offset_bottom = 100.0
+color = Color(0, 0, 0, 1)
+
+[node name="spd_label" type="Label" parent="InventoryGridArt/speed"]
+offset_left = -108.0
+offset_top = 87.0
+offset_right = -60.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("13_hrded")
+theme_override_font_sizes/font_size = 12
+text = "SPD   9"
+
+[node name="Plus" type="Sprite2D" parent="InventoryGridArt/speed"]
+position = Vector2(-76, 93)
+texture = ExtResource("14_q0l1s")
+
+[node name="Line2D3" type="Line2D" parent="InventoryGridArt/speed"]
+visible = false
+points = PackedVector2Array(-109, 100, -62, 86)
+width = 2.0
+
+[node name="stat_upgrade_indicator" parent="InventoryGridArt/speed" instance=ExtResource("15_wdmk8")]
+position = Vector2(-109, 80)
+
+[node name="Line2D4" type="Line2D" parent="InventoryGridArt/speed"]
+modulate = Color(1, 1, 1, 0)
+points = PackedVector2Array(-109, 93, -62, 93)
+width = 14.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InventoryGridArt/speed"]
+libraries = {
+"": SubResource("AnimationLibrary_2h1n4")
+}
+
+[node name="spd_button_area" type="Area2D" parent="InventoryGridArt/speed"]
+position = Vector2(-85.39, 93)
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGridArt/speed/spd_button_area"]
+shape = SubResource("RectangleShape2D_qji2a")
+debug_color = Color(0.780392, 0.121569, 1, 0.419608)
+
+[node name="reroll" type="Node2D" parent="InventoryGridArt"]
+
+[node name="reroll_button_bg" type="ColorRect" parent="InventoryGridArt/reroll"]
+offset_left = 49.0
+offset_top = 88.0
+offset_right = 95.0
+offset_bottom = 97.0
+color = Color(0, 0, 0, 1)
+
+[node name="reroll_label" type="Label" parent="InventoryGridArt/reroll"]
+offset_left = 53.8
+offset_top = 87.715
+offset_right = 101.8
+offset_bottom = 110.715
+scale = Vector2(0.845, 0.845)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("13_hrded")
+theme_override_font_sizes/font_size = 12
+text = "reroll"
+
+[node name="reroll_border" type="Sprite2D" parent="InventoryGridArt/reroll"]
+position = Vector2(71.6875, 92.5)
+scale = Vector2(0.561842, 0.633333)
+texture = ExtResource("15_ph0le")
+
+[node name="reroll_button_area" type="Area2D" parent="InventoryGridArt/reroll"]
+position = Vector2(71.975, 93)
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGridArt/reroll/reroll_button_area"]
+shape = SubResource("RectangleShape2D_1a52g")
+debug_color = Color(0.780392, 0.121569, 1, 0.419608)
+
+[node name="StatButtons" type="Sprite2D" parent="InventoryGridArt"]
+position = Vector2(-33, 93)
+texture = ExtResource("12_hlxga")
+offset = Vector2(0.5, 0)
+
+[node name="spellcard_button_bg" type="ColorRect" parent="InventoryGridArt"]
+offset_left = 51.0
+offset_top = -88.0
+offset_right = 100.0
+offset_bottom = -62.0
+color = Color(0, 0, 0, 1)
+
+[node name="spellcard_label" type="Label" parent="InventoryGridArt"]
+offset_left = 53.8
+offset_top = -86.585
+offset_right = 101.8
+offset_bottom = -63.585
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("13_hrded")
+theme_override_font_sizes/font_size = 12
+text = "Spell
+Cards"
+
+[node name="reroll_border2" type="Sprite2D" parent="InventoryGridArt"]
+position = Vector2(122.797, -75)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("15_ph0le")
+
+[node name="spellcard_button_area" type="Area2D" parent="InventoryGridArt"]
+position = Vector2(75.785, -75.1)
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryGridArt/spellcard_button_area"]
+shape = SubResource("RectangleShape2D_4vvak")
+debug_color = Color(0.780392, 0.121569, 1, 0.419608)
 
 [node name="CharacterArt" type="Sprite2D" parent="."]
 position = Vector2(106, 200)
@@ -443,3 +870,18 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_o6eov")
 }
+
+[node name="spell_cards" type="Node2D" parent="."]
+visible = false
+z_index = 80
+position = Vector2(10, -2)
+
+[node name="TutorialBg" type="Sprite2D" parent="spell_cards"]
+position = Vector2(-97, 0)
+texture = ExtResource("19_pr8tq")
+
+[node name="page_4" parent="spell_cards" instance=ExtResource("20_ixnik")]
+position = Vector2(-292, -121)
+
+[node name="collision_id" parent="." instance=ExtResource("21_iioqo")]
+collision_id = "inventory"

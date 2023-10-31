@@ -56,7 +56,7 @@ func check_for_lvl_up():
 func do_lvl_up():
 	player_level += 1.0
 	Globals.leveling_up = true
-	Signals.emit_signal("leveling_up",true)
+	Signals.leveling_up.emit(true)
 	power = power - next_lvl
 	
 	match player_level:

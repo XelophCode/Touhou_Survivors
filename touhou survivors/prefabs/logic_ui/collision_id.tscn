@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo14b4u1us644"]
+
+[ext_resource type="Script" path="res://scripts/logic_ui/collision_id.gd" id="1_d6mc6"]
+
+[node name="collision_id" type="Node"]
+script = ExtResource("1_d6mc6")

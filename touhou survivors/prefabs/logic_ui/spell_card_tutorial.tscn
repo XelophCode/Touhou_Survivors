@@ -1,0 +1,272 @@
+[gd_scene load_steps=22 format=3 uid="uid://dckeoh7g5b24o"]
+
+[ext_resource type="FontFile" uid="uid://cvfmxd484foqv" path="res://resources/fonts/yoster.ttf" id="1_b1c24"]
+[ext_resource type="Texture2D" uid="uid://sjt4f6boqhlx" path="res://sprites/items/item_icons/fantasy_seal_icon.png" id="2_oc5t4"]
+[ext_resource type="Texture2D" uid="uid://bdxbg5d0dutgi" path="res://sprites/items/item_icons/gohei_icon.png" id="3_l37n3"]
+[ext_resource type="Texture2D" uid="uid://b6vjojvffb5kp" path="res://sprites/items/item_icons/homing_amulet_icon.png" id="4_ulr7i"]
+[ext_resource type="Texture2D" uid="uid://p1dbo03hu8ia" path="res://sprites/items/item_icons/yinyang_icon.png" id="5_y4p86"]
+[ext_resource type="Texture2D" uid="uid://da5hl1uqa0ru7" path="res://sprites/items/item_icons/peerless_wind_god_icon.png" id="6_66r5e"]
+[ext_resource type="Texture2D" uid="uid://fffwb0of7363" path="res://sprites/items/item_icons/camera_icon.png" id="7_hruce"]
+[ext_resource type="Texture2D" uid="uid://buplq64exs86v" path="res://sprites/items/item_icons/leaf_fan_icon.png" id="8_wdxl1"]
+[ext_resource type="Texture2D" uid="uid://c4kjfvkst6ml3" path="res://sprites/items/item_icons/tripod_icon.png" id="9_liu0y"]
+[ext_resource type="Texture2D" uid="uid://cwp8kmcewmma5" path="res://sprites/items/item_icons/grimoire_of_alice_icon.png" id="10_mo1dh"]
+[ext_resource type="Texture2D" uid="uid://blvq1ncoutg80" path="res://sprites/items/item_icons/Shanghai_Doll_icon.png" id="11_vis3l"]
+[ext_resource type="Texture2D" uid="uid://bnv7d4xevu3ir" path="res://sprites/items/item_icons/magic_tome_icon.png" id="12_qrl84"]
+[ext_resource type="Texture2D" uid="uid://da5g8ugomtti8" path="res://sprites/items/item_icons/nature_wand_icon.png" id="13_8h4hw"]
+[ext_resource type="Texture2D" uid="uid://c36omaxpr5xec" path="res://sprites/items/item_icons/invisible_full_moon_icon.png" id="14_d37dj"]
+[ext_resource type="Texture2D" uid="uid://ba4y04aqxwynd" path="res://sprites/items/item_icons/megaphone_gun_icon.png" id="15_xikox"]
+[ext_resource type="Texture2D" uid="uid://beskev2jxicis" path="res://sprites/items/item_icons/lunar_bow_icon.png" id="16_fnpch"]
+[ext_resource type="Texture2D" uid="uid://cjv3rvr006q8h" path="res://sprites/items/item_icons/mochi_mallet_icon.png" id="17_q28jn"]
+[ext_resource type="Texture2D" uid="uid://balecnmlihjv8" path="res://sprites/items/item_icons/master_spark_icon.png" id="18_7mh0l"]
+[ext_resource type="Texture2D" uid="uid://b2lreg6pjgai8" path="res://sprites/items/item_icons/mini_hakkero_icon.png" id="19_wsp1q"]
+[ext_resource type="Texture2D" uid="uid://blwnc3f5eyeqa" path="res://sprites/items/item_icons/mushroom_icon.png" id="20_gv6qc"]
+[ext_resource type="Texture2D" uid="uid://byo3yvdkmvwvm" path="res://sprites/items/item_icons/magic_broom_icon.png" id="21_ojwue"]
+
+[node name="page_4" type="Node2D"]
+
+[node name="Label8" type="Label" parent="."]
+offset_left = 23.0
+offset_top = 18.0
+offset_right = 343.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("1_b1c24")
+theme_override_font_sizes/font_size = 24
+text = "SPELL CARDS"
+
+[node name="fantasy_seal" type="Node2D" parent="."]
+position = Vector2(-4, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="fantasy_seal"]
+position = Vector2(34, 51)
+texture = ExtResource("2_oc5t4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="fantasy_seal"]
+position = Vector2(34, 70)
+texture = ExtResource("3_l37n3")
+
+[node name="Sprite2D3" type="Sprite2D" parent="fantasy_seal"]
+position = Vector2(34, 86)
+texture = ExtResource("4_ulr7i")
+
+[node name="Sprite2D4" type="Sprite2D" parent="fantasy_seal"]
+position = Vector2(34, 101)
+texture = ExtResource("5_y4p86")
+
+[node name="Label9" type="Label" parent="fantasy_seal"]
+offset_left = 43.0
+offset_top = 45.0
+offset_right = 363.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("1_b1c24")
+theme_override_font_sizes/font_size = 12
+text = "Fantasy Seal"
+
+[node name="Label10" type="Label" parent="fantasy_seal"]
+offset_left = 43.0
+offset_top = 65.0
+offset_right = 363.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("1_b1c24")
+theme_override_font_sizes/font_size = 12
+text = "Gohei
+Sealing Amulet
+Yinyang Orb"
+
+[node name="Line2D" type="Line2D" parent="fantasy_seal"]
+position = Vector2(1, -4)
+points = PackedVector2Array(25, 63, 133, 63)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="peerless_wind_god" type="Node2D" parent="."]
+position = Vector2(176, -24)
+
+[node name="Sprite2D" type="Sprite2D" parent="peerless_wind_god"]
+position = Vector2(34, 51)
+texture = ExtResource("6_66r5e")
+
+[node name="Sprite2D2" type="Sprite2D" parent="peerless_wind_god"]
+position = Vector2(34, 70)
+texture = ExtResource("7_hruce")
+
+[node name="Sprite2D3" type="Sprite2D" parent="peerless_wind_god"]
+position = Vector2(34, 86)
+texture = ExtResource("8_wdxl1")
+
+[node name="Sprite2D4" type="Sprite2D" parent="peerless_wind_god"]
+position = Vector2(34, 101)
+texture = ExtResource("9_liu0y")
+
+[node name="Label9" type="Label" parent="peerless_wind_god"]
+offset_left = 43.0
+offset_top = 45.0
+offset_right = 363.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("1_b1c24")
+theme_override_font_sizes/font_size = 12
+text = "Peerless Wind God"
+
+[node name="Label10" type="Label" parent="peerless_wind_god"]
+offset_left = 43.0
+offset_top = 65.0
+offset_right = 363.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("1_b1c24")
+theme_override_font_sizes/font_size = 12
+text = "Camera
+Leaf Fan
+Tripod"
+
+[node name="Line2D" type="Line2D" parent="peerless_wind_god"]
+position = Vector2(1, -4)
+points = PackedVector2Array(25, 63, 161, 63)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Grimoire of Alice" type="Node2D" parent="."]
+position = Vector2(-4, 75)
+
+[node name="Sprite2D" type="Sprite2D" parent="Grimoire of Alice"]
+position = Vector2(34, 51)
+texture = ExtResource("10_mo1dh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Grimoire of Alice"]
+position = Vector2(34, 70)
+texture = ExtResource("11_vis3l")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Grimoire of Alice"]
+position = Vector2(34, 86)
+texture = ExtResource("12_qrl84")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Grimoire of Alice"]
+position = Vector2(34, 101)
+texture = ExtResource("13_8h4hw")
+
+[node name="Label9" type="Label" parent="Grimoire of Alice"]
+offset_left = 43.0
+offset_top = 45.0
+offset_right = 363.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("1_b1c24")
+theme_override_font_sizes/font_size = 12
+text = "Grimoire of Alice"
+
+[node name="Label10" type="Label" parent="Grimoire of Alice"]
+offset_left = 43.0
+offset_top = 65.0
+offset_right = 363.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("1_b1c24")
+theme_override_font_sizes/font_size = 12
+text = "Shanghai Doll
+Magic Tome
+Nature Wand"
+
+[node name="Line2D" type="Line2D" parent="Grimoire of Alice"]
+position = Vector2(1, -4)
+points = PackedVector2Array(25, 63, 161, 63)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Invisible Full Moon" type="Node2D" parent="."]
+position = Vector2(177, 45)
+
+[node name="Sprite2D" type="Sprite2D" parent="Invisible Full Moon"]
+position = Vector2(34, 51)
+texture = ExtResource("14_d37dj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Invisible Full Moon"]
+position = Vector2(34, 70)
+texture = ExtResource("15_xikox")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Invisible Full Moon"]
+position = Vector2(34, 86)
+texture = ExtResource("16_fnpch")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Invisible Full Moon"]
+position = Vector2(34, 101)
+texture = ExtResource("17_q28jn")
+
+[node name="Label9" type="Label" parent="Invisible Full Moon"]
+offset_left = 43.0
+offset_top = 45.0
+offset_right = 363.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("1_b1c24")
+theme_override_font_sizes/font_size = 12
+text = "Invisible Full Moon"
+
+[node name="Label10" type="Label" parent="Invisible Full Moon"]
+offset_left = 43.0
+offset_top = 65.0
+offset_right = 363.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("1_b1c24")
+theme_override_font_sizes/font_size = 12
+text = "Megaphone Gun
+Lunar Bow
+Mochi Mallet"
+
+[node name="Line2D" type="Line2D" parent="Invisible Full Moon"]
+position = Vector2(1, -4)
+points = PackedVector2Array(25, 63, 167, 63)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Master Spark" type="Node2D" parent="."]
+position = Vector2(177, 115)
+
+[node name="Sprite2D" type="Sprite2D" parent="Master Spark"]
+position = Vector2(34, 51)
+texture = ExtResource("18_7mh0l")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Master Spark"]
+position = Vector2(34, 70)
+texture = ExtResource("19_wsp1q")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Master Spark"]
+position = Vector2(34, 86)
+texture = ExtResource("20_gv6qc")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Master Spark"]
+position = Vector2(34, 101)
+texture = ExtResource("21_ojwue")
+
+[node name="Label9" type="Label" parent="Master Spark"]
+offset_left = 43.0
+offset_top = 45.0
+offset_right = 363.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("1_b1c24")
+theme_override_font_sizes/font_size = 12
+text = "Master Spark"
+
+[node name="Label10" type="Label" parent="Master Spark"]
+offset_left = 43.0
+offset_top = 65.0
+offset_right = 363.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.258824, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("1_b1c24")
+theme_override_font_sizes/font_size = 12
+text = "Mini Hakkero
+Mushroom
+Magic Broom"
+
+[node name="Line2D" type="Line2D" parent="Master Spark"]
+position = Vector2(1, -4)
+points = PackedVector2Array(25, 63, 167, 63)
+width = 2.0
+default_color = Color(0, 0, 0, 1)

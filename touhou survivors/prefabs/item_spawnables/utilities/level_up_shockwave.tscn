@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://bq1temlvm6omq"]
+
+[ext_resource type="Script" path="res://scripts/inventory/level_up_shockwave.gd" id="1_mra4u"]
+[ext_resource type="Texture2D" uid="uid://xbifc8dmi5qv" path="res://icon.svg" id="2_drh2r"]
+[ext_resource type="Shader" path="res://scripts/shaders/explosion.gdshader" id="4_bfwlv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wa1gh"]
+resource_local_to_scene = true
+shader = ExtResource("4_bfwlv")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/force = 0.715
+shader_parameter/size = 0.816
+shader_parameter/thickness = null
+shader_parameter/offset = null
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nmale"]
+radius = 392.45
+
+[sub_resource type="Animation" id="Animation_nc7mx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/Icon:material:shader_parameter/size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.816]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("main_body/Area2D/CollisionShape2D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [392.45]
+}
+
+[sub_resource type="Animation" id="Animation_pxxuw"]
+resource_name = "explosion"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("main_body/Icon:material:shader_parameter/size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.816]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("main_body/Area2D/CollisionShape2D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [10.0, 98.11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w6ttx"]
+_data = {
+"RESET": SubResource("Animation_nc7mx"),
+"explosion": SubResource("Animation_pxxuw")
+}
+
+[node name="level_up_shockwave" type="Node2D"]
+scale = Vector2(2.873, 2.873)
+script = ExtResource("1_mra4u")
+
+[node name="Icon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, -2)
+scale = Vector2(4.583, 4.583)
+texture = ExtResource("2_drh2r")
+
+[node name="main_body" type="Node2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="main_body"]
+material = SubResource("ShaderMaterial_wa1gh")
+scale = Vector2(1.053, 1.053)
+texture = ExtResource("2_drh2r")
+
+[node name="Area2D" type="Area2D" parent="main_body"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body/Area2D"]
+shape = SubResource("CircleShape2D_nmale")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "explosion"
+libraries = {
+"": SubResource("AnimationLibrary_w6ttx")
+}
+
+[connection signal="body_entered" from="main_body/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

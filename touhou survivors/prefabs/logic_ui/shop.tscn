@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://6dwuqj2vu1k8"]
+[gd_scene load_steps=61 format=3 uid="uid://6dwuqj2vu1k8"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/shop.gd" id="1_gaew4"]
 [ext_resource type="Resource" uid="uid://bhrux5cunou3f" path="res://prefabs/inventory/resources/all_items.tres" id="2_p2j3w"]
@@ -379,33 +379,6 @@ animations = [{
 "speed": 9.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ht5wi"]
-bg_color = Color(0, 0, 0, 1)
-expand_margin_left = 7.0
-expand_margin_right = 7.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7db8"]
-bg_color = Color(0.215686, 0.215686, 0.215686, 1)
-expand_margin_left = 7.0
-expand_margin_right = 7.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0m1d2"]
-bg_color = Color(0.364706, 0.364706, 0.364706, 1)
-expand_margin_left = 7.0
-expand_margin_right = 7.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60std"]
-bg_color = Color(0, 0, 0, 1)
-expand_margin_left = 7.0
-expand_margin_right = 7.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wo5dt"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f28bm"]
-bg_color = Color(0, 0, 0, 1)
-expand_margin_left = 7.0
-expand_margin_right = 7.0
-
 [sub_resource type="Animation" id="Animation_d6hfe"]
 resource_name = "fade_in"
 length = 0.2
@@ -424,31 +397,31 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("reroll_gap:modulate")
+tracks/1/path = NodePath("ShopGridBG/EdgeWarp:material:shader_parameter/force")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.156863), Color(1, 1, 1, 1)]
+"values": [0.0, 0.035]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ShopGridBG/EdgeWarp:material:shader_parameter/force")
+tracks/2/path = NodePath("ShopGrid2:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 0.035]
+"values": [Color(1, 1, 1, 0.156863), Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("ShopGrid2:modulate")
+tracks/3/path = NodePath("ShopGrid:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -460,7 +433,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("ShopGrid:modulate")
+tracks/4/path = NodePath("ShopButtons2:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -472,10 +445,22 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("ShopButtons2:modulate")
+tracks/5/path = NodePath("reroll_bg:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.156863), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("reroll_label:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -500,31 +485,31 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("reroll_gap:modulate")
+tracks/1/path = NodePath("ShopGridBG/EdgeWarp:material:shader_parameter/force")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.156863)]
+"values": [0.035, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ShopGridBG/EdgeWarp:material:shader_parameter/force")
+tracks/2/path = NodePath("ShopGrid2:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.035, 0.0]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.156863)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("ShopGrid2:modulate")
+tracks/3/path = NodePath("ShopGrid:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -536,7 +521,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("ShopGrid:modulate")
+tracks/4/path = NodePath("ShopButtons2:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -548,10 +533,22 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("ShopButtons2:modulate")
+tracks/5/path = NodePath("reroll_bg:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.156863)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("reroll_label:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -598,11 +595,21 @@ _data = {
 "selection_square_fade_out": SubResource("Animation_1l1sj")
 }
 
-[node name="Shop" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1la4"]
+size = Vector2(82, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5dqj"]
+size = Vector2(82, 14)
+
+[node name="Shop" type="Node2D" node_paths=PackedStringArray("close_gap_area", "reroll_area", "close_gap_bg", "reroll_bg")]
 z_index = 16
 texture_filter = 1
 script = ExtResource("1_gaew4")
 inv_items = ExtResource("2_p2j3w")
+close_gap_area = NodePath("close_gap_area")
+reroll_area = NodePath("reroll_area")
+close_gap_bg = NodePath("close_gap_bg")
+reroll_bg = NodePath("reroll_bg")
 
 [node name="ShopGridBG" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -1140,7 +1147,6 @@ position = Vector2(-7.62939e-06, 3.8147e-06)
 shape = SubResource("RectangleShape2D_e1tex")
 
 [node name="ShopGrid2" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.156863)
 texture_filter = 1
 position = Vector2(0.5, 0)
 texture = ExtResource("11_ofdtv")
@@ -1172,44 +1178,37 @@ material = SubResource("ShaderMaterial_ho1os")
 position = Vector2(1, 69)
 sprite_frames = SubResource("SpriteFrames_22g1q")
 
-[node name="close_gap" type="Button" parent="."]
-offset_left = -83.0
+[node name="close_gap_bg" type="ColorRect" parent="."]
+offset_left = -89.0
 offset_top = 70.0
-offset_right = -11.0
+offset_right = -5.0
 offset_bottom = 86.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+color = Color(0, 0, 0, 1)
+
+[node name="close_gap_label" type="Label" parent="."]
+offset_left = -77.735
+offset_top = 71.655
+offset_right = -15.735
+offset_bottom = 94.655
 theme_override_fonts/font = ExtResource("14_3auu1")
 theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = SubResource("StyleBoxFlat_ht5wi")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h7db8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_0m1d2")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_60std")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wo5dt")
 text = "Close Gap"
 
-[node name="reroll_gap" type="Button" parent="."]
-offset_left = 10.0
+[node name="reroll_bg" type="ColorRect" parent="."]
+offset_left = 4.0
 offset_top = 70.0
-offset_right = 82.0
+offset_right = 88.0
 offset_bottom = 86.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+color = Color(0, 0, 0, 1)
+
+[node name="reroll_label" type="Label" parent="."]
+offset_left = 25.695
+offset_top = 71.655
+offset_right = 87.6951
+offset_bottom = 94.655
 theme_override_fonts/font = ExtResource("14_3auu1")
 theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = SubResource("StyleBoxFlat_ht5wi")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h7db8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_0m1d2")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_f28bm")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wo5dt")
 text = "Reroll"
-
-[node name="button_block" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = -99.0
-offset_top = 63.0
-offset_right = 98.0
-offset_bottom = 93.0
 
 [node name="ShopButtons" type="Sprite2D" parent="."]
 position = Vector2(-47, 78)
@@ -1224,10 +1223,20 @@ libraries = {
 "": SubResource("AnimationLibrary_hibb5")
 }
 
+[node name="close_gap_area" type="Area2D" parent="."]
+position = Vector2(-47, 78)
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="close_gap_area"]
+shape = SubResource("RectangleShape2D_n1la4")
+
+[node name="reroll_area" type="Area2D" parent="."]
+position = Vector2(46, 78)
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="reroll_area"]
+shape = SubResource("RectangleShape2D_k5dqj")
+
 [connection signal="animation_finished" from="CloseGapSign" to="." method="_on_close_gap_sign_animation_finished"]
-[connection signal="button_up" from="close_gap" to="." method="_on_close_gap_button_up"]
-[connection signal="mouse_entered" from="close_gap" to="." method="_on_close_gap_mouse_entered"]
-[connection signal="mouse_exited" from="close_gap" to="." method="_on_close_gap_mouse_exited"]
-[connection signal="button_up" from="reroll_gap" to="." method="_on_reroll_gap_button_up"]
-[connection signal="mouse_entered" from="reroll_gap" to="." method="_on_reroll_gap_mouse_entered"]
-[connection signal="mouse_exited" from="reroll_gap" to="." method="_on_reroll_gap_mouse_exited"]

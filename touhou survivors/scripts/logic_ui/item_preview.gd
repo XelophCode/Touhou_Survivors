@@ -74,11 +74,11 @@ func _process(_delta):
 			visible = false
 			video_player.stop()
 	
-	global_position.x = get_global_mouse_position().x + 60
-	global_position.y = get_global_mouse_position().y
+	global_position.x = Globals.hand_icon_position.x + 60
+	global_position.y = Globals.hand_icon_position.y
 	
-	if get_global_mouse_position().x >= 310.0:
-		global_position.x = get_global_mouse_position().x - 60
+	if Globals.hand_icon_position.x >= 310.0:
+		global_position.x = Globals.hand_icon_position.x - 60
 
 func catch_item_video(item_name:int,rotated:bool):
 	var video_selection:Resource
@@ -87,7 +87,7 @@ func catch_item_video(item_name:int,rotated:bool):
 			video_selection = bats_a ; name_label.text = "Bats |A|" ; damage_label.text = "1-2"
 			if rotated: video_selection = bats_b ; name_label.text = "Bats |B|" ; damage_label.text = "1-2"
 		"Camera": 
-			video_selection = camera_a ; name_label.text = "Camera |A|" ; damage_label.text = "4-5"
+			video_selection = camera_a ; name_label.text = "Camera |A|" ; damage_label.text = "10-12"
 			if rotated: video_selection = camera_b ; name_label.text = "Camera |B|" ; damage_label.text = "4-5"
 		"Frogs": 
 			video_selection = frog_a ; name_label.text = "Frogs |A|" ; damage_label.text = "1-2"
