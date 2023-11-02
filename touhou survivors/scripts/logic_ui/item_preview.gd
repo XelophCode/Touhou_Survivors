@@ -5,6 +5,8 @@ extends Node2D
 @export var name_label : Label
 @export var damage_label : Label
 
+var leveling_up : bool = false
+
 @export_group("videos")
 @export var bats_a:Resource
 @export var bats_b:Resource
@@ -66,7 +68,7 @@ extends Node2D
 func _ready():
 	Signals.item_video.connect(catch_item_video)
 	Signals.hide_video.connect(catch_hide_video)
-	
+	Signals.leveling_up.connect(func(value): leveling_up = value; if !value: hide())
 
 func _process(_delta):
 	if visible:
@@ -81,6 +83,9 @@ func _process(_delta):
 		global_position.x = Globals.hand_icon_position.x - 60
 
 func catch_item_video(item_name:int,rotated:bool):
+	if !leveling_up:
+		return
+	
 	var video_selection:Resource
 	match Globals.item_code_to_string(item_name):
 		"Bats": 
@@ -169,8 +174,7 @@ func catch_item_video(item_name:int,rotated:bool):
 	video_player.stream = video_selection
 	video_player.play()
 	
-	
-	visible = true
+	show()
 
 func catch_hide_video():
 	visible = false

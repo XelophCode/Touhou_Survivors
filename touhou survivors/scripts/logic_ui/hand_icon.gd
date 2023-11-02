@@ -10,9 +10,11 @@ var cursor_move_speed : float = 3.0
 var cursor_move_dir : Vector2
 var hovering_item : bool = false
 var mouse_relative : Vector2
+var leveling_up : bool = false
 
 func _ready():
 	Signals.leveling_up.connect(func(value):
+		leveling_up = value
 		if value:
 			global_position = Vector2(426/2,240/2)
 			show()
@@ -29,6 +31,9 @@ func _input(event):
 
 
 func _process(delta):
+	if !leveling_up:
+		return
+	
 	var combined_left : float = ceil(Input.get_action_raw_strength("dpad_left")) + Input.get_action_raw_strength("joystick_left")
 	var combined_right : float = ceil(Input.get_action_raw_strength("dpad_right")) + Input.get_action_raw_strength("joystick_right")
 	var combined_up : float = ceil(Input.get_action_raw_strength("dpad_up")) + Input.get_action_raw_strength("joystick_up")
