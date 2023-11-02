@@ -679,7 +679,7 @@ point_count = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8tfak"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_on3v0"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i2vdt"]
 noise = SubResource("FastNoiseLite_8tfak")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y8vt8"]
@@ -688,7 +688,7 @@ shader = ExtResource("10_6vywg")
 shader_parameter/dissolve_value = 1.0
 shader_parameter/flash_modifier = null
 shader_parameter/opacity = 1.0
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_on3v0")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_i2vdt")
 
 [sub_resource type="Curve" id="Curve_4nleo"]
 _data = [Vector2(0, 1), 0.0, -0.420031, 0, 1, Vector2(0.62766, 0.736364), -1.05175, -1.05175, 0, 0, Vector2(1, 0), -1.97766, 0.0, 1, 0]
@@ -2054,9 +2054,9 @@ position = Vector2(35, 34)
 texture = ExtResource("10_hvsvi")
 
 [node name="Healthbar" type="ProgressBar" parent="UI"]
-offset_left = 12.0
+offset_left = 9.5
 offset_top = 42.0
-offset_right = 32.0
+offset_right = 29.5
 offset_bottom = 46.0
 theme_override_styles/background = SubResource("StyleBoxFlat_3o7uu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8rjty")
@@ -2417,6 +2417,7 @@ texture = ExtResource("11_88u87")
 centered = false
 
 [node name="FullscreenBlackIntro" type="Node2D" parent="."]
+visible = false
 
 [node name="FullscreenBlack2" type="Sprite2D" parent="FullscreenBlackIntro"]
 z_index = 20

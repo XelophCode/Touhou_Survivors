@@ -57,6 +57,27 @@ func _ready():
 	loaded_save = Appdata.load_file(Appdata.SAVE)
 	var loaded_settings = Appdata.load_file(Appdata.SETTINGS)
 	
+	
+	DisplayServer.window_set_size(loaded_settings.RESOLUTION)
+	DisplayServer.window_set_position(Vector2i(Globals.screen_center.x - loaded_settings.RESOLUTION.x/2,Globals.screen_center.y - loaded_settings.RESOLUTION.y/2))
+	match loaded_settings.WINDOW_MODE:
+		0: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		1: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		2: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	
+	
+	if DisplayServer.get_screen_count() - 1 < loaded_settings.MONITOR:
+		DisplayServer.window_set_current_screen(0)
+	else:
+		DisplayServer.window_set_current_screen(loaded_settings.MONITOR)
+	
+	AudioServer.set_bus_volume_db(0,loaded_settings.MASTER_AUDIO)
+	AudioServer.set_bus_volume_db(1,loaded_settings.MUSIC_AUDIO)
+	AudioServer.set_bus_volume_db(2,loaded_settings.SFX_AUDIO)
+	AudioServer.set_bus_volume_db(3,loaded_settings.ITEM_AUDIO)
+	
+	
+	
 	Globals.button_prompts = loaded_settings.BUTTON_PROMPTS
 	
 	var all_spell_text:String
@@ -141,8 +162,7 @@ func _on_start_button_down():
 		tween_audio.tween_property(audio_comp,"volume_db",-60,2.0)
 
 func go_to_character_select():
-	await get_tree().create_timer(0.1).timeout
-	get_tree().change_scene_to_file("res://prefabs/levels/character_select.tscn")
+	SceneManager.change_scene(SceneManager.character_select,self)
 
 
 func _on_quit_button_down():

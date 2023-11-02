@@ -14,6 +14,7 @@ config/name="Touhou: Gensokyo Survivors"
 run/main_scene="res://prefabs/levels/initialize.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 run/max_fps=60
+boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 config/icon="res://reimu_icon_large_4.png"
 
@@ -22,6 +23,7 @@ config/icon="res://reimu_icon_large_4.png"
 Signals="*res://scripts/singletons/signals.gd"
 Globals="*res://scripts/singletons/globals.gd"
 Appdata="*res://scripts/logic_ui/appdata.gd"
+SceneManager="*res://prefabs/logic_ui/SceneManager.tscn"
 
 [display]
 
@@ -245,3 +247,7 @@ start_button_press={
 2d_physics/layer_11="item_set_detection"
 2d_physics/layer_12="environment"
 2d_physics/layer_13="cursor"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"

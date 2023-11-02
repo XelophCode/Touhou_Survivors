@@ -1,0 +1,301 @@
+[gd_scene load_steps=16 format=3 uid="uid://darbu0y4h6fuv"]
+
+[ext_resource type="Script" path="res://scripts/singletons/scene_manager.gd" id="1_q1ltq"]
+[ext_resource type="PackedScene" uid="uid://c1tfvrdl88b14" path="res://prefabs/levels/initialize.tscn" id="2_no8ud"]
+[ext_resource type="PackedScene" uid="uid://dqti77sd8cl8p" path="res://prefabs/levels/main_menu.tscn" id="3_0gac7"]
+[ext_resource type="PackedScene" uid="uid://do63og25gtn6j" path="res://prefabs/levels/character_select.tscn" id="4_uurd5"]
+[ext_resource type="PackedScene" uid="uid://cerifwegjcfki" path="res://prefabs/levels/main.tscn" id="5_hxqiq"]
+[ext_resource type="Texture2D" uid="uid://0ydohqq6lp21" path="res://sprites/ui/fullscreen_black.png" id="6_8seyq"]
+[ext_resource type="Shader" path="res://scripts/shaders/dissolve.gdshader" id="7_030yx"]
+[ext_resource type="Texture2D" uid="uid://d0wh6yjoa56pg" path="res://sprites/ui/fullscreen_pink.png" id="8_cofqr"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_w5jri"]
+noise_type = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i6n6y"]
+noise = SubResource("FastNoiseLite_w5jri")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6v0by"]
+resource_local_to_scene = true
+shader = ExtResource("7_030yx")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/flash_modifier = 0.0
+shader_parameter/opacity = 1.0
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_i6n6y")
+
+[sub_resource type="Animation" id="Animation_dha8l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/transitions/fullscreen_pink/FullscreenPink:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/transitions/fullscreen_pink/FullscreenPink:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/transitions/loading_bar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/transitions/fullscreen_black:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1c4ia"]
+resource_name = "pink_fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/transitions/fullscreen_pink/FullscreenPink:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/transitions/fullscreen_pink/FullscreenPink:material:shader_parameter/dissolve_value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/transitions/loading_bar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/transitions:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/transitions/fullscreen_black:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_er1kr"]
+resource_name = "black_slide_out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/transitions/fullscreen_black:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/transitions/loading_bar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/transitions/fullscreen_black/FullscreenBlack2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -120), Vector2(0, -242)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/transitions/fullscreen_black/FullscreenBlack3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 120), Vector2(0, 242)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/transitions/fullscreen_pink/FullscreenPink:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/transitions:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/transitions/fullscreen_black/FullscreenBlack:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5oaor"]
+_data = {
+"RESET": SubResource("Animation_dha8l"),
+"black_slide_out": SubResource("Animation_er1kr"),
+"pink_fade_out": SubResource("Animation_1c4ia")
+}
+
+[node name="SceneManager" type="Node" node_paths=PackedStringArray("loading_bar", "transitions", "anims", "fullscreen_pink", "fullscreen_black", "fullscreen_black_1", "fullscreen_black_2", "fullscreen_black_3")]
+script = ExtResource("1_q1ltq")
+initialize_scene = ExtResource("2_no8ud")
+main_menu_scene = ExtResource("3_0gac7")
+character_select_scene = ExtResource("4_uurd5")
+main_game_scene = ExtResource("5_hxqiq")
+loading_bar = NodePath("CanvasLayer/transitions/loading_bar/ProgressBar")
+transitions = NodePath("CanvasLayer/transitions")
+anims = NodePath("AnimationPlayer")
+fullscreen_pink = NodePath("CanvasLayer/transitions/fullscreen_pink/FullscreenPink")
+fullscreen_black = NodePath("CanvasLayer/transitions/fullscreen_black")
+fullscreen_black_1 = NodePath("CanvasLayer/transitions/fullscreen_black/FullscreenBlack2")
+fullscreen_black_2 = NodePath("CanvasLayer/transitions/fullscreen_black/FullscreenBlack3")
+fullscreen_black_3 = NodePath("CanvasLayer/transitions/fullscreen_black/FullscreenBlack")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="transitions" type="Node2D" parent="CanvasLayer"]
+z_index = 4096
+texture_filter = 1
+
+[node name="loading_bar" type="Node2D" parent="CanvasLayer/transitions"]
+
+[node name="FullscreenBlack" type="Sprite2D" parent="CanvasLayer/transitions/loading_bar"]
+texture = ExtResource("6_8seyq")
+centered = false
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/transitions/loading_bar"]
+offset_left = 67.0
+offset_top = 102.0
+offset_right = 369.0
+offset_bottom = 129.0
+max_value = 1.0
+show_percentage = false
+
+[node name="fullscreen_pink" type="Node2D" parent="CanvasLayer/transitions"]
+
+[node name="FullscreenPink" type="Sprite2D" parent="CanvasLayer/transitions/fullscreen_pink"]
+visible = false
+material = SubResource("ShaderMaterial_6v0by")
+texture = ExtResource("8_cofqr")
+centered = false
+
+[node name="fullscreen_black" type="Node2D" parent="CanvasLayer/transitions"]
+visible = false
+
+[node name="FullscreenBlack" type="Sprite2D" parent="CanvasLayer/transitions/fullscreen_black"]
+texture = ExtResource("6_8seyq")
+centered = false
+
+[node name="FullscreenBlack2" type="Sprite2D" parent="CanvasLayer/transitions/fullscreen_black"]
+position = Vector2(0, -120)
+texture = ExtResource("6_8seyq")
+centered = false
+
+[node name="FullscreenBlack3" type="Sprite2D" parent="CanvasLayer/transitions/fullscreen_black"]
+position = Vector2(0, 120)
+texture = ExtResource("6_8seyq")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_5oaor")
+}

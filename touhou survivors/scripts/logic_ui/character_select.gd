@@ -184,11 +184,8 @@ func _on_marisa_button_down():
 
 func go_to_main_game_scene():
 	initialize_character()
-	await get_tree().create_timer(0.5).timeout
 	
-	get_tree().change_scene_to_file("res://prefabs/levels/main.tscn")
-	
-	
+	SceneManager.change_scene(SceneManager.main_game,self)
 
 func initialize_character():
 	match Globals.current_character:
@@ -288,7 +285,7 @@ func _on_main_menu_button_up():
 	Globals.disabled_items = []
 	await get_tree().create_timer(0.1).timeout
 	
-	get_tree().change_scene_to_file("res://prefabs/levels/main_menu.tscn")
+	SceneManager.change_scene(SceneManager.main_menu,self)
 
 
 func reimu_entered():

@@ -275,7 +275,7 @@ anti_aliasing = false
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_nlgp2"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mkw2s"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7pt20"]
 noise = SubResource("FastNoiseLite_nlgp2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pfq75"]
@@ -283,7 +283,7 @@ shader = ExtResource("4_txf30")
 shader_parameter/dissolve_value = 0.0
 shader_parameter/flash_modifier = null
 shader_parameter/opacity = 0.0
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_mkw2s")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_7pt20")
 
 [sub_resource type="Animation" id="Animation_y0tb7"]
 resource_name = "BG_pan"
@@ -1893,6 +1893,7 @@ position = Vector2(213, 120)
 texture = ExtResource("10_ora8p")
 
 [node name="FullscreenPink" type="Sprite2D" parent="."]
+visible = false
 z_index = 10
 material = SubResource("ShaderMaterial_pfq75")
 position = Vector2(213, 120)

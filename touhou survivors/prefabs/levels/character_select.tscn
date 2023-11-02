@@ -665,7 +665,7 @@ shader_parameter/flash_modifier = 0.0
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gxoal"]
 noise_type = 4
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i6n6y"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_870f8"]
 noise = SubResource("FastNoiseLite_gxoal")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4mwes"]
@@ -674,7 +674,7 @@ shader = ExtResource("5_d7pbv")
 shader_parameter/dissolve_value = 1.0
 shader_parameter/flash_modifier = 0.0
 shader_parameter/opacity = 1.0
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_i6n6y")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_870f8")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cvwmx"]
 
@@ -3198,6 +3198,7 @@ position = Vector2(125, 142)
 stars = 1
 
 [node name="FullscreenPink" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_4mwes")
 texture = ExtResource("6_a87dc")
 centered = false

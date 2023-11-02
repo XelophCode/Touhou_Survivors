@@ -31,11 +31,10 @@ func _ready():
 		var obst_inst = all_obstacles.obstacles.pick_random().instantiate()
 		obst_inst.global_position = spawn_location
 		$obstacle_parent.add_child(obst_inst)
-	
-	
+
 
 func catch_go_to_main_menu():
-	get_tree().change_scene_to_file("res://prefabs/levels/main_menu.tscn")
+	SceneManager.change_scene(SceneManager.main_menu,self)
 	
 
 func catch_game_start_complete():
