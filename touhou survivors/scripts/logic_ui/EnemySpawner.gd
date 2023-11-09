@@ -46,8 +46,8 @@ func _on_timer_timeout():
 	spawn_enemy()
 
 func catch_increase_threat():
-	speed_mod += 0.4
-	damage_mod += 0.4
+	speed_mod += 0.3
+	damage_mod += 0.3
 	health_mod += 0.2
 	threat_level += 1.0
 	match threat_level:

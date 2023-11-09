@@ -1,11 +1,10 @@
-[gd_scene load_steps=196 format=3 uid="uid://cxtno75a58bkv"]
+[gd_scene load_steps=195 format=3 uid="uid://cxtno75a58bkv"]
 
 [ext_resource type="Script" path="res://scripts/logic_ui/player_ui.gd" id="1_i5u1q"]
 [ext_resource type="SpriteFrames" uid="uid://bfm8psvacuqtm" path="res://sprites/ui/character_portraits/reimu_portrait.tres" id="2_lwihl"]
 [ext_resource type="SpriteFrames" uid="uid://dbde7pnww2vr8" path="res://sprites/ui/character_portraits/marisa_portrait.tres" id="3_8rrdf"]
 [ext_resource type="FontFile" uid="uid://4g0oq0v08h0h" path="res://resources/fonts/prstart.ttf" id="3_nqdip"]
 [ext_resource type="Texture2D" uid="uid://ciojqae21qxjp" path="res://sprites/ui/screen_dim.png" id="4_g0qq0"]
-[ext_resource type="PackedScene" uid="uid://dqti77sd8cl8p" path="res://prefabs/levels/main_menu.tscn" id="4_t7v5k"]
 [ext_resource type="Texture2D" uid="uid://cfbld0no123ax" path="res://sprites/ui/powerbar_border.png" id="5_7g6dd"]
 [ext_resource type="SpriteFrames" uid="uid://dr1c4dftqwsy8" path="res://sprites/ui/character_portraits/remilia_portrait.tres" id="5_wf4rf"]
 [ext_resource type="PackedScene" uid="uid://iqvjyq5tkfb0" path="res://prefabs/logic_ui/weapon_spawner.tscn" id="6_1x5oq"]
@@ -1906,7 +1905,6 @@ confetti = NodePath("Confetti")
 q_button_prompt = NodePath("UI/inven_button_prompts/prompts/both")
 r_button_prompt = NodePath("UI/inven_button_prompts/R_button_prompt")
 inven_button_prompts = NodePath("UI/inven_button_prompts")
-main_menu_packed = ExtResource("4_t7v5k")
 reimu_portrait = ExtResource("2_lwihl")
 marisa_portrait = ExtResource("3_8rrdf")
 remilia_portrait = ExtResource("5_wf4rf")

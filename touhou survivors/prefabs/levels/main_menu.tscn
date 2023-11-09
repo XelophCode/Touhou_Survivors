@@ -1960,6 +1960,20 @@ bus = &"SFX"
 stream = ExtResource("14_4yskp")
 bus = &"SFX"
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="FPS" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 396.0
+offset_top = 1.0
+offset_right = 420.0
+offset_bottom = 9.0
+theme_override_fonts/font = ExtResource("6_t2gpe")
+theme_override_font_sizes/font_size = 4
+text = "test"
+horizontal_alignment = 2
+
 [connection signal="button_down" from="Buttons/Start" to="." method="_on_start_button_down"]
 [connection signal="button_down" from="Buttons/Options" to="." method="_on_options_button_down"]
 [connection signal="button_down" from="Buttons/Quit" to="." method="_on_quit_button_down"]

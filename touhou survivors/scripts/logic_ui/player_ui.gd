@@ -8,7 +8,6 @@ extends CanvasLayer
 @export var q_button_prompt : Node2D
 @export var r_button_prompt : Node2D
 @export var inven_button_prompts : Node2D
-@export var main_menu_packed : PackedScene
 
 @export_group("character_portraits")
 @export var reimu_portrait : SpriteFrames
@@ -185,11 +184,6 @@ func _ready():
 	update_button_prompts()
 
 func _process(delta):
-	
-	if Input.mouse_mode == Input.MOUSE_MODE_HIDDEN:
-		if Input.is_action_just_pressed("left_mouse_button"):
-#			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			pass
 	
 	var current_time:String = time_label.text
 	if can_skip_anims:

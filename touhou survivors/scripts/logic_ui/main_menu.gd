@@ -57,7 +57,7 @@ func _ready():
 	loaded_save = Appdata.load_file(Appdata.SAVE)
 	var loaded_settings = Appdata.load_file(Appdata.SETTINGS)
 	
-	
+	$CanvasLayer/FPS.visible = loaded_settings.SHOW_FPS
 	DisplayServer.window_set_size(loaded_settings.RESOLUTION)
 	DisplayServer.window_set_position(Vector2i(Globals.screen_center.x - loaded_settings.RESOLUTION.x/2,Globals.screen_center.y - loaded_settings.RESOLUTION.y/2))
 	match loaded_settings.WINDOW_MODE:
@@ -111,6 +111,8 @@ func _input(event):
 			hidden_button.grab_focus()
 
 func _process(_delta):
+	$CanvasLayer/FPS.text = "FPS: " + str(Engine.get_frames_per_second())
+	
 	if Input.is_action_just_pressed("left_mouse_button"):
 		if !$tutorial_overlay.visible and !$options_overlay.visible and !$credits.visible and !$Achievements.visible:
 			hidden_button.grab_focus()

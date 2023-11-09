@@ -72,6 +72,7 @@ const grey : Color = Color.DIM_GRAY
 @export var reroll_bg : ColorRect
 @export var spellcard_button_area : Area2D
 @export var spellcard_bg : ColorRect
+@export var reroll_label : Label
 
 func _ready():
 	match Globals.current_character:
@@ -154,6 +155,9 @@ func _ready():
 
 
 func _process(delta):
+	if !visible:
+		return
+	
 	if spell_card_overlay.visible:
 		if Input.is_action_just_pressed("left_mouse_button") or Input.is_action_just_pressed("a_button_press") or Input.is_action_just_pressed("b_button_press"):
 			spell_card_overlay.hide()
@@ -189,7 +193,6 @@ func leveling_up(value:bool):
 	if value:
 		open_inventory()
 		await get_tree().create_timer(1).timeout
-
 	else:
 		visible = false
 
@@ -307,9 +310,12 @@ func roll_spd_upgrade():
 
 func do_reroll():
 	if Globals.crystal_count > 0:
-		Globals.crystal_count -= 1.0
-		Signals.emit_signal("decrease_crystal_count")
-		roll_all_upgrade_values()
+		if dmg_up_count.count > 0 or spd_up_count.count > 0 or hp_up_count.count > 0:
+			Globals.crystal_count -= 1.0
+			Signals.emit_signal("decrease_crystal_count")
+			roll_all_upgrade_values()
+		else:
+			reroll_label.text = ""
 	else:
 		Signals.emit_signal("not_enough_crystals")
 

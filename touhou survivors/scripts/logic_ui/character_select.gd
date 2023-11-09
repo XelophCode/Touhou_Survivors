@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var fullscreen_pink : Node
-@export var main_game_scene : PackedScene
 
 @export_group("character_buttons")
 @export var reimu_button : Button
@@ -69,6 +68,8 @@ var disabled_items : Array = []
 var all_chars_unlocked = false
 
 func _ready():
+	var loaded_settings = Appdata.load_file(Appdata.SETTINGS)
+	$CanvasLayer/FPS.visible = loaded_settings.SHOW_FPS
 	Globals.disabled_items = []
 	$AnimationPlayer.play("fade_out")
 	var loaded_save = Appdata.load_file(Appdata.SAVE)
@@ -117,7 +118,7 @@ func _ready():
 	Globals.connect_mouse_and_focus(cirno_button,cirno_entered,cirno_exited)
 
 func _process(_delta):
-	
+	$CanvasLayer/FPS.text = "FPS: " + str(Engine.get_frames_per_second())
 	item_disable_cost.position.x = get_global_mouse_position().x
 	item_disable_cost.position.y = get_global_mouse_position().y
 	

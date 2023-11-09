@@ -58,6 +58,7 @@ func catch_show_blocked_spaces():
 func catch_leveling_up(value):
 	if !value:
 		$BlockedSpace.visible = false
+		hovering_blocked_space = false
 	else:
 		$AnimationPlayer2.play("fade_in")
 

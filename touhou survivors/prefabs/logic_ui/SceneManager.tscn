@@ -1,10 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://darbu0y4h6fuv"]
+[gd_scene load_steps=12 format=3 uid="uid://darbu0y4h6fuv"]
 
 [ext_resource type="Script" path="res://scripts/singletons/scene_manager.gd" id="1_q1ltq"]
-[ext_resource type="PackedScene" uid="uid://c1tfvrdl88b14" path="res://prefabs/levels/initialize.tscn" id="2_no8ud"]
-[ext_resource type="PackedScene" uid="uid://dqti77sd8cl8p" path="res://prefabs/levels/main_menu.tscn" id="3_0gac7"]
-[ext_resource type="PackedScene" uid="uid://do63og25gtn6j" path="res://prefabs/levels/character_select.tscn" id="4_uurd5"]
-[ext_resource type="PackedScene" uid="uid://cerifwegjcfki" path="res://prefabs/levels/main.tscn" id="5_hxqiq"]
 [ext_resource type="Texture2D" uid="uid://0ydohqq6lp21" path="res://sprites/ui/fullscreen_black.png" id="6_8seyq"]
 [ext_resource type="Shader" path="res://scripts/shaders/dissolve.gdshader" id="7_030yx"]
 [ext_resource type="Texture2D" uid="uid://d0wh6yjoa56pg" path="res://sprites/ui/fullscreen_pink.png" id="8_cofqr"]
@@ -235,10 +231,6 @@ _data = {
 
 [node name="SceneManager" type="Node" node_paths=PackedStringArray("loading_bar", "transitions", "anims", "fullscreen_pink", "fullscreen_black", "fullscreen_black_1", "fullscreen_black_2", "fullscreen_black_3")]
 script = ExtResource("1_q1ltq")
-initialize_scene = ExtResource("2_no8ud")
-main_menu_scene = ExtResource("3_0gac7")
-character_select_scene = ExtResource("4_uurd5")
-main_game_scene = ExtResource("5_hxqiq")
 loading_bar = NodePath("CanvasLayer/transitions/loading_bar/ProgressBar")
 transitions = NodePath("CanvasLayer/transitions")
 anims = NodePath("AnimationPlayer")
@@ -247,6 +239,10 @@ fullscreen_black = NodePath("CanvasLayer/transitions/fullscreen_black")
 fullscreen_black_1 = NodePath("CanvasLayer/transitions/fullscreen_black/FullscreenBlack2")
 fullscreen_black_2 = NodePath("CanvasLayer/transitions/fullscreen_black/FullscreenBlack3")
 fullscreen_black_3 = NodePath("CanvasLayer/transitions/fullscreen_black/FullscreenBlack")
+initialize = "res://prefabs/levels/initialize.tscn"
+main_menu = "res://prefabs/levels/main_menu.tscn"
+character_select = "res://prefabs/levels/character_select.tscn"
+main_game = "res://prefabs/levels/main.tscn"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 128
@@ -254,20 +250,6 @@ layer = 128
 [node name="transitions" type="Node2D" parent="CanvasLayer"]
 z_index = 4096
 texture_filter = 1
-
-[node name="loading_bar" type="Node2D" parent="CanvasLayer/transitions"]
-
-[node name="FullscreenBlack" type="Sprite2D" parent="CanvasLayer/transitions/loading_bar"]
-texture = ExtResource("6_8seyq")
-centered = false
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/transitions/loading_bar"]
-offset_left = 67.0
-offset_top = 102.0
-offset_right = 369.0
-offset_bottom = 129.0
-max_value = 1.0
-show_percentage = false
 
 [node name="fullscreen_pink" type="Node2D" parent="CanvasLayer/transitions"]
 
@@ -293,6 +275,27 @@ centered = false
 position = Vector2(0, 120)
 texture = ExtResource("6_8seyq")
 centered = false
+
+[node name="fullscreen_black_2" type="Node2D" parent="CanvasLayer/transitions"]
+visible = false
+
+[node name="FullscreenBlack" type="Sprite2D" parent="CanvasLayer/transitions/fullscreen_black_2"]
+texture = ExtResource("6_8seyq")
+centered = false
+
+[node name="loading_bar" type="Node2D" parent="CanvasLayer/transitions"]
+
+[node name="FullscreenBlack" type="Sprite2D" parent="CanvasLayer/transitions/loading_bar"]
+texture = ExtResource("6_8seyq")
+centered = false
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/transitions/loading_bar"]
+offset_left = 67.0
+offset_top = 102.0
+offset_right = 369.0
+offset_bottom = 129.0
+max_value = 1.0
+show_percentage = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"

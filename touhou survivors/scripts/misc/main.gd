@@ -42,7 +42,7 @@ func catch_game_start_complete():
 
 
 func _on_intro_ready():
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(3.1).timeout
 	$music/music.play()
 
 func catch_game_over_music():

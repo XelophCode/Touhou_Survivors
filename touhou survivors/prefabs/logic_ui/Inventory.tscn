@@ -188,7 +188,7 @@ _data = {
 "fade_out": SubResource("Animation_8crhe")
 }
 
-[node name="Inventory" type="Node2D" node_paths=PackedStringArray("character_art", "grid_art", "hp_potential_label", "hp_current_label", "hp_plus", "hp_line", "hp_up_count", "hp_anim", "dmg_potential_label", "dmg_current_label", "dmg_plus", "dmg_line", "dmg_up_count", "dmg_anim", "spd_potential_label", "spd_current_label", "spd_plus", "spd_line", "spd_up_count", "spd_anim", "spell_card_overlay", "collision_id", "dmg_button_area", "spd_button_area", "hp_button_area", "dmg_bg", "spd_bg", "hp_bg", "dmg_label", "spd_label", "hp_label", "reroll_button_area", "reroll_bg", "spellcard_button_area", "spellcard_bg")]
+[node name="Inventory" type="Node2D" node_paths=PackedStringArray("character_art", "grid_art", "hp_potential_label", "hp_current_label", "hp_plus", "hp_line", "hp_up_count", "hp_anim", "dmg_potential_label", "dmg_current_label", "dmg_plus", "dmg_line", "dmg_up_count", "dmg_anim", "spd_potential_label", "spd_current_label", "spd_plus", "spd_line", "spd_up_count", "spd_anim", "spell_card_overlay", "collision_id", "dmg_button_area", "spd_button_area", "hp_button_area", "dmg_bg", "spd_bg", "hp_bg", "dmg_label", "spd_label", "hp_label", "reroll_button_area", "reroll_bg", "spellcard_button_area", "spellcard_bg", "reroll_label")]
 z_index = 16
 texture_filter = 1
 script = ExtResource("1_3pi44")
@@ -235,6 +235,7 @@ reroll_button_area = NodePath("InventoryGridArt/reroll/reroll_button_area")
 reroll_bg = NodePath("InventoryGridArt/reroll/reroll_button_bg")
 spellcard_button_area = NodePath("InventoryGridArt/spellcard_button_area")
 spellcard_bg = NodePath("InventoryGridArt/spellcard_button_bg")
+reroll_label = NodePath("InventoryGridArt/reroll/reroll_label")
 
 [node name="InventoryGridArt" type="Sprite2D" parent="."]
 texture_filter = 1

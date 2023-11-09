@@ -22,16 +22,6 @@ func _process(_delta):
 	if Input.is_action_just_released("hide_descriptions"):
 		visible = false
 	
-#	if visible:
-#		print(str(position))
-#	if Input.is_action_just_pressed("hide_descriptions"):
-#		if hide_descriptions:
-#			hide_descriptions = false
-#			update_tag = true
-#		else:
-#			hide_descriptions = true
-#			update_tag = true
-	
 	if update_tag and Globals.tooltip_info != []:
 		if hide_descriptions:
 			$Label.text = Globals.tooltip_info[0][0]
@@ -43,10 +33,8 @@ func _process(_delta):
 	global_position.y = get_global_mouse_position().y + 4
 	
 	if visible:
-		#print(str(position.x + label.size.x))
 		if position.x + label.size.x >= 426.0:
 			global_position.x = (get_global_mouse_position().x + 4) - ((position.x + label.size.x) - 426.0)
-			#print("OUT OF RANGE")
 
 func hide_tooltip():
 	show_desc = false

@@ -247,3 +247,7 @@ start_button_press={
 2d_physics/layer_11="item_set_detection"
 2d_physics/layer_12="environment"
 2d_physics/layer_13="cursor"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
