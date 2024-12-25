@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Touhou: Gensokyo Survivors"
+config/tags=PackedStringArray("shipped")
 run/main_scene="res://prefabs/levels/initialize.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 run/max_fps=60

@@ -835,11 +835,13 @@ points = PackedVector2Array(-47, 91, -30, 91)
 width = 16.0
 
 [node name="Discord" type="Sprite2D" parent="Buttons"]
+visible = false
 position = Vector2(134, 232)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_7xol4")
 
 [node name="discord" type="LinkButton" parent="Buttons"]
+visible = false
 offset_left = 124.0
 offset_top = 225.0
 offset_right = 296.0
@@ -905,6 +907,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_dmdmx")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0bx0i")
 
 [node name="Label2" type="Label" parent="Buttons"]
+visible = false
 offset_left = 144.0
 offset_top = 227.0
 offset_right = 348.0
